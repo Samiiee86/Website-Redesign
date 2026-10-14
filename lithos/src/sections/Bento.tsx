@@ -1,9 +1,12 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Bot, LayoutGrid, Sparkles } from "lucide-react";
 import { pioneer } from "../lib/content";
 import { scenery } from "../lib/scenery";
 import { Reveal, Section } from "../lib/ui";
 
-const PANELS = ["/img/panel-kane.png", "/img/panel-cloud.png"];
+const PANELS = [
+  { shot: "/img/panel-kane.png", title: "testmu.ai / kaneai", icon: Bot, right: Sparkles },
+  { shot: "/img/panel-cloud.png", title: "testmu.ai / agentic-cloud", icon: LayoutGrid, right: Sparkles },
+];
 const SCENES = [scenery.grassea, scenery.sunsetlake];
 
 /* The two pioneer cards, momentic-style like the fold stages: the painting
@@ -11,6 +14,8 @@ const SCENES = [scenery.grassea, scenery.sunsetlake];
    copy sits below the card on the page ground. */
 function Card({ index }: { index: number }) {
   const card = pioneer.cards[index];
+  const PanelIcon = PANELS[index].icon;
+  const RightIcon = PANELS[index].right;
   return (
     <div data-cursor={card.cta} className="flex h-full flex-col">
       <div className="relative h-[420px] overflow-hidden md:h-[500px]">
@@ -21,8 +26,23 @@ function Card({ index }: { index: number }) {
           loading="lazy"
         />
         <div className="absolute inset-0 flex items-center justify-center p-8 md:p-12">
-          <div className="w-full max-w-[520px] overflow-hidden rounded-[16px] border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.45)]">
-            <img src={PANELS[index]} alt="" className="h-auto w-full" loading="lazy" />
+          <div className="w-full max-w-[520px] overflow-hidden border border-border bg-white shadow-[0_36px_80px_-26px_rgba(18,18,18,0.45)]">
+            {/* window chrome, same as the fold demo frames */}
+            <div className="flex items-center gap-2 border-b border-border-muted px-3 py-2">
+              <span className="flex gap-1.5">
+                {[0, 1, 2].map((i) => (
+                  <span key={i} className="h-2 w-2 rounded-full bg-border" />
+                ))}
+              </span>
+              <span className="mx-auto flex items-center gap-1.5 border border-border-muted bg-background px-3 py-0.5 text-muted-foreground">
+                <PanelIcon size={10} />
+                <span className="mono text-[9px] uppercase tracking-[0.14em]">
+                  {PANELS[index].title}
+                </span>
+              </span>
+              <RightIcon size={11} className="text-muted-foreground" />
+            </div>
+            <img src={PANELS[index].shot} alt="" className="h-auto w-full" loading="lazy" />
           </div>
         </div>
       </div>
