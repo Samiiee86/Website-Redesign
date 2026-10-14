@@ -40,7 +40,7 @@ function Card({ index }: { index: number }) {
         <img
           src={PANELS[index]}
           alt=""
-          className="h-[250px] w-full object-cover object-left-top"
+          className="h-auto w-full"
           loading="lazy"
         />
       </motion.div>
