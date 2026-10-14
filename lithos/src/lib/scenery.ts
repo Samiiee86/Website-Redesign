@@ -10,4 +10,6 @@ export const scenery = {
   sky: E("feature-02-Cpwybz0m.png"),
   dusk: E("feature-03-B6uRmYW3.png"),
   comet: E("feature-04-DHOlaEtM.png"),
+  /* local plate: soft morning shoreline, uploaded by Sameer */
+  shore: "/img/shore.webp",
 };

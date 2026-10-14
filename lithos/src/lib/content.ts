@@ -187,7 +187,7 @@ export const products = {
     },
     {
       id: "kane-ai",
-      scene: "ridge",
+      scene: "shore",
       demo: "plan",
       tag: "KANE AI",
       title: "Autonomous Agentic Test Planning and Authoring",
