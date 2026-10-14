@@ -15,7 +15,6 @@ function Card({ index }: { index: number }) {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const panelY = useTransform(scrollYProgress, [0, 1], [40, -40]);
   const sceneY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
@@ -33,17 +32,14 @@ function Card({ index }: { index: number }) {
       />
       <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
-      <motion.div
-        style={{ y: panelY }}
-        className="absolute right-0 top-0 w-[82%] overflow-hidden border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.6)]"
-      >
+      <div className="absolute right-0 top-0 w-[82%] overflow-hidden rounded-bl-[32px] border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.6)]">
         <img
           src={PANELS[index]}
           alt=""
           className="h-auto w-full"
           loading="lazy"
         />
-      </motion.div>
+      </div>
 
       <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
         <h3 className="max-w-[460px] text-[26px] leading-[1.15] tracking-tight text-white md:text-[32px]">
