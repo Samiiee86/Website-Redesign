@@ -129,18 +129,19 @@ function Panel({ tab }: { tab: Tab }) {
         )}
       </div>
 
-      {/* the demo stage: muted landscape, floating UI, looping script */}
-      <div className="relative min-h-[420px] overflow-hidden border-t border-border-muted lg:border-l lg:border-t-0">
-        <img
-          src={scenery[tab.scene as keyof typeof scenery]}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-        />
-        {/* mute the painting so the UI reads first */}
-        <div className="absolute inset-0 bg-background/25" />
-        <div className="absolute inset-0 flex items-center justify-center p-7 md:p-12">
-          <div className="w-full max-w-[460px]">
+      {/* the demo stage: the landscape sits inset in its own white frame,
+          so neighbouring folds never bleed into each other */}
+      <div className="flex min-h-[420px] border-t border-border-muted p-6 lg:border-l lg:border-t-0 lg:p-8">
+        <div className="relative flex w-full items-center justify-center overflow-hidden">
+          <img
+            src={scenery[tab.scene as keyof typeof scenery]}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
+          {/* mute the painting so the UI reads first */}
+          <div className="absolute inset-0 bg-background/25" />
+          <div className="relative w-full max-w-[460px] px-7 py-10 md:px-10 md:py-14">
             <Demo />
           </div>
         </div>
