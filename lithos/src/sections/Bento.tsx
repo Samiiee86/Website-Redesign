@@ -6,7 +6,7 @@ import { scenery } from "../lib/scenery";
 import { Reveal, Section } from "../lib/ui";
 
 const PANELS = ["/img/panel-kane.png", "/img/panel-cloud.png"];
-const SCENES = [scenery.valley, scenery.mist];
+const SCENES = [scenery.seashore, scenery.mist];
 
 function Card({ index }: { index: number }) {
   const card = pioneer.cards[index];
@@ -42,7 +42,7 @@ function Card({ index }: { index: number }) {
       </div>
 
       <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
-        <h3 className="max-w-[460px] text-[26px] leading-[1.15] tracking-tight text-white md:text-[32px]">
+        <h3 className="text-[24px] leading-[1.15] tracking-tight text-white md:whitespace-nowrap md:text-[28px]">
           {card.title}
         </h3>
         <p className="mt-4 max-w-[480px] text-[15px] leading-relaxed text-white/75">
