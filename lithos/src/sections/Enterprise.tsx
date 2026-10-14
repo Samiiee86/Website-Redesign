@@ -6,14 +6,19 @@ export default function Enterprise() {
   return (
     <section className="relative z-[1] w-full overflow-hidden border-t border-border">
       <Reveal>
-        <div className="relative mx-auto flex w-full max-w-[760px] flex-col items-center px-6 py-24 text-center md:py-32">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            Enterprise
-          </p>
-          <h2 className="mt-5 text-4xl leading-[1.05] tracking-tight text-foreground md:text-[56px]">
+        <div className="relative mx-auto flex w-full max-w-[820px] flex-col items-center px-6 py-28 text-center md:py-40">
+          {/* eyebrow held between two hairlines, like a letterpress rule */}
+          <div className="flex w-full max-w-[420px] items-center gap-5">
+            <span className="h-px flex-1 bg-border" />
+            <p className="mono text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
+              Enterprise
+            </p>
+            <span className="h-px flex-1 bg-border" />
+          </div>
+          <h2 className="mt-8 text-4xl leading-[1.08] tracking-tight text-foreground md:text-[56px]">
             TestMu AI for Enterprise
           </h2>
-          <p className="mt-5 max-w-[520px] text-[17px] leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-[520px] text-[17px] leading-relaxed text-muted-foreground">
             {enterprise.body}
           </p>
 
@@ -35,6 +40,16 @@ export default function Enterprise() {
               {enterprise.secondary}
             </button>
           </div>
+
+          <p className="mono mt-14 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground">
+            <span>SOC 2 Type II</span>
+            <span className="h-[4px] w-[4px] rotate-45 bg-border" />
+            <span>GDPR</span>
+            <span className="h-[4px] w-[4px] rotate-45 bg-border" />
+            <span>ISO 27001</span>
+            <span className="h-[4px] w-[4px] rotate-45 bg-border" />
+            <span>24×7 enterprise support</span>
+          </p>
         </div>
       </Reveal>
     </section>
