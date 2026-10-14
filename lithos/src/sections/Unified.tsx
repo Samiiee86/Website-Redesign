@@ -131,7 +131,7 @@ function Panel({ tab }: { tab: Tab }) {
 
       {/* the demo stage: the landscape sits inset in its own white frame,
           so neighbouring folds never bleed into each other */}
-      <div className="flex min-h-[420px] border-t border-border-muted p-6 lg:border-l lg:border-t-0 lg:p-8">
+      <div className="flex min-h-[420px] border-t border-border-muted p-6 lg:border-t-0 lg:p-8">
         <div className="relative flex w-full items-center justify-center overflow-hidden">
           <img
             src={scenery[tab.scene as keyof typeof scenery]}
