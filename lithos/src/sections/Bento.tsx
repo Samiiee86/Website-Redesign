@@ -32,7 +32,7 @@ function Card({ index }: { index: number }) {
       />
       <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
-      <div className="absolute right-0 top-0 w-[82%] overflow-hidden rounded-bl-[32px] border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.6)]">
+      <div className="absolute right-0 top-0 w-[82%] overflow-hidden rounded-bl-[16px] border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.6)]">
         <img
           src={PANELS[index]}
           alt=""
