@@ -10,7 +10,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
    its centre — the same momentic-style scripted UI as the Unified fold, so
    the "video" is weightless and never letterboxed. */
 
-const PlanDemo = DEMOS.plan;
+const PlanDemo = DEMOS.hero;
 
 export default function Hero() {
   return (

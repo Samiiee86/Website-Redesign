@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   BarChart3,
   Bot,
@@ -582,7 +583,242 @@ function InsightsDemo() {
   );
 }
 
+
+/* 00 · Hero — the live site's hero video (TestmuAi.webm), rebuilt as a
+   script inside one fixed white frame: four chapters loop — Planning,
+   Authoring, Executing, Analysing — no video file, no backdrop of its own. */
+const HERO_CHAPTERS = ["Planning", "Authoring", "Executing", "Analysing"];
+const CHAPTER_MS = 5600;
+
+const hAppear = (at: number, rise = 8) => ({
+  initial: { opacity: 0, y: rise },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay: at, duration: 0.38, ease: "easeOut" as const },
+});
+
+function HeroTyped({ text, from, dur }: { text: string; from: number; dur: number }) {
+  return (
+    <span className="relative inline-block overflow-hidden whitespace-nowrap align-bottom">
+      <motion.span
+        initial={{ width: 0 }}
+        animate={{ width: "100%" }}
+        transition={{ delay: from, duration: dur, ease: "linear" }}
+        className="inline-block overflow-hidden whitespace-nowrap"
+      >
+        {text}
+      </motion.span>
+    </span>
+  );
+}
+
+function HeroPlanning() {
+  return (
+    <div>
+      <p className={CAP}>What is your objective today?</p>
+      <div className="mono mt-2 border border-border-muted bg-background px-2.5 py-2 text-[10.5px] text-foreground">
+        <span className="select-none text-muted-foreground">&gt; </span>
+        <HeroTyped
+          text="Test the end-to-end booking flow — New York · 2 guests · entire place"
+          from={0.2}
+          dur={1.5}
+        />
+      </div>
+      <motion.p {...hAppear(2.0, 0)} className={`${CAP} mt-3`}>
+        Planning · 4 scenarios generated
+      </motion.p>
+      <div className="mt-1.5 flex flex-col gap-1">
+        {[
+          ["Search New York · 2 guests · entire place", 2.3],
+          ["Apply filters and open a listing", 2.7],
+          ["Book with guest and payment details", 3.1],
+          ["Validate confirmation and price breakdown", 3.5],
+        ].map(([t, at]) => (
+          <motion.div key={t as string} {...hAppear(at as number)} className={row}>
+            <span className="truncate text-[11px] text-foreground">{t as string}</span>
+            <Check size={11} strokeWidth={2.6} className="ml-2 flex-none text-[#1A7F37]" />
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function HeroAuthoring() {
+  return (
+    <div>
+      <div className="flex items-center justify-between">
+        <p className={CAP}>Recording interaction · airbnb.co.in</p>
+        <span className="mono flex items-center gap-1.5 text-[9px] uppercase text-[#B3261E]">
+          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-[#B3261E]" />
+          Rec
+        </span>
+      </div>
+      <div className="mt-2 flex flex-col gap-1">
+        {[
+          ["Go to airbnb.co.in", 0.3],
+          ["Click on ‘Where’ · type ‘New York’", 0.9],
+          ["Click on ‘Search’", 1.5],
+          ["Select ‘Entire place’ · open a listing", 2.1],
+          ["Fill guest details · reach checkout", 2.7],
+        ].map(([t, at], i) => (
+          <motion.div key={i} {...hAppear(at as number)} className={row}>
+            <span className="truncate text-[11px] text-foreground">{t as string}</span>
+            <motion.span {...hAppear((at as number) + 0.25, 0)}>
+              <Check size={11} strokeWidth={2.6} className="ml-2 flex-none text-[#1A7F37]" />
+            </motion.span>
+          </motion.div>
+        ))}
+      </div>
+      <motion.div
+        {...hAppear(3.6, 0)}
+        className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-2.5 py-1.5"
+      >
+        <span className="text-[10.5px] font-medium text-[#044F1E]">
+          Steps saved to KaneAI · replayable on any device
+        </span>
+        <Check size={11} strokeWidth={3} className="text-[#1A7F37]" />
+      </motion.div>
+    </div>
+  );
+}
+
+function HeroExecuting() {
+  return (
+    <div className="mono -mx-3 -my-3 flex h-[calc(100%+24px)] flex-col gap-[3px] bg-[#161616] px-3 py-3 text-[10.5px] leading-relaxed">
+      <p className="text-white/85">
+        <span className="text-white/40">$ </span>
+        <HeroTyped text="hye run suite/booking --tests 100" from={0.15} dur={1.0} />
+      </p>
+      <motion.p {...hAppear(1.3, 0)} className="text-white/60">
+        Test distribution: 80 pass · 10 fail · 10 skipped
+      </motion.p>
+      {[
+        ["Test #3: PASSED", "text-[#6FDD8B]", 1.7],
+        ["Test #7: PASSED", "text-[#6FDD8B]", 2.0],
+        ["Test #78: SKIPPED", "text-[#E3B341]", 2.3],
+        ["Test #12: FAILED", "text-[#FF8182]", 2.6],
+        ["Test #41: PASSED", "text-[#6FDD8B]", 2.9],
+      ].map(([t, cls, at]) => (
+        <motion.p key={t as string} {...hAppear(at as number, 0)} className={cls as string}>
+          {t as string}
+        </motion.p>
+      ))}
+      <motion.div {...hAppear(3.3, 0)} className="mt-1 h-1 w-full bg-white/10">
+        <motion.div
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ delay: 3.4, duration: 1.3, ease: "linear" }}
+          className="h-full bg-[#6FDD8B]"
+        />
+      </motion.div>
+      <motion.p {...hAppear(4.7, 0)} className="text-white/85">
+        Batch 1/1 · 100 tests in 4m 12s
+      </motion.p>
+    </div>
+  );
+}
+
+function HeroAnalysing() {
+  return (
+    <div>
+      <p className={CAP}>Failure analysis · release 8.4</p>
+      <motion.div
+        {...hAppear(0.3)}
+        className="mt-2 flex items-center justify-between bg-[#FFEBE9] px-2.5 py-1.5"
+      >
+        <span className="mono truncate text-[10px] text-[#8B1A12]">
+          TypeError: products.map is not a function · products.js:108
+        </span>
+        <span className="mono ml-2 flex-none text-[9px] uppercase text-[#B3261E]">Fail</span>
+      </motion.div>
+      <div className="mt-1.5 flex gap-1.5">
+        {[
+          ["Timeout Error ×1", 0.8],
+          ["Assertion Error ×1", 1.0],
+        ].map(([t, at]) => (
+          <motion.span
+            key={t as string}
+            {...hAppear(at as number, 0)}
+            className="border border-border-muted bg-background px-2 py-0.5 text-[10px] text-foreground"
+          >
+            {t as string}
+          </motion.span>
+        ))}
+      </div>
+      <motion.div
+        {...hAppear(1.5)}
+        className="mt-2 inline-flex items-center gap-1.5 border border-border bg-surface px-2.5 py-1 text-[10.5px] font-medium text-foreground"
+      >
+        <Sparkles size={11} />
+        Generate RCA
+      </motion.div>
+      <motion.div {...hAppear(2.3)} className="mt-2 flex flex-col gap-1">
+        <div className={row}>
+          <span className="truncate text-[11px] text-foreground">
+            Root cause: empty inventory rendered before fetch resolves
+          </span>
+        </div>
+      </motion.div>
+      <motion.div
+        {...hAppear(3.1, 0)}
+        className="mt-1.5 flex items-center justify-between bg-[#DAFBE1] px-2.5 py-1.5"
+      >
+        <span className="text-[10.5px] font-medium text-[#044F1E]">
+          Fix suggested · guard products before .map · PR drafted
+        </span>
+        <Check size={11} strokeWidth={3} className="text-[#1A7F37]" />
+      </motion.div>
+    </div>
+  );
+}
+
+const HERO_SCENES = [HeroPlanning, HeroAuthoring, HeroExecuting, HeroAnalysing];
+
+export function HeroDemo() {
+  const [ch, setCh] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setCh((c) => (c + 1) % 4), CHAPTER_MS);
+    return () => clearInterval(t);
+  }, []);
+  const Scene = HERO_SCENES[ch];
+  return (
+    <Window title="testmu.ai / multi-agent" icon={Bot} right={<Play size={11} />}>
+      {/* chapter chips, like the video's title card */}
+      <div className="flex border-b border-border-muted">
+        {HERO_CHAPTERS.map((c, i) => (
+          <button
+            key={c}
+            onClick={() => setCh(i)}
+            className={`mono flex-1 whitespace-nowrap px-2 py-1.5 text-[9px] uppercase tracking-[0.12em] transition-colors ${
+              ch === i
+                ? "bg-foreground text-background"
+                : "bg-background text-muted-foreground"
+            }`}
+          >
+            {c}
+          </button>
+        ))}
+      </div>
+      <div className="relative h-[252px] overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={ch}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="absolute inset-0 px-3 py-3"
+          >
+            <Scene />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+    </Window>
+  );
+}
+
 export const DEMOS = {
+  hero: HeroDemo,
   prompt: PromptDemo,
   plan: PlanDemo,
   agentEval: AgentEvalDemo,
