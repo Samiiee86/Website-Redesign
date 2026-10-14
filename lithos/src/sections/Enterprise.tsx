@@ -33,15 +33,6 @@ export default function Enterprise() {
             </button>
           </div>
 
-          <p className="mono mt-14 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[10.5px] uppercase tracking-[0.18em] text-muted-foreground">
-            <span>SOC 2 Type II</span>
-            <span className="h-[4px] w-[4px] rotate-45 bg-border" />
-            <span>GDPR</span>
-            <span className="h-[4px] w-[4px] rotate-45 bg-border" />
-            <span>ISO 27001</span>
-            <span className="h-[4px] w-[4px] rotate-45 bg-border" />
-            <span>24×7 enterprise support</span>
-          </p>
         </div>
       </Reveal>
     </section>
