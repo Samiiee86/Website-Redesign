@@ -17,6 +17,12 @@
         ],
         "createdAt": "2026-10-14T11:17:53.546Z",
         "reason": "dash-march is the animated dashed connector line in the One Platform workflow diagram (Figma spec Sameer asked for), not a decorative grid field"
+      },
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "createdAt": "2026-10-14T11:19:24.404Z",
+        "reason": "Sameer kept Geist Pixel for .pixel numerals when moving headings to Manrope; design reviewed in screenshot rounds"
       }
     ]
   }
