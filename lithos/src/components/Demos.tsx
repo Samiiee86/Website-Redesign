@@ -136,7 +136,7 @@ function Cursor({
 }
 
 const CAP =
-  "mono text-[9.5px] uppercase tracking-[0.16em] text-muted-foreground";
+  "mono text-[11px] uppercase tracking-[0.16em] text-muted-foreground";
 
 /* ---- the product window: traffic lights, address pill, icon rail ---- */
 function Window({
@@ -180,7 +180,7 @@ function Window({
           }`}
         >
           <Icon size={10} />
-          <span className="mono text-[9px] uppercase tracking-[0.14em]">
+          <span className="mono text-[10.5px] uppercase tracking-[0.14em]">
             {title}
           </span>
         </span>
@@ -194,7 +194,7 @@ function Window({
 }
 
 const row =
-  "flex items-center justify-between border border-border-muted px-2.5 py-1.5";
+  "flex items-center justify-between border border-border-muted px-3.5 py-2.5";
 
 /* 01 · Test Manager — prompt typed, Quick author clicked, suite fills in */
 function PromptDemo() {
@@ -205,10 +205,10 @@ function PromptDemo() {
         ys={["20%", "30%", "52%", "52%", "74%", "86%"]}
         clicks={[0.42, 0.86]}
       />
-      <div className="px-3 py-3">
+      <div className="px-5 py-4">
         <div className="flex items-center justify-between">
           <span className={CAP}>Checkout regression · 12 cases</span>
-          <span className="border border-border-muted bg-background px-1.5 py-px text-[9px] text-muted-foreground">
+          <span className="border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
             Synced · JIRA
           </span>
         </div>
@@ -220,14 +220,14 @@ function PromptDemo() {
           <div className="mt-2 flex items-center justify-between">
             <motion.span
               {...flash(0.42)}
-              className="inline-flex items-center gap-1.5 border border-[#E16F24]/50 bg-[#FFF1E5] px-2 py-0.5 text-[10.5px] font-medium text-[#953800]"
+              className="inline-flex items-center gap-1.5 border border-[#E16F24]/50 bg-[#FFF1E5] px-2 py-0.5 text-[12px] font-medium text-[#953800]"
             >
               <Sparkles size={10} /> Quick author
             </motion.span>
             <Paperclip size={12} className="text-muted-foreground" />
           </div>
         </div>
-        <div className="mt-2.5 flex flex-col gap-1">
+        <div className="mt-2.5 flex flex-col gap-1.5">
           {[
             ["TC-101 · Guest buys 3 items", "Positive"],
             ["TC-102 · Expired card at payment", "Negative"],
@@ -235,8 +235,8 @@ function PromptDemo() {
             ["TC-104 · Price changes mid-checkout", "Edge case"],
           ].map(([name, tag], i) => (
             <motion.div key={name} {...appear(0.48 + i * 0.08)} className={row}>
-              <span className="truncate text-[11px] text-foreground">{name}</span>
-              <span className="ml-2 flex-none border border-border-muted bg-background px-1.5 py-px text-[9px] text-muted-foreground">
+              <span className="truncate text-[12.5px] text-foreground">{name}</span>
+              <span className="ml-2 flex-none border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
                 {tag}
               </span>
             </motion.div>
@@ -244,9 +244,9 @@ function PromptDemo() {
         </div>
         <motion.div
           {...appear(0.86, 0)}
-          className="mt-2 flex items-center justify-between bg-[#EEF2FF] px-2.5 py-1.5"
+          className="mt-2 flex items-center justify-between bg-[#EEF2FF] px-3.5 py-2"
         >
-          <span className="text-[10.5px] font-medium text-[#1433A4]">
+          <span className="text-[12px] font-medium text-[#1433A4]">
             12 cases pushed to JIRA
           </span>
           <Check size={11} strokeWidth={3} className="text-[#1433A4]" />
@@ -265,7 +265,7 @@ function PlanDemo() {
         ys={["24%", "26%", "28%", "28%", "62%", "84%"]}
         clicks={[0.36, 0.9]}
       />
-      <div className="px-3 py-3">
+      <div className="px-5 py-4">
         <span className={CAP}>What is your objective today?</span>
         <div className="mt-1.5 flex items-center justify-between gap-2 border border-border-muted bg-background px-2.5 py-2">
           <p className="min-w-0 truncate text-[11.5px] text-foreground">
@@ -281,7 +281,7 @@ function PlanDemo() {
         <motion.p {...appear(0.38, 0)} className={`${CAP} mt-2.5`}>
           Thinking · planning 4 steps
         </motion.p>
-        <div className="mt-1.5 flex flex-col gap-1">
+        <div className="mt-1.5 flex flex-col gap-1.5">
           {[
             ["goto trip.com and open search", 0.46],
             ["pick New York · 2 guests · 4 nights", 0.56],
@@ -291,12 +291,12 @@ function PlanDemo() {
             <motion.div
               key={step as string}
               {...appear(at as number)}
-              className="flex items-center gap-2 border border-border-muted px-2.5 py-1.5"
+              className="flex items-center gap-2 border border-border-muted px-3.5 py-2"
             >
               <motion.span {...appear((at as number) + 0.08, 0)}>
                 <Check size={10} strokeWidth={3} className="text-[#1A7F37]" />
               </motion.span>
-              <span className="mono truncate text-[10.5px] text-foreground">
+              <span className="mono truncate text-[12px] text-foreground">
                 {step as string}
               </span>
             </motion.div>
@@ -304,9 +304,9 @@ function PlanDemo() {
         </div>
         <motion.div
           {...appear(0.88, 0)}
-          className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-2.5 py-1.5"
+          className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-3.5 py-2"
         >
-          <span className="text-[10.5px] font-medium text-[#044F1E]">
+          <span className="text-[12px] font-medium text-[#044F1E]">
             Run passed · 41s · evidence attached
           </span>
           <Check size={11} strokeWidth={3} className="text-[#1A7F37]" />
@@ -325,45 +325,45 @@ function AgentEvalDemo() {
         ys={["24%", "56%", "56%", "76%", "88%"]}
         clicks={[0.5, 0.88]}
       />
-      <div className="px-3 py-3">
+      <div className="px-5 py-4">
         <div className="flex items-center justify-between">
           <span className={CAP}>Refund-policy probe · turn 7 of 20</span>
-          <span className="border border-border-muted bg-background px-1.5 py-px text-[9px] text-muted-foreground">
+          <span className="border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
             Voice + chat
           </span>
         </div>
         <div className="mt-2 flex flex-col gap-1.5">
           <motion.div
             {...appear(0.1)}
-            className="max-w-[85%] self-start border border-border-muted bg-background px-2.5 py-1.5 text-[11px]"
+            className="max-w-[85%] self-start border border-border-muted bg-background px-3.5 py-2 text-[12.5px]"
           >
             Can I get a refund after 30 days?
           </motion.div>
           <motion.div
             {...appear(0.26)}
-            className="max-w-[85%] self-end border border-border-muted px-2.5 py-1.5 text-[11px]"
+            className="max-w-[85%] self-end border border-border-muted px-3.5 py-2 text-[12.5px]"
           >
             Of course! Refunds are always available, no questions asked.
           </motion.div>
         </div>
         <motion.div
           {...appear(0.46)}
-          className="mt-2 flex items-center justify-between border border-[#CF222E]/40 bg-[#FFEBE9] px-2.5 py-1.5"
+          className="mt-2 flex items-center justify-between border border-[#CF222E]/40 bg-[#FFEBE9] px-3.5 py-2"
         >
-          <span className="flex items-center gap-1.5 text-[10.5px] font-medium text-[#82071E]">
+          <span className="flex items-center gap-1.5 text-[12px] font-medium text-[#82071E]">
             <TriangleAlert size={11} /> Hallucination · contradicts policy §4
           </span>
-          <span className="mono text-[9px] uppercase text-[#82071E]">Fail</span>
+          <span className="mono text-[10.5px] uppercase text-[#82071E]">Fail</span>
         </motion.div>
-        <div className="mt-1 flex flex-col gap-1">
+        <div className="mt-1 flex flex-col gap-1.5">
           {[
             ["Tone & language", "Pass", 0.6],
             ["PII leakage", "Pass", 0.7],
             ["Toxicity screen", "Pass", 0.78],
           ].map(([name, verdict, at]) => (
             <motion.div key={name as string} {...appear(at as number)} className={row}>
-              <span className="text-[11px] text-foreground">{name as string}</span>
-              <span className="mono text-[9px] uppercase text-[#1A7F37]">
+              <span className="text-[12.5px] text-foreground">{name as string}</span>
+              <span className="mono text-[10.5px] uppercase text-[#1A7F37]">
                 {verdict as string}
               </span>
             </motion.div>
@@ -371,9 +371,9 @@ function AgentEvalDemo() {
         </div>
         <motion.div
           {...appear(0.88, 0)}
-          className="mt-2 flex items-center justify-between bg-[#EEF2FF] px-2.5 py-1.5"
+          className="mt-2 flex items-center justify-between bg-[#EEF2FF] px-3.5 py-2"
         >
-          <span className="text-[10.5px] font-medium text-[#1433A4]">
+          <span className="text-[12px] font-medium text-[#1433A4]">
             19 / 20 turns clean · 1 filed with transcript
           </span>
         </motion.div>
@@ -415,14 +415,14 @@ function DevicesDemo() {
         ys={["26%", "38%", "38%", "70%", "84%"]}
         clicks={[0.34, 0.84]}
       />
-      <div className="px-3 py-3">
+      <div className="px-5 py-4">
         <div className="flex items-center justify-between">
           <span className={CAP}>10,000+ devices · public cloud</span>
-          <span className="border border-border-muted bg-background px-1.5 py-px text-[9px] text-muted-foreground">
+          <span className="border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
             Android 16 · iOS 19
           </span>
         </div>
-        <div className="mt-2 grid grid-cols-3 gap-1">
+        <div className="mt-2 grid grid-cols-3 gap-1.5">
           {devices.map((d, i) => (
             <motion.div
               key={d}
@@ -431,7 +431,7 @@ function DevicesDemo() {
                 i === 1 ? "border-foreground" : "border-border-muted"
               }`}
             >
-              <span className="block truncate text-[9.5px] font-medium text-foreground">
+              <span className="block truncate text-[11px] font-medium text-foreground">
                 {d}
               </span>
               <motion.span
@@ -443,17 +443,17 @@ function DevicesDemo() {
             </motion.div>
           ))}
         </div>
-        <div className="mt-2 flex flex-col gap-1">
+        <div className="mt-2 flex flex-col gap-1.5">
           {[
             ["Session · Pixel 10 · network: 3G throttle", "Live", 0.46],
             ["UI inspector attached", "Ready", 0.58],
             ["adb logcat streaming", "Streaming", 0.68],
           ].map(([name, st, at]) => (
             <motion.div key={name as string} {...appear(at as number)} className={row}>
-              <span className="truncate text-[11px] text-foreground">
+              <span className="truncate text-[12.5px] text-foreground">
                 {name as string}
               </span>
-              <span className="mono ml-2 flex-none text-[9px] uppercase text-[#1A7F37]">
+              <span className="mono ml-2 flex-none text-[10.5px] uppercase text-[#1A7F37]">
                 {st as string}
               </span>
             </motion.div>
@@ -461,9 +461,9 @@ function DevicesDemo() {
         </div>
         <motion.div
           {...appear(0.84, 0)}
-          className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-2.5 py-1.5"
+          className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-3.5 py-2"
         >
-          <span className="text-[10.5px] font-medium text-[#044F1E]">
+          <span className="text-[12px] font-medium text-[#044F1E]">
             Video + logs captured for the full session
           </span>
           <Check size={11} strokeWidth={3} className="text-[#1A7F37]" />
@@ -477,7 +477,7 @@ function DevicesDemo() {
 function TerminalDemo() {
   return (
     <Window title="hyperexecute" icon={Terminal}>
-      <div className="mono flex flex-col gap-1 px-3 py-3 text-[10.5px] leading-relaxed">
+      <div className="mono flex flex-col gap-1.5 px-5 py-4 text-[12px] leading-relaxed">
         <p className="text-foreground">
           <span className="text-muted-foreground">$ </span>
           <Typed text="hye run --smart-split --concurrency 64" from={0.04} to={0.26} />
@@ -525,22 +525,22 @@ function InsightsDemo() {
         ys={["28%", "56%", "56%", "80%", "88%"]}
         clicks={[0.5, 0.86]}
       />
-      <div className="px-3 py-3">
+      <div className="px-5 py-4">
         <div className="flex items-center justify-between">
           <span className={CAP}>Last 30 days · Release 8.4</span>
-          <span className="border border-border-muted bg-background px-1.5 py-px text-[9px] text-muted-foreground">
+          <span className="border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
             Shared · 4 teams
           </span>
         </div>
         <div className="mt-2 flex items-baseline gap-2">
-          <motion.span {...appear(0.1, 0)} className="text-[20px] font-medium tracking-tight">
+          <motion.span {...appear(0.1, 0)} className="text-[26px] font-medium tracking-tight">
             94%
           </motion.span>
-          <motion.span {...appear(0.16, 0)} className="text-[10.5px] text-muted-foreground">
+          <motion.span {...appear(0.16, 0)} className="text-[12px] text-muted-foreground">
             pass · 1,204 runs · 10,432 devices
           </motion.span>
         </div>
-        <div className="mt-2 flex h-[52px] items-end gap-1">
+        <div className="mt-2 flex h-[52px] items-end gap-1.5">
           {bars.map((v, i) => (
             <motion.div
               key={i}
@@ -556,25 +556,25 @@ function InsightsDemo() {
             />
           ))}
         </div>
-        <div className="mt-2 flex flex-col gap-1">
+        <div className="mt-2 flex flex-col gap-1.5">
           <motion.div {...appear(0.66)} className={row}>
-            <span className="text-[11px] text-foreground">Flaky tests</span>
-            <span className="mono text-[9px] uppercase text-[#1A7F37]">
+            <span className="text-[12.5px] text-foreground">Flaky tests</span>
+            <span className="mono text-[10.5px] uppercase text-[#1A7F37]">
               ▼ 38% this month
             </span>
           </motion.div>
           <motion.div {...appear(0.76)} className={row}>
-            <span className="text-[11px] text-foreground">Mean time to verdict</span>
-            <span className="mono text-[9px] uppercase text-[#1A7F37]">
+            <span className="text-[12.5px] text-foreground">Mean time to verdict</span>
+            <span className="mono text-[10.5px] uppercase text-[#1A7F37]">
               4m 12s
             </span>
           </motion.div>
         </div>
         <motion.div
           {...appear(0.88, 0)}
-          className="mt-2 flex items-center justify-between bg-[#EEF2FF] px-2.5 py-1.5"
+          className="mt-2 flex items-center justify-between bg-[#EEF2FF] px-3.5 py-2"
         >
-          <span className="text-[10.5px] font-medium text-[#1433A4]">
+          <span className="text-[12px] font-medium text-[#1433A4]">
             Dashboard shared with release channel
           </span>
         </motion.div>
@@ -633,7 +633,7 @@ function HeroPlanning() {
           </motion.p>
           <motion.div
             {...hAppear(0.3)}
-            className="mono mt-3 flex w-full max-w-[400px] items-center gap-1.5 border border-border bg-surface px-3 py-2.5 text-[10.5px] text-foreground shadow-[0_8px_24px_-12px_rgba(18,18,18,0.18)]"
+            className="mono mt-3 flex w-full max-w-[480px] items-center gap-1.5 border border-border bg-surface px-3 py-2.5 text-[12px] text-foreground shadow-[0_8px_24px_-12px_rgba(18,18,18,0.18)]"
           >
             <span className="select-none text-muted-foreground">&gt; </span>
             <HeroTyped
@@ -656,7 +656,7 @@ function HeroPlanning() {
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
           <p className={CAP}>Planning · 4 scenarios generated</p>
-          <div className="mt-2 flex flex-col gap-1">
+          <div className="mt-2 flex flex-col gap-1.5">
             {[
               ["Search New York · 2 guests · entire place", 0.3],
               ["Apply filters and open a listing", 0.7],
@@ -664,16 +664,16 @@ function HeroPlanning() {
               ["Validate confirmation and price breakdown", 1.5],
             ].map(([t, at]) => (
               <motion.div key={t as string} {...hAppear(at as number)} className={row}>
-                <span className="truncate text-[11px] text-foreground">{t as string}</span>
+                <span className="truncate text-[12.5px] text-foreground">{t as string}</span>
                 <Check size={11} strokeWidth={2.6} className="ml-2 flex-none text-[#1A7F37]" />
               </motion.div>
             ))}
           </div>
           <motion.div
             {...hAppear(2.0, 0)}
-            className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-2.5 py-1.5"
+            className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-3.5 py-2"
           >
-            <span className="text-[10.5px] font-medium text-[#044F1E]">
+            <span className="text-[12px] font-medium text-[#044F1E]">
               Plan ready · handing over to authoring
             </span>
             <Check size={11} strokeWidth={3} className="text-[#1A7F37]" />
@@ -689,12 +689,12 @@ function HeroAuthoring() {
     <div>
       <div className="flex items-center justify-between">
         <p className={CAP}>Recording interaction · airbnb.co.in</p>
-        <span className="mono flex items-center gap-1.5 text-[9px] uppercase text-[#B3261E]">
+        <span className="mono flex items-center gap-1.5 text-[10.5px] uppercase text-[#B3261E]">
           <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-[#B3261E]" />
           Rec
         </span>
       </div>
-      <div className="mt-2 flex flex-col gap-1">
+      <div className="mt-2 flex flex-col gap-1.5">
         {[
           ["Go to airbnb.co.in", 0.3],
           ["Click on ‘Where’ · type ‘New York’", 0.9],
@@ -703,7 +703,7 @@ function HeroAuthoring() {
           ["Fill guest details · reach checkout", 2.7],
         ].map(([t, at], i) => (
           <motion.div key={i} {...hAppear(at as number)} className={row}>
-            <span className="truncate text-[11px] text-foreground">{t as string}</span>
+            <span className="truncate text-[12.5px] text-foreground">{t as string}</span>
             <motion.span {...hAppear((at as number) + 0.25, 0)}>
               <Check size={11} strokeWidth={2.6} className="ml-2 flex-none text-[#1A7F37]" />
             </motion.span>
@@ -712,9 +712,9 @@ function HeroAuthoring() {
       </div>
       <motion.div
         {...hAppear(3.6, 0)}
-        className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-2.5 py-1.5"
+        className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-3.5 py-2"
       >
-        <span className="text-[10.5px] font-medium text-[#044F1E]">
+        <span className="text-[12px] font-medium text-[#044F1E]">
           Steps saved to KaneAI · replayable on any device
         </span>
         <Check size={11} strokeWidth={3} className="text-[#1A7F37]" />
@@ -725,7 +725,7 @@ function HeroAuthoring() {
 
 function HeroExecuting() {
   return (
-    <div className="mono flex flex-col gap-[3px] text-[10.5px] leading-relaxed">
+    <div className="mono flex flex-col gap-[3px] text-[12px] leading-relaxed">
       <p className="text-foreground">
         <span className="text-muted-foreground">$ </span>
         <HeroTyped text="hye run suite/booking --tests 100" from={0.15} dur={1.0} />
@@ -765,12 +765,12 @@ function HeroAnalysing() {
       <p className={CAP}>Failure analysis · release 8.4</p>
       <motion.div
         {...hAppear(0.3)}
-        className="mt-2 flex items-center justify-between bg-[#FFEBE9] px-2.5 py-1.5"
+        className="mt-2 flex items-center justify-between bg-[#FFEBE9] px-3.5 py-2"
       >
-        <span className="mono truncate text-[10px] text-[#8B1A12]">
+        <span className="mono truncate text-[11.5px] text-[#8B1A12]">
           TypeError: products.map is not a function · products.js:108
         </span>
-        <span className="mono ml-2 flex-none text-[9px] uppercase text-[#B3261E]">Fail</span>
+        <span className="mono ml-2 flex-none text-[10.5px] uppercase text-[#B3261E]">Fail</span>
       </motion.div>
       <div className="mt-1.5 flex gap-1.5">
         {[
@@ -780,7 +780,7 @@ function HeroAnalysing() {
           <motion.span
             key={t as string}
             {...hAppear(at as number, 0)}
-            className="border border-border-muted bg-background px-2 py-0.5 text-[10px] text-foreground"
+            className="border border-border-muted bg-background px-2 py-0.5 text-[11.5px] text-foreground"
           >
             {t as string}
           </motion.span>
@@ -788,23 +788,23 @@ function HeroAnalysing() {
       </div>
       <motion.div
         {...hAppear(1.5)}
-        className="mt-2 inline-flex items-center gap-1.5 border border-border bg-surface px-2.5 py-1 text-[10.5px] font-medium text-foreground"
+        className="mt-2 inline-flex items-center gap-1.5 border border-border bg-surface px-2.5 py-1 text-[12px] font-medium text-foreground"
       >
         <Sparkles size={11} />
         Generate RCA
       </motion.div>
-      <motion.div {...hAppear(2.3)} className="mt-2 flex flex-col gap-1">
+      <motion.div {...hAppear(2.3)} className="mt-2 flex flex-col gap-1.5">
         <div className={row}>
-          <span className="truncate text-[11px] text-foreground">
+          <span className="truncate text-[12.5px] text-foreground">
             Root cause: empty inventory rendered before fetch resolves
           </span>
         </div>
       </motion.div>
       <motion.div
         {...hAppear(3.1, 0)}
-        className="mt-1.5 flex items-center justify-between bg-[#DAFBE1] px-2.5 py-1.5"
+        className="mt-1.5 flex items-center justify-between bg-[#DAFBE1] px-3.5 py-2"
       >
-        <span className="text-[10.5px] font-medium text-[#044F1E]">
+        <span className="text-[12px] font-medium text-[#044F1E]">
           Fix suggested · guard products before .map · PR drafted
         </span>
         <Check size={11} strokeWidth={3} className="text-[#1A7F37]" />
@@ -830,7 +830,7 @@ export function HeroDemo() {
           <button
             key={c}
             onClick={() => setCh(i)}
-            className={`mono flex-1 whitespace-nowrap px-2 py-1.5 text-[9px] uppercase tracking-[0.12em] transition-colors ${
+            className={`mono flex-1 whitespace-nowrap px-2 py-1.5 text-[10.5px] uppercase tracking-[0.12em] transition-colors ${
               ch === i
                 ? "bg-foreground text-background"
                 : "bg-background text-muted-foreground"
@@ -848,7 +848,7 @@ export function HeroDemo() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute inset-0 px-3 py-3"
+            className="absolute inset-0 px-5 py-4"
           >
             <Scene />
           </motion.div>
