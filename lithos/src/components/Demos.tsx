@@ -612,34 +612,75 @@ function HeroTyped({ text, from, dur }: { text: string; from: number; dur: numbe
 }
 
 function HeroPlanning() {
+  /* two beats: the chat box settles first and gets typed into, then the
+     screen advances to the generated test cases */
+  const [screen, setScreen] = useState(0);
+  useEffect(() => {
+    const t = setTimeout(() => setScreen(1), 3050);
+    return () => clearTimeout(t);
+  }, []);
   return (
-    <div>
-      <p className={CAP}>What is your objective today?</p>
-      <div className="mono mt-2 border border-border-muted bg-background px-2.5 py-2 text-[10.5px] text-foreground">
-        <span className="select-none text-muted-foreground">&gt; </span>
-        <HeroTyped
-          text="Test the end-to-end booking flow — New York · 2 guests · entire place"
-          from={0.2}
-          dur={1.5}
-        />
-      </div>
-      <motion.p {...hAppear(2.0, 0)} className={`${CAP} mt-3`}>
-        Planning · 4 scenarios generated
-      </motion.p>
-      <div className="mt-1.5 flex flex-col gap-1">
-        {[
-          ["Search New York · 2 guests · entire place", 2.3],
-          ["Apply filters and open a listing", 2.7],
-          ["Book with guest and payment details", 3.1],
-          ["Validate confirmation and price breakdown", 3.5],
-        ].map(([t, at]) => (
-          <motion.div key={t as string} {...hAppear(at as number)} className={row}>
-            <span className="truncate text-[11px] text-foreground">{t as string}</span>
-            <Check size={11} strokeWidth={2.6} className="ml-2 flex-none text-[#1A7F37]" />
+    <AnimatePresence mode="wait">
+      {screen === 0 ? (
+        <motion.div
+          key="chat"
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="flex h-full flex-col items-center justify-center pb-6"
+        >
+          <motion.p {...hAppear(0.15, 0)} className={CAP}>
+            What is your objective today?
+          </motion.p>
+          <motion.div
+            {...hAppear(0.3)}
+            className="mono mt-3 flex w-full max-w-[400px] items-center gap-1.5 border border-border bg-surface px-3 py-2.5 text-[10.5px] text-foreground shadow-[0_8px_24px_-12px_rgba(18,18,18,0.18)]"
+          >
+            <span className="select-none text-muted-foreground">&gt; </span>
+            <HeroTyped
+              text="Test the end-to-end booking flow — New York · 2 guests · entire place"
+              from={1.1}
+              dur={1.5}
+            />
+            <motion.span
+              animate={{ opacity: [1, 0, 1] }}
+              transition={{ duration: 0.9, repeat: Infinity }}
+              className="ml-auto h-3 w-[2px] flex-none bg-foreground"
+            />
           </motion.div>
-        ))}
-      </div>
-    </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          key="cases"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+          <p className={CAP}>Planning · 4 scenarios generated</p>
+          <div className="mt-2 flex flex-col gap-1">
+            {[
+              ["Search New York · 2 guests · entire place", 0.3],
+              ["Apply filters and open a listing", 0.7],
+              ["Book with guest and payment details", 1.1],
+              ["Validate confirmation and price breakdown", 1.5],
+            ].map(([t, at]) => (
+              <motion.div key={t as string} {...hAppear(at as number)} className={row}>
+                <span className="truncate text-[11px] text-foreground">{t as string}</span>
+                <Check size={11} strokeWidth={2.6} className="ml-2 flex-none text-[#1A7F37]" />
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            {...hAppear(2.0, 0)}
+            className="mt-2 flex items-center justify-between bg-[#DAFBE1] px-2.5 py-1.5"
+          >
+            <span className="text-[10.5px] font-medium text-[#044F1E]">
+              Plan ready · handing over to authoring
+            </span>
+            <Check size={11} strokeWidth={3} className="text-[#1A7F37]" />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
