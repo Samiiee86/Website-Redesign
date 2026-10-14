@@ -235,7 +235,7 @@ export const products = {
     },
     {
       id: "agent-assurance",
-      scene: "hills",
+      scene: "treetop",
       demo: "assurance",
       tag: "AGENT ASSURANCE",
       title: "AI Agent Assurance for Your Agent Deployments",
@@ -265,7 +265,7 @@ export const products = {
     },
     {
       id: "real-device-cloud",
-      scene: "treetop",
+      scene: "hills",
       demo: "devices",
       tag: "REAL DEVICE CLOUD",
       title: "Real Device Cloud for Native App Automation",
