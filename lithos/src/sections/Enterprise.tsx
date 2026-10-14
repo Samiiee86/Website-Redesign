@@ -4,7 +4,7 @@ import { Reveal } from "../lib/ui";
 
 export default function Enterprise() {
   return (
-    <section className="relative z-[1] w-full overflow-hidden border-t border-border-muted">
+    <section className="relative z-[1] w-full overflow-hidden border-t border-border">
       <img
         src="/img/last-cta.png"
         alt=""

@@ -3,7 +3,7 @@ import { Marquee, Reveal } from "../lib/ui";
 
 export default function AsSeenOn() {
   return (
-    <div className="relative z-[1] border-t border-border-muted py-16">
+    <div className="relative z-[1] border-t border-border py-16">
       <Reveal className="mb-10 px-4 text-center sm:px-8">
         <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
           {asSeenOn.label}
