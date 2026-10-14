@@ -58,13 +58,13 @@ export const pioneer = {
   /* the four headline products, in the same cell style as the fold sections */
   cells: [
     {
-      name: "KaneAI",
-      desc: "World's first end-to-end software testing agent.",
+      name: "KaneAI & Kane CLI",
+      desc: "End-to-end AI testing agent — in the cloud or from your terminal.",
       icon: "bot",
     },
     {
-      name: "Kane CLI",
-      desc: "Natural-language E2E flows from your terminal and CI.",
+      name: "Rook CLI",
+      desc: "Run agent assurance checks from your terminal and CI.",
       icon: "terminal",
     },
     {
