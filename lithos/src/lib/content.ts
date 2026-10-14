@@ -221,7 +221,7 @@ export const products = {
       tag: "AGENT TESTING",
       title: "AI Agents for Testing Conversational AI Agents",
       body: "Deploy autonomous AI evaluators to test your chatbots, voice assistants, IVR, phone, and video agents for hallucinations, bias, toxicity, compliance, and more.",
-      cta: "Get Started For Free",
+      cta: "More About Agent Testing",
       listCaption: "What AI agents can it test?",
       points: [
         "Chat & Voice Agent",
@@ -240,7 +240,7 @@ export const products = {
       tag: "AGENT ASSURANCE",
       title: "AI Agent Assurance for Your Agent Deployments",
       body: "Test how your agents actually behave across workflows, tools, and actions. Catch failures and vulnerabilities before they ship. Build better agents with complete assurance.",
-      cta: "Join the Waitlist",
+      cta: "More About Agent Assurance",
       install: "npm install -g @testmuai/rook",
       points: [],
       accordion: [
@@ -270,7 +270,7 @@ export const products = {
       tag: "REAL DEVICE CLOUD",
       title: "Real Device Cloud for Native App Automation",
       body: "Test on real iOS and Android devices for manual and automated app testing. Get public, dedicated, and on-premise device cloud.",
-      cta: "Get Started For Free",
+      cta: "More About Real Device Cloud",
       points: [
         "10,000+ Real Devices & Automation Support",
         "Pre-installed DevTools & Network Throttling",
@@ -285,7 +285,7 @@ export const products = {
       tag: "HYPEREXECUTE",
       title: "AI-Native End-to-End Test Orchestration Cloud",
       body: "Up to 70% faster than any cloud grid. Smart AI-native test orchestration platform that runs your tests at blazing speed on a secure, scalable cloud.",
-      cta: "Get Started For Free",
+      cta: "More About HyperExecute",
       listCaption: "What can you do with HyperExecute?",
       points: [
         "AI-powered root cause analysis",
@@ -303,7 +303,7 @@ export const products = {
       tag: "TEST INSIGHTS",
       title: "AI-Native Test Analytics For Smarter Reporting",
       body: "Gain insights into test performance and outcomes with Test Analytics to drive data driven decisions and improve testing efforts.",
-      cta: "Get Started For Free",
+      cta: "More About Test Insights",
       points: [],
       quote: {
         text: "TestMu AI's Analytics make release tracking a lot easier. The ability to pull comprehensive stats from the dashboard makes tracking releases effortless.",
