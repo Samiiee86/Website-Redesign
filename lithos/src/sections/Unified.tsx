@@ -202,6 +202,16 @@ export default function Unified() {
             {products.title}
           </p>
         </div>
+        <button
+          data-cursor="Start free"
+          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+        >
+          Start free with Google
+          <ArrowRight
+            size={15}
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </button>
       </Reveal>
 
       <Reveal delay={0.08}>

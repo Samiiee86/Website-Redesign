@@ -384,7 +384,7 @@ function AgentEvalDemo() {
 /* 04 · Agent Assurance — the live site's Rook CLI terminal session */
 function AssuranceDemo() {
   return (
-    <Window title="rook · agent assurance" icon={ShieldCheck} right={<Terminal size={11} />}>
+    <Window title="rook · agent assurance" icon={ShieldCheck} right={<Terminal size={11} />} dark>
       <video
         src="/video/rook-cli-session.mp4"
         autoPlay

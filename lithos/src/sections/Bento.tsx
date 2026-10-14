@@ -1,24 +1,10 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Bot,
-  MessagesSquare,
-  ShieldCheck,
-  SquareTerminal,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { pioneer } from "../lib/content";
 import { scenery } from "../lib/scenery";
 import { shots } from "../lib/shots";
 import { Reveal, Section } from "../lib/ui";
-
-const CELL_ICONS = {
-  bot: Bot,
-  terminal: SquareTerminal,
-  agents: MessagesSquare,
-  shield: ShieldCheck,
-} as const;
 
 const PANELS = [shots.appPlan, shots.appIssue];
 const SCENES = [scenery.clouds, scenery.dusk];
@@ -112,41 +98,6 @@ export default function Bento() {
               <Card index={0} />
             </div>
             <Card index={1} />
-          </div>
-
-          {/* the four headline products, same cell design as the folds below */}
-          <div className="grid border-t border-border-muted bg-surface sm:grid-cols-2 lg:grid-cols-4">
-            {pioneer.cells.map((cell, i) => {
-              const Icon = CELL_ICONS[cell.icon as keyof typeof CELL_ICONS];
-              return (
-                <div
-                  key={cell.name}
-                  data-cursor={cell.name}
-                  className={`group p-7 transition-colors duration-500 hover:bg-secondary/50 ${
-                    i < 3 ? "lg:border-r lg:border-border-muted" : ""
-                  } ${i % 2 === 0 ? "sm:border-r sm:border-border-muted" : ""} ${
-                    i < 2 ? "border-b border-border-muted lg:border-b-0" : ""
-                  }`}
-                >
-                  <div className="flex items-start justify-between">
-                    <Icon
-                      size={20}
-                      className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
-                    />
-                    <ArrowUpRight
-                      size={16}
-                      className="translate-y-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:text-foreground group-hover:opacity-100"
-                    />
-                  </div>
-                  <h4 className="mt-6 text-[17px] tracking-tight">
-                    {cell.name}
-                  </h4>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-muted-foreground">
-                    {cell.desc}
-                  </p>
-                </div>
-              );
-            })}
           </div>
         </div>
       </Reveal>
