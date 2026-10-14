@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "geist",
+        "createdAt": "2026-10-14T11:15:50.243Z",
+        "reason": "Sameer kept Geist Pixel for .pixel numerals when moving headings to Manrope (design reviewed in screenshots across many rounds)"
+      }
+    ]
+  }
+}

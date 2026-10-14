@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap");
 
 /* VCR OSD Mono (MrManet, 2015) — free for commercial use. Drives the game's
    pixel type. */
@@ -41,7 +41,6 @@
   --ring: 226 81% 48%;
   --radius: 0.5rem;
 
-  --font-display: "Instrument Serif", serif;
   --font-heading: "Manrope", "Inter", sans-serif;
   --font-pixel: "Geist Pixel", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
@@ -58,11 +57,6 @@
 
 .pixel {
   font-family: var(--font-pixel);
-  font-weight: 400;
-}
-
-.font-display {
-  font-family: var(--font-display);
   font-weight: 400;
 }
 
@@ -85,18 +79,9 @@ h6 * {
   font-family: inherit;
 }
 
-h1 .font-display,
-h2 .font-display,
-h3 .font-display,
-h4 .font-display,
-h5 .font-display,
 h6 .pixel {
   font-family: var(--font-heading);
   font-weight: 400;
-}
-
-.font-display {
-  font-family: var(--font-display);
 }
 
 html {
@@ -185,13 +170,6 @@ body {
   background: hsl(var(--surface));
   border: 1px solid hsl(var(--border-muted));
   border-radius: 0;
-}
-
-.blueprint {
-  background-image:
-    linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
-  background-size: 72px 72px;
 }
 
 .logo-ink {

@@ -27,7 +27,6 @@ export default {
         'border-muted': 'hsl(var(--border-muted))',
       },
       fontFamily: {
-        display: ['var(--font-display)'],
         body: ['var(--font-body)'],
       },
       borderRadius: {
