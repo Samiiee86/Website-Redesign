@@ -18,14 +18,14 @@ function Panel({ tab }: { tab: Tab }) {
   return (
     <div
       id={`unified-${tab.id}`}
-      className="grid scroll-mt-[128px] border-t border-border-muted lg:grid-cols-[0.95fr_1.25fr]"
+      className="grid scroll-mt-[128px] border-t border-border-muted lg:min-h-[640px] lg:grid-cols-[0.95fr_1.25fr]"
     >
       {/* copy sill */}
       <div className="flex flex-col p-8 lg:p-10">
         <p className="mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
           {tab.tag}
         </p>
-        <h3 className="mt-4 max-w-[420px] text-[24px] leading-[1.2] tracking-tight md:text-[28px]">
+        <h3 className="heading-manrope mt-4 max-w-[420px] text-[24px] leading-[1.25] md:text-[28px]">
           {tab.title}
         </h3>
         <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-muted-foreground">
@@ -41,6 +41,12 @@ function Panel({ tab }: { tab: Tab }) {
             </li>
           ))}
         </ul>
+        {"install" in tab && tab.install && (
+          <div className="mono mt-6 inline-flex items-center gap-2.5 self-start border border-border-muted bg-background px-3.5 py-2 text-[12.5px] text-foreground">
+            <span className="select-none text-muted-foreground">$</span>
+            {tab.install}
+          </div>
+        )}
         <button className="group mt-7 inline-flex items-center gap-2 self-start border-b border-foreground pb-1 text-[14px] font-medium transition-colors">
           {tab.cta}
           <ArrowRight

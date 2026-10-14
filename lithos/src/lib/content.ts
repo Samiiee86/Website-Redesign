@@ -230,6 +230,7 @@ export const products = {
       title: "AI Agent Assurance for Your Agent Deployments",
       body: "Test how your agents actually behave across workflows, tools, and actions. Catch failures and vulnerabilities before they ship. Build better agents with complete assurance.",
       cta: "Join the Waitlist",
+      install: "npm install -g @testmuai/rook",
       points: [
         "Graded on evidence, not the agent's account",
         "Publishes what it could not verify",
