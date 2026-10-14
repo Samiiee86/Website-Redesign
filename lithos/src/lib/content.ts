@@ -265,7 +265,7 @@ export const products = {
     },
     {
       id: "real-device-cloud",
-      scene: "lake",
+      scene: "treetop",
       demo: "devices",
       tag: "REAL DEVICE CLOUD",
       title: "Real Device Cloud for Native App Automation",
