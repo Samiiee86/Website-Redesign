@@ -35,7 +35,7 @@ function Card({ index }: { index: number }) {
 
       <motion.div
         style={{ y: panelY }}
-        className="absolute left-[9%] top-10 w-[82%] overflow-hidden border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.6)]"
+        className="absolute right-0 top-0 w-[82%] overflow-hidden border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.6)]"
       >
         <img
           src={PANELS[index]}
