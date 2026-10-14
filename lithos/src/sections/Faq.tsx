@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Minus, Plus } from "lucide-react";
 import { faq } from "../lib/content";
-import { Eyebrow, Reveal, Section } from "../lib/ui";
+import { Reveal, Section } from "../lib/ui";
 
 export default function Faq() {
   const [open, setOpen] = useState<number | null>(0);
@@ -11,8 +11,7 @@ export default function Faq() {
     <Section className="pb-12 md:pb-16">
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <Reveal>
-          <Eyebrow>Answers</Eyebrow>
-          <h2 className="mt-5 text-4xl font-normal leading-[1.05] tracking-[-0.04em] text-foreground md:text-[52px]">
+          <h2 className=" text-4xl font-normal leading-[1.05] tracking-[-0.04em] text-foreground md:text-[52px]">
             Frequently asked questions
           </h2>
         </Reveal>

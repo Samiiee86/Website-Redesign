@@ -42,10 +42,7 @@ export default function Rebrand() {
     <Section>
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-            The rebrand
-          </p>
-          <h2 className="mt-4 text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
             LambdaTest is now TestMu AI
           </h2>
         </div>
