@@ -18,22 +18,22 @@ export default function Hero() {
       id="top"
       className="relative flex flex-1 flex-col overflow-hidden pb-10 md:pb-12"
     >
-      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-9 pt-[72px] sm:px-16">
-        <div className="grid gap-6 lg:grid-cols-[1.35fr_0.75fr] lg:items-end lg:gap-14">
+      <div className="relative z-10 mx-auto w-full max-w-[1280px] px-7 pt-[72px]">
+        <div className="grid gap-6 lg:grid-cols-[auto_1fr] lg:items-end lg:gap-14">
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
-            className="max-w-[760px] text-[38px] leading-[1.08] tracking-tight text-foreground md:text-[48px] lg:text-[56px]"
+            className="text-[38px] leading-[1.08] tracking-tight text-foreground md:text-[48px] lg:text-[56px]"
           >
-            <span className="block">Assure your AI deployment -</span>
-            <span className="block">across enterprise and real world</span>
+            <span className="block lg:whitespace-nowrap">Assure your AI deployment -</span>
+            <span className="block lg:whitespace-nowrap">across enterprise and real world</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
-            className="max-w-[320px] text-base leading-relaxed text-muted-foreground md:text-lg"
+            className="max-w-[320px] text-base leading-relaxed text-muted-foreground md:text-lg lg:justify-self-end"
           >
             We assure that your AI works as intended. Safely and securely.
           </motion.p>
