@@ -188,7 +188,7 @@ function Window({
           {right}
         </span>
       </div>
-      <div className="min-w-0">{children}</div>
+      <div className="flex min-h-[400px] min-w-0 flex-col justify-center">{children}</div>
     </div>
   );
 }
