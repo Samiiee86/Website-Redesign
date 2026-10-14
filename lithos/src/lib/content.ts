@@ -171,7 +171,7 @@ export const products = {
   tabs: [
     {
       id: "test-manager",
-      scene: "clouds",
+      scene: "meadow",
       demo: "prompt",
       tag: "TEST MANAGER",
       title: "Unified AI Native Test Management",
