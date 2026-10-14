@@ -538,25 +538,25 @@ function DevicesDemo() {
 /* 06 · HyperExecute — a 64-lane run tears through the suite */
 function TerminalDemo() {
   return (
-    <Window title="hyperexecute — terminal" icon={Terminal} dark>
+    <Window title="hyperexecute" icon={Terminal}>
       <div className="mono flex flex-col gap-1 px-3 py-3 text-[10.5px] leading-relaxed">
-        <p className="text-white/85">
-          <span className="text-white/40">$ </span>
+        <p className="text-foreground">
+          <span className="text-muted-foreground">$ </span>
           <Typed text="hye run --smart-split --concurrency 64" from={0.04} to={0.26} />
         </p>
         {[
-          ["▸ 1,204 tests split across 64 lanes", "text-white/60", 0.32],
-          ["✓ checkout.spec — 41s", "text-[#6FDD8B]", 0.42],
-          ["✓ auth.spec — 38s (retried ×1)", "text-[#6FDD8B]", 0.52],
-          ["✓ search.spec — 44s", "text-[#6FDD8B]", 0.6],
-          ["✓ payments.spec — 39s", "text-[#6FDD8B]", 0.68],
-          ["▸ root cause attached for 2 flaky steps", "text-white/60", 0.76],
+          ["▸ 1,204 tests split across 64 lanes", "text-muted-foreground", 0.32],
+          ["✓ checkout.spec — 41s", "text-[#1A7F37]", 0.42],
+          ["✓ auth.spec — 38s (retried ×1)", "text-[#1A7F37]", 0.52],
+          ["✓ search.spec — 44s", "text-[#1A7F37]", 0.6],
+          ["✓ payments.spec — 39s", "text-[#1A7F37]", 0.68],
+          ["▸ root cause attached for 2 flaky steps", "text-muted-foreground", 0.76],
         ].map(([line, cls, at]) => (
           <motion.p key={line as string} {...appear(at as number, 0)} className={cls as string}>
             {line as string}
           </motion.p>
         ))}
-        <motion.div {...appear(0.82, 0)} className="mt-1 h-1 w-full bg-white/10">
+        <motion.div {...appear(0.82, 0)} className="mt-1 h-1 w-full bg-border-muted">
           <motion.div
             animate={{ width: ["0%", "0%", "100%"] }}
             transition={{
@@ -566,10 +566,10 @@ function TerminalDemo() {
               repeatDelay: HOLD,
               ease: "linear",
             }}
-            className="h-full bg-[#6FDD8B]"
+            className="h-full bg-[#1A7F37]"
           />
         </motion.div>
-        <motion.p {...appear(0.96, 0)} className="text-white/85">
+        <motion.p {...appear(0.96, 0)} className="text-foreground">
           Done in 4m 12s · 70% faster than grid
         </motion.p>
       </div>
