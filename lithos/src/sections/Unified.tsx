@@ -139,9 +139,7 @@ function Panel({ tab }: { tab: Tab }) {
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
-          {/* mute the painting so the UI reads first */}
-          <div className="absolute inset-0 bg-background/25" />
-          <div className="relative w-full max-w-[460px] px-7 py-10 md:px-10 md:py-14">
+          <div className="relative w-full max-w-[560px] px-6 py-10 md:px-8 md:py-12">
             <Demo />
           </div>
         </div>
