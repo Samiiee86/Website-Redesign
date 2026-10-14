@@ -1,0 +1,23 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-10-14T11:17:53.496Z",
+        "reason": "Inter is the long-standing body font of Sameer's TestMu redesign, reviewed by him in every screenshot round; headings are Manrope"
+      },
+      {
+        "rule": "codex-grid-background",
+        "value": "*",
+        "files": [
+          "lithos/src/index.css"
+        ],
+        "createdAt": "2026-10-14T11:17:53.546Z",
+        "reason": "dash-march is the animated dashed connector line in the One Platform workflow diagram (Figma spec Sameer asked for), not a decorative grid field"
+      }
+    ]
+  }
+}
