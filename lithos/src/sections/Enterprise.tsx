@@ -6,7 +6,7 @@ export default function Enterprise() {
   return (
     <section className="relative z-[1] w-full overflow-hidden border-t border-border">
       <img
-        src="/img/last-cta.png"
+        src="/img/last-cta-wc.webp"
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
       />
@@ -14,7 +14,7 @@ export default function Enterprise() {
 
       <Reveal>
         <div className="relative mx-auto flex min-h-[620px] w-full max-w-[760px] flex-col items-center px-6 pb-40 pt-24 text-center md:min-h-[760px] md:pb-56 md:pt-28">
-          <p className="text-[11px] uppercase tracking-[0.22em] text-white/70">
+          <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
             Enterprise
           </p>
           <h2 className="mt-5 text-4xl leading-[1.05] tracking-tight text-foreground md:text-[56px]">
