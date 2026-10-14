@@ -30,7 +30,7 @@ function Card({ index }: { index: number }) {
         className="absolute inset-0 h-[112%] w-full object-cover"
         loading="lazy"
       />
-      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
 
       <div className="absolute right-0 top-0 w-[82%] overflow-hidden rounded-bl-[16px] border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.6)]">
         <img
@@ -45,7 +45,7 @@ function Card({ index }: { index: number }) {
         <h3 className="text-[24px] leading-[1.15] tracking-tight text-white md:whitespace-nowrap md:text-[28px]">
           {card.title}
         </h3>
-        <p className="mt-4 max-w-[480px] text-[15px] leading-relaxed text-white/75">
+        <p className="mt-2.5 max-w-[480px] text-[15px] leading-relaxed text-white/75">
           {card.body}
         </p>
         <button className="group/btn mt-6 inline-flex items-center gap-2 border-b border-white/40 pb-1 text-[14px] font-medium text-white transition-colors hover:border-white">
