@@ -66,8 +66,8 @@ export type PlainNav = { kind: "plain"; key: string; label: string };
 export type NavEntry = ProductsMenu | GridMenu | PanelMenu | PlainNav;
 
 export const announcement = {
-  text: "TestMu Conf '26 is live — 80+ sessions on air now.",
-  cta: "Enter event →",
+  text: "Learn how to make your agent prove it and build reliable assurance across web and mobile",
+  cta: "Join Builders Masterclass →",
 };
 
 export const headerActions = {
