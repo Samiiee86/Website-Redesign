@@ -42,7 +42,8 @@
   --radius: 0.5rem;
 
   --font-display: "Instrument Serif", serif;
-  --font-heading: "Geist Pixel", "Inter", sans-serif;
+  --font-heading: "Manrope", "Inter", sans-serif;
+  --font-pixel: "Geist Pixel", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
 
   --shadow-dashboard:
@@ -56,7 +57,7 @@
 }
 
 .pixel {
-  font-family: var(--font-heading);
+  font-family: var(--font-pixel);
   font-weight: 400;
 }
 
@@ -72,8 +73,8 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: 400;
-  letter-spacing: 0;
+  font-weight: 500;
+  letter-spacing: -0.015em;
 }
 h1 *,
 h2 *,
@@ -253,12 +254,4 @@ body {
   .conn-dash {
     animation: none;
   }
-}
-
-/* ---------- Manrope headings (Unified fold) ---------- */
-.heading-manrope,
-.heading-manrope * {
-  font-family: "Manrope", "Inter", sans-serif !important;
-  font-weight: 500;
-  letter-spacing: -0.5px;
 }

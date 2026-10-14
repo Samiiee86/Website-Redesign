@@ -25,7 +25,7 @@ function Panel({ tab }: { tab: Tab }) {
         <p className="mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
           {tab.tag}
         </p>
-        <h3 className="heading-manrope mt-4 max-w-[420px] text-[24px] leading-[1.25] md:text-[28px]">
+        <h3 className="mt-4 max-w-[420px] text-[24px] leading-[1.25] tracking-tight md:text-[28px]">
           {tab.title}
         </h3>
         <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-muted-foreground">
