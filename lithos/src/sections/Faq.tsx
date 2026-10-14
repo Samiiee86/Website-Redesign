@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { faq } from "../lib/content";
 import { Eyebrow, Reveal, Section } from "../lib/ui";
 
@@ -35,16 +35,13 @@ export default function Faq() {
                   >
                     {item.q}
                   </span>
-                  <motion.span
-                    animate={{
-                      rotate: isOpen ? 45 : 0,
-                      color: isOpen ? "#e8702a" : "rgba(255,255,255,0.45)",
-                    }}
-                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="mt-1 shrink-0"
+                  <span
+                    className={`mt-1 shrink-0 transition-colors duration-300 ${
+                      isOpen ? "text-foreground" : "text-muted-foreground"
+                    }`}
                   >
-                    <Plus size={19} />
-                  </motion.span>
+                    {isOpen ? <Minus size={19} /> : <Plus size={19} />}
+                  </span>
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
