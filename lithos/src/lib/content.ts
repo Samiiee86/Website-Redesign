@@ -216,7 +216,7 @@ export const products = {
     },
     {
       id: "agent-testing",
-      scene: "sky",
+      scene: "alplake",
       demo: "agentEval",
       tag: "AGENT TESTING",
       title: "AI Agents for Testing Conversational AI Agents",

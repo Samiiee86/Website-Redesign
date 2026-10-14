@@ -13,4 +13,5 @@ export const scenery = {
   /* local plates uploaded by Sameer */
   shore: "/img/shore.webp",
   meadow: "/img/meadow.webp",
+  alplake: "/img/alplake.webp",
 };
