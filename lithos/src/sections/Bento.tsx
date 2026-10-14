@@ -7,7 +7,7 @@ import { shots } from "../lib/shots";
 import { Reveal, Section } from "../lib/ui";
 
 const PANELS = [shots.appPlan, shots.appIssue];
-const SCENES = [scenery.shore, scenery.alplake];
+const SCENES = [scenery.valley, scenery.duskridge];
 
 function Card({ index }: { index: number }) {
   const card = pioneer.cards[index];
@@ -92,11 +92,11 @@ export default function Bento() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="overflow-hidden border border-border-muted">
-          <div className="grid md:grid-cols-2">
-            <div className="md:border-r md:border-border-muted">
-              <Card index={0} />
-            </div>
+        <div className="grid gap-5 md:grid-cols-2">
+          <div className="overflow-hidden border border-border-muted">
+            <Card index={0} />
+          </div>
+          <div className="overflow-hidden border border-border-muted">
             <Card index={1} />
           </div>
         </div>
