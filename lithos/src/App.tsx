@@ -25,12 +25,9 @@ export default function App() {
         <CursorPill />
         <Header />
 
-        {/* The hero fills the first screen but is never clipped: the section
-            grows with its content, so the dashboard (image today, video later)
-            always ends inside it instead of being cut by the fold. */}
-        <div className="flex min-h-[calc(100vh-104px)] flex-col">
-          <Hero />
-        </div>
+        {/* The hero is content-height: no viewport lock, so tall monitors
+            don't get a dead band between the sea card and the logo wall. */}
+        <Hero />
 
         <main className="relative">
           <GuideLines />
