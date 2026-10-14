@@ -684,34 +684,34 @@ function HeroAuthoring() {
 
 function HeroExecuting() {
   return (
-    <div className="mono -mx-3 -my-3 flex h-[calc(100%+24px)] flex-col gap-[3px] bg-[#161616] px-3 py-3 text-[10.5px] leading-relaxed">
-      <p className="text-white/85">
-        <span className="text-white/40">$ </span>
+    <div className="mono flex flex-col gap-[3px] text-[10.5px] leading-relaxed">
+      <p className="text-foreground">
+        <span className="text-muted-foreground">$ </span>
         <HeroTyped text="hye run suite/booking --tests 100" from={0.15} dur={1.0} />
       </p>
-      <motion.p {...hAppear(1.3, 0)} className="text-white/60">
+      <motion.p {...hAppear(1.3, 0)} className="text-muted-foreground">
         Test distribution: 80 pass · 10 fail · 10 skipped
       </motion.p>
       {[
-        ["Test #3: PASSED", "text-[#6FDD8B]", 1.7],
-        ["Test #7: PASSED", "text-[#6FDD8B]", 2.0],
-        ["Test #78: SKIPPED", "text-[#E3B341]", 2.3],
-        ["Test #12: FAILED", "text-[#FF8182]", 2.6],
-        ["Test #41: PASSED", "text-[#6FDD8B]", 2.9],
+        ["Test #3: PASSED", "text-[#1A7F37]", 1.7],
+        ["Test #7: PASSED", "text-[#1A7F37]", 2.0],
+        ["Test #78: SKIPPED", "text-[#9A6700]", 2.3],
+        ["Test #12: FAILED", "text-[#B3261E]", 2.6],
+        ["Test #41: PASSED", "text-[#1A7F37]", 2.9],
       ].map(([t, cls, at]) => (
         <motion.p key={t as string} {...hAppear(at as number, 0)} className={cls as string}>
           {t as string}
         </motion.p>
       ))}
-      <motion.div {...hAppear(3.3, 0)} className="mt-1 h-1 w-full bg-white/10">
+      <motion.div {...hAppear(3.3, 0)} className="mt-1 h-1 w-full bg-border-muted">
         <motion.div
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ delay: 3.4, duration: 1.3, ease: "linear" }}
-          className="h-full bg-[#6FDD8B]"
+          className="h-full bg-[#1A7F37]"
         />
       </motion.div>
-      <motion.p {...hAppear(4.7, 0)} className="text-white/85">
+      <motion.p {...hAppear(4.7, 0)} className="text-foreground">
         Batch 1/1 · 100 tests in 4m 12s
       </motion.p>
     </div>
