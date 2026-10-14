@@ -67,7 +67,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-          className="relative mt-12 min-h-[440px] overflow-hidden border border-border-muted shadow-[0_40px_90px_-40px_rgba(18,18,18,0.45)] md:min-h-[520px]"
+          className="relative mt-12 min-h-[440px] overflow-hidden border border-border-muted md:min-h-[520px]"
         >
           <img
             src="/img/hero-sea.jpg"
