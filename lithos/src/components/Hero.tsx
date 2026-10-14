@@ -76,7 +76,7 @@ export default function Hero() {
           />
           <div className="absolute inset-0 bg-background/10" />
           <div className="absolute inset-0 flex items-center justify-center p-7 md:p-14">
-            <div className="w-full max-w-[820px]">
+            <div className="w-full max-w-[960px]">
               <PlanDemo />
             </div>
           </div>

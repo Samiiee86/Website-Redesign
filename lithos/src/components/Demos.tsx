@@ -840,7 +840,7 @@ export function HeroDemo() {
           </button>
         ))}
       </div>
-      <div className="relative h-[400px] overflow-hidden">
+      <div className="relative h-[460px] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={ch}
