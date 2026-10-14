@@ -381,61 +381,18 @@ function AgentEvalDemo() {
   );
 }
 
-/* 04 · Agent Assurance — rook grades the run on evidence */
+/* 04 · Agent Assurance — the live site's Rook CLI terminal session */
 function AssuranceDemo() {
   return (
     <Window title="rook · agent assurance" icon={ShieldCheck} right={<Terminal size={11} />}>
-      <Cursor
-        xs={["30%", "30%", "76%", "76%", "50%"]}
-        ys={["26%", "48%", "66%", "66%", "86%"]}
-        clicks={[0.66]}
+      <video
+        src="/video/rook-cli-session.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="block w-full"
       />
-      <div className="px-3 py-3">
-        <p className="mono text-[10.5px] text-muted-foreground">
-          <span className="text-foreground">$ </span>
-          <Typed text="rook run --suite derived/" from={0.04} to={0.2} />
-        </p>
-        <motion.p {...appear(0.24, 0)} className={`${CAP} mt-2`}>
-          28 scenarios derived from repo + PRD · grading effects
-        </motion.p>
-        <div className="mt-1.5 flex flex-col gap-1">
-          {[
-            ["Order created via API", "Verified", "#1A7F37", 0.32],
-            ["Invoice file written to disk", "Verified", "#1A7F37", 0.42],
-            ["Prompt injection resisted", "Verified", "#1A7F37", 0.52],
-            ["Email send claimed by agent", "Unverifiable", "#953800", 0.62],
-          ].map(([name, verdict, color, at]) => (
-            <motion.div key={name as string} {...appear(at as number)} className={row}>
-              <span className="truncate text-[11px] text-foreground">
-                {name as string}
-              </span>
-              <span
-                className="mono ml-2 flex-none text-[9px] uppercase tracking-[0.08em]"
-                style={{ color: color as string }}
-              >
-                {verdict as string}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-        <motion.div
-          {...appear(0.74)}
-          className="mt-2 flex items-center gap-2 border border-border-muted bg-background px-2.5 py-1.5"
-        >
-          <ShieldCheck size={12} className="flex-none text-foreground" />
-          <span className="text-[10.5px] text-foreground">
-            3 verified · 1 published as blind spot — never a quiet pass
-          </span>
-        </motion.div>
-        <motion.div
-          {...appear(0.86, 0)}
-          className="mt-1.5 flex items-center justify-between bg-[#EEF2FF] px-2.5 py-1.5"
-        >
-          <span className="mono text-[10px] text-[#1433A4]">
-            report.json → CI gate · exit 1
-          </span>
-        </motion.div>
-      </div>
     </Window>
   );
 }
