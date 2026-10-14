@@ -14,4 +14,5 @@ export const scenery = {
   shore: "/img/shore.webp",
   meadow: "/img/meadow.webp",
   alplake: "/img/alplake.webp",
+  hills: "/img/hills.webp",
 };

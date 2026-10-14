@@ -235,7 +235,7 @@ export const products = {
     },
     {
       id: "agent-assurance",
-      scene: "comet",
+      scene: "hills",
       demo: "assurance",
       tag: "AGENT ASSURANCE",
       title: "AI Agent Assurance for Your Agent Deployments",
