@@ -7,7 +7,6 @@ import Hero from "./components/Hero";
 import TrustedBy from "./sections/TrustedBy";
 import Bento from "./sections/Bento";
 import Flow from "./sections/Flow";
-import Products from "./sections/Products";
 import Unified from "./sections/Unified";
 import Stories from "./sections/Stories";
 import Reasons from "./sections/Reasons";
@@ -38,7 +37,6 @@ export default function App() {
           <Bento />
           <Flow />
           <Unified />
-          <Products />
           <Stories />
           <Reasons />
           <Rebrand />

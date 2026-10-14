@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Quote } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { ArrowRight, ChevronDown, Quote } from "lucide-react";
 import { products } from "../lib/content";
 import { scenery } from "../lib/scenery";
 import { DEMOS, type DemoKey } from "../components/Demos";
@@ -12,6 +13,48 @@ import { Reveal, Section } from "../lib/ui";
    follows along as you scroll. */
 
 type Tab = (typeof products.tabs)[number];
+
+function Accordion({ items }: { items: { title: string; body: string }[] }) {
+  const [open, setOpen] = useState(0);
+  return (
+    <div className="mt-6 border-t border-border-muted">
+      {items.map((item, i) => (
+        <div key={item.title} className="border-b border-border-muted">
+          <button
+            onClick={() => setOpen(open === i ? -1 : i)}
+            aria-expanded={open === i}
+            className="flex w-full items-center justify-between gap-4 py-3.5 text-left"
+          >
+            <span className="text-[15px] font-medium tracking-tight text-foreground">
+              {item.title}
+            </span>
+            <ChevronDown
+              size={16}
+              className={`flex-none text-muted-foreground transition-transform duration-300 ${
+                open === i ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+          <AnimatePresence initial={false}>
+            {open === i && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="overflow-hidden"
+              >
+                <p className="max-w-[400px] pb-4 text-[14px] leading-relaxed text-muted-foreground">
+                  {item.body}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function Panel({ tab }: { tab: Tab }) {
   const Demo = DEMOS[tab.demo as DemoKey];
@@ -31,16 +74,27 @@ function Panel({ tab }: { tab: Tab }) {
         <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-muted-foreground">
           {tab.body}
         </p>
-        <ul className="mt-6 flex flex-col gap-2.5">
-          {tab.points.map((pt) => (
-            <li key={pt} className="flex items-start gap-2.5">
-              <span className="mt-[8px] h-[5px] w-[5px] shrink-0 rotate-45 bg-accent" />
-              <span className="text-[13.5px] leading-snug text-foreground">
-                {pt}
-              </span>
-            </li>
-          ))}
-        </ul>
+        {"accordion" in tab && tab.accordion ? (
+          <Accordion items={tab.accordion} />
+        ) : tab.points.length > 0 ? (
+          <div className="mt-6">
+            {"listCaption" in tab && tab.listCaption && (
+              <p className="text-[15px] font-medium tracking-tight text-foreground">
+                {tab.listCaption}
+              </p>
+            )}
+            <ul className="mt-3 flex flex-col gap-2.5">
+              {tab.points.map((pt) => (
+                <li key={pt} className="flex items-start gap-2.5">
+                  <span className="mt-[8px] h-[5px] w-[5px] shrink-0 rotate-45 bg-accent" />
+                  <span className="text-[13.5px] leading-snug text-foreground">
+                    {pt}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
         {"install" in tab && tab.install && (
           <div className="mono mt-6 inline-flex items-center gap-2.5 self-start border border-border-muted bg-background px-3.5 py-2 text-[12.5px] text-foreground">
             <span className="select-none text-muted-foreground">$</span>
