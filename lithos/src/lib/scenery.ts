@@ -19,5 +19,5 @@ export const scenery = {
   wetland: "/img/wetland.webp",
   dunes: "/img/dunes.webp",
   seashore: "/img/seashore.webp",
-  mist: "/img/mist.webp",
+  sunsetlake: "/img/sunsetlake.webp",
 };
