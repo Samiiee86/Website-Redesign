@@ -18,6 +18,6 @@ export const scenery = {
   treetop: "/img/treetop.webp",
   wetland: "/img/wetland.webp",
   dunes: "/img/dunes.webp",
-  cliffwalk: "/img/cliffwalk.webp",
+  grassea: "/img/grassea.webp",
   sunsetlake: "/img/sunsetlake.webp",
 };

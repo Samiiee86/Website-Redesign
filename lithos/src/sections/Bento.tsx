@@ -4,7 +4,7 @@ import { scenery } from "../lib/scenery";
 import { Reveal, Section } from "../lib/ui";
 
 const PANELS = ["/img/panel-kane.png", "/img/panel-cloud.png"];
-const SCENES = [scenery.cliffwalk, scenery.sunsetlake];
+const SCENES = [scenery.grassea, scenery.sunsetlake];
 
 /* The two pioneer cards, momentic-style like the fold stages: the painting
    is the full stage with the product UI floating in its centre, and the
