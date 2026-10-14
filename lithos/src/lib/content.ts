@@ -68,14 +68,14 @@ export const pioneer = {
       icon: "terminal",
     },
     {
-      name: "HyperExecute",
-      desc: "Blazing fast AI-native automation testing cloud.",
-      icon: "zap",
+      name: "Agent Testing",
+      desc: "Test chat, voice, phone, and video AI agents.",
+      icon: "agents",
     },
     {
-      name: "Real Device Cloud",
-      desc: "Web and mobile testing on 10,000+ real devices.",
-      icon: "smartphone",
+      name: "Agent Assurance",
+      desc: "Test how agents behave across workflows and tools.",
+      icon: "shield",
     },
   ],
 };

@@ -4,9 +4,9 @@ import {
   ArrowRight,
   ArrowUpRight,
   Bot,
-  Smartphone,
+  MessagesSquare,
+  ShieldCheck,
   SquareTerminal,
-  Zap,
 } from "lucide-react";
 import { pioneer } from "../lib/content";
 import { scenery } from "../lib/scenery";
@@ -16,8 +16,8 @@ import { Reveal, Section } from "../lib/ui";
 const CELL_ICONS = {
   bot: Bot,
   terminal: SquareTerminal,
-  zap: Zap,
-  smartphone: Smartphone,
+  agents: MessagesSquare,
+  shield: ShieldCheck,
 } as const;
 
 const PANELS = [shots.appPlan, shots.appIssue];
