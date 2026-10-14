@@ -298,7 +298,7 @@ export const products = {
     },
     {
       id: "test-insights",
-      scene: "planet",
+      scene: "dunes",
       demo: "insights",
       tag: "TEST INSIGHTS",
       title: "AI-Native Test Analytics For Smarter Reporting",
