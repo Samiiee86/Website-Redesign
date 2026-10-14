@@ -12,8 +12,8 @@ const SCENES = [scenery.cliffwalk, scenery.sunsetlake];
 function Card({ index }: { index: number }) {
   const card = pioneer.cards[index];
   return (
-    <div data-cursor={card.cta}>
-      <div className="relative h-[420px] overflow-hidden border border-border-muted md:h-[500px]">
+    <div data-cursor={card.cta} className="flex h-full flex-col">
+      <div className="relative h-[420px] overflow-hidden md:h-[500px]">
         <img
           src={SCENES[index]}
           alt=""
@@ -27,7 +27,7 @@ function Card({ index }: { index: number }) {
         </div>
       </div>
 
-      <div className="pt-7">
+      <div className="flex-1 border-t border-border-muted bg-surface p-7 md:p-8">
         <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
           {card.title}
         </h3>
@@ -73,8 +73,10 @@ export default function Bento() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="grid gap-x-5 gap-y-12 md:grid-cols-2">
-          <Card index={0} />
+        <div className="grid border border-border-muted md:grid-cols-2">
+          <div className="border-b border-border-muted md:border-b-0 md:border-r">
+            <Card index={0} />
+          </div>
           <Card index={1} />
         </div>
       </Reveal>
