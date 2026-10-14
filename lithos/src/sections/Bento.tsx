@@ -51,7 +51,7 @@ function Card({ index }: { index: number }) {
         </div>
       </div>
 
-      <div className="flex-1 border-t border-border-muted bg-surface p-7 md:p-8">
+      <div className="flex-1 bg-surface px-7 pb-8 pt-1 md:px-8">
         <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
           {card.title}
         </h3>
@@ -98,7 +98,7 @@ export default function Bento() {
 
       <Reveal delay={0.08}>
         <div className="grid border border-border-muted md:grid-cols-2">
-          <div className="border-b border-border-muted md:border-b-0">
+          <div className="border-b border-border-muted md:border-b-0 md:border-r">
             <Card index={0} />
           </div>
           <Card index={1} />
