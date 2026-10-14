@@ -6,7 +6,7 @@ import { scenery } from "../lib/scenery";
 import { Reveal, Section } from "../lib/ui";
 
 const PANELS = ["/img/panel-kane.png", "/img/panel-cloud.png"];
-const SCENES = [scenery.hillvalley, scenery.sunsetlake];
+const SCENES = [scenery.cliffwalk, scenery.sunsetlake];
 
 function Card({ index }: { index: number }) {
   const card = pioneer.cards[index];
