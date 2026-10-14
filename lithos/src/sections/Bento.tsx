@@ -1,5 +1,3 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { pioneer } from "../lib/content";
 import { scenery } from "../lib/scenery";
@@ -8,47 +6,35 @@ import { Reveal, Section } from "../lib/ui";
 const PANELS = ["/img/panel-kane.png", "/img/panel-cloud.png"];
 const SCENES = [scenery.cliffwalk, scenery.sunsetlake];
 
+/* The two pioneer cards, momentic-style like the fold stages: the painting
+   is the full stage with the product UI floating in its centre, and the
+   copy sits below the card on the page ground. */
 function Card({ index }: { index: number }) {
   const card = pioneer.cards[index];
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const sceneY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
-
   return (
-    <div
-      ref={ref}
-      data-cursor={card.cta}
-      className="group relative h-[520px] overflow-hidden md:h-[620px]"
-    >
-      <motion.img
-        src={SCENES[index]}
-        alt=""
-        style={{ y: sceneY }}
-        className="absolute inset-0 h-[112%] w-full object-cover"
-        loading="lazy"
-      />
-      <div className="absolute inset-x-0 bottom-0 h-[78%] bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
-
-      <div className="absolute right-0 top-0 w-[82%] overflow-hidden rounded-bl-[16px] border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.6)]">
+    <div data-cursor={card.cta}>
+      <div className="relative h-[420px] overflow-hidden border border-border-muted md:h-[500px]">
         <img
-          src={PANELS[index]}
+          src={SCENES[index]}
           alt=""
-          className="h-auto w-full"
+          className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
         />
+        <div className="absolute inset-0 flex items-center justify-center p-8 md:p-12">
+          <div className="w-full max-w-[520px] overflow-hidden rounded-[16px] border border-white/60 bg-surface shadow-[0_36px_80px_-26px_rgba(18,18,18,0.45)]">
+            <img src={PANELS[index]} alt="" className="h-auto w-full" loading="lazy" />
+          </div>
+        </div>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 p-7 md:p-10">
-        <h3 className="text-[24px] leading-[1.15] tracking-tight text-white md:whitespace-nowrap md:text-[28px]">
+      <div className="pt-7">
+        <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
           {card.title}
         </h3>
-        <p className="mt-2.5 max-w-[480px] text-[15px] leading-relaxed text-white/75">
+        <p className="mt-2.5 max-w-[520px] text-[15px] leading-relaxed text-muted-foreground">
           {card.body}
         </p>
-        <button className="group/btn mt-6 inline-flex items-center gap-2 border-b border-white/40 pb-1 text-[14px] font-medium text-white transition-colors hover:border-white">
+        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
           {card.cta}
           <ArrowRight
             size={15}
@@ -87,13 +73,9 @@ export default function Bento() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="grid gap-5 md:grid-cols-2">
-          <div className="overflow-hidden border border-border-muted">
-            <Card index={0} />
-          </div>
-          <div className="overflow-hidden border border-border-muted">
-            <Card index={1} />
-          </div>
+        <div className="grid gap-x-5 gap-y-12 md:grid-cols-2">
+          <Card index={0} />
+          <Card index={1} />
         </div>
       </Reveal>
     </Section>
