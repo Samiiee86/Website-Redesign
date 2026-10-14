@@ -1,6 +1,5 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { footer, footerExtra } from "../lib/content";
-import BugGuard from "../components/BugGuard";
 import { Reveal } from "../lib/ui";
 
 const AI_TOOLS = ["ChatGPT", "Claude", "Perplexity", "Grok", "Gemini"];
@@ -196,7 +195,6 @@ export default function Footer() {
 
       {/* full-bleed play area, last thing on the page */}
       <div className="relative left-1/2 w-screen -translate-x-1/2 border-t border-background/15">
-        <BugGuard />
       </div>
     </footer>
   );

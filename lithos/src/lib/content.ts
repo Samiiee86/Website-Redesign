@@ -172,6 +172,8 @@ export const products = {
   tabs: [
     {
       id: "test-manager",
+      scene: "clouds",
+      demo: "prompt",
       tag: "TEST MANAGER",
       title: "Unified AI Native Test Management",
       body: "Create test cases with AI, manage and execute them in one place, sync with JIRA, and ship quality software faster.",
@@ -190,6 +192,8 @@ export const products = {
     },
     {
       id: "kane-ai",
+      scene: "ridge",
+      demo: "plan",
       tag: "KANE AI",
       title: "Autonomous Agentic Test Planning and Authoring",
       body: "Multi-modal AI agents that take text, diffs, tickets, docs, images, or media and automatically plan tests, write cases, generate automation, and run at scale.",
@@ -204,6 +208,8 @@ export const products = {
     },
     {
       id: "agent-testing",
+      scene: "sky",
+      demo: "agentEval",
       tag: "AGENT TESTING",
       title: "An AI Agent for Testing AI Agents",
       body: "Deploy autonomous AI evaluators to test your chatbots, voice assistants, and calling agents for hallucinations, bias, toxicity, compliance, and more.",
@@ -217,7 +223,25 @@ export const products = {
       image: shots.agentProps,
     },
     {
+      id: "agent-assurance",
+      scene: "comet",
+      demo: "assurance",
+      tag: "AGENT ASSURANCE",
+      title: "AI Agent Assurance for Your Agent Deployments",
+      body: "Test how your agents actually behave across workflows, tools, and actions. Catch failures and vulnerabilities before they ship. Build better agents with complete assurance.",
+      cta: "Join the Waitlist",
+      points: [
+        "Graded on evidence, not the agent's account",
+        "Publishes what it could not verify",
+        "Adversarial by default",
+        "Runs headless in your CI",
+      ],
+      image: shots.agentProps,
+    },
+    {
       id: "real-device-cloud",
+      scene: "lake",
+      demo: "devices",
       tag: "REAL DEVICE CLOUD",
       title: "Real Device Cloud for Native App Automation",
       body: "Test on real iOS and Android devices for manual and automated app testing. Get public, dedicated, and on-premise device cloud.",
@@ -231,6 +255,8 @@ export const products = {
     },
     {
       id: "hyperexecute",
+      scene: "dusk",
+      demo: "terminal",
       tag: "HYPEREXECUTE",
       title: "AI-Native End-to-End Test Orchestration Cloud",
       body: "Up to 70% faster than any cloud grid. Smart AI-native test orchestration that runs your tests at blazing speed on a secure, scalable cloud.",
@@ -245,6 +271,8 @@ export const products = {
     },
     {
       id: "test-insights",
+      scene: "planet",
+      demo: "insights",
       tag: "TEST INSIGHTS",
       title: "AI-Native Test Analytics For Smarter Reporting",
       body: "Gain insights into test performance and outcomes with Test Analytics to drive data driven decisions and improve testing efforts.",

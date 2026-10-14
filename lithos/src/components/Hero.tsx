@@ -1,114 +1,49 @@
-import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import Dashboard from "./Dashboard";
+import { DEMOS } from "./Demos";
 import { hero } from "../lib/content";
-
-const HERO_VIDEO =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260319_015952_e1deeb12-8fb7-4071-a42a-60779fc64ab6.mp4";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/* The clip's last frame doesn't match its first, so a native `loop` hard-cuts
-   at the seam. Instead two copies of the video overlap: when the front one is
-   a second from ending, the back one starts from zero and fades up over that
-   second. The cut is still there — it just happens under a crossfade. */
-const FADE = 1; /* seconds */
+/* Hero per the Figma frame: clean page ground, headline left and promise
+   right, and one wide painted-seascape card with the KaneAI demo playing in
+   its centre — the same momentic-style scripted UI as the Unified fold, so
+   the "video" is weightless and never letterboxed. */
 
-function LoopingVideo() {
-  const refs = [useRef<HTMLVideoElement>(null), useRef<HTMLVideoElement>(null)];
-  const [front, setFront] = useState(0);
-
-  useEffect(() => {
-    let active = 0;
-    let swapping = false;
-
-    const onTime = () => {
-      const v = refs[active].current;
-      if (!v || !v.duration || swapping) return;
-      if (v.duration - v.currentTime <= FADE) {
-        swapping = true;
-        const next = refs[1 - active].current;
-        if (next) {
-          next.currentTime = 0;
-          void next.play();
-        }
-        setFront(1 - active);
-        const old = v;
-        active = 1 - active;
-        window.setTimeout(() => {
-          old.pause();
-          old.currentTime = 0;
-          swapping = false;
-        }, FADE * 1000);
-      }
-    };
-
-    const vids = refs.map((r) => r.current);
-    vids.forEach((v) => v?.addEventListener("timeupdate", onTime));
-    void vids[0]?.play();
-    return () =>
-      vids.forEach((v) => v?.removeEventListener("timeupdate", onTime));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <>
-      {[0, 1].map((i) => (
-        <video
-          key={i}
-          ref={refs[i]}
-          className="absolute inset-0 z-0 h-full w-full object-cover transition-opacity duration-1000 ease-linear"
-          style={{ opacity: front === i ? 1 : 0 }}
-          src={HERO_VIDEO}
-          muted
-          playsInline
-          preload="auto"
-          autoPlay={i === 0}
-        />
-      ))}
-    </>
-  );
-}
+const PlanDemo = DEMOS.plan;
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex flex-1 flex-col items-center overflow-hidden pb-16 md:pb-24"
+      className="relative flex flex-1 flex-col overflow-hidden pb-16 md:pb-20"
     >
-      <LoopingVideo />
-      {/* readability wash up top... */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/70 via-background/30 to-transparent" />
-      {/* ...and a dissolve into the page background below, so the video never
-          hard-stops against the next section */}
-      <div className="absolute inset-x-0 bottom-0 z-0 h-[45%] bg-gradient-to-b from-transparent via-background/60 to-background" />
-
-      <div className="relative z-10 flex w-full flex-col items-center px-6 pt-[72px]">
-        <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
-          className="max-w-2xl text-center text-5xl leading-[1.02] tracking-tight text-foreground md:text-6xl lg:text-[4.5rem]"
-        >
-          <span className="block">Build with AI,</span>
-          <span className="block">Test with TestMu AI</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
-          className="mt-4 max-w-[650px] text-center text-base leading-relaxed text-muted-foreground md:text-lg"
-        >
-          {hero.sub}
-        </motion.p>
+      <div className="relative z-10 mx-auto w-full max-w-[1240px] px-9 pt-[72px] sm:px-16">
+        <div className="grid gap-6 lg:grid-cols-[1.35fr_0.75fr] lg:items-end lg:gap-14">
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+            className="max-w-[680px] text-5xl leading-[1.06] tracking-tight text-foreground md:text-6xl lg:text-[4.2rem]"
+          >
+            <span className="block">Assure your AI deployment -</span>
+            <span className="block">across enterprise and real world</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
+            className="max-w-[320px] text-base leading-relaxed text-muted-foreground md:text-lg"
+          >
+            We assure that your AI works as intended. Safely and securely.
+          </motion.p>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
-          className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center"
+          className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center"
         >
           <button
             data-cursor="Start free"
@@ -127,21 +62,23 @@ export default function Hero() {
           </button>
         </motion.div>
 
+        {/* the media card: Figma seascape, demo playing in the centre */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-          className="mt-8 w-full max-w-5xl"
+          className="relative mt-12 min-h-[440px] overflow-hidden border border-border-muted shadow-[0_40px_90px_-40px_rgba(18,18,18,0.45)] md:min-h-[520px]"
         >
-          <div
-            className="overflow-hidden  p-3 md:p-4"
-            style={{
-              background: "rgba(255, 255, 255, 0.4)",
-              border: "1px solid rgba(255, 255, 255, 0.5)",
-              boxShadow: "var(--shadow-dashboard)",
-            }}
-          >
-            <Dashboard />
+          <img
+            src="/img/hero-sea.jpg"
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-background/10" />
+          <div className="absolute inset-0 flex items-center justify-center p-7 md:p-14">
+            <div className="w-full max-w-[520px]">
+              <PlanDemo />
+            </div>
           </div>
         </motion.div>
       </div>

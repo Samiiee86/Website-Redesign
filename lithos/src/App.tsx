@@ -8,6 +8,7 @@ import TrustedBy from "./sections/TrustedBy";
 import Bento from "./sections/Bento";
 import Flow from "./sections/Flow";
 import Products from "./sections/Products";
+import Unified from "./sections/Unified";
 import Stories from "./sections/Stories";
 import Reasons from "./sections/Reasons";
 import Rebrand from "./sections/Rebrand";
@@ -36,6 +37,7 @@ export default function App() {
           <TrustedBy />
           <Bento />
           <Flow />
+          <Unified />
           <Products />
           <Stories />
           <Reasons />
