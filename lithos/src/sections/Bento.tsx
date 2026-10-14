@@ -3,10 +3,9 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { pioneer } from "../lib/content";
 import { scenery } from "../lib/scenery";
-import { shots } from "../lib/shots";
 import { Reveal, Section } from "../lib/ui";
 
-const PANELS = [shots.appPlan, shots.appIssue];
+const PANELS = ["/img/panel-kane.png", "/img/panel-cloud.png"];
 const SCENES = [scenery.valley, scenery.mist];
 
 function Card({ index }: { index: number }) {
