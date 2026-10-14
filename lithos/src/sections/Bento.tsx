@@ -18,14 +18,17 @@ function Card({ index }: { index: number }) {
   const RightIcon = PANELS[index].right;
   return (
     <div data-cursor={card.cta} className="flex h-full flex-col">
-      <div className="relative h-[420px] overflow-hidden md:h-[500px]">
-        <img
-          src={SCENES[index]}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 flex items-center justify-center p-8 md:p-12">
+      {/* the painting sits inset in its own white frame, fold-style, so the
+          two halves never bleed into each other at the divider */}
+      <div className="bg-surface p-6 lg:p-8">
+        <div className="relative h-[380px] overflow-hidden md:h-[450px]">
+          <img
+            src={SCENES[index]}
+            alt=""
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">
           <div className="w-full max-w-[520px] overflow-hidden border border-border bg-white shadow-[0_36px_80px_-26px_rgba(18,18,18,0.45)]">
             {/* window chrome, same as the fold demo frames */}
             <div className="flex items-center gap-2 border-b border-border-muted px-3 py-2">
@@ -43,6 +46,7 @@ function Card({ index }: { index: number }) {
               <RightIcon size={11} className="text-muted-foreground" />
             </div>
             <img src={PANELS[index].shot} alt="" className="h-auto w-full" loading="lazy" />
+            </div>
           </div>
         </div>
       </div>
