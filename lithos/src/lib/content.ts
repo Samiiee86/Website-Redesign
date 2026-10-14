@@ -91,33 +91,29 @@ export const platform = {
       key: "PLANNING",
       icon: "clipboard",
       products: [
-        { name: "Test Manager", desc: "Intelligent AI for test management" },
+        { name: "Test Manager", desc: "Centralized Test Case Management" },
       ],
       checks: [
+        "AI Test Case Generator & Test Deduplication",
+        "Two-Way Jira & ADO Sync, Link Linear Issues",
         "1-Click Migration from Other Platforms",
-        "Link Jira Issues with Test Manager",
       ],
     },
     {
       key: "AUTHORING",
       icon: "bot",
       products: [
-        {
-          name: "Kane AI",
-          desc: "GenAI-native test agent for test planning & authoring",
-        },
-        {
-          name: "Kane CLI",
-          desc: "Browser automation validation for developers, QA & AI coding agents",
-        },
-        {
-          name: "MCP Server",
-          desc: "Connect AI to test data, no manual transfers",
-          highlight: true,
-        },
+        { name: "Kane AI", desc: "End-to-end AI QA Agent" },
+        { name: "Kane CLI", desc: "Browser and Mobile Automation CLI" },
+        { name: "MCP Server", desc: "", highlight: true },
         {
           name: "Agent Testing",
-          desc: "A multi-agentic platform to test AI agents",
+          desc: "Test chat, voice, phone, and video AI agents",
+        },
+        {
+          name: "Agent Assurance",
+          desc: "Test how agents behave across workflows and tools",
+          badge: "New",
         },
       ],
       checks: [],
@@ -128,7 +124,8 @@ export const platform = {
       products: [
         {
           name: "HyperExecute",
-          desc: "Blazing fast AI-native automation testing cloud",
+          desc: "Blazing fast AI-Native automation testing cloud",
+          highlight: true,
         },
       ],
       checks: [
@@ -139,7 +136,8 @@ export const platform = {
         "API Testing",
         "Accessibility Testing",
         "Performance Testing",
-        "iOS Simulators | Android Emulators",
+        "iOS Simulators",
+        "Android Emulators",
         "Browser Cloud",
       ],
     },
@@ -149,7 +147,7 @@ export const platform = {
       products: [
         {
           name: "Test Intelligence",
-          desc: "AI-native test intelligence insights",
+          desc: "AI-Native test intelligence insights",
         },
       ],
       checks: [

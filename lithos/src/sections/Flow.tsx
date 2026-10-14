@@ -141,12 +141,19 @@ function Stage({
                 : ""
             }
           >
-            <p className="text-[15px] font-medium tracking-tight text-foreground">
+            <p className="flex items-center gap-2 text-[15px] font-medium tracking-tight text-foreground">
               {p.name}
+              {"badge" in p && p.badge && (
+                <span className="mono bg-[#E7E6DF] px-[6px] py-px text-[10px] font-medium uppercase tracking-[0.08em] text-[#121212]">
+                  {p.badge}
+                </span>
+              )}
             </p>
-            <p className="mt-1 text-[12.5px] leading-snug text-muted-foreground">
-              {p.desc}
-            </p>
+            {p.desc && (
+              <p className="mt-1 text-[12.5px] leading-snug text-muted-foreground">
+                {p.desc}
+              </p>
+            )}
             {p.name === "Kane CLI" && (
               <div className="mt-2.5 flex items-center gap-2.5 text-muted-foreground">
                 {CLI_GLYPHS.map((G, gi) => (

@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex flex-1 flex-col overflow-hidden pb-16 md:pb-20"
+      className="relative flex flex-1 flex-col overflow-hidden pb-10 md:pb-12"
     >
       <div className="relative z-10 mx-auto w-full max-w-[1240px] px-9 pt-[72px] sm:px-16">
         <div className="grid gap-6 lg:grid-cols-[1.35fr_0.75fr] lg:items-end lg:gap-14">
@@ -24,7 +24,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
-            className="max-w-[680px] text-5xl leading-[1.06] tracking-tight text-foreground md:text-6xl lg:text-[4.2rem]"
+            className="max-w-[760px] text-[38px] leading-[1.08] tracking-tight text-foreground md:text-[48px] lg:text-[56px]"
           >
             <span className="block">Assure your AI deployment -</span>
             <span className="block">across enterprise and real world</span>

@@ -19,6 +19,8 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative min-h-screen bg-background font-body">
+        {/* the quiet speckle that fills the beige between sections */}
+        <div aria-hidden className="grain" />
         <ScrollProgress />
         <CursorPill />
         <Header />

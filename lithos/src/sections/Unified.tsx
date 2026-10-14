@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, ChevronDown, Quote } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, Quote } from "lucide-react";
 import { products } from "../lib/content";
 import { scenery } from "../lib/scenery";
 import { DEMOS, type DemoKey } from "../components/Demos";
@@ -86,7 +86,11 @@ function Panel({ tab }: { tab: Tab }) {
             <ul className="mt-3 flex flex-col gap-2.5">
               {tab.points.map((pt) => (
                 <li key={pt} className="flex items-start gap-2.5">
-                  <span className="mt-[8px] h-[5px] w-[5px] shrink-0 rotate-45 bg-accent" />
+                  <Check
+                    size={15}
+                    strokeWidth={2.4}
+                    className="mt-[2px] shrink-0 text-foreground"
+                  />
                   <span className="text-[13.5px] leading-snug text-foreground">
                     {pt}
                   </span>
@@ -203,15 +207,15 @@ export default function Unified() {
       <Reveal delay={0.08}>
         <div ref={boxRef} className="border border-border-muted bg-surface">
           {/* seven product tabs, stuck under the site header */}
-          <div className="sticky top-16 z-20 flex overflow-x-auto border-b border-border-muted bg-surface">
+          <div className="sticky top-16 z-20 flex overflow-x-auto border-b border-border-muted bg-background">
             {products.tabs.map((t) => (
               <button
                 key={t.id}
                 onClick={() => jump(t.id)}
                 className={`flex-1 whitespace-nowrap border-r border-border-muted px-4 py-3.5 text-[13.5px] font-medium transition-colors last:border-r-0 ${
                   active === t.id
-                    ? "border-b-2 border-b-foreground bg-background text-foreground"
-                    : "text-muted-foreground hover:bg-background hover:text-foreground"
+                    ? "border-b-2 border-b-foreground bg-surface text-foreground"
+                    : "bg-background text-muted-foreground hover:bg-surface/60 hover:text-foreground"
                 }`}
               >
                 {label(t.tag)}

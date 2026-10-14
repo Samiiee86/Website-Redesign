@@ -255,3 +255,18 @@ body {
     animation: none;
   }
 }
+
+/* ---------- grain + speckle, as in the Figma frames ---------- */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(hsl(var(--foreground) / 0.16) 1px, transparent 1.2px),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='0.5'/></svg>");
+  background-size:
+    96px 96px,
+    180px 180px;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
