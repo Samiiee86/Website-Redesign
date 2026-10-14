@@ -280,7 +280,7 @@ export const products = {
     },
     {
       id: "hyperexecute",
-      scene: "dusk",
+      scene: "wetland",
       demo: "terminal",
       tag: "HYPEREXECUTE",
       title: "AI-Native End-to-End Test Orchestration Cloud",

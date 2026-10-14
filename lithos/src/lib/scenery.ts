@@ -16,4 +16,5 @@ export const scenery = {
   alplake: "/img/alplake.webp",
   hills: "/img/hills.webp",
   treetop: "/img/treetop.webp",
+  wetland: "/img/wetland.webp",
 };
