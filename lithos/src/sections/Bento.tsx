@@ -7,7 +7,7 @@ import { shots } from "../lib/shots";
 import { Reveal, Section } from "../lib/ui";
 
 const PANELS = [shots.appPlan, shots.appIssue];
-const SCENES = [scenery.clouds, scenery.dusk];
+const SCENES = [scenery.shore, scenery.alplake];
 
 function Card({ index }: { index: number }) {
   const card = pioneer.cards[index];
