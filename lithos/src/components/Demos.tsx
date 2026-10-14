@@ -5,13 +5,11 @@ import {
   Bot,
   Check,
   ClipboardList,
-  FlaskConical,
   Home,
   LayoutGrid,
   MousePointer2,
   Paperclip,
   Play,
-  Settings,
   ShieldCheck,
   Smartphone,
   Sparkles,
@@ -153,7 +151,6 @@ function Window({
   children: ReactNode;
   dark?: boolean;
 }) {
-  const rail = [Home, LayoutGrid, FlaskConical, Smartphone, BarChart3, Settings];
   return (
     <div
       className={`relative w-full overflow-hidden border shadow-[0_30px_70px_-28px_rgba(18,18,18,0.55)] ${
@@ -190,24 +187,7 @@ function Window({
           {right}
         </span>
       </div>
-      <div className="flex">
-        {/* icon rail, like the real app shell */}
-        <div
-          className={`flex flex-col items-center gap-3 border-r px-2 py-3 ${
-            dark ? "border-white/10 text-white/35" : "border-border-muted text-muted-foreground/70"
-          }`}
-        >
-          {rail.map((R, i) => (
-            <R
-              key={i}
-              size={12}
-              strokeWidth={1.8}
-              className={i === 0 && !dark ? "text-foreground" : ""}
-            />
-          ))}
-        </div>
-        <div className="min-w-0 flex-1">{children}</div>
-      </div>
+      <div className="min-w-0">{children}</div>
     </div>
   );
 }
