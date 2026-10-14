@@ -7,7 +7,7 @@ const PANELS = [
   { shot: "/img/panel-kane.png", title: "testmu.ai / kaneai", icon: Bot, right: Sparkles },
   { shot: "/img/panel-cloud.png", title: "testmu.ai / agentic-cloud", icon: LayoutGrid, right: Sparkles },
 ];
-const SCENES = [scenery.grassea, scenery.sunsetlake];
+const SCENES = [scenery.grassea, scenery.chalkcliff];
 
 /* The two pioneer cards, momentic-style like the fold stages: the painting
    is the full stage with the product UI floating in its centre, and the
