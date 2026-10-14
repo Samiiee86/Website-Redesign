@@ -70,7 +70,7 @@ export default function Hero() {
           className="relative mt-16 min-h-[520px] overflow-hidden border border-border-muted md:mt-20 md:min-h-[640px]"
         >
           <img
-            src="/img/hero-sea.jpg"
+            src="/img/hero-lake.webp"
             alt=""
             className="absolute inset-0 h-full w-full object-cover"
           />
