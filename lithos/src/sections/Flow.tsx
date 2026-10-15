@@ -204,14 +204,14 @@ export default function Flow() {
       </Reveal>
 
       {/* the four stages, connected */}
-      <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-11">
+      <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-11 lg:px-6">
         {platform.stages.map((s, i) => (
           <Stage key={s.key} stage={s} index={i} last={i === 3} />
         ))}
       </div>
 
       {/* integrations + deployment, as in the frame */}
-      <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_1fr]">
+      <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_1fr] lg:px-6">
         <Reveal delay={0.1}>
           <div className="flex h-full flex-wrap items-center gap-5 border border-border-muted bg-surface px-6 py-4">
             <p className="text-[14px] font-medium tracking-tight">

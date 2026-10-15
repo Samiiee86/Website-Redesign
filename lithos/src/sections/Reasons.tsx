@@ -53,7 +53,7 @@ export default function Reasons() {
 
       {/* one continuous grid — flush cells, hairline dividers, square corners */}
       <Reveal delay={0.08}>
-        <div className="-mx-4 border border-border-muted bg-surface">
+        <div className="-mx-8 border border-border-muted bg-surface">
           {/* numbers */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((s, i) => (

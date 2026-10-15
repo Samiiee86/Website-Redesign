@@ -118,7 +118,7 @@ export function Section({
       id={id}
       className={`relative z-[1] border-t border-border px-5 py-24 sm:px-8 md:py-32 ${className}`}
     >
-      <div className="mx-auto w-full max-w-[1240px] px-4">
+      <div className="mx-auto w-full max-w-[1240px] px-8">
         {children}
       </div>
     </section>

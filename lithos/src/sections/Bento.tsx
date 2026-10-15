@@ -93,7 +93,7 @@ export default function Bento() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="-mx-4 grid border border-border-muted bg-surface md:grid-cols-2">
+        <div className="-mx-8 grid border border-border-muted bg-surface md:grid-cols-2">
           <div className="border-border-muted max-md:border-b md:border-r">
             <Card index={0} />
           </div>
