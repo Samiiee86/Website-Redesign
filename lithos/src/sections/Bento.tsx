@@ -42,7 +42,7 @@ function Card({ index }: { index: number }) {
               </span>
               <RightIcon size={11} className="text-muted-foreground" />
             </div>
-            <img src={PANELS[index].shot} alt="" className="h-auto w-full" loading="lazy" />
+            <img src={PANELS[index].shot} alt="" className="h-[300px] w-full bg-white object-contain p-3" loading="lazy" />
           </div>
         </div>
       </div>
