@@ -162,7 +162,7 @@ export default function Stories() {
                   src={cell.brand}
                   alt=""
                   className={`w-auto max-w-[190px] object-contain object-left ${
-                    /transavia/.test(cell.brand) ? "h-11" : "h-8"
+                    /transavia/.test(cell.brand) ? "h-7" : "h-8"
                   } ${/bestegg/.test(cell.brand) ? "brightness-0" : ""}`}
                 />
                 <div>
