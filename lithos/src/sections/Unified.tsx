@@ -128,7 +128,7 @@ export default function Unified() {
 
           {/* the platform staples ride the same surface, one row below */}
           <div className="grid border-t border-border-muted sm:grid-cols-3">
-            {SMALL.map(({ icon: Icon, name, desc, cta }, i) => (
+            {SMALL.map(({ icon: Icon, name, desc }, i) => (
               <div
                 key={name}
                 data-cursor={name}
