@@ -42,8 +42,11 @@ function BigCard({ id }: { id: string }) {
   const tab = products.tabs.find((t) => t.id === id)!;
   const Demo = DEMOS[tab.demo as DemoKey];
   return (
-    <div data-cursor={tab.cta} className="flex flex-col">
-      <div className="relative h-[460px] overflow-hidden border border-border-muted">
+    <div
+      data-cursor={tab.cta}
+      className="flex flex-col border border-border-muted bg-surface"
+    >
+      <div className="relative h-[380px] overflow-hidden">
         <img
           src={scenery[tab.scene as keyof typeof scenery]}
           alt=""
@@ -56,7 +59,7 @@ function BigCard({ id }: { id: string }) {
           </div>
         </div>
       </div>
-      <div className="pt-6">
+      <div className="p-6 md:p-7">
         <p className="mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
           {label(tab.tag)}
         </p>
