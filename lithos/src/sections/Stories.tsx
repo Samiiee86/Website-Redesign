@@ -75,7 +75,7 @@ export default function Stories() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="overflow-hidden  border border-border-muted bg-surface">
+        <div className="-mx-4 overflow-hidden border border-border-muted bg-surface">
           {/* headline case */}
           <div className="grid lg:grid-cols-[1.35fr_1fr]">
             <div>

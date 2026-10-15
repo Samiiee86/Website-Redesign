@@ -121,7 +121,7 @@ export default function Unified() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="border border-border-muted bg-surface">
+        <div className="-mx-4 border border-border-muted bg-surface">
           <div className="grid md:grid-cols-2">
             {BIG_IDS.map((id, i) => (
               <BigCard key={id} id={id} index={i} />
