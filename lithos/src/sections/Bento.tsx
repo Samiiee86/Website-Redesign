@@ -18,10 +18,7 @@ function Card({ index }: { index: number }) {
   const RightIcon = PANELS[index].right;
   return (
     <div data-cursor={card.cta} className="flex h-full flex-col">
-      {/* the painting sits inset in its own white frame, fold-style, so the
-          two halves never bleed into each other at the divider */}
-      <div className="bg-surface p-6 lg:p-8">
-        <div className="relative h-[380px] overflow-hidden md:h-[450px]">
+      <div className="relative h-[380px] overflow-hidden border border-border-muted md:h-[450px]">
           <img
             src={SCENES[index]}
             alt=""
@@ -46,12 +43,11 @@ function Card({ index }: { index: number }) {
               <RightIcon size={11} className="text-muted-foreground" />
             </div>
             <img src={PANELS[index].shot} alt="" className="h-auto w-full" loading="lazy" />
-            </div>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 bg-surface px-7 pb-8 pt-1 md:px-8">
+      <div className="flex-1 pt-6">
         <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
           {card.title}
         </h3>
@@ -97,10 +93,8 @@ export default function Bento() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="grid border border-border-muted md:grid-cols-2">
-          <div className="border-b border-border-muted md:border-b-0 md:border-r">
-            <Card index={0} />
-          </div>
+        <div className="grid gap-x-8 gap-y-14 md:grid-cols-2">
+          <Card index={0} />
           <Card index={1} />
         </div>
       </Reveal>

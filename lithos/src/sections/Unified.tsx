@@ -1,152 +1,33 @@
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, Check, ChevronDown, Quote } from "lucide-react";
+import { ArrowRight, BarChart3, ClipboardList, Smartphone } from "lucide-react";
 import { products } from "../lib/content";
 import { scenery } from "../lib/scenery";
 import { DEMOS, type DemoKey } from "../components/Demos";
 import { Reveal, Section } from "../lib/ui";
 
-/* The Unified Quality Engineering fold: a sticky bar of seven product tabs
-   over one continuous box. Each product gets its own muted landscape with a
-   live hand-built demo floating on it — the momentic.ai treatment, no video
-   files and no white letterboxing. The bar both scrolls-to on click and
-   follows along as you scroll. */
+/* The Unified Quality Engineering fold, bento edition: the four AI flagship
+   products get big cards with their live scripted demos on the paintings,
+   and the three platform staples sit below as quiet content cards. One and
+   a half screens instead of seven folds. */
 
-type Tab = (typeof products.tabs)[number];
+const BIG_IDS = ["kane-ai", "agent-testing", "agent-assurance", "hyperexecute"];
 
-function Accordion({ items }: { items: { title: string; body: string }[] }) {
-  const [open, setOpen] = useState(0);
-  return (
-    <div className="mt-6 border-t border-border-muted">
-      {items.map((item, i) => (
-        <div key={item.title} className="border-b border-border-muted">
-          <button
-            onClick={() => setOpen(open === i ? -1 : i)}
-            aria-expanded={open === i}
-            className="flex w-full items-center justify-between gap-4 py-3.5 text-left"
-          >
-            <span className="text-[15px] font-medium tracking-tight text-foreground">
-              {item.title}
-            </span>
-            <ChevronDown
-              size={16}
-              className={`flex-none text-muted-foreground transition-transform duration-300 ${
-                open === i ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-          <AnimatePresence initial={false}>
-            {open === i && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="overflow-hidden"
-              >
-                <p className="max-w-[400px] pb-4 text-[14px] leading-relaxed text-muted-foreground">
-                  {item.body}
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function Panel({ tab }: { tab: Tab }) {
-  const Demo = DEMOS[tab.demo as DemoKey];
-  return (
-    <div
-      id={`unified-${tab.id}`}
-      className="grid scroll-mt-[128px] border-t border-border-muted lg:min-h-[640px] lg:grid-cols-[0.95fr_1.25fr]"
-    >
-      {/* copy sill */}
-      <div className="flex flex-col p-8 lg:p-10">
-        <p className="mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-          {tab.tag}
-        </p>
-        <h3 className="mt-4 max-w-[420px] text-[24px] leading-[1.25] tracking-tight md:text-[28px]">
-          {tab.title}
-        </h3>
-        <p className="mt-4 max-w-[420px] text-[15px] leading-relaxed text-muted-foreground">
-          {tab.body}
-        </p>
-        {"accordion" in tab && tab.accordion ? (
-          <Accordion items={tab.accordion} />
-        ) : tab.points.length > 0 ? (
-          <div className="mt-6">
-            {"listCaption" in tab && tab.listCaption && (
-              <p className="text-[15px] font-medium tracking-tight text-foreground">
-                {tab.listCaption}
-              </p>
-            )}
-            <ul className="mt-3 flex flex-col gap-2.5">
-              {tab.points.map((pt) => (
-                <li key={pt} className="flex items-start gap-2.5">
-                  <Check
-                    size={15}
-                    strokeWidth={2.4}
-                    className="mt-[2px] shrink-0 text-foreground"
-                  />
-                  <span className="text-[13.5px] leading-snug text-foreground">
-                    {pt}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-        {"install" in tab && tab.install && (
-          <div className="mono mt-6 inline-flex items-center gap-2.5 self-start border border-border-muted bg-background px-3.5 py-2 text-[12.5px] text-foreground">
-            <span className="select-none text-muted-foreground">$</span>
-            {tab.install}
-          </div>
-        )}
-        <button className="group mt-7 inline-flex items-center gap-2 self-start border-b border-foreground pb-1 text-[14px] font-medium transition-colors">
-          {tab.cta}
-          <ArrowRight
-            size={14}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </button>
-
-        {"quote" in tab && tab.quote && (
-          <figure className="mt-auto pt-8">
-            <Quote size={16} className="text-muted-foreground" />
-            <blockquote className="mt-2.5 max-w-[400px] text-[14px] leading-relaxed text-foreground">
-              {tab.quote.text}
-            </blockquote>
-            <figcaption className="mt-3 text-[13px]">
-              {tab.quote.name}
-              <span className="block text-[12px] text-muted-foreground">
-                {tab.quote.role}
-              </span>
-            </figcaption>
-          </figure>
-        )}
-      </div>
-
-      {/* the demo stage: the landscape sits inset in its own white frame,
-          so neighbouring folds never bleed into each other */}
-      <div className="flex min-h-[420px] border-t border-border-muted p-6 lg:border-t-0 lg:p-8">
-        <div className="relative flex w-full items-center justify-center overflow-hidden">
-          <img
-            src={scenery[tab.scene as keyof typeof scenery]}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-            loading="lazy"
-          />
-          <div className="relative w-full max-w-[560px] px-6 py-10 md:px-8 md:py-12">
-            <Demo />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const SMALL = [
+  {
+    icon: ClipboardList,
+    name: "Test Manager",
+    desc: "Centralized test case management with AI generation and two-way Jira & ADO sync.",
+  },
+  {
+    icon: Smartphone,
+    name: "Real Device Cloud",
+    desc: "Manual and automated app testing on 10,000+ real iOS and Android devices.",
+  },
+  {
+    icon: BarChart3,
+    name: "Test Insights",
+    desc: "AI-native test intelligence, analytics and reporting across every run.",
+  },
+];
 
 const label = (tag: string) =>
   tag
@@ -157,36 +38,44 @@ const label = (tag: string) =>
     .replace("Ai", "AI")
     .replace("Hyperexecute", "HyperExecute");
 
+function BigCard({ id }: { id: string }) {
+  const tab = products.tabs.find((t) => t.id === id)!;
+  const Demo = DEMOS[tab.demo as DemoKey];
+  return (
+    <div data-cursor={tab.cta} className="flex flex-col">
+      <div className="relative h-[460px] overflow-hidden border border-border-muted">
+        <img
+          src={scenery[tab.scene as keyof typeof scenery]}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 flex items-center justify-center p-6 md:p-9">
+          <div className="w-full max-w-[440px]">
+            <Demo />
+          </div>
+        </div>
+      </div>
+      <div className="pt-6">
+        <p className="mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+          {label(tab.tag)}
+        </p>
+        <h3 className="mt-2 text-[20px] leading-[1.25] tracking-tight md:text-[22px]">
+          {tab.title}
+        </h3>
+        <button className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
+          {tab.cta}
+          <ArrowRight
+            size={14}
+            className="transition-transform duration-300 group-hover/btn:translate-x-1"
+          />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function Unified() {
-  const [active, setActive] = useState(products.tabs[0].id);
-  const boxRef = useRef<HTMLDivElement>(null);
-
-  /* the bar follows the scroll: whichever panel owns the middle of the
-     viewport owns the tab highlight */
-  useEffect(() => {
-    const panels = products.tabs
-      .map((t) => document.getElementById(`unified-${t.id}`))
-      .filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            setActive(e.target.id.replace("unified-", ""));
-          }
-        }
-      },
-      { rootMargin: "-45% 0px -45% 0px" },
-    );
-    panels.forEach((p) => io.observe(p));
-    return () => io.disconnect();
-  }, []);
-
-  const jump = (id: string) => {
-    document
-      .getElementById(`unified-${id}`)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <Section id="unified">
       <Reveal className="mb-12">
@@ -214,26 +103,29 @@ export default function Unified() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div ref={boxRef} className="border border-border-muted bg-surface">
-          {/* seven product tabs, stuck under the site header */}
-          <div className="sticky top-16 z-20 flex overflow-x-auto border-b border-border-muted bg-background">
-            {products.tabs.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => jump(t.id)}
-                className={`flex-1 whitespace-nowrap border-r border-border-muted px-4 py-3.5 text-[13.5px] font-medium transition-colors last:border-r-0 ${
-                  active === t.id
-                    ? "border-b-2 border-b-foreground bg-surface text-foreground"
-                    : "bg-background text-muted-foreground hover:bg-surface/60 hover:text-foreground"
-                }`}
-              >
-                {label(t.tag)}
-              </button>
-            ))}
-          </div>
+        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
+          {BIG_IDS.map((id) => (
+            <BigCard key={id} id={id} />
+          ))}
+        </div>
 
-          {products.tabs.map((t) => (
-            <Panel key={t.id} tab={t} />
+        {/* the platform staples: content only, one quiet card each */}
+        <div className="mt-12 grid gap-x-8 gap-y-6 sm:grid-cols-3">
+          {SMALL.map(({ icon: Icon, name, desc }) => (
+            <div
+              key={name}
+              data-cursor={name}
+              className="group border border-border-muted bg-surface p-6 transition-colors duration-500 hover:bg-secondary/40"
+            >
+              <Icon
+                size={20}
+                className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
+              />
+              <h4 className="mt-5 text-[17px] tracking-tight">{name}</h4>
+              <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
+                {desc}
+              </p>
+            </div>
           ))}
         </div>
       </Reveal>
