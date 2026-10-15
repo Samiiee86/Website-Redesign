@@ -71,7 +71,7 @@ function BigCard({ id, index }: { id: string; index: number }) {
           <span className="font-semibold text-foreground">{blurb.name}</span>{" "}
           <span className="font-normal text-muted-foreground">{blurb.rest}</span>
         </h3>
-        <button className="group/btn mt-3 inline-flex items-center gap-1.5 text-[13px] font-medium text-foreground">
+        <button className="group/btn mt-3 inline-flex items-center gap-1.5 border-b border-foreground pb-0.5 text-[13px] font-medium text-foreground">
           {tab.cta}
           <ArrowRight
             size={13}
@@ -79,7 +79,7 @@ function BigCard({ id, index }: { id: string; index: number }) {
           />
         </button>
       </div>
-      <div className="relative h-[330px] overflow-hidden">
+      <div className="relative h-[280px] overflow-hidden">
         <div className="absolute inset-x-0 top-5 flex justify-center px-7 md:px-9">
           <div className="w-full max-w-[560px] scale-[0.78]" style={{ transformOrigin: "top center" }}>
             <Demo />
@@ -144,7 +144,7 @@ export default function Unified() {
                 <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
                   {desc}
                 </p>
-                <button className="group/btn mt-4 inline-flex items-center gap-1.5 self-start text-[13px] font-medium text-foreground">
+                <button className="group/btn mt-4 inline-flex items-center gap-1.5 self-start border-b border-foreground pb-0.5 text-[13px] font-medium text-foreground">
                   {cta}
                   <ArrowRight
                     size={13}
