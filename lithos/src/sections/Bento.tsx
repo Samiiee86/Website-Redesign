@@ -55,7 +55,7 @@ function Card({ index }: { index: number }) {
           {card.body}
         </p>
         <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
-          {card.cta}
+          Learn more
           <ArrowRight
             size={15}
             className="transition-transform duration-300 group-hover/btn:translate-x-1"

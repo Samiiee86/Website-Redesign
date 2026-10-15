@@ -72,7 +72,7 @@ function BigCard({ id, index }: { id: string; index: number }) {
           <span className="font-normal text-muted-foreground">{blurb.rest}</span>
         </h3>
         <button className="group/btn mt-3 inline-flex items-center gap-1.5 border-b border-foreground pb-0.5 text-[13px] font-medium text-foreground">
-          {tab.cta}
+          Learn more
           <ArrowRight
             size={13}
             className="transition-transform duration-300 group-hover/btn:translate-x-1"
@@ -145,7 +145,7 @@ export default function Unified() {
                   {desc}
                 </p>
                 <button className="group/btn mt-4 inline-flex items-center gap-1.5 self-start border-b border-foreground pb-0.5 text-[13px] font-medium text-foreground">
-                  {cta}
+                  Learn more
                   <ArrowRight
                     size={13}
                     className="transition-transform duration-300 group-hover/btn:translate-x-1"
