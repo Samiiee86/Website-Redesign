@@ -77,15 +77,15 @@ export default function Stories() {
       <Reveal delay={0.08}>
         <div className="-mx-8 overflow-hidden border border-border-muted bg-surface">
           {/* headline case */}
-          <div className="grid lg:grid-cols-[1.35fr_1fr]">
-            <div>
+          <div className="grid lg:grid-cols-[2fr_1.6fr]">
+            <div className="lg:border-r lg:border-border-muted">
               <div
                 data-cursor="Play video"
                 role="button"
                 tabIndex={0}
                 onClick={() => setPlayerOpen(true)}
                 onKeyDown={(e) => e.key === "Enter" && setPlayerOpen(true)}
-                className="group relative h-[270px] cursor-pointer overflow-hidden md:h-[380px]"
+                className="group relative h-[270px] cursor-pointer overflow-hidden md:h-full md:min-h-[380px]"
               >
                 <video
                   src={CUSTOMER_VIDEO}

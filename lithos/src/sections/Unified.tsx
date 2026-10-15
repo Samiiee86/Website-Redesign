@@ -81,7 +81,10 @@ function BigCard({ id, index }: { id: string; index: number }) {
       </div>
       <div className="relative h-[280px] overflow-hidden">
         <div className="absolute inset-x-0 top-5 flex justify-center px-7 md:px-9">
-          <div className="w-full max-w-[560px] scale-[0.78]" style={{ transformOrigin: "top center" }}>
+          <div
+            className={`w-full max-w-[560px] ${tab.demo === "assurance" ? "scale-[0.62]" : "scale-[0.78]"}`}
+            style={{ transformOrigin: "top center" }}
+          >
             <Demo />
           </div>
         </div>
