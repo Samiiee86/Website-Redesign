@@ -1,6 +1,5 @@
 import { ArrowRight, BarChart3, ClipboardList, Smartphone } from "lucide-react";
 import { products } from "../lib/content";
-import { scenery } from "../lib/scenery";
 import { DEMOS, type DemoKey } from "../components/Demos";
 import { Reveal, Section } from "../lib/ui";
 
@@ -10,6 +9,25 @@ import { Reveal, Section } from "../lib/ui";
    a half screens instead of seven folds. */
 
 const BIG_IDS = ["kane-ai", "agent-testing", "agent-assurance", "hyperexecute"];
+
+const BLURBS: Record<string, { name: string; rest: string }> = {
+  "kane-ai": {
+    name: "Kane AI",
+    rest: "plans, authors and evolves end-to-end tests from plain language.",
+  },
+  "agent-testing": {
+    name: "Agent Testing",
+    rest: "evaluates chat, voice and video agents for hallucination, tone and compliance.",
+  },
+  "agent-assurance": {
+    name: "Agent Assurance",
+    rest: "proves how your agents behave across real workflows and tools.",
+  },
+  hyperexecute: {
+    name: "HyperExecute",
+    rest: "tears through your whole suite on a blazing-fast orchestration cloud.",
+  },
+};
 
 const SMALL = [
   {
@@ -29,15 +47,6 @@ const SMALL = [
   },
 ];
 
-const label = (tag: string) =>
-  tag
-    .toLowerCase()
-    .split(" ")
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-    .join(" ")
-    .replace("Ai", "AI")
-    .replace("Hyperexecute", "HyperExecute");
-
 function BigCard({ id, index }: { id: string; index: number }) {
   const tab = products.tabs.find((t) => t.id === id)!;
   const Demo = DEMOS[tab.demo as DemoKey];
@@ -46,38 +55,34 @@ function BigCard({ id, index }: { id: string; index: number }) {
     index < 2 ? "md:border-b" : "",
     index < 3 ? "max-md:border-b" : "",
   ].join(" ");
+  const blurb = BLURBS[id];
   return (
     <div
       data-cursor={tab.cta}
       className={`flex flex-col border-border-muted bg-surface ${edges}`}
     >
-      <div className="relative h-[380px] overflow-hidden">
-        <img
-          src={scenery[tab.scene as keyof typeof scenery]}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 flex items-center justify-center p-6 md:p-9">
-          <div className="w-full max-w-[560px] scale-[0.72]">
-            <Demo />
-          </div>
-        </div>
-      </div>
-      <div className="p-6 md:p-7">
-        <p className="mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-          {label(tab.tag)}
-        </p>
-        <h3 className="mt-2 text-[20px] leading-[1.25] tracking-tight md:text-[22px]">
-          {tab.title}
+      {/* chatbase-style card: the sentence leads, the demo sits below and
+          melts out of the card's bottom edge */}
+      <div className="px-7 pb-2 pt-8 md:px-9">
+        <h3 className="max-w-[460px] text-[19px] leading-[1.4] tracking-tight md:text-[21px]">
+          <span className="font-semibold text-foreground">{blurb.name}</span>{" "}
+          <span className="font-normal text-muted-foreground">{blurb.rest}</span>
         </h3>
-        <button className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
+        <button className="group/btn mt-3 inline-flex items-center gap-1.5 text-[13px] font-medium text-foreground">
           {tab.cta}
           <ArrowRight
-            size={14}
+            size={13}
             className="transition-transform duration-300 group-hover/btn:translate-x-1"
           />
         </button>
+      </div>
+      <div className="relative h-[330px] overflow-hidden">
+        <div className="absolute inset-x-0 top-5 flex justify-center px-7 md:px-9">
+          <div className="w-full max-w-[560px] scale-[0.78]" style={{ transformOrigin: "top center" }}>
+            <Demo />
+          </div>
+        </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[hsl(var(--surface))] to-transparent" />
       </div>
     </div>
   );
