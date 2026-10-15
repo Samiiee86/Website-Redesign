@@ -34,16 +34,19 @@ const SMALL = [
     icon: ClipboardList,
     name: "Test Manager",
     desc: "Centralized test case management with AI generation and two-way Jira & ADO sync.",
+    cta: "More About Test Management",
   },
   {
     icon: Smartphone,
     name: "Real Device Cloud",
     desc: "Manual and automated app testing on 10,000+ real iOS and Android devices.",
+    cta: "More About Real Device Cloud",
   },
   {
     icon: BarChart3,
     name: "Test Insights",
     desc: "AI-native test intelligence, analytics and reporting across every run.",
+    cta: "More About Test Insights",
   },
 ];
 
@@ -63,7 +66,7 @@ function BigCard({ id, index }: { id: string; index: number }) {
     >
       {/* chatbase-style card: the sentence leads, the demo sits below and
           melts out of the card's bottom edge */}
-      <div className="px-7 pb-2 pt-8 md:px-9">
+      <div className="min-h-[150px] px-7 pb-2 pt-8 md:px-9">
         <h3 className="max-w-[460px] text-[19px] leading-[1.4] tracking-tight md:text-[21px]">
           <span className="font-semibold text-foreground">{blurb.name}</span>{" "}
           <span className="font-normal text-muted-foreground">{blurb.rest}</span>
@@ -116,30 +119,41 @@ export default function Unified() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="grid border border-border-muted bg-surface md:grid-cols-2">
-          {BIG_IDS.map((id, i) => (
-            <BigCard key={id} id={id} index={i} />
-          ))}
-        </div>
+        <div className="border border-border-muted bg-surface">
+          <div className="grid md:grid-cols-2">
+            {BIG_IDS.map((id, i) => (
+              <BigCard key={id} id={id} index={i} />
+            ))}
+          </div>
 
-        {/* the platform staples: content only, one quiet card each */}
-        <div className="mt-12 grid gap-x-8 gap-y-6 sm:grid-cols-3">
-          {SMALL.map(({ icon: Icon, name, desc }) => (
-            <div
-              key={name}
-              data-cursor={name}
-              className="group border border-border-muted bg-surface p-6 transition-colors duration-500 hover:bg-secondary/40"
-            >
-              <Icon
-                size={20}
-                className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
-              />
-              <h4 className="mt-5 text-[17px] tracking-tight">{name}</h4>
-              <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
-                {desc}
-              </p>
-            </div>
-          ))}
+          {/* the platform staples ride the same surface, one row below */}
+          <div className="grid border-t border-border-muted sm:grid-cols-3">
+            {SMALL.map(({ icon: Icon, name, desc, cta }, i) => (
+              <div
+                key={name}
+                data-cursor={name}
+                className={`group flex flex-col p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-7 ${
+                  i < 2 ? "border-border-muted max-sm:border-b sm:border-r" : ""
+                }`}
+              >
+                <Icon
+                  size={20}
+                  className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
+                />
+                <h4 className="mt-5 text-[17px] tracking-tight">{name}</h4>
+                <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
+                  {desc}
+                </p>
+                <button className="group/btn mt-4 inline-flex items-center gap-1.5 self-start text-[13px] font-medium text-foreground">
+                  {cta}
+                  <ArrowRight
+                    size={13}
+                    className="transition-transform duration-300 group-hover/btn:translate-x-1"
+                  />
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </Reveal>
     </Section>
