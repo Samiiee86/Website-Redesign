@@ -78,7 +78,7 @@ export default function Stories() {
         <div className="overflow-hidden  border border-border-muted bg-surface">
           {/* headline case */}
           <div className="grid lg:grid-cols-[1.35fr_1fr]">
-            <div className="p-8">
+            <div>
               <div
                 data-cursor="Play video"
                 role="button"
@@ -166,7 +166,7 @@ export default function Stories() {
                 </div>
               </div>
             ))}
-            <div className="p-6">
+            <div>
               <div
                 data-cursor="Read case study"
                 className="group relative h-full min-h-[270px] overflow-hidden"

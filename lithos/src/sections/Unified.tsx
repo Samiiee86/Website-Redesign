@@ -85,7 +85,9 @@ function BigCard({ id, index }: { id: string; index: number }) {
             <Demo />
           </div>
         </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[hsl(var(--surface))] to-transparent" />
+        {tab.demo !== "assurance" && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[hsl(var(--surface))] to-transparent" />
+        )}
       </div>
     </div>
   );

@@ -356,8 +356,8 @@ export const reasons = {
       span: "lg:col-span-2",
     },
     {
-      title: "Integrations",
-      body: "Works where you work — 120+ integrations with the tools your team relies on.",
+      title: "Integrations & MCP Server",
+      body: "Works where you work — 120+ integrations plus a native MCP server for your coding agents and IDEs.",
       image: "/img/integrations.png",
       span: "lg:col-span-2",
     },
@@ -418,7 +418,7 @@ export const faq = [
 
 export const enterprise = {
   title: "TestMu AI for Enterprise",
-  body: "Get access to solutions built on enterprise grade security, privacy, and compliance.",
+  body: "Enterprise-grade security, privacy, and compliance — with the controls, support, and scale your teams need.",
   primary: "Contact Sales",
   secondary: "Book a Demo",
   perks: [
