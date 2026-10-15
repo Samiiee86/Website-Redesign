@@ -18,7 +18,7 @@ function Card({ index }: { index: number }) {
   const RightIcon = PANELS[index].right;
   return (
     <div data-cursor={card.cta} className="flex h-full flex-col">
-      <div className="relative h-[380px] overflow-hidden border border-border-muted md:h-[450px]">
+      <div className="relative h-[380px] overflow-hidden md:h-[450px]">
           <img
             src={SCENES[index]}
             alt=""
@@ -47,7 +47,7 @@ function Card({ index }: { index: number }) {
         </div>
       </div>
 
-      <div className="flex-1 pt-6">
+      <div className="flex-1 p-6 md:p-7">
         <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
           {card.title}
         </h3>
@@ -93,8 +93,10 @@ export default function Bento() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="grid gap-x-8 gap-y-14 md:grid-cols-2">
-          <Card index={0} />
+        <div className="grid border border-border-muted bg-surface md:grid-cols-2">
+          <div className="border-border-muted max-md:border-b md:border-r">
+            <Card index={0} />
+          </div>
           <Card index={1} />
         </div>
       </Reveal>

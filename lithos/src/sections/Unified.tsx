@@ -38,13 +38,18 @@ const label = (tag: string) =>
     .replace("Ai", "AI")
     .replace("Hyperexecute", "HyperExecute");
 
-function BigCard({ id }: { id: string }) {
+function BigCard({ id, index }: { id: string; index: number }) {
   const tab = products.tabs.find((t) => t.id === id)!;
   const Demo = DEMOS[tab.demo as DemoKey];
+  const edges = [
+    index % 2 === 0 ? "md:border-r" : "",
+    index < 2 ? "md:border-b" : "",
+    index < 3 ? "max-md:border-b" : "",
+  ].join(" ");
   return (
     <div
       data-cursor={tab.cta}
-      className="flex flex-col border border-border-muted bg-surface"
+      className={`flex flex-col border-border-muted bg-surface ${edges}`}
     >
       <div className="relative h-[380px] overflow-hidden">
         <img
@@ -54,7 +59,7 @@ function BigCard({ id }: { id: string }) {
           loading="lazy"
         />
         <div className="absolute inset-0 flex items-center justify-center p-6 md:p-9">
-          <div className="w-full max-w-[440px]">
+          <div className="w-full max-w-[560px] scale-[0.72]">
             <Demo />
           </div>
         </div>
@@ -106,9 +111,9 @@ export default function Unified() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
-          {BIG_IDS.map((id) => (
-            <BigCard key={id} id={id} />
+        <div className="grid border border-border-muted bg-surface md:grid-cols-2">
+          {BIG_IDS.map((id, i) => (
+            <BigCard key={id} id={id} index={i} />
           ))}
         </div>
 
