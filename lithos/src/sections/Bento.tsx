@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import {
   ArrowRight,
@@ -177,7 +178,117 @@ function useCanHover() {
   return can;
 }
 
-function Card({
+/* --- shared pieces ------------------------------------------------------ */
+
+export type PioneerVariant = "hover" | "imageTop" | "white" | "soft";
+
+/* a fresh key each time the card turns on restarts its script */
+function useReplay(playing: boolean) {
+  const reduce = useReducedMotion();
+  const [run, setRun] = useState(0);
+  useEffect(() => {
+    if (playing && !reduce) setRun((r) => r + 1);
+  }, [playing, reduce]);
+  return { run, play: run > 0 && playing && !reduce };
+}
+
+function PanelWindow({
+  index,
+  playing,
+  shadow = true,
+}: {
+  index: number;
+  playing: boolean;
+  shadow?: boolean;
+}) {
+  const { title, icon: PanelIcon, Body } = PANELS[index];
+  const { run, play } = useReplay(playing);
+  return (
+    <div
+      className={`w-full max-w-[520px] overflow-hidden border border-border bg-white ${
+        shadow ? "shadow-[0_36px_80px_-26px_rgba(18,18,18,0.45)]" : "shadow-[0_18px_40px_-24px_rgba(18,18,18,0.3)]"
+      }`}
+    >
+      {/* window chrome, same as the fold demo frames */}
+      <div className="flex items-center gap-2 border-b border-border-muted px-3 py-2">
+        <span className="flex gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="h-2 w-2 rounded-full bg-border" />
+          ))}
+        </span>
+        <span className="mx-auto flex items-center gap-1.5 border border-border-muted bg-background px-3 py-0.5 text-muted-foreground">
+          <PanelIcon size={10} />
+          <span className="mono text-[9px] uppercase tracking-[0.14em]">{title}</span>
+        </span>
+        <Sparkles size={11} className="text-muted-foreground" />
+      </div>
+      <Body key={run} play={play} />
+    </div>
+  );
+}
+
+function Copy({
+  index,
+  fixedWidth = false,
+  link = true,
+  quiet = false,
+}: {
+  index: number;
+  fixedWidth?: boolean;
+  link?: boolean;
+  quiet?: boolean;
+}) {
+  const card = pioneer.cards[index];
+  return (
+    /* in the hover variant the copy is laid out at the narrow card's width
+       in every state (37% of the row, less padding), so it never rewraps as
+       the cards trade width */
+    <div className={fixedWidth ? "md:w-[calc(37cqw-56px)]" : ""}>
+      <h3
+        className={
+          quiet
+            ? "text-[18px] leading-[1.3] tracking-tight text-foreground md:text-[19px]"
+            : "text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]"
+        }
+      >
+        {card.title}
+      </h3>
+      <p
+        className={`max-w-[520px] leading-relaxed text-muted-foreground ${
+          quiet ? "mt-2 text-[14.5px]" : "mt-2.5 text-[15px]"
+        }`}
+      >
+        {card.body}
+      </p>
+      {link && (
+        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
+          Learn more
+          <ArrowRight
+            size={15}
+            className="transition-transform duration-300 group-hover/btn:translate-x-1"
+          />
+        </button>
+      )}
+    </div>
+  );
+}
+
+function Painting({ index, zoom = false }: { index: number; zoom?: boolean }) {
+  return (
+    <motion.img
+      src={SCENES[index]}
+      alt=""
+      animate={{ scale: zoom ? 1.04 : 1 }}
+      transition={{ duration: 0.8, ease: EASE }}
+      className="absolute inset-0 h-full w-full object-cover"
+      loading="lazy"
+    />
+  );
+}
+
+/* --- hover: text first, the hovered card widens and replays ------------- */
+
+function HoverCard({
   index,
   active,
   canHover,
@@ -188,27 +299,17 @@ function Card({
   canHover: boolean;
   onActivate: (i: number) => void;
 }) {
-  const card = pioneer.cards[index];
-  const { title, icon: PanelIcon, Body } = PANELS[index];
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.55 });
   const reduce = useReducedMotion();
-
   const isActive = active === index;
   const dimmed = canHover && active !== null && !isActive;
-  const playing = canHover ? isActive : inView;
-  /* a fresh key each time the card turns on restarts its script */
-  const [run, setRun] = useState(0);
-  useEffect(() => {
-    if (playing && !reduce) setRun((r) => r + 1);
-  }, [playing, reduce]);
-
   const grow = !canHover || reduce || active === null ? 1 : isActive ? 1.7 : 1;
 
   return (
     <motion.div
       ref={ref}
-      data-cursor={card.cta}
+      data-cursor={pioneer.cards[index].cta}
       tabIndex={0}
       onMouseEnter={() => onActivate(index)}
       onFocus={() => onActivate(index)}
@@ -216,108 +317,198 @@ function Card({
       animate={{ flexGrow: grow, opacity: dimmed ? 0.5 : 1 }}
       transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
       style={{ flexGrow: 1 }}
-      className="flex min-w-0 basis-auto flex-col md:basis-0 overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
+      className="flex min-w-0 basis-auto flex-col overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:basis-0"
     >
-      {/* the copy is laid out at the narrow card's width in every state
-          (37% of the row, less padding), so it never rewraps as the cards
-          trade width and the card keeps its natural height */}
       <div className="flex-1 p-6 md:p-7">
-        <div className="md:w-[calc(37cqw-56px)]">
-        <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
-          {card.title}
-        </h3>
-        <p className="mt-2.5 max-w-[520px] text-[15px] leading-relaxed text-muted-foreground">
-          {card.body}
-        </p>
-        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
-          Learn more
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover/btn:translate-x-1"
-          />
-        </button>
-        </div>
+        <Copy index={index} fixedWidth />
       </div>
       <div className="relative h-[340px] flex-none overflow-hidden md:h-[380px]">
-        <motion.img
-          src={SCENES[index]}
-          alt=""
-          animate={{ scale: isActive && canHover ? 1.04 : 1 }}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="absolute inset-0 h-full w-full object-cover"
-          loading="lazy"
-        />
+        <Painting index={index} zoom={isActive && canHover} />
         <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">
-          <div className="w-full max-w-[520px] overflow-hidden border border-border bg-white shadow-[0_36px_80px_-26px_rgba(18,18,18,0.45)]">
-            {/* window chrome, same as the fold demo frames */}
-            <div className="flex items-center gap-2 border-b border-border-muted px-3 py-2">
-              <span className="flex gap-1.5">
-                {[0, 1, 2].map((i) => (
-                  <span key={i} className="h-2 w-2 rounded-full bg-border" />
-                ))}
-              </span>
-              <span className="mx-auto flex items-center gap-1.5 border border-border-muted bg-background px-3 py-0.5 text-muted-foreground">
-                <PanelIcon size={10} />
-                <span className="mono text-[9px] uppercase tracking-[0.14em]">{title}</span>
-              </span>
-              <Sparkles size={11} className="text-muted-foreground" />
-            </div>
-            <Body key={run} play={run > 0 && playing && !reduce} />
-          </div>
+          <PanelWindow index={index} playing={canHover ? isActive : inView} />
         </div>
       </div>
-
     </motion.div>
   );
 }
 
-export default function Bento() {
+function HoverRow() {
   const canHover = useCanHover();
   const [active, setActive] = useState<number | null>(null);
+  return (
+    <div
+      className="-mx-8 flex flex-col gap-6 [container-type:inline-size] md:flex-row"
+      onMouseLeave={() => setActive(null)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setActive(null);
+      }}
+    >
+      {[0, 1].map((i) => (
+        <HoverCard key={i} index={i} active={active} canHover={canHover} onActivate={setActive} />
+      ))}
+    </div>
+  );
+}
 
+/* --- static cards: play once each scrolls into view --------------------- */
+
+function InViewCard({
+  index,
+  render,
+  className,
+}: {
+  index: number;
+  render: (playing: boolean) => ReactNode;
+  className: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.55 });
+  return (
+    <div ref={ref} data-cursor={pioneer.cards[index].cta} className={className}>
+      {render(inView)}
+    </div>
+  );
+}
+
+/* image on top: painting stage first, copy on white beneath */
+function ImageTopRow() {
+  return (
+    <div className="-mx-8 grid gap-6 md:grid-cols-2">
+      {[0, 1].map((i) => (
+        <InViewCard
+          key={i}
+          index={i}
+          className="flex flex-col overflow-hidden border border-border-muted bg-surface"
+          render={(playing) => (
+            <>
+              <div className="relative h-[340px] overflow-hidden md:h-[380px]">
+                <Painting index={i} />
+                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">
+                  <PanelWindow index={i} playing={playing} />
+                </div>
+              </div>
+              <div className="flex-1 p-6 md:p-7">
+                <Copy index={i} />
+              </div>
+            </>
+          )}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* white: no paintings at all, the windows sit on the card's own ground */
+function WhiteRow() {
+  return (
+    <div className="-mx-8 grid gap-6 md:grid-cols-2">
+      {[0, 1].map((i) => (
+        <InViewCard
+          key={i}
+          index={i}
+          className="flex flex-col border border-border-muted bg-surface"
+          render={(playing) => (
+            <>
+              <div className="flex h-[340px] items-center justify-center px-6 md:h-[380px] md:px-10">
+                <PanelWindow index={i} playing={playing} shadow={false} />
+              </div>
+              <div className="flex-1 border-t border-border-muted p-6 md:p-7">
+                <Copy index={i} />
+              </div>
+            </>
+          )}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* soft: the ElevenLabs reference — rounded tinted cards without borders,
+   one window floating centred, the other running off the card's edge, and
+   a small quiet caption with no link */
+function SoftRow() {
+  return (
+    <div className="-mx-8 grid gap-4 md:grid-cols-2">
+      <InViewCard
+        index={0}
+        className="flex flex-col overflow-hidden rounded-[20px] bg-[#EFEDE7]"
+        render={(playing) => (
+          <>
+            <div className="flex h-[340px] items-center justify-center px-8 md:h-[400px] md:px-14">
+              <PanelWindow index={0} playing={playing} shadow={false} />
+            </div>
+            <div className="px-8 pb-9 pt-2">
+              <Copy index={0} link={false} quiet />
+            </div>
+          </>
+        )}
+      />
+      <InViewCard
+        index={1}
+        className="flex flex-col overflow-hidden rounded-[20px] bg-[#EFEDE7]"
+        render={(playing) => (
+          <>
+            {/* this window is anchored top-left and bleeds off the top and
+                right edges, like the Studio card in the reference */}
+            <div className="relative h-[340px] overflow-hidden md:h-[400px]">
+              <div className="absolute left-8 top-0 w-[115%] max-w-none md:left-10">
+                <div className="[&>div]:max-w-none">
+                  <PanelWindow index={1} playing={playing} shadow={false} />
+                </div>
+              </div>
+            </div>
+            <div className="px-8 pb-9 pt-2 md:px-10">
+              <Copy index={1} link={false} quiet />
+            </div>
+          </>
+        )}
+      />
+    </div>
+  );
+}
+
+export function PioneerRow({ variant }: { variant: PioneerVariant }) {
+  if (variant === "imageTop") return <ImageTopRow />;
+  if (variant === "white") return <WhiteRow />;
+  if (variant === "soft") return <SoftRow />;
+  return <HoverRow />;
+}
+
+export function PioneerHeading() {
+  return (
+    <>
+      <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
+        <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <span className="block text-muted-foreground">Pioneer of</span>
+          <span className="block">AI Agentic Testing Cloud</span>
+        </h2>
+        <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
+          Autonomous agents that plan and author your tests, running on an
+          execution cloud built for any type of test at any scale.
+        </p>
+      </div>
+      <button
+        data-cursor="Start free"
+        className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+      >
+        Start free with Google
+        <ArrowRight
+          size={15}
+          className="transition-transform duration-300 group-hover:translate-x-1"
+        />
+      </button>
+    </>
+  );
+}
+
+export default function Bento({ variant = "hover" }: { variant?: PioneerVariant }) {
   return (
     <Section>
       <Reveal className="mb-12">
-        <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
-            <span className="block text-muted-foreground">Pioneer of</span>
-            <span className="block">AI Agentic Testing Cloud</span>
-          </h2>
-          <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
-            Autonomous agents that plan and author your tests, running on an
-            execution cloud built for any type of test at any scale.
-          </p>
-        </div>
-        <button
-          data-cursor="Start free"
-          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
-        >
-          Start free with Google
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
-        </button>
+        <PioneerHeading />
       </Reveal>
-
       <Reveal delay={0.08}>
-        <div
-          className="-mx-8 flex flex-col gap-6 [container-type:inline-size] md:flex-row"
-          onMouseLeave={() => setActive(null)}
-          onBlur={(e) => {
-            if (!e.currentTarget.contains(e.relatedTarget as Node)) setActive(null);
-          }}
-        >
-          {[0, 1].map((i) => (
-            <Card
-              key={i}
-              index={i}
-              active={active}
-              canHover={canHover}
-              onActivate={setActive}
-            />
-          ))}
-        </div>
+        <PioneerRow variant={variant} />
       </Reveal>
     </Section>
   );
