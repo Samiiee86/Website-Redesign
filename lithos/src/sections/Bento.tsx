@@ -380,7 +380,7 @@ function JoinedRow() {
           key={i}
           index={i}
           className={`flex flex-col ${
-            i === 0 ? "border-border-muted max-md:border-b md:border-r" : ""
+            i === 0 ? "border-border max-md:border-b md:border-r" : ""
           }`}
           render={(playing) => (
             <>
