@@ -250,9 +250,11 @@ function Card({
         </div>
       </div>
 
-      {/* fixed height: the copy rewraps as the card widens or narrows, and
-          the card must not grow while it does */}
-      <div className="flex-1 p-6 md:h-[304px] md:flex-none md:p-7 xl:h-[284px]">
+      {/* the copy is laid out at the narrow card's width in every state
+          (37% of the row, less padding), so it never rewraps as the cards
+          trade width and the card keeps its natural height */}
+      <div className="flex-1 p-6 md:p-7">
+        <div className="md:w-[calc(37cqw-56px)]">
         <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
           {card.title}
         </h3>
@@ -266,6 +268,7 @@ function Card({
             className="transition-transform duration-300 group-hover/btn:translate-x-1"
           />
         </button>
+        </div>
       </div>
     </motion.div>
   );
@@ -302,7 +305,7 @@ export default function Bento() {
 
       <Reveal delay={0.08}>
         <div
-          className="-mx-8 flex flex-col gap-6 md:flex-row"
+          className="-mx-8 flex flex-col gap-6 [container-type:inline-size] md:flex-row"
           onMouseLeave={() => setActive(null)}
           onBlur={(e) => {
             if (!e.currentTarget.contains(e.relatedTarget as Node)) setActive(null);
