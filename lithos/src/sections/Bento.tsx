@@ -180,7 +180,7 @@ function useCanHover() {
 
 /* --- shared pieces ------------------------------------------------------ */
 
-export type PioneerVariant = "hover" | "imageTop" | "white" | "soft";
+export type PioneerVariant = "hover" | "joined" | "spaced" | "handoff" | "tabs";
 
 /* a fresh key each time the card turns on restarts its script */
 function useReplay(playing: boolean) {
@@ -370,10 +370,38 @@ function InViewCard({
   );
 }
 
-/* image on top: painting stage first, copy on white beneath */
-function ImageTopRow() {
+/* 1 · joined: one bordered surface split down the middle, no paintings */
+function JoinedRow() {
   return (
-    <div className="-mx-8 grid gap-6 md:grid-cols-2">
+    <div className="-mx-8 grid border border-border-muted bg-surface md:grid-cols-2">
+      {[0, 1].map((i) => (
+        <InViewCard
+          key={i}
+          index={i}
+          className={`flex flex-col ${
+            i === 0 ? "border-border-muted max-md:border-b md:border-r" : ""
+          }`}
+          render={(playing) => (
+            <>
+              <div className="flex h-[340px] items-center justify-center px-6 md:h-[380px] md:px-12">
+                <PanelWindow index={i} playing={playing} shadow={false} />
+              </div>
+              <div className="flex-1 p-6 md:p-8">
+                <Copy index={i} />
+              </div>
+            </>
+          )}
+        />
+      ))}
+    </div>
+  );
+}
+
+/* 2 · spaced: two separate cards with air between them, the pair inset
+   from the page guides on both sides */
+function SpacedRow() {
+  return (
+    <div className="grid gap-8 md:grid-cols-2 lg:gap-10">
       {[0, 1].map((i) => (
         <InViewCard
           key={i}
@@ -381,9 +409,9 @@ function ImageTopRow() {
           className="flex flex-col overflow-hidden border border-border-muted bg-surface"
           render={(playing) => (
             <>
-              <div className="relative h-[340px] overflow-hidden md:h-[380px]">
+              <div className="relative h-[320px] overflow-hidden md:h-[360px]">
                 <Painting index={i} />
-                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">
+                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-9">
                   <PanelWindow index={i} playing={playing} />
                 </div>
               </div>
@@ -398,79 +426,174 @@ function ImageTopRow() {
   );
 }
 
-/* white: no paintings at all, the windows sit on the card's own ground */
-function WhiteRow() {
+/* 3 · handoff: one panoramic painting carries both windows. Kane writes the
+   test, a pulse travels the line into the cloud, and the cloud runs it —
+   the section's own sentence, acted out. */
+function HandoffRow() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.5 });
+  const reduce = useReducedMotion();
+  const [phase, setPhase] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    if (reduce) {
+      setPhase(2);
+      return;
+    }
+    setPhase(0);
+    const a = setTimeout(() => setPhase(1), 3300);
+    const b = setTimeout(() => setPhase(2), 4300);
+    return () => {
+      clearTimeout(a);
+      clearTimeout(b);
+    };
+  }, [inView, reduce]);
+
   return (
-    <div className="-mx-8 grid gap-6 md:grid-cols-2">
-      {[0, 1].map((i) => (
-        <InViewCard
-          key={i}
-          index={i}
-          className="flex flex-col border border-border-muted bg-surface"
-          render={(playing) => (
-            <>
-              <div className="flex h-[340px] items-center justify-center px-6 md:h-[380px] md:px-10">
-                <PanelWindow index={i} playing={playing} shadow={false} />
-              </div>
-              <div className="flex-1 border-t border-border-muted p-6 md:p-7">
-                <Copy index={i} />
-              </div>
-            </>
-          )}
+    <div ref={ref} className="-mx-8 overflow-hidden border border-border-muted bg-surface">
+      <div className="relative overflow-hidden md:h-[460px]">
+        <img
+          src={scenery.alplake}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
         />
-      ))}
+        <div className="relative grid items-center gap-6 p-6 md:h-full md:grid-cols-[1fr_96px_1fr] md:gap-0 md:px-12">
+          <PanelWindow index={0} playing={inView} />
+
+          {/* the handoff line: dashed track, a pulse runs it once */}
+          <div className="relative hidden h-full items-center md:flex">
+            <div className="w-full border-t-2 border-dashed border-white/80" />
+            <motion.span
+              initial={false}
+              animate={
+                phase >= 1
+                  ? { left: "100%", opacity: phase === 1 ? 1 : 0 }
+                  : { left: "0%", opacity: 0 }
+              }
+              transition={{ duration: phase === 1 ? 0.9 : 0.3, ease: EASE }}
+              className="absolute -ml-[5px] h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.35)]"
+            />
+            <motion.span
+              initial={false}
+              animate={{ opacity: phase >= 1 ? 1 : 0, y: phase >= 1 ? 0 : 4 }}
+              transition={{ duration: 0.4 }}
+              className="mono absolute left-1/2 top-[calc(50%+14px)] -translate-x-1/2 whitespace-nowrap bg-foreground px-2 py-0.5 text-[9px] uppercase tracking-[0.14em] text-white"
+            >
+              run on cloud
+            </motion.span>
+          </div>
+
+          <PanelWindow index={1} playing={phase >= 2} />
+        </div>
+      </div>
+      <div className="grid md:grid-cols-2">
+        <div className="border-border-muted p-6 max-md:border-b md:border-r md:p-8">
+          <Copy index={0} />
+        </div>
+        <div className="p-6 md:p-8">
+          <Copy index={1} />
+        </div>
+      </div>
     </div>
   );
 }
 
-/* soft: the ElevenLabs reference — rounded tinted cards without borders,
-   one window floating centred, the other running off the card's edge, and
-   a small quiet caption with no link */
-function SoftRow() {
+/* 4 · tabs: the products as a list with progress bars that fill and
+   advance on their own; one big stage swaps windows. Hover pauses it,
+   clicking jumps straight to a product. */
+const TAB_MS = 7000;
+
+function TabsRow() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.4 });
+  const reduce = useReducedMotion();
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const running = inView && !paused && !reduce;
+
+  /* a ticking clock rather than one long timeout, so hover pauses the bar
+     exactly where it is and leaving resumes from the same spot */
+  useEffect(() => {
+    if (!running) return;
+    const t = setInterval(() => setProgress((p) => p + 100 / TAB_MS), 100);
+    return () => clearInterval(t);
+  }, [running]);
+  useEffect(() => {
+    if (progress >= 1) {
+      setActive((a) => (a + 1) % 2);
+      setProgress(0);
+    }
+  }, [progress]);
+
+  const pick = (i: number) => {
+    setActive(i);
+    setProgress(0);
+  };
+
   return (
-    <div className="-mx-8 grid gap-4 md:grid-cols-2">
-      <InViewCard
-        index={0}
-        className="flex flex-col overflow-hidden rounded-[20px] bg-[#EFEDE7]"
-        render={(playing) => (
-          <>
-            <div className="flex h-[340px] items-center justify-center px-8 md:h-[400px] md:px-14">
-              <PanelWindow index={0} playing={playing} shadow={false} />
-            </div>
-            <div className="px-8 pb-9 pt-2">
-              <Copy index={0} link={false} quiet />
-            </div>
-          </>
-        )}
-      />
-      <InViewCard
-        index={1}
-        className="flex flex-col overflow-hidden rounded-[20px] bg-[#EFEDE7]"
-        render={(playing) => (
-          <>
-            {/* this window is anchored top-left and bleeds off the top and
-                right edges, like the Studio card in the reference */}
-            <div className="relative h-[340px] overflow-hidden md:h-[400px]">
-              <div className="absolute left-8 top-0 w-[115%] max-w-none md:left-10">
-                <div className="[&>div]:max-w-none">
-                  <PanelWindow index={1} playing={playing} shadow={false} />
-                </div>
+    <div
+      ref={ref}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      className="-mx-8 grid overflow-hidden border border-border-muted bg-surface lg:grid-cols-[0.85fr_1.3fr]"
+    >
+      <div className="flex flex-col border-border-muted max-lg:border-b lg:border-r">
+        {[0, 1].map((i) => {
+          const on = active === i;
+          return (
+            <button
+              key={i}
+              onClick={() => pick(i)}
+              aria-pressed={on}
+              className={`relative flex-1 border-border-muted p-6 text-left transition-colors md:p-8 ${
+                i === 0 ? "border-b" : ""
+              } ${on ? "bg-surface" : "bg-background/60 hover:bg-background"}`}
+            >
+              {/* progress track */}
+              <span className="absolute inset-x-0 top-0 h-[2px] bg-border-muted">
+                {on && (
+                  <span
+                    className="block h-full bg-foreground transition-[width] duration-100 ease-linear"
+                    style={{ width: reduce ? "100%" : `${Math.min(progress, 1) * 100}%` }}
+                  />
+                )}
+              </span>
+              <div className={on ? "" : "opacity-55"}>
+                <Copy index={i} link={on} />
               </div>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="relative h-[380px] overflow-hidden md:h-[480px]">
+        {[0, 1].map((i) => (
+          <motion.div
+            key={i}
+            initial={false}
+            animate={{ opacity: active === i ? 1 : 0 }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="absolute inset-0"
+            style={{ pointerEvents: active === i ? "auto" : "none" }}
+          >
+            <Painting index={i} zoom={active === i} />
+            <div className="absolute inset-0 flex items-center justify-center p-6 md:p-12">
+              <PanelWindow index={i} playing={inView && active === i} />
             </div>
-            <div className="px-8 pb-9 pt-2 md:px-10">
-              <Copy index={1} link={false} quiet />
-            </div>
-          </>
-        )}
-      />
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
 
 export function PioneerRow({ variant }: { variant: PioneerVariant }) {
-  if (variant === "imageTop") return <ImageTopRow />;
-  if (variant === "white") return <WhiteRow />;
-  if (variant === "soft") return <SoftRow />;
+  if (variant === "joined") return <JoinedRow />;
+  if (variant === "spaced") return <SpacedRow />;
+  if (variant === "handoff") return <HandoffRow />;
+  if (variant === "tabs") return <TabsRow />;
   return <HoverRow />;
 }
 

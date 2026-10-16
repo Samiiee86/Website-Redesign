@@ -7,24 +7,24 @@ import Bento, { type PioneerVariant } from "./sections/Bento";
 
 const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
   {
-    variant: "imageTop",
-    name: "Image on top",
-    note: "Painting and demo first, copy on white below. Each demo plays as the card scrolls into view.",
+    variant: "joined",
+    name: "One joined card, white",
+    note: "Both products share one bordered surface with a divider down the middle. No paintings, no gaps.",
   },
   {
-    variant: "hover",
-    name: "Hover expand",
-    note: "Copy first, painting below. Hovering a card widens it, fades the other and replays its demo. This is what variation-4 shows today.",
+    variant: "spaced",
+    name: "Two spaced cards",
+    note: "Separate cards with air between them, and the pair stepped in from the page lines on both sides.",
   },
   {
-    variant: "white",
-    name: "White background",
-    note: "No paintings. The product windows sit on the white card itself, so the two cards can never merge.",
+    variant: "handoff",
+    name: "Handoff (new idea)",
+    note: "One panoramic scene. Kane AI writes the test, a pulse carries it across, and the cloud runs it: the section's own sentence, acted out.",
   },
   {
-    variant: "soft",
-    name: "Soft cards (ElevenLabs style)",
-    note: "Rounded tinted cards with no borders. One window floats centred, the other runs off the card's edge, with a quiet caption and no link.",
+    variant: "tabs",
+    name: "Auto-advancing tabs (new idea)",
+    note: "Products as a list with progress bars that fill and move on by themselves; one big stage swaps windows. Hover pauses, click jumps.",
   },
 ];
 
