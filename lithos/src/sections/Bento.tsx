@@ -180,7 +180,7 @@ function useCanHover() {
 
 /* --- shared pieces ------------------------------------------------------ */
 
-export type PioneerVariant = "hover" | "joined" | "spaced" | "framed" | "breakout" | "inset";
+export type PioneerVariant = "hover" | "joined" | "spaced" | "breakout" | "inset";
 
 /* a fresh key each time the card turns on restarts its script */
 function useReplay(playing: boolean) {
@@ -427,68 +427,9 @@ function SpacedRow() {
   );
 }
 
-/* 3 · framed: the design from two days back, exactly — one joined box,
-   paintings inset on white, the original product screenshots in the
-   windows */
-const SHOTS = ["/img/panel-kane.png", "/img/panel-cloud.png"];
-
-function ShotWindow({ index }: { index: number }) {
-  const { title, icon: PanelIcon } = PANELS[index];
-  return (
-    <div className="w-full max-w-[520px] overflow-hidden border border-border bg-white shadow-[0_36px_80px_-26px_rgba(18,18,18,0.45)]">
-      <div className="flex items-center gap-2 border-b border-border-muted px-3 py-2">
-        <span className="flex gap-1.5">
-          {[0, 1, 2].map((i) => (
-            <span key={i} className="h-2 w-2 rounded-full bg-border" />
-          ))}
-        </span>
-        <span className="mx-auto flex items-center gap-1.5 border border-border-muted bg-background px-3 py-0.5 text-muted-foreground">
-          <PanelIcon size={10} />
-          <span className="mono text-[9px] uppercase tracking-[0.14em]">{title}</span>
-        </span>
-        <Sparkles size={11} className="text-muted-foreground" />
-      </div>
-      <img
-        src={SHOTS[index]}
-        alt=""
-        className="h-[300px] w-full bg-white object-contain p-3"
-        loading="lazy"
-      />
-    </div>
-  );
-}
-
-function FramedRow() {
-  return (
-    <div className="-mx-8 grid border border-border-muted bg-surface md:grid-cols-2">
-      {[0, 1].map((i) => (
-        <div
-          key={i}
-          data-cursor={pioneer.cards[i].cta}
-          className={`flex flex-col ${
-            i === 0 ? "border-border-muted max-md:border-b md:border-r" : ""
-          }`}
-        >
-          <div className="px-6 pt-6 md:px-7 md:pt-7">
-            <div className="relative h-[340px] overflow-hidden md:h-[420px]">
-              <Painting index={i} />
-              <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">
-                <ShotWindow index={i} />
-              </div>
-            </div>
-          </div>
-          <div className="flex-1 p-6 md:p-7">
-            <Copy index={i} />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/* 4 · break-out: the painting is a band across the top of the card and the
-   window overlaps it, half on the scene and half on white. On hover the
-   card widens, its window lifts and replays, and the other card fades. */
+/* 4 · painting + hover: the painting fills the stage behind the window,
+   copy on white below. On hover the card widens, its window lifts and
+   replays, and the other card fades. */
 function BreakoutCard({
   index,
   active,
@@ -521,17 +462,18 @@ function BreakoutCard({
       style={{ flexGrow: 1 }}
       className="relative flex min-w-0 basis-auto flex-col overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:basis-0"
     >
-      <div className="absolute inset-x-0 top-0 h-[190px] overflow-hidden md:h-[210px]">
+      {/* the painting fills the whole stage behind the window */}
+      <div className="relative h-[340px] flex-none overflow-hidden md:h-[400px]">
         <Painting index={index} zoom={lit} />
+        <motion.div
+          initial={false}
+          animate={{ y: lit && !reduce ? -8 : 0 }}
+          transition={{ duration: 0.45, ease: EASE }}
+          className="absolute inset-0 flex items-center justify-center p-6 md:p-10"
+        >
+          <PanelWindow index={index} playing={canHover ? isActive : inView} />
+        </motion.div>
       </div>
-      <motion.div
-        initial={false}
-        animate={{ y: lit && !reduce ? -8 : 0 }}
-        transition={{ duration: 0.45, ease: EASE }}
-        className="relative flex justify-center px-6 pt-10 md:px-10 md:pt-12"
-      >
-        <PanelWindow index={index} playing={canHover ? isActive : inView} />
-      </motion.div>
       <div className="relative flex-1 p-6 md:p-8">
         <Copy index={index} fixedWidth />
       </div>
@@ -593,7 +535,6 @@ function InsetRow() {
 export function PioneerRow({ variant }: { variant: PioneerVariant }) {
   if (variant === "joined") return <JoinedRow />;
   if (variant === "spaced") return <SpacedRow />;
-  if (variant === "framed") return <FramedRow />;
   if (variant === "breakout") return <BreakoutRow />;
   if (variant === "inset") return <InsetRow />;
   return <HoverRow />;
