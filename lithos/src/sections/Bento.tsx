@@ -18,7 +18,10 @@ function Card({ index }: { index: number }) {
   const RightIcon = PANELS[index].right;
   return (
     <div data-cursor={card.cta} className="flex h-full flex-col">
-      <div className="relative h-[380px] overflow-hidden md:h-[450px]">
+      {/* the painting sits inset on white, its edges on the same line as the
+          copy below, so neighbouring paintings never touch */}
+      <div className="px-6 pt-6 md:px-7 md:pt-7">
+      <div className="relative h-[340px] overflow-hidden md:h-[420px]">
           <img
             src={SCENES[index]}
             alt=""
@@ -45,6 +48,8 @@ function Card({ index }: { index: number }) {
             <img src={PANELS[index].shot} alt="" className="h-[300px] w-full bg-white object-contain p-3" loading="lazy" />
           </div>
         </div>
+      </div>
+
       </div>
 
       <div className="flex-1 p-6 md:p-7">
