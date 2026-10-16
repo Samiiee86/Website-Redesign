@@ -250,7 +250,9 @@ function Card({
         </div>
       </div>
 
-      <div className="flex-1 p-6 md:p-7">
+      {/* fixed height: the copy rewraps as the card widens or narrows, and
+          the card must not grow while it does */}
+      <div className="flex-1 p-6 md:h-[304px] md:flex-none md:p-7 xl:h-[284px]">
         <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
           {card.title}
         </h3>
