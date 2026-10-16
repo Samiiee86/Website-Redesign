@@ -17,14 +17,19 @@ const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
     note: "Separate cards with air between them, and the pair stepped in from the page lines on both sides.",
   },
   {
-    variant: "handoff",
-    name: "Handoff (new idea)",
-    note: "One panoramic scene. Kane AI writes the test, a pulse carries it across, and the cloud runs it: the section's own sentence, acted out.",
+    variant: "rows",
+    name: "Wide rows",
+    note: "One full-width card per product: copy on the left, a large painting stage on the right, stacked. More room for each demo.",
   },
   {
-    variant: "tabs",
-    name: "Auto-advancing tabs (new idea)",
-    note: "Products as a list with progress bars that fill and move on by themselves; one big stage swaps windows. Hover pauses, click jumps.",
+    variant: "breakout",
+    name: "Break-out window",
+    note: "The painting is a band across the top; the window overlaps it, half on the scene and half on white. Depth, and the paintings never meet.",
+  },
+  {
+    variant: "inset",
+    name: "Nature with white frame (earlier design)",
+    note: "One joined box with a divider; each painting sits inset on a white frame that lines up with the copy below.",
   },
 ];
 
