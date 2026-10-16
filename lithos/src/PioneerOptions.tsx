@@ -7,6 +7,11 @@ import Bento, { type PioneerVariant } from "./sections/Bento";
 
 const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
   {
+    variant: "inset",
+    name: "Nature with white frame, animated",
+    note: "One joined box with a divider; each painting sits inset on a white frame that lines up with the copy below.",
+  },
+  {
     variant: "joined",
     name: "One joined card, white",
     note: "Both products share one bordered surface with a divider down the middle. No paintings: the windows sit on a darker beige ground.",
@@ -20,11 +25,6 @@ const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
     variant: "breakout",
     name: "Full painting + hover",
     note: "The painting fills the whole stage behind the window, copy on white below. Hovering a card widens it, lifts its window, replays the demo and fades the other card.",
-  },
-  {
-    variant: "inset",
-    name: "Nature with white frame, animated",
-    note: "One joined box with a divider; each painting sits inset on a white frame that lines up with the copy below.",
   },
 ];
 
