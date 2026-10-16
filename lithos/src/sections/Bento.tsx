@@ -46,7 +46,7 @@ const STEPS = [
 
 function KaneSteps({ play }: { play: boolean }) {
   return (
-    <div className="flex h-[300px] flex-col items-center justify-center bg-white px-5">
+    <div className="flex h-[250px] flex-col items-center justify-center bg-white px-5">
       <div className="flex w-full flex-col items-center">
         {STEPS.map(({ icon: Icon, text, tone, w }, i) => (
           <motion.div
@@ -120,7 +120,7 @@ function Spark({ play, at }: { play: boolean; at: number }) {
 
 function CloudTiles({ play }: { play: boolean }) {
   return (
-    <div className="grid h-[300px] grid-cols-2 content-center gap-2.5 bg-white px-5">
+    <div className="grid h-[250px] grid-cols-2 content-center gap-2 bg-white px-5">
       {TILES.map((t, i) => {
         const Icon = t.icon;
         const at = 0.12 + i * 0.16;
@@ -128,7 +128,7 @@ function CloudTiles({ play }: { play: boolean }) {
           <motion.div
             key={t.name}
             {...rise(play, at)}
-            className="flex flex-col gap-2.5 border border-border-muted bg-white px-3 py-2.5"
+            className="flex flex-col gap-2 border border-border-muted bg-white px-3 py-2"
           >
             <div className="flex items-center gap-2">
               <span className="flex h-5 w-5 items-center justify-center rounded-[5px] border border-border-muted bg-background">
@@ -136,10 +136,7 @@ function CloudTiles({ play }: { play: boolean }) {
               </span>
               <span className="truncate text-[10.5px] font-medium text-foreground">{t.name}</span>
             </div>
-            <div className="flex flex-col gap-1">
-              <span className="h-1 w-[85%] rounded-full bg-border-muted" />
-              <span className="h-1 w-[55%] rounded-full bg-border-muted" />
-            </div>
+            <span className="h-1 w-[80%] rounded-full bg-border-muted" />
             <div className="flex items-center justify-between">
               {t.foot === "run" ? (
                 <span className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[9px] text-[#1A7F37]">
@@ -221,7 +218,27 @@ function Card({
       style={{ flexGrow: 1 }}
       className="flex min-w-0 basis-auto flex-col md:basis-0 overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30"
     >
-      <div className="relative h-[340px] overflow-hidden md:h-[420px]">
+      {/* the copy is laid out at the narrow card's width in every state
+          (37% of the row, less padding), so it never rewraps as the cards
+          trade width and the card keeps its natural height */}
+      <div className="flex-1 p-6 md:p-7">
+        <div className="md:w-[calc(37cqw-56px)]">
+        <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
+          {card.title}
+        </h3>
+        <p className="mt-2.5 max-w-[520px] text-[15px] leading-relaxed text-muted-foreground">
+          {card.body}
+        </p>
+        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
+          Learn more
+          <ArrowRight
+            size={15}
+            className="transition-transform duration-300 group-hover/btn:translate-x-1"
+          />
+        </button>
+        </div>
+      </div>
+      <div className="relative h-[340px] flex-none overflow-hidden md:h-[380px]">
         <motion.img
           src={SCENES[index]}
           alt=""
@@ -250,26 +267,6 @@ function Card({
         </div>
       </div>
 
-      {/* the copy is laid out at the narrow card's width in every state
-          (37% of the row, less padding), so it never rewraps as the cards
-          trade width and the card keeps its natural height */}
-      <div className="flex-1 p-6 md:p-7">
-        <div className="md:w-[calc(37cqw-56px)]">
-        <h3 className="text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]">
-          {card.title}
-        </h3>
-        <p className="mt-2.5 max-w-[520px] text-[15px] leading-relaxed text-muted-foreground">
-          {card.body}
-        </p>
-        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
-          Learn more
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover/btn:translate-x-1"
-          />
-        </button>
-        </div>
-      </div>
     </motion.div>
   );
 }
