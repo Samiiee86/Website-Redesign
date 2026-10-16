@@ -9,7 +9,7 @@ const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
   {
     variant: "joined",
     name: "One joined card, white",
-    note: "Both products share one bordered surface with a divider down the middle. No paintings, no gaps.",
+    note: "Both products share one bordered surface with a divider down the middle. No paintings: the windows sit on a darker beige ground.",
   },
   {
     variant: "spaced",

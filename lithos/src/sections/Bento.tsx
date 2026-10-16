@@ -370,7 +370,8 @@ function InViewCard({
   );
 }
 
-/* 1 · joined: one bordered surface split down the middle, no paintings */
+/* 1 · joined: one bordered surface split down the middle, no paintings;
+   the windows sit on a darker beige ground */
 function JoinedRow() {
   return (
     <div className="-mx-8 grid border border-border-muted bg-surface md:grid-cols-2">
@@ -383,7 +384,7 @@ function JoinedRow() {
           }`}
           render={(playing) => (
             <>
-              <div className="flex h-[340px] items-center justify-center px-6 md:h-[380px] md:px-12">
+              <div className="flex h-[340px] items-center justify-center bg-[#E9E5DB] px-6 md:h-[380px] md:px-12">
                 <PanelWindow index={i} playing={playing} shadow={false} />
               </div>
               <div className="flex-1 p-6 md:p-8">
