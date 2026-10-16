@@ -17,19 +17,19 @@ const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
     note: "Separate cards with air between them, and the pair stepped in from the page lines on both sides.",
   },
   {
-    variant: "rows",
-    name: "Wide rows",
-    note: "One full-width card per product: copy on the left, a large painting stage on the right, stacked. More room for each demo.",
+    variant: "framed",
+    name: "Nature with white frame (your screenshot)",
+    note: "Exactly the version from two days back: one joined box, paintings inset on a white frame, and your original product screenshots in the windows.",
   },
   {
     variant: "breakout",
-    name: "Break-out window",
-    note: "The painting is a band across the top; the window overlaps it, half on the scene and half on white. Depth, and the paintings never meet.",
+    name: "Break-out window + hover",
+    note: "Painting band on top, window overlapping onto white. Hovering a card widens it, lifts its window, replays the demo and fades the other card.",
   },
   {
     variant: "inset",
-    name: "Nature with white frame (earlier design)",
-    note: "One joined box with a divider; each painting sits inset on a white frame that lines up with the copy below.",
+    name: "Nature with white frame, animated",
+    note: "Same structure as option 3, but the windows are the live animated demos instead of the static screenshots.",
   },
 ];
 

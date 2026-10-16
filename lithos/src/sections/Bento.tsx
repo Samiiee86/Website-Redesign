@@ -180,7 +180,7 @@ function useCanHover() {
 
 /* --- shared pieces ------------------------------------------------------ */
 
-export type PioneerVariant = "hover" | "joined" | "spaced" | "rows" | "breakout" | "inset";
+export type PioneerVariant = "hover" | "joined" | "spaced" | "framed" | "breakout" | "inset";
 
 /* a fresh key each time the card turns on restarts its script */
 function useReplay(playing: boolean) {
@@ -426,59 +426,131 @@ function SpacedRow() {
   );
 }
 
-/* 3 · wide rows: one full-width card per product, copy left and a large
-   painting stage right, stacked */
-function RowsRow() {
+/* 3 · framed: the design from two days back, exactly — one joined box,
+   paintings inset on white, the original product screenshots in the
+   windows */
+const SHOTS = ["/img/panel-kane.png", "/img/panel-cloud.png"];
+
+function ShotWindow({ index }: { index: number }) {
+  const { title, icon: PanelIcon } = PANELS[index];
   return (
-    <div className="-mx-8 flex flex-col gap-6">
+    <div className="w-full max-w-[520px] overflow-hidden border border-border bg-white shadow-[0_36px_80px_-26px_rgba(18,18,18,0.45)]">
+      <div className="flex items-center gap-2 border-b border-border-muted px-3 py-2">
+        <span className="flex gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="h-2 w-2 rounded-full bg-border" />
+          ))}
+        </span>
+        <span className="mx-auto flex items-center gap-1.5 border border-border-muted bg-background px-3 py-0.5 text-muted-foreground">
+          <PanelIcon size={10} />
+          <span className="mono text-[9px] uppercase tracking-[0.14em]">{title}</span>
+        </span>
+        <Sparkles size={11} className="text-muted-foreground" />
+      </div>
+      <img
+        src={SHOTS[index]}
+        alt=""
+        className="h-[300px] w-full bg-white object-contain p-3"
+        loading="lazy"
+      />
+    </div>
+  );
+}
+
+function FramedRow() {
+  return (
+    <div className="-mx-8 grid border border-border-muted bg-surface md:grid-cols-2">
       {[0, 1].map((i) => (
-        <InViewCard
+        <div
           key={i}
-          index={i}
-          className="grid overflow-hidden border border-border-muted bg-surface lg:grid-cols-[0.8fr_1.2fr]"
-          render={(playing) => (
-            <>
-              <div className="flex flex-col justify-center p-6 md:p-10">
-                <Copy index={i} />
+          data-cursor={pioneer.cards[i].cta}
+          className={`flex flex-col ${
+            i === 0 ? "border-border-muted max-md:border-b md:border-r" : ""
+          }`}
+        >
+          <div className="px-6 pt-6 md:px-7 md:pt-7">
+            <div className="relative h-[340px] overflow-hidden md:h-[420px]">
+              <Painting index={i} />
+              <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">
+                <ShotWindow index={i} />
               </div>
-              <div className="relative h-[340px] overflow-hidden md:h-[420px]">
-                <Painting index={i} />
-                <div className="absolute inset-0 flex items-center justify-center p-6 md:p-12">
-                  <PanelWindow index={i} playing={playing} />
-                </div>
-              </div>
-            </>
-          )}
-        />
+            </div>
+          </div>
+          <div className="flex-1 p-6 md:p-7">
+            <Copy index={i} />
+          </div>
+        </div>
       ))}
     </div>
   );
 }
 
 /* 4 · break-out: the painting is a band across the top of the card and the
-   window overlaps it, half on the scene and half on white */
-function BreakoutRow() {
+   window overlaps it, half on the scene and half on white. On hover the
+   card widens, its window lifts and replays, and the other card fades. */
+function BreakoutCard({
+  index,
+  active,
+  canHover,
+  onActivate,
+}: {
+  index: number;
+  active: number | null;
+  canHover: boolean;
+  onActivate: (i: number) => void;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.55 });
+  const reduce = useReducedMotion();
+  const isActive = active === index;
+  const lit = isActive && canHover;
+  const dimmed = canHover && active !== null && !isActive;
+  const grow = !canHover || reduce || active === null ? 1 : isActive ? 1.6 : 1;
+
   return (
-    <div className="-mx-8 grid gap-6 md:grid-cols-2">
+    <motion.div
+      ref={ref}
+      data-cursor={pioneer.cards[index].cta}
+      tabIndex={0}
+      onMouseEnter={() => onActivate(index)}
+      onFocus={() => onActivate(index)}
+      initial={false}
+      animate={{ flexGrow: grow, opacity: dimmed ? 0.5 : 1 }}
+      transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
+      style={{ flexGrow: 1 }}
+      className="relative flex min-w-0 basis-auto flex-col overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:basis-0"
+    >
+      <div className="absolute inset-x-0 top-0 h-[190px] overflow-hidden md:h-[210px]">
+        <Painting index={index} zoom={lit} />
+      </div>
+      <motion.div
+        initial={false}
+        animate={{ y: lit && !reduce ? -8 : 0 }}
+        transition={{ duration: 0.45, ease: EASE }}
+        className="relative flex justify-center px-6 pt-10 md:px-10 md:pt-12"
+      >
+        <PanelWindow index={index} playing={canHover ? isActive : inView} />
+      </motion.div>
+      <div className="relative flex-1 p-6 md:p-8">
+        <Copy index={index} fixedWidth />
+      </div>
+    </motion.div>
+  );
+}
+
+function BreakoutRow() {
+  const canHover = useCanHover();
+  const [active, setActive] = useState<number | null>(null);
+  return (
+    <div
+      className="-mx-8 flex flex-col gap-6 [container-type:inline-size] md:flex-row"
+      onMouseLeave={() => setActive(null)}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setActive(null);
+      }}
+    >
       {[0, 1].map((i) => (
-        <InViewCard
-          key={i}
-          index={i}
-          className="relative flex flex-col overflow-hidden border border-border-muted bg-surface"
-          render={(playing) => (
-            <>
-              <div className="absolute inset-x-0 top-0 h-[190px] overflow-hidden md:h-[210px]">
-                <Painting index={i} />
-              </div>
-              <div className="relative flex justify-center px-6 pt-10 md:px-10 md:pt-12">
-                <PanelWindow index={i} playing={playing} />
-              </div>
-              <div className="relative flex-1 p-6 md:p-8">
-                <Copy index={i} />
-              </div>
-            </>
-          )}
-        />
+        <BreakoutCard key={i} index={i} active={active} canHover={canHover} onActivate={setActive} />
       ))}
     </div>
   );
@@ -520,7 +592,7 @@ function InsetRow() {
 export function PioneerRow({ variant }: { variant: PioneerVariant }) {
   if (variant === "joined") return <JoinedRow />;
   if (variant === "spaced") return <SpacedRow />;
-  if (variant === "rows") return <RowsRow />;
+  if (variant === "framed") return <FramedRow />;
   if (variant === "breakout") return <BreakoutRow />;
   if (variant === "inset") return <InsetRow />;
   return <HoverRow />;
