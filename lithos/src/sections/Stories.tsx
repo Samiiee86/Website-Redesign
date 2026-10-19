@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Play, Quote, X } from "lucide-react";
+import { ArrowUpRight, Play, Quote, X } from "lucide-react";
 import { storiesGrid } from "../lib/content";
 import { Reveal, Section } from "../lib/ui";
 
@@ -148,18 +148,26 @@ export default function Stories() {
               surface edges */}
           <div className="grid border-t border-border-muted lg:grid-cols-[1fr_1fr_2fr]">
             {storiesGrid.cells.map((cell) => (
-              <div
+              <a
                 key={cell.brand}
-                data-cursor="Case study"
-                className="flex flex-col justify-between gap-10 border-b border-border-muted p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-8 lg:border-b-0 lg:border-r"
+                href={cell.href}
+                data-cursor="Read case study"
+                className="group flex flex-col justify-between gap-10 border-b border-border-muted p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-8 lg:border-b-0 lg:border-r"
               >
-                <img
-                  src={cell.brand}
-                  alt=""
-                  className={`w-auto max-w-[190px] object-contain object-left ${
-                    /transavia/.test(cell.brand) ? "h-7" : "h-8"
-                  }`}
-                />
+                <div className="flex items-start justify-between gap-4">
+                  <img
+                    src={cell.brand}
+                    alt=""
+                    className={`w-auto max-w-[190px] object-contain object-left ${
+                      /transavia/.test(cell.brand) ? "h-7" : "h-8"
+                    }`}
+                  />
+                  {/* slides in on hover, like the review cards in More Reasons */}
+                  <ArrowUpRight
+                    size={18}
+                    className="translate-y-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:text-foreground group-hover:opacity-100"
+                  />
+                </div>
                 <div>
                   <p className="pixel text-[40px] leading-none tracking-tight">
                     {cell.stat}
@@ -168,9 +176,10 @@ export default function Stories() {
                     {cell.desc}
                   </p>
                 </div>
-              </div>
+              </a>
             ))}
-            <div
+            <a
+              href={wide.href}
               data-cursor="Read case study"
               className="group relative min-h-[300px] overflow-hidden"
             >
@@ -202,13 +211,13 @@ export default function Stories() {
                       {wide.desc}
                     </p>
                   </div>
-                  <button className="flex shrink-0 items-center gap-2 rounded-[6px] border border-white bg-white/10 px-4 py-2 text-[13px] font-medium uppercase text-white backdrop-blur-md transition-colors hover:bg-white/20">
+                  <span className="flex shrink-0 items-center gap-2 rounded-[6px] border border-white bg-white/10 px-4 py-2 text-[13px] font-medium uppercase text-white backdrop-blur-md transition-colors group-hover:bg-white/20">
                     {wide.action}
                     <Play size={12} className="fill-white" />
-                  </button>
+                  </span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </Reveal>

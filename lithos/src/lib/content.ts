@@ -697,17 +697,20 @@ export const storiesGrid = {
   cells: [
     {
       brand: "/img/logo-boomi.svg",
+      href: "https://www.testmuai.com/customers/boomi/",
       stat: "78%",
       desc: "Faster tests help Boomi triple coverage and unblock CI/CD",
     },
     {
       brand: "/img/logo-transavia.svg",
+      href: "https://www.testmuai.com/customers/transavia/",
       stat: "70%",
       desc: "Faster test execution, quicker releases, better CX",
     },
   ],
   wide: {
     brand: "/img/logo-bestegg.svg",
+    href: "https://www.testmuai.com/customers/best-egg/",
     stat: "4X",
     desc: "Faster test execution, 2.7 mn tests, zero bottlenecks",
     action: "Read case study",
