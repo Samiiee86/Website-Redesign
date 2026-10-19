@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowRight, Play, Quote, X } from "lucide-react";
+import { Play, Quote, X } from "lucide-react";
 import { storiesGrid } from "../lib/content";
 import { Reveal, Section } from "../lib/ui";
 
@@ -80,7 +80,8 @@ export default function Stories() {
         <div className="-mx-8 overflow-hidden border border-border-muted bg-surface">
           {/* headline case */}
           <div className="grid lg:grid-cols-[2fr_1fr]">
-            <div className="lg:border-r lg:border-border-muted">
+            {/* the video sits on a white frame; the quote shares the surface */}
+            <div className="p-6 lg:pr-0">
               <div
                 data-cursor="Play video"
                 role="button"
@@ -122,7 +123,7 @@ export default function Stories() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-between gap-8 p-8">
+            <div className="flex flex-col justify-between gap-8 p-6 md:p-8 lg:pl-6">
               <img
                 src={hero.brand}
                 alt="Dashlane"
@@ -143,27 +144,21 @@ export default function Stories() {
             </div>
           </div>
 
-          {/* supporting cases: three matching white cards */}
-          <div className="grid border-t border-border-muted lg:grid-cols-3">
-            {[
-              ...storiesGrid.cells,
-              { brand: wide.brand, stat: wide.stat, desc: wide.desc },
-            ].map((cell, i) => (
+          {/* supporting cases: two white cards, Best Egg's photo runs to the
+              surface edges */}
+          <div className="grid border-t border-border-muted lg:grid-cols-[1fr_1fr_2fr]">
+            {storiesGrid.cells.map((cell) => (
               <div
                 key={cell.brand}
-                data-cursor="Read case study"
-                className={`flex flex-col justify-between gap-10 p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-8 ${
-                  i < 2
-                    ? "border-b border-border-muted lg:border-b-0 lg:border-r"
-                    : ""
-                }`}
+                data-cursor="Case study"
+                className="flex flex-col justify-between gap-10 border-b border-border-muted p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-8 lg:border-b-0 lg:border-r"
               >
                 <img
                   src={cell.brand}
                   alt=""
                   className={`w-auto max-w-[190px] object-contain object-left ${
                     /transavia/.test(cell.brand) ? "h-7" : "h-8"
-                  } ${/bestegg/.test(cell.brand) ? "brightness-0" : ""}`}
+                  }`}
                 />
                 <div>
                   <p className="pixel text-[40px] leading-none tracking-tight">
@@ -172,16 +167,48 @@ export default function Stories() {
                   <p className="mt-3 max-w-[260px] text-[15px] leading-relaxed text-muted-foreground">
                     {cell.desc}
                   </p>
-                  <button className="group/btn mt-5 inline-flex items-center gap-1.5 border-b border-foreground pb-0.5 text-[13px] font-medium text-foreground">
-                    Read case study
-                    <ArrowRight
-                      size={13}
-                      className="transition-transform duration-300 group-hover/btn:translate-x-1"
-                    />
-                  </button>
                 </div>
               </div>
             ))}
+            <div
+              data-cursor="Read case study"
+              className="group relative min-h-[300px] overflow-hidden"
+            >
+              <img
+                src={wide.image}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(54deg, rgba(18,18,18,0.78) 32%, rgba(18,18,18,0) 72%)",
+                }}
+              />
+              <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
+                <img
+                  src={wide.brand}
+                  alt="Best Egg"
+                  className="h-9 w-auto max-w-[157px] object-contain object-left"
+                />
+                <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+                  <div>
+                    <p className="pixel text-[44px] leading-none tracking-tight text-white">
+                      {wide.stat}
+                    </p>
+                    <p className="mt-3 max-w-[260px] text-[15px] capitalize leading-snug text-white/90">
+                      {wide.desc}
+                    </p>
+                  </div>
+                  <button className="flex shrink-0 items-center gap-2 rounded-[6px] border border-white bg-white/10 px-4 py-2 text-[13px] font-medium uppercase text-white backdrop-blur-md transition-colors hover:bg-white/20">
+                    {wide.action}
+                    <Play size={12} className="fill-white" />
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Reveal>
