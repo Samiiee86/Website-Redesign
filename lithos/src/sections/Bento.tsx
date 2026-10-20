@@ -261,7 +261,7 @@ function Copy({
         {card.body}
       </p>
       {link && (
-        <button className="group/btn mt-8 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
+        <button className="group/btn mt-6 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
           Learn more
           <ArrowRight
             size={15}
