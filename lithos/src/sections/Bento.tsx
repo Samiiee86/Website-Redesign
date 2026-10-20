@@ -296,7 +296,7 @@ function HoverCard({ index }: { index: number }) {
     <div
       ref={ref}
       data-cursor={pioneer.cards[index].cta}
-      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border-muted bg-surface md:min-h-[512px]"
+      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border-muted bg-surface md:min-h-[565px]"
     >
       {/* the painting covers the whole card; a beige wash keeps the copy
           readable at the top and clears before it reaches the window */}
