@@ -36,7 +36,7 @@
   --muted-foreground: 0 0% 30%; /* #4D4D4D */
   --accent: 226 81% 48%; /* #1742DF TestMu blue */
   --accent-foreground: 0 0% 100%;
-  --border: 52.5 14.3% 89%; /* #E7E6DF */
+  --border: 51.4 9.3% 85.3%; /* #DDDCD6, between the old #D3D2CD and #E7E6DF */
   --border-muted: 45 14% 89%;
   --ring: 226 81% 48%;
   --radius: 0.5rem;
