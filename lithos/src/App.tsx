@@ -1,5 +1,4 @@
 import { MotionConfig } from "motion/react";
-import ScrollProgress from "./components/ScrollProgress";
 import GuideLines from "./components/GuideLines";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -18,7 +17,6 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative min-h-screen bg-background font-body">
-        <ScrollProgress />
         <Header />
 
         {/* The hero is content-height: no viewport lock, so tall monitors
