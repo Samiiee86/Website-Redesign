@@ -22,7 +22,7 @@ import { pioneer } from "../lib/content";
 import { scenery } from "../lib/scenery";
 import { Reveal, Section, ArrowChip } from "../lib/ui";
 
-const SCENES = [scenery.grassea, scenery.chalkcliff];
+const SCENES = [scenery.sunlitClouds, scenery.mountainLake];
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /* Both panels are drawn in code so they can replay from the start whenever
@@ -296,17 +296,18 @@ function HoverCard({ index }: { index: number }) {
     <div
       ref={ref}
       data-cursor={pioneer.cards[index].cta}
-      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border bg-surface md:min-h-[565px]"
+      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border bg-surface md:min-h-[616px]"
     >
-      {/* the painting covers the whole card; a beige wash keeps the copy
-          readable at the top and clears before it reaches the window */}
+      {/* the painting covers the whole card; per the Figma frame a near-solid
+          white wash sits under the copy, then clears on a slight diagonal in a
+          short band so the scene shows at full strength behind the window */}
       <Painting index={index} />
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(245,244,240,0.86) 0%, rgba(245,244,240,0.7) 24%, rgba(245,244,240,0.28) 42%, rgba(245,244,240,0) 58%)",
+            "linear-gradient(172deg, rgba(255,255,255,0.95) 42%, rgba(255,255,255,0) 55%)",
         }}
       />
 

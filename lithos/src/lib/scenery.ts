@@ -20,4 +20,7 @@ export const scenery = {
   dunes: "/img/dunes.webp",
   grassea: "/img/grassea.webp",
   chalkcliff: "/img/chalkcliff.webp",
+  /* Pioneer cards, from Figma (Website, node 16619:110239) */
+  sunlitClouds: "/img/sunlit-clouds.webp",
+  mountainLake: "/img/mountain-lake.webp",
 };
