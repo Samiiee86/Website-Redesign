@@ -255,13 +255,13 @@ function Copy({
       </h3>
       <p
         className={`max-w-[520px] leading-relaxed text-muted-foreground ${
-          quiet ? "mt-2 text-b3" : "mt-2.5 text-b2"
+          quiet ? "mt-3 text-b3" : "mt-4 text-b2"
         }`}
       >
         {card.body}
       </p>
       {link && (
-        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
+        <button className="group/btn mt-8 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
           Learn more
           <ArrowRight
             size={15}
