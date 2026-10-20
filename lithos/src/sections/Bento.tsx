@@ -296,7 +296,7 @@ function HoverCard({ index }: { index: number }) {
     <div
       ref={ref}
       data-cursor={pioneer.cards[index].cta}
-      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border-muted bg-surface"
+      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border-muted bg-surface md:min-h-[640px]"
     >
       {/* the painting covers the whole card; a beige wash keeps the copy
           readable at the top and clears before it reaches the window */}
@@ -327,7 +327,7 @@ function HoverCard({ index }: { index: number }) {
 
 function HoverRow() {
   return (
-    <div className="-mx-8 flex flex-col gap-6 max-md:[&>*]:border-x-0 md:flex-row md:[&>*:first-child]:border-l-0 md:[&>*:last-child]:border-r-0">
+    <div className="-mx-4 flex flex-col gap-6 md:flex-row">
       {[0, 1].map((i) => (
         <HoverCard key={i} index={i} />
       ))}
