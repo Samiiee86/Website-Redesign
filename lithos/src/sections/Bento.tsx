@@ -317,14 +317,28 @@ function HoverCard({
       animate={{ flexGrow: grow, opacity: dimmed ? 0.5 : 1 }}
       transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
       style={{ flexGrow: 1 }}
-      className="flex min-w-0 basis-auto flex-col overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:basis-0"
+      className="relative flex min-w-0 basis-auto flex-col overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:basis-0"
     >
-      <div className="flex-1 p-6 md:p-7">
+      {/* the painting covers the whole card; a beige wash keeps the copy
+          readable at the top and clears before it reaches the window */}
+      <Painting index={index} zoom={isActive && canHover} />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(245,244,240,0.86) 0%, rgba(245,244,240,0.7) 24%, rgba(245,244,240,0.28) 42%, rgba(245,244,240,0) 58%)",
+        }}
+      />
+
+      <div className="relative p-6 md:p-8">
         <Copy index={index} fixedWidth />
       </div>
-      <div className="relative h-[340px] flex-none overflow-hidden md:h-[380px]">
-        <Painting index={index} zoom={isActive && canHover} />
-        <div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">
+
+      {/* the window anchors to the bottom edge and runs off the right,
+          like a product screen sliding into the card */}
+      <div className="relative mt-auto pl-6 md:pl-10">
+        <div className="-mb-px w-[calc(100%+48px)] [&>div]:max-w-none">
           <PanelWindow index={index} playing={canHover ? isActive : inView} />
         </div>
       </div>
