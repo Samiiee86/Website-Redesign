@@ -84,8 +84,8 @@ export default function Hero() {
                 aria-label="Product demo: plan test scenarios from an objective, author them on a live browser, execute on the cloud, then analyse failures with root cause analysis"
                 className="block h-full w-full object-cover"
               >
-                <source src="/video/home-demo.webm" type="video/webm" />
-                <source src="/video/home-demo.mp4" type="video/mp4" />
+                <source src="/video/home-demo.webm?v=2" type="video/webm" />
+                <source src="/video/home-demo.mp4?v=2" type="video/mp4" />
               </video>
             </div>
           </div>
