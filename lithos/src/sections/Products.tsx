@@ -111,19 +111,19 @@ function Fold({ fold }: { fold: Fold }) {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="overflow-hidden  border border-border-muted bg-surface">
+        <div className="overflow-hidden  border border-border bg-surface">
           <div className="grid md:grid-cols-2">
             {fold.features.map((f, i) => (
               <div
                 key={f.name}
-                className={i === 0 ? "md:border-r md:border-border-muted" : ""}
+                className={i === 0 ? "md:border-r md:border-border" : ""}
               >
                 <Feature feature={f} />
               </div>
             ))}
           </div>
 
-          <div className="grid border-t border-border-muted sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
             {fold.cells.map((cell, i) => {
               const Icon = ICONS[cell.icon as keyof typeof ICONS];
               return (
@@ -131,9 +131,9 @@ function Fold({ fold }: { fold: Fold }) {
                   key={cell.name}
                   data-cursor={cell.name}
                   className={`group p-7 transition-colors duration-500 hover:bg-secondary/50 ${
-                    i < 3 ? "lg:border-r lg:border-border-muted" : ""
-                  } ${i % 2 === 0 ? "sm:border-r sm:border-border-muted" : ""} ${
-                    i < 2 ? "border-b border-border-muted lg:border-b-0" : ""
+                    i < 3 ? "lg:border-r lg:border-border" : ""
+                  } ${i % 2 === 0 ? "sm:border-r sm:border-border" : ""} ${
+                    i < 2 ? "border-b border-border lg:border-b-0" : ""
                   }`}
                 >
                   <div className="flex items-start justify-between">

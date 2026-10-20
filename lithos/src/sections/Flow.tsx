@@ -120,10 +120,10 @@ function Stage({
   return (
     <motion.div
       {...card(index)}
-      className="relative border border-border-muted bg-surface shadow-[0_22px_44px_-32px_hsl(var(--foreground)/0.3)]"
+      className="relative border border-border bg-surface shadow-[0_22px_44px_-32px_hsl(var(--foreground)/0.3)]"
     >
       {/* header */}
-      <div className="flex items-center gap-2.5 border-b border-border-muted px-5 py-4">
+      <div className="flex items-center gap-2.5 border-b border-border px-5 py-4">
         <Icon size={16} strokeWidth={1.8} />
         <p className="mono text-b4 font-medium uppercase tracking-[0.14em]">
           {stage.key}
@@ -213,7 +213,7 @@ export default function Flow() {
       {/* integrations + deployment, as in the frame */}
       <div className="mt-10 grid gap-6 lg:grid-cols-[1.15fr_1fr] lg:px-6">
         <Reveal delay={0.1}>
-          <div className="flex h-full flex-wrap items-center gap-5 border border-border-muted bg-surface px-6 py-4">
+          <div className="flex h-full flex-wrap items-center gap-5 border border-border bg-surface px-6 py-4">
             <p className="text-b3 font-medium tracking-tight">
               {platform.integrations.label}
             </p>
@@ -242,7 +242,7 @@ export default function Flow() {
         </Reveal>
 
         <Reveal delay={0.16}>
-          <div className="flex h-full flex-wrap items-center justify-between gap-4 border border-border-muted bg-surface px-6 py-4">
+          <div className="flex h-full flex-wrap items-center justify-between gap-4 border border-border bg-surface px-6 py-4">
             <p className="text-b3 font-medium tracking-tight">
               {platform.deployment.label}:
             </p>

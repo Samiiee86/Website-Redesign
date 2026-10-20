@@ -77,7 +77,7 @@ export default function Stories() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="-mx-8 overflow-hidden border-y border-border-muted bg-surface">
+        <div className="-mx-8 overflow-hidden border-y border-border bg-surface">
           {/* headline case */}
           <div className="grid lg:grid-cols-[2fr_1fr]">
             {/* the video sits on a white frame; the quote shares the surface */}
@@ -146,13 +146,13 @@ export default function Stories() {
 
           {/* supporting cases: two white cards, Best Egg's photo runs to the
               surface edges */}
-          <div className="grid border-t border-border-muted lg:grid-cols-[1fr_1fr_2fr]">
+          <div className="grid border-t border-border lg:grid-cols-[1fr_1fr_2fr]">
             {storiesGrid.cells.map((cell) => (
               <a
                 key={cell.brand}
                 href={cell.href}
                 data-cursor="Read case study"
-                className="group flex flex-col justify-between gap-10 border-b border-border-muted p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-8 lg:border-b-0 lg:border-r"
+                className="group flex flex-col justify-between gap-10 border-b border-border p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-8 lg:border-b-0 lg:border-r"
               >
                 <div className="flex items-start justify-between gap-4">
                   <img

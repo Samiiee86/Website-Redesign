@@ -50,7 +50,7 @@ export default function Reasons() {
 
       {/* one continuous grid — flush cells, hairline dividers, square corners */}
       <Reveal delay={0.08}>
-        <div className="-mx-8 border-y border-border-muted bg-surface">
+        <div className="-mx-8 border-y border-border bg-surface">
           {/* numbers */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((s, i) => (
@@ -58,11 +58,11 @@ export default function Reasons() {
                 key={s.label}
                 className={`px-8 py-10 text-center ${
                   i < 3
-                    ? "border-b border-border-muted sm:border-b-0 lg:border-r"
+                    ? "border-b border-border sm:border-b-0 lg:border-r"
                     : ""
-                } ${i === 0 ? "sm:border-r sm:border-border-muted" : ""} ${
+                } ${i === 0 ? "sm:border-r sm:border-border" : ""} ${
                   i === 1
-                    ? "sm:border-b sm:border-border-muted lg:border-b-0"
+                    ? "sm:border-b sm:border-border lg:border-b-0"
                     : ""
                 }`}
               >
@@ -78,14 +78,14 @@ export default function Reasons() {
           </div>
 
           {/* analyst reports */}
-          <div className="grid border-t border-border-muted md:grid-cols-2">
+          <div className="grid border-t border-border md:grid-cols-2">
             {reasons.reports.map((report, i) => (
               <div
                 key={report.title}
                 data-cursor="Read report"
                 className={`group p-8 transition-colors duration-500 hover:bg-secondary/40 ${
                   i === 0
-                    ? "border-b border-border-muted md:border-b-0 md:border-r"
+                    ? "border-b border-border md:border-b-0 md:border-r"
                     : ""
                 }`}
               >
@@ -104,14 +104,14 @@ export default function Reasons() {
           </div>
 
           {/* the three proofs — copy first, artwork beneath */}
-          <div className="grid border-t border-border-muted lg:grid-cols-3">
+          <div className="grid border-t border-border lg:grid-cols-3">
             {reasons.cards.map((card, i) => (
               <div
                 key={card.title}
                 data-cursor="Learn more"
                 className={`flex flex-col gap-6 p-8 ${
                   i < 2
-                    ? "border-b border-border-muted lg:border-b-0 lg:border-r"
+                    ? "border-b border-border lg:border-b-0 lg:border-r"
                     : ""
                 }`}
               >
@@ -132,7 +132,7 @@ export default function Reasons() {
           </div>
 
           {/* ratings */}
-          <div className="grid border-t border-border-muted lg:grid-cols-3">
+          <div className="grid border-t border-border lg:grid-cols-3">
             {reviews.vendors.map((vendor, i) => (
               <a
                 key={vendor.name}
@@ -140,7 +140,7 @@ export default function Reasons() {
                 data-cursor={`Read ${vendor.name}`}
                 className={`group flex flex-col justify-between gap-8 p-8 transition-colors duration-500 hover:bg-secondary/40 ${
                   i < 2
-                    ? "border-b border-border-muted lg:border-b-0 lg:border-r"
+                    ? "border-b border-border lg:border-b-0 lg:border-r"
                     : ""
                 }`}
               >
@@ -172,7 +172,7 @@ export default function Reasons() {
           </div>
 
           {/* press */}
-          <div className="border-t border-border-muted px-8 py-10">
+          <div className="border-t border-border px-8 py-10">
             <p className="mb-8 text-center text-b4 uppercase tracking-[0.28em] text-muted-foreground">
               {asSeenOn.label}
             </p>

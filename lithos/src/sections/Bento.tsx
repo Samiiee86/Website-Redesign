@@ -129,10 +129,10 @@ function CloudTiles({ play }: { play: boolean }) {
           <motion.div
             key={t.name}
             {...rise(play, at)}
-            className="flex flex-col gap-2 border border-border-muted bg-white px-3 py-2"
+            className="flex flex-col gap-2 border border-border bg-white px-3 py-2"
           >
             <div className="flex items-center gap-2">
-              <span className="flex h-5 w-5 items-center justify-center rounded-[5px] border border-border-muted bg-background">
+              <span className="flex h-5 w-5 items-center justify-center rounded-[5px] border border-border bg-background">
                 <Icon size={10} className="text-foreground" />
               </span>
               <span className="truncate text-[10.5px] font-medium text-foreground">{t.name}</span>
@@ -210,13 +210,13 @@ function PanelWindow({
       }`}
     >
       {/* window chrome, same as the fold demo frames */}
-      <div className="flex items-center gap-2 border-b border-border-muted px-3 py-2">
+      <div className="flex items-center gap-2 border-b border-border px-3 py-2">
         <span className="flex gap-1.5">
           {[0, 1, 2].map((i) => (
             <span key={i} className="h-2 w-2 rounded-full bg-border" />
           ))}
         </span>
-        <span className="mx-auto flex items-center gap-1.5 border border-border-muted bg-background px-3 py-0.5 text-muted-foreground">
+        <span className="mx-auto flex items-center gap-1.5 border border-border bg-background px-3 py-0.5 text-muted-foreground">
           <PanelIcon size={10} />
           <span className="mono text-[9px] uppercase tracking-[0.14em]">{title}</span>
         </span>
@@ -296,7 +296,7 @@ function HoverCard({ index }: { index: number }) {
     <div
       ref={ref}
       data-cursor={pioneer.cards[index].cta}
-      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border-muted bg-surface md:min-h-[565px]"
+      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border bg-surface md:min-h-[565px]"
     >
       {/* the painting covers the whole card; a beige wash keeps the copy
           readable at the top and clears before it reaches the window */}
@@ -359,7 +359,7 @@ function InViewCard({
    the windows sit on a darker beige ground */
 function JoinedRow() {
   return (
-    <div className="-mx-8 grid border-y border-border-muted bg-surface md:grid-cols-2">
+    <div className="-mx-8 grid border-y border-border bg-surface md:grid-cols-2">
       {[0, 1].map((i) => (
         <InViewCard
           key={i}
@@ -392,7 +392,7 @@ function SpacedRow() {
         <InViewCard
           key={i}
           index={i}
-          className="flex flex-col overflow-hidden border border-border-muted bg-surface"
+          className="flex flex-col overflow-hidden border border-border bg-surface"
           render={(playing) => (
             <>
               <div className="relative h-[320px] overflow-hidden md:h-[360px]">
@@ -445,7 +445,7 @@ function BreakoutCard({
       animate={{ flexGrow: grow, opacity: dimmed ? 0.5 : 1 }}
       transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
       style={{ flexGrow: 1 }}
-      className="relative flex min-w-0 basis-auto flex-col overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:basis-0"
+      className="relative flex min-w-0 basis-auto flex-col overflow-hidden border border-border bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:basis-0"
     >
       {/* the painting fills the whole stage behind the window */}
       <div className="relative h-[340px] flex-none overflow-hidden md:h-[400px]">
@@ -488,13 +488,13 @@ function BreakoutRow() {
    white frame whose edge lines up with the copy below */
 function InsetRow() {
   return (
-    <div className="-mx-8 grid border-y border-border-muted bg-surface md:grid-cols-2">
+    <div className="-mx-8 grid border-y border-border bg-surface md:grid-cols-2">
       {[0, 1].map((i) => (
         <InViewCard
           key={i}
           index={i}
           className={`flex flex-col ${
-            i === 0 ? "border-border-muted max-md:border-b md:border-r" : ""
+            i === 0 ? "border-border max-md:border-b md:border-r" : ""
           }`}
           render={(playing) => (
             <>

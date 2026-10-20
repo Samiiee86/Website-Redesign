@@ -185,7 +185,7 @@ body {
 /* ---------- surfaces ---------- */
 .card {
   background: hsl(var(--surface));
-  border: 1px solid hsl(var(--border-muted));
+  border: 1px solid hsl(var(--border));
   border-radius: 0;
 }
 

@@ -63,7 +63,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-          className="relative mt-16 min-h-[300px] overflow-hidden border border-border-muted sm:min-h-[520px] md:mt-20 md:min-h-[640px]"
+          className="relative mt-16 min-h-[300px] overflow-hidden border border-border sm:min-h-[520px] md:mt-20 md:min-h-[640px]"
         >
           <img
             src="/img/hero-lake.webp"

@@ -62,7 +62,7 @@ function BigCard({ id, index }: { id: string; index: number }) {
   return (
     <div
       data-cursor={tab.cta}
-      className={`flex flex-col border-border-muted bg-surface ${edges}`}
+      className={`flex flex-col border-border bg-surface ${edges}`}
     >
       {/* chatbase-style card: the sentence leads, the demo sits below and
           melts out of the card's bottom edge */}
@@ -123,7 +123,7 @@ export default function Unified() {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="-mx-8 border-y border-border-muted bg-surface">
+        <div className="-mx-8 border-y border-border bg-surface">
           <div className="grid md:grid-cols-2">
             {BIG_IDS.map((id, i) => (
               <BigCard key={id} id={id} index={i} />
@@ -131,13 +131,13 @@ export default function Unified() {
           </div>
 
           {/* the platform staples ride the same surface, one row below */}
-          <div className="grid border-t border-border-muted sm:grid-cols-3">
+          <div className="grid border-t border-border sm:grid-cols-3">
             {SMALL.map(({ icon: Icon, name, desc }, i) => (
               <div
                 key={name}
                 data-cursor={name}
                 className={`group flex flex-col p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-7 ${
-                  i < 2 ? "border-border-muted max-sm:border-b sm:border-r" : ""
+                  i < 2 ? "border-border max-sm:border-b sm:border-r" : ""
                 }`}
               >
                 <Icon
