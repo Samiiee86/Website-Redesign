@@ -35,7 +35,7 @@ export default function Reasons() {
             </span>
             <span className="block">TestMu AI (formerly LambdaTest)</span>
           </h2>
-          <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
+          <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
             {reasons.body}
           </p>
         </div>
@@ -66,7 +66,7 @@ export default function Reasons() {
                     : ""
                 }`}
               >
-                <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                <p className="text-b4 uppercase tracking-[0.22em] text-muted-foreground">
                   {s.label}
                 </p>
                 <p className="pixel mt-3 text-[38px] leading-none tracking-tight md:text-[44px]">
@@ -89,10 +89,10 @@ export default function Reasons() {
                     : ""
                 }`}
               >
-                <p className="max-w-[420px] text-[19px] leading-snug tracking-tight">
+                <p className="max-w-[420px] text-b1 leading-snug tracking-tight">
                   {report.title}
                 </p>
-                <span className="mt-5 inline-flex items-center gap-2 border-b border-foreground pb-0.5 text-[14px] font-medium">
+                <span className="mt-5 inline-flex items-center gap-2 border-b border-foreground pb-0.5 text-b3 font-medium">
                   {report.cta}
                   <ArrowRight
                     size={14}
@@ -117,7 +117,7 @@ export default function Reasons() {
               >
                 <div>
                   <h3 className="tracking-tight">{card.title}</h3>
-                  <p className="mt-3 max-w-[330px] text-[15px] leading-relaxed text-muted-foreground">
+                  <p className="mt-3 max-w-[330px] text-b2 leading-relaxed text-muted-foreground">
                     {card.body}
                   </p>
                 </div>
@@ -145,7 +145,7 @@ export default function Reasons() {
                 }`}
               >
                 <div className="flex items-start justify-between">
-                  <span className="text-[15px] font-medium tracking-tight">
+                  <span className="text-b2 font-medium tracking-tight">
                     {vendor.name}
                   </span>
                   <ArrowUpRight
@@ -156,13 +156,13 @@ export default function Reasons() {
                 <div>
                   <p className="pixel text-[40px] leading-none tracking-tight">
                     {vendor.rating}
-                    <span className="ml-1 text-sm text-muted-foreground">
+                    <span className="ml-1 text-b3 text-muted-foreground">
                       / {vendor.outOf}
                     </span>
                   </p>
                   <div className="mt-4 flex items-center gap-3">
                     <Stars rating={vendor.rating} />
-                    <span className="text-[13px] text-muted-foreground">
+                    <span className="text-b3 text-muted-foreground">
                       {vendor.count}
                     </span>
                   </div>
@@ -173,7 +173,7 @@ export default function Reasons() {
 
           {/* press */}
           <div className="border-t border-border-muted px-8 py-10">
-            <p className="mb-8 text-center text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
+            <p className="mb-8 text-center text-b4 uppercase tracking-[0.28em] text-muted-foreground">
               {asSeenOn.label}
             </p>
             <Marquee duration={38}>

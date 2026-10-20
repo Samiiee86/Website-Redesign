@@ -33,25 +33,25 @@ export default function Footer() {
               alt="TestMu AI"
               className="h-6 w-auto"
             />
-            <p className="mt-4 max-w-[320px] text-[13px] leading-relaxed text-background/60">
+            <p className="mt-4 max-w-[320px] text-b3 leading-relaxed text-background/60">
               {footerExtra.blurb}
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2.5">
-              <button className="group inline-flex items-center gap-2 rounded-[8px] bg-background px-4 py-2.5 text-[13px] font-medium text-foreground transition-transform duration-300 hover:-translate-y-0.5">
+              <button className="group inline-flex items-center gap-2 rounded-[8px] bg-background px-4 py-2.5 text-b3 font-medium text-foreground transition-transform duration-300 hover:-translate-y-0.5">
                 {footerExtra.primary}
                 <ArrowRight
                   size={13}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
               </button>
-              <button className="rounded-[8px] border border-background/40 px-4 py-2.5 text-[13px] font-medium text-background transition-colors duration-300 hover:bg-background/10">
+              <button className="rounded-[8px] border border-background/40 px-4 py-2.5 text-b3 font-medium text-background transition-colors duration-300 hover:bg-background/10">
                 {footerExtra.secondary}
               </button>
             </div>
 
             <div className="mt-6">
-              <p className="text-[12px] text-background/55">
+              <p className="text-b4 text-background/55">
                 {footerExtra.summarize}
               </p>
               <div className="mt-2.5 flex items-center gap-2">
@@ -67,7 +67,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="mt-6 max-w-[320px] text-[12px] leading-relaxed text-background/50">
+            <p className="mt-6 max-w-[320px] text-b4 leading-relaxed text-background/50">
               {footerExtra.compliance}
             </p>
             <div className="mt-3 grid max-w-[300px] grid-cols-6 gap-1.5">
@@ -82,7 +82,7 @@ export default function Footer() {
               ))}
             </div>
 
-            <div className="mt-6 text-[12px] leading-relaxed text-background/55">
+            <div className="mt-6 text-b4 leading-relaxed text-background/55">
               <p className="text-background/75">{footerExtra.address.title}</p>
               <p className="mt-1.5 flex items-center gap-1.5">
                 <MapPin size={11} />
@@ -98,7 +98,7 @@ export default function Footer() {
           <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {footer.groups.slice(0, 4).map((group, i) => (
               <Reveal key={group.title} delay={i * 0.05}>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-background/45">
+                <p className="text-b4 uppercase tracking-[0.18em] text-background/45">
                   {group.title}
                 </p>
                 <ul className="mt-4 flex flex-col gap-2">
@@ -106,7 +106,7 @@ export default function Footer() {
                     <li key={link}>
                       <a
                         href="#top"
-                        className="text-[13px] leading-snug text-background/60 transition-colors duration-300 hover:text-background"
+                        className="text-b3 leading-snug text-background/60 transition-colors duration-300 hover:text-background"
                       >
                         {link}
                       </a>
@@ -117,7 +117,7 @@ export default function Footer() {
                 {/* stack the remaining groups under the last two columns */}
                 {i === 2 && (
                   <>
-                    <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-background/45">
+                    <p className="mt-8 text-b4 uppercase tracking-[0.18em] text-background/45">
                       {footer.groups[4].title}
                     </p>
                     <ul className="mt-4 flex flex-col gap-2">
@@ -125,7 +125,7 @@ export default function Footer() {
                         <li key={link}>
                           <a
                             href="#top"
-                            className="text-[13px] leading-snug text-background/60 transition-colors duration-300 hover:text-background"
+                            className="text-b3 leading-snug text-background/60 transition-colors duration-300 hover:text-background"
                           >
                             {link}
                           </a>
@@ -136,7 +136,7 @@ export default function Footer() {
                 )}
                 {i === 3 && (
                   <>
-                    <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-background/45">
+                    <p className="mt-8 text-b4 uppercase tracking-[0.18em] text-background/45">
                       {footer.groups[5].title}
                     </p>
                     <ul className="mt-4 flex flex-col gap-2">
@@ -144,14 +144,14 @@ export default function Footer() {
                         <li key={link}>
                           <a
                             href="#top"
-                            className="text-[13px] leading-snug text-background/60 transition-colors duration-300 hover:text-background"
+                            className="text-b3 leading-snug text-background/60 transition-colors duration-300 hover:text-background"
                           >
                             {link}
                           </a>
                         </li>
                       ))}
                     </ul>
-                    <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-background/45">
+                    <p className="mt-8 text-b4 uppercase tracking-[0.18em] text-background/45">
                       {footer.whatsNew.title}
                     </p>
                     <ul className="mt-4 flex flex-col gap-2">
@@ -159,7 +159,7 @@ export default function Footer() {
                         <li key={link}>
                           <a
                             href="#top"
-                            className="text-[13px] leading-snug text-background/60 transition-colors duration-300 hover:text-background"
+                            className="text-b3 leading-snug text-background/60 transition-colors duration-300 hover:text-background"
                           >
                             {link}
                           </a>
@@ -175,7 +175,7 @@ export default function Footer() {
 
         <div
           data-game-align
-          className="flex flex-col gap-4 border-t border-background/15 py-6 text-[12px] text-background/50 sm:flex-row sm:items-center sm:justify-between"
+          className="flex flex-col gap-4 border-t border-background/15 py-6 text-b4 text-background/50 sm:flex-row sm:items-center sm:justify-between"
         >
           <p>{footerExtra.bottom.legal}</p>
           <p>{footerExtra.bottom.built}</p>

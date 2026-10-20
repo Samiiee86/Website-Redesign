@@ -34,7 +34,7 @@ export default function Faq() {
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left text-[17px] tracking-[-0.01em] text-foreground transition-colors duration-200 hover:bg-secondary/40"
+                  className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left text-b1 tracking-[-0.01em] text-foreground transition-colors duration-200 hover:bg-secondary/40"
                 >
                   {item.q}
                   {isOpen ? (
@@ -52,7 +52,7 @@ export default function Faq() {
                       transition={{ duration: 0.4, ease: EASE }}
                       className="overflow-hidden"
                     >
-                      <p className="max-w-[640px] px-6 pb-7 text-[15px] leading-relaxed text-muted-foreground">
+                      <p className="max-w-[640px] px-6 pb-7 text-b2 leading-relaxed text-muted-foreground">
                         {item.a}
                       </p>
                     </motion.div>
@@ -70,7 +70,7 @@ export default function Faq() {
                   setAll((a) => !a);
                 }}
                 aria-expanded={all}
-                className="flex w-full items-center justify-center gap-2 py-6 text-[16px] text-foreground transition-colors duration-200 hover:bg-secondary/40"
+                className="flex w-full items-center justify-center gap-2 py-6 text-b2 text-foreground transition-colors duration-200 hover:bg-secondary/40"
               >
                 {all ? "View fewer questions" : "View more questions"}
                 <ChevronDown

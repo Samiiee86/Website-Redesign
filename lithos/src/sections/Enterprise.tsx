@@ -9,7 +9,7 @@ export default function Enterprise() {
           <h2 className="tracking-tight text-foreground">
             Built for the enterprise
           </h2>
-          <p className="mt-6 max-w-[520px] text-[17px] leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-[520px] text-b1 leading-relaxed text-muted-foreground">
             {enterprise.body}
           </p>
 

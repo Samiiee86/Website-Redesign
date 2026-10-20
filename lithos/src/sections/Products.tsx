@@ -70,10 +70,10 @@ function Feature({ feature }: { feature: Fold["features"][number] }) {
         <h3 className="tracking-tight text-white">
           {feature.name}
         </h3>
-        <p className="mt-3 max-w-[440px] text-[14px] leading-relaxed text-white/75">
+        <p className="mt-3 max-w-[440px] text-b3 leading-relaxed text-white/75">
           {feature.desc}
         </p>
-        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-white/40 pb-1 text-[13px] font-medium text-white transition-colors hover:border-white">
+        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-white/40 pb-1 text-b3 font-medium text-white transition-colors hover:border-white">
           {feature.cta}
           <ArrowRight
             size={14}
@@ -94,13 +94,13 @@ function Fold({ fold }: { fold: Fold }) {
             <span className="block text-muted-foreground">{fold.lead}</span>
             <span className="block">{fold.subject}</span>
           </h2>
-          <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
+          <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
             {fold.body}
           </p>
         </div>
         <button
           data-cursor="Start free"
-          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-b3 font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
         >
           {fold.cta}
           <ArrowRight
@@ -149,7 +149,7 @@ function Fold({ fold }: { fold: Fold }) {
                   <h4 className="mt-6 tracking-tight">
                     {cell.name}
                   </h4>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-muted-foreground">
+                  <p className="mt-2.5 text-b3 leading-relaxed text-muted-foreground">
                     {cell.desc}
                   </p>
                 </div>

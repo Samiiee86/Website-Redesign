@@ -31,7 +31,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
-            className="max-w-[320px] text-base leading-relaxed text-muted-foreground md:text-lg lg:justify-self-end"
+            className="max-w-[320px] text-b2 leading-relaxed text-muted-foreground md:text-b1 lg:justify-self-end"
           >
             We assure that your AI works as intended. Safely and securely.
           </motion.p>

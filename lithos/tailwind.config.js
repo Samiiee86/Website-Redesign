@@ -26,6 +26,14 @@ export default {
         border: 'hsl(var(--border))',
         'border-muted': 'hsl(var(--border-muted))',
       },
+      /* the body scale: B1 18, B2 16, B3 14, B4 12, B5 10 */
+      fontSize: {
+        b1: ['18px', '28px'],
+        b2: ['16px', '24px'],
+        b3: ['14px', '22px'],
+        b4: ['12px', '18px'],
+        b5: ['10px', '14px'],
+      },
       fontFamily: {
         body: ['var(--font-body)'],
         mono: ['var(--font-mono)'],

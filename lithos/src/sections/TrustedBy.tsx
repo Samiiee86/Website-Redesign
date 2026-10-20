@@ -17,7 +17,7 @@ export default function TrustedBy() {
       />
       <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-8">
         <Reveal className="mb-10 text-center">
-          <p className="text-[14px] uppercase leading-[22px] text-muted-foreground">
+          <p className="text-b3 uppercase leading-[22px] text-muted-foreground">
             {trustedBy.label}
           </p>
         </Reveal>

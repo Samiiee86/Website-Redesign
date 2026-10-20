@@ -67,11 +67,11 @@ function BigCard({ id, index }: { id: string; index: number }) {
       {/* chatbase-style card: the sentence leads, the demo sits below and
           melts out of the card's bottom edge */}
       <div className="min-h-[150px] px-7 pb-2 pt-8 md:px-9">
-        <p className="max-w-[460px] text-[19px] font-medium leading-[1.4] tracking-tight md:text-[21px]">
+        <p className="max-w-[460px] text-b1 font-medium leading-[1.4] tracking-tight">
           <span className="font-semibold text-foreground">{blurb.name}</span>{" "}
           <span className="font-normal text-muted-foreground">{blurb.rest}</span>
         </p>
-        <button className="group/btn mt-3 inline-flex items-center gap-1.5 border-b border-foreground pb-0.5 text-[13px] font-medium text-foreground">
+        <button className="group/btn mt-3 inline-flex items-center gap-1.5 border-b border-foreground pb-0.5 text-b3 font-medium text-foreground">
           Learn more
           <ArrowRight
             size={13}
@@ -100,14 +100,16 @@ export default function Unified() {
   return (
     <Section id="unified">
       <Reveal className="mb-12">
-        <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
+        <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14 xl:grid-cols-[minmax(0,1fr)_400px]">
+          {/* on wide screens the first line holds together and the second
+              wraps once, so the heading sets in three lines */}
           <h2 className="tracking-tight">
-            <span className="block text-muted-foreground">
+            <span className="block text-muted-foreground xl:whitespace-nowrap">
               TestMu AI (formerly LambdaTest)
             </span>
             <span className="block">{products.eyebrow}</span>
           </h2>
-          <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
+          <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
             {products.title}
           </p>
         </div>
@@ -143,10 +145,10 @@ export default function Unified() {
                   className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
                 />
                 <h4 className="mt-5 tracking-tight">{name}</h4>
-                <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
+                <p className="mt-2 text-b3 leading-relaxed text-muted-foreground">
                   {desc}
                 </p>
-                <button className="group/btn mt-4 inline-flex items-center gap-1.5 self-start border-b border-foreground pb-0.5 text-[13px] font-medium text-foreground">
+                <button className="group/btn mt-4 inline-flex items-center gap-1.5 self-start border-b border-foreground pb-0.5 text-b3 font-medium text-foreground">
                   Learn more
                   <ArrowRight
                     size={13}

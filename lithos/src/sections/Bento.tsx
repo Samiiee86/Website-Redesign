@@ -255,13 +255,13 @@ function Copy({
       </h3>
       <p
         className={`max-w-[520px] leading-relaxed text-muted-foreground ${
-          quiet ? "mt-2 text-[14.5px]" : "mt-2.5 text-[15px]"
+          quiet ? "mt-2 text-b3" : "mt-2.5 text-b2"
         }`}
       >
         {card.body}
       </p>
       {link && (
-        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-[14px] font-medium text-foreground">
+        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
           Learn more
           <ArrowRight
             size={15}
@@ -533,7 +533,7 @@ export function PioneerHeading() {
           <span className="block text-muted-foreground">Pioneer of</span>
           <span className="block">AI Agentic Testing Cloud</span>
         </h2>
-        <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
+        <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
           Autonomous agents that plan and author your tests, running on an
           execution cloud built for any type of test at any scale.
         </p>
