@@ -1,5 +1,6 @@
 import { type ReactNode, useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { ArrowRight } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -156,5 +157,17 @@ export function Marquee({
         </div>
       </div>
     </div>
+  );
+}
+
+/* the orange arrow chip that sits at the end of a .btn-arrow button */
+export function ArrowChip() {
+  return (
+    <span className="chip" aria-hidden>
+      <span>
+        <ArrowRight size={16} />
+        <ArrowRight size={16} />
+      </span>
+    </span>
   );
 }

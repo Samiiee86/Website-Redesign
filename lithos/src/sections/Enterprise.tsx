@@ -1,6 +1,5 @@
-import { ArrowRight } from "lucide-react";
 import { enterprise } from "../lib/content";
-import { Reveal } from "../lib/ui";
+import { Reveal, ArrowChip } from "../lib/ui";
 
 export default function Enterprise() {
   return (
@@ -17,17 +16,14 @@ export default function Enterprise() {
           <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
             <button
               data-cursor="Talk to sales"
-              className="group inline-flex items-center justify-center gap-2 rounded-[10px] bg-primary px-7 py-3.5 text-[15px] font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+              className="btn btn-lg btn-primary btn-arrow"
             >
               {enterprise.primary}
-              <ArrowRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
+              <ArrowChip />
             </button>
             <button
               data-cursor="Book a slot"
-              className="inline-flex items-center justify-center rounded-[10px] border border-border bg-surface px-7 py-3.5 text-[15px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary"
+              className="btn btn-lg btn-secondary"
             >
               {enterprise.secondary}
             </button>

@@ -71,13 +71,13 @@ export default function Stories() {
             {storiesGrid.body}
           </p>
         </div>
-        <button className="mt-8 rounded-[10px] border border-border bg-surface px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary">
+        <button className="btn btn-lg btn-secondary mt-8">
           {storiesGrid.cta}
         </button>
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="-mx-8 overflow-hidden border border-border-muted bg-surface">
+        <div className="-mx-8 overflow-hidden border-y border-border-muted bg-surface">
           {/* headline case */}
           <div className="grid lg:grid-cols-[2fr_1fr]">
             {/* the video sits on a white frame; the quote shares the surface */}

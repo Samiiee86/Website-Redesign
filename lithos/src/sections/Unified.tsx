@@ -1,7 +1,7 @@
 import { ArrowRight, BarChart3, ClipboardList, Smartphone } from "lucide-react";
 import { products } from "../lib/content";
 import { DEMOS, type DemoKey } from "../components/Demos";
-import { Reveal, Section } from "../lib/ui";
+import { Reveal, Section, ArrowChip } from "../lib/ui";
 
 /* The Unified Quality Engineering fold, bento edition: the four AI flagship
    products get big cards with their live scripted demos on the paintings,
@@ -113,18 +113,15 @@ export default function Unified() {
         </div>
         <button
           data-cursor="Start free"
-          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+          className="btn btn-lg btn-primary btn-arrow mt-8"
         >
           Start free with Google
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
+          <ArrowChip />
         </button>
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="-mx-8 border border-border-muted bg-surface">
+        <div className="-mx-8 border-y border-border-muted bg-surface">
           <div className="grid md:grid-cols-2">
             {BIG_IDS.map((id, i) => (
               <BigCard key={id} id={id} index={i} />

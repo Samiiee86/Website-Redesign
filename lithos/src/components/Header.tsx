@@ -400,8 +400,8 @@ export default function Header() {
                         : item.key,
                   )
                 }
-                className={`cursor-pointer whitespace-nowrap rounded-[8px] px-3 py-2 text-[15px] font-medium text-[#121212] transition-colors hover:bg-[#E7E6DF] ${
-                  open === item.key ? "bg-[#E7E6DF]" : "bg-transparent"
+                className={`cursor-pointer whitespace-nowrap px-3 py-2 text-[15px] font-medium text-[#121212] transition-opacity duration-150 hover:opacity-70 ${
+                  open === item.key ? "opacity-70" : ""
                 }`}
               >
                 {item.label}
@@ -416,30 +416,21 @@ export default function Header() {
                 setDrawer((d) => !d);
                 setOpen(null);
               }}
-              className="flex h-[38px] cursor-pointer items-center gap-2 rounded-[8px] border border-[#D3D2CD] bg-white px-3.5 text-[15px] font-medium text-[#121212]"
+              className="btn btn-sm btn-secondary"
             >
               Menu ☰
             </button>
           </div>
 
-          <div className="ml-auto hidden flex-none items-center gap-3.5 min-[1181px]:flex [&>*]:flex-none [&_a]:whitespace-nowrap">
-            <span className="flex items-center gap-[7px] font-mono text-[13px] text-[#4D4D4D]">
-              ⌕ <span>{headerActions.search}</span>
-            </span>
-            <a href="#top" className="text-[15px] font-medium text-[#4D4D4D]">
+          <div className="ml-auto hidden flex-none items-center gap-2 min-[1181px]:flex [&>*]:flex-none [&_a]:whitespace-nowrap">
+            <a href="#top" className="btn btn-sm btn-ghost">
               {headerActions.signIn}
             </a>
-            <a
-              href="#top"
-              className="flex h-[38px] items-center rounded-[10px] border border-[#D3D2CD] bg-white px-4 text-[15px] font-medium text-[#121212] transition-colors hover:border-[#121212]"
-            >
+            <a href="#top" className="btn btn-sm btn-secondary">
               {headerActions.sales}
             </a>
-            <a
-              href="#top"
-              className="flex h-[38px] items-center gap-1.5 rounded-[10px] bg-[#121212] px-[18px] text-[15px] font-medium text-white"
-            >
-              {headerActions.start} <span className="opacity-60">→</span>
+            <a href="#top" className="btn btn-sm btn-primary">
+              {headerActions.start}
             </a>
           </div>
         </div>
@@ -572,13 +563,13 @@ export default function Header() {
               <div className="mt-[22px] flex flex-col gap-2.5">
                 <a
                   href="#top"
-                  className="flex h-12 items-center justify-center rounded-[10px] bg-[#121212] text-[16px] font-medium text-white"
+                  className="btn btn-lg btn-primary w-full"
                 >
                   Start now →
                 </a>
                 <a
                   href="#top"
-                  className="flex h-12 items-center justify-center rounded-[10px] border border-[#121212] text-[16px] font-medium text-[#121212]"
+                  className="btn btn-lg btn-secondary w-full"
                 >
                   Contact sales
                 </a>

@@ -1,6 +1,6 @@
 import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import { asSeenOn, reasons, reviews, stats } from "../lib/content";
-import { Marquee, Reveal, Section } from "../lib/ui";
+import { Marquee, Reveal, Section, ArrowChip } from "../lib/ui";
 
 function Stars({ rating }: { rating: string }) {
   const value = parseFloat(rating);
@@ -41,19 +41,16 @@ export default function Reasons() {
         </div>
         <button
           data-cursor="Start free"
-          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+          className="btn btn-lg btn-primary btn-arrow mt-8"
         >
           Start free with Google
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
+          <ArrowChip />
         </button>
       </Reveal>
 
       {/* one continuous grid — flush cells, hairline dividers, square corners */}
       <Reveal delay={0.08}>
-        <div className="-mx-8 border border-border-muted bg-surface">
+        <div className="-mx-8 border-y border-border-muted bg-surface">
           {/* numbers */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((s, i) => (

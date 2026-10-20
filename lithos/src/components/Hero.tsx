@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowChip } from "../lib/ui";
 import { DEMOS } from "./Demos";
 import { hero } from "../lib/content";
 
@@ -47,16 +47,14 @@ export default function Hero() {
         >
           <button
             data-cursor="Start free"
-            className="group inline-flex items-center justify-center gap-3 rounded-[10px] bg-primary py-2.5 pl-6 pr-2.5 text-[15px] font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+            className="btn btn-lg btn-primary btn-arrow"
           >
             {hero.primary}
-            <span className="flex h-8 w-8 items-center justify-center rounded-[7px] bg-[#E16F24] text-white transition-transform duration-300 group-hover:translate-x-0.5">
-              <ArrowRight size={15} />
-            </span>
+            <ArrowChip />
           </button>
           <button
             data-cursor="Sign up with email"
-            className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-border bg-surface px-6 py-[15px] text-[15px] font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary"
+            className="btn btn-lg btn-secondary"
           >
             {hero.secondary}
           </button>

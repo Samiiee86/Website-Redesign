@@ -248,3 +248,86 @@ body {
   opacity: 0.35;
   mix-blend-mode: multiply;
 }
+
+/* ---------- buttons: the TestMu hero-folds system, 4px corners ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.15s cubic-bezier(0.2, 0, 0, 1),
+    border-color 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+.btn-sm {
+  height: 40px;
+  padding: 0 12px;
+  font-size: 14px;
+  line-height: 22px;
+}
+.btn-lg {
+  height: 48px;
+  padding: 0 20px;
+  font-size: 16px;
+  line-height: 24px;
+}
+.btn-primary {
+  background: #121212;
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #3c3c3c;
+}
+.btn-secondary {
+  background: #fff;
+  color: #121212;
+  border-color: #d3d2cd;
+}
+.btn-secondary:hover {
+  background: #e7e6df;
+  border-color: #121212;
+}
+.btn-ghost {
+  background: transparent;
+  color: #121212;
+}
+.btn-ghost:hover {
+  background: #e7e6df;
+}
+/* orange chip whose arrow slides in from the left on hover */
+.btn-arrow {
+  padding: 6px 6px 6px 20px;
+}
+.btn-arrow .chip {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #ed5f00;
+  color: #fff;
+}
+.btn-arrow .chip > span {
+  display: flex;
+  width: 16px;
+  overflow: hidden;
+}
+.btn-arrow .chip svg {
+  flex: 0 0 auto;
+  transform: translateX(-16px);
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+.btn-arrow:hover .chip svg {
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-arrow .chip svg {
+    transition: none;
+  }
+}

@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { pioneer } from "../lib/content";
 import { scenery } from "../lib/scenery";
-import { Reveal, Section } from "../lib/ui";
+import { Reveal, Section, ArrowChip } from "../lib/ui";
 
 const SCENES = [scenery.grassea, scenery.chalkcliff];
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -337,7 +337,7 @@ function HoverRow() {
   const [active, setActive] = useState<number | null>(null);
   return (
     <div
-      className="-mx-8 flex flex-col gap-6 [container-type:inline-size] md:flex-row"
+      className="-mx-8 flex flex-col gap-6 [container-type:inline-size] max-md:[&>*]:border-x-0 md:flex-row md:[&>*:first-child]:border-l-0 md:[&>*:last-child]:border-r-0"
       onMouseLeave={() => setActive(null)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setActive(null);
@@ -374,7 +374,7 @@ function InViewCard({
    the windows sit on a darker beige ground */
 function JoinedRow() {
   return (
-    <div className="-mx-8 grid border border-border-muted bg-surface md:grid-cols-2">
+    <div className="-mx-8 grid border-y border-border-muted bg-surface md:grid-cols-2">
       {[0, 1].map((i) => (
         <InViewCard
           key={i}
@@ -486,7 +486,7 @@ function BreakoutRow() {
   const [active, setActive] = useState<number | null>(null);
   return (
     <div
-      className="-mx-8 flex flex-col gap-6 [container-type:inline-size] md:flex-row"
+      className="-mx-8 flex flex-col gap-6 [container-type:inline-size] max-md:[&>*]:border-x-0 md:flex-row md:[&>*:first-child]:border-l-0 md:[&>*:last-child]:border-r-0"
       onMouseLeave={() => setActive(null)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setActive(null);
@@ -503,7 +503,7 @@ function BreakoutRow() {
    white frame whose edge lines up with the copy below */
 function InsetRow() {
   return (
-    <div className="-mx-8 grid border border-border-muted bg-surface md:grid-cols-2">
+    <div className="-mx-8 grid border-y border-border-muted bg-surface md:grid-cols-2">
       {[0, 1].map((i) => (
         <InViewCard
           key={i}
@@ -555,13 +555,10 @@ export function PioneerHeading() {
       </div>
       <button
         data-cursor="Start free"
-        className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+        className="btn btn-lg btn-primary btn-arrow mt-8"
       >
         Start free with Google
-        <ArrowRight
-          size={15}
-          className="transition-transform duration-300 group-hover:translate-x-1"
-        />
+        <ArrowChip />
       </button>
     </>
   );

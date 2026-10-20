@@ -1,5 +1,4 @@
 import { MotionConfig } from "motion/react";
-import CursorPill from "./components/CursorPill";
 import ScrollProgress from "./components/ScrollProgress";
 import GuideLines from "./components/GuideLines";
 import Header from "./components/Header";
@@ -22,7 +21,6 @@ export default function App() {
         {/* the quiet speckle that fills the beige between sections */}
         <div aria-hidden className="grain" />
         <ScrollProgress />
-        <CursorPill />
         <Header />
 
         {/* The hero is content-height: no viewport lock, so tall monitors

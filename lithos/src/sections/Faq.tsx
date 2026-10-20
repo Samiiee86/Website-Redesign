@@ -23,7 +23,7 @@ export default function Faq() {
               <Reveal key={item.q} delay={i * 0.05}>
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="group flex w-full items-start justify-between gap-6 border-b border-border-muted py-6 text-left"
+                  className="group flex w-full items-start justify-between gap-6 border-b border-border py-6 text-left"
                 >
                   <span
                     className={`text-lg tracking-[-0.02em] transition-colors duration-300 md:text-xl ${
@@ -49,7 +49,7 @@ export default function Faq() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden border-b border-border-muted"
+                      className="overflow-hidden border-b border-border"
                     >
                       <p className="max-w-[560px] py-6 text-[15px] leading-relaxed text-muted-foreground">
                         {item.a}
