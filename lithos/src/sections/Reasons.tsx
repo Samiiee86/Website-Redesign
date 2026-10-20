@@ -29,7 +29,7 @@ export default function Reasons() {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <h2 className="tracking-tight">
             <span className="block text-muted-foreground">
               More Reasons to Love
             </span>
@@ -116,7 +116,7 @@ export default function Reasons() {
                 }`}
               >
                 <div>
-                  <h3 className="text-[21px] tracking-tight">{card.title}</h3>
+                  <h3 className="tracking-tight">{card.title}</h3>
                   <p className="mt-3 max-w-[330px] text-[15px] leading-relaxed text-muted-foreground">
                     {card.body}
                   </p>

@@ -67,10 +67,10 @@ function BigCard({ id, index }: { id: string; index: number }) {
       {/* chatbase-style card: the sentence leads, the demo sits below and
           melts out of the card's bottom edge */}
       <div className="min-h-[150px] px-7 pb-2 pt-8 md:px-9">
-        <h3 className="max-w-[460px] text-[19px] leading-[1.4] tracking-tight md:text-[21px]">
+        <p className="max-w-[460px] text-[19px] font-medium leading-[1.4] tracking-tight md:text-[21px]">
           <span className="font-semibold text-foreground">{blurb.name}</span>{" "}
           <span className="font-normal text-muted-foreground">{blurb.rest}</span>
-        </h3>
+        </p>
         <button className="group/btn mt-3 inline-flex items-center gap-1.5 border-b border-foreground pb-0.5 text-[13px] font-medium text-foreground">
           Learn more
           <ArrowRight
@@ -101,7 +101,7 @@ export default function Unified() {
     <Section id="unified">
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <h2 className="tracking-tight">
             <span className="block text-muted-foreground">
               TestMu AI (formerly LambdaTest)
             </span>
@@ -142,7 +142,7 @@ export default function Unified() {
                   size={20}
                   className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
                 />
-                <h4 className="mt-5 text-[17px] tracking-tight">{name}</h4>
+                <h4 className="mt-5 tracking-tight">{name}</h4>
                 <p className="mt-2 text-[13.5px] leading-relaxed text-muted-foreground">
                   {desc}
                 </p>

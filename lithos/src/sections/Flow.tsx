@@ -125,9 +125,9 @@ function Stage({
       {/* header */}
       <div className="flex items-center gap-2.5 border-b border-border-muted px-5 py-4">
         <Icon size={16} strokeWidth={1.8} />
-        <h3 className="mono text-[12px] font-medium uppercase tracking-[0.14em]">
+        <p className="mono text-[12px] font-medium uppercase tracking-[0.14em]">
           {stage.key}
-        </h3>
+        </p>
       </div>
 
       <div className="flex flex-col gap-5 px-5 py-5">
@@ -191,7 +191,7 @@ export default function Flow() {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <h2 className="tracking-tight">
             <span className="block text-muted-foreground">One platform,</span>
             <span className="block">every stage of testing</span>
           </h2>

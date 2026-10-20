@@ -22,7 +22,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
-            className="text-[34px] leading-[1.08] tracking-tight text-foreground md:text-[42px] lg:text-[48px]"
+            className="tracking-tight text-foreground"
           >
             <span className="block lg:whitespace-nowrap">Assure your AI deployment -</span>
             <span className="block lg:whitespace-nowrap">across enterprise and real world</span>

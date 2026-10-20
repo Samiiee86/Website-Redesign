@@ -247,8 +247,8 @@ function Copy({
       <h3
         className={
           quiet
-            ? "text-[18px] leading-[1.3] tracking-tight text-foreground md:text-[19px]"
-            : "text-[22px] leading-[1.2] tracking-tight text-foreground md:text-[26px]"
+            ? "!text-[24px] tracking-tight text-foreground"
+            : "tracking-tight text-foreground"
         }
       >
         {card.title}
@@ -529,7 +529,7 @@ export function PioneerHeading() {
   return (
     <>
       <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-        <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+        <h2 className="tracking-tight">
           <span className="block text-muted-foreground">Pioneer of</span>
           <span className="block">AI Agentic Testing Cloud</span>
         </h2>

@@ -6,7 +6,7 @@ export default function Enterprise() {
     <section className="relative z-[1] w-full overflow-hidden border-t border-border">
       <Reveal>
         <div className="relative mx-auto flex w-full max-w-[820px] flex-col items-center px-6 py-28 text-center md:py-40">
-          <h2 className="text-4xl leading-[1.08] tracking-tight text-foreground md:text-[56px]">
+          <h2 className="tracking-tight text-foreground">
             Built for the enterprise
           </h2>
           <p className="mt-6 max-w-[520px] text-[17px] leading-relaxed text-muted-foreground">

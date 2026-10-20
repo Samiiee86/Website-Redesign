@@ -20,7 +20,7 @@ export default function Faq() {
     <Section className="!py-0 md:!py-0">
       <div className="-mx-8 grid lg:grid-cols-[0.4fr_0.6fr]">
         <div className="px-8 pb-8 pt-16 md:px-16 md:pt-20">
-          <h2 className="text-[30px] leading-[1.1] tracking-[-0.03em] text-foreground md:text-[36px]">
+          <h2 className="tracking-[-0.03em] text-foreground">
             Frequently asked questions
           </h2>
         </div>

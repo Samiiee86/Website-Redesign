@@ -67,7 +67,7 @@ function Feature({ feature }: { feature: Fold["features"][number] }) {
       </motion.div>
 
       <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
-        <h3 className="text-2xl tracking-tight text-white md:text-[28px]">
+        <h3 className="tracking-tight text-white">
           {feature.name}
         </h3>
         <p className="mt-3 max-w-[440px] text-[14px] leading-relaxed text-white/75">
@@ -90,7 +90,7 @@ function Fold({ fold }: { fold: Fold }) {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <h2 className="tracking-tight">
             <span className="block text-muted-foreground">{fold.lead}</span>
             <span className="block">{fold.subject}</span>
           </h2>
@@ -146,7 +146,7 @@ function Fold({ fold }: { fold: Fold }) {
                       className="translate-y-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:text-foreground group-hover:opacity-100"
                     />
                   </div>
-                  <h4 className="mt-6 text-[17px] tracking-tight">
+                  <h4 className="mt-6 tracking-tight">
                     {cell.name}
                   </h4>
                   <p className="mt-2.5 text-[13px] leading-relaxed text-muted-foreground">
