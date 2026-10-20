@@ -366,7 +366,7 @@ export default function Header() {
       </div>
 
       <div
-        className="sticky top-0 z-50 bg-[#F5F4F0]"
+        className="manrope sticky top-0 z-50 bg-[#F5F4F0]"
         onMouseEnter={cancelClose}
         onMouseLeave={scheduleClose}
       >

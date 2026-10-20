@@ -3,8 +3,9 @@ import { Reveal } from "../lib/ui";
 
 export default function TrustedBy() {
   return (
-    <div className="relative z-[1] bg-background px-5 py-16 sm:px-8">
-      <div className="mx-auto w-full max-w-[1240px] px-4 sm:px-8">
+    <div className="relative z-[1] overflow-hidden border-b border-border bg-background px-5 py-16 sm:px-8">
+      <div aria-hidden className="grain" />
+      <div className="relative mx-auto w-full max-w-[1240px] px-4 sm:px-8">
         <Reveal className="mb-10 text-center">
           <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
             {trustedBy.label}

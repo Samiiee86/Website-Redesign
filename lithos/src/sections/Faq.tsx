@@ -1,46 +1,47 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Minus, Plus } from "lucide-react";
+import { ChevronDown, Minus, Plus } from "lucide-react";
 import { faq } from "../lib/content";
-import { Reveal, Section } from "../lib/ui";
+import { Section } from "../lib/ui";
+
+/* The live testmuai.com FAQ: heading in its own column, questions as
+   full-width ruled rows beside it, the first five shown and the rest
+   behind "View more questions". */
+
+const FIRST = 5;
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Faq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
+  const [all, setAll] = useState(false);
+  const shown = all ? faq : faq.slice(0, FIRST);
 
   return (
-    <Section className="pb-12 md:pb-16">
-      <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-        <Reveal>
-          <h2 className=" text-4xl font-normal leading-[1.05] tracking-[-0.04em] text-foreground md:text-[52px]">
+    <Section className="!py-0 md:!py-0">
+      <div className="-mx-8 grid lg:grid-cols-[0.4fr_0.6fr]">
+        <div className="px-8 pb-8 pt-16 md:px-16 md:pt-20">
+          <h2 className="text-[30px] leading-[1.1] tracking-[-0.03em] text-foreground md:text-[36px]">
             Frequently asked questions
           </h2>
-        </Reveal>
+        </div>
 
-        <div className="flex flex-col">
-          {faq.map((item, i) => {
+        <div className="lg:border-l lg:border-border">
+          <div className="hidden h-[70px] lg:block" />
+          {shown.map((item, i) => {
             const isOpen = open === i;
             return (
-              <Reveal key={item.q} delay={i * 0.05}>
+              <div key={item.q} className="border-t border-border">
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="group flex w-full items-start justify-between gap-6 border-b border-border py-6 text-left"
+                  aria-expanded={isOpen}
+                  className="manrope flex w-full items-center justify-between gap-6 px-6 py-6 text-left text-[17px] tracking-[-0.01em] text-foreground transition-colors duration-200 hover:bg-secondary/40"
                 >
-                  <span
-                    className={`text-lg tracking-[-0.02em] transition-colors duration-300 md:text-xl ${
-                      isOpen
-                        ? "text-foreground"
-                        : "text-muted-foreground group-hover:text-foreground"
-                    }`}
-                  >
-                    {item.q}
-                  </span>
-                  <span
-                    className={`mt-1 shrink-0 transition-colors duration-300 ${
-                      isOpen ? "text-foreground" : "text-muted-foreground"
-                    }`}
-                  >
-                    {isOpen ? <Minus size={19} /> : <Plus size={19} />}
-                  </span>
+                  {item.q}
+                  {isOpen ? (
+                    <Minus size={20} strokeWidth={1.5} className="flex-none" />
+                  ) : (
+                    <Plus size={20} strokeWidth={1.5} className="flex-none" />
+                  )}
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
@@ -48,18 +49,38 @@ export default function Faq() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden border-b border-border"
+                      transition={{ duration: 0.4, ease: EASE }}
+                      className="overflow-hidden"
                     >
-                      <p className="max-w-[560px] py-6 text-[15px] leading-relaxed text-muted-foreground">
+                      <p className="max-w-[640px] px-6 pb-7 text-[15px] leading-relaxed text-muted-foreground">
                         {item.a}
                       </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </Reveal>
+              </div>
             );
           })}
+
+          {faq.length > FIRST && (
+            <div className="border-t border-border">
+              <button
+                onClick={() => {
+                  if (all && open !== null && open >= FIRST) setOpen(null);
+                  setAll((a) => !a);
+                }}
+                aria-expanded={all}
+                className="manrope flex w-full items-center justify-center gap-2 py-6 text-[16px] text-foreground transition-colors duration-200 hover:bg-secondary/40"
+              >
+                {all ? "View fewer questions" : "View more questions"}
+                <ChevronDown
+                  size={18}
+                  strokeWidth={1.5}
+                  className={`transition-transform duration-300 ${all ? "rotate-180" : ""}`}
+                />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </Section>

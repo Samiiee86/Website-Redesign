@@ -31,7 +31,6 @@ const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
 export default function PioneerOptions() {
   return (
     <div className="relative min-h-screen bg-background font-body">
-      <div aria-hidden className="grain" />
       <Header />
       <main className="relative">
         <GuideLines />
