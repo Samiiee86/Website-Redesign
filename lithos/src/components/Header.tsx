@@ -335,6 +335,16 @@ export default function Header() {
   const [drawer, setDrawer] = useState(false);
   const [section, setSection] = useState<string | null>("products");
   const closeTimer = useRef<number | undefined>(undefined);
+  const [stuck, setStuck] = useState(false);
+
+  /* once the announcement bar scrolls away the header is pinned, and a rule
+     under it separates it from the content passing beneath */
+  useEffect(() => {
+    const onScroll = () => setStuck(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -366,7 +376,7 @@ export default function Header() {
       </div>
 
       <div
-        className="sticky top-0 z-50 bg-[#F5F4F0]"
+        className={`sticky top-0 z-50 border-b bg-[#F5F4F0] transition-colors duration-200 ${stuck ? "border-border" : "border-transparent"}`}
         onMouseEnter={cancelClose}
         onMouseLeave={scheduleClose}
       >
