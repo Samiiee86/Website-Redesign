@@ -376,7 +376,7 @@ export default function Header() {
       </div>
 
       <div
-        className={`sticky top-0 z-50 border-b bg-[#F5F4F0] transition-colors duration-200 ${stuck ? "border-border" : "border-transparent"}`}
+        className={`sticky top-0 z-50 border-b bg-background transition-colors duration-200 ${stuck ? "border-border" : "border-transparent"}`}
         onMouseEnter={cancelClose}
         onMouseLeave={scheduleClose}
       >

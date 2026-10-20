@@ -25,7 +25,7 @@
 
 /* ---------- tokens: TestMu palette, prompt's structure ---------- */
 :root {
-  --background: 44 20% 95%; /* #F5F4F0 warm cream */
+  --background: 48 20% 95.1%; /* #F5F4F0 warm cream */
   --surface: 0 0% 100%;
   --foreground: 0 0% 7%; /* #121212 */
   --primary: 0 0% 7%;
