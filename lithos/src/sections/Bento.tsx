@@ -555,7 +555,7 @@ export function PioneerHeading() {
       </div>
       <button
         data-cursor="Start free"
-        className="btn btn-lg btn-primary btn-arrow mt-8"
+        className="btn btn-lg btn-primary btn-arrow btn-arrow-plain mt-8"
       >
         Start free with Google
         <ArrowChip />

@@ -16,7 +16,7 @@ export default function Enterprise() {
           <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
             <button
               data-cursor="Talk to sales"
-              className="btn btn-lg btn-primary btn-arrow"
+              className="btn btn-lg btn-primary btn-arrow btn-arrow-plain"
             >
               {enterprise.primary}
               <ArrowChip />

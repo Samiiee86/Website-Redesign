@@ -336,6 +336,15 @@ body {
 .btn-arrow:hover .chip svg {
   transform: translateX(0);
 }
+/* every fold but the hero: same sliding arrow, no orange chip */
+.btn-arrow.btn-arrow-plain {
+  padding: 0 20px;
+}
+.btn-arrow.btn-arrow-plain .chip {
+  width: 16px;
+  height: auto;
+  background: transparent;
+}
 @media (prefers-reduced-motion: reduce) {
   .btn-arrow .chip svg {
     transition: none;
