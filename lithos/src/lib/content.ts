@@ -579,8 +579,8 @@ export const footer = {
 export const footerExtra = {
   blurb:
     "Deliver unparalleled digital experience with our Next-Gen, AI-Native testing cloud platform. Ensure exceptional user experience across all devices and browsers.",
-  primary: "Start free with Google",
-  secondary: "Start free with Email",
+  primary: "Start free Testing",
+  secondary: "Book a Demo",
   summarize: "Summarize with AI",
   compliance:
     "TestMu AI has formal standards certification and comply in line with acts and regulations across the globe.",

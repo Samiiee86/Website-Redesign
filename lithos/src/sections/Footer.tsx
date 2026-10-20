@@ -1,6 +1,6 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { footer, footerExtra } from "../lib/content";
-import { Reveal } from "../lib/ui";
+import { ArrowChip, Reveal } from "../lib/ui";
 
 const AI_TOOLS = ["ChatGPT", "Claude", "Perplexity", "Grok", "Gemini"];
 
@@ -25,7 +25,7 @@ export default function Footer() {
   return (
     <footer className="relative z-[1] overflow-hidden bg-foreground pt-16 text-background">
       <div className="relative mx-auto w-full max-w-[1240px] px-9 sm:px-16">
-        <div className="grid gap-10 pb-12 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-14">
+        <div className="grid gap-10 pb-12 lg:grid-cols-[minmax(0,360px)_1fr] lg:gap-14">
           {/* identity column */}
           <Reveal>
             <img
@@ -37,15 +37,12 @@ export default function Footer() {
               {footerExtra.blurb}
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-2.5">
-              <button className="group inline-flex items-center gap-2 rounded-[8px] bg-background px-4 py-2.5 text-b3 font-medium text-foreground transition-transform duration-300 hover:-translate-y-0.5">
+            <div className="mt-5 flex flex-wrap gap-3">
+              <button className="btn btn-lg btn-inverse btn-arrow btn-arrow-plain">
                 {footerExtra.primary}
-                <ArrowRight
-                  size={13}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
+                <ArrowChip />
               </button>
-              <button className="rounded-[8px] border border-background/40 px-4 py-2.5 text-b3 font-medium text-background transition-colors duration-300 hover:bg-background/10">
+              <button className="btn btn-lg btn-outline-inverse">
                 {footerExtra.secondary}
               </button>
             </div>

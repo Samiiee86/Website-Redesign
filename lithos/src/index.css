@@ -301,6 +301,23 @@ body {
 .btn-ghost:hover {
   background: #e7e6df;
 }
+/* on dark surfaces (the footer), per the live testmuai.com footer */
+.btn-inverse {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #121212;
+}
+.btn-inverse:hover {
+  background: #f5f4f0;
+}
+.btn-outline-inverse {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.btn-outline-inverse:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
 /* orange chip whose arrow slides in from the left on hover */
 .btn-arrow {
   padding: 6px 6px 6px 20px;
