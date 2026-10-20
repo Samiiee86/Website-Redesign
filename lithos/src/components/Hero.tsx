@@ -1,16 +1,14 @@
 import { motion } from "motion/react";
 import { ArrowChip } from "../lib/ui";
-import { DEMOS } from "./Demos";
 import { hero } from "../lib/content";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /* Hero per the Figma frame: clean page ground, headline left and promise
-   right, and one wide painted-seascape card with the KaneAI demo playing in
-   its centre — the same momentic-style scripted UI as the Unified fold, so
-   the "video" is weightless and never letterboxed. */
-
-const PlanDemo = DEMOS.hero;
+   right, and one wide painted-seascape card with the product video playing in
+   a fixed white frame at its centre. The video (home-hero/src) is the live
+   TestmuAi recording rebuilt on white: no nature backgrounds, zooms or slides,
+   title cards redrawn as dark text, scenes joined with 0.7s crossfades. */
 
 export default function Hero() {
   return (
@@ -65,7 +63,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-          className="relative mt-16 min-h-[520px] overflow-hidden border border-border-muted md:mt-20 md:min-h-[640px]"
+          className="relative mt-16 min-h-[300px] overflow-hidden border border-border-muted sm:min-h-[520px] md:mt-20 md:min-h-[640px]"
         >
           <img
             src="/img/hero-lake.webp"
@@ -73,9 +71,22 @@ export default function Hero() {
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-background/10" />
-          <div className="absolute inset-0 flex items-center justify-center p-7 md:p-14">
-            <div className="w-full max-w-[960px]">
-              <PlanDemo />
+          <div className="absolute inset-0 flex items-center justify-center p-5 sm:p-7 md:p-14">
+            <div className="aspect-[1000/552] w-full max-w-[1000px] overflow-hidden bg-white">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster="/img/home-demo-poster.jpg"
+                disablePictureInPicture
+                aria-label="Product demo: plan test scenarios from an objective, author them on a live browser, execute on the cloud, then analyse failures with root cause analysis"
+                className="block h-full w-full object-cover"
+              >
+                <source src="/video/home-demo.webm" type="video/webm" />
+                <source src="/video/home-demo.mp4" type="video/mp4" />
+              </video>
             </div>
           </div>
         </motion.div>
