@@ -366,7 +366,7 @@ export default function Header() {
       </div>
 
       <div
-        className="manrope sticky top-0 z-50 bg-[#F5F4F0]"
+        className="sticky top-0 z-50 bg-[#F5F4F0]"
         onMouseEnter={cancelClose}
         onMouseLeave={scheduleClose}
       >
@@ -400,7 +400,7 @@ export default function Header() {
                         : item.key,
                   )
                 }
-                className={`cursor-pointer whitespace-nowrap px-3 py-2 text-[15px] font-medium text-[#121212] transition-opacity duration-150 hover:opacity-70 ${
+                className={`cursor-pointer whitespace-nowrap px-3 py-2 text-[14px] font-medium text-[#121212] transition-opacity duration-150 hover:opacity-70 ${
                   open === item.key ? "opacity-70" : ""
                 }`}
               >
@@ -422,7 +422,7 @@ export default function Header() {
             </button>
           </div>
 
-          <div className="ml-auto hidden flex-none items-center gap-2 min-[1181px]:flex [&>*]:flex-none [&_a]:whitespace-nowrap">
+          <div className="ml-auto hidden flex-none items-center gap-3 min-[1181px]:flex [&>*]:flex-none [&_a]:whitespace-nowrap">
             <a href="#top" className="btn btn-sm btn-ghost">
               {headerActions.signIn}
             </a>
@@ -565,7 +565,7 @@ export default function Header() {
                   href="#top"
                   className="btn btn-lg btn-primary w-full"
                 >
-                  Start now →
+                  Get Started Free
                 </a>
                 <a
                   href="#top"

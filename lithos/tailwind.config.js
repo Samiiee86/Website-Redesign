@@ -28,6 +28,7 @@ export default {
       },
       fontFamily: {
         body: ['var(--font-body)'],
+        mono: ['var(--font-mono)'],
       },
       borderRadius: {
         lg: 'var(--radius)',

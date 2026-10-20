@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
 
 /* VCR OSD Mono (MrManet, 2015) — free for commercial use. Drives the game's
    pixel type. */
@@ -41,9 +41,12 @@
   --ring: 226 81% 48%;
   --radius: 0.5rem;
 
-  --font-heading: "Manrope", "Inter", sans-serif;
-  --font-pixel: "Geist Pixel", "Inter", sans-serif;
-  --font-body: "Inter", sans-serif;
+  /* three faces only: Manrope for all text, Geist Pixel for numbers,
+     Space Mono for category labels and standout tags */
+  --font-heading: "Manrope", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --font-pixel: "Geist Pixel", "Manrope", sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
 
   --shadow-dashboard:
     0 25px 80px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06);
@@ -145,7 +148,7 @@ body {
 
 .font-mono,
 .mono {
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  font-family: var(--font-mono);
 }
 
 /* ---------- marquee ---------- */
@@ -250,13 +253,6 @@ body {
   /* strongest at the top of the logo strip, gone by its divider */
   -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
   mask-image: linear-gradient(to bottom, #000, transparent);
-}
-
-/* sets Manrope on a block and everything in it, except the mono labels;
-   needed because the body face is applied with a universal selector */
-.manrope,
-.manrope *:not(.mono):not(.font-mono) {
-  font-family: var(--font-heading);
 }
 
 /* ---------- buttons: the TestMu hero-folds system, 6px corners ---------- */

@@ -34,7 +34,7 @@ export default function Faq() {
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="manrope flex w-full items-center justify-between gap-6 px-6 py-6 text-left text-[17px] tracking-[-0.01em] text-foreground transition-colors duration-200 hover:bg-secondary/40"
+                  className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left text-[17px] tracking-[-0.01em] text-foreground transition-colors duration-200 hover:bg-secondary/40"
                 >
                   {item.q}
                   {isOpen ? (
@@ -70,7 +70,7 @@ export default function Faq() {
                   setAll((a) => !a);
                 }}
                 aria-expanded={all}
-                className="manrope flex w-full items-center justify-center gap-2 py-6 text-[16px] text-foreground transition-colors duration-200 hover:bg-secondary/40"
+                className="flex w-full items-center justify-center gap-2 py-6 text-[16px] text-foreground transition-colors duration-200 hover:bg-secondary/40"
               >
                 {all ? "View fewer questions" : "View more questions"}
                 <ChevronDown

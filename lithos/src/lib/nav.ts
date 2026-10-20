@@ -74,7 +74,7 @@ export const headerActions = {
   search: "⌘K",
   signIn: "Login",
   sales: "Book a Demo",
-  start: "Start now",
+  start: "Get Started Free",
 };
 
 export const NAV: NavEntry[] = [
