@@ -3,7 +3,7 @@ import { Reveal } from "../lib/ui";
 
 export default function TrustedBy() {
   return (
-    <div className="relative z-[1] overflow-hidden border-b border-border bg-background px-5 pb-11 pt-20 sm:px-8">
+    <div className="relative z-[1] overflow-hidden bg-background px-5 pb-11 pt-20 sm:px-8">
       {/* per the Figma frame: a 6% noise tile under a page-colour wash that is
           solid at the top and clear at the bottom, so the grain builds toward
           the divider and stops there */}
