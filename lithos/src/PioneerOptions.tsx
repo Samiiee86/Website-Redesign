@@ -1,9 +1,9 @@
 import Header from "./components/Header";
 import GuideLines from "./components/GuideLines";
-import Bento, { type PioneerVariant } from "./sections/PioneerVariants";
+import Bento, { type PioneerVariant } from "./sections/Bento";
 
 /* Side-by-side review page for the Pioneer fold: the same section rendered
-   once per layout option, one after another. Served at /options.html. */
+   once per layout option, one after another. Opened with ?options=pioneer. */
 
 const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
   {
@@ -31,7 +31,6 @@ const OPTIONS: { variant: PioneerVariant; name: string; note: string }[] = [
 export default function PioneerOptions() {
   return (
     <div className="relative min-h-screen bg-background font-body">
-      <div aria-hidden className="grain" />
       <Header />
       <main className="relative">
         <GuideLines />

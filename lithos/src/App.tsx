@@ -1,6 +1,4 @@
 import { MotionConfig } from "motion/react";
-import CursorPill from "./components/CursorPill";
-import ScrollProgress from "./components/ScrollProgress";
 import GuideLines from "./components/GuideLines";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -19,10 +17,6 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative min-h-screen bg-background font-body">
-        {/* the quiet speckle that fills the beige between sections */}
-        <div aria-hidden className="grain" />
-        <ScrollProgress />
-        <CursorPill />
         <Header />
 
         {/* The hero is content-height: no viewport lock, so tall monitors

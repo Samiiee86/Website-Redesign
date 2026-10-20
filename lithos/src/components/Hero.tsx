@@ -1,16 +1,14 @@
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
-import { DEMOS } from "./Demos";
+import { ArrowChip } from "../lib/ui";
 import { hero } from "../lib/content";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /* Hero per the Figma frame: clean page ground, headline left and promise
-   right, and one wide painted-seascape card with the KaneAI demo playing in
-   its centre — the same momentic-style scripted UI as the Unified fold, so
-   the "video" is weightless and never letterboxed. */
-
-const PlanDemo = DEMOS.hero;
+   right, and one wide painted-seascape card with the product video playing in
+   a fixed white frame at its centre. The video (home-hero/src) is the live
+   TestmuAi recording rebuilt on white: no nature backgrounds, zooms or slides,
+   title cards redrawn as dark text, scenes joined with 0.7s crossfades. */
 
 export default function Hero() {
   return (
@@ -24,7 +22,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
-            className="text-[34px] leading-[1.08] tracking-tight text-foreground md:text-[42px] lg:text-[48px]"
+            className="tracking-tight text-foreground"
           >
             <span className="block lg:whitespace-nowrap">Assure your AI deployment -</span>
             <span className="block lg:whitespace-nowrap">across enterprise and real world</span>
@@ -33,7 +31,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
-            className="max-w-[320px] text-base leading-relaxed text-muted-foreground md:text-lg lg:justify-self-end"
+            className="max-w-[320px] text-b2 leading-relaxed text-muted-foreground md:text-b1 lg:justify-self-end"
           >
             We assure that your AI works as intended. Safely and securely.
           </motion.p>
@@ -47,16 +45,14 @@ export default function Hero() {
         >
           <button
             data-cursor="Start free"
-            className="group inline-flex items-center justify-center gap-3 rounded-[10px] bg-primary py-2.5 pl-6 pr-2.5 text-[15px] font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+            className="btn btn-lg btn-primary btn-arrow"
           >
             {hero.primary}
-            <span className="flex h-8 w-8 items-center justify-center rounded-[7px] bg-[#E16F24] text-white transition-transform duration-300 group-hover:translate-x-0.5">
-              <ArrowRight size={15} />
-            </span>
+            <ArrowChip />
           </button>
           <button
             data-cursor="Sign up with email"
-            className="inline-flex items-center justify-center gap-2 rounded-[10px] border border-border bg-surface px-6 py-[15px] text-[15px] font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary"
+            className="btn btn-lg btn-secondary"
           >
             {hero.secondary}
           </button>
@@ -67,7 +63,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE }}
-          className="relative mt-16 min-h-[520px] overflow-hidden border border-border-muted md:mt-20 md:min-h-[640px]"
+          className="relative mt-16 min-h-[300px] overflow-hidden border border-border sm:min-h-[520px] md:mt-20 md:min-h-[640px]"
         >
           <img
             src="/img/hero-lake.webp"
@@ -75,9 +71,22 @@ export default function Hero() {
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-background/10" />
-          <div className="absolute inset-0 flex items-center justify-center p-7 md:p-14">
-            <div className="w-full max-w-[960px]">
-              <PlanDemo />
+          <div className="absolute inset-0 flex items-center justify-center p-5 sm:p-7 md:p-14">
+            <div className="aspect-[1000/552] w-full max-w-[1000px] overflow-hidden bg-white">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                poster="/img/home-demo-poster.jpg"
+                disablePictureInPicture
+                aria-label="Product demo: plan test scenarios from an objective, author them on a live browser, execute on the cloud, then analyse failures with root cause analysis"
+                className="block h-full w-full object-cover"
+              >
+                <source src="/video/home-demo.webm?v=2" type="video/webm" />
+                <source src="/video/home-demo.mp4?v=2" type="video/mp4" />
+              </video>
             </div>
           </div>
         </motion.div>

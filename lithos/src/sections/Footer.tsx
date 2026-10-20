@@ -1,6 +1,6 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { footer, footerExtra } from "../lib/content";
-import { Reveal } from "../lib/ui";
+import { ArrowChip, Reveal } from "../lib/ui";
 
 const AI_TOOLS = ["ChatGPT", "Claude", "Perplexity", "Grok", "Gemini"];
 
@@ -25,7 +25,7 @@ export default function Footer() {
   return (
     <footer className="relative z-[1] overflow-hidden bg-foreground pt-16 text-background">
       <div className="relative mx-auto w-full max-w-[1240px] px-9 sm:px-16">
-        <div className="grid gap-10 pb-12 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-14">
+        <div className="grid gap-10 pb-12 lg:grid-cols-[minmax(0,360px)_1fr] lg:gap-14">
           {/* identity column */}
           <Reveal>
             <img
@@ -33,25 +33,22 @@ export default function Footer() {
               alt="TestMu AI"
               className="h-6 w-auto"
             />
-            <p className="mt-4 max-w-[320px] text-[13px] leading-relaxed text-background/60">
+            <p className="mt-4 max-w-[320px] text-b3 leading-relaxed text-background/60">
               {footerExtra.blurb}
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-2.5">
-              <button className="group inline-flex items-center gap-2 rounded-[8px] bg-background px-4 py-2.5 text-[13px] font-medium text-foreground transition-transform duration-300 hover:-translate-y-0.5">
+            <div className="mt-5 flex flex-wrap gap-3">
+              <button className="btn btn-lg btn-inverse btn-arrow btn-arrow-plain">
                 {footerExtra.primary}
-                <ArrowRight
-                  size={13}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
+                <ArrowChip />
               </button>
-              <button className="rounded-[8px] border border-background/40 px-4 py-2.5 text-[13px] font-medium text-background transition-colors duration-300 hover:bg-background/10">
+              <button className="btn btn-lg btn-outline-inverse">
                 {footerExtra.secondary}
               </button>
             </div>
 
             <div className="mt-6">
-              <p className="text-[12px] text-background/55">
+              <p className="text-b4 text-background/55">
                 {footerExtra.summarize}
               </p>
               <div className="mt-2.5 flex items-center gap-2">
@@ -67,7 +64,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="mt-6 max-w-[320px] text-[12px] leading-relaxed text-background/50">
+            <p className="mt-6 max-w-[320px] text-b4 leading-relaxed text-background/50">
               {footerExtra.compliance}
             </p>
             <div className="mt-3 grid max-w-[300px] grid-cols-6 gap-1.5">
@@ -82,7 +79,7 @@ export default function Footer() {
               ))}
             </div>
 
-            <div className="mt-6 text-[12px] leading-relaxed text-background/55">
+            <div className="mt-6 text-b4 leading-relaxed text-background/55">
               <p className="text-background/75">{footerExtra.address.title}</p>
               <p className="mt-1.5 flex items-center gap-1.5">
                 <MapPin size={11} />
@@ -98,7 +95,7 @@ export default function Footer() {
           <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {footer.groups.slice(0, 4).map((group, i) => (
               <Reveal key={group.title} delay={i * 0.05}>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-background/45">
+                <p className="text-b4 uppercase tracking-[0.18em] text-background/45">
                   {group.title}
                 </p>
                 <ul className="mt-4 flex flex-col gap-2">
@@ -106,7 +103,7 @@ export default function Footer() {
                     <li key={link}>
                       <a
                         href="#top"
-                        className="text-[13px] leading-snug text-background/60 transition-colors duration-300 hover:text-background"
+                        className="text-b3 leading-snug text-background/60 transition-colors duration-300 hover:text-background"
                       >
                         {link}
                       </a>
@@ -117,7 +114,7 @@ export default function Footer() {
                 {/* stack the remaining groups under the last two columns */}
                 {i === 2 && (
                   <>
-                    <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-background/45">
+                    <p className="mt-8 text-b4 uppercase tracking-[0.18em] text-background/45">
                       {footer.groups[4].title}
                     </p>
                     <ul className="mt-4 flex flex-col gap-2">
@@ -125,7 +122,7 @@ export default function Footer() {
                         <li key={link}>
                           <a
                             href="#top"
-                            className="text-[13px] leading-snug text-background/60 transition-colors duration-300 hover:text-background"
+                            className="text-b3 leading-snug text-background/60 transition-colors duration-300 hover:text-background"
                           >
                             {link}
                           </a>
@@ -136,7 +133,7 @@ export default function Footer() {
                 )}
                 {i === 3 && (
                   <>
-                    <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-background/45">
+                    <p className="mt-8 text-b4 uppercase tracking-[0.18em] text-background/45">
                       {footer.groups[5].title}
                     </p>
                     <ul className="mt-4 flex flex-col gap-2">
@@ -144,14 +141,14 @@ export default function Footer() {
                         <li key={link}>
                           <a
                             href="#top"
-                            className="text-[13px] leading-snug text-background/60 transition-colors duration-300 hover:text-background"
+                            className="text-b3 leading-snug text-background/60 transition-colors duration-300 hover:text-background"
                           >
                             {link}
                           </a>
                         </li>
                       ))}
                     </ul>
-                    <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-background/45">
+                    <p className="mt-8 text-b4 uppercase tracking-[0.18em] text-background/45">
                       {footer.whatsNew.title}
                     </p>
                     <ul className="mt-4 flex flex-col gap-2">
@@ -159,7 +156,7 @@ export default function Footer() {
                         <li key={link}>
                           <a
                             href="#top"
-                            className="text-[13px] leading-snug text-background/60 transition-colors duration-300 hover:text-background"
+                            className="text-b3 leading-snug text-background/60 transition-colors duration-300 hover:text-background"
                           >
                             {link}
                           </a>
@@ -175,7 +172,7 @@ export default function Footer() {
 
         <div
           data-game-align
-          className="flex flex-col gap-4 border-t border-background/15 py-6 text-[12px] text-background/50 sm:flex-row sm:items-center sm:justify-between"
+          className="flex flex-col gap-4 border-t border-background/15 py-6 text-b4 text-background/50 sm:flex-row sm:items-center sm:justify-between"
         >
           <p>{footerExtra.bottom.legal}</p>
           <p>{footerExtra.bottom.built}</p>

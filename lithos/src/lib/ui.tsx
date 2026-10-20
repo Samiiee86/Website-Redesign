@@ -1,5 +1,6 @@
 import { type ReactNode, useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { ArrowRight } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -63,7 +64,7 @@ export function Eyebrow({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground ${className}`}
+      className={`inline-flex items-center gap-2 text-b4 font-medium uppercase tracking-[0.22em] text-muted-foreground ${className}`}
     >
       <span className="h-1 w-1 rounded-full bg-[var(--accent)]" />
       {children}
@@ -86,7 +87,7 @@ export function Btn({
 }: BtnProps) {
   const base =
     "group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 active:scale-95 whitespace-nowrap";
-  const sizes = size === "lg" ? "px-8 py-4 text-[15px]" : "px-6 py-3 text-sm";
+  const sizes = size === "lg" ? "px-8 py-4 text-b2" : "px-6 py-3 text-b3";
   const variants = {
     primary:
       "bg-primary text-primary-foreground hover:bg-accent/90 hover:shadow-[0_12px_40px_-12px_rgba(232,112,42,0.8)] hover:-translate-y-0.5",
@@ -156,5 +157,17 @@ export function Marquee({
         </div>
       </div>
     </div>
+  );
+}
+
+/* the orange arrow chip that sits at the end of a .btn-arrow button */
+export function ArrowChip() {
+  return (
+    <span className="chip" aria-hidden>
+      <span>
+        <ArrowRight size={16} />
+        <ArrowRight size={16} />
+      </span>
+    </span>
   );
 }

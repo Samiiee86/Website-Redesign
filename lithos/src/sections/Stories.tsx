@@ -61,23 +61,23 @@ export default function Stories() {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <h2 className="tracking-tight">
             <span className="block text-muted-foreground">
               {storiesGrid.lead}
             </span>
             <span className="block">TestMu AI (formerly LambdaTest)</span>
           </h2>
-          <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
+          <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
             {storiesGrid.body}
           </p>
         </div>
-        <button className="mt-8 rounded-[10px] border border-border bg-surface px-6 py-3 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-secondary">
+        <button className="btn btn-lg btn-secondary mt-8">
           {storiesGrid.cta}
         </button>
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="-mx-8 overflow-hidden border border-border-muted bg-surface">
+        <div className="-mx-8 overflow-hidden border-y border-border bg-surface">
           {/* headline case */}
           <div className="grid lg:grid-cols-[2fr_1fr]">
             {/* the video sits on a white frame; the quote shares the surface */}
@@ -111,11 +111,11 @@ export default function Stories() {
                     <p className="pixel text-[44px] leading-none tracking-tight text-white md:text-[56px]">
                       {hero.stat}
                     </p>
-                    <p className="mt-2 text-[15px] capitalize text-white/90">
+                    <p className="mt-2 text-b2 capitalize text-white/90">
                       {hero.statLabel}
                     </p>
                   </div>
-                  <span className="flex shrink-0 items-center gap-2 rounded-[6px] border border-white bg-white/10 px-4 py-2 text-[13px] font-medium uppercase text-white backdrop-blur-md transition-colors group-hover:bg-white/20">
+                  <span className="flex shrink-0 items-center gap-2 rounded-[6px] border border-white bg-white/10 px-4 py-2 text-b3 font-medium uppercase text-white backdrop-blur-md transition-colors group-hover:bg-white/20">
                     <Play size={13} className="fill-white" />
                     {hero.action}
                   </span>
@@ -134,9 +134,9 @@ export default function Stories() {
                 <blockquote className="mt-5 max-w-[380px] text-[22px] leading-[1.35] tracking-tight md:text-[24px]">
                   {hero.quote}
                 </blockquote>
-                <footer className="mt-6 text-[15px]">
+                <footer className="mt-6 text-b2">
                   {hero.name}
-                  <span className="block text-[14px] text-muted-foreground">
+                  <span className="block text-b3 text-muted-foreground">
                     {hero.role}
                   </span>
                 </footer>
@@ -146,13 +146,13 @@ export default function Stories() {
 
           {/* supporting cases: two white cards, Best Egg's photo runs to the
               surface edges */}
-          <div className="grid border-t border-border-muted lg:grid-cols-[1fr_1fr_2fr]">
+          <div className="grid border-t border-border lg:grid-cols-[1fr_1fr_2fr]">
             {storiesGrid.cells.map((cell) => (
               <a
                 key={cell.brand}
                 href={cell.href}
                 data-cursor="Read case study"
-                className="group flex flex-col justify-between gap-10 border-b border-border-muted p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-8 lg:border-b-0 lg:border-r"
+                className="group flex flex-col justify-between gap-10 border-b border-border p-6 transition-colors duration-500 hover:bg-secondary/40 md:p-8 lg:border-b-0 lg:border-r"
               >
                 <div className="flex items-start justify-between gap-4">
                   <img
@@ -172,7 +172,7 @@ export default function Stories() {
                   <p className="pixel text-[40px] leading-none tracking-tight">
                     {cell.stat}
                   </p>
-                  <p className="mt-3 max-w-[260px] text-[15px] leading-relaxed text-muted-foreground">
+                  <p className="mt-3 max-w-[260px] text-b2 leading-relaxed text-muted-foreground">
                     {cell.desc}
                   </p>
                 </div>
@@ -207,11 +207,11 @@ export default function Stories() {
                     <p className="pixel text-[44px] leading-none tracking-tight text-white">
                       {wide.stat}
                     </p>
-                    <p className="mt-3 max-w-[260px] text-[15px] capitalize leading-snug text-white/90">
+                    <p className="mt-3 max-w-[260px] text-b2 capitalize leading-snug text-white/90">
                       {wide.desc}
                     </p>
                   </div>
-                  <span className="flex shrink-0 items-center gap-2 rounded-[6px] border border-white bg-white/10 px-4 py-2 text-[13px] font-medium uppercase text-white backdrop-blur-md transition-colors group-hover:bg-white/20">
+                  <span className="flex shrink-0 items-center gap-2 rounded-[6px] border border-white bg-white/10 px-4 py-2 text-b3 font-medium uppercase text-white backdrop-blur-md transition-colors group-hover:bg-white/20">
                     {wide.action}
                     <Play size={12} className="fill-white" />
                   </span>

@@ -396,23 +396,39 @@ export const rebrand = {
 export const faq = [
   {
     q: "What is TestMu AI?",
-    a: "TestMu AI is a native AI-agentic cloud platform for quality engineering. It lets teams plan, author, execute and analyse tests across web, mobile and AI applications from a single platform.",
+    a: "TestMu AI (formerly LambdaTest) is an AI-native software testing cloud platform that helps developers and QA teams automate end-to-end testing across web, mobile, and AI applications. Trusted by over 3+ million users at companies like Microsoft, OpenAI, and Nvidia, TestMu AI offers AI agents like KaneAI for test creation, a real device cloud with 10,000+ devices, and 3,000+ browser combinations, all from a single platform named a Challenger in the 2025 Gartner Magic Quadrant for AI-Augmented Software Testing Tools.",
   },
   {
     q: "Is LambdaTest still available?",
-    a: "Yes. LambdaTest is now TestMu AI — the same trusted testing cloud, rebuilt for the AI era. Every capability you relied on is still here, alongside the new agentic products.",
+    a: "Yes. LambdaTest is now TestMu AI, the company rebranded to reflect its evolution into an AI-native testing platform. All LambdaTest products, features, integrations, and infrastructure are fully available under the new TestMu AI (formerly LambdaTest) brand at testmuai.com. Existing customers experienced no service interruption, and all previously published documentation, learning content, and community resources remain accessible.",
   },
   {
     q: "What happened to LambdaTest?",
-    a: "On January 12, 2026 the platform evolved from cross-browser testing into a full-stack agentic AI quality engineering cloud, and was renamed TestMu AI.",
+    a: "LambdaTest is now TestMu AI. The company rebranded to reflect its expansion from a cross-browser testing platform into a full AI-native testing cloud, adding AI agents, agent testing, KaneAI, and autonomous test orchestration. The product, team, infrastructure, customers, and roadmap remain the same. Only the name and visual identity changed. Visit testmuai.com to access the platform under its new brand.",
   },
   {
     q: "Are my LambdaTest credentials still valid on TestMu AI?",
-    a: "Yes. Your existing account, projects and credentials carry across to TestMu AI — nothing needs to be recreated.",
+    a: "Yes, your existing LambdaTest credentials work on TestMu AI (formerly LambdaTest) without any changes. Your account, test history, integrations, billing, API keys, and team settings all transferred automatically during the rebrand. Simply log in at testmuai.com or visit testmuai.com/login/ using your existing email and password, both URLs route to the same authentication system. No migration, password reset, or re-onboarding is required.",
   },
   {
     q: "How is TestMu AI different from LambdaTest?",
-    a: "TestMu AI adds autonomous agents like Kane AI, agent testing for voice AI and chatbots, AI visual testing and HyperExecute orchestration on top of the original testing cloud.",
+    a: "TestMu AI is the same company and platform as LambdaTest, with all original capabilities intact: cross-browser testing, real device cloud, automation testing, and 120+ integrations. The difference is what was added, TestMu AI (formerly LambdaTest) introduces a full AI-native testing stack including KaneAI (the world's first GenAI-native testing agent), agent testing for voice AI and chatbots, AI-powered visual testing, and autonomous test orchestration recognized in the Forrester Wave: Autonomous Testing Platforms, Q4 2025.",
+  },
+  {
+    q: "Why did LambdaTest rebrand to TestMu AI?",
+    a: "LambdaTest rebranded to TestMu AI on January 12, 2026 to signal its evolution from a browser and device testing platform into a comprehensive AI-native testing cloud. The original \"LambdaTest\" name reflected the company's roots in scalable test infrastructure, while \"TestMu AI (formerly LambdaTest)\" captures its current focus: AI agents, autonomous testing, and end-to-end quality engineering powered by generative AI. The platform, team, and customer commitments remain unchanged.",
+  },
+  {
+    q: "Is TestMu AI the same as LambdaTest?",
+    a: "Yes. TestMu AI is the same company, platform, and team as LambdaTest, operating under a new name since January 12, 2026. Every capability LambdaTest customers used, including cross-browser testing, real device cloud, automation testing, and 120+ integrations, continues to work on TestMu AI, now extended with AI agents like KaneAI and autonomous test orchestration.",
+  },
+  {
+    q: "When did LambdaTest become TestMu AI?",
+    a: "LambdaTest officially rebranded to TestMu AI on January 12, 2026. The transition was announced as the company's evolution into an AI-native quality engineering platform, reflecting eight years of growth from a cross-browser testing tool to a comprehensive autonomous testing cloud. All customer accounts, integrations, and product capabilities transferred to TestMu AI on the rebrand date.",
+  },
+  {
+    q: "Will my LambdaTest API and integrations continue to work?",
+    a: "Yes, all LambdaTest API endpoints, SDK integrations, and CI/CD workflows continue to work on TestMu AI without any code changes. Existing API keys, webhooks, Selenium and Appium Grid endpoints, and 120+ third-party integrations (including Jenkins, GitHub Actions, Slack, JIRA, and others) function identically. Your CI pipelines and automation scripts require no migration or reconfiguration.",
   },
 ];
 
@@ -563,8 +579,8 @@ export const footer = {
 export const footerExtra = {
   blurb:
     "Deliver unparalleled digital experience with our Next-Gen, AI-Native testing cloud platform. Ensure exceptional user experience across all devices and browsers.",
-  primary: "Start free with Google",
-  secondary: "Start free with Email",
+  primary: "Start free Testing",
+  secondary: "Book a Demo",
   summarize: "Summarize with AI",
   compliance:
     "TestMu AI has formal standards certification and comply in line with acts and regulations across the globe.",

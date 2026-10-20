@@ -67,13 +67,13 @@ function Feature({ feature }: { feature: Fold["features"][number] }) {
       </motion.div>
 
       <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
-        <h3 className="text-2xl tracking-tight text-white md:text-[28px]">
+        <h3 className="tracking-tight text-white">
           {feature.name}
         </h3>
-        <p className="mt-3 max-w-[440px] text-[14px] leading-relaxed text-white/75">
+        <p className="mt-3 max-w-[440px] text-b3 leading-relaxed text-white/75">
           {feature.desc}
         </p>
-        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-white/40 pb-1 text-[13px] font-medium text-white transition-colors hover:border-white">
+        <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-white/40 pb-1 text-b3 font-medium text-white transition-colors hover:border-white">
           {feature.cta}
           <ArrowRight
             size={14}
@@ -90,17 +90,17 @@ function Fold({ fold }: { fold: Fold }) {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <h2 className="tracking-tight">
             <span className="block text-muted-foreground">{fold.lead}</span>
             <span className="block">{fold.subject}</span>
           </h2>
-          <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
+          <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
             {fold.body}
           </p>
         </div>
         <button
           data-cursor="Start free"
-          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-b3 font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
         >
           {fold.cta}
           <ArrowRight
@@ -111,19 +111,19 @@ function Fold({ fold }: { fold: Fold }) {
       </Reveal>
 
       <Reveal delay={0.08}>
-        <div className="overflow-hidden  border border-border-muted bg-surface">
+        <div className="overflow-hidden  border border-border bg-surface">
           <div className="grid md:grid-cols-2">
             {fold.features.map((f, i) => (
               <div
                 key={f.name}
-                className={i === 0 ? "md:border-r md:border-border-muted" : ""}
+                className={i === 0 ? "md:border-r md:border-border" : ""}
               >
                 <Feature feature={f} />
               </div>
             ))}
           </div>
 
-          <div className="grid border-t border-border-muted sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
             {fold.cells.map((cell, i) => {
               const Icon = ICONS[cell.icon as keyof typeof ICONS];
               return (
@@ -131,9 +131,9 @@ function Fold({ fold }: { fold: Fold }) {
                   key={cell.name}
                   data-cursor={cell.name}
                   className={`group p-7 transition-colors duration-500 hover:bg-secondary/50 ${
-                    i < 3 ? "lg:border-r lg:border-border-muted" : ""
-                  } ${i % 2 === 0 ? "sm:border-r sm:border-border-muted" : ""} ${
-                    i < 2 ? "border-b border-border-muted lg:border-b-0" : ""
+                    i < 3 ? "lg:border-r lg:border-border" : ""
+                  } ${i % 2 === 0 ? "sm:border-r sm:border-border" : ""} ${
+                    i < 2 ? "border-b border-border lg:border-b-0" : ""
                   }`}
                 >
                   <div className="flex items-start justify-between">
@@ -146,10 +146,10 @@ function Fold({ fold }: { fold: Fold }) {
                       className="translate-y-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:text-foreground group-hover:opacity-100"
                     />
                   </div>
-                  <h4 className="mt-6 text-[17px] tracking-tight">
+                  <h4 className="mt-6 tracking-tight">
                     {cell.name}
                   </h4>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-muted-foreground">
+                  <p className="mt-2.5 text-b3 leading-relaxed text-muted-foreground">
                     {cell.desc}
                   </p>
                 </div>

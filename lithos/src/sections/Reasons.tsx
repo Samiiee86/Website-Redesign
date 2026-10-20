@@ -1,6 +1,6 @@
 import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import { asSeenOn, reasons, reviews, stats } from "../lib/content";
-import { Marquee, Reveal, Section } from "../lib/ui";
+import { Marquee, Reveal, Section, ArrowChip } from "../lib/ui";
 
 function Stars({ rating }: { rating: string }) {
   const value = parseFloat(rating);
@@ -29,31 +29,28 @@ export default function Reasons() {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="text-[34px] leading-[1.14] tracking-tight md:text-[42px]">
+          <h2 className="tracking-tight">
             <span className="block text-muted-foreground">
               More Reasons to Love
             </span>
             <span className="block">TestMu AI (formerly LambdaTest)</span>
           </h2>
-          <p className="max-w-[430px] text-[16px] leading-relaxed text-muted-foreground">
+          <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
             {reasons.body}
           </p>
         </div>
         <button
           data-cursor="Start free"
-          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+          className="btn btn-lg btn-primary btn-arrow btn-arrow-plain mt-8"
         >
           Start free with Google
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
+          <ArrowChip />
         </button>
       </Reveal>
 
       {/* one continuous grid — flush cells, hairline dividers, square corners */}
       <Reveal delay={0.08}>
-        <div className="-mx-8 border border-border-muted bg-surface">
+        <div className="-mx-8 border-y border-border bg-surface">
           {/* numbers */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4">
             {stats.map((s, i) => (
@@ -61,15 +58,15 @@ export default function Reasons() {
                 key={s.label}
                 className={`px-8 py-10 text-center ${
                   i < 3
-                    ? "border-b border-border-muted sm:border-b-0 lg:border-r"
+                    ? "border-b border-border sm:border-b-0 lg:border-r"
                     : ""
-                } ${i === 0 ? "sm:border-r sm:border-border-muted" : ""} ${
+                } ${i === 0 ? "sm:border-r sm:border-border" : ""} ${
                   i === 1
-                    ? "sm:border-b sm:border-border-muted lg:border-b-0"
+                    ? "sm:border-b sm:border-border lg:border-b-0"
                     : ""
                 }`}
               >
-                <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                <p className="text-b4 uppercase tracking-[0.22em] text-muted-foreground">
                   {s.label}
                 </p>
                 <p className="pixel mt-3 text-[38px] leading-none tracking-tight md:text-[44px]">
@@ -81,21 +78,21 @@ export default function Reasons() {
           </div>
 
           {/* analyst reports */}
-          <div className="grid border-t border-border-muted md:grid-cols-2">
+          <div className="grid border-t border-border md:grid-cols-2">
             {reasons.reports.map((report, i) => (
               <div
                 key={report.title}
                 data-cursor="Read report"
                 className={`group p-8 transition-colors duration-500 hover:bg-secondary/40 ${
                   i === 0
-                    ? "border-b border-border-muted md:border-b-0 md:border-r"
+                    ? "border-b border-border md:border-b-0 md:border-r"
                     : ""
                 }`}
               >
-                <p className="max-w-[420px] text-[19px] leading-snug tracking-tight">
+                <p className="max-w-[420px] text-b1 leading-snug tracking-tight">
                   {report.title}
                 </p>
-                <span className="mt-5 inline-flex items-center gap-2 border-b border-foreground pb-0.5 text-[14px] font-medium">
+                <span className="mt-5 inline-flex items-center gap-2 border-b border-foreground pb-0.5 text-b3 font-medium">
                   {report.cta}
                   <ArrowRight
                     size={14}
@@ -107,20 +104,20 @@ export default function Reasons() {
           </div>
 
           {/* the three proofs — copy first, artwork beneath */}
-          <div className="grid border-t border-border-muted lg:grid-cols-3">
+          <div className="grid border-t border-border lg:grid-cols-3">
             {reasons.cards.map((card, i) => (
               <div
                 key={card.title}
                 data-cursor="Learn more"
                 className={`flex flex-col gap-6 p-8 ${
                   i < 2
-                    ? "border-b border-border-muted lg:border-b-0 lg:border-r"
+                    ? "border-b border-border lg:border-b-0 lg:border-r"
                     : ""
                 }`}
               >
                 <div>
-                  <h3 className="text-[21px] tracking-tight">{card.title}</h3>
-                  <p className="mt-3 max-w-[330px] text-[15px] leading-relaxed text-muted-foreground">
+                  <h3 className="tracking-tight">{card.title}</h3>
+                  <p className="mt-3 max-w-[330px] text-b2 leading-relaxed text-muted-foreground">
                     {card.body}
                   </p>
                 </div>
@@ -135,7 +132,7 @@ export default function Reasons() {
           </div>
 
           {/* ratings */}
-          <div className="grid border-t border-border-muted lg:grid-cols-3">
+          <div className="grid border-t border-border lg:grid-cols-3">
             {reviews.vendors.map((vendor, i) => (
               <a
                 key={vendor.name}
@@ -143,12 +140,12 @@ export default function Reasons() {
                 data-cursor={`Read ${vendor.name}`}
                 className={`group flex flex-col justify-between gap-8 p-8 transition-colors duration-500 hover:bg-secondary/40 ${
                   i < 2
-                    ? "border-b border-border-muted lg:border-b-0 lg:border-r"
+                    ? "border-b border-border lg:border-b-0 lg:border-r"
                     : ""
                 }`}
               >
                 <div className="flex items-start justify-between">
-                  <span className="text-[15px] font-medium tracking-tight">
+                  <span className="text-b2 font-medium tracking-tight">
                     {vendor.name}
                   </span>
                   <ArrowUpRight
@@ -159,13 +156,13 @@ export default function Reasons() {
                 <div>
                   <p className="pixel text-[40px] leading-none tracking-tight">
                     {vendor.rating}
-                    <span className="ml-1 text-sm text-muted-foreground">
+                    <span className="ml-1 text-b3 text-muted-foreground">
                       / {vendor.outOf}
                     </span>
                   </p>
                   <div className="mt-4 flex items-center gap-3">
                     <Stars rating={vendor.rating} />
-                    <span className="text-[13px] text-muted-foreground">
+                    <span className="text-b3 text-muted-foreground">
                       {vendor.count}
                     </span>
                   </div>
@@ -175,8 +172,8 @@ export default function Reasons() {
           </div>
 
           {/* press */}
-          <div className="border-t border-border-muted px-8 py-10">
-            <p className="mb-8 text-center text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
+          <div className="border-t border-border px-8 py-10">
+            <p className="mb-8 text-center text-b4 uppercase tracking-[0.28em] text-muted-foreground">
               {asSeenOn.label}
             </p>
             <Marquee duration={38}>
