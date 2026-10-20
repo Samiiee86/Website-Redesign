@@ -255,7 +255,7 @@ function Copy({
       </h3>
       <p
         className={`max-w-[520px] leading-relaxed text-muted-foreground ${
-          quiet ? "mt-3 text-b3" : "mt-4 text-b2"
+          quiet ? "mt-3 text-b3" : "mt-4 text-b1"
         }`}
       >
         {card.body}
