@@ -288,40 +288,19 @@ function Painting({ index, zoom = false }: { index: number; zoom?: boolean }) {
 
 /* --- hover: text first, the hovered card widens and replays ------------- */
 
-function HoverCard({
-  index,
-  active,
-  canHover,
-  onActivate,
-}: {
-  index: number;
-  active: number | null;
-  canHover: boolean;
-  onActivate: (i: number) => void;
-}) {
+function HoverCard({ index }: { index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.55 });
-  const reduce = useReducedMotion();
-  const isActive = active === index;
-  const dimmed = canHover && active !== null && !isActive;
-  const grow = !canHover || reduce || active === null ? 1 : isActive ? 1.7 : 1;
 
   return (
-    <motion.div
+    <div
       ref={ref}
       data-cursor={pioneer.cards[index].cta}
-      tabIndex={0}
-      onMouseEnter={() => onActivate(index)}
-      onFocus={() => onActivate(index)}
-      initial={false}
-      animate={{ flexGrow: grow, opacity: dimmed ? 0.5 : 1 }}
-      transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
-      style={{ flexGrow: 1 }}
-      className="relative flex min-w-0 basis-auto flex-col overflow-hidden border border-border-muted bg-surface outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:basis-0"
+      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border-muted bg-surface"
     >
       {/* the painting covers the whole card; a beige wash keeps the copy
           readable at the top and clears before it reaches the window */}
-      <Painting index={index} zoom={isActive && canHover} />
+      <Painting index={index} />
       <div
         aria-hidden
         className="absolute inset-0"
@@ -332,33 +311,25 @@ function HoverCard({
       />
 
       <div className="relative p-6 md:p-8">
-        <Copy index={index} fixedWidth />
+        <Copy index={index} />
       </div>
 
       {/* the window anchors to the bottom edge and runs off the right,
           like a product screen sliding into the card */}
       <div className="relative mt-auto pl-6 md:pl-10">
         <div className="-mb-px w-[calc(100%+48px)] [&>div]:max-w-none">
-          <PanelWindow index={index} playing={canHover ? isActive : inView} />
+          <PanelWindow index={index} playing={inView} />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 function HoverRow() {
-  const canHover = useCanHover();
-  const [active, setActive] = useState<number | null>(null);
   return (
-    <div
-      className="-mx-8 flex flex-col gap-6 [container-type:inline-size] max-md:[&>*]:border-x-0 md:flex-row md:[&>*:first-child]:border-l-0 md:[&>*:last-child]:border-r-0"
-      onMouseLeave={() => setActive(null)}
-      onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node)) setActive(null);
-      }}
-    >
+    <div className="-mx-8 flex flex-col gap-6 max-md:[&>*]:border-x-0 md:flex-row md:[&>*:first-child]:border-l-0 md:[&>*:last-child]:border-r-0">
       {[0, 1].map((i) => (
-        <HoverCard key={i} index={i} active={active} canHover={canHover} onActivate={setActive} />
+        <HoverCard key={i} index={i} />
       ))}
     </div>
   );
