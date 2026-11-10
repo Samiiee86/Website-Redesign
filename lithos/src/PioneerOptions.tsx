@@ -17,14 +17,14 @@ const OPTIONS: { id: string; name: string; note: string; render: () => ReactNode
   {
     id: "unified-bento",
     name: "Unified · Bento (previous)",
-    note: "The earlier Unified fold: four flagship cards with live demos over three platform cards. The home page now shows one large frame at a time.",
+    note: "The earlier Unified fold: four flagship cards with live demos over three platform cards. The home page now uses alternating product rows.",
     render: () => <Unified variant="bento" />,
   },
   {
-    id: "unified-steps",
-    name: "Unified · Numbered steps",
-    note: "Four alternating rows (plan, run, cover, decide), each with its demo on a painting. The home page now shows one large frame at a time.",
-    render: () => <Unified variant="steps" />,
+    id: "unified-switcher",
+    name: "Unified · One-frame switcher",
+    note: "A product list on the left and one large demo frame on the right that changes every 9 seconds. The home page now uses alternating product rows.",
+    render: () => <Unified variant="switcher" />,
   },
   {
     id: "inset",

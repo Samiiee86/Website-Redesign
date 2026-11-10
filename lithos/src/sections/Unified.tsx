@@ -1,4 +1,4 @@
-import { BarChart3, ClipboardList, Smartphone, Zap } from "lucide-react";
+import { BarChart3, Check, ClipboardList, Smartphone, Zap } from "lucide-react";
 import { scenery } from "../lib/scenery";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -166,46 +166,61 @@ function BentoGrid() {
   );
 }
 
-/* --- steps edition (default) --------------------------------------------
-   The platform products as one quality loop, after devin.ai's numbered
-   rows: copy settles at the foot of its column, the live demo sits on a
-   painting opposite, and the sides alternate down the page. Changed from
-   the reference: hairline rows inside the page box, a product tag and a
-   mono step label, and our own painted plates. */
+/* --- rows edition (default) ---------------------------------------------
+   The platform products as alternating rows, after devin.ai: copy on one
+   side (product tag, heading, body, three proof points, link), the live
+   demo on a painting opposite. No numbered flow; the Flow diagram above
+   already tells that story. */
 
 const STEPS = [
   {
     id: "test-manager",
-    label: "Plan",
     title: "Plan and manage every test",
     body: "Create test cases with AI, manage and run them in one place, and keep Jira and Azure DevOps in sync both ways.",
+    points: [
+      "AI writes test cases from your requirements",
+      "Manual and automated runs side by side",
+      "Two-way sync with Jira and Azure DevOps",
+    ],
     product: "Test Manager",
     icon: ClipboardList,
     scene: scenery.meadow,
   },
   {
     id: "hyperexecute",
-    label: "Run",
     title: "Run the whole suite in minutes",
     body: "Up to 70% faster than any cloud grid. AI-native orchestration splits, retries and reports every run on a secure, scalable cloud.",
+    points: [
+      "Smart test splitting and auto-retries",
+      "Selenium, Playwright, Cypress and more",
+      "Logs, video and reports for every job",
+    ],
     product: "HyperExecute",
     icon: Zap,
     scene: scenery.wetland,
   },
   {
     id: "real-device-cloud",
-    label: "Cover",
     title: "Test on the devices your users hold",
     body: "Manual and automated testing on 10,000+ real iOS and Android devices, in a public, dedicated or on-premise cloud.",
+    points: [
+      "Latest and legacy iPhone, Pixel and Galaxy models",
+      "Network throttling, geolocation and biometrics",
+      "Live UI inspector, logs and session video",
+    ],
     product: "Real Device Cloud",
     icon: Smartphone,
     scene: scenery.hills,
   },
   {
     id: "test-insights",
-    label: "Decide",
     title: "Know what is safe to ship",
     body: "AI-native analytics show where tests fail and why, so every release call is made on data instead of a hunch.",
+    points: [
+      "Flaky test detection across every run",
+      "AI root cause for failed tests",
+      "Custom dashboards for each team",
+    ],
     product: "Test Insights",
     icon: BarChart3,
     scene: scenery.dunes,
@@ -226,36 +241,37 @@ function StepRows() {
             className="grid grid-cols-[minmax(0,1fr)] gap-10 border-b border-border px-8 py-12 last:border-b-0 md:py-16 lg:grid-cols-2 lg:gap-16"
           >
             <Reveal
-              className={`flex flex-col justify-end ${flip ? "lg:order-2" : ""}`}
+              className={`flex flex-col justify-center ${flip ? "lg:order-2" : ""}`}
             >
-              <p className="flex items-baseline gap-4">
-                <span className="pixel text-[44px] leading-none text-muted-foreground">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="mono text-b4 uppercase tracking-[0.22em] text-muted-foreground">
-                  {step.label}
-                </span>
+              <p className="mono flex items-center gap-2.5 text-b4 uppercase tracking-[0.18em] text-muted-foreground">
+                <Icon size={15} className="text-foreground" />
+                {step.product}
               </p>
-              <h3 className="mt-6 tracking-tight">{step.title}</h3>
-              <p className="mt-4 max-w-[460px] text-b1 leading-relaxed text-muted-foreground">
+              <h3 className="mt-5 tracking-tight">{step.title}</h3>
+              <p className="mt-4 max-w-[480px] text-b1 leading-relaxed text-muted-foreground">
                 {step.body}
               </p>
-              <div className="mt-6 flex flex-wrap items-center gap-5">
-                <span className="inline-flex items-center gap-2 border border-border bg-surface px-2.5 py-1 text-b3 text-foreground">
-                  <Icon size={14} />
-                  {step.product}
-                </span>
-                <button className="group/btn inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
-                  {tab.cta}
-                  <SlideArrow />
-                </button>
-              </div>
+              <ul className="mt-7 max-w-[480px] border-t border-border">
+                {step.points.map((pt) => (
+                  <li
+                    key={pt}
+                    className="flex items-center gap-3 border-b border-border py-3 text-b2 text-foreground"
+                  >
+                    <Check size={15} className="flex-none text-muted-foreground" />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+              <button className="group/btn mt-7 inline-flex items-center gap-2 self-start border-b border-foreground pb-1 text-b3 font-medium text-foreground">
+                {tab.cta}
+                <SlideArrow />
+              </button>
             </Reveal>
 
             <Reveal delay={0.08} className={flip ? "lg:order-1" : ""}>
               <div
                 data-cursor={step.product}
-                className="relative flex h-[380px] items-center justify-center overflow-hidden border border-border px-6 md:h-[420px] md:px-12"
+                className="relative flex h-[380px] items-center justify-center overflow-hidden border border-border px-6 md:h-[500px] md:px-12"
               >
                 <img
                   src={step.scene}
@@ -264,7 +280,7 @@ function StepRows() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-white/25" />
-                <div className="relative w-full max-w-[500px]">
+                <div className="relative w-full max-w-[520px]">
                   <Demo />
                 </div>
               </div>
@@ -276,7 +292,7 @@ function StepRows() {
   );
 }
 
-/* --- switcher edition (default) -----------------------------------------
+/* --- switcher edition (options page) -----------------------------------------
    One large frame at a time: the product list on the left, the selected
    product's live demo filling a painted stage on the right. It advances on
    its own and holds while the pointer is over the fold. */
@@ -398,13 +414,13 @@ function ProductSwitcher() {
   );
 }
 
-export type UnifiedVariant = "switcher" | "steps" | "bento";
+export type UnifiedVariant = "rows" | "switcher" | "bento";
 
-export default function Unified({ variant = "switcher" }: { variant?: UnifiedVariant }) {
+export default function Unified({ variant = "rows" }: { variant?: UnifiedVariant }) {
   return (
-    <Section id="unified" className={variant === "steps" ? "!pb-0 md:!pb-0" : ""}>
+    <Section id="unified" className={variant === "rows" ? "!pb-0 md:!pb-0" : ""}>
       <UnifiedHeading />
-      {variant === "bento" ? <BentoGrid /> : variant === "steps" ? <StepRows /> : <ProductSwitcher />}
+      {variant === "bento" ? <BentoGrid /> : variant === "rows" ? <StepRows /> : <ProductSwitcher />}
     </Section>
   );
 }
