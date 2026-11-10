@@ -1,4 +1,4 @@
-import { BarChart3, Check, ClipboardList, Smartphone, Zap } from "lucide-react";
+import { BarChart3, ClipboardList, Smartphone, Zap } from "lucide-react";
 import { scenery } from "../lib/scenery";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -245,7 +245,7 @@ function StepRows() {
             }`}
           >
             <Reveal
-              className={`flex flex-col ${flip ? "lg:order-2" : ""}`}
+              className={`flex flex-col justify-end ${flip ? "lg:order-2" : ""}`}
             >
               <p className="mono flex items-center gap-2.5 text-b4 uppercase tracking-[0.18em] text-muted-foreground">
                 <Icon size={15} className="text-foreground" />
@@ -255,22 +255,10 @@ function StepRows() {
               <p className="mt-4 max-w-[480px] text-b1 leading-relaxed text-muted-foreground">
                 {step.body}
               </p>
-              {/* the proof points and the link sit at the foot of the column,
-                  level with the bottom of the painting */}
-              <div className="mt-8 lg:mt-auto">
-                <ul className="flex max-w-[480px] flex-col gap-2 border-t border-border pt-4">
-                  {step.points.map((pt) => (
-                    <li key={pt} className="flex items-center gap-2 text-b3 text-foreground">
-                      <Check size={14} className="flex-none text-muted-foreground" />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-                <button className="group/btn mt-6 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
-                  {tab.cta}
-                  <SlideArrow />
-                </button>
-              </div>
+              <button className="group/btn mt-6 inline-flex items-center gap-2 self-start border-b border-foreground pb-1 text-b3 font-medium text-foreground">
+                {tab.cta}
+                <SlideArrow />
+              </button>
             </Reveal>
 
             <Reveal delay={0.08} className={flip ? "lg:order-1" : ""}>
