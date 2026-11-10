@@ -23,7 +23,7 @@ const OPTIONS: { id: string; name: string; note: string; render: () => ReactNode
   {
     id: "unified-rows",
     name: "Unified · Alternating rows (previous home)",
-    note: "Four rows with copy on one side and the demo on a painting on the other, alternating sides. The home page now uses the stacking deck.",
+    note: "Four rows with copy on one side and the demo on a painting on the other, alternating sides. The home page now uses the pinned stage.",
     render: () => <Unified variant="rows" />,
   },
   {

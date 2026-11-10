@@ -1,7 +1,15 @@
 import { BarChart3, Check, ClipboardList, Smartphone, Zap } from "lucide-react";
 import { scenery } from "../lib/scenery";
-import { useEffect, useState, type CSSProperties } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
 import { products } from "../lib/content";
 import { DEMOS, type DemoKey } from "../components/Demos";
 import { Reveal, Section, ArrowChip, SlideArrow } from "../lib/ui";
@@ -295,99 +303,172 @@ function StepRows() {
   );
 }
 
-/* --- deck edition (default) ---------------------------------------------
-   The platform products as a deck that stacks while you scroll. Each card
-   pins under the header and the next one slides over it, leaving its tab
-   in view, so by the last card the four tabs read as an index. Nothing to
-   click: scrolling is the only control. Inside a card the painting runs the
-   full width, the live demo sits in the middle and the proof points float
-   beside it as tags; the claim and the link sit in a band below. */
+/* --- stage edition (default) --------------------------------------------
+   One painted stage, pinned under the header, that turns from product to
+   product as the page scrolls. Nothing to click: the pill bar is a progress
+   readout, not a control (after beside.com's scroll-following pills and
+   gumloop.com's "Meet your team" list). Each scene is the full painting
+   with the live demo on it and the copy set on a white wash at the foot,
+   the way the KaneAI card is built. Small or short screens get the four
+   scenes stacked instead. */
 
-const TAGLINES: Record<string, string> = {
-  "test-manager": "AI test management",
-  hyperexecute: "Test orchestration cloud",
-  "real-device-cloud": "10,000+ real devices",
-  "test-insights": "AI test analytics",
-};
+type Step = (typeof STEPS)[number];
 
-/* where each proof point floats around the demo on wide screens */
-const TAG_SPOTS = [
-  "left-8 top-[18%]",
-  "right-8 top-[44%]",
-  "left-8 bottom-[16%]",
-];
-
-function Deck() {
+function Scene({ step }: { step: Step }) {
+  const tab = products.tabs.find((t) => t.id === step.id)!;
+  const Demo = DEMOS[tab.demo as DemoKey];
   return (
-    <div className="deck -mx-8">
-      {STEPS.map((step, i) => {
-        const tab = products.tabs.find((t) => t.id === step.id)!;
-        const Demo = DEMOS[tab.demo as DemoKey];
-        const Icon = step.icon;
+    <>
+      <img
+        src={step.scene}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+      />
+      {/* the painting melts into white so the copy reads cleanly */}
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(255,255,255,0) 46%, rgba(255,255,255,0.94) 66%, #FFFFFF 78%)",
+        }}
+      />
+      <div className="relative flex h-full flex-col">
+        <div className="flex min-h-0 flex-1 items-center justify-center px-5 pb-8 pt-8 sm:px-8 lg:pb-0 lg:pt-20">
+          <div className="w-full max-w-[560px] lg:scale-[0.86]">
+            <Demo />
+          </div>
+        </div>
+        <div className="flex-none px-5 pb-6 pt-6 max-lg:bg-white sm:px-8 lg:pb-8 lg:pt-4">
+          <div className="grid gap-4 lg:grid-cols-2 lg:items-end lg:gap-16">
+            <h3>{step.title}</h3>
+            <div>
+              <p className="text-b2 text-muted-foreground">{step.body}</p>
+              <a
+                href="#top"
+                className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground"
+              >
+                {tab.cta}
+                <SlideArrow />
+              </a>
+            </div>
+          </div>
+          <ul className="mt-6 grid gap-2 border-t border-border pt-4 sm:grid-cols-3 sm:gap-6">
+            {step.points.map((pt) => (
+              <li key={pt} className="flex items-center gap-2 text-b3 text-foreground">
+                <Check size={14} className="flex-none text-[#1A7F37]" />
+                {pt}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* which product is on stage: a readout of scroll progress, not a control */
+function StagePills({ active, progress }: { active: number; progress: MotionValue<number> }) {
+  const within = useTransform(progress, (p) => {
+    const x = Math.min(0.9999, Math.max(0, p)) * STEPS.length;
+    return x - Math.floor(x);
+  });
+  return (
+    <div
+      aria-hidden
+      className="absolute left-1/2 top-6 z-10 flex -translate-x-1/2 items-center gap-1 rounded-full border border-border bg-white p-1 shadow-[var(--tm-shadow-popover)]"
+    >
+      {STEPS.map((s, i) => {
+        const Icon = s.icon;
+        const on = i === active;
         return (
-          <article
-            key={step.id}
-            className="deck-card flex flex-col border border-border bg-surface"
-            style={{ "--i": i } as CSSProperties}
+          <span
+            key={s.id}
+            className={`relative flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full px-3 py-1.5 text-b3 transition-colors duration-300 ${
+              on ? "bg-[#EEEDE7] font-medium text-foreground" : "text-muted-foreground"
+            }`}
           >
-            <header className="flex h-12 flex-none items-center justify-between gap-4 border-b border-border px-5 sm:px-8">
-              <span className="flex items-center gap-3 whitespace-nowrap text-b2 font-medium text-foreground">
-                <Icon size={16} />
-                {step.product}
-              </span>
-              <span className="mono hidden text-b4 uppercase tracking-[0.18em] text-muted-foreground sm:block">
-                {TAGLINES[step.id]}
-              </span>
-            </header>
-
-            <div
-              data-cursor={step.product}
-              className="relative flex min-h-[340px] flex-1 items-center justify-center overflow-hidden px-6"
-            >
-              <img
-                src={step.scene}
-                alt=""
-                className="absolute inset-0 h-full w-full object-cover"
-                loading="lazy"
+            <Icon size={14} />
+            {s.product}
+            {on && (
+              <motion.span
+                style={{ scaleX: within }}
+                className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-foreground"
               />
-              <div className="relative w-full max-w-[560px] lg:scale-[0.86]">
-                <Demo />
-              </div>
-              {step.points.map((pt, k) => (
-                <span
-                  key={pt}
-                  className={`absolute hidden max-w-[240px] items-center gap-2 border border-border bg-white px-3 py-2 text-b3 text-foreground shadow-[var(--tm-shadow-popover)] xl:flex ${TAG_SPOTS[k]}`}
-                >
-                  <Check size={14} className="flex-none text-[#1A7F37]" />
-                  {pt}
-                </span>
-              ))}
-            </div>
-
-            <div className="grid flex-none gap-6 border-t border-border px-5 py-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
-              <h3>{step.title}</h3>
-              <div>
-                <p className="text-b2 text-muted-foreground">{step.body}</p>
-                <ul className="mt-4 flex flex-col gap-2 xl:hidden">
-                  {step.points.map((pt) => (
-                    <li key={pt} className="flex items-center gap-2 text-b3 text-foreground">
-                      <Check size={14} className="flex-none text-[#1A7F37]" />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="#top"
-                  className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground"
-                >
-                  {tab.cta}
-                  <SlideArrow />
-                </a>
-              </div>
-            </div>
-          </article>
+            )}
+          </span>
         );
       })}
+    </div>
+  );
+}
+
+const PIN_QUERY = "(min-width: 1024px) and (min-height: 700px)";
+
+function Stage() {
+  const reduce = useReducedMotion();
+  const [pin, setPin] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(PIN_QUERY);
+    const sync = () => setPin(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  if (pin && !reduce) return <PinnedStage />;
+  return (
+    <div className="-mx-8 flex flex-col gap-6">
+      {STEPS.map((step) => (
+        <article
+          key={step.id}
+          data-cursor={step.product}
+          className="relative min-h-[640px] overflow-hidden border border-border bg-surface"
+        >
+          <Scene step={step} />
+        </article>
+      ))}
+    </div>
+  );
+}
+
+/* mounted only when the stage pins, so the scroll reading starts with the
+   track already in the page */
+function PinnedStage() {
+  const track = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+  const { scrollYProgress } = useScroll({
+    target: track,
+    offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (p) => {
+    const next = Math.min(STEPS.length - 1, Math.max(0, Math.floor(p * STEPS.length)));
+    setActive((cur) => (cur === next ? cur : next));
+  });
+
+  const step = STEPS[active];
+  return (
+    <div ref={track} className="stage-track -mx-8">
+      <div
+        data-cursor={step.product}
+        className="stage-pin relative overflow-hidden border border-border bg-surface"
+      >
+        <AnimatePresence initial={false}>
+          <motion.article
+            key={step.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.45, delay: 0.12 } }}
+            exit={{ opacity: 0, transition: { duration: 0.2 } }}
+            className="absolute inset-0"
+          >
+            <Scene step={step} />
+          </motion.article>
+        </AnimatePresence>
+        <StagePills active={active} progress={scrollYProgress} />
+      </div>
     </div>
   );
 }
@@ -514,9 +595,9 @@ function ProductSwitcher() {
   );
 }
 
-export type UnifiedVariant = "deck" | "rows" | "switcher" | "bento";
+export type UnifiedVariant = "stage" | "rows" | "switcher" | "bento";
 
-export default function Unified({ variant = "deck" }: { variant?: UnifiedVariant }) {
+export default function Unified({ variant = "stage" }: { variant?: UnifiedVariant }) {
   return (
     <Section id="unified" className={variant === "rows" ? "!pb-0 md:!pb-0" : ""}>
       <UnifiedHeading />
@@ -527,7 +608,7 @@ export default function Unified({ variant = "deck" }: { variant?: UnifiedVariant
       ) : variant === "switcher" ? (
         <ProductSwitcher />
       ) : (
-        <Deck />
+        <Stage />
       )}
     </Section>
   );

@@ -383,19 +383,13 @@ body {
   }
 }
 
-/* ---------- Unified deck: cards that stack under the header on scroll ---------- */
-.deck-card + .deck-card {
-  margin-top: var(--tm-space-24);
+/* ---------- Unified stage: one painted frame pinned while the page scrolls ---------- */
+.stage-track {
+  /* one stage of height, plus scroll room for the three scene changes */
+  height: calc(clamp(600px, calc(100vh - 88px), 760px) + 210vh);
 }
-@media (min-width: 1024px) and (min-height: 740px) {
-  .deck-card {
-    position: sticky;
-    /* flush under the header, then one tab strip for every card already pinned */
-    top: calc(var(--tm-space-56) + var(--i) * var(--tm-space-48));
-    height: clamp(500px, calc(100vh - 224px), 680px);
-    z-index: calc(1 + var(--i));
-  }
-  .deck-card + .deck-card {
-    margin-top: var(--tm-space-48);
-  }
+.stage-pin {
+  position: sticky;
+  top: var(--tm-space-72);
+  height: clamp(600px, calc(100vh - 88px), 760px);
 }
