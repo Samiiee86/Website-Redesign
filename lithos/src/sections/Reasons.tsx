@@ -27,6 +27,14 @@ function Stars({ rating }: { rating: string }) {
 
 const integrationsCard = reasons.cards[2];
 
+const MCP_CLIENTS = [
+  { name: "Claude", src: "/img/integrations/color/claude.svg" },
+  { name: "Cursor", src: "/img/integrations/color/cursor.svg" },
+  { name: "VS Code", src: "/img/integrations/color/vscode.svg" },
+  { name: "GitHub Copilot", src: "/img/integrations/color/copilot.svg" },
+  { name: "Windsurf", src: "/img/integrations/color/windsurf.svg" },
+];
+
 export default function Reasons() {
   return (
     <Section>
@@ -106,20 +114,20 @@ export default function Reasons() {
             ))}
           </div>
 
-          {/* enterprise-grade security (line badges) beside integrations */}
-          <div className="grid border-t border-border lg:grid-cols-3">
-            <div className="flex flex-col gap-10 border-b border-border p-8 lg:col-span-2 lg:border-b-0 lg:border-r">
+          {/* enterprise-grade security (line badges) beside the MCP card */}
+          <div className="grid border-t border-border lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+            <div className="flex flex-col gap-8 border-b border-border p-8 lg:border-b-0 lg:border-r">
               <div>
                 <h3 className="tracking-tight">{security.title}</h3>
                 <p className="mt-3 max-w-[480px] text-b2 leading-relaxed text-muted-foreground">
                   {security.body}
                 </p>
               </div>
-              <div className="mt-auto grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-7 sm:gap-x-4 sm:gap-y-8">
+              <div className="mt-auto grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-7 sm:gap-x-4 sm:gap-y-6">
                 {CERT_NAMES.map((name) => (
                   <div
                     key={name}
-                    className="mx-auto h-14 w-14 text-foreground/60 sm:h-[72px] sm:w-[72px] transition-colors duration-300 hover:text-foreground"
+                    className="mx-auto h-14 w-14 text-foreground/60 transition-colors duration-300 hover:text-foreground sm:h-[68px] sm:w-[68px]"
                   >
                     <CertMark name={name} />
                   </div>
@@ -127,19 +135,51 @@ export default function Reasons() {
               </div>
             </div>
 
+            {/* integrations & MCP: a coding agent calling TestMu through MCP,
+                and the agents it works with */}
             <div className="flex flex-col gap-6 p-8">
               <div>
                 <h3 className="tracking-tight">{integrationsCard.title}</h3>
-                <p className="mt-3 max-w-[330px] text-b2 leading-relaxed text-muted-foreground">
+                <p className="mt-3 max-w-[360px] text-b2 leading-relaxed text-muted-foreground">
                   {integrationsCard.body}
                 </p>
               </div>
-              <img
-                src={integrationsCard.image}
-                alt=""
-                className="mt-auto w-full max-w-[380px] object-contain object-left"
-                loading="lazy"
-              />
+              <div className="mt-auto overflow-hidden border border-border bg-background">
+                <div className="flex items-center gap-1.5 border-b border-border px-3 py-2">
+                  {[0, 1, 2].map((i) => (
+                    <span key={i} className="h-2 w-2 rounded-full bg-border" />
+                  ))}
+                  <span className="mono ml-auto text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+                    your ide · testmu mcp
+                  </span>
+                </div>
+                <div className="mono space-y-2 px-4 py-3 text-[11px] leading-relaxed">
+                  <p className="text-foreground">
+                    <span className="text-muted-foreground">&gt; </span>
+                    Run the checkout tests on Safari and iPhone 18
+                  </p>
+                  <p className="flex items-center gap-2 text-muted-foreground">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#1A7F37]" />
+                    testmu.run_tests · 24 passed on 2 environments
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-b4 uppercase tracking-[0.18em] text-muted-foreground">
+                  Works with
+                </span>
+                <div className="flex items-center gap-2">
+                  {MCP_CLIENTS.map((c) => (
+                    <span
+                      key={c.name}
+                      title={c.name}
+                      className="flex h-8 w-8 items-center justify-center rounded-[7px] border border-border bg-white"
+                    >
+                      <img src={c.src} alt={c.name} className="h-4 w-4 object-contain" loading="lazy" />
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 

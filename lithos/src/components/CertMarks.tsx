@@ -64,16 +64,22 @@ function StarRing({ r, n = 12, size = 2.4 }: { r: number; n?: number; size?: num
   );
 }
 
-function IsoGlobe({ code }: { code: string }) {
+/* ISO marks follow the bsi kitemark lockup from the Figma frame: the kite in
+   a roundel overlapping a pill that carries the standard */
+function IsoBsi({ code, topic }: { code: string; topic: string }) {
   return (
-    <Svg label={`ISO ${code}`}>
-      <circle cx="32" cy="32" r="27" />
-      <ellipse cx="32" cy="32" rx="11" ry="27" />
-      <path d="M8 21h48M8 43h48M32 5v54" />
-      {/* knock the type out of the globe lines */}
-      <rect x="15" y="24" width="34" height="17" rx="2" fill="#fff" stroke="none" />
-      <text x="32" y="33" fontSize="10" {...T}>ISO</text>
-      <text x="32" y="40.5" fontSize="6.5" {...T}>{code}</text>
+    <Svg label={`ISO/IEC ${code}`}>
+      <text x="16" y="14" fontSize="6.5" {...T}>bsi</text>
+      <rect x="6" y="19" width="55" height="24" rx="12" />
+      <circle cx="16" cy="31" r="11.5" fill="#fff" />
+      <path
+        transform="translate(16 31) scale(1.25) translate(-16 -31)"
+        d="M16 37c-4.2-2.9-6.4-5-6.4-7.4a3.2 3.2 0 0 1 6.4-.9 3.2 3.2 0 0 1 6.4.9c0 2.4-2.2 4.5-6.4 7.4z"
+        strokeWidth={0.8}
+      />
+      <text x="43" y="29" fontSize="6" {...T}>ISO/IEC</text>
+      <text x="43" y="38.5" fontSize="9" {...T}>{code}</text>
+      <text x="33" y="52.5" fontSize="4.6" {...T}>{topic}</text>
     </Svg>
   );
 }
@@ -87,9 +93,9 @@ const MARKS: Record<string, () => ReactNode> = {
       <text x="32" y="42" fontSize="9" {...T}>SOC 2</text>
     </Svg>
   ),
-  "ISO 27001": () => <IsoGlobe code="27001" />,
-  "ISO 27017": () => <IsoGlobe code="27017" />,
-  "ISO 27701": () => <IsoGlobe code="27701" />,
+  "ISO 27001": () => <IsoBsi code="27001" topic="INFORMATION SECURITY" />,
+  "ISO 27017": () => <IsoBsi code="27017" topic="CLOUD SECURITY" />,
+  "ISO 27701": () => <IsoBsi code="27701" topic="PRIVACY INFORMATION" />,
   GDPR: () => (
     <Svg label="GDPR">
       <circle cx="32" cy="32" r="29" />

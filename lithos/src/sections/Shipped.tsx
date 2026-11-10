@@ -44,7 +44,7 @@ export default function Shipped() {
                   <span className="pixel text-b1 text-muted-foreground">
                     {row.date}
                   </span>
-                  <span className="truncate text-b1 tracking-tight text-foreground/80 transition-colors duration-300 group-hover:text-foreground">
+                  <span className="truncate text-b1 font-medium tracking-tight text-foreground">
                     {row.title}
                   </span>
                   <span className="hidden truncate text-b3 text-muted-foreground md:block">

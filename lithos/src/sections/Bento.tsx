@@ -14,9 +14,10 @@ import {
   Loader2,
   MessagesSquare,
   MousePointerClick,
-  ScanEye,
+  ShieldCheck,
   Smartphone,
   Sparkles,
+  SquareTerminal,
   Telescope,
   TextCursorInput,
   Zap,
@@ -52,7 +53,7 @@ const STEPS = [
 
 function KaneSteps({ play }: { play: boolean }) {
   return (
-    <div className="flex h-[250px] flex-col items-center justify-center bg-white px-5">
+    <div className="flex h-[212px] flex-col items-center justify-center bg-white px-5">
       <div className="flex w-full flex-col items-center">
         {STEPS.map(({ icon: Icon, text, tone, w }, i) => (
           <motion.div
@@ -126,7 +127,7 @@ function Spark({ play, at }: { play: boolean; at: number }) {
 
 function CloudTiles({ play }: { play: boolean }) {
   return (
-    <div className="grid h-[250px] grid-cols-2 content-center gap-2 bg-white px-5">
+    <div className="grid h-[212px] grid-cols-2 content-center gap-1.5 bg-white px-5">
       {TILES.map((t, i) => {
         const Icon = t.icon;
         const at = 0.12 + i * 0.16;
@@ -134,7 +135,7 @@ function CloudTiles({ play }: { play: boolean }) {
           <motion.div
             key={t.name}
             {...rise(play, at)}
-            className="flex flex-col gap-2 border border-border bg-white px-3 py-2"
+            className="flex flex-col gap-1.5 border border-border bg-white px-3 py-1.5"
           >
             <div className="flex items-center gap-2">
               <span className="flex h-5 w-5 items-center justify-center rounded-[5px] border border-border bg-background">
@@ -194,109 +195,83 @@ function AgentChat({ play }: { play: boolean }) {
   );
 }
 
-function PageSketch({ shifted = false, play }: { shifted?: boolean; play: boolean }) {
-  return (
-    <div className="relative h-[64px] border border-border bg-white p-2">
-      <span className="block h-1.5 w-1/3 rounded-full bg-border" />
-      <span className="mt-2 block h-1 w-full rounded-full bg-border-muted" />
-      <span className="mt-1 block h-1 w-4/5 rounded-full bg-border-muted" />
-      <span
-        className={`absolute bottom-2 block h-3.5 w-10 rounded-[3px] bg-foreground ${
-          shifted ? "left-5" : "left-2"
-        }`}
-      />
-      {shifted && (
-        <motion.span
-          initial={play ? { opacity: 0, scale: 1.3 } : false}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.9, duration: 0.45, ease: EASE }}
-          className="absolute bottom-1 left-4 h-[22px] w-[52px] border-[1.5px] border-[#F0883E] bg-[#F0883E]/10"
-        />
-      )}
-    </div>
-  );
-}
-
-function VisualDiff({ play }: { play: boolean }) {
-  return (
-    <div className="flex min-h-[132px] flex-col justify-center gap-2 bg-white py-3 pl-4 pr-10">
-      <div className="grid grid-cols-2 gap-2">
-        {[
-          { label: "Baseline", shifted: false },
-          { label: "Build #482", shifted: true },
-        ].map((p, i) => (
-          <motion.div key={p.label} {...rise(play, 0.15 + i * 0.3)}>
-            <p className="mb-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-              {p.label}
-            </p>
-            <PageSketch shifted={p.shifted} play={play} />
-          </motion.div>
-        ))}
-      </div>
-      <motion.div {...rise(play, 1.3)} className="flex items-center justify-between">
-        <span className="rounded-[4px] bg-[#FFF1E5] px-1.5 py-0.5 text-[9px] text-[#BC4C00]">
-          1 visual change
-        </span>
-        <span className="flex gap-1.5">
-          <span className="rounded-[4px] border border-border px-2 py-0.5 text-[9px] text-foreground">
-            Reject
-          </span>
-          <span className="rounded-[4px] bg-foreground px-2 py-0.5 text-[9px] text-white">
-            Approve
-          </span>
-        </span>
-      </motion.div>
-    </div>
-  );
-}
-
-const DEVICES = [
-  { name: "iPhone 18 Pro", os: "iOS 27", state: "live" },
-  { name: "Galaxy S26 Ultra", os: "Android 16", state: "live" },
-  { name: "Pixel 10", os: "Android 16", state: "boot" },
+const CHECKS = [
+  { name: "Policy adherence", value: "96%", w: "96%", tone: "ok" },
+  { name: "Tool calls on target", value: "91%", w: "91%", tone: "ok" },
+  { name: "Prompt injection", value: "2 flagged", w: "18%", tone: "warn" },
 ];
 
-function DeviceList({ play }: { play: boolean }) {
+function AssuranceReport({ play }: { play: boolean }) {
   return (
-    <div className="flex min-h-[132px] flex-col justify-center bg-white py-2 pl-4 pr-10">
-      {DEVICES.map((d, i) => (
-        <motion.div
-          key={d.name}
-          {...rise(play, 0.15 + i * 0.22)}
-          className={`flex items-center gap-2.5 py-1.5 ${
-            i < DEVICES.length - 1 ? "border-b border-border" : ""
-          }`}
-        >
-          <span className="flex h-5 w-5 flex-none items-center justify-center rounded-[5px] border border-border bg-background">
-            <Smartphone size={10} className="text-foreground" />
-          </span>
-          <span className="truncate text-[11px] font-medium text-foreground">{d.name}</span>
-          <span className="text-[10px] text-muted-foreground">{d.os}</span>
-          <span className="ml-auto flex items-center gap-1 text-[9px]">
-            {d.state === "live" && (
-              <>
-                <span className="h-1.5 w-1.5 rounded-full bg-[#1A7F37]" />
-                <span className="text-[#1A7F37]">Live</span>
-              </>
-            )}
-            {d.state === "boot" && (
-              <>
-                <Loader2 size={9} className="animate-spin text-muted-foreground" />
-                <span className="text-muted-foreground">Booting</span>
-              </>
-            )}
-            {d.state === "ready" && <span className="text-[#1F6FEB]">Ready</span>}
-          </span>
+    <div className="flex min-h-[132px] flex-col justify-center gap-2 bg-white py-3 pl-4 pr-10">
+      <motion.div {...rise(play, 0.1)} className="flex items-center justify-between">
+        <span className="text-[11px] font-medium text-foreground">Refund agent · 240 runs</span>
+        <span className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[9px] text-[#1A7F37]">
+          <Check size={8} />
+          Ready to ship
+        </span>
+      </motion.div>
+      {CHECKS.map((c, i) => (
+        <motion.div key={c.name} {...rise(play, 0.35 + i * 0.25)}>
+          <div className="flex items-center justify-between text-[10px]">
+            <span className="text-muted-foreground">{c.name}</span>
+            <span className={c.tone === "warn" ? "text-[#BC4C00]" : "text-foreground"}>
+              {c.value}
+            </span>
+          </div>
+          <div className="mt-1 h-1 w-full rounded-full bg-border-muted">
+            <motion.span
+              initial={play ? { width: 0 } : false}
+              animate={{ width: c.w }}
+              transition={{ delay: 0.5 + i * 0.25, duration: 0.7, ease: EASE }}
+              className={`block h-1 rounded-full ${c.tone === "warn" ? "bg-[#F0883E]" : "bg-foreground"}`}
+            />
+          </div>
         </motion.div>
       ))}
     </div>
   );
 }
 
+const CLI_LINES = [
+  { t: 'kane run "checkout with a saved card"', kind: "cmd" },
+  { t: "Opened acme.com/cart", kind: "ok" },
+  { t: "Applied saved card ending 4242", kind: "ok" },
+  { t: "Order confirmed in 14.2s", kind: "ok" },
+];
+
+function KaneTerminal({ play }: { play: boolean }) {
+  return (
+    <div className="mono flex min-h-[132px] flex-col justify-center gap-1.5 bg-white py-3 pl-4 pr-10 text-[10.5px]">
+      {CLI_LINES.map((l, i) => (
+        <motion.div
+          key={l.t}
+          {...rise(play, 0.15 + i * 0.35)}
+          className="flex items-center gap-2 whitespace-nowrap"
+        >
+          {l.kind === "cmd" ? (
+            <span className="text-muted-foreground">$</span>
+          ) : (
+            <Check size={10} className="flex-none text-[#1A7F37]" />
+          )}
+          <span className={`truncate ${l.kind === "cmd" ? "text-foreground" : "text-muted-foreground"}`}>
+            {l.t}
+          </span>
+        </motion.div>
+      ))}
+      <motion.span
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 0.9, repeat: Infinity }}
+        className="ml-4 mt-0.5 inline-block h-3 w-1.5 bg-foreground"
+      />
+    </div>
+  );
+}
+
 const SMALL_BODIES = [
   { icon: MessagesSquare, Body: AgentChat },
-  { icon: ScanEye, Body: VisualDiff },
-  { icon: Smartphone, Body: DeviceList },
+  { icon: ShieldCheck, Body: AssuranceReport },
+  { icon: SquareTerminal, Body: KaneTerminal },
 ];
 
 const PANELS = [
@@ -436,7 +411,7 @@ function HoverCard({ index, className = "" }: { index: number; className?: strin
     <div
       ref={ref}
       data-cursor={pioneer.cards[index].cta}
-      className={`relative flex min-w-0 flex-col overflow-hidden bg-surface md:min-h-[616px] ${className}`}
+      className={`relative flex min-w-0 flex-col overflow-hidden bg-surface md:min-h-[540px] ${className}`}
     >
       {/* the painting covers the whole card; per the Figma frame a near-solid
           white wash sits under the copy, then clears on a slight diagonal in a
@@ -447,7 +422,7 @@ function HoverCard({ index, className = "" }: { index: number; className?: strin
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(172deg, rgba(255,255,255,0.95) 42%, rgba(255,255,255,0) 55%)",
+            "linear-gradient(172deg, rgba(255,255,255,0.95) 44%, rgba(255,255,255,0) 57%)",
         }}
       />
 

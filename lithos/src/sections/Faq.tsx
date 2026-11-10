@@ -5,10 +5,10 @@ import { faq } from "../lib/content";
 import { Section } from "../lib/ui";
 
 /* The live testmuai.com FAQ: heading in its own column, questions as
-   full-width ruled rows beside it, the first five shown and the rest
+   full-width ruled rows beside it, the first eight shown and the rest
    behind "View more questions". */
 
-const FIRST = 5;
+const FIRST = 8;
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Faq() {

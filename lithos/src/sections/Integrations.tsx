@@ -7,7 +7,7 @@ export default function Integrations() {
   return (
     <Section>
       <Reveal>
-        <div className="-mx-8 grid gap-12 border-y border-border bg-surface px-8 py-14 md:px-12 md:py-20 lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-16">
           <div>
             <h3 className="tracking-tight">
               <span className="block text-muted-foreground">

@@ -399,6 +399,22 @@ export const faq = [
     a: "TestMu AI (formerly LambdaTest) is an AI-native software testing cloud platform that helps developers and QA teams automate end-to-end testing across web, mobile, and AI applications. Trusted by over 3+ million users at companies like Microsoft, OpenAI, and Nvidia, TestMu AI offers AI agents like KaneAI for test creation, a real device cloud with 10,000+ devices, and 3,000+ browser combinations, all from a single platform named a Challenger in the 2025 Gartner Magic Quadrant for AI-Augmented Software Testing Tools.",
   },
   {
+    q: "What is KaneAI?",
+    a: "KaneAI is TestMu AI's end-to-end testing agent. You plan, author and evolve tests in plain English or from your company's own context, and KaneAI runs them across web and mobile on the TestMu AI cloud.",
+  },
+  {
+    q: "Can I try TestMu AI for free?",
+    a: "Yes. Sign up free with Google or email and start testing right away. Paid plans add more parallel sessions, AI agents and enterprise controls as your team grows.",
+  },
+  {
+    q: "Which frameworks and languages does TestMu AI support?",
+    a: "Bring the framework you already use: Selenium, Playwright, Cypress, Puppeteer, Appium, Espresso, XCUITest and more, written in Java, JavaScript, TypeScript, Python, C#, Ruby or PHP.",
+  },
+  {
+    q: "Is my test data secure on TestMu AI?",
+    a: "Yes. TestMu AI holds SOC 2, ISO 27001, ISO 27017 and ISO 27701 certifications and is GDPR, HIPAA and CCPA compliant, with SSO, role-based access and private networking through the secure Tunnel.",
+  },
+  {
     q: "Is LambdaTest still available?",
     a: "Yes. LambdaTest is now TestMu AI, the company rebranded to reflect its evolution into an AI-native testing platform. All LambdaTest products, features, integrations, and infrastructure are fully available under the new TestMu AI (formerly LambdaTest) brand at testmuai.com. Existing customers experienced no service interruption, and all previously published documentation, learning content, and community resources remain accessible.",
   },
@@ -775,18 +791,18 @@ export const pioneerSmall = [
     window: "testmu.ai / agent-testing",
   },
   {
-    key: "visual",
-    title: "AI Visual Regression Testing",
-    body: "SmartUI flags only the visual changes a person would notice.",
-    cta: "Explore SmartUI",
-    window: "testmu.ai / smartui",
+    key: "assurance",
+    title: "Agent Assurance",
+    body: "See how your agents behave across real workflows and tools, before users do.",
+    cta: "Explore Agent Assurance",
+    window: "testmu.ai / agent-assurance",
   },
   {
-    key: "devices",
-    title: "Real Device Cloud",
-    body: "10,000+ real Android and iOS devices, the newest on launch day.",
-    cta: "Explore Real Devices",
-    window: "testmu.ai / real-devices",
+    key: "cli",
+    title: "Kane CLI",
+    body: "Write end-to-end tests in plain English and run them from your terminal.",
+    cta: "Explore Kane CLI",
+    window: "kane-cli / terminal",
   },
 ];
 
@@ -795,12 +811,12 @@ const CUST = `${CDN}`;
 export const customerStrip = {
   /* six marks that sit at a similar visual weight; h evens them out */
   logos: [
-    { name: "bet365", src: `${CUST}customer/bet365-main.svg`, href: "https://www.testmuai.com/customers/bet365/", h: 26 },
-    { name: "Noibu", src: `${CUST}customer/NoibuNew.svg`, href: "https://www.testmuai.com/customers/noibu/", h: 26 },
-    { name: "Boohoo", src: `${CUST}customer/Boohoo.svg`, href: "https://www.testmuai.com/customers/boohoo/", h: 26 },
-    { name: "Trepp", src: `${CUST}customer/Trepp.svg`, href: "https://www.testmuai.com/customers/trepp/", h: 34 },
-    { name: "Emburse", src: `${CUST}customer/Embruse.svg`, href: "https://www.testmuai.com/customers/emburse/", h: 24 },
-    { name: "Atypon", src: `${CUST}customer/atypon-main.svg`, href: "https://www.testmuai.com/customers/atypon/", h: 26 },
+    { name: "bet365", src: `${CUST}customer/bet365-main.svg`, href: "https://www.testmuai.com/customers/bet365/", h: 20 },
+    { name: "Noibu", src: `${CUST}customer/NoibuNew.svg`, href: "https://www.testmuai.com/customers/noibu/", h: 20 },
+    { name: "Boohoo", src: `${CUST}customer/Boohoo.svg`, href: "https://www.testmuai.com/customers/boohoo/", h: 20 },
+    { name: "Trepp", src: `${CUST}customer/Trepp.svg`, href: "https://www.testmuai.com/customers/trepp/", h: 26 },
+    { name: "Emburse", src: `${CUST}customer/Embruse.svg`, href: "https://www.testmuai.com/customers/emburse/", h: 18 },
+    { name: "Atypon", src: `${CUST}customer/atypon-main.svg`, href: "https://www.testmuai.com/customers/atypon/", h: 19 },
   ],
 };
 

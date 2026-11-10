@@ -231,7 +231,7 @@ export default function Stories() {
                 rel="noreferrer"
                 aria-label={`Read the ${logo.name} story`}
                 data-cursor="Read story"
-                className="group relative flex h-[112px] items-center justify-center bg-surface px-6 transition-colors duration-500 hover:bg-[#FAFAF8]"
+                className="group relative flex h-[96px] items-center justify-center bg-surface px-6 transition-colors duration-500 hover:bg-[#FAFAF8]"
               >
                 <img
                   src={logo.src}
