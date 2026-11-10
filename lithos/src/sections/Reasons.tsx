@@ -1,6 +1,7 @@
-import { ArrowRight, ArrowUpRight, Check, Star } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
 import { asSeenOn, reasons, reviews, security, stats } from "../lib/content";
-import { LineMark, Marquee, Reveal, Section, ArrowChip } from "../lib/ui";
+import { Marquee, Reveal, Section, ArrowChip } from "../lib/ui";
+import { CERT_NAMES, CertMark } from "../components/CertMarks";
 
 function Stars({ rating }: { rating: string }) {
   const value = parseFloat(rating);
@@ -23,6 +24,8 @@ function Stars({ rating }: { rating: string }) {
     </div>
   );
 }
+
+const integrationsCard = reasons.cards[2];
 
 export default function Reasons() {
   return (
@@ -103,58 +106,40 @@ export default function Reasons() {
             ))}
           </div>
 
-          {/* enterprise-grade security: full width, outlined marks */}
-          <div className="grid border-t border-border lg:grid-cols-[minmax(0,360px)_1fr]">
-            <div className="flex flex-col justify-between gap-8 border-b border-border p-8 lg:border-b-0 lg:border-r">
+          {/* enterprise-grade security (line badges) beside integrations */}
+          <div className="grid border-t border-border lg:grid-cols-3">
+            <div className="flex flex-col gap-10 border-b border-border p-8 lg:col-span-2 lg:border-b-0 lg:border-r">
               <div>
                 <h3 className="tracking-tight">{security.title}</h3>
-                <p className="mt-3 max-w-[330px] text-b2 leading-relaxed text-muted-foreground">
+                <p className="mt-3 max-w-[480px] text-b2 leading-relaxed text-muted-foreground">
                   {security.body}
                 </p>
               </div>
-              <a
-                href="#top"
-                className="group/sec inline-flex w-fit items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground"
-              >
-                {security.cta}
-                <ArrowRight
-                  size={14}
-                  className="transition-transform duration-300 group-hover/sec:translate-x-1"
-                />
-              </a>
-            </div>
-
-            <div>
-              <div className="grid grid-cols-2 gap-px bg-border sm:grid-cols-7">
-                {security.certs.map((cert) => (
+              <div className="mt-auto grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-7 sm:gap-x-4 sm:gap-y-8">
+                {CERT_NAMES.map((name) => (
                   <div
-                    key={cert.name}
-                    title={cert.name}
-                    className="group flex h-[112px] items-center justify-center bg-surface"
+                    key={name}
+                    className="mx-auto h-14 w-14 text-foreground/60 sm:h-[72px] sm:w-[72px] transition-colors duration-300 hover:text-foreground"
                   >
-                    <LineMark
-                      src={cert.src}
-                      label={cert.name}
-                      className="h-14 w-20 text-foreground/55 transition-colors duration-300 group-hover:text-foreground"
-                    />
+                    <CertMark name={name} />
                   </div>
                 ))}
               </div>
-              <ul className="grid border-t border-border px-8 py-4 sm:grid-cols-2 sm:gap-x-10">
-                {security.controls.map((line, i) => (
-                  <li
-                    key={line}
-                    className={`flex items-center gap-3 py-3.5 text-b2 text-muted-foreground ${
-                      i < security.controls.length - 2
-                        ? "border-b border-border"
-                        : "max-sm:border-b max-sm:border-border max-sm:last:border-b-0"
-                    }`}
-                  >
-                    <Check size={15} className="flex-none text-foreground" />
-                    {line}
-                  </li>
-                ))}
-              </ul>
+            </div>
+
+            <div className="flex flex-col gap-6 p-8">
+              <div>
+                <h3 className="tracking-tight">{integrationsCard.title}</h3>
+                <p className="mt-3 max-w-[330px] text-b2 leading-relaxed text-muted-foreground">
+                  {integrationsCard.body}
+                </p>
+              </div>
+              <img
+                src={integrationsCard.image}
+                alt=""
+                className="mt-auto w-full max-w-[380px] object-contain object-left"
+                loading="lazy"
+              />
             </div>
           </div>
 

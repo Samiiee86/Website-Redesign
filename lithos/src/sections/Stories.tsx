@@ -220,24 +220,8 @@ export default function Stories() {
             </a>
           </div>
 
-          {/* more customer stories: logo only, each opens its case study */}
-          <div className="flex items-center justify-between gap-4 border-t border-border px-6 py-4 md:px-8">
-            <p className="mono text-b4 uppercase tracking-[0.18em] text-muted-foreground">
-              {customerStrip.label}
-            </p>
-            <a
-              href={customerStrip.all.href}
-              target="_blank"
-              rel="noreferrer"
-              className="group/all inline-flex items-center gap-1.5 text-b3 font-medium text-foreground"
-            >
-              {customerStrip.all.label}
-              <ArrowUpRight
-                size={14}
-                className="transition-transform duration-300 group-hover/all:-translate-y-0.5 group-hover/all:translate-x-0.5"
-              />
-            </a>
-          </div>
+          {/* more customer stories: one row of logos in ink, each opens its
+              case study */}
           <div className="grid grid-cols-2 gap-px border-t border-border bg-border sm:grid-cols-3 lg:grid-cols-6">
             {customerStrip.logos.map((logo) => (
               <a
@@ -252,7 +236,8 @@ export default function Stories() {
                 <img
                   src={logo.src}
                   alt={logo.name}
-                  className="logo-ink h-7 w-auto max-w-[120px] object-contain group-hover:opacity-100"
+                  style={{ height: logo.h }}
+                  className="w-auto max-w-[140px] object-contain brightness-0 transition-transform duration-500 group-hover:scale-[1.04]"
                   loading="lazy"
                 />
                 <ArrowUpRight

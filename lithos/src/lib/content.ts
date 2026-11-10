@@ -770,21 +770,21 @@ export const pioneerSmall = [
   {
     key: "agents",
     title: "Agent to Agent Testing",
-    body: "Let agents put your chat, voice and phone agents through real conversations, and grade every answer.",
+    body: "Agents talk to your chat, voice and phone agents and grade every answer.",
     cta: "Explore Agent Testing",
     window: "testmu.ai / agent-testing",
   },
   {
     key: "visual",
     title: "AI Visual Regression Testing",
-    body: "SmartUI compares every build with its baseline and flags only the changes a person would notice.",
+    body: "SmartUI flags only the visual changes a person would notice.",
     cta: "Explore SmartUI",
     window: "testmu.ai / smartui",
   },
   {
     key: "devices",
     title: "Real Device Cloud",
-    body: "Test on 10,000+ real Android and iOS devices, with the newest phones ready on launch day.",
+    body: "10,000+ real Android and iOS devices, the newest on launch day.",
     cta: "Explore Real Devices",
     window: "testmu.ai / real-devices",
   },
@@ -793,85 +793,58 @@ export const pioneerSmall = [
 /* ---------- customer stories: logo strip under the Stories cards -------- */
 const CUST = `${CDN}`;
 export const customerStrip = {
-  label: "More customer stories",
-  all: { label: "View all stories", href: "https://www.testmuai.com/customers/" },
+  /* six marks that sit at a similar visual weight; h evens them out */
   logos: [
-    { name: "bet365", src: `${CUST}customer/bet365-main.svg`, href: "https://www.testmuai.com/customers/bet365/" },
-    { name: "Noibu", src: `${CUST}customer/NoibuNew.svg`, href: "https://www.testmuai.com/customers/noibu/" },
-    { name: "Raiffeisen Bank", src: `${CUST}customer/RaiffeisenBank.svg`, href: "https://www.testmuai.com/customers/raiffeisen-bank-international/" },
-    { name: "Bajaj Finserv", src: `${CUST}customer/bajaj-finserv-main.svg`, href: "https://www.testmuai.com/customers/bajaj-finserv/" },
-    { name: "LERETA", src: `${CUST}LeretaDark.svg`, href: "https://www.testmuai.com/customers/lereta/" },
-    { name: "Boohoo", src: `${CUST}customer/Boohoo.svg`, href: "https://www.testmuai.com/customers/boohoo/" },
-    { name: "City Furniture", src: `${CUST}customer/CityFurniture.svg`, href: "https://www.testmuai.com/customers/city-furniture/" },
-    { name: "Trepp", src: `${CUST}customer/Trepp.svg`, href: "https://www.testmuai.com/customers/trepp/" },
-    { name: "Whatfix", src: `${CUST}customer/Whatfix.svg`, href: "https://www.testmuai.com/customers/whatfix/" },
-    { name: "Emburse", src: `${CUST}customer/Embruse.svg`, href: "https://www.testmuai.com/customers/emburse/" },
-    { name: "Snap One", src: `${CUST}customer/Snap-One.svg`, href: "https://www.testmuai.com/customers/snapone/" },
-    { name: "Atypon", src: `${CUST}customer/atypon-main.svg`, href: "https://www.testmuai.com/customers/atypon/" },
+    { name: "bet365", src: `${CUST}customer/bet365-main.svg`, href: "https://www.testmuai.com/customers/bet365/", h: 26 },
+    { name: "Noibu", src: `${CUST}customer/NoibuNew.svg`, href: "https://www.testmuai.com/customers/noibu/", h: 26 },
+    { name: "Boohoo", src: `${CUST}customer/Boohoo.svg`, href: "https://www.testmuai.com/customers/boohoo/", h: 26 },
+    { name: "Trepp", src: `${CUST}customer/Trepp.svg`, href: "https://www.testmuai.com/customers/trepp/", h: 34 },
+    { name: "Emburse", src: `${CUST}customer/Embruse.svg`, href: "https://www.testmuai.com/customers/emburse/", h: 24 },
+    { name: "Atypon", src: `${CUST}customer/atypon-main.svg`, href: "https://www.testmuai.com/customers/atypon/", h: 26 },
   ],
 };
 
 /* ---------- integrations fold (refs: devin.ai, elevenlabs.io/agents) ----- */
 export const integrations = {
-  lead: "Connect once, test everywhere",
-  title: "with the tools you already use",
-  body: "120+ integrations and a native MCP server, so tests run from your pipeline, your tracker and your coding agent.",
+  lead: "Connect once,",
+  title: "test everywhere",
+  body: "120+ integrations with the tools you already use, plus a native MCP server for your coding agents.",
   cta: "Explore integrations",
   items: [
-    { name: "Jira", icon: "jira", desc: "Log a bug straight from a failed test" },
-    { name: "GitHub", icon: "github", desc: "Run the suite on every pull request" },
-    { name: "Slack", icon: "slack", desc: "Get results where your team talks" },
-    { name: "Jenkins", icon: "jenkins", desc: "Trigger runs from any pipeline" },
-    { name: "GitLab", icon: "gitlab", desc: "Test every merge request" },
-    { name: "Microsoft Teams", icon: "microsoftteams", desc: "Share failed sessions with the team" },
-    { name: "Selenium & Cypress", icon: "selenium", desc: "Bring the framework you already use" },
-    { name: "MCP Server", icon: "claude", desc: "Let your coding agent run the tests" },
+    { name: "Jira", icon: "jira" },
+    { name: "GitHub", icon: "github" },
+    { name: "GitLab", icon: "gitlab" },
+    { name: "Jenkins", icon: "jenkins" },
+    { name: "Azure DevOps", icon: "azuredevops" },
+    { name: "CircleCI", icon: "circleci" },
+    { name: "Slack", icon: "slack" },
+    { name: "Microsoft Teams", icon: "microsoftteams" },
+    { name: "Linear", icon: "linear" },
+    { name: "Selenium", icon: "selenium" },
+    { name: "Playwright", icon: "playwright" },
+    { name: "MCP Server", icon: "mcp" },
   ],
 };
 
 /* ---------- recently shipped: from changelog.testmuai.com --------------- */
 export const shipped = {
-  title: "Recently shipped",
+  lead: "What's new",
+  title: "at TestMu AI",
+  body: "New agents, devices and fixes land every week. Here is the latest.",
   all: { label: "View changelog", href: "https://changelog.testmuai.com/" },
   items: [
-    { date: "11.04", title: "Run e2e tests on TestMu AI real devices and browsers", tag: "Integrations", scene: "/img/meadow.webp" },
-    { date: "10.26", title: "Agent Assurance is now generally available", tag: "Agent Assurance", scene: "/img/alplake.webp" },
-    { date: "10.26", title: "iPhone Duo is now on the Virtual & Real Device Cloud", tag: "Real Device", scene: "/img/dunes.webp" },
-    { date: "10.15", title: "Migrate Katalon tests into KaneAI in one click", tag: "KaneAI", scene: "/img/treetop.webp" },
-    { date: "10.15", title: "Fail CI on visual changes with SmartUI Storybook", tag: "SmartUI", scene: "/img/chalkcliff.webp" },
-    { date: "10.15", title: "Automate screen reader testing on real Android and iOS devices", tag: "Accessibility", scene: "/img/grassea.webp" },
-    { date: "10.14", title: "Agent Testing v2.14.1: production conversation analysis", tag: "Agent Testing", scene: "/img/hero-lake.webp" },
+    { date: "11.04", title: "Run e2e tests on real devices and browsers", tag: "Integrations" },
+    { date: "10.26", title: "Agent Assurance is now generally available", tag: "Agent Assurance" },
+    { date: "10.26", title: "iPhone Duo is now on the Real Device Cloud", tag: "Real Device" },
+    { date: "10.15", title: "Migrate Katalon tests into KaneAI in one click", tag: "KaneAI" },
+    { date: "10.15", title: "Fail CI on visual changes with SmartUI Storybook", tag: "SmartUI" },
+    { date: "10.15", title: "Automate screen reader tests on real devices", tag: "Accessibility" },
+    { date: "10.14", title: "Agent Testing 2.14: production conversation analysis", tag: "Agent Testing" },
   ].map((item) => ({ ...item, href: "https://changelog.testmuai.com/" })),
 };
 
-/* ---------- enterprise security: outlined marks from Figma 15544:48912 --- */
+/* ---------- enterprise security: line badges live in CertMarks.tsx ------ */
 export const security = {
   title: "Enterprise-Grade Security",
   body: "We safeguard your data and AI systems with global security, privacy, responsible AI, and ESG standards.",
-  cta: "See all certifications",
-  certs: [
-    { name: "SOC 2", src: "/img/certs/soc.svg" },
-    { name: "ISO 27001", src: "/img/certs/iso27001.svg" },
-    { name: "ISO 27017", src: "/img/certs/iso27017.svg" },
-    { name: "ISO 27701", src: "/img/certs/iso27701.svg" },
-    { name: "GDPR", src: "/img/certs/gdpr.svg" },
-    { name: "HIPAA", src: "/img/certs/hipaa.svg" },
-    { name: "CCPA", src: "/img/certs/ccpa.svg" },
-    { name: "PCI DSS", src: "/img/certs/pci.svg" },
-    { name: "CSA", src: "/img/certs/csa.svg" },
-    { name: "ADA", src: "/img/certs/ada.svg" },
-    { name: "FSQS", src: "/img/certs/fsqs.svg" },
-    { name: "ESG", src: "/img/certs/esg.svg" },
-    { name: "EU AI Act", src: "/img/certs/euaiact.svg" },
-    { name: "Responsible AI", src: "/img/certs/responsibleai.svg" },
-  ],
-  /* placeholder copy: confirm each line with the security team */
-  controls: [
-    "Single sign-on with SAML and SCIM",
-    "Role-based access for every team",
-    "Encryption in transit and at rest",
-    "Private networking with the secure Tunnel",
-    "Audit logs for every user and session",
-    "Dedicated and on-premise cloud options",
-  ],
 };

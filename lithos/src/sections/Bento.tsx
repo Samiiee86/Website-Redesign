@@ -168,19 +168,13 @@ function CloudTiles({ play }: { play: boolean }) {
 
 function AgentChat({ play }: { play: boolean }) {
   return (
-    <div className="flex min-h-[176px] flex-col justify-center gap-2 bg-white py-4 pl-4 pr-10">
+    <div className="flex min-h-[132px] flex-col justify-center gap-2 bg-white py-3 pl-4 pr-10">
       <motion.div {...rise(play, 0.15)} className="max-w-[82%]">
-        <p className="mb-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-          Tester agent · upset customer
-        </p>
         <p className="rounded-[10px] rounded-tl-[3px] border border-border bg-background px-2.5 py-1.5 text-[11px] text-foreground">
           I was charged twice for one order.
         </p>
       </motion.div>
       <motion.div {...rise(play, 0.6)} className="ml-auto max-w-[82%] text-right">
-        <p className="mb-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
-          Your support agent
-        </p>
         <p className="rounded-[10px] rounded-tr-[3px] bg-foreground px-2.5 py-1.5 text-left text-[11px] text-white">
           Sorry about that. I have refunded the extra charge.
         </p>
@@ -202,11 +196,10 @@ function AgentChat({ play }: { play: boolean }) {
 
 function PageSketch({ shifted = false, play }: { shifted?: boolean; play: boolean }) {
   return (
-    <div className="relative h-[92px] border border-border bg-white p-2">
+    <div className="relative h-[64px] border border-border bg-white p-2">
       <span className="block h-1.5 w-1/3 rounded-full bg-border" />
       <span className="mt-2 block h-1 w-full rounded-full bg-border-muted" />
       <span className="mt-1 block h-1 w-4/5 rounded-full bg-border-muted" />
-      <span className="mt-1 block h-1 w-3/5 rounded-full bg-border-muted" />
       <span
         className={`absolute bottom-2 block h-3.5 w-10 rounded-[3px] bg-foreground ${
           shifted ? "left-5" : "left-2"
@@ -226,7 +219,7 @@ function PageSketch({ shifted = false, play }: { shifted?: boolean; play: boolea
 
 function VisualDiff({ play }: { play: boolean }) {
   return (
-    <div className="flex min-h-[176px] flex-col justify-center gap-2.5 bg-white py-4 pl-4 pr-10">
+    <div className="flex min-h-[132px] flex-col justify-center gap-2 bg-white py-3 pl-4 pr-10">
       <div className="grid grid-cols-2 gap-2">
         {[
           { label: "Baseline", shifted: false },
@@ -261,12 +254,11 @@ const DEVICES = [
   { name: "iPhone 18 Pro", os: "iOS 27", state: "live" },
   { name: "Galaxy S26 Ultra", os: "Android 16", state: "live" },
   { name: "Pixel 10", os: "Android 16", state: "boot" },
-  { name: "iPad Pro 13", os: "iPadOS 27", state: "ready" },
 ];
 
 function DeviceList({ play }: { play: boolean }) {
   return (
-    <div className="flex min-h-[176px] flex-col justify-center bg-white py-3 pl-4 pr-10">
+    <div className="flex min-h-[132px] flex-col justify-center bg-white py-2 pl-4 pr-10">
       {DEVICES.map((d, i) => (
         <motion.div
           key={d.name}
@@ -436,7 +428,7 @@ function Painting({ index, zoom = false }: { index: number; zoom?: boolean }) {
 
 /* --- hover: text first, the hovered card widens and replays ------------- */
 
-function HoverCard({ index }: { index: number }) {
+function HoverCard({ index, className = "" }: { index: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.55 });
 
@@ -444,7 +436,7 @@ function HoverCard({ index }: { index: number }) {
     <div
       ref={ref}
       data-cursor={pioneer.cards[index].cta}
-      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border bg-surface md:min-h-[616px]"
+      className={`relative flex min-w-0 flex-col overflow-hidden bg-surface md:min-h-[616px] ${className}`}
     >
       {/* the painting covers the whole card; per the Figma frame a near-solid
           white wash sits under the copy, then clears on a slight diagonal in a
@@ -500,7 +492,7 @@ function MiniWindow({ index, playing }: { index: number; playing: boolean }) {
 
 /* small card: same recipe as the big pair at a smaller size: copy on a white
    wash, the painting clearing below it, a window anchored to the bottom */
-function SmallCard({ index }: { index: number }) {
+function SmallCard({ index, className = "" }: { index: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: 0.55 });
   const card = pioneerSmall[index];
@@ -508,7 +500,7 @@ function SmallCard({ index }: { index: number }) {
     <div
       ref={ref}
       data-cursor={card.cta}
-      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border bg-surface md:min-h-[540px]"
+      className={`relative flex min-w-0 flex-col overflow-hidden bg-surface lg:min-h-[420px] ${className}`}
     >
       <img
         src={SMALL_SCENES[index]}
@@ -521,12 +513,12 @@ function SmallCard({ index }: { index: number }) {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(172deg, rgba(255,255,255,0.95) 48%, rgba(255,255,255,0) 62%)",
+            "linear-gradient(172deg, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0) 58%)",
         }}
       />
       <div className="relative p-6 md:p-8">
         <h4 className="tracking-tight text-foreground">{card.title}</h4>
-        <p className="mt-3 text-b2 leading-relaxed text-muted-foreground">
+        <p className="mt-2 text-b2 leading-relaxed text-muted-foreground">
           {card.body}
         </p>
         <button className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
@@ -537,7 +529,7 @@ function SmallCard({ index }: { index: number }) {
           />
         </button>
       </div>
-      <div className="relative mt-auto pl-6 pt-16 md:pl-8 md:pt-0">
+      <div className="relative mt-auto pl-6 pt-10 md:pl-8">
         <div className="-mb-px w-[calc(100%+24px)]">
           <MiniWindow index={index} playing={inView} />
         </div>
@@ -547,16 +539,26 @@ function SmallCard({ index }: { index: number }) {
 }
 
 function HoverRow() {
+  /* one joined surface, like the Unified fold: two big cards over three
+     small ones, hairlines between, no gaps */
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-6 md:flex-row">
+    <div className="-mx-8 border-y border-border bg-surface">
+      <div className="grid md:grid-cols-2">
         {[0, 1].map((i) => (
-          <HoverCard key={i} index={i} />
+          <HoverCard
+            key={i}
+            index={i}
+            className={i === 0 ? "border-border max-md:border-b md:border-r" : ""}
+          />
         ))}
       </div>
-      <div className="flex flex-col gap-6 lg:flex-row">
+      <div className="grid border-t border-border lg:grid-cols-3">
         {[0, 1, 2].map((i) => (
-          <SmallCard key={i} index={i} />
+          <SmallCard
+            key={i}
+            index={i}
+            className={i < 2 ? "border-border max-lg:border-b lg:border-r" : ""}
+          />
         ))}
       </div>
     </div>
