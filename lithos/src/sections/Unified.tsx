@@ -229,7 +229,7 @@ const STEPS = [
 
 function StepRows() {
   return (
-    <div className="-mx-8 border-t border-border">
+    <div className="-mx-8">
       {STEPS.map((step, i) => {
         const tab = products.tabs.find((t) => t.id === step.id)!;
         const Demo = DEMOS[tab.demo as DemoKey];
