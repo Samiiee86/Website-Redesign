@@ -238,7 +238,11 @@ function StepRows() {
         return (
           <div
             key={step.id}
-            className="grid grid-cols-[minmax(0,1fr)] gap-10 border-b border-border px-8 py-12 last:border-b-0 md:py-16 lg:grid-cols-2 lg:gap-16"
+            className={`grid grid-cols-[minmax(0,1fr)] gap-10 border-b border-border px-8 py-12 last:border-b-0 md:py-16 lg:gap-14 ${
+              flip
+                ? "lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]"
+                : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)]"
+            }`}
           >
             <Reveal
               className={`flex flex-col justify-center ${flip ? "lg:order-2" : ""}`}
@@ -271,7 +275,7 @@ function StepRows() {
             <Reveal delay={0.08} className={flip ? "lg:order-1" : ""}>
               <div
                 data-cursor={step.product}
-                className="relative flex h-[380px] items-center justify-center overflow-hidden border border-border px-6 md:h-[500px] md:px-12"
+                className="relative flex h-[380px] items-center justify-center overflow-hidden border border-border px-6 md:h-[540px] md:px-12"
               >
                 <img
                   src={step.scene}
@@ -279,8 +283,7 @@ function StepRows() {
                   className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-white/25" />
-                <div className="relative w-full max-w-[520px]">
+                <div className="relative w-full max-w-[560px]">
                   <Demo />
                 </div>
               </div>
