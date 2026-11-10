@@ -102,7 +102,7 @@ function UnifiedHeading() {
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14 xl:grid-cols-[minmax(0,1fr)_400px]">
           {/* on wide screens the first line holds together and the second
               wraps once, so the heading sets in three lines */}
-          <h2 className="tracking-tight">
+          <h2>
             <span className="block text-muted-foreground xl:whitespace-nowrap">
               TestMu AI (formerly LambdaTest)
             </span>
@@ -150,7 +150,7 @@ function BentoGrid() {
                   size={20}
                   className="text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
                 />
-                <h4 className="mt-5 tracking-tight">{name}</h4>
+                <h4 className="mt-5">{name}</h4>
                 <p className="mt-2 text-b3 leading-relaxed text-muted-foreground">
                   {desc}
                 </p>
@@ -238,7 +238,7 @@ function StepRows() {
         return (
           <div
             key={step.id}
-            className={`grid grid-cols-[minmax(0,1fr)] gap-10 border-b border-border px-8 py-12 last:border-b-0 md:py-16 lg:gap-14 ${
+            className={`grid grid-cols-[minmax(0,1fr)] gap-10 px-8 py-12 md:py-14 lg:gap-14 ${
               flip
                 ? "lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]"
                 : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)]"
@@ -251,7 +251,7 @@ function StepRows() {
                 <Icon size={15} className="text-foreground" />
                 {step.product}
               </p>
-              <h3 className="mt-5 tracking-tight">{step.title}</h3>
+              <h3 className="mt-5">{step.title}</h3>
               <p className="mt-4 max-w-[480px] text-b1 leading-relaxed text-muted-foreground">
                 {step.body}
               </p>

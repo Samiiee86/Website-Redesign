@@ -1,0 +1,167 @@
+---
+description: TestMu AI design system: colors, fonts, type, spacing and components for all UI work
+globs: "**/*.{css,scss,less,html,jsx,tsx,js,ts,vue,svelte,astro}"
+alwaysApply: true
+---
+
+# TestMu design system
+
+## The TestMu design system is mandatory
+
+Every color, font, size, space and radius must come from the TestMu tokens. Never invent new values, even for a small new component.
+
+### Setup check (do this first)
+- The project must contain `.testmu/`. If it is missing, run this once from the project root (Node 18+), then commit: `node -e "fetch('https://testmu-design-system.vercel.app/agent-kit/get.mjs').then(r=>r.text()).then(c=>import('data:text/javascript,'+encodeURIComponent(c)))"`
+- Link the styles in this order: `.testmu/tokens/tokens.css`, then `.testmu/tokens/testmu-base.css`, then `.testmu/tokens/testmu.css`.
+- Never edit files inside `.testmu/`. They update themselves from the published design system and your edits would be lost. To pull the latest now, run `node .testmu/bin/update.mjs`.
+- With Tailwind v3, add `presets: [require('./.testmu/tokens/tailwind.preset.cjs')]`.
+- With Tailwind v4, add `@import "./.testmu/tokens/theme.css";`.
+- The presets replace Tailwind's own scales, so only TestMu values exist.
+- Tailwind names:
+  - **Colors:** `bg-bg`, `bg-bg-muted`, `bg-bg-surface`, `text-fg`, `text-fg-muted`, `text-fg-link`, `border-border`, `bg-button-primary`, plus ramps like `bg-gray-100` and `text-blue-500`.
+  - **Type:** `text-h1` … `text-h7`, `text-b1` … `text-b5`.
+  - **Spacing:** `p-1` = 4px, `p-2` = 8, `p-3` = 12, `p-4` = 16, `p-6` = 24, `p-8` = 32 … `p-32` = 128.
+  - **Radius:** `rounded-none` 0 for every surface, `rounded-sm` 4 for labels, `rounded` 6 for controls, `rounded-full` for pills.
+
+### Color
+- Use the CSS variable or the Tailwind name, never a raw hex.
+- Page ground is soft white `#F5F4F0`, not pure white.
+- Text is `#121212`.
+- Primary buttons are black `#121212`, not blue.
+- Blue `#1742DF` is only for links, focus and accent.
+- Orange `#ED5F00` is only the hero button's arrow chip.
+
+| Role | Hex | CSS variable |
+|---|---|---|
+| bg-default | `#F5F4F0` | `var(--tm-bg-default)` |
+| bg-muted | `#E7E6DF` | `var(--tm-bg-muted)` |
+| bg-fill | `#EEEDE7` | `var(--tm-bg-fill)` |
+| bg-surface | `#FFFFFF` | `var(--tm-bg-surface)` |
+| bg-inverse | `#121212` | `var(--tm-bg-inverse)` |
+| bg-inverse-muted | `#242424` | `var(--tm-bg-inverse-muted)` |
+| bg-accent | `#1742DF` | `var(--tm-bg-accent)` |
+| bg-accent-muted | `#EEF2FF` | `var(--tm-bg-accent-muted)` |
+| fg-default | `#121212` | `var(--tm-fg-default)` |
+| fg-muted | `#4D4D4D` | `var(--tm-fg-muted)` |
+| fg-subtle | `#7F7F7E` | `var(--tm-fg-subtle)` |
+| fg-disabled | `#4D4D4DB8` | `var(--tm-fg-disabled)` |
+| fg-inverse | `#FFFFFF` | `var(--tm-fg-inverse)` |
+| fg-inverse-muted | `#B8B7B4` | `var(--tm-fg-inverse-muted)` |
+| fg-link | `#1742DF` | `var(--tm-fg-link)` |
+| fg-success | `#1A7F37` | `var(--tm-fg-success)` |
+| fg-error | `#CF222E` | `var(--tm-fg-error)` |
+| border-default | `#D3D2CD` | `var(--tm-border-default)` |
+| border-muted | `#E7E6DF` | `var(--tm-border-muted)` |
+| border-frame | `#DDDCD6` | `var(--tm-border-frame)` |
+| border-emphasis | `#121212` | `var(--tm-border-emphasis)` |
+| button-primary | `#121212` | `var(--tm-button-primary)` |
+| button-primary-hover | `#3C3C3C` | `var(--tm-button-primary-hover)` |
+| button-primary-disabled | `#5F5E5E` | `var(--tm-button-primary-disabled)` |
+| button-secondary | `#FFFFFF` | `var(--tm-button-secondary)` |
+| button-secondary-hover | `#E7E6DF` | `var(--tm-button-secondary-hover)` |
+| segment-hover | `#DBDAD2` | `var(--tm-segment-hover)` |
+| hero-arrow | `#ED5F00` | `var(--tm-hero-arrow)` |
+
+### Type
+- **Headings break into balanced lines.** When a heading needs two lines, both lines should be about the same length. Never leave a single word alone on a line ("Trigger a load test from your CI / Pipeline" is wrong). Put `text-wrap: balance` on every heading.
+  - Section headings are usually two lines: a grey lead line and a black main line, each 2 to 6 words.
+  - A short heading stays on one line.
+- Manrope for all text. Space Mono for code, IDs and small uppercase labels. Geist Pixel for big numbers only.
+- Weights are 400 for body and 500 for headings, buttons and emphasis. Never 700.
+
+| Style | Size/line | Tracking | Weight |
+|---|---|---|---|
+| H1 | 56/64 | -2px | 500 |
+| H2 | 48/58 | -2px | 500 |
+| H3 | 32/40 | -1px | 500 |
+| H4 | 24/32 | -1px | 500 |
+| H5 | 18/26 | -0.5px | 500 |
+| H6 | 14/22 | 0px | 500 |
+| H7 | 12/18 | 0px | 500 |
+| B1 | 18/28 | 0px | 400 |
+| B2 | 16/24 | 0px | 400 |
+| B3 | 14/22 | 0px | 400 |
+| B4 | 12/18 | 0px | 400 |
+| B5 | 10/14 | 0px | 400 |
+
+### Page structure
+- **A block is heading, then description, then content** (cards, boxes, code, media), and nothing after the content.
+  - No closing caption, footnote, fine print or muted sentence under the cards.
+  - If something must be said, put it in the description above, or make it a button or a text link.
+
+### Space, size and shape
+- **Spacing:** use only 0, 2, 4, 6, 8, 12, 16, 20, 24, 28, 32, 40, 44, 48, 56, 64, 72, 80, 96, 112, 128 px.
+- **Corners:** every surface is sharp (0): images, cards, boxes, panels, tables, sections, modals.
+  - Controls are 6px: buttons, inputs, selects, segment controls.
+  - Small labels and tags are 4px. Pills, avatars and toggles are fully round.
+  - No other radius exists. Never round a card or an image.
+- **Buttons:** 48 / 44 / 40 px tall.
+- **Fields:** 44 / 40 / 38 px tall.
+- **Icons:** Lucide only, at 16 or 20 px, `stroke-width="1.5"` on the 24 viewBox, in Fg/default.
+- **Focus:** a 2px `#1742DF` ring.
+- **Layout:** auto layout only (flex, padding and gap from the spacing scale). There is no column grid. Content sits in a fixed 1232px frame on every screen from 1024px up (1440, 1920 and 2560 alike); only the side margins grow:
+
+| Screen | Designed at | From | Outer margin | Frame | Inner padding | Section spacing |
+|---|---|---|---|---|---|---|
+| Mobile | 390 | 0 | 16px | full width | 16px | 64px |
+| Tablet | 768 | 640 | 32px | full width | 32px | 96px |
+| Desktop | 1440 | 1024 | 104px (auto) | 1232px | 40px | 128px |
+| Wide | 1920 | 1680 | 344px (auto) | 1232px | 40px | 128px |
+| Ultra | 2560 | 2240 | 664px (auto) | 1232px | 40px | 128px |
+
+  Use `var(--tm-frame)`, `var(--tm-frame-padding)`, `var(--tm-margin)` and `var(--tm-section-y)`. They switch at each size on their own.
+- **Card frames by default.** Boxes sit in joined card frames. The user will not ask for this; do it on your own whenever a request has two or more boxes side by side.
+  - That covers cards, tiles, features, stats, plans, steps, logos, team members, links and any other "N boxes".
+  - Wrap them in `<div class="tm-join">`. Each direct child is one box.
+  - The row fits itself to the frame, never more than 4 per row: 2, 3 or 4 boxes sit in one row (add `tm-join--square` to show 4 as 2 × 2), 5 make 3 + 2, 6 make 3 × 2, 7 make 4 + 3, 8 make 4 × 2, 9 make 3 × 3, 10 make 4 + 3 + 3. Shorter rows stretch so no slot is left empty. Tablets show 2 per row and phones 1.
+  - The boxes touch with 1px `#DDDCD6` hairlines, run edge to edge to the frame lines, are sharp (0 radius) and white, with padding from `var(--tm-frame-padding)`.
+  - Never add a gap, margin, shadow or radius between or on these boxes. Never use a fixed number of columns that leaves a hole.
+  - Without the kit CSS, rebuild the same thing: `display: grid; gap: 1px; background: #DDDCD6;` with at most 4 columns, shorter last rows stretched to fill, and white cells.
+  - Use separate floating cards only when the user asks for them by name.
+- **Shadows:** only the `--tm-shadow-*` tokens.
+
+### Guide the person, like a designer would
+Most people asking you to build will not know design. Do not just build the literal words; lead them.
+1. **Get the goal in one line:** what the page or screen is for, who it is for, and the one action it should drive. Ask only if you truly cannot tell.
+2. **Propose before you build anything bigger than one block.** List the outline with one line each on why, for example: hero, logo wall, feature pointers, big cards with boxes, reviews, pricing, CTA, footer.
+3. **Offer two or three options when a choice changes the look,** and name the one you recommend. For example: show two products as big painted cards with a box row, or as three image cards. If they don't pick, go with your recommendation.
+4. **Fill the gaps with TestMu defaults:**
+   - card frames;
+   - balanced two-line headings;
+   - sentence-case copy and realistic sample content;
+   - painted nature images behind product UI;
+   - one primary action per block.
+5. **Match common asks to the kit:**
+
+| The person asks for | Use |
+|---|---|
+| features or capabilities | feature pointers or bento |
+| two main products | big cards, alone or with boxes |
+| how it works or steps | steps |
+| prices or plans | pricing |
+| testimonials | reviews |
+| customer logos | logo wall |
+| numbers or proof | more reasons |
+| questions | FAQ |
+| a sign-up push | CTA, or the exit popup |
+| a list of guides or use cases | catalog |
+| docs-style browsing | catalog with left nav |
+
+6. **When it's built,** say in two or three plain sentences what you chose and what they can change next. Offer the next useful step, for example adding pricing or a customer story.
+
+### Building new things
+- Build what the user asks for from these rules. New layouts and new components are expected, and they must still use only these tokens.
+- **Controls:** for buttons, fields, checkboxes, tabs and similar, use the TestMu classes in `testmu.css`: `tm-btn`, `tm-ibtn`, `tm-tbtn`, `tm-field`, `tm-check`, `tm-radio`, `tm-lbl`, `tm-navbar`, `tm-seg`, `tm-disc`, `tm-pager`, `tm-select`, `tm-token`, `tm-tooltip`, `tm-navlist`, `tm-crumbs`.
+- **Page sections:** borrow from the section kit (`tm-fold` and the rest) when one fits.
+- **New CSS:** compose it only from `var(--tm-*)` tokens.
+- **Copy:** sentence case, short, no exclamation marks. Write "TestMu AI", never "LambdaTest".
+
+### Check before you finish
+Run `node .testmu/bin/ds-check.mjs --fix <changed files or folder>`. It snaps any off-system color, font, font size, weight or spacing to the nearest TestMu token and prints what it changed. Corners follow the element: buttons, inputs and selects get 6px, tags, labels and badges 4px, pills, chips, avatars and toggles round, and everything else 0.
+
+It also runs on its own:
+- after every edit and every shell command in Claude Code, after every edit in Cursor, and at the end of each turn in both;
+- on every git commit, whichever agent or person wrote the code;
+- on every pull request (GitHub Actions), so nothing off the system merges.
+
+Never get around it: do not write style files through shell commands to skip the check, do not commit with `--no-verify`, and do not add `ds-ignore` unless the user asks for that exact value.

@@ -60,7 +60,7 @@ function KaneSteps({ play }: { play: boolean }) {
             key={text}
             {...rise(play, 0.15 + i * 0.35)}
             style={{ width: w, marginTop: i === 0 ? 0 : -6, zIndex: i }}
-            className="relative flex items-center gap-2 rounded-[12px] border border-border bg-white px-3 py-2 shadow-[0_6px_14px_-10px_rgba(18,18,18,0.35)]"
+            className="relative flex items-center gap-2 rounded-[0px] border border-border bg-white px-3 py-2 shadow-[0_6px_14px_-10px_rgba(18,18,18,0.35)]"
           >
             <Icon size={13} className="flex-none text-[#1A7F37]" />
             <span className={`truncate text-[12px] ${tone}`}>{text}</span>
@@ -69,9 +69,9 @@ function KaneSteps({ play }: { play: boolean }) {
       </div>
       <motion.div
         {...rise(play, 1.65)}
-        className="mt-4 flex w-full items-center justify-between rounded-[14px] bg-white px-4 py-3 shadow-[0_16px_30px_-16px_rgba(18,18,18,0.4)]"
+        className="mt-4 flex w-full items-center justify-between rounded-[0px] bg-white px-4 py-3 shadow-[0_16px_30px_-16px_rgba(18,18,18,0.4)]"
       >
-        <span className="relative overflow-hidden whitespace-nowrap text-[13px] text-foreground">
+        <span className="relative overflow-hidden whitespace-nowrap text-[12px] text-foreground">
           <motion.span
             className="inline-block overflow-hidden whitespace-nowrap align-bottom"
             initial={play ? { width: 0 } : false}
@@ -113,7 +113,7 @@ function Spark({ play, at }: { play: boolean; at: number }) {
     <svg viewBox="0 0 40 14" className="h-3.5 w-10" fill="none">
       <motion.path
         d="M1 12 L6 11 L9 3 L13 12 L17 8 L21 11 L25 5 L29 12 L33 9 L39 12"
-        stroke="#F0883E"
+        stroke="#FB8F44"
         strokeWidth="1.6"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -138,20 +138,20 @@ function CloudTiles({ play }: { play: boolean }) {
             className="flex flex-col gap-1.5 border border-border bg-white px-3 py-1.5"
           >
             <div className="flex items-center gap-2">
-              <span className="flex h-5 w-5 items-center justify-center rounded-[5px] border border-border bg-background">
+              <span className="flex h-5 w-5 items-center justify-center rounded-[4px] border border-border bg-background">
                 <Icon size={10} className="text-foreground" />
               </span>
-              <span className="truncate text-[10.5px] font-medium text-foreground">{t.name}</span>
+              <span className="truncate text-[10px] font-medium text-foreground">{t.name}</span>
             </div>
             <span className="h-1 w-[80%] rounded-full bg-border-muted" />
             <div className="flex items-center justify-between">
               {t.foot === "run" ? (
-                <span className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[9px] text-[#1A7F37]">
+                <span className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[10px] text-[#1A7F37]">
                   <Loader2 size={8} className="animate-spin" />
                   {t.count} running
                 </span>
               ) : (
-                <span className="flex items-center gap-0.5 text-[9px] text-[#1F6FEB]">
+                <span className="flex items-center gap-0.5 text-[10px] text-[#5273EC]">
                   {t.foot === "try" ? "Try now" : t.foot === "dash" ? "View dashboards" : "View builds"}
                   <ArrowUpRight size={8} />
                 </span>
@@ -171,12 +171,12 @@ function AgentChat({ play }: { play: boolean }) {
   return (
     <div className="flex min-h-[132px] flex-col justify-center gap-2 bg-white py-3 pl-4 pr-10">
       <motion.div {...rise(play, 0.15)} className="max-w-[82%]">
-        <p className="rounded-[10px] rounded-tl-[3px] border border-border bg-background px-2.5 py-1.5 text-[11px] text-foreground">
+        <p className="rounded-[0px] rounded-tl-[4px] border border-border bg-background px-2.5 py-1.5 text-[10px] text-foreground">
           I was charged twice for one order.
         </p>
       </motion.div>
       <motion.div {...rise(play, 0.6)} className="ml-auto max-w-[82%] text-right">
-        <p className="rounded-[10px] rounded-tr-[3px] bg-foreground px-2.5 py-1.5 text-left text-[11px] text-white">
+        <p className="rounded-[0px] rounded-tr-[4px] bg-foreground px-2.5 py-1.5 text-left text-[10px] text-white">
           Sorry about that. I have refunded the extra charge.
         </p>
       </motion.div>
@@ -184,7 +184,7 @@ function AgentChat({ play }: { play: boolean }) {
         {["No hallucination", "Tone 92", "Resolved"].map((m) => (
           <span
             key={m}
-            className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[9px] text-[#1A7F37]"
+            className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[10px] text-[#1A7F37]"
           >
             <Check size={8} />
             {m}
@@ -205,8 +205,8 @@ function AssuranceReport({ play }: { play: boolean }) {
   return (
     <div className="flex min-h-[132px] flex-col justify-center gap-2 bg-white py-3 pl-4 pr-10">
       <motion.div {...rise(play, 0.1)} className="flex items-center justify-between">
-        <span className="text-[11px] font-medium text-foreground">Refund agent · 240 runs</span>
-        <span className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[9px] text-[#1A7F37]">
+        <span className="text-[10px] font-medium text-foreground">Refund agent · 240 runs</span>
+        <span className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[10px] text-[#1A7F37]">
           <Check size={8} />
           Ready to ship
         </span>
@@ -242,7 +242,7 @@ const CLI_LINES = [
 
 function KaneTerminal({ play }: { play: boolean }) {
   return (
-    <div className="mono flex min-h-[132px] flex-col justify-center gap-1.5 bg-white py-3 pl-4 pr-10 text-[10.5px]">
+    <div className="mono flex min-h-[132px] flex-col justify-center gap-1.5 bg-white py-3 pl-4 pr-10 text-[10px]">
       {CLI_LINES.map((l, i) => (
         <motion.div
           key={l.t}
@@ -333,7 +333,7 @@ function PanelWindow({
         </span>
         <span className="mx-auto flex items-center gap-1.5 border border-border bg-background px-3 py-0.5 text-muted-foreground">
           <PanelIcon size={10} />
-          <span className="mono text-[9px] uppercase tracking-[0.14em]">{title}</span>
+          <span className="mono text-[10px] uppercase tracking-[0.14em]">{title}</span>
         </span>
         <Sparkles size={11} className="text-muted-foreground" />
       </div>
@@ -451,7 +451,7 @@ function MiniWindow({ index, playing }: { index: number; playing: boolean }) {
         </span>
         <span className="mx-auto flex min-w-0 items-center gap-1.5 border border-border bg-background px-3 py-0.5 text-muted-foreground">
           <Icon size={10} className="flex-none" />
-          <span className="mono truncate whitespace-nowrap text-[9px] uppercase tracking-[0.14em]">
+          <span className="mono truncate whitespace-nowrap text-[10px] uppercase tracking-[0.14em]">
             {pioneerSmall[index].window}
           </span>
         </span>
@@ -489,7 +489,7 @@ function SmallCard({ index, className = "" }: { index: number; className?: strin
         }}
       />
       <div className="relative p-6 md:p-8">
-        <h4 className="tracking-tight text-foreground">{card.title}</h4>
+        <h4 className="text-foreground">{card.title}</h4>
         <p className="mt-2 text-b2 leading-relaxed text-muted-foreground">
           {card.body}
         </p>
@@ -568,7 +568,7 @@ function JoinedRow() {
           }`}
           render={(playing) => (
             <>
-              <div className="flex h-[340px] items-center justify-center bg-[#E9E5DB] px-6 md:h-[380px] md:px-12">
+              <div className="flex h-[340px] items-center justify-center bg-[#E7E6DF] px-6 md:h-[380px] md:px-12">
                 <PanelWindow index={i} playing={playing} shadow={false} />
               </div>
               <div className="flex-1 p-6 md:p-8">
@@ -730,7 +730,7 @@ function GLText({
 }) {
   return (
     <div>
-      <h4 className="tracking-tight text-foreground">{title}</h4>
+      <h4 className="text-foreground">{title}</h4>
       <p className={`mt-2 text-b2 leading-relaxed text-muted-foreground ${big ? "max-w-[520px]" : "max-w-[300px]"}`}>
         {body}
       </p>
@@ -759,8 +759,8 @@ function CloudPill({ play }: { play: boolean }) {
           <motion.span
             key={i}
             {...rise(play, 0.1 + i * 0.08)}
-            className={`flex h-8 w-8 items-center justify-center rounded-[8px] border ${
-              i === 0 ? "border-foreground bg-foreground text-white" : "border-border bg-white text-muted-foreground"
+            className={`flex h-8 w-8 items-center justify-center rounded-[6px] border ${
+              i === 0 ? "border-foreground/40 bg-[#EEEDE7] text-foreground" : "border-border bg-white text-muted-foreground"
             }`}
           >
             <Icon size={14} />
@@ -798,19 +798,19 @@ function CloudPill({ play }: { play: boolean }) {
 function ChatCatch({ play }: { play: boolean }) {
   return (
     <div className="flex w-full max-w-[300px] flex-col gap-2">
-      <motion.p {...rise(play, 0.1)} className="flex items-center gap-1.5 text-b4 text-[#1F6FEB]">
+      <motion.p {...rise(play, 0.1)} className="flex items-center gap-1.5 text-b4 text-[#5273EC]">
         <MessagesSquare size={12} />
         Tester agent
       </motion.p>
-      <motion.p {...rise(play, 0.25)} className="w-fit rounded-[10px] border border-border bg-white px-3 py-2 text-b3 text-foreground">
+      <motion.p {...rise(play, 0.25)} className="w-fit rounded-[0px] border border-border bg-white px-3 py-2 text-b3 text-foreground">
         Can I get a refund after 30 days?
       </motion.p>
-      <motion.p {...rise(play, 0.7)} className="ml-auto w-fit rounded-[10px] bg-foreground px-3 py-2 text-b3 text-white">
+      <motion.p {...rise(play, 0.7)} className="ml-auto w-fit rounded-[0px] border border-border bg-[#EEEDE7] px-3 py-2 text-b3 text-foreground">
         Of course, refunds are always available.
       </motion.p>
       <motion.p
         {...rise(play, 1.3)}
-        className="flex w-fit items-center gap-1.5 rounded-[6px] border border-[#F5C2C0] bg-[#FDECEC] px-2.5 py-1 text-b4 text-[#B42318]"
+        className="flex w-fit items-center gap-1.5 rounded-[6px] border border-[#FFCECB] bg-[#FFEBE9] px-2.5 py-1 text-b4 text-[#CF222E]"
       >
         <TriangleAlert size={12} />
         Hallucination · contradicts refund policy
@@ -834,7 +834,7 @@ function TraceList({ play }: { play: boolean }) {
           <motion.span
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 1.4, repeat: Infinity }}
-            className="h-2 w-2 rounded-full bg-[#E5484D]"
+            className="h-2 w-2 rounded-full bg-[#FA4549]"
           />
         </span>
         Tracing the agent…
@@ -990,7 +990,7 @@ export function PioneerHeading() {
   return (
     <>
       <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-        <h2 className="tracking-tight">
+        <h2>
           <span className="block text-muted-foreground">Pioneer of</span>
           <span className="block">AI Agentic Testing Cloud</span>
         </h2>

@@ -29,7 +29,7 @@ function RichRow({ item }: { item: RichItem }) {
   return (
     <a
       href="#top"
-      className="flex items-start gap-[11px] px-[9px] py-[7px] -mx-[9px] transition-colors hover:bg-[#F5F4F0]"
+      className="flex items-start gap-[12px] px-[8px] py-[6px] -mx-[8px] transition-colors hover:bg-[#F5F4F0]"
     >
       <img
         src={item.icon}
@@ -39,12 +39,12 @@ function RichRow({ item }: { item: RichItem }) {
         loading="lazy"
       />
       <span className="min-w-0">
-        <span className="flex items-center gap-[7px]">
-          <span className="text-[15px] font-medium leading-5 text-[#121212]">
+        <span className="flex items-center gap-[6px]">
+          <span className="text-[14px] font-medium leading-5 text-[#121212]">
             {item.name}
           </span>
           {item.badge && (
-            <span className="bg-[#E7E6DF] px-2 py-px font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-[#121212]">
+            <span className="bg-[#E7E6DF] px-2 py-px font-mono text-[10px] font-medium uppercase tracking-[0.06em] text-[#121212]">
               {item.badge}
             </span>
           )}
@@ -68,7 +68,7 @@ function GroupColumn({ group }: { group: Group }) {
               <a key={item.name} href="#top" className={ROW_PLAIN}>
                 {item.name}
                 {item.badge && (
-                  <span className="ml-2 bg-[#E7E6DF] px-[6px] py-px font-mono text-[10.5px] font-medium uppercase tracking-[0.08em] text-[#121212]">
+                  <span className="ml-2 bg-[#E7E6DF] px-[6px] py-px font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[#121212]">
                     {item.badge}
                   </span>
                 )}
@@ -93,7 +93,7 @@ function Rail({
   return (
     <div
       style={{ width }}
-      className="flex flex-none flex-col gap-[30px] border-l border-[#E7E6DF] bg-white pb-[22px] pl-8 pr-6 pt-[26px]"
+      className="flex flex-none flex-col gap-[28px] border-l border-[#E7E6DF] bg-white pb-[20px] pl-8 pr-6 pt-[24px]"
     >
       {blocks?.map((block) => (
         <div key={block.caption}>
@@ -113,7 +113,7 @@ function Rail({
           {cardsCaption && (
             <div className={`${CAPTION_MONO} mb-2`}>{cardsCaption}</div>
           )}
-          <div className="flex flex-col gap-[14px]">
+          <div className="flex flex-col gap-[12px]">
             {cards.map((card) => (
               <a key={card.name} href="#top" className="flex flex-col gap-2.5">
                 <img
@@ -123,14 +123,14 @@ function Rail({
                   loading="lazy"
                 />
                 <span className="min-w-0">
-                  <span className="block text-[15px] font-medium leading-5 text-[#121212]">
+                  <span className="block text-[14px] font-medium leading-5 text-[#121212]">
                     {card.name}
                   </span>
-                  <span className="mt-0.5 block whitespace-normal text-[13px] font-normal leading-[18px] text-[#4D4D4D]">
+                  <span className="mt-0.5 block whitespace-normal text-[12px] font-normal leading-[18px] text-[#4D4D4D]">
                     {card.desc}
                   </span>
                   {card.cta && (
-                    <span className="mt-2.5 inline-flex items-center gap-1.5 self-start border-b border-[#121212] pb-0.5 text-[13px] font-medium text-[#121212]">
+                    <span className="mt-2.5 inline-flex items-center gap-1.5 self-start border-b border-[#121212] pb-0.5 text-[12px] font-medium text-[#121212]">
                       {card.cta} <span aria-hidden>→</span>
                     </span>
                   )}
@@ -162,7 +162,7 @@ function ColumnsPanel({ menu }: { menu: PanelMenu }) {
   return (
     <PanelShell width={menu.width}>
       <div className="flex">
-        <div className="flex flex-none pb-[22px] pl-7 pt-[26px]">
+        <div className="flex flex-none pb-[20px] pl-7 pt-[24px]">
           {menu.groups.map((group, i) => {
             const w = parseInt(menu.cols.split(" ")[i] ?? "190", 10);
             return (
@@ -192,20 +192,20 @@ function DescRow({ item }: { item: DescItem }) {
   return (
     <a
       href="#top"
-      className="-mx-[9px] block px-[9px] py-[7px] transition-colors hover:bg-[#F5F4F0]"
+      className="-mx-[8px] block px-[8px] py-[6px] transition-colors hover:bg-[#F5F4F0]"
     >
-      <span className="flex items-center gap-[7px]">
-        <span className="text-[15px] font-medium leading-5 text-[#121212]">
+      <span className="flex items-center gap-[6px]">
+        <span className="text-[14px] font-medium leading-5 text-[#121212]">
           {item.name}
         </span>
         {item.badge && (
-          <span className="bg-[#E7E6DF] px-[6px] py-px font-mono text-[10.5px] font-medium uppercase tracking-[0.08em] text-[#121212]">
+          <span className="bg-[#E7E6DF] px-[6px] py-px font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-[#121212]">
             {item.badge}
           </span>
         )}
       </span>
       {item.desc && (
-        <span className="mt-0.5 block whitespace-normal text-[13px] font-normal leading-[18px] text-[#4D4D4D]">
+        <span className="mt-0.5 block whitespace-normal text-[12px] font-normal leading-[18px] text-[#4D4D4D]">
           {item.desc}
         </span>
       )}
@@ -216,11 +216,11 @@ function DescRow({ item }: { item: DescItem }) {
 function ProductsPanel({ menu }: { menu: ProductsMenu }) {
   return (
     <PanelShell width={menu.width}>
-      <div className="flex pb-[24px] pl-7 pr-8 pt-[26px]">
+      <div className="flex pb-[24px] pl-7 pr-8 pt-[24px]">
         {/* Kane, then the agents you build */}
         <div className="w-[354px] flex-none pr-6">
           <div className={`${CAPTION_MONO} mb-2`}>{menu.kane.caption}</div>
-          <div className="border border-[#E7E6DF] bg-[#FAFAF8] px-3 py-2">
+          <div className="border border-[#E7E6DF] bg-[#FFFFFF] px-3 py-2">
             {menu.kane.items.map((item) => (
               <DescRow key={item.name} item={item} />
             ))}
@@ -259,7 +259,7 @@ function ProductsPanel({ menu }: { menu: ProductsMenu }) {
 function SolutionsPanel({ menu }: { menu: GridMenu }) {
   return (
     <PanelShell width={menu.width}>
-      <div className="flex pb-[24px] pl-7 pr-8 pt-[26px]">
+      <div className="flex pb-[24px] pl-7 pr-8 pt-[24px]">
         <div className="flex-none pr-6">
           <div className={`${CAPTION_MONO} mb-2`}>By use case</div>
           <div className="grid auto-rows-[34px] grid-cols-[192px_192px_192px] gap-x-7 [grid-auto-flow:column] [grid-template-rows:repeat(6,34px)]">
@@ -281,7 +281,7 @@ function SolutionsPanel({ menu }: { menu: GridMenu }) {
             ))}
           </div>
           <div className="mt-auto bg-[#EEF2FF] px-4 py-3.5">
-            <span className="block text-[15px] font-medium leading-5 text-[#121212]">
+            <span className="block text-[14px] font-medium leading-5 text-[#121212]">
               {menu.quote.title}
             </span>
             <a
@@ -297,28 +297,28 @@ function SolutionsPanel({ menu }: { menu: GridMenu }) {
 
       {/* bottom strip: enterprise apps beside what AI builds */}
       <div className="flex border-t border-[#E7E6DF]">
-        <div className="flex-1 py-[18px] pl-7 pr-6 pb-[22px]">
+        <div className="flex-1 py-[16px] pl-7 pr-6 pb-[20px]">
           <div className={`${CAPTION_MONO} mb-2`}>Enterprise apps we test</div>
           <div className="flex flex-wrap gap-1.5">
             {menu.erp.map((app) => (
               <a
                 key={app}
                 href="#top"
-                className="flex-none whitespace-nowrap border border-[#E7E6DF] bg-[#FAFAF8] px-[11px] py-1 text-[13px] font-medium leading-[18px] text-[#121212] transition-colors hover:border-[#121212]"
+                className="flex-none whitespace-nowrap border border-[#E7E6DF] bg-[#FFFFFF] px-[12px] py-1 text-[12px] font-medium leading-[18px] text-[#121212] transition-colors hover:border-[#121212]"
               >
                 {app}
               </a>
             ))}
           </div>
         </div>
-        <div className="flex-none border-l border-[#E7E6DF] py-[18px] pl-6 pr-8 pb-[22px]">
+        <div className="flex-none border-l border-[#E7E6DF] py-[16px] pl-6 pr-8 pb-[20px]">
           <div className={`${CAPTION_MONO} mb-2`}>Test what AI builds</div>
           <div className="flex items-center gap-5">
             {menu.aiBuilds.map((tool) => (
               <a
                 key={tool}
                 href="#top"
-                className="whitespace-nowrap text-[15px] font-medium text-[#121212] transition-colors hover:text-[#4D4D4D]"
+                className="whitespace-nowrap text-[14px] font-medium text-[#121212] transition-colors hover:text-[#4D4D4D]"
               >
                 {tool}
               </a>
@@ -368,7 +368,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="flex h-10 items-center justify-center gap-2.5 bg-[#121212] text-[13px] font-medium leading-none text-white">
+      <div className="flex h-10 items-center justify-center gap-2.5 bg-[#121212] text-[12px] font-medium leading-none text-white">
         <span>{announcement.text}</span>
         <a href="#top" className="border-b border-white/45 pb-0.5 text-white">
           {announcement.cta}
@@ -420,7 +420,7 @@ export default function Header() {
           </nav>
 
           <div className="ml-auto flex flex-none items-center gap-2.5 min-[1181px]:hidden">
-            <span className="text-[17px] text-[#4D4D4D]">⌕</span>
+            <span className="text-[16px] text-[#4D4D4D]">⌕</span>
             <button
               onClick={() => {
                 setDrawer((d) => !d);
@@ -480,7 +480,7 @@ export default function Header() {
 
         {drawer && (
           <div className="panel-in absolute inset-x-0 top-full max-h-[78vh] overflow-auto border-t border-[#E7E6DF] bg-white shadow-[0_24px_60px_rgba(18,18,18,0.14)]">
-            <div className="px-[22px] pb-[26px] pt-3.5">
+            <div className="px-[20px] pb-[24px] pt-3.5">
               {NAV.map((item) => {
                 const on = item.kind !== "plain" && section === item.key;
                 const lists: { caption: string; items: string[] }[] = [];
@@ -531,7 +531,7 @@ export default function Header() {
                   <div key={item.key} className="border-b border-[#E7E6DF]">
                     <button
                       onClick={() => setSection(on ? null : item.key)}
-                      className="flex w-full cursor-pointer items-center justify-between border-0 bg-transparent py-4 text-[17px] font-medium text-[#121212]"
+                      className="flex w-full cursor-pointer items-center justify-between border-0 bg-transparent py-4 text-[16px] font-medium text-[#121212]"
                     >
                       {item.label}
                       <span className="text-[18px] text-[#4D4D4D]">
@@ -539,7 +539,7 @@ export default function Header() {
                       </span>
                     </button>
                     {on && (
-                      <div className="flex flex-col gap-4 pb-[18px] pt-1">
+                      <div className="flex flex-col gap-4 pb-[16px] pt-1">
                         {lists.map((list) => (
                           <div key={list.caption}>
                             <div className="mb-1.5 text-[14px] font-normal text-[#7F7F7E]">
@@ -556,7 +556,7 @@ export default function Header() {
                                 <a
                                   key={entry}
                                   href="#top"
-                                  className="flex min-h-[44px] items-center border-b border-[#F5F4F0] text-[15px] font-medium text-[#121212]"
+                                  className="flex min-h-[44px] items-center border-b border-[#F5F4F0] text-[14px] font-medium text-[#121212]"
                                 >
                                   {entry}
                                 </a>
@@ -570,7 +570,7 @@ export default function Header() {
                 );
               })}
 
-              <div className="mt-[22px] flex flex-col gap-2.5">
+              <div className="mt-[20px] flex flex-col gap-2.5">
                 <a
                   href="#top"
                   className="btn btn-lg btn-primary w-full"

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "hooks": {
+    "afterFileEdit": [
+      {
+        "command": "node .testmu/bin/ds-check.mjs --hook"
+      }
+    ],
+    "stop": [
+      {
+        "command": "node .testmu/bin/ds-check.mjs --hook"
+      }
+    ]
+  }
+}

@@ -66,7 +66,7 @@ function Feature({ feature }: { feature: Fold["features"][number] }) {
       </motion.div>
 
       <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
-        <h3 className="tracking-tight text-white">
+        <h3 className="text-white">
           {feature.name}
         </h3>
         <p className="mt-3 max-w-[440px] text-b3 leading-relaxed text-white/75">
@@ -86,7 +86,7 @@ function Fold({ fold }: { fold: Fold }) {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="tracking-tight">
+          <h2>
             <span className="block text-muted-foreground">{fold.lead}</span>
             <span className="block">{fold.subject}</span>
           </h2>
@@ -96,7 +96,7 @@ function Fold({ fold }: { fold: Fold }) {
         </div>
         <button
           data-cursor="Start free"
-          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-b3 font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+          className="group mt-8 inline-flex items-center gap-2 rounded-[6px] bg-primary px-6 py-3 text-b3 font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
         >
           {fold.cta}
           <SlideArrow />
@@ -139,7 +139,7 @@ function Fold({ fold }: { fold: Fold }) {
                       className="translate-y-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:text-foreground group-hover:opacity-100"
                     />
                   </div>
-                  <h4 className="mt-6 tracking-tight">
+                  <h4 className="mt-6">
                     {cell.name}
                   </h4>
                   <p className="mt-2.5 text-b3 leading-relaxed text-muted-foreground">

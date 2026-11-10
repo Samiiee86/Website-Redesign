@@ -61,7 +61,7 @@ export default function Stories() {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="tracking-tight">
+          <h2>
             <span className="block text-muted-foreground">
               {storiesGrid.lead}
             </span>
@@ -108,7 +108,7 @@ export default function Stories() {
 
                 <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between gap-6">
                   <div>
-                    <p className="pixel text-[44px] leading-none tracking-tight text-white md:text-[56px]">
+                    <p className="pixel text-[48px] leading-none tracking-tight text-white md:text-[56px]">
                       {hero.stat}
                     </p>
                     <p className="mt-2 text-b2 capitalize text-white/90">
@@ -131,7 +131,7 @@ export default function Stories() {
               />
               <div>
                 <Quote size={22} className="text-foreground" />
-                <blockquote className="mt-5 max-w-[380px] text-[22px] leading-[1.35] tracking-tight md:text-[24px]">
+                <blockquote className="mt-5 max-w-[380px] text-[24px] leading-[1.35] tracking-tight md:text-[24px]">
                   {hero.quote}
                 </blockquote>
                 <footer className="mt-6 text-b2">
@@ -169,7 +169,7 @@ export default function Stories() {
                   />
                 </div>
                 <div>
-                  <p className="pixel text-[40px] leading-none tracking-tight">
+                  <p className="pixel text-[32px] leading-none tracking-tight">
                     {cell.stat}
                   </p>
                   <p className="mt-3 max-w-[260px] text-b2 leading-relaxed text-muted-foreground">
@@ -204,7 +204,7 @@ export default function Stories() {
                 />
                 <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                   <div>
-                    <p className="pixel text-[44px] leading-none tracking-tight text-white">
+                    <p className="pixel text-[48px] leading-none tracking-tight text-white">
                       {wide.stat}
                     </p>
                     <p className="mt-3 max-w-[260px] text-b2 capitalize leading-snug text-white/90">
@@ -231,7 +231,7 @@ export default function Stories() {
                 rel="noreferrer"
                 aria-label={`Read the ${logo.name} story`}
                 data-cursor="Read story"
-                className="group relative flex h-[96px] items-center justify-center bg-surface px-6 transition-colors duration-500 hover:bg-[#FAFAF8]"
+                className="group relative flex h-[96px] items-center justify-center bg-surface px-6 transition-colors duration-500 hover:bg-[#FFFFFF]"
               >
                 <img
                   src={logo.src}

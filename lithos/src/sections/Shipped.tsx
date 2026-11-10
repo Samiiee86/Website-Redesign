@@ -9,7 +9,7 @@ export default function Shipped() {
     <Section>
       <div className="grid gap-12 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-14">
         <Reveal>
-          <h2 className="tracking-tight">
+          <h2>
             <span className="block text-muted-foreground">{shipped.lead}</span>
             <span className="block">{shipped.title}</span>
           </h2>

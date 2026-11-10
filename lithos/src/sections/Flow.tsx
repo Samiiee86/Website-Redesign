@@ -99,7 +99,7 @@ function Connector({ index }: { index: number }) {
 function CheckRow({ text }: { text: string }) {
   return (
     <li className="flex items-start gap-2.5">
-      <Check size={13} strokeWidth={2.4} className="mt-[3px] shrink-0" />
+      <Check size={13} strokeWidth={2.4} className="mt-[2px] shrink-0" />
       <span className="text-b3 leading-snug text-foreground">{text}</span>
     </li>
   );
@@ -191,7 +191,7 @@ export default function Flow() {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="tracking-tight">
+          <h2>
             <span className="block text-muted-foreground">One platform,</span>
             <span className="block">every stage of testing</span>
           </h2>

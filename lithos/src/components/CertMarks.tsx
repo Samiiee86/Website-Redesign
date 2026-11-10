@@ -109,8 +109,12 @@ const MARKS: Record<string, () => ReactNode> = {
   HIPAA: () => (
     <Svg label="HIPAA">
       <Shield />
-      <path d="M32 15v14M25 22h14" />
-      <text x="32" y="42" fontSize="8.5" {...T}>HIPAA</text>
+      {/* the medical cross of the usual HIPAA compliance seal, drawn as an
+          outline so it sits with the rest of the line set */}
+      <polygon points="29.5,14.5 34.5,14.5 34.5,19 39,19 39,24 34.5,24 34.5,28.5 29.5,28.5 29.5,24 25,24 25,19 29.5,19" />
+      <text x="32" y="38.5" fontSize="8.5" {...T}>HIPAA</text>
+      <path d="M21 42h22" />
+      <text x="32" y="48" fontSize="4.2" {...T}>COMPLIANT</text>
     </Svg>
   ),
   CCPA: () => (

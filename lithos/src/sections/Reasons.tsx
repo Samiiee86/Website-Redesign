@@ -41,7 +41,7 @@ export default function Reasons() {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="tracking-tight">
+          <h2>
             <span className="block text-muted-foreground">
               More Reasons to Love
             </span>
@@ -81,7 +81,7 @@ export default function Reasons() {
                 <p className="text-b4 uppercase tracking-[0.22em] text-muted-foreground">
                   {s.label}
                 </p>
-                <p className="pixel mt-3 text-[38px] leading-none tracking-tight md:text-[44px]">
+                <p className="pixel mt-3 text-[32px] leading-none tracking-tight md:text-[48px]">
                   {s.value}
                   {s.suffix}
                 </p>
@@ -116,7 +116,7 @@ export default function Reasons() {
           <div className="grid border-t border-border lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
             <div className="flex flex-col gap-8 border-b border-border p-8 lg:border-b-0 lg:border-r">
               <div>
-                <h3 className="tracking-tight">{security.title}</h3>
+                <h3>{security.title}</h3>
                 <p className="mt-3 max-w-[480px] text-b2 leading-relaxed text-muted-foreground">
                   {security.body}
                 </p>
@@ -137,7 +137,7 @@ export default function Reasons() {
                 and the agents it works with */}
             <div className="flex flex-col gap-6 p-8">
               <div>
-                <h3 className="tracking-tight">{integrationsCard.title}</h3>
+                <h3>{integrationsCard.title}</h3>
                 <p className="mt-3 max-w-[360px] text-b2 leading-relaxed text-muted-foreground">
                   {integrationsCard.body}
                 </p>
@@ -157,7 +157,7 @@ export default function Reasons() {
                     <span
                       key={c.name}
                       title={c.name}
-                      className={`flex items-center justify-center rounded-[9px] border bg-white transition-transform duration-300 hover:-translate-y-0.5 ${
+                      className={`flex items-center justify-center rounded-[6px] border bg-white transition-transform duration-300 hover:-translate-y-0.5 ${
                         i === 0
                           ? "h-11 w-11 border-foreground/30 shadow-[0_6px_16px_-10px_rgba(18,18,18,0.5)]"
                           : "h-9 w-9 border-border"
@@ -202,7 +202,7 @@ export default function Reasons() {
                   />
                 </div>
                 <div>
-                  <p className="pixel text-[40px] leading-none tracking-tight">
+                  <p className="pixel text-[32px] leading-none tracking-tight">
                     {vendor.rating}
                     <span className="ml-1 text-b3 text-muted-foreground">
                       / {vendor.outOf}

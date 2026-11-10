@@ -62,11 +62,11 @@ export default function PioneerOptions() {
           <div key={o.id}>
             <div className="relative z-[1] border-t border-border bg-foreground px-5 py-4 text-background sm:px-8">
               <div className="mx-auto flex max-w-[1240px] flex-col gap-1 px-8 md:flex-row md:items-baseline md:gap-6">
-                <p className="mono text-[11px] uppercase tracking-[0.22em] text-background/60">
+                <p className="mono text-[10px] uppercase tracking-[0.22em] text-background/60">
                   Option {i + 1} of {OPTIONS.length}
                 </p>
-                <p className="text-[15px] font-medium">{o.name}</p>
-                <p className="text-[13.5px] text-background/70">{o.note}</p>
+                <p className="text-[14px] font-medium">{o.name}</p>
+                <p className="text-[14px] text-background/70">{o.note}</p>
               </div>
             </div>
             {o.render()}

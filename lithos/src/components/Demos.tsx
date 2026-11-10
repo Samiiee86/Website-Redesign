@@ -155,7 +155,7 @@ function Window({
   return (
     <div
       className={`relative w-full overflow-hidden border shadow-[0_30px_70px_-28px_rgba(18,18,18,0.55)] ${
-        dark ? "border-white/15 bg-[#161616]" : "border-border bg-white"
+        dark ? "border-white/15 bg-[#121212]" : "border-border bg-white"
       }`}
     >
       {/* window bar */}
@@ -180,7 +180,7 @@ function Window({
           }`}
         >
           <Icon size={10} />
-          <span className="mono text-[10.5px] uppercase tracking-[0.14em]">
+          <span className="mono text-[10px] uppercase tracking-[0.14em]">
             {title}
           </span>
         </span>
@@ -208,12 +208,12 @@ function PromptDemo() {
       <div className="px-5 py-4">
         <div className="flex items-center justify-between">
           <span className={CAP}>Checkout regression · 12 cases</span>
-          <span className="border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
+          <span className="border border-border-muted bg-background px-1.5 py-px text-[10px] text-muted-foreground">
             Synced · JIRA
           </span>
         </div>
         <div className="mt-2 border border-border-muted bg-background px-2.5 py-2">
-          <p className="text-[11.5px] text-foreground">
+          <p className="text-[12px] text-foreground">
             <Typed text="Cover the guest checkout flow with edge cases" from={0.05} to={0.3} />
             <span className="ml-px inline-block h-[12px] w-px animate-pulse bg-foreground align-middle" />
           </p>
@@ -235,8 +235,8 @@ function PromptDemo() {
             ["TC-104 · Price changes mid-checkout", "Edge case"],
           ].map(([name, tag], i) => (
             <motion.div key={name} {...appear(0.48 + i * 0.08)} className={row}>
-              <span className="truncate text-[12.5px] text-foreground">{name}</span>
-              <span className="ml-2 flex-none border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
+              <span className="truncate text-[12px] text-foreground">{name}</span>
+              <span className="ml-2 flex-none border border-border-muted bg-background px-1.5 py-px text-[10px] text-muted-foreground">
                 {tag}
               </span>
             </motion.div>
@@ -268,7 +268,7 @@ function PlanDemo() {
       <div className="px-5 py-4">
         <span className={CAP}>What is your objective today?</span>
         <div className="mt-1.5 flex items-center justify-between gap-2 border border-border-muted bg-background px-2.5 py-2">
-          <p className="min-w-0 truncate text-[11.5px] text-foreground">
+          <p className="min-w-0 truncate text-[12px] text-foreground">
             <Typed text="Test the end-to-end booking flow on trip.com" from={0.04} to={0.26} />
           </p>
           <motion.span
@@ -328,20 +328,20 @@ function AgentEvalDemo() {
       <div className="px-5 py-4">
         <div className="flex items-center justify-between">
           <span className={CAP}>Refund-policy probe · turn 7 of 20</span>
-          <span className="border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
+          <span className="border border-border-muted bg-background px-1.5 py-px text-[10px] text-muted-foreground">
             Voice + chat
           </span>
         </div>
         <div className="mt-2 flex flex-col gap-1.5">
           <motion.div
             {...appear(0.1)}
-            className="max-w-[85%] self-start border border-border-muted bg-background px-3.5 py-2 text-[12.5px]"
+            className="max-w-[85%] self-start border border-border-muted bg-background px-3.5 py-2 text-[12px]"
           >
             Can I get a refund after 30 days?
           </motion.div>
           <motion.div
             {...appear(0.26)}
-            className="max-w-[85%] self-end border border-border-muted px-3.5 py-2 text-[12.5px]"
+            className="max-w-[85%] self-end border border-border-muted px-3.5 py-2 text-[12px]"
           >
             Of course! Refunds are always available, no questions asked.
           </motion.div>
@@ -353,7 +353,7 @@ function AgentEvalDemo() {
           <span className="flex items-center gap-1.5 text-[12px] font-medium text-[#82071E]">
             <TriangleAlert size={11} /> Hallucination · contradicts policy §4
           </span>
-          <span className="mono text-[10.5px] uppercase text-[#82071E]">Fail</span>
+          <span className="mono text-[10px] uppercase text-[#82071E]">Fail</span>
         </motion.div>
         <div className="mt-1 flex flex-col gap-1.5">
           {[
@@ -362,8 +362,8 @@ function AgentEvalDemo() {
             ["Toxicity screen", "Pass", 0.78],
           ].map(([name, verdict, at]) => (
             <motion.div key={name as string} {...appear(at as number)} className={row}>
-              <span className="text-[12.5px] text-foreground">{name as string}</span>
-              <span className="mono text-[10.5px] uppercase text-[#1A7F37]">
+              <span className="text-[12px] text-foreground">{name as string}</span>
+              <span className="mono text-[10px] uppercase text-[#1A7F37]">
                 {verdict as string}
               </span>
             </motion.div>
@@ -418,7 +418,7 @@ function DevicesDemo() {
       <div className="px-5 py-4">
         <div className="flex items-center justify-between">
           <span className={CAP}>10,000+ devices · public cloud</span>
-          <span className="border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
+          <span className="border border-border-muted bg-background px-1.5 py-px text-[10px] text-muted-foreground">
             Android 16 · iOS 19
           </span>
         </div>
@@ -431,7 +431,7 @@ function DevicesDemo() {
                 i === 1 ? "border-foreground" : "border-border-muted"
               }`}
             >
-              <span className="block truncate text-[11px] font-medium text-foreground">
+              <span className="block truncate text-[10px] font-medium text-foreground">
                 {d}
               </span>
               <motion.span
@@ -450,10 +450,10 @@ function DevicesDemo() {
             ["adb logcat streaming", "Streaming", 0.68],
           ].map(([name, st, at]) => (
             <motion.div key={name as string} {...appear(at as number)} className={row}>
-              <span className="truncate text-[12.5px] text-foreground">
+              <span className="truncate text-[12px] text-foreground">
                 {name as string}
               </span>
-              <span className="mono ml-2 flex-none text-[10.5px] uppercase text-[#1A7F37]">
+              <span className="mono ml-2 flex-none text-[10px] uppercase text-[#1A7F37]">
                 {st as string}
               </span>
             </motion.div>
@@ -528,12 +528,12 @@ function InsightsDemo() {
       <div className="px-5 py-4">
         <div className="flex items-center justify-between">
           <span className={CAP}>Last 30 days · Release 8.4</span>
-          <span className="border border-border-muted bg-background px-1.5 py-px text-[10.5px] text-muted-foreground">
+          <span className="border border-border-muted bg-background px-1.5 py-px text-[10px] text-muted-foreground">
             Shared · 4 teams
           </span>
         </div>
         <div className="mt-2 flex items-baseline gap-2">
-          <motion.span {...appear(0.1, 0)} className="text-[26px] font-medium tracking-tight">
+          <motion.span {...appear(0.1, 0)} className="text-[24px] font-medium tracking-tight">
             94%
           </motion.span>
           <motion.span {...appear(0.16, 0)} className="text-[12px] text-muted-foreground">
@@ -558,14 +558,14 @@ function InsightsDemo() {
         </div>
         <div className="mt-2 flex flex-col gap-1.5">
           <motion.div {...appear(0.66)} className={row}>
-            <span className="text-[12.5px] text-foreground">Flaky tests</span>
-            <span className="mono text-[10.5px] uppercase text-[#1A7F37]">
+            <span className="text-[12px] text-foreground">Flaky tests</span>
+            <span className="mono text-[10px] uppercase text-[#1A7F37]">
               ▼ 38% this month
             </span>
           </motion.div>
           <motion.div {...appear(0.76)} className={row}>
-            <span className="text-[12.5px] text-foreground">Mean time to verdict</span>
-            <span className="mono text-[10.5px] uppercase text-[#1A7F37]">
+            <span className="text-[12px] text-foreground">Mean time to verdict</span>
+            <span className="mono text-[10px] uppercase text-[#1A7F37]">
               4m 12s
             </span>
           </motion.div>
@@ -664,7 +664,7 @@ function HeroPlanning() {
               ["Validate confirmation and price breakdown", 1.5],
             ].map(([t, at]) => (
               <motion.div key={t as string} {...hAppear(at as number)} className={row}>
-                <span className="truncate text-[12.5px] text-foreground">{t as string}</span>
+                <span className="truncate text-[12px] text-foreground">{t as string}</span>
                 <Check size={11} strokeWidth={2.6} className="ml-2 flex-none text-[#1A7F37]" />
               </motion.div>
             ))}
@@ -689,8 +689,8 @@ function HeroAuthoring() {
     <div>
       <div className="flex items-center justify-between">
         <p className={CAP}>Recording interaction · airbnb.co.in</p>
-        <span className="mono flex items-center gap-1.5 text-[10.5px] uppercase text-[#B3261E]">
-          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-[#B3261E]" />
+        <span className="mono flex items-center gap-1.5 text-[10px] uppercase text-[#CF222E]">
+          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-[#CF222E]" />
           Rec
         </span>
       </div>
@@ -703,7 +703,7 @@ function HeroAuthoring() {
           ["Fill guest details · reach checkout", 2.7],
         ].map(([t, at], i) => (
           <motion.div key={i} {...hAppear(at as number)} className={row}>
-            <span className="truncate text-[12.5px] text-foreground">{t as string}</span>
+            <span className="truncate text-[12px] text-foreground">{t as string}</span>
             <motion.span {...hAppear((at as number) + 0.25, 0)}>
               <Check size={11} strokeWidth={2.6} className="ml-2 flex-none text-[#1A7F37]" />
             </motion.span>
@@ -725,7 +725,7 @@ function HeroAuthoring() {
 
 function HeroExecuting() {
   return (
-    <div className="mono flex flex-col gap-[3px] text-[12px] leading-relaxed">
+    <div className="mono flex flex-col gap-[2px] text-[12px] leading-relaxed">
       <p className="text-foreground">
         <span className="text-muted-foreground">$ </span>
         <HeroTyped text="hye run suite/booking --tests 100" from={0.15} dur={1.0} />
@@ -767,10 +767,10 @@ function HeroAnalysing() {
         {...hAppear(0.3)}
         className="mt-2 flex items-center justify-between bg-[#FFEBE9] px-3.5 py-2"
       >
-        <span className="mono truncate text-[11.5px] text-[#8B1A12]">
+        <span className="mono truncate text-[12px] text-[#82071E]">
           TypeError: products.map is not a function · products.js:108
         </span>
-        <span className="mono ml-2 flex-none text-[10.5px] uppercase text-[#B3261E]">Fail</span>
+        <span className="mono ml-2 flex-none text-[10px] uppercase text-[#CF222E]">Fail</span>
       </motion.div>
       <div className="mt-1.5 flex gap-1.5">
         {[
@@ -780,7 +780,7 @@ function HeroAnalysing() {
           <motion.span
             key={t as string}
             {...hAppear(at as number, 0)}
-            className="border border-border-muted bg-background px-2 py-0.5 text-[11.5px] text-foreground"
+            className="border border-border-muted bg-background px-2 py-0.5 text-[12px] text-foreground"
           >
             {t as string}
           </motion.span>
@@ -795,7 +795,7 @@ function HeroAnalysing() {
       </motion.div>
       <motion.div {...hAppear(2.3)} className="mt-2 flex flex-col gap-1.5">
         <div className={row}>
-          <span className="truncate text-[12.5px] text-foreground">
+          <span className="truncate text-[12px] text-foreground">
             Root cause: empty inventory rendered before fetch resolves
           </span>
         </div>
@@ -830,7 +830,7 @@ export function HeroDemo() {
           <button
             key={c}
             onClick={() => setCh(i)}
-            className={`mono flex-1 whitespace-nowrap px-2 py-1.5 text-[10.5px] uppercase tracking-[0.12em] transition-colors ${
+            className={`mono flex-1 whitespace-nowrap px-2 py-1.5 text-[10px] uppercase tracking-[0.12em] transition-colors ${
               ch === i
                 ? "bg-foreground text-background"
                 : "bg-background text-muted-foreground"

@@ -9,7 +9,7 @@ export default function Integrations() {
       <Reveal>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-16">
           <div>
-            <h2 className="tracking-tight">
+            <h2>
               <span className="block text-muted-foreground">
                 {integrations.lead}
               </span>
@@ -31,7 +31,7 @@ export default function Integrations() {
                   data-cursor={`Connect ${item.name}`}
                   className="group flex items-center gap-3 py-1"
                 >
-                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-[8px] border border-border bg-white shadow-[0_1px_2px_rgba(18,18,18,0.06)] transition-transform duration-300 group-hover:-translate-y-0.5">
+                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-[6px] border border-border bg-white shadow-[0_1px_2px_rgba(18,18,18,0.06)] transition-transform duration-300 group-hover:-translate-y-0.5">
                     <img
                       src={`/img/integrations/color/${item.icon}.svg`}
                       alt=""

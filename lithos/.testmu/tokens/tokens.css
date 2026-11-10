@@ -1,0 +1,150 @@
+/* TestMu DS tokens v1.0.0. Generated from tokens.json. Do not edit by hand. */
+@import url("https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Manrope:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap");
+:root {
+  --tm-gray-000: #F5F4F0;
+  --tm-gray-100: #E7E6DF;
+  --tm-gray-200: #D3D2CD;
+  --tm-gray-300: #B8B7B4;
+  --tm-gray-400: #9D9D9D;
+  --tm-gray-500: #7F7F7E;
+  --tm-gray-600: #5F5E5E;
+  --tm-gray-700: #4D4D4D;
+  --tm-gray-800: #242424;
+  --tm-gray-900: #121212;
+  --tm-blue-000: #EEF2FF;
+  --tm-blue-100: #D8E1FF;
+  --tm-blue-200: #B8C8FF;
+  --tm-blue-300: #98AEFE;
+  --tm-blue-400: #5273EC;
+  --tm-blue-500: #1742DF;
+  --tm-blue-600: #1637B3;
+  --tm-blue-700: #1433A4;
+  --tm-blue-800: #10287F;
+  --tm-blue-900: #0B1B58;
+  --tm-red-000: #FFEBE9;
+  --tm-red-100: #FFCECB;
+  --tm-red-200: #FFABA8;
+  --tm-red-300: #FF8182;
+  --tm-red-400: #FA4549;
+  --tm-red-500: #CF222E;
+  --tm-red-600: #A40E26;
+  --tm-red-700: #82071E;
+  --tm-red-800: #660018;
+  --tm-red-900: #4C0014;
+  --tm-green-000: #DAFBE1;
+  --tm-green-100: #ACEEBB;
+  --tm-green-200: #6FDD8B;
+  --tm-green-300: #4AC26B;
+  --tm-green-400: #2DA44E;
+  --tm-green-500: #1A7F37;
+  --tm-green-600: #116329;
+  --tm-green-700: #044F1E;
+  --tm-green-800: #003D16;
+  --tm-green-900: #002D11;
+  --tm-orange-000: #FFF1E5;
+  --tm-orange-100: #FFD8B5;
+  --tm-orange-200: #FFB77C;
+  --tm-orange-300: #FB8F44;
+  --tm-orange-400: #E16F24;
+  --tm-orange-500: #BC4C00;
+  --tm-orange-600: #953800;
+  --tm-orange-700: #762C00;
+  --tm-orange-800: #5C2200;
+  --tm-orange-900: #471700;
+  --tm-black: #121212;
+  --tm-white: #FFFFFF;
+
+  --tm-bg-default: #F5F4F0;
+  --tm-bg-muted: #E7E6DF;
+  --tm-bg-fill: #EEEDE7;
+  --tm-bg-surface: #FFFFFF;
+  --tm-bg-inverse: #121212;
+  --tm-bg-inverse-muted: #242424;
+  --tm-bg-accent: #1742DF;
+  --tm-bg-accent-muted: #EEF2FF;
+  --tm-fg-default: #121212;
+  --tm-fg-muted: #4D4D4D;
+  --tm-fg-subtle: #7F7F7E;
+  --tm-fg-disabled: #4D4D4DB8;
+  --tm-fg-inverse: #FFFFFF;
+  --tm-fg-inverse-muted: #B8B7B4;
+  --tm-fg-link: #1742DF;
+  --tm-fg-success: #1A7F37;
+  --tm-fg-error: #CF222E;
+  --tm-border-default: #D3D2CD;
+  --tm-border-muted: #E7E6DF;
+  --tm-border-frame: #DDDCD6;
+  --tm-border-emphasis: #121212;
+  --tm-button-primary: #121212;
+  --tm-button-primary-hover: #3C3C3C;
+  --tm-button-primary-disabled: #5F5E5E;
+  --tm-button-secondary: #FFFFFF;
+  --tm-button-secondary-hover: #E7E6DF;
+  --tm-segment-hover: #DBDAD2;
+  --tm-hero-arrow: #ED5F00;
+
+  --tm-font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --tm-font-mono: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
+  --tm-font-pixel: 'Geist Pixel', 'Manrope', sans-serif;
+
+  --tm-h1-size: 56px; --tm-h1-line: 64px; --tm-h1-tracking: -2px; --tm-h1-weight: 500;
+  --tm-h2-size: 48px; --tm-h2-line: 58px; --tm-h2-tracking: -2px; --tm-h2-weight: 500;
+  --tm-h3-size: 32px; --tm-h3-line: 40px; --tm-h3-tracking: -1px; --tm-h3-weight: 500;
+  --tm-h4-size: 24px; --tm-h4-line: 32px; --tm-h4-tracking: -1px; --tm-h4-weight: 500;
+  --tm-h5-size: 18px; --tm-h5-line: 26px; --tm-h5-tracking: -0.5px; --tm-h5-weight: 500;
+  --tm-h6-size: 14px; --tm-h6-line: 22px; --tm-h6-tracking: 0px; --tm-h6-weight: 500;
+  --tm-h7-size: 12px; --tm-h7-line: 18px; --tm-h7-tracking: 0px; --tm-h7-weight: 500;
+  --tm-b1-size: 18px; --tm-b1-line: 28px; --tm-b1-tracking: 0px; --tm-b1-weight: 400;
+  --tm-b2-size: 16px; --tm-b2-line: 24px; --tm-b2-tracking: 0px; --tm-b2-weight: 400;
+  --tm-b3-size: 14px; --tm-b3-line: 22px; --tm-b3-tracking: 0px; --tm-b3-weight: 400;
+  --tm-b4-size: 12px; --tm-b4-line: 18px; --tm-b4-tracking: 0px; --tm-b4-weight: 400;
+  --tm-b5-size: 10px; --tm-b5-line: 14px; --tm-b5-tracking: 0px; --tm-b5-weight: 400;
+
+  --tm-space-0: 0px;
+  --tm-space-2: 2px;
+  --tm-space-4: 4px;
+  --tm-space-6: 6px;
+  --tm-space-8: 8px;
+  --tm-space-12: 12px;
+  --tm-space-16: 16px;
+  --tm-space-20: 20px;
+  --tm-space-24: 24px;
+  --tm-space-28: 28px;
+  --tm-space-32: 32px;
+  --tm-space-40: 40px;
+  --tm-space-44: 44px;
+  --tm-space-48: 48px;
+  --tm-space-56: 56px;
+  --tm-space-64: 64px;
+  --tm-space-72: 72px;
+  --tm-space-80: 80px;
+  --tm-space-96: 96px;
+  --tm-space-112: 112px;
+  --tm-space-128: 128px;
+
+  --tm-radius-none: 0px;
+  --tm-radius-sm: 4px;
+  --tm-radius-md: 6px;
+  --tm-radius-full: 9999px;
+
+  --tm-shadow-resting-xs: 0 0 2px 0 rgba(40,35,31,.10);
+  --tm-shadow-resting-sm: 1px 1px 3px 0 rgba(40,36,31,.08);
+  --tm-shadow-resting-md: 0 2px 6px 0 rgba(66,74,83,.12);
+  --tm-shadow-floating-sm: 0 6px 18px 0 rgba(66,74,83,.12), 0 6px 12px -3px rgba(98,88,77,.04);
+  --tm-shadow-floating-md: 0 48px 96px -24px rgba(83,76,66,.08), 0 24px 48px -12px rgba(83,75,66,.08), 0 4px 32px -4px rgba(83,79,66,.08), 0 8px 16px -4px rgba(83,78,66,.08);
+  --tm-shadow-floating-lg: 0 40px 80px 0 rgba(83,78,66,.24);
+  --tm-shadow-floating-xl: 0 56px 112px 0 rgba(83,78,66,.32);
+  --tm-shadow-popover: 0 8px 24px 0 #E7E6DF;
+
+  --tm-frame: 1232px; --tm-frame-padding: 40px; --tm-section-head-gap: 48px;
+  /* short names used by the TestMu components (testmu.css) */
+  --tm-bg: var(--tm-bg-default); --tm-surface: var(--tm-bg-surface); --tm-fg: var(--tm-fg-default); --tm-muted: var(--tm-fg-muted);
+  --tm-subtle: var(--tm-fg-subtle); --tm-secondary: var(--tm-bg-muted); --tm-border: var(--tm-border-frame); --tm-border-strong: var(--tm-border-default);
+  --tm-accent: var(--tm-fg-link); --tm-orange: var(--tm-hero-arrow); --tm-success: var(--tm-fg-success); --tm-error: var(--tm-fg-error); --tm-hover-dark: var(--tm-button-primary-hover);
+  --tm-font: var(--tm-font-sans);
+}
+:root { --tm-frame: 100%; --tm-frame-padding: 16px; --tm-margin: 16px; --tm-section-y: 64px; }
+@media (min-width: 640px) { :root { --tm-frame: 100%; --tm-frame-padding: 32px; --tm-margin: 32px; --tm-section-y: 96px; } }  /* tablet, designed at 768 */
+@media (min-width: 1024px) { :root { --tm-frame: 1232px; --tm-frame-padding: 40px; --tm-margin: auto; --tm-section-y: 128px; } }  /* desktop, designed at 1440 */
+@media (min-width: 1680px) { :root { --tm-frame: 1232px; --tm-frame-padding: 40px; --tm-margin: auto; --tm-section-y: 128px; } }  /* wide, designed at 1920 */
+@media (min-width: 2240px) { :root { --tm-frame: 1232px; --tm-frame-padding: 40px; --tm-margin: auto; --tm-section-y: 128px; } }  /* ultra, designed at 2560 */

@@ -56,7 +56,7 @@ export default function Footer() {
                   <span
                     key={tool}
                     title={tool}
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-background/25 text-[8px] text-background/70"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-background/25 text-[10px] text-background/70"
                   >
                     {tool.slice(0, 2)}
                   </span>
@@ -72,7 +72,7 @@ export default function Footer() {
                 <span
                   key={c}
                   title={c}
-                  className="flex h-8 items-center justify-center border border-background/15 bg-background/[0.06] px-0.5 text-center text-[6px] leading-tight text-background/55"
+                  className="flex h-8 items-center justify-center border border-background/15 bg-background/[0.06] px-0.5 text-center text-[10px] leading-tight text-background/55"
                 >
                   {c}
                 </span>
@@ -181,7 +181,7 @@ export default function Footer() {
               <span
                 key={s}
                 title={s}
-                className="flex h-7 w-7 items-center justify-center rounded-full bg-background/12 text-[8px] text-background/70"
+                className="flex h-7 w-7 items-center justify-center rounded-full bg-background/12 text-[10px] text-background/70"
               >
                 {s.slice(0, 2)}
               </span>

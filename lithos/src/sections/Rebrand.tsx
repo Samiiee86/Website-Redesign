@@ -37,7 +37,7 @@ function NameChange({ progress }: { progress: MotionValue<number> }) {
         <div className="flex items-center justify-between gap-3 px-5 py-6">
           <motion.span
             style={{ opacity: oldFade }}
-            className="relative text-[22px] font-medium tracking-tight text-foreground"
+            className="relative text-[24px] font-medium tracking-tight text-foreground"
           >
             LambdaTest
             <motion.span
@@ -106,7 +106,7 @@ export default function Rebrand() {
     <Section>
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div ref={plateRef}>
-          <h2 className="tracking-tight">
+          <h2>
             LambdaTest is now TestMu AI
           </h2>
           <NameChange progress={plateProgress} />
@@ -114,7 +114,7 @@ export default function Rebrand() {
 
         <div
           ref={ref}
-          className="text-[19px] leading-[1.6] tracking-tight text-foreground md:text-[22px]"
+          className="text-[18px] leading-[1.6] tracking-tight text-foreground md:text-[24px]"
         >
           {words.map((word, i) => (
             <Word

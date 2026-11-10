@@ -25,8 +25,8 @@ export default function Enterprise() {
       />
 
       <Reveal>
-        <div className="relative mx-auto flex w-full max-w-[860px] flex-col items-center px-6 pb-[300px] pt-28 text-center md:pb-[420px] md:pt-36">
-          <h2 className="tracking-tight text-foreground">
+        <div className="relative mx-auto flex w-full max-w-[860px] flex-col items-center px-6 pb-[128px] pt-28 text-center md:pb-[128px] md:pt-36">
+          <h2 className="text-foreground">
             Built for the enterprise
           </h2>
           <p className="mt-6 max-w-[520px] text-b1 leading-relaxed text-foreground/70">
