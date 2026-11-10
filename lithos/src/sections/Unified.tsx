@@ -1,6 +1,6 @@
 import { BarChart3, Check, ClipboardList, Smartphone, Zap } from "lucide-react";
 import { scenery } from "../lib/scenery";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { products } from "../lib/content";
 import { DEMOS, type DemoKey } from "../components/Demos";
@@ -295,6 +295,103 @@ function StepRows() {
   );
 }
 
+/* --- deck edition (default) ---------------------------------------------
+   The platform products as a deck that stacks while you scroll. Each card
+   pins under the header and the next one slides over it, leaving its tab
+   in view, so by the last card the four tabs read as an index. Nothing to
+   click: scrolling is the only control. Inside a card the painting runs the
+   full width, the live demo sits in the middle and the proof points float
+   beside it as tags; the claim and the link sit in a band below. */
+
+const TAGLINES: Record<string, string> = {
+  "test-manager": "AI test management",
+  hyperexecute: "Test orchestration cloud",
+  "real-device-cloud": "10,000+ real devices",
+  "test-insights": "AI test analytics",
+};
+
+/* where each proof point floats around the demo on wide screens */
+const TAG_SPOTS = [
+  "left-8 top-[18%]",
+  "right-8 top-[44%]",
+  "left-8 bottom-[16%]",
+];
+
+function Deck() {
+  return (
+    <div className="deck -mx-8">
+      {STEPS.map((step, i) => {
+        const tab = products.tabs.find((t) => t.id === step.id)!;
+        const Demo = DEMOS[tab.demo as DemoKey];
+        const Icon = step.icon;
+        return (
+          <article
+            key={step.id}
+            className="deck-card flex flex-col border border-border bg-surface"
+            style={{ "--i": i } as CSSProperties}
+          >
+            <header className="flex h-12 flex-none items-center justify-between gap-4 border-b border-border px-5 sm:px-8">
+              <span className="flex items-center gap-3 whitespace-nowrap text-b2 font-medium text-foreground">
+                <Icon size={16} />
+                {step.product}
+              </span>
+              <span className="mono hidden text-b4 uppercase tracking-[0.18em] text-muted-foreground sm:block">
+                {TAGLINES[step.id]}
+              </span>
+            </header>
+
+            <div
+              data-cursor={step.product}
+              className="relative flex min-h-[340px] flex-1 items-center justify-center overflow-hidden px-6"
+            >
+              <img
+                src={step.scene}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="relative w-full max-w-[560px] lg:scale-[0.86]">
+                <Demo />
+              </div>
+              {step.points.map((pt, k) => (
+                <span
+                  key={pt}
+                  className={`absolute hidden max-w-[240px] items-center gap-2 border border-border bg-white px-3 py-2 text-b3 text-foreground shadow-[var(--tm-shadow-popover)] xl:flex ${TAG_SPOTS[k]}`}
+                >
+                  <Check size={14} className="flex-none text-[#1A7F37]" />
+                  {pt}
+                </span>
+              ))}
+            </div>
+
+            <div className="grid flex-none gap-6 border-t border-border px-5 py-6 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+              <h3>{step.title}</h3>
+              <div>
+                <p className="text-b2 text-muted-foreground">{step.body}</p>
+                <ul className="mt-4 flex flex-col gap-2 xl:hidden">
+                  {step.points.map((pt) => (
+                    <li key={pt} className="flex items-center gap-2 text-b3 text-foreground">
+                      <Check size={14} className="flex-none text-[#1A7F37]" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#top"
+                  className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground"
+                >
+                  {tab.cta}
+                  <SlideArrow />
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
 /* --- switcher edition (options page) -----------------------------------------
    One large frame at a time: the product list on the left, the selected
    product's live demo filling a painted stage on the right. It advances on
@@ -417,13 +514,21 @@ function ProductSwitcher() {
   );
 }
 
-export type UnifiedVariant = "rows" | "switcher" | "bento";
+export type UnifiedVariant = "deck" | "rows" | "switcher" | "bento";
 
-export default function Unified({ variant = "rows" }: { variant?: UnifiedVariant }) {
+export default function Unified({ variant = "deck" }: { variant?: UnifiedVariant }) {
   return (
     <Section id="unified" className={variant === "rows" ? "!pb-0 md:!pb-0" : ""}>
       <UnifiedHeading />
-      {variant === "bento" ? <BentoGrid /> : variant === "rows" ? <StepRows /> : <ProductSwitcher />}
+      {variant === "bento" ? (
+        <BentoGrid />
+      ) : variant === "rows" ? (
+        <StepRows />
+      ) : variant === "switcher" ? (
+        <ProductSwitcher />
+      ) : (
+        <Deck />
+      )}
     </Section>
   );
 }

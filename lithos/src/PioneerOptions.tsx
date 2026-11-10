@@ -21,6 +21,12 @@ const OPTIONS: { id: string; name: string; note: string; render: () => ReactNode
     render: () => <Unified variant="bento" />,
   },
   {
+    id: "unified-rows",
+    name: "Unified · Alternating rows (previous home)",
+    note: "Four rows with copy on one side and the demo on a painting on the other, alternating sides. The home page now uses the stacking deck.",
+    render: () => <Unified variant="rows" />,
+  },
+  {
     id: "unified-switcher",
     name: "Unified · One-frame switcher",
     note: "A product list on the left and one large demo frame on the right that changes every 9 seconds. The home page now uses alternating product rows.",
