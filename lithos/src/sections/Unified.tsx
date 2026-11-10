@@ -238,7 +238,7 @@ function StepRows() {
         return (
           <div
             key={step.id}
-            className={`grid grid-cols-[minmax(0,1fr)] gap-10 px-8 py-12 md:py-14 lg:gap-14 ${
+            className={`grid grid-cols-[minmax(0,1fr)] gap-10 px-8 py-12 last:pb-0 md:py-14 md:last:pb-0 lg:gap-14 ${
               flip
                 ? "lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]"
                 : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)]"
@@ -410,7 +410,7 @@ export type UnifiedVariant = "rows" | "switcher" | "bento";
 
 export default function Unified({ variant = "rows" }: { variant?: UnifiedVariant }) {
   return (
-    <Section id="unified" className={variant === "rows" ? "!pb-0 md:!pb-0" : ""}>
+    <Section id="unified">
       <UnifiedHeading />
       {variant === "bento" ? <BentoGrid /> : variant === "rows" ? <StepRows /> : <ProductSwitcher />}
     </Section>
