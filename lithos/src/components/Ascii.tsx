@@ -51,7 +51,7 @@ export default function Ascii({
     <pre
       aria-hidden
       className={`pointer-events-none select-none whitespace-pre font-mono text-[10px] leading-[1.15] tracking-[0.12em] text-foreground/[0.14] ${className}`}
-      style={{ fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace" }}
+      style={{ fontFamily: "'Space Mono', ui-monospace, SFMono-Regular, monospace" }}
     >
       {field}
     </pre>

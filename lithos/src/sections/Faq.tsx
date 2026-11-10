@@ -5,10 +5,10 @@ import { faq } from "../lib/content";
 import { Section } from "../lib/ui";
 
 /* The live testmuai.com FAQ: heading in its own column, questions as
-   full-width ruled rows beside it, the first five shown and the rest
+   full-width ruled rows beside it, the first eight shown and the rest
    behind "View more questions". */
 
-const FIRST = 5;
+const FIRST = 8;
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function Faq() {
@@ -20,7 +20,7 @@ export default function Faq() {
     <Section className="!py-0 md:!py-0">
       <div className="-mx-8 grid lg:grid-cols-[0.4fr_0.6fr]">
         <div className="px-8 pb-8 pt-16 md:px-16 md:pt-20">
-          <h2 className="tracking-[-0.03em] text-foreground">
+          <h2 className="text-foreground">
             Frequently asked questions
           </h2>
         </div>

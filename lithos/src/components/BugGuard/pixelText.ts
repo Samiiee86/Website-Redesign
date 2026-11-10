@@ -13,6 +13,18 @@
 /** Measured from the file: cap height as a fraction of the font size. */
 const CAP_RATIO = 0.7324;
 const FAMILY = '"VCR OSD Mono", "Geist Pixel Square", monospace';
+
+/* VCR OSD Mono (MrManet, 2015), free for commercial use. Registered here
+   rather than in index.css: it is game art, not site type. */
+if (typeof document !== "undefined" && "fonts" in document) {
+  const vcr = new FontFace("VCR OSD Mono", 'url("/fonts/VCR_OSD_MONO.ttf") format("truetype")', {
+    weight: "400",
+    style: "normal",
+    display: "block",
+  });
+  document.fonts.add(vcr);
+  vcr.load().catch(() => {});
+}
 /** A touch of tracking, the way an on-screen display would space it. */
 const TRACKING = 0.1;
 

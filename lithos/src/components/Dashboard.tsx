@@ -76,25 +76,25 @@ const QUICK_LINKS = [
 ];
 
 const INTEGRATIONS = [
-  "#E8734A",
-  "#1868DB",
-  "#4A154B",
-  "#0052CC",
-  "#181717",
-  "#FC6D26",
-  "#026AA7",
-  "#087EA4",
-  "#3B82F6",
-  "#F59E0B",
-  "#10B981",
-  "#111111",
+  "#E16F24",
+  "#5273EC",
+  "#0B1B58",
+  "#1637B3",
+  "#121212",
+  "#E16F24",
+  "#98AEFE",
+  "#7F7F7E",
+  "#5273EC",
+  "#FB8F44",
+  "#4AC26B",
+  "#121212",
 ];
 
 export default function Dashboard() {
   const [active, setActive] = useState(0);
 
   return (
-    <div className="select-none overflow-hidden  bg-surface text-[11px] text-foreground">
+    <div className="select-none overflow-hidden  bg-surface text-[10px] text-foreground">
       <div className="flex">
         {/* icon rail */}
         <aside className="hidden w-[46px] shrink-0 flex-col items-center gap-4 border-r border-border-muted py-3 sm:flex">
@@ -126,10 +126,10 @@ export default function Dashboard() {
             <span className="font-medium">Home</span>
             <div className="ml-auto flex items-center gap-2.5 text-muted-foreground">
               <Bell size={13} />
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#C2410C] text-[9px] font-medium text-white">
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#BC4C00] text-[10px] font-medium text-white">
                 S
               </span>
-              <span className=" bg-[#E8734A] px-2.5 py-1 text-[10px] font-medium text-white">
+              <span className=" bg-[#E16F24] px-2.5 py-1 text-[10px] font-medium text-white">
                 Upgrade Now
               </span>
             </div>
@@ -138,7 +138,7 @@ export default function Dashboard() {
           <div className="flex gap-4 p-4">
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between">
-                <p className="text-[13px] font-medium">
+                <p className="text-[12px] font-medium">
                   Agentic Platform for Quality Engineering
                 </p>
                 <span className=" border border-border-muted px-2.5 py-1 text-[10px]">
@@ -156,21 +156,21 @@ export default function Dashboard() {
                       <span className="flex h-5 w-5 items-center justify-center  border border-border-muted">
                         <Sparkles size={10} className="text-muted-foreground" />
                       </span>
-                      <span className="text-[11.5px] font-medium">
+                      <span className="text-[12px] font-medium">
                         {p.name}
                       </span>
                     </div>
                     <p className="mt-2 text-[10px] leading-[1.6] text-muted-foreground">
                       {p.desc}
                     </p>
-                    <p className="mt-3 text-[10px] text-[#1868DB]">
+                    <p className="mt-3 text-[10px] text-[#5273EC]">
                       {p.action} ↗
                     </p>
                   </div>
                 ))}
               </div>
 
-              <p className="mt-3 text-center text-[10px] text-[#1868DB]">
+              <p className="mt-3 text-center text-[10px] text-[#5273EC]">
                 View more ⌄
               </p>
 
@@ -179,14 +179,14 @@ export default function Dashboard() {
                 <span className="flex h-8 w-8 items-center justify-center rounded-full border border-dashed border-border text-muted-foreground">
                   <ScanEye size={13} />
                 </span>
-                <p className="mt-3 text-[11px] font-medium">
+                <p className="mt-3 text-[10px] font-medium">
                   No recent tests so far
                 </p>
                 <p className="mt-1 text-[10px] text-muted-foreground">
                   Seems like you have not run any tests yet. Try out real time
                   testing now.
                 </p>
-                <span className="mt-3  bg-[#15803D] px-3 py-1.5 text-[10px] font-medium text-white">
+                <span className="mt-3  bg-[#1A7F37] px-3 py-1.5 text-[10px] font-medium text-white">
                   Start Testing
                 </span>
               </div>
@@ -194,24 +194,24 @@ export default function Dashboard() {
 
             {/* right column */}
             <div className="hidden w-[220px] shrink-0 flex-col gap-4 lg:flex">
-              <div className="overflow-hidden  bg-[#EEF1FF] p-3">
+              <div className="overflow-hidden  bg-[#EEF2FF] p-3">
                 <div className="flex items-start justify-between">
-                  <p className="text-[15px] font-semibold tracking-tight">
+                  <p className="text-[14px] font-semibold tracking-tight">
                     Kane CLI
                   </p>
-                  <span className=" bg-[#15803D] px-2 py-0.5 text-[9px] font-medium text-white">
+                  <span className=" bg-[#1A7F37] px-2 py-0.5 text-[10px] font-medium text-white">
                     Try for Free →
                   </span>
                 </div>
-                <p className="mt-1 text-[11px] font-medium leading-snug">
+                <p className="mt-1 text-[10px] font-medium leading-snug">
                   Browser Automation Tool for Testing
                 </p>
-                <div className="mono mt-2.5  bg-[#111111] px-2 py-2 text-[8px] leading-[1.7] text-[#c9c9c4]">
+                <div className="mono mt-2.5  bg-[#121212] px-2 py-2 text-[10px] leading-[1.7] text-[#d3d2cd]">
                   <p>$ kane-cli login</p>
                   <p className="text-white/50">
                     Opening browser for authentication...
                   </p>
-                  <p className="text-[#4ADE80]">
+                  <p className="text-[#6FDD8B]">
                     ✓ Logged in as dev@example.com
                   </p>
                 </div>
@@ -223,7 +223,7 @@ export default function Dashboard() {
                   {QUICK_LINKS.map((l) => (
                     <li
                       key={l}
-                      className="flex items-center gap-2 text-[10.5px] text-muted-foreground"
+                      className="flex items-center gap-2 text-[10px] text-muted-foreground"
                     >
                       <ChevronRight size={10} />
                       {l}
@@ -235,7 +235,7 @@ export default function Dashboard() {
               <div>
                 <div className="flex items-center justify-between">
                   <p className="text-[12px] font-medium">Integrations</p>
-                  <span className="text-[10px] text-[#1868DB]">View all</span>
+                  <span className="text-[10px] text-[#5273EC]">View all</span>
                 </div>
                 <div className="mt-2 grid grid-cols-6 gap-2">
                   {INTEGRATIONS.map((c, i) => (

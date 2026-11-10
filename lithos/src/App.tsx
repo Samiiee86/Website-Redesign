@@ -8,6 +8,8 @@ import Flow from "./sections/Flow";
 import Unified from "./sections/Unified";
 import Stories from "./sections/Stories";
 import Reasons from "./sections/Reasons";
+import Integrations from "./sections/Integrations";
+import Shipped from "./sections/Shipped";
 import Rebrand from "./sections/Rebrand";
 import Faq from "./sections/Faq";
 import Enterprise from "./sections/Enterprise";
@@ -30,8 +32,10 @@ export default function App() {
           <Bento />
           <Flow />
           <Unified />
+          <Integrations />
           <Stories />
           <Reasons />
+          <Shipped />
           <Rebrand />
           <Faq />
           <Enterprise />

@@ -5,8 +5,61 @@ import {
   useTransform,
   type MotionValue,
 } from "motion/react";
+import { ArrowRight, Check } from "lucide-react";
 import { rebrand } from "../lib/content";
+import { scenery } from "../lib/scenery";
 import { Section } from "../lib/ui";
+
+const KEPT = ["Same login", "Same products", "New AI agents"];
+
+/* The name change, told as a picture: a window on a painted plate where
+   the old name is struck through and the new mark comes up as you scroll. */
+function NameChange({ progress }: { progress: MotionValue<number> }) {
+  const strike = useTransform(progress, [0.05, 0.35], ["0%", "100%"]);
+  const oldFade = useTransform(progress, [0.2, 0.45], [1, 0.4]);
+  const newIn = useTransform(progress, [0.3, 0.55], [0.15, 1]);
+  const newLift = useTransform(progress, [0.3, 0.55], [10, 0]);
+  return (
+    <div className="relative mt-8 flex h-[200px] items-center justify-center overflow-hidden border border-border px-5">
+      <img
+        src={scenery.chalkcliff}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
+        loading="lazy"
+      />
+      <div className="relative w-full min-w-0 max-w-[400px] border border-border bg-white shadow-[0_24px_60px_-30px_rgba(18,18,18,0.45)]">
+        <div className="flex items-center justify-between gap-3 px-4 py-4 sm:px-5">
+          <motion.span
+            style={{ opacity: oldFade }}
+            className="relative text-[24px] font-medium tracking-tight text-foreground"
+          >
+            LambdaTest
+            <motion.span
+              aria-hidden
+              style={{ width: strike }}
+              className="absolute left-0 top-1/2 h-[1.5px] -translate-y-1/2 bg-foreground"
+            />
+          </motion.span>
+          <ArrowRight size={16} className="flex-none text-muted-foreground" />
+          <motion.img
+            src="/testmu-logo-dark.svg"
+            alt="TestMu AI"
+            style={{ opacity: newIn, y: newLift }}
+            className="h-[20px] w-auto"
+          />
+        </div>
+        <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border-t border-border px-4 py-2.5 sm:justify-between sm:px-5">
+          {KEPT.map((k) => (
+            <li key={k} className="flex items-center gap-1.5 whitespace-nowrap text-b4 text-foreground">
+              <Check size={12} className="text-[#1A7F37]" />
+              {k}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 /* Each word brightens as the paragraph scrolls through the viewport. */
 function Word({
@@ -36,20 +89,26 @@ export default function Rebrand() {
     target: ref,
     offset: ["start 0.85", "end 0.45"],
   });
+  const plateRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: plateProgress } = useScroll({
+    target: plateRef,
+    offset: ["start 0.9", "end 0.5"],
+  });
   const words = rebrand.body.split(" ");
 
   return (
     <Section>
       <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-        <div>
-          <h2 className="tracking-tight">
+        <div ref={plateRef}>
+          <h2>
             LambdaTest is now TestMu AI
           </h2>
+          <NameChange progress={plateProgress} />
         </div>
 
         <div
           ref={ref}
-          className="text-[19px] leading-[1.6] tracking-tight text-foreground md:text-[22px]"
+          className="text-[18px] leading-[1.6] tracking-tight text-foreground md:text-[24px]"
         >
           {words.map((word, i) => (
             <Word

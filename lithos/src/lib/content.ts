@@ -167,7 +167,7 @@ export const platform = {
 export const products = {
   eyebrow: "Unified Quality Engineering for Enterprise",
   title:
-    "A unified quality engineering platform that helps engineering teams automate end-to-end testing across web, mobile, and AI applications.",
+    "KaneAI and our agents write the tests. One platform plans, runs and reports on them across web, mobile and AI apps, from the first idea to the release.",
   tabs: [
     {
       id: "test-manager",
@@ -397,6 +397,22 @@ export const faq = [
   {
     q: "What is TestMu AI?",
     a: "TestMu AI (formerly LambdaTest) is an AI-native software testing cloud platform that helps developers and QA teams automate end-to-end testing across web, mobile, and AI applications. Trusted by over 3+ million users at companies like Microsoft, OpenAI, and Nvidia, TestMu AI offers AI agents like KaneAI for test creation, a real device cloud with 10,000+ devices, and 3,000+ browser combinations, all from a single platform named a Challenger in the 2025 Gartner Magic Quadrant for AI-Augmented Software Testing Tools.",
+  },
+  {
+    q: "What is KaneAI?",
+    a: "KaneAI is TestMu AI's end-to-end testing agent. You plan, author and evolve tests in plain English or from your company's own context, and KaneAI runs them across web and mobile on the TestMu AI cloud.",
+  },
+  {
+    q: "Can I try TestMu AI for free?",
+    a: "Yes. Sign up free with Google or email and start testing right away. Paid plans add more parallel sessions, AI agents and enterprise controls as your team grows.",
+  },
+  {
+    q: "Which frameworks and languages does TestMu AI support?",
+    a: "Bring the framework you already use: Selenium, Playwright, Cypress, Puppeteer, Appium, Espresso, XCUITest and more, written in Java, JavaScript, TypeScript, Python, C#, Ruby or PHP.",
+  },
+  {
+    q: "Is my test data secure on TestMu AI?",
+    a: "Yes. TestMu AI holds SOC 2, ISO 27001, ISO 27017 and ISO 27701 certifications and is GDPR, HIPAA and CCPA compliant, with SSO, role-based access and private networking through the secure Tunnel.",
   },
   {
     q: "Is LambdaTest still available?",
@@ -763,4 +779,88 @@ export const reviews = {
       href: "#",
     },
   ],
+};
+
+/* ---------- Pioneer: the three smaller product cards under the big two ---- */
+export const pioneerSmall = [
+  {
+    key: "agents",
+    title: "Agent to Agent Testing",
+    body: "Agents talk to your chat, voice and phone agents and grade every answer.",
+    cta: "Explore Agent Testing",
+    window: "testmu.ai / agent-testing",
+  },
+  {
+    key: "assurance",
+    title: "Agent Assurance",
+    body: "See how your agents behave across real workflows and tools, before users do.",
+    cta: "Explore Agent Assurance",
+    window: "testmu.ai / agent-assurance",
+  },
+  {
+    key: "cli",
+    title: "Kane CLI",
+    body: "Write end-to-end tests in plain English and run them from your terminal.",
+    cta: "Explore Kane CLI",
+    window: "kane-cli / terminal",
+  },
+];
+
+/* ---------- customer stories: logo strip under the Stories cards -------- */
+const CUST = `${CDN}`;
+export const customerStrip = {
+  /* six marks that sit at a similar visual weight; h evens them out */
+  logos: [
+    { name: "bet365", src: `${CUST}customer/bet365-main.svg`, href: "https://www.testmuai.com/customers/bet365/", h: 20 },
+    { name: "Noibu", src: `${CUST}customer/NoibuNew.svg`, href: "https://www.testmuai.com/customers/noibu/", h: 20 },
+    { name: "Boohoo", src: `${CUST}customer/Boohoo.svg`, href: "https://www.testmuai.com/customers/boohoo/", h: 20 },
+    { name: "Trepp", src: `${CUST}customer/Trepp.svg`, href: "https://www.testmuai.com/customers/trepp/", h: 26 },
+    { name: "Emburse", src: `${CUST}customer/Embruse.svg`, href: "https://www.testmuai.com/customers/emburse/", h: 18 },
+    { name: "Atypon", src: `${CUST}customer/atypon-main.svg`, href: "https://www.testmuai.com/customers/atypon/", h: 19 },
+  ],
+};
+
+/* ---------- integrations fold (refs: devin.ai, elevenlabs.io/agents) ----- */
+export const integrations = {
+  lead: "Connect once,",
+  title: "test everywhere",
+  body: "120+ integrations with the tools you already use, plus a native MCP server for your coding agents.",
+  cta: "Explore integrations",
+  items: [
+    { name: "Jira", icon: "jira" },
+    { name: "GitHub", icon: "github" },
+    { name: "GitLab", icon: "gitlab" },
+    { name: "Jenkins", icon: "jenkins" },
+    { name: "Azure DevOps", icon: "azuredevops" },
+    { name: "CircleCI", icon: "circleci" },
+    { name: "Slack", icon: "slack" },
+    { name: "Microsoft Teams", icon: "microsoftteams" },
+    { name: "Linear", icon: "linear" },
+    { name: "Selenium", icon: "selenium" },
+    { name: "Playwright", icon: "playwright" },
+    { name: "MCP Server", icon: "mcp" },
+  ],
+};
+
+/* ---------- recently shipped: from changelog.testmuai.com --------------- */
+export const shipped = {
+  lead: "What's new",
+  title: "at TestMu AI",
+  body: "New agents, devices and fixes land every week. Here is the latest.",
+  all: { label: "View changelog", href: "https://changelog.testmuai.com/" },
+  items: [
+    { date: "11.04", title: "Run e2e tests on real devices and browsers", tag: "Integrations" },
+    { date: "10.26", title: "Agent Assurance is now generally available", tag: "Agent Assurance" },
+    { date: "10.26", title: "iPhone Duo is now on the Real Device Cloud", tag: "Real Device" },
+    { date: "10.15", title: "Migrate Katalon tests into KaneAI in one click", tag: "KaneAI" },
+    { date: "10.15", title: "Fail CI on visual changes with SmartUI Storybook", tag: "SmartUI" },
+    { date: "10.15", title: "Automate screen reader tests on real devices", tag: "Accessibility" },
+    { date: "10.14", title: "Agent Testing 2.14: production conversation analysis", tag: "Agent Testing" },
+  ].map((item) => ({ ...item, href: "https://changelog.testmuai.com/" })),
+};
+
+/* ---------- enterprise security: line badges live in CertMarks.tsx ------ */
+export const security = {
+  title: "Enterprise-Grade Security",
+  body: "We safeguard your data and AI systems with global security, privacy, responsible AI, and ESG standards.",
 };

@@ -1,0 +1,41 @@
+/* TestMu DS base v1.0.0: plain HTML elements get TestMu fonts, colors, sizes, spacing and controls.
+   Every rule uses :where(), so it has zero specificity and any class in the project still wins.
+   Load after tokens.css. Generated from tokens.json. */
+:where(html) { font-family: var(--tm-font-sans); color: var(--tm-fg-default); background: var(--tm-bg-default); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+:where(body) { margin: 0; font-size: var(--tm-b2-size); line-height: var(--tm-b2-line); }
+:where(*, *::before, *::after) { box-sizing: border-box; }
+:where(h1) { margin: 0 0 var(--tm-space-12); font-size: var(--tm-h1-size); line-height: var(--tm-h1-line); letter-spacing: var(--tm-h1-tracking); font-weight: 500; color: var(--tm-fg-default); }
+:where(h2) { margin: 0 0 var(--tm-space-12); font-size: var(--tm-h2-size); line-height: var(--tm-h2-line); letter-spacing: var(--tm-h2-tracking); font-weight: 500; color: var(--tm-fg-default); }
+:where(h3) { margin: 0 0 var(--tm-space-12); font-size: var(--tm-h3-size); line-height: var(--tm-h3-line); letter-spacing: var(--tm-h3-tracking); font-weight: 500; color: var(--tm-fg-default); }
+:where(h4) { margin: 0 0 var(--tm-space-12); font-size: var(--tm-h4-size); line-height: var(--tm-h4-line); letter-spacing: var(--tm-h4-tracking); font-weight: 500; color: var(--tm-fg-default); }
+:where(h5) { margin: 0 0 var(--tm-space-12); font-size: var(--tm-h5-size); line-height: var(--tm-h5-line); letter-spacing: var(--tm-h5-tracking); font-weight: 500; color: var(--tm-fg-default); }
+:where(h6) { margin: 0 0 var(--tm-space-12); font-size: var(--tm-h6-size); line-height: var(--tm-h6-line); letter-spacing: var(--tm-h6-tracking); font-weight: 500; color: var(--tm-fg-default); }
+:where(h1, h2, h3, h4, h5, h6) { text-wrap: balance; }
+@media (max-width: 767px) { :where(h1) { font-size: 40px; line-height: 44px; } :where(h2) { font-size: 34px; line-height: 40px; } :where(h3) { font-size: 26px; line-height: 32px; } }
+:where(p) { margin: 0 0 var(--tm-space-16); } :where(p:last-child) { margin-bottom: 0; }
+:where(small) { font-size: var(--tm-b4-size); line-height: var(--tm-b4-line); }
+:where(strong, b) { font-weight: 500; }
+:where(a) { color: var(--tm-fg-link); text-underline-offset: 3px; }
+:where(ul, ol) { margin: 0 0 var(--tm-space-16); padding-left: var(--tm-space-24); }
+:where(hr) { border: 0; border-top: 1px solid var(--tm-border-default); margin: var(--tm-space-32) 0; }
+:where(img, svg, video, canvas) { max-width: 100%; height: auto; }
+:where(code, kbd, samp, pre) { font-family: var(--tm-font-mono); font-size: 14px; }
+:where(pre) { margin: 0 0 var(--tm-space-16); padding: var(--tm-space-16); background: var(--tm-bg-surface); border: 1px solid var(--tm-border-default); border-radius: var(--tm-radius-sm); overflow: auto; line-height: 22px; }
+:where(:not(pre) > code) { padding: 1px 6px; background: var(--tm-bg-muted); border-radius: var(--tm-radius-sm); font-size: 0.9em; }
+:where(table) { width: 100%; border-collapse: collapse; font-size: var(--tm-b3-size); line-height: var(--tm-b3-line); }
+:where(th) { padding: var(--tm-space-12) var(--tm-space-16); text-align: left; font: 400 11px/16px var(--tm-font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--tm-fg-subtle); border-bottom: 1px solid var(--tm-border-default); }
+:where(td) { padding: var(--tm-space-12) var(--tm-space-16); border-bottom: 1px solid var(--tm-border-muted); }
+:where(button, [type=button], [type=submit], [type=reset]) { display: inline-flex; align-items: center; justify-content: center; gap: var(--tm-space-8); height: 40px; padding: 0 var(--tm-space-16); border: 1px solid var(--tm-border-default); border-radius: var(--tm-radius-md); background: var(--tm-bg-surface); color: var(--tm-fg-default); font: 500 14px/22px var(--tm-font-sans); cursor: pointer; transition: background-color .15s, border-color .15s; }
+:where(button:hover, [type=button]:hover, [type=submit]:hover) { background: var(--tm-bg-muted); border-color: var(--tm-fg-default); }
+:where([type=submit]) { background: var(--tm-button-primary); border-color: var(--tm-button-primary); color: var(--tm-fg-inverse); }
+:where([type=submit]:hover) { background: var(--tm-button-primary-hover); }
+:where(button:disabled, [type=submit]:disabled) { opacity: .5; cursor: not-allowed; }
+:where(input:not([type=checkbox], [type=radio], [type=range], [type=color], [type=file], [type=submit], [type=button]), select) { height: 40px; padding: 0 var(--tm-space-12); border: 1px solid var(--tm-border-default); border-radius: var(--tm-radius-sm); background: var(--tm-bg-surface); color: var(--tm-fg-default); font: 400 14px/22px var(--tm-font-sans); }
+:where(textarea) { min-height: 124px; padding: var(--tm-space-8) var(--tm-space-12); border: 1px solid var(--tm-border-default); border-radius: var(--tm-radius-sm); background: var(--tm-bg-surface); color: var(--tm-fg-default); font: 400 14px/22px var(--tm-font-sans); resize: vertical; }
+:where(input, select, textarea)::placeholder { color: var(--tm-fg-muted); }
+:where(label) { font: 500 14px/22px var(--tm-font-sans); }
+:where(input[type=checkbox], input[type=radio]) { accent-color: var(--tm-fg-default); width: 16px; height: 16px; }
+:where(:focus-visible) { outline: 2px solid var(--tm-fg-link); outline-offset: 2px; }
+:where(input, select, textarea):focus-visible { outline: 0; border-color: var(--tm-fg-link); box-shadow: inset 0 0 0 1px var(--tm-fg-link); }
+::selection { background: var(--tm-blue-100); }
+@media (prefers-reduced-motion: reduce) { :where(*, *::before, *::after) { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

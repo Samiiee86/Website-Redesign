@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import {
-  ArrowRight,
   ArrowUpRight,
   Accessibility,
   BarChart3,
@@ -14,7 +13,7 @@ import {
 } from "lucide-react";
 import { folds } from "../lib/content";
 import { scenery } from "../lib/scenery";
-import { Reveal, Section } from "../lib/ui";
+import { Reveal, Section, SlideArrow } from "../lib/ui";
 
 const ICONS = {
   clipboard: ClipboardList,
@@ -67,7 +66,7 @@ function Feature({ feature }: { feature: Fold["features"][number] }) {
       </motion.div>
 
       <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
-        <h3 className="tracking-tight text-white">
+        <h3 className="text-white">
           {feature.name}
         </h3>
         <p className="mt-3 max-w-[440px] text-b3 leading-relaxed text-white/75">
@@ -75,10 +74,7 @@ function Feature({ feature }: { feature: Fold["features"][number] }) {
         </p>
         <button className="group/btn mt-5 inline-flex items-center gap-2 border-b border-white/40 pb-1 text-b3 font-medium text-white transition-colors hover:border-white">
           {feature.cta}
-          <ArrowRight
-            size={14}
-            className="transition-transform duration-300 group-hover/btn:translate-x-1"
-          />
+          <SlideArrow />
         </button>
       </div>
     </div>
@@ -90,7 +86,7 @@ function Fold({ fold }: { fold: Fold }) {
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="tracking-tight">
+          <h2>
             <span className="block text-muted-foreground">{fold.lead}</span>
             <span className="block">{fold.subject}</span>
           </h2>
@@ -100,13 +96,10 @@ function Fold({ fold }: { fold: Fold }) {
         </div>
         <button
           data-cursor="Start free"
-          className="group mt-8 inline-flex items-center gap-2 rounded-[10px] bg-primary px-6 py-3 text-b3 font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
+          className="group mt-8 inline-flex items-center gap-2 rounded-[6px] bg-primary px-6 py-3 text-b3 font-medium text-primary-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-foreground/85"
         >
           {fold.cta}
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover:translate-x-1"
-          />
+          <SlideArrow />
         </button>
       </Reveal>
 
@@ -146,7 +139,7 @@ function Fold({ fold }: { fold: Fold }) {
                       className="translate-y-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:text-foreground group-hover:opacity-100"
                     />
                   </div>
-                  <h4 className="mt-6 tracking-tight">
+                  <h4 className="mt-6">
                     {cell.name}
                   </h4>
                   <p className="mt-2.5 text-b3 leading-relaxed text-muted-foreground">

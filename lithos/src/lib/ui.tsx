@@ -171,3 +171,14 @@ export function ArrowChip() {
     </span>
   );
 }
+
+
+/* arrow for text links; slides through on hover like the buttons' arrow */
+export function SlideArrow({ className = "" }: { className?: string }) {
+  return (
+    <span className={`slide-arrow ${className}`} aria-hidden>
+      <ArrowRight size={15} />
+      <ArrowRight size={15} />
+    </span>
+  );
+}

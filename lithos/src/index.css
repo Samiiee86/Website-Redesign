@@ -1,14 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+/* TestMu DS tokens (managed by .testmu, updated by the kit) */
+@import "../.testmu/tokens/tokens.css";
 
-/* VCR OSD Mono (MrManet, 2015) — free for commercial use. Drives the game's
-   pixel type. */
-@font-face {
-  font-family: "VCR OSD Mono";
-  src: url("/fonts/VCR_OSD_MONO.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
-}
+/* VCR OSD Mono, the bug game's pixel type, is registered in
+   src/components/BugGuard/pixelText.ts so it stays outside the site styles. */
 
 /* Kept as the fallback: the Square cut is not on Google Fonts, only the base. */
 @font-face {
@@ -71,20 +66,22 @@ h5,
 h6 {
   font-family: var(--font-heading);
   font-weight: 500;
-  letter-spacing: -0.015em;
+  text-wrap: balance;
 }
-/* the heading scale: set once here, never per component. Phones step the
-   three largest sizes down so long lines still fit. */
-h1 { font-size: 40px; line-height: 1.08; }
-h2 { font-size: 34px; line-height: 1.14; }
-h3 { font-size: 26px; line-height: 1.2; }
-h4 { font-size: 24px; line-height: 1.3; }
-h5 { font-size: 18px; line-height: 1.4; }
-h6 { font-size: 14px; line-height: 1.5; }
-@media (min-width: 768px) {
-  h1 { font-size: 56px; }
-  h2 { font-size: 48px; }
-  h3 { font-size: 32px; }
+/* the TestMu DS heading scale (.testmu/tokens/tokens.css): size, line and
+   tracking from the tokens, set once here and never per component. Phones
+   step the three largest sizes down, as testmu-base.css does. */
+h1 { font-size: var(--tm-h1-size); line-height: var(--tm-h1-line); letter-spacing: var(--tm-h1-tracking); }
+h2 { font-size: var(--tm-h2-size); line-height: var(--tm-h2-line); letter-spacing: var(--tm-h2-tracking); }
+h3 { font-size: var(--tm-h3-size); line-height: var(--tm-h3-line); letter-spacing: var(--tm-h3-tracking); }
+h4 { font-size: var(--tm-h4-size); line-height: var(--tm-h4-line); letter-spacing: var(--tm-h4-tracking); }
+h5 { font-size: var(--tm-h5-size); line-height: var(--tm-h5-line); letter-spacing: var(--tm-h5-tracking); }
+h6 { font-size: var(--tm-h6-size); line-height: var(--tm-h6-line); letter-spacing: var(--tm-h6-tracking); }
+@media (max-width: 767px) {
+  /* the phone steps from testmu-base.css (40/44, 34/40, 26/32), from tokens */
+  h1 { font-size: var(--tm-space-40); line-height: var(--tm-space-44); }
+  h2 { font-size: calc(var(--tm-space-32) + var(--tm-space-2)); line-height: var(--tm-space-40); }
+  h3 { font-size: calc(var(--tm-space-24) + var(--tm-space-2)); line-height: var(--tm-space-32); }
 }
 
 h1 *,
@@ -128,7 +125,7 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--border));
-  border-radius: 999px;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground) / 0.5);
@@ -328,8 +325,8 @@ body {
   width: 36px;
   height: 100%;
   overflow: hidden;
-  border-radius: 4px;
-  background: #ed5f00;
+  border-radius: var(--tm-radius-sm);
+  background: var(--tm-hero-arrow);
   color: #fff;
 }
 .btn-arrow .chip > span {
@@ -357,6 +354,31 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .btn-arrow .chip svg {
+    transition: none;
+  }
+}
+
+/* text-link arrow: the same slide as .btn-arrow — the arrow exits right and
+   a twin enters from the left. Fires on any hovered .group / .group/btn. */
+.slide-arrow {
+  display: inline-flex;
+  width: 15px;
+  overflow: hidden;
+  flex: none;
+}
+.slide-arrow svg {
+  flex: 0 0 auto;
+  transform: translateX(-15px);
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+.group:hover .slide-arrow svg,
+.group\/btn:hover .slide-arrow svg,
+.group\/all:hover .slide-arrow svg,
+.group\/sec:hover .slide-arrow svg {
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide-arrow svg {
     transition: none;
   }
 }

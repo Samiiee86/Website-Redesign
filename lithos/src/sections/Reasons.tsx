@@ -1,6 +1,8 @@
-import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
-import { asSeenOn, reasons, reviews, stats } from "../lib/content";
-import { Marquee, Reveal, Section, ArrowChip } from "../lib/ui";
+import { ArrowUpRight, Check, Star } from "lucide-react";
+import { asSeenOn, reasons, reviews, security, stats } from "../lib/content";
+import { Marquee, Reveal, Section, ArrowChip, SlideArrow } from "../lib/ui";
+import { CERT_NAMES, CertMark } from "../components/CertMarks";
+import { scenery } from "../lib/scenery";
 
 function Stars({ rating }: { rating: string }) {
   const value = parseFloat(rating);
@@ -24,12 +26,22 @@ function Stars({ rating }: { rating: string }) {
   );
 }
 
+const integrationsCard = reasons.cards[2];
+
+const MCP_CLIENTS = [
+  { name: "Claude", src: "/img/integrations/color/claude.svg" },
+  { name: "Cursor", src: "/img/integrations/color/cursor.svg" },
+  { name: "VS Code", src: "/img/integrations/color/vscode.svg" },
+  { name: "GitHub Copilot", src: "/img/integrations/color/copilot.svg" },
+  { name: "Windsurf", src: "/img/integrations/color/windsurf.svg" },
+];
+
 export default function Reasons() {
   return (
     <Section>
       <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14">
-          <h2 className="tracking-tight">
+          <h2>
             <span className="block text-muted-foreground">
               More Reasons to Love
             </span>
@@ -69,7 +81,7 @@ export default function Reasons() {
                 <p className="text-b4 uppercase tracking-[0.22em] text-muted-foreground">
                   {s.label}
                 </p>
-                <p className="pixel mt-3 text-[38px] leading-none tracking-tight md:text-[44px]">
+                <p className="pixel mt-3 text-[32px] leading-none tracking-tight md:text-[48px]">
                   {s.value}
                   {s.suffix}
                 </p>
@@ -94,41 +106,77 @@ export default function Reasons() {
                 </p>
                 <span className="mt-5 inline-flex items-center gap-2 border-b border-foreground pb-0.5 text-b3 font-medium">
                   {report.cta}
-                  <ArrowRight
-                    size={14}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
+                  <SlideArrow />
                 </span>
               </div>
             ))}
           </div>
 
-          {/* the three proofs — copy first, artwork beneath */}
-          <div className="grid border-t border-border lg:grid-cols-3">
-            {reasons.cards.map((card, i) => (
-              <div
-                key={card.title}
-                data-cursor="Learn more"
-                className={`flex flex-col gap-6 p-8 ${
-                  i < 2
-                    ? "border-b border-border lg:border-b-0 lg:border-r"
-                    : ""
-                }`}
-              >
-                <div>
-                  <h3 className="tracking-tight">{card.title}</h3>
-                  <p className="mt-3 max-w-[330px] text-b2 leading-relaxed text-muted-foreground">
-                    {card.body}
-                  </p>
-                </div>
+          {/* enterprise-grade security (line badges) beside the MCP card */}
+          <div className="grid border-t border-border lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+            <div className="flex flex-col gap-8 border-b border-border p-8 lg:border-b-0 lg:border-r">
+              <div>
+                <h3>{security.title}</h3>
+                <p className="mt-3 max-w-[480px] text-b2 leading-relaxed text-muted-foreground">
+                  {security.body}
+                </p>
+              </div>
+              <div className="mt-auto grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-7 sm:gap-x-4 sm:gap-y-6">
+                {CERT_NAMES.map((name) => (
+                  <div
+                    key={name}
+                    className="mx-auto h-14 w-14 text-foreground/60 transition-colors duration-300 hover:text-foreground sm:h-[68px] sm:w-[68px]"
+                  >
+                    <CertMark name={name} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* integrations & MCP: a coding agent calling TestMu through MCP,
+                and the agents it works with */}
+            <div className="flex flex-col gap-6 p-8">
+              <div>
+                <h3>{integrationsCard.title}</h3>
+                <p className="mt-3 max-w-[360px] text-b2 leading-relaxed text-muted-foreground">
+                  {integrationsCard.body}
+                </p>
+              </div>
+              {/* the coding agents it plugs into, joined to one status pill
+                  (after gumloop.com's connections card) */}
+              <div className="relative mt-auto flex flex-col items-center overflow-hidden border border-border px-4 py-9">
                 <img
-                  src={card.image}
+                  src={scenery.treetop}
                   alt=""
-                  className="mt-auto w-full max-w-[380px] object-contain object-left"
+                  className="absolute inset-0 h-full w-full object-cover"
                   loading="lazy"
                 />
+                <div className="relative flex flex-col items-center">
+                <div className="flex items-end gap-2.5">
+                  {MCP_CLIENTS.map((c, i) => (
+                    <span
+                      key={c.name}
+                      title={c.name}
+                      className={`flex items-center justify-center rounded-[6px] border bg-white transition-transform duration-300 hover:-translate-y-0.5 ${
+                        i === 0
+                          ? "h-11 w-11 border-foreground/30 shadow-[0_6px_16px_-10px_rgba(18,18,18,0.5)]"
+                          : "h-9 w-9 border-border"
+                      }`}
+                    >
+                      <img src={c.src} alt={c.name} className={i === 0 ? "h-5 w-5" : "h-4 w-4"} loading="lazy" />
+                    </span>
+                  ))}
+                </div>
+                <span aria-hidden className="h-5 border-l border-dashed border-foreground/40" />
+                <span className="flex items-center gap-2.5 rounded-full border border-border bg-white px-4 py-2 text-b3 text-foreground shadow-[0_6px_18px_-12px_rgba(18,18,18,0.35)]">
+                  Connected to the TestMu AI MCP server
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#1A7F37] text-white">
+                    <Check size={10} strokeWidth={3} />
+                  </span>
+                </span>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
 
           {/* ratings */}
@@ -154,7 +202,7 @@ export default function Reasons() {
                   />
                 </div>
                 <div>
-                  <p className="pixel text-[40px] leading-none tracking-tight">
+                  <p className="pixel text-[32px] leading-none tracking-tight">
                     {vendor.rating}
                     <span className="ml-1 text-b3 text-muted-foreground">
                       / {vendor.outOf}

@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ds:check": "node .testmu/bin/ds-check.mjs src",
+    "ds:fix": "node .testmu/bin/ds-check.mjs --fix src",
+    "ds:update": "node .testmu/bin/update.mjs",
+    "prepare": "node .testmu/bin/git-hook.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.33.0",
