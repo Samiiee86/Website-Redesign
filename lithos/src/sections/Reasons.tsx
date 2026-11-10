@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Star } from "lucide-react";
 import { asSeenOn, reasons, reviews, security, stats } from "../lib/content";
 import { Marquee, Reveal, Section, ArrowChip } from "../lib/ui";
 import { CERT_NAMES, CertMark } from "../components/CertMarks";
@@ -144,41 +144,31 @@ export default function Reasons() {
                   {integrationsCard.body}
                 </p>
               </div>
-              <div className="mt-auto overflow-hidden border border-border bg-background">
-                <div className="flex items-center gap-1.5 border-b border-border px-3 py-2">
-                  {[0, 1, 2].map((i) => (
-                    <span key={i} className="h-2 w-2 rounded-full bg-border" />
-                  ))}
-                  <span className="mono ml-auto text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
-                    your ide · testmu mcp
-                  </span>
-                </div>
-                <div className="mono space-y-2 px-4 py-3 text-[11px] leading-relaxed">
-                  <p className="text-foreground">
-                    <span className="text-muted-foreground">&gt; </span>
-                    Run the checkout tests on Safari and iPhone 18
-                  </p>
-                  <p className="flex items-center gap-2 text-muted-foreground">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#1A7F37]" />
-                    testmu.run_tests · 24 passed on 2 environments
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-b4 uppercase tracking-[0.18em] text-muted-foreground">
-                  Works with
-                </span>
-                <div className="flex items-center gap-2">
-                  {MCP_CLIENTS.map((c) => (
+              {/* the coding agents it plugs into, joined to one status pill
+                  (after gumloop.com's connections card) */}
+              <div className="mt-auto flex flex-col items-center pb-2">
+                <div className="flex items-end gap-2.5">
+                  {MCP_CLIENTS.map((c, i) => (
                     <span
                       key={c.name}
                       title={c.name}
-                      className="flex h-8 w-8 items-center justify-center rounded-[7px] border border-border bg-white"
+                      className={`flex items-center justify-center rounded-[9px] border bg-white transition-transform duration-300 hover:-translate-y-0.5 ${
+                        i === 0
+                          ? "h-11 w-11 border-foreground/30 shadow-[0_6px_16px_-10px_rgba(18,18,18,0.5)]"
+                          : "h-9 w-9 border-border"
+                      }`}
                     >
-                      <img src={c.src} alt={c.name} className="h-4 w-4 object-contain" loading="lazy" />
+                      <img src={c.src} alt={c.name} className={i === 0 ? "h-5 w-5" : "h-4 w-4"} loading="lazy" />
                     </span>
                   ))}
                 </div>
+                <span aria-hidden className="h-5 border-l border-dashed border-border" />
+                <span className="flex items-center gap-2.5 rounded-full border border-border bg-white px-4 py-2 text-b3 text-foreground shadow-[0_6px_18px_-12px_rgba(18,18,18,0.35)]">
+                  Connected to the TestMu AI MCP server
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#1A7F37] text-white">
+                    <Check size={10} strokeWidth={3} />
+                  </span>
+                </span>
               </div>
             </div>
           </div>

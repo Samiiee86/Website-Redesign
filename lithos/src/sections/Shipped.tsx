@@ -1,4 +1,4 @@
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { shipped } from "../lib/content";
 import { Reveal, Section } from "../lib/ui";
 
@@ -50,9 +50,9 @@ export default function Shipped() {
                   <span className="hidden truncate text-b3 text-muted-foreground md:block">
                     {row.tag}
                   </span>
-                  <ChevronRight
-                    size={18}
-                    className="text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:text-foreground"
+                  <ArrowRight
+                    size={15}
+                    className="text-foreground transition-transform duration-300 group-hover:translate-x-1"
                   />
                 </a>
               </li>

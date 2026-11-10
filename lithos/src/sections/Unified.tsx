@@ -1,4 +1,5 @@
-import { ArrowRight, BarChart3, ClipboardList, Smartphone } from "lucide-react";
+import { ArrowRight, BarChart3, ClipboardList, Smartphone, Zap } from "lucide-react";
+import { scenery } from "../lib/scenery";
 import { products } from "../lib/content";
 import { DEMOS, type DemoKey } from "../components/Demos";
 import { Reveal, Section, ArrowChip } from "../lib/ui";
@@ -96,10 +97,9 @@ function BigCard({ id, index }: { id: string; index: number }) {
   );
 }
 
-export default function Unified() {
+function UnifiedHeading() {
   return (
-    <Section id="unified">
-      <Reveal className="mb-12">
+    <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14 xl:grid-cols-[minmax(0,1fr)_400px]">
           {/* on wide screens the first line holds together and the second
               wraps once, so the heading sets in three lines */}
@@ -122,6 +122,13 @@ export default function Unified() {
         </button>
       </Reveal>
 
+  );
+}
+
+/* previous edition, kept for the options page: four flagship cards with
+   live demos over three platform staples */
+function BentoGrid() {
+  return (
       <Reveal delay={0.08}>
         <div className="-mx-8 border-y border-border bg-surface">
           <div className="grid md:grid-cols-2">
@@ -160,6 +167,129 @@ export default function Unified() {
           </div>
         </div>
       </Reveal>
+  );
+}
+
+/* --- steps edition (default) --------------------------------------------
+   The platform products as one quality loop, after devin.ai's numbered
+   rows: copy settles at the foot of its column, the live demo sits on a
+   painting opposite, and the sides alternate down the page. Changed from
+   the reference: hairline rows inside the page box, a product tag and a
+   mono step label, and our own painted plates. */
+
+const STEPS = [
+  {
+    id: "test-manager",
+    label: "Plan",
+    title: "Plan and manage every test",
+    body: "Create test cases with AI, manage and run them in one place, and keep Jira and Azure DevOps in sync both ways.",
+    product: "Test Manager",
+    icon: ClipboardList,
+    scene: scenery.meadow,
+  },
+  {
+    id: "hyperexecute",
+    label: "Run",
+    title: "Run the whole suite in minutes",
+    body: "Up to 70% faster than any cloud grid. AI-native orchestration splits, retries and reports every run on a secure, scalable cloud.",
+    product: "HyperExecute",
+    icon: Zap,
+    scene: scenery.wetland,
+  },
+  {
+    id: "real-device-cloud",
+    label: "Cover",
+    title: "Test on the devices your users hold",
+    body: "Manual and automated testing on 10,000+ real iOS and Android devices, in a public, dedicated or on-premise cloud.",
+    product: "Real Device Cloud",
+    icon: Smartphone,
+    scene: scenery.hills,
+  },
+  {
+    id: "test-insights",
+    label: "Decide",
+    title: "Know what is safe to ship",
+    body: "AI-native analytics show where tests fail and why, so every release call is made on data instead of a hunch.",
+    product: "Test Insights",
+    icon: BarChart3,
+    scene: scenery.dunes,
+  },
+];
+
+function StepRows() {
+  return (
+    <div className="-mx-8 border-t border-border">
+      {STEPS.map((step, i) => {
+        const tab = products.tabs.find((t) => t.id === step.id)!;
+        const Demo = DEMOS[tab.demo as DemoKey];
+        const Icon = step.icon;
+        const flip = i % 2 === 1;
+        return (
+          <div
+            key={step.id}
+            className="grid grid-cols-[minmax(0,1fr)] gap-10 border-b border-border px-8 py-12 last:border-b-0 md:py-16 lg:grid-cols-2 lg:gap-16"
+          >
+            <Reveal
+              className={`flex flex-col justify-end ${flip ? "lg:order-2" : ""}`}
+            >
+              <p className="flex items-baseline gap-4">
+                <span className="pixel text-[44px] leading-none text-muted-foreground">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="mono text-b4 uppercase tracking-[0.22em] text-muted-foreground">
+                  {step.label}
+                </span>
+              </p>
+              <h3 className="mt-6 tracking-tight">{step.title}</h3>
+              <p className="mt-4 max-w-[460px] text-b1 leading-relaxed text-muted-foreground">
+                {step.body}
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-5">
+                <span className="inline-flex items-center gap-2 border border-border bg-surface px-2.5 py-1 text-b3 text-foreground">
+                  <Icon size={14} />
+                  {step.product}
+                </span>
+                <button className="group/btn inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
+                  {tab.cta}
+                  <ArrowRight
+                    size={15}
+                    className="transition-transform duration-300 group-hover/btn:translate-x-1"
+                  />
+                </button>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.08} className={flip ? "lg:order-1" : ""}>
+              <div
+                data-cursor={step.product}
+                className="relative flex h-[380px] items-center justify-center overflow-hidden border border-border px-6 md:h-[420px] md:px-12"
+              >
+                <img
+                  src={step.scene}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-white/25" />
+                <div className="relative w-full max-w-[500px]">
+                  <Demo />
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export type UnifiedVariant = "steps" | "bento";
+
+export default function Unified({ variant = "steps" }: { variant?: UnifiedVariant }) {
+  return (
+    <Section id="unified" className={variant === "steps" ? "!pb-0 md:!pb-0" : ""}>
+      <UnifiedHeading />
+      {variant === "bento" ? <BentoGrid /> : <StepRows />}
     </Section>
   );
 }

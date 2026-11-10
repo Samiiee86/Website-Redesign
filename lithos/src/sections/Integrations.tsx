@@ -9,12 +9,12 @@ export default function Integrations() {
       <Reveal>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-16">
           <div>
-            <h3 className="tracking-tight">
+            <h2 className="tracking-tight">
               <span className="block text-muted-foreground">
                 {integrations.lead}
               </span>
               <span className="block">{integrations.title}</span>
-            </h3>
+            </h2>
             <p className="mt-4 max-w-[380px] text-b2 leading-relaxed text-muted-foreground">
               {integrations.body}
             </p>

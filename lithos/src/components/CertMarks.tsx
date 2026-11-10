@@ -69,17 +69,18 @@ function StarRing({ r, n = 12, size = 2.4 }: { r: number; n?: number; size?: num
 function IsoBsi({ code, topic }: { code: string; topic: string }) {
   return (
     <Svg label={`ISO/IEC ${code}`}>
-      <text x="16" y="14" fontSize="6.5" {...T}>bsi</text>
-      <rect x="6" y="19" width="55" height="24" rx="12" />
-      <circle cx="16" cy="31" r="11.5" fill="#fff" />
+      <Tile />
+      <text x="17" y="19.5" fontSize="5" {...T}>bsi</text>
+      <rect x="10.5" y="22.5" width="43" height="16" rx="8" />
+      <circle cx="17.5" cy="30.5" r="8" fill="#fff" />
       <path
-        transform="translate(16 31) scale(1.25) translate(-16 -31)"
+        transform="translate(17.5 30.5) scale(0.95) translate(-16 -31)"
         d="M16 37c-4.2-2.9-6.4-5-6.4-7.4a3.2 3.2 0 0 1 6.4-.9 3.2 3.2 0 0 1 6.4.9c0 2.4-2.2 4.5-6.4 7.4z"
         strokeWidth={0.8}
       />
-      <text x="43" y="29" fontSize="6" {...T}>ISO/IEC</text>
-      <text x="43" y="38.5" fontSize="9" {...T}>{code}</text>
-      <text x="33" y="52.5" fontSize="4.6" {...T}>{topic}</text>
+      <text x="39.5" y="28.6" fontSize="4.6" {...T}>ISO/IEC</text>
+      <text x="39.5" y="35.6" fontSize="7" {...T}>{code}</text>
+      <text x="32" y="48.5" fontSize="3.9" {...T}>{topic}</text>
     </Svg>
   );
 }
@@ -132,9 +133,10 @@ const MARKS: Record<string, () => ReactNode> = {
   ),
   CSA: () => (
     <Svg label="Cloud Security Alliance">
-      <path d="M19 44h27a9 9 0 0 0 .8-18 13 13 0 0 0-25-2.6A10.4 10.4 0 0 0 19 44z" />
-      <text x="32" y="38" fontSize="9" {...T}>CSA</text>
-      <text x="32" y="54" fontSize="5.5" {...T}>STAR</text>
+      <Seal />
+      <path d="M23 39h18a6 6 0 0 0 .5-12 8.6 8.6 0 0 0-16.6-1.7A6.9 6.9 0 0 0 23 39z" />
+      <text x="32" y="36" fontSize="6.5" {...T}>CSA</text>
+      <text x="32" y="47" fontSize="5" {...T}>STAR</text>
     </Svg>
   ),
   ADA: () => (
@@ -147,11 +149,12 @@ const MARKS: Record<string, () => ReactNode> = {
   ),
   FSQS: () => (
     <Svg label="FSQS registered">
-      <circle cx="26" cy="22" r="8" />
-      <circle cx="38" cy="22" r="8" />
-      <circle cx="32" cy="22" r="8" />
-      <text x="32" y="44" fontSize="10" {...T}>FSQS</text>
-      <text x="32" y="52" fontSize="5" {...T}>REGISTERED</text>
+      <Seal />
+      <circle cx="27" cy="24" r="5.5" />
+      <circle cx="37" cy="24" r="5.5" />
+      <circle cx="32" cy="24" r="5.5" />
+      <text x="32" y="40" fontSize="8" {...T}>FSQS</text>
+      <text x="32" y="46.5" fontSize="3.8" {...T}>REGISTERED</text>
     </Svg>
   ),
   ESG: () => (

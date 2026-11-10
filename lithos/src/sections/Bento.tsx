@@ -15,6 +15,7 @@ import {
   MessagesSquare,
   MousePointerClick,
   ShieldCheck,
+  TriangleAlert,
   Smartphone,
   Sparkles,
   SquareTerminal,
@@ -295,7 +296,7 @@ function useCanHover() {
 
 /* --- shared pieces ------------------------------------------------------ */
 
-export type PioneerVariant = "hover" | "joined" | "spaced" | "breakout" | "inset";
+export type PioneerVariant = "hover" | "joined" | "spaced" | "breakout" | "inset" | "gumloop";
 
 /* a fresh key each time the card turns on restarts its script */
 function useReplay(playing: boolean) {
@@ -722,11 +723,267 @@ function InsetRow() {
   );
 }
 
+/* 6 · gumloop: after gumloop.com's feature grid. One big painted card on the
+   left; four quiet cards carry small live details instead of screenshots. */
+
+function GLText({
+  title,
+  body,
+  big = false,
+}: {
+  title: string;
+  body: string;
+  big?: boolean;
+}) {
+  return (
+    <div>
+      <h4 className="tracking-tight text-foreground">{title}</h4>
+      <p className={`mt-2 text-b2 leading-relaxed text-muted-foreground ${big ? "max-w-[520px]" : "max-w-[300px]"}`}>
+        {body}
+      </p>
+      <button className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
+        Learn more
+        <ArrowRight
+          size={15}
+          className="transition-transform duration-300 group-hover/btn:translate-x-1"
+        />
+      </button>
+    </div>
+  );
+}
+
+function usePlay() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.5 });
+  const { run, play } = useReplay(inView);
+  return { ref, run, play };
+}
+
+const CLOUD_ICONS = [Zap, Telescope, Smartphone, Code2, Eye, LayoutGrid];
+
+function CloudPill({ play }: { play: boolean }) {
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <div className="flex gap-2">
+        {CLOUD_ICONS.map((Icon, i) => (
+          <motion.span
+            key={i}
+            {...rise(play, 0.1 + i * 0.08)}
+            className={`flex h-8 w-8 items-center justify-center rounded-[8px] border ${
+              i === 0 ? "border-foreground bg-foreground text-white" : "border-border bg-white text-muted-foreground"
+            }`}
+          >
+            <Icon size={14} />
+          </motion.span>
+        ))}
+      </div>
+      <motion.span
+        {...rise(play, 0.7)}
+        className="relative flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-b3 text-foreground shadow-[0_6px_18px_-12px_rgba(18,18,18,0.35)]"
+      >
+        <span className="relative h-4 w-4">
+          <motion.span
+            initial={play ? { opacity: 1 } : false}
+            animate={{ opacity: 0 }}
+            transition={{ delay: 1.8, duration: 0.2 }}
+            className="absolute inset-0"
+          >
+            <Loader2 size={16} className="animate-spin text-muted-foreground" />
+          </motion.span>
+          <motion.span
+            initial={play ? { opacity: 0, scale: 0.6 } : false}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.9, duration: 0.3 }}
+            className="absolute inset-0 flex items-center justify-center rounded-full bg-[#1A7F37] text-white"
+          >
+            <Check size={10} />
+          </motion.span>
+        </span>
+        1,240 tests passed in 4m 12s
+      </motion.span>
+    </div>
+  );
+}
+
+function ChatCatch({ play }: { play: boolean }) {
+  return (
+    <div className="flex w-full max-w-[300px] flex-col gap-2">
+      <motion.p {...rise(play, 0.1)} className="flex items-center gap-1.5 text-b4 text-[#1F6FEB]">
+        <MessagesSquare size={12} />
+        Tester agent
+      </motion.p>
+      <motion.p {...rise(play, 0.25)} className="w-fit rounded-[10px] border border-border bg-white px-3 py-2 text-b3 text-foreground">
+        Can I get a refund after 30 days?
+      </motion.p>
+      <motion.p {...rise(play, 0.7)} className="ml-auto w-fit rounded-[10px] bg-foreground px-3 py-2 text-b3 text-white">
+        Of course, refunds are always available.
+      </motion.p>
+      <motion.p
+        {...rise(play, 1.3)}
+        className="flex w-fit items-center gap-1.5 rounded-[6px] border border-[#F5C2C0] bg-[#FDECEC] px-2.5 py-1 text-b4 text-[#B42318]"
+      >
+        <TriangleAlert size={12} />
+        Hallucination · contradicts refund policy
+      </motion.p>
+    </div>
+  );
+}
+
+const TRACE = [
+  { t: "Read refund_policy.md", at: "0:04" },
+  { t: "Called payments.refund", at: "0:09" },
+  { t: "Blocked a prompt injection", at: "0:12" },
+  { t: "Confirmed the refund landed", at: "0:15" },
+];
+
+function TraceList({ play }: { play: boolean }) {
+  return (
+    <div className="w-full max-w-[320px]">
+      <p className="flex items-center gap-2 text-b3 text-muted-foreground">
+        <span className="flex h-5 w-5 items-center justify-center rounded-full border border-border bg-white">
+          <motion.span
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1.4, repeat: Infinity }}
+            className="h-2 w-2 rounded-full bg-[#E5484D]"
+          />
+        </span>
+        Tracing the agent…
+      </p>
+      <div
+        className="ml-2.5 mt-2 border-l border-border pl-4"
+        style={{
+          maskImage: "linear-gradient(to bottom, black 70%, transparent)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent)",
+        }}
+      >
+        {TRACE.map((row, i) => (
+          <motion.div
+            key={row.t}
+            {...rise(play, 0.2 + i * 0.3)}
+            className="flex items-center justify-between gap-3 py-1.5 text-b3"
+          >
+            <span className={i === 2 ? "text-foreground" : "text-muted-foreground"}>{row.t}</span>
+            <span className="mono text-b4 text-muted-foreground">{row.at}</span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CliPill({ play }: { play: boolean }) {
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <motion.span
+        {...rise(play, 0.1)}
+        className="mono whitespace-nowrap rounded-full border border-border bg-white px-4 py-2 text-b4 text-foreground shadow-[0_6px_18px_-12px_rgba(18,18,18,0.35)]"
+      >
+        kane run "checkout flow"
+      </motion.span>
+      <motion.span
+        {...rise(play, 0.9)}
+        className="flex items-center gap-1.5 rounded-full bg-[#DAFBE1] px-3 py-1 text-b4 text-[#1A7F37]"
+      >
+        <Check size={12} />
+        Passed in 14.2s · synced to dashboard
+      </motion.span>
+    </div>
+  );
+}
+
+function GLCard({
+  title,
+  body,
+  cta,
+  Visual,
+  className = "",
+}: {
+  title: string;
+  body: string;
+  cta: string;
+  Visual: (p: { play: boolean }) => ReactNode;
+  className?: string;
+}) {
+  const { ref, run, play } = usePlay();
+  return (
+    <div
+      ref={ref}
+      data-cursor={cta}
+      className={`grid min-h-[300px] gap-8 p-8 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] sm:items-center ${className}`}
+    >
+      <GLText title={title} body={body} />
+      <div className="flex items-center justify-center">
+        <Visual key={run} play={play} />
+      </div>
+    </div>
+  );
+}
+
+function GumloopRow() {
+  const big = usePlay();
+  const kane = pioneer.cards[0];
+  const cloud = pioneer.cards[1];
+  return (
+    <div className="-mx-8 border-y border-border bg-surface">
+      <div className="grid lg:grid-cols-2">
+        <div
+          ref={big.ref}
+          data-cursor={kane.cta}
+          className="flex flex-col border-border max-lg:border-b lg:border-r"
+        >
+          {/* the one big picture: the painting with the KaneAI window on it */}
+          <div className="relative flex h-[380px] flex-none items-center justify-center overflow-hidden md:h-[420px]">
+            <Painting index={0} />
+            <div className="relative w-full max-w-[460px] px-6">
+              <PanelWindow index={0} playing={big.play} />
+            </div>
+          </div>
+          <div className="flex flex-1 flex-col justify-end p-8">
+            <GLText big title={kane.title} body="Plan, author and evolve end-to-end tests from plain language or your company's own context." />
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <GLCard
+            className="border-b border-border"
+            title={cloud.title}
+            body="Run any type of test at any scale, from web and mobile to custom enterprise environments."
+            cta={cloud.cta}
+            Visual={CloudPill}
+          />
+          <GLCard
+            className="flex-1"
+            title={pioneerSmall[0].title}
+            body={pioneerSmall[0].body}
+            cta={pioneerSmall[0].cta}
+            Visual={ChatCatch}
+          />
+        </div>
+      </div>
+      <div className="grid border-t border-border lg:grid-cols-2">
+        <GLCard
+          className="border-border max-lg:border-b lg:border-r"
+          title={pioneerSmall[1].title}
+          body={pioneerSmall[1].body}
+          cta={pioneerSmall[1].cta}
+          Visual={TraceList}
+        />
+        <GLCard
+          title={pioneerSmall[2].title}
+          body={pioneerSmall[2].body}
+          cta={pioneerSmall[2].cta}
+          Visual={CliPill}
+        />
+      </div>
+    </div>
+  );
+}
+
 export function PioneerRow({ variant }: { variant: PioneerVariant }) {
   if (variant === "joined") return <JoinedRow />;
   if (variant === "spaced") return <SpacedRow />;
   if (variant === "breakout") return <BreakoutRow />;
   if (variant === "inset") return <InsetRow />;
+  if (variant === "gumloop") return <GumloopRow />;
   return <HoverRow />;
 }
 
