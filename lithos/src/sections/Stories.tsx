@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, Play, Quote, X } from "lucide-react";
-import { storiesGrid } from "../lib/content";
+import { customerStrip, storiesGrid } from "../lib/content";
 import { Reveal, Section } from "../lib/ui";
 
 const CUSTOMER_VIDEO = "/video/customer.mp4";
@@ -218,6 +218,49 @@ export default function Stories() {
                 </div>
               </div>
             </a>
+          </div>
+
+          {/* more customer stories: logo only, each opens its case study */}
+          <div className="flex items-center justify-between gap-4 border-t border-border px-6 py-4 md:px-8">
+            <p className="mono text-b4 uppercase tracking-[0.18em] text-muted-foreground">
+              {customerStrip.label}
+            </p>
+            <a
+              href={customerStrip.all.href}
+              target="_blank"
+              rel="noreferrer"
+              className="group/all inline-flex items-center gap-1.5 text-b3 font-medium text-foreground"
+            >
+              {customerStrip.all.label}
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-300 group-hover/all:-translate-y-0.5 group-hover/all:translate-x-0.5"
+              />
+            </a>
+          </div>
+          <div className="grid grid-cols-2 gap-px border-t border-border bg-border sm:grid-cols-3 lg:grid-cols-6">
+            {customerStrip.logos.map((logo) => (
+              <a
+                key={logo.name}
+                href={logo.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Read the ${logo.name} story`}
+                data-cursor="Read story"
+                className="group relative flex h-[112px] items-center justify-center bg-surface px-6 transition-colors duration-500 hover:bg-[#FAFAF8]"
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.name}
+                  className="logo-ink h-7 w-auto max-w-[120px] object-contain group-hover:opacity-100"
+                  loading="lazy"
+                />
+                <ArrowUpRight
+                  size={14}
+                  className="absolute right-3 top-3 translate-y-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:text-foreground group-hover:opacity-100"
+                />
+              </a>
+            ))}
           </div>
         </div>
       </Reveal>

@@ -6,23 +6,28 @@ import {
   ArrowUp,
   ArrowUpRight,
   Bot,
+  Check,
   Code2,
   Eye,
   LayoutGrid,
   Link2,
   Loader2,
+  MessagesSquare,
   MousePointerClick,
+  ScanEye,
   Smartphone,
   Sparkles,
   Telescope,
   TextCursorInput,
   Zap,
 } from "lucide-react";
-import { pioneer } from "../lib/content";
+import { pioneer, pioneerSmall } from "../lib/content";
 import { scenery } from "../lib/scenery";
 import { Reveal, Section, ArrowChip } from "../lib/ui";
 
 const SCENES = [scenery.sunlitClouds, scenery.mountainLake];
+/* the three small cards, from the same painted set as the hero */
+const SMALL_SCENES = [scenery.wetland, scenery.shore, scenery.hills];
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /* Both panels are drawn in code so they can replay from the start whenever
@@ -158,6 +163,149 @@ function CloudTiles({ play }: { play: boolean }) {
     </div>
   );
 }
+
+/* --- the three small product windows ------------------------------------ */
+
+function AgentChat({ play }: { play: boolean }) {
+  return (
+    <div className="flex min-h-[176px] flex-col justify-center gap-2 bg-white py-4 pl-4 pr-10">
+      <motion.div {...rise(play, 0.15)} className="max-w-[82%]">
+        <p className="mb-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+          Tester agent · upset customer
+        </p>
+        <p className="rounded-[10px] rounded-tl-[3px] border border-border bg-background px-2.5 py-1.5 text-[11px] text-foreground">
+          I was charged twice for one order.
+        </p>
+      </motion.div>
+      <motion.div {...rise(play, 0.6)} className="ml-auto max-w-[82%] text-right">
+        <p className="mb-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+          Your support agent
+        </p>
+        <p className="rounded-[10px] rounded-tr-[3px] bg-foreground px-2.5 py-1.5 text-left text-[11px] text-white">
+          Sorry about that. I have refunded the extra charge.
+        </p>
+      </motion.div>
+      <motion.div {...rise(play, 1.05)} className="mt-1 flex flex-wrap gap-1.5">
+        {["No hallucination", "Tone 92", "Resolved"].map((m) => (
+          <span
+            key={m}
+            className="flex items-center gap-1 rounded-[4px] bg-[#DAFBE1] px-1.5 py-0.5 text-[9px] text-[#1A7F37]"
+          >
+            <Check size={8} />
+            {m}
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+function PageSketch({ shifted = false, play }: { shifted?: boolean; play: boolean }) {
+  return (
+    <div className="relative h-[92px] border border-border bg-white p-2">
+      <span className="block h-1.5 w-1/3 rounded-full bg-border" />
+      <span className="mt-2 block h-1 w-full rounded-full bg-border-muted" />
+      <span className="mt-1 block h-1 w-4/5 rounded-full bg-border-muted" />
+      <span className="mt-1 block h-1 w-3/5 rounded-full bg-border-muted" />
+      <span
+        className={`absolute bottom-2 block h-3.5 w-10 rounded-[3px] bg-foreground ${
+          shifted ? "left-5" : "left-2"
+        }`}
+      />
+      {shifted && (
+        <motion.span
+          initial={play ? { opacity: 0, scale: 1.3 } : false}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.9, duration: 0.45, ease: EASE }}
+          className="absolute bottom-1 left-4 h-[22px] w-[52px] border-[1.5px] border-[#F0883E] bg-[#F0883E]/10"
+        />
+      )}
+    </div>
+  );
+}
+
+function VisualDiff({ play }: { play: boolean }) {
+  return (
+    <div className="flex min-h-[176px] flex-col justify-center gap-2.5 bg-white py-4 pl-4 pr-10">
+      <div className="grid grid-cols-2 gap-2">
+        {[
+          { label: "Baseline", shifted: false },
+          { label: "Build #482", shifted: true },
+        ].map((p, i) => (
+          <motion.div key={p.label} {...rise(play, 0.15 + i * 0.3)}>
+            <p className="mb-1 text-[9px] uppercase tracking-[0.12em] text-muted-foreground">
+              {p.label}
+            </p>
+            <PageSketch shifted={p.shifted} play={play} />
+          </motion.div>
+        ))}
+      </div>
+      <motion.div {...rise(play, 1.3)} className="flex items-center justify-between">
+        <span className="rounded-[4px] bg-[#FFF1E5] px-1.5 py-0.5 text-[9px] text-[#BC4C00]">
+          1 visual change
+        </span>
+        <span className="flex gap-1.5">
+          <span className="rounded-[4px] border border-border px-2 py-0.5 text-[9px] text-foreground">
+            Reject
+          </span>
+          <span className="rounded-[4px] bg-foreground px-2 py-0.5 text-[9px] text-white">
+            Approve
+          </span>
+        </span>
+      </motion.div>
+    </div>
+  );
+}
+
+const DEVICES = [
+  { name: "iPhone 18 Pro", os: "iOS 27", state: "live" },
+  { name: "Galaxy S26 Ultra", os: "Android 16", state: "live" },
+  { name: "Pixel 10", os: "Android 16", state: "boot" },
+  { name: "iPad Pro 13", os: "iPadOS 27", state: "ready" },
+];
+
+function DeviceList({ play }: { play: boolean }) {
+  return (
+    <div className="flex min-h-[176px] flex-col justify-center bg-white py-3 pl-4 pr-10">
+      {DEVICES.map((d, i) => (
+        <motion.div
+          key={d.name}
+          {...rise(play, 0.15 + i * 0.22)}
+          className={`flex items-center gap-2.5 py-1.5 ${
+            i < DEVICES.length - 1 ? "border-b border-border" : ""
+          }`}
+        >
+          <span className="flex h-5 w-5 flex-none items-center justify-center rounded-[5px] border border-border bg-background">
+            <Smartphone size={10} className="text-foreground" />
+          </span>
+          <span className="truncate text-[11px] font-medium text-foreground">{d.name}</span>
+          <span className="text-[10px] text-muted-foreground">{d.os}</span>
+          <span className="ml-auto flex items-center gap-1 text-[9px]">
+            {d.state === "live" && (
+              <>
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1A7F37]" />
+                <span className="text-[#1A7F37]">Live</span>
+              </>
+            )}
+            {d.state === "boot" && (
+              <>
+                <Loader2 size={9} className="animate-spin text-muted-foreground" />
+                <span className="text-muted-foreground">Booting</span>
+              </>
+            )}
+            {d.state === "ready" && <span className="text-[#1F6FEB]">Ready</span>}
+          </span>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+const SMALL_BODIES = [
+  { icon: MessagesSquare, Body: AgentChat },
+  { icon: ScanEye, Body: VisualDiff },
+  { icon: Smartphone, Body: DeviceList },
+];
 
 const PANELS = [
   { title: "testmu.ai / kaneai", icon: Bot, Body: KaneSteps },
@@ -326,12 +474,91 @@ function HoverCard({ index }: { index: number }) {
   );
 }
 
+function MiniWindow({ index, playing }: { index: number; playing: boolean }) {
+  const { icon: Icon, Body } = SMALL_BODIES[index];
+  const { run, play } = useReplay(playing);
+  return (
+    <div className="w-full overflow-hidden border border-border bg-white shadow-[0_30px_60px_-26px_rgba(18,18,18,0.4)]">
+      <div className="flex items-center gap-2 border-b border-border px-3 py-2">
+        <span className="flex gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="h-2 w-2 rounded-full bg-border" />
+          ))}
+        </span>
+        <span className="mx-auto flex min-w-0 items-center gap-1.5 border border-border bg-background px-3 py-0.5 text-muted-foreground">
+          <Icon size={10} className="flex-none" />
+          <span className="mono truncate whitespace-nowrap text-[9px] uppercase tracking-[0.14em]">
+            {pioneerSmall[index].window}
+          </span>
+        </span>
+        <Sparkles size={11} className="text-muted-foreground" />
+      </div>
+      <Body key={run} play={play} />
+    </div>
+  );
+}
+
+/* small card: same recipe as the big pair at a smaller size: copy on a white
+   wash, the painting clearing below it, a window anchored to the bottom */
+function SmallCard({ index }: { index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.55 });
+  const card = pioneerSmall[index];
+  return (
+    <div
+      ref={ref}
+      data-cursor={card.cta}
+      className="relative flex min-w-0 flex-1 flex-col overflow-hidden border border-border bg-surface md:min-h-[540px]"
+    >
+      <img
+        src={SMALL_SCENES[index]}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(172deg, rgba(255,255,255,0.95) 48%, rgba(255,255,255,0) 62%)",
+        }}
+      />
+      <div className="relative p-6 md:p-8">
+        <h4 className="tracking-tight text-foreground">{card.title}</h4>
+        <p className="mt-3 text-b2 leading-relaxed text-muted-foreground">
+          {card.body}
+        </p>
+        <button className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
+          Learn more
+          <ArrowRight
+            size={15}
+            className="transition-transform duration-300 group-hover/btn:translate-x-1"
+          />
+        </button>
+      </div>
+      <div className="relative mt-auto pl-6 pt-16 md:pl-8 md:pt-0">
+        <div className="-mb-px w-[calc(100%+24px)]">
+          <MiniWindow index={index} playing={inView} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HoverRow() {
   return (
-    <div className="flex flex-col gap-6 md:flex-row">
-      {[0, 1].map((i) => (
-        <HoverCard key={i} index={i} />
-      ))}
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 md:flex-row">
+        {[0, 1].map((i) => (
+          <HoverCard key={i} index={i} />
+        ))}
+      </div>
+      <div className="flex flex-col gap-6 lg:flex-row">
+        {[0, 1, 2].map((i) => (
+          <SmallCard key={i} index={i} />
+        ))}
+      </div>
     </div>
   );
 }

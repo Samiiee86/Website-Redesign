@@ -171,3 +171,34 @@ export function ArrowChip() {
     </span>
   );
 }
+
+/* An outlined mark drawn in the current text colour. The SVG file is used as
+   a mask, so one file tints to any colour and can darken on hover. */
+export function LineMark({
+  src,
+  label,
+  className = "",
+}: {
+  src: string;
+  label?: string;
+  className?: string;
+}) {
+  return (
+    <span
+      role={label ? "img" : undefined}
+      aria-label={label}
+      aria-hidden={label ? undefined : true}
+      className={`inline-block bg-current ${className}`}
+      style={{
+        maskImage: `url(${src})`,
+        WebkitMaskImage: `url(${src})`,
+        maskRepeat: "no-repeat",
+        WebkitMaskRepeat: "no-repeat",
+        maskPosition: "center",
+        WebkitMaskPosition: "center",
+        maskSize: "contain",
+        WebkitMaskSize: "contain",
+      }}
+    />
+  );
+}
