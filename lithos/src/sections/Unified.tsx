@@ -175,8 +175,8 @@ function BentoGrid() {
 const STEPS = [
   {
     id: "test-manager",
-    title: "Plan and manage every test",
-    body: "Create test cases with AI, manage and run them in one place, and keep Jira and Azure DevOps in sync both ways.",
+    title: "Turn requirements into tests with AI",
+    body: "Test Manager writes test cases from your stories with AI, keeps every manual and automated run in one place, and syncs both ways with Jira and Azure DevOps.",
     points: [
       "AI writes test cases from your requirements",
       "Manual and automated runs side by side",
@@ -188,8 +188,8 @@ const STEPS = [
   },
   {
     id: "hyperexecute",
-    title: "Run the whole suite in minutes",
-    body: "Up to 70% faster than any cloud grid. AI-native orchestration splits, retries and reports every run on a secure, scalable cloud.",
+    title: "Run what KaneAI writes, up to 70% faster",
+    body: "Tests authored in KaneAI, or your own suites, run on HyperExecute. AI-native orchestration splits, retries and reports every run on a secure, scalable cloud.",
     points: [
       "Smart test splitting and auto-retries",
       "Selenium, Playwright, Cypress and more",
@@ -201,8 +201,8 @@ const STEPS = [
   },
   {
     id: "real-device-cloud",
-    title: "Test on the devices your users hold",
-    body: "Manual and automated testing on 10,000+ real iOS and Android devices, in a public, dedicated or on-premise cloud.",
+    title: "Test on the real devices your users hold",
+    body: "Point KaneAI or your own suites at 10,000+ real iOS and Android devices, in a public, dedicated or on-premise cloud.",
     points: [
       "Latest and legacy iPhone, Pixel and Galaxy models",
       "Network throttling, geolocation and biometrics",
@@ -214,8 +214,8 @@ const STEPS = [
   },
   {
     id: "test-insights",
-    title: "Know what is safe to ship",
-    body: "AI-native analytics show where tests fail and why, so every release call is made on data instead of a hunch.",
+    title: "Let AI tell you what is safe to ship",
+    body: "AI-native analytics find flaky tests and the root cause of every failure, so each release call is made on data instead of a hunch.",
     points: [
       "Flaky test detection across every run",
       "AI root cause for failed tests",

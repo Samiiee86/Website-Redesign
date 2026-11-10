@@ -167,7 +167,7 @@ export const platform = {
 export const products = {
   eyebrow: "Unified Quality Engineering for Enterprise",
   title:
-    "A unified quality engineering platform that helps engineering teams automate end-to-end testing across web, mobile, and AI applications.",
+    "KaneAI and our agents write the tests. One platform plans, runs and reports on them across web, mobile and AI apps, from the first idea to the release.",
   tabs: [
     {
       id: "test-manager",
