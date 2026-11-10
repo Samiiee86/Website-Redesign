@@ -20,7 +20,7 @@ function NameChange({ progress }: { progress: MotionValue<number> }) {
   const newIn = useTransform(progress, [0.3, 0.55], [0.15, 1]);
   const newLift = useTransform(progress, [0.3, 0.55], [10, 0]);
   return (
-    <div className="relative mt-10 flex h-[360px] items-center justify-center overflow-hidden border border-border px-5 md:h-[400px]">
+    <div className="relative mt-10 flex h-[300px] items-center justify-center overflow-hidden border border-border px-5 md:h-[320px]">
       <img
         src={scenery.chalkcliff}
         alt=""
