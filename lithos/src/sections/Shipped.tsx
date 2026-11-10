@@ -1,6 +1,6 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { shipped } from "../lib/content";
-import { Reveal, Section } from "../lib/ui";
+import { Reveal, Section, SlideArrow } from "../lib/ui";
 
 /* Changelog fold: heading on the left, the latest releases as a quiet list
    on the right (layout after devin.ai). */
@@ -50,10 +50,7 @@ export default function Shipped() {
                   <span className="hidden truncate text-b3 text-muted-foreground md:block">
                     {row.tag}
                   </span>
-                  <ArrowRight
-                    size={15}
-                    className="text-foreground transition-transform duration-300 group-hover:translate-x-1"
-                  />
+                  <SlideArrow />
                 </a>
               </li>
             ))}

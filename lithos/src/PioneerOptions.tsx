@@ -9,16 +9,22 @@ import Unified from "./sections/Unified";
 
 const OPTIONS: { id: string; name: string; note: string; render: () => ReactNode }[] = [
   {
-    id: "gumloop",
-    name: "Pioneer · Gumloop grid",
-    note: "After gumloop.com: one big painted KaneAI card on the left, four quiet cards with small live details beside and below it.",
-    render: () => <Bento variant="gumloop" />,
+    id: "hover",
+    name: "Pioneer · Joined five (previous home)",
+    note: "The earlier home layout: two big painted cards over three shorter ones, all on one joined surface. The home page now uses the Gumloop grid.",
+    render: () => <Bento variant="hover" />,
   },
   {
     id: "unified-bento",
     name: "Unified · Bento (previous)",
-    note: "The earlier Unified fold: four flagship cards with live demos over three platform cards. The home page now uses numbered steps.",
+    note: "The earlier Unified fold: four flagship cards with live demos over three platform cards. The home page now shows one large frame at a time.",
     render: () => <Unified variant="bento" />,
+  },
+  {
+    id: "unified-steps",
+    name: "Unified · Numbered steps",
+    note: "Four alternating rows (plan, run, cover, decide), each with its demo on a painting. The home page now shows one large frame at a time.",
+    render: () => <Unified variant="steps" />,
   },
   {
     id: "inset",

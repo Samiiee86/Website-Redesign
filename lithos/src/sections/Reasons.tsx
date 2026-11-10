@@ -1,6 +1,6 @@
-import { ArrowRight, ArrowUpRight, Check, Star } from "lucide-react";
+import { ArrowUpRight, Check, Star } from "lucide-react";
 import { asSeenOn, reasons, reviews, security, stats } from "../lib/content";
-import { Marquee, Reveal, Section, ArrowChip } from "../lib/ui";
+import { Marquee, Reveal, Section, ArrowChip, SlideArrow } from "../lib/ui";
 import { CERT_NAMES, CertMark } from "../components/CertMarks";
 
 function Stars({ rating }: { rating: string }) {
@@ -105,10 +105,7 @@ export default function Reasons() {
                 </p>
                 <span className="mt-5 inline-flex items-center gap-2 border-b border-foreground pb-0.5 text-b3 font-medium">
                   {report.cta}
-                  <ArrowRight
-                    size={14}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
+                  <SlideArrow />
                 </span>
               </div>
             ))}

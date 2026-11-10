@@ -1,8 +1,10 @@
-import { ArrowRight, BarChart3, ClipboardList, Smartphone, Zap } from "lucide-react";
+import { BarChart3, ClipboardList, Smartphone, Zap } from "lucide-react";
 import { scenery } from "../lib/scenery";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { products } from "../lib/content";
 import { DEMOS, type DemoKey } from "../components/Demos";
-import { Reveal, Section, ArrowChip } from "../lib/ui";
+import { Reveal, Section, ArrowChip, SlideArrow } from "../lib/ui";
 
 /* The Unified Quality Engineering fold, bento edition: the four AI flagship
    products get big cards with their live scripted demos on the paintings,
@@ -74,10 +76,7 @@ function BigCard({ id, index }: { id: string; index: number }) {
         </p>
         <button className="group/btn mt-3 inline-flex items-center gap-1.5 border-b border-foreground pb-0.5 text-b3 font-medium text-foreground">
           Learn more
-          <ArrowRight
-            size={13}
-            className="transition-transform duration-300 group-hover/btn:translate-x-1"
-          />
+          <SlideArrow />
         </button>
       </div>
       <div className="relative h-[280px] overflow-hidden">
@@ -157,10 +156,7 @@ function BentoGrid() {
                 </p>
                 <button className="group/btn mt-4 inline-flex items-center gap-1.5 self-start border-b border-foreground pb-0.5 text-b3 font-medium text-foreground">
                   Learn more
-                  <ArrowRight
-                    size={13}
-                    className="transition-transform duration-300 group-hover/btn:translate-x-1"
-                  />
+                  <SlideArrow />
                 </button>
               </div>
             ))}
@@ -251,10 +247,7 @@ function StepRows() {
                 </span>
                 <button className="group/btn inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
                   {tab.cta}
-                  <ArrowRight
-                    size={15}
-                    className="transition-transform duration-300 group-hover/btn:translate-x-1"
-                  />
+                  <SlideArrow />
                 </button>
               </div>
             </Reveal>
@@ -283,13 +276,135 @@ function StepRows() {
   );
 }
 
-export type UnifiedVariant = "steps" | "bento";
+/* --- switcher edition (default) -----------------------------------------
+   One large frame at a time: the product list on the left, the selected
+   product's live demo filling a painted stage on the right. It advances on
+   its own and holds while the pointer is over the fold. */
 
-export default function Unified({ variant = "steps" }: { variant?: UnifiedVariant }) {
+const ADVANCE_MS = 9000;
+
+function ProductSwitcher() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    if (paused || reduce) return;
+    const t = setTimeout(() => setActive((a) => (a + 1) % STEPS.length), ADVANCE_MS);
+    return () => clearTimeout(t);
+  }, [active, paused, reduce]);
+
+  const step = STEPS[active];
+  const tab = products.tabs.find((t) => t.id === step.id)!;
+  const Demo = DEMOS[tab.demo as DemoKey];
+
+  return (
+    <Reveal delay={0.08}>
+      <div
+        className="-mx-8 grid grid-cols-[minmax(0,1fr)] border-y border-border bg-surface lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)]"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
+        <div role="tablist" aria-label="Platform products" className="flex flex-col border-border max-lg:border-b lg:border-r">
+          {STEPS.map((s, i) => {
+            const Icon = s.icon;
+            const on = i === active;
+            const t = products.tabs.find((x) => x.id === s.id)!;
+            return (
+              <button
+                key={s.id}
+                role="tab"
+                aria-selected={on}
+                onClick={() => setActive(i)}
+                className={`group/btn relative border-b border-border px-8 py-6 text-left transition-colors duration-300 last:border-b-0 lg:flex-1 ${
+                  on ? "bg-surface" : "bg-background/60 hover:bg-background"
+                }`}
+              >
+                {/* progress along the top edge of the open row */}
+                {on && (
+                  <motion.span
+                    key={`bar-${active}-${paused}`}
+                    aria-hidden
+                    initial={{ scaleX: paused || reduce ? 1 : 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ duration: paused || reduce ? 0 : ADVANCE_MS / 1000, ease: "linear" }}
+                    className="absolute inset-x-0 top-0 h-px origin-left bg-foreground"
+                  />
+                )}
+                <span className="flex items-center gap-3">
+                  <Icon size={18} className={on ? "text-foreground" : "text-muted-foreground"} />
+                  <span className={`text-b1 font-medium tracking-tight ${on ? "text-foreground" : "text-muted-foreground"}`}>
+                    {s.product}
+                  </span>
+                </span>
+                <AnimatePresence initial={false}>
+                  {on && (
+                    <motion.span
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      className="block overflow-hidden"
+                    >
+                      <span className="mt-3 block text-b2 leading-relaxed text-muted-foreground">
+                        {s.body}
+                      </span>
+                      <span className="mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
+                        {t.cta}
+                        <SlideArrow />
+                      </span>
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* the one large frame */}
+        <div
+          role="tabpanel"
+          data-cursor={step.product}
+          className="relative min-h-[460px] overflow-hidden md:min-h-[600px]"
+        >
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={step.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 flex items-center justify-center px-6 md:px-14"
+            >
+              <img
+                src={step.scene}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-white/20" />
+              <motion.div
+                initial={{ y: 16 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="relative w-full max-w-[640px]"
+              >
+                <Demo />
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+export type UnifiedVariant = "switcher" | "steps" | "bento";
+
+export default function Unified({ variant = "switcher" }: { variant?: UnifiedVariant }) {
   return (
     <Section id="unified" className={variant === "steps" ? "!pb-0 md:!pb-0" : ""}>
       <UnifiedHeading />
-      {variant === "bento" ? <BentoGrid /> : <StepRows />}
+      {variant === "bento" ? <BentoGrid /> : variant === "steps" ? <StepRows /> : <ProductSwitcher />}
     </Section>
   );
 }

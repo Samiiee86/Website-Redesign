@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
 import {
-  ArrowRight,
   ArrowUp,
   ArrowUpRight,
   Bot,
@@ -25,7 +24,7 @@ import {
 } from "lucide-react";
 import { pioneer, pioneerSmall } from "../lib/content";
 import { scenery } from "../lib/scenery";
-import { Reveal, Section, ArrowChip } from "../lib/ui";
+import { Reveal, Section, ArrowChip, SlideArrow } from "../lib/ui";
 
 const SCENES = [scenery.sunlitClouds, scenery.mountainLake];
 /* the three small cards, from the same painted set as the hero */
@@ -379,10 +378,7 @@ function Copy({
       {link && (
         <button className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
           Learn more
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover/btn:translate-x-1"
-          />
+          <SlideArrow />
         </button>
       )}
     </div>
@@ -499,10 +495,7 @@ function SmallCard({ index, className = "" }: { index: number; className?: strin
         </p>
         <button className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
           Learn more
-          <ArrowRight
-            size={15}
-            className="transition-transform duration-300 group-hover/btn:translate-x-1"
-          />
+          <SlideArrow />
         </button>
       </div>
       <div className="relative mt-auto pl-6 pt-10 md:pl-8">
@@ -743,10 +736,7 @@ function GLText({
       </p>
       <button className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground">
         Learn more
-        <ArrowRight
-          size={15}
-          className="transition-transform duration-300 group-hover/btn:translate-x-1"
-        />
+        <SlideArrow />
       </button>
     </div>
   );
@@ -929,16 +919,25 @@ function GumloopRow() {
         <div
           ref={big.ref}
           data-cursor={kane.cta}
-          className="flex flex-col border-border max-lg:border-b lg:border-r"
+          className="relative flex min-h-[600px] flex-col overflow-hidden border-border max-lg:border-b lg:border-r"
         >
-          {/* the one big picture: the painting with the KaneAI window on it */}
-          <div className="relative flex h-[380px] flex-none items-center justify-center overflow-hidden md:h-[420px]">
-            <Painting index={0} />
-            <div className="relative w-full max-w-[460px] px-6">
+          {/* the painting fills the whole card; the copy sits on a white
+              wash that rises from the foot */}
+          <Painting index={0} />
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(255,255,255,0) 52%, rgba(255,255,255,0.92) 70%, #fff 100%)",
+            }}
+          />
+          <div className="relative flex flex-1 items-center justify-center px-8 pb-6 pt-12">
+            <div className="w-full max-w-[460px]">
               <PanelWindow index={0} playing={big.play} />
             </div>
           </div>
-          <div className="flex flex-1 flex-col justify-end p-8">
+          <div className="relative p-8">
             <GLText big title={kane.title} body="Plan, author and evolve end-to-end tests from plain language or your company's own context." />
           </div>
         </div>
@@ -1011,7 +1010,7 @@ export function PioneerHeading() {
   );
 }
 
-export default function Bento({ variant = "hover" }: { variant?: PioneerVariant }) {
+export default function Bento({ variant = "gumloop" }: { variant?: PioneerVariant }) {
   return (
     <Section>
       <Reveal className="mb-12">

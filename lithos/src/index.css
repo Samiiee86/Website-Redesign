@@ -360,3 +360,28 @@ body {
     transition: none;
   }
 }
+
+/* text-link arrow: the same slide as .btn-arrow — the arrow exits right and
+   a twin enters from the left. Fires on any hovered .group / .group/btn. */
+.slide-arrow {
+  display: inline-flex;
+  width: 15px;
+  overflow: hidden;
+  flex: none;
+}
+.slide-arrow svg {
+  flex: 0 0 auto;
+  transform: translateX(-15px);
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+.group:hover .slide-arrow svg,
+.group\/btn:hover .slide-arrow svg,
+.group\/all:hover .slide-arrow svg,
+.group\/sec:hover .slide-arrow svg {
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide-arrow svg {
+    transition: none;
+  }
+}
