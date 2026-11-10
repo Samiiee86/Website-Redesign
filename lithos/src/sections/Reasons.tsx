@@ -2,6 +2,7 @@ import { ArrowUpRight, Check, Star } from "lucide-react";
 import { asSeenOn, reasons, reviews, security, stats } from "../lib/content";
 import { Marquee, Reveal, Section, ArrowChip, SlideArrow } from "../lib/ui";
 import { CERT_NAMES, CertMark } from "../components/CertMarks";
+import { scenery } from "../lib/scenery";
 
 function Stars({ rating }: { rating: string }) {
   const value = parseFloat(rating);
@@ -143,7 +144,14 @@ export default function Reasons() {
               </div>
               {/* the coding agents it plugs into, joined to one status pill
                   (after gumloop.com's connections card) */}
-              <div className="mt-auto flex flex-col items-center pb-2">
+              <div className="relative mt-auto flex flex-col items-center overflow-hidden border border-border px-4 py-9">
+                <img
+                  src={scenery.treetop}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="relative flex flex-col items-center">
                 <div className="flex items-end gap-2.5">
                   {MCP_CLIENTS.map((c, i) => (
                     <span
@@ -159,13 +167,14 @@ export default function Reasons() {
                     </span>
                   ))}
                 </div>
-                <span aria-hidden className="h-5 border-l border-dashed border-border" />
+                <span aria-hidden className="h-5 border-l border-dashed border-foreground/40" />
                 <span className="flex items-center gap-2.5 rounded-full border border-border bg-white px-4 py-2 text-b3 text-foreground shadow-[0_6px_18px_-12px_rgba(18,18,18,0.35)]">
                   Connected to the TestMu AI MCP server
                   <span className="flex h-4 w-4 items-center justify-center rounded-full bg-[#1A7F37] text-white">
                     <Check size={10} strokeWidth={3} />
                   </span>
                 </span>
+                </div>
               </div>
             </div>
           </div>
