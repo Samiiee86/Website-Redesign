@@ -10,7 +10,7 @@ import { rebrand } from "../lib/content";
 import { scenery } from "../lib/scenery";
 import { Section } from "../lib/ui";
 
-const KEPT = ["Same login and API keys", "Same products and integrations", "New AI agents added"];
+const KEPT = ["Same login", "Same products", "New AI agents"];
 
 /* The name change, told as a picture: a window on a painted plate where
    the old name is struck through and the new mark comes up as you scroll. */
@@ -20,21 +20,15 @@ function NameChange({ progress }: { progress: MotionValue<number> }) {
   const newIn = useTransform(progress, [0.3, 0.55], [0.15, 1]);
   const newLift = useTransform(progress, [0.3, 0.55], [10, 0]);
   return (
-    <div className="relative mt-10 flex h-[300px] items-center justify-center overflow-hidden border border-border px-5 md:h-[320px]">
+    <div className="relative mt-8 flex h-[200px] items-center justify-center overflow-hidden border border-border px-5">
       <img
         src={scenery.chalkcliff}
         alt=""
         className="absolute inset-0 h-full w-full object-cover object-[center_45%]"
         loading="lazy"
       />
-      <div className="relative w-full max-w-[400px] border border-border bg-white shadow-[0_24px_60px_-30px_rgba(18,18,18,0.45)]">
-        <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
-          <span className="mono text-b5 uppercase tracking-[0.2em] text-muted-foreground">
-            Rebrand
-          </span>
-          <span className="pixel text-b4 text-muted-foreground">12.01.2026</span>
-        </div>
-        <div className="flex items-center justify-between gap-3 px-5 py-6">
+      <div className="relative w-full min-w-0 max-w-[400px] border border-border bg-white shadow-[0_24px_60px_-30px_rgba(18,18,18,0.45)]">
+        <div className="flex items-center justify-between gap-3 px-4 py-4 sm:px-5">
           <motion.span
             style={{ opacity: oldFade }}
             className="relative text-[24px] font-medium tracking-tight text-foreground"
@@ -54,10 +48,10 @@ function NameChange({ progress }: { progress: MotionValue<number> }) {
             className="h-[20px] w-auto"
           />
         </div>
-        <ul className="border-t border-border px-5 py-3">
+        <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border-t border-border px-4 py-2.5 sm:justify-between sm:px-5">
           {KEPT.map((k) => (
-            <li key={k} className="flex items-center gap-2.5 py-1.5 text-b3 text-foreground">
-              <Check size={13} className="text-[#1A7F37]" />
+            <li key={k} className="flex items-center gap-1.5 whitespace-nowrap text-b4 text-foreground">
+              <Check size={12} className="text-[#1A7F37]" />
               {k}
             </li>
           ))}

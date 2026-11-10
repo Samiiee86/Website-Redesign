@@ -7,7 +7,7 @@ import { Reveal, Section, SlideArrow } from "../lib/ui";
 export default function Shipped() {
   return (
     <Section>
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,300px)_1fr] lg:gap-14">
+      <div className="grid gap-12 lg:grid-cols-[minmax(0,320px)_1fr] lg:gap-24">
         <Reveal>
           <h2>
             <span className="block text-muted-foreground">{shipped.lead}</span>
