@@ -2,15 +2,8 @@
 /* TestMu DS tokens (managed by .testmu, updated by the kit) */
 @import "../.testmu/tokens/tokens.css";
 
-/* VCR OSD Mono (MrManet, 2015) — free for commercial use. Drives the game's
-   pixel type. */
-@font-face {
-  font-family: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
-  src: url("/fonts/VCR_OSD_MONO.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: block;
-}
+/* VCR OSD Mono, the bug game's pixel type, is registered in
+   src/components/BugGuard/pixelText.ts so it stays outside the site styles. */
 
 /* Kept as the fallback: the Square cut is not on Google Fonts, only the base. */
 @font-face {
@@ -332,8 +325,8 @@ body {
   width: 36px;
   height: 100%;
   overflow: hidden;
-  border-radius: 9999px;
-  background: #ed5f00;
+  border-radius: var(--tm-radius-sm);
+  background: var(--tm-hero-arrow);
   color: #fff;
 }
 .btn-arrow .chip > span {
