@@ -451,7 +451,8 @@ function Chapter({
   const tab = products.tabs.find((t) => t.id === step.id)!;
   const Icon = step.icon;
   return (
-    <div ref={ref} className="sticky-chapter flex flex-col py-12 lg:py-20">
+    <div ref={ref} className="sticky-chapter py-12 lg:py-0">
+      <div className="sticky-chapter-inner flex w-full flex-col">
       <p className="mono flex items-center gap-2.5 text-b4 uppercase tracking-[0.18em] text-muted-foreground">
         <Icon size={16} className="text-foreground" />
         {step.product}
@@ -490,6 +491,7 @@ function Chapter({
           ))}
         </ul>
       </div>
+      </div>
     </div>
   );
 }
@@ -505,21 +507,35 @@ function StickyScroll() {
         ))}
       </div>
 
-      <div className="hidden lg:block">
+      {/* the pinned frame runs out to the page's margin line */}
+      <div className="hidden lg:-mr-8 lg:block">
         <div className="sticky-frame flex items-center">
           <div
             data-cursor={step.product}
-            className="relative h-full max-h-[680px] w-full overflow-hidden border border-border bg-surface"
+            className="sticky-frame-inner relative w-full overflow-hidden border border-border bg-surface"
           >
+            {/* every painting stays mounted, so a swap never waits on a download */}
+            {STEPS.map((s, i) => (
+              <img
+                key={s.id}
+                src={s.scene}
+                alt=""
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                  i === active ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            ))}
             <AnimatePresence initial={false}>
               <motion.div
                 key={step.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.4, delay: 0.1 } }}
-                exit={{ opacity: 0, transition: { duration: 0.2 } }}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.15 } }}
+                exit={{ opacity: 0, transition: { duration: 0.15 } }}
                 className="absolute inset-0 flex items-center justify-center px-12"
               >
-                <Plate step={step} />
+                <div className="w-full max-w-[560px]">
+                  <StageDemo id={step.id} />
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -527,6 +543,12 @@ function StickyScroll() {
       </div>
     </div>
   );
+}
+
+function StageDemo({ id }: { id: string }) {
+  const tab = products.tabs.find((t) => t.id === id)!;
+  const Demo = DEMOS[tab.demo as DemoKey];
+  return <Demo />;
 }
 
 export type UnifiedVariant = "sticky" | "rows" | "switcher" | "bento";

@@ -385,14 +385,22 @@ body {
 
 /* ---------- Unified sticky scroll: copy scrolls, the frame stays ---------- */
 @media (min-width: 1024px) {
-  /* one screen per chapter, so each product gets the frame to itself */
+  /* one screen per chapter; the copy block is as tall as the frame and sits
+     at the same height, so label, copy, highlights and demo show together */
   .sticky-chapter {
+    display: flex;
+    align-items: center;
     min-height: calc(100vh - var(--tm-space-56));
+  }
+  .sticky-chapter-inner {
+    min-height: min(680px, calc(100vh - 136px));
   }
   .sticky-frame {
     position: sticky;
     top: var(--tm-space-56);
     height: calc(100vh - var(--tm-space-56));
-    padding-block: var(--tm-space-40);
+  }
+  .sticky-frame-inner {
+    height: min(680px, calc(100vh - 136px));
   }
 }
