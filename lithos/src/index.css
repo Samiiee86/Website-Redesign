@@ -382,3 +382,17 @@ body {
     transition: none;
   }
 }
+
+/* ---------- Unified sticky scroll: copy scrolls, the frame stays ---------- */
+@media (min-width: 1024px) {
+  /* one screen per chapter, so each product gets the frame to itself */
+  .sticky-chapter {
+    min-height: calc(100vh - var(--tm-space-56));
+  }
+  .sticky-frame {
+    position: sticky;
+    top: var(--tm-space-56);
+    height: calc(100vh - var(--tm-space-56));
+    padding-block: var(--tm-space-40);
+  }
+}
