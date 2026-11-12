@@ -197,7 +197,7 @@ export function SpecSheet({
                   role="rowheader"
                   className={`px-4 pb-2 pt-6 lg:px-8 lg:py-0 ${bg(0)}`}
                 >
-                  <div className={`lg:h-full lg:py-8 ${dots}`}>
+                  <div className={`lg:flex lg:h-full lg:items-center lg:py-8 ${dots}`}>
                     {r.logo ? (
                       <img
                         src={r.logo}
