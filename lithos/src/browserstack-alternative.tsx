@@ -2,7 +2,7 @@ import { StrictMode, useEffect, useRef, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import "./index.css";
-import { Section } from "./lib/ui";
+import { ArrowChip, Section } from "./lib/ui";
 import GuideLines from "./components/GuideLines";
 import Header from "./components/Header";
 import TrustedBy from "./sections/TrustedBy";
@@ -21,14 +21,15 @@ import type { MatrixGroup } from "./pieces/compare/MatrixTable";
      customer stories, FAQ (with this page's questions), the closing
      enterprise call and the footer.
    - The two comparison tables from the pieces library, as they are.
-   - Two kit folds where the site has nothing for the job: the hero
-     (hero-media, with the cross browser testing hero fold's video) and
-     the three steps (code-setup).
+   - Kit folds where the site has nothing for the job: the hero
+     (hero-media, with the cross browser testing hero fold's video), the
+     reviews (reviews-plain) and the three steps (feature-steps), plus a
+     methodology block of joined boxes (tm-join).
 
    Copy is trimmed from the live page: its 9 product tables (44 rows)
    become one head to head of the rows that differ most, the "other device
-   clouds" cards become links on the alternatives' names, and the
-   methodology block becomes an FAQ answer. */
+   clouds" cards become links on the alternatives' names, and the Gartner
+   notice moves into the Gartner FAQ answer. */
 
 /* ---------- head to head: one row group per product pair ---------- */
 
@@ -210,21 +211,6 @@ const faq = [
     ),
   },
   {
-    q: "How did you compare TestMu AI and BrowserStack?",
-    a: (
-      <>
-        Feature by feature and on list price, across 9 product pairs, from
-        BrowserStack's public pricing page, product pages and docs, checked on
-        14 October 2026, against TestMu AI's published plans. Where a feature
-        is plan-gated or sold separately, the table names that plan. Our{" "}
-        <A href="https://www.testmuai.com/editorial-policy/">
-          editorial policy
-        </A>{" "}
-        explains how we check facts.
-      </>
-    ),
-  },
-  {
     q: "Which security certifications does TestMu AI hold?",
     a: (
       <>
@@ -246,6 +232,20 @@ const faq = [
           Gartner Magic Quadrant page
         </A>
         .
+        <span className="mt-4 block text-b3">
+          Gartner, Magic Quadrant for Agentic Software Quality Assurance
+          Platforms, By Ross Power, Sushant Singhal, C.A. Swan, 12 October
+          2026. Gartner and Magic Quadrant are trademarks of Gartner, Inc.
+          and/or its affiliates. Gartner does not endorse any company, vendor,
+          product or service depicted in its publications, and does not advise
+          technology users to select only those vendors with the highest
+          ratings or other designation. Gartner publications consist of the
+          opinions of Gartner's business and technology insights organization
+          and should not be construed as statements of fact. Gartner disclaims
+          all warranties, expressed or implied, with respect to this
+          publication, including any warranties of merchantability or fitness
+          for a particular purpose.
+        </span>
       </>
     ),
   },
@@ -311,54 +311,6 @@ function Hero() {
       </div>
     </section>
   );
-}
-
-const before = `const capabilities = {
-  browserName: "Chrome",
-  "bstack:options": {
-    os: "Windows",
-    osVersion: "11",
-    userName: process.env.BROWSERSTACK_USERNAME,
-    accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-  },
-};
-
-const driver = new Builder()
-  .usingServer("https://hub-cloud.browserstack.com/wd/hub")
-  .withCapabilities(capabilities)
-  .build();`;
-
-const after = `const capabilities = {
-  browserName: "Chrome",
-  "LT:Options": {
-    platformName: "Windows 11",
-    username: process.env.LT_USERNAME,
-    accessKey: process.env.LT_ACCESS_KEY,
-  },
-};
-
-const driver = new Builder()
-  .usingServer("https://hub.lambdatest.com/wd/hub")
-  .withCapabilities(capabilities)
-  .build();`;
-
-/* the kit's code colours: keys (f), strings (s), keywords (k) */
-const TOKEN = /(^[ \t]*"?[\w:]+"?(?=:))|("[^"]*")|\b(const|new)\b/g;
-
-/* One flat run of text and coloured spans, as in the kit's own markup:
-   the kit script numbers the lines by splitting on line breaks, so no
-   element may wrap a whole line. */
-function Code({ src }: { src: string }) {
-  const out: ReactNode[] = [];
-  let at = 0;
-  for (const m of src.matchAll(new RegExp(TOKEN.source, "gm"))) {
-    out.push(src.slice(at, m.index));
-    const cls = m[1] ? "f" : m[2] ? "s" : "k";
-    out.push(<span key={m.index} className={cls}>{m[0]}</span>);
-    at = m.index + m[0].length;
-  }
-  out.push(src.slice(at));
-  return <pre>{out}</pre>;
 }
 
 /* ---------- reviews: the kit's reviews-plain fold ---------- */
@@ -493,92 +445,127 @@ function Reviews() {
 
 const MIGRATION = "https://www.testmuai.com/support/docs/browserstack-to-testmu-migration-guide/";
 
-/* kit code-setup, with BrowserStack and TestMu AI as the two tabs. Its
-   contents sit in the site's own section frame, so its left edge lines up
-   with every other section and the page's guide lines run through it. */
+/* inline code, as in the spec sheet */
+const C = ({ children }: { children: string }) => (
+  <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-b3 text-foreground">
+    {children}
+  </code>
+);
+
+/* ---------- three steps: the kit's feature-steps fold ---------- */
+
+const steps = [
+  {
+    title: "Copy your username and access key",
+    body: (
+      <>
+        In Account settings, open Password &amp; Security, then copy your
+        username and access key into your <C>.env</C> file.
+      </>
+    ),
+  },
+  {
+    title: "Point tests at the TestMu AI hub",
+    body: (
+      <>
+        Set the hub URL to <C>hub.lambdatest.com/wd/hub</C>. Keep your test
+        runner, unless it runs through the BrowserStack SDK.
+      </>
+    ),
+  },
+  {
+    title: "Update your capabilities",
+    body: (
+      <>
+        Rebuild <C>bstack:options</C> as <C>LT:Options</C> in the
+        Capabilities Generator. Your Selenium test logic stays the same.
+      </>
+    ),
+  },
+];
+
 function Steps() {
   return (
     <Section>
-      <div>
-        <div className="tm-setup">
-          <div className="tm-reveal">
-            <h2 className="tm-head__title">
-              <span className="tm-head__lead">From BrowserStack</span>
-              <span className="tm-head__main">in three steps</span>
-            </h2>
-            <p className="tm-head__text" style={{ marginTop: 24 }}>
-              Keep your Selenium tests. Change the login, the hub and one
-              block of capabilities.
-            </p>
-            <ol className="tm-steps">
-              <li>
-                <span className="tm-label">01</span>
-                <div>
-                  <b>Copy your username and access key</b>
-                  <p>From Account settings, into your .env file.</p>
-                </div>
-              </li>
-              <li>
-                <span className="tm-label">02</span>
-                <div>
-                  <b>Point tests at the TestMu AI hub</b>
-                  <p>Your test runner stays, unless it runs through the BrowserStack SDK.</p>
-                </div>
-              </li>
-              <li>
-                <span className="tm-label">03</span>
-                <div>
-                  <b>Rename the capabilities</b>
-                  <p>bstack:options becomes LT:Options. The test logic stays the same.</p>
-                </div>
-              </li>
-            </ol>
-            <div style={{ marginTop: 28 }}>
-              <a className="tm-link" href={MIGRATION}>
-                Read the migration guide
-                <span className="tm-arw" aria-hidden="true">
-                  <Arrow />
-                  <Arrow />
-                </span>
-              </a>
-            </div>
+      <FoldHead
+        lead="Move from BrowserStack"
+        title="in three steps"
+        body={
+          <>
+            Keep your Selenium tests and change how they connect. The{" "}
+            <A href={MIGRATION}>migration guide</A> covers Selenium 3 and 4.
+          </>
+        }
+      >
+        <a
+          href="https://accounts.testmuai.com/register"
+          className="btn btn-lg btn-primary btn-arrow btn-arrow-plain mt-8"
+        >
+          Start testing now
+          <ArrowChip />
+        </a>
+      </FoldHead>
+      <div className="tm-reveal -mx-8">
+        <ol className="tm-grid tm-grid--3 tm-steps2">
+          {steps.map((s, i) => (
+            <li key={s.title} className="tm-cell tm-step">
+              <span className="tm-step__n">{i + 1}</span>
+              {/* H5 and B2: the kit's 20px step title is off the type scale */}
+              <h3 className="!text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">
+                {s.title}
+              </h3>
+              <p className="!text-b2">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- methodology: section head plus joined boxes ---------- */
+
+const facts: { label: string; value: ReactNode }[] = [
+  { label: "Last updated", value: "November 2026" },
+  { label: "What we compared", value: "9 product pairs, 44 feature and pricing rows" },
+  {
+    label: "Sources",
+    value: (
+      <>
+        BrowserStack's pricing, product pages and docs, checked 14 October
+        2026, and TestMu AI's plans and docs. How we check facts:{" "}
+        <A href="https://www.testmuai.com/editorial-policy/">editorial policy</A>.
+      </>
+    ),
+  },
+  {
+    label: "One product at a time",
+    value: (
+      <span className="flex flex-col gap-2">
+        <A href="https://www.testmuai.com/blog/testmu-vs-browserstack-automate/">BrowserStack Automate vs HyperExecute</A>
+        <A href="https://www.testmuai.com/blog/testmu-vs-browserstack-live/">BrowserStack Live and App Live vs TestMu AI</A>
+        <A href="https://www.testmuai.com/blog/testmu-vs-browserstack-test-management/">BrowserStack Test Management review</A>
+        <A href="https://www.testmuai.com/testmu-alternative/">TestMu AI alternatives</A>
+      </span>
+    ),
+  },
+];
+
+function Methodology() {
+  return (
+    <Section>
+      <FoldHead
+        lead="How we compared"
+        title="each BrowserStack product"
+        body="Each BrowserStack product against its TestMu AI counterpart, on features and monthly list price for annual billing. Where a feature is plan-gated or sold separately, the table names that plan."
+      />
+      <div className="tm-join tm-reveal !-mx-8">
+        {facts.map((f) => (
+          <div key={f.label} className="flex flex-col gap-3">
+            <span className="tm-label">{f.label}</span>
+            <span className="text-b2 text-foreground">{f.value}</span>
           </div>
-          <div className="tm-reveal">
-            <div className="tm-code tm-code--boxed" data-tm-code data-tm-tabs>
-              <div className="tm-code__bar">
-                <div className="tm-code__tabs" role="tablist">
-                  <button role="tab" data-tab="before" aria-selected="false">BrowserStack</button>
-                  <button role="tab" data-tab="after" aria-selected="true">TestMu AI</button>
-                </div>
-                <div className="tm-code__tools">
-                  <button className="tm-btn tm-btn--secondary" data-tm-copy>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <rect x="9" y="9" width="12" height="12" rx="2" />
-                      <path d="M5 15V5a2 2 0 0 1 2-2h8" />
-                    </svg>
-                    Copy
-                  </button>
-                  <a className="tm-btn tm-btn--secondary" href={MIGRATION}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M14 2H6v20h12V6zM14 2v4h4M9 13h6M9 17h6" />
-                    </svg>
-                    Docs
-                  </a>
-                </div>
-              </div>
-              <div data-panel="before" data-label="test.js · before" hidden>
-                <Code src={before} />
-              </div>
-              <div data-panel="after" data-label="test.js · after">
-                <Code src={after} />
-              </div>
-              <div className="tm-code__status">
-                <span data-lang />
-                <span data-lines />
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </Section>
   );
@@ -634,9 +621,10 @@ function Page() {
             rows={alts}
           />
         </div>
+        <Methodology />
         <Reviews />
-        <Steps />
         <Stories />
+        <Steps />
         <Faq items={faq} />
         <Enterprise />
         <Footer />
