@@ -11,6 +11,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         options: resolve(__dirname, 'options.html'),
+        // library.html shows each building block on its own
+        library: resolve(__dirname, 'library.html'),
       },
     },
   },
