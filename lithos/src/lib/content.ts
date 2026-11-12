@@ -167,7 +167,7 @@ export const platform = {
 export const products = {
   eyebrow: "Unified Quality Engineering for Enterprise",
   title:
-    "KaneAI and our agents write the tests. One platform plans, runs and reports on them across web, mobile and AI apps, from the first idea to the release.",
+    "Plan, author, execute and analyze every test in one place. Test management, AI agents, a fast execution cloud and AI insights, built to work together.",
   tabs: [
     {
       id: "test-manager",
@@ -785,7 +785,7 @@ export const reviews = {
 export const pioneerSmall = [
   {
     key: "agents",
-    title: "Agent to Agent Testing",
+    title: "Agent Testing",
     body: "Agents talk to your chat, voice and phone agents and grade every answer.",
     cta: "Explore Agent Testing",
     window: "testmu.ai / agent-testing",
