@@ -14,13 +14,13 @@ import {
 } from "./pieces/compare/content";
 
 /* The pieces library: every building block for the new TestMu AI pages,
-   shown one at a time inside the real page frame. Add a piece by adding
-   one entry to PIECES. */
+   shown one after another inside the real page frame, parted by a thin
+   line, with no labels on them. Add a piece by adding one entry to
+   PIECES; its name shows in the header links. */
 
 type Piece = {
   id: string;
   name: string;
-  use: string;
   node: ReactNode;
 };
 
@@ -28,7 +28,6 @@ const PIECES: Piece[] = [
   {
     id: "head-to-head",
     name: "Head to head",
-    use: "TestMu AI against one other product.",
     node: (
       <CompareDuel
         lead="TestMu AI and BrowserStack,"
@@ -42,7 +41,6 @@ const PIECES: Piece[] = [
   {
     id: "matrix",
     name: "Matrix",
-    use: "TestMu AI between two other options.",
     node: (
       <CompareMatrix
         lead="Three ways to run your tests,"
@@ -58,7 +56,6 @@ const PIECES: Piece[] = [
   {
     id: "wide-matrix",
     name: "Wide matrix",
-    use: "Four or five options. On a phone you pick which one to compare.",
     node: (
       <CompareMatrix
         lead="Five ways to test,"
@@ -72,7 +69,6 @@ const PIECES: Piece[] = [
   {
     id: "spec-sheet",
     name: "Spec sheet",
-    use: "A neutral table: things in rows, facts in columns, no winner.",
     node: (
       <SpecTable
         lead="Pick the tool."
@@ -97,8 +93,6 @@ const PIECES: Piece[] = [
   },
 ];
 
-const pad = (n: number) => String(n).padStart(2, "0");
-
 export default function PiecesLibrary() {
   return (
     <div className="relative min-h-screen bg-background font-body">
@@ -114,7 +108,10 @@ export default function PiecesLibrary() {
               Pieces library
             </span>
           </a>
-          <nav aria-label="Pieces" className="hidden items-center gap-6 lg:flex">
+          <nav
+            aria-label="Pieces"
+            className="hidden items-center gap-6 lg:flex"
+          >
             {PIECES.map((p) => (
               <a
                 key={p.id}
@@ -132,19 +129,13 @@ export default function PiecesLibrary() {
         <GuideLines />
 
         {PIECES.map((p, i) => (
-          <div key={p.id} id={p.id} className="relative z-[1] scroll-mt-14">
-            {/* the name tag above each piece; not part of the piece itself */}
-            <div className="border-b border-border px-5 sm:px-8">
-              <div className="mx-auto flex w-full max-w-[1240px] flex-wrap items-baseline gap-x-4 gap-y-1 px-8 py-4">
-                <span className="font-mono text-b4 uppercase tracking-[0.14em] text-muted-foreground">
-                  {pad(i + 1)}
-                </span>
-                <span className="text-b3 font-medium text-foreground">
-                  {p.name}
-                </span>
-                <span className="text-b3 text-muted-foreground">{p.use}</span>
-              </div>
-            </div>
+          <div
+            key={p.id}
+            id={p.id}
+            className={`relative z-[1] scroll-mt-14 ${
+              i > 0 ? "border-t border-border" : ""
+            }`}
+          >
             {p.node}
           </div>
         ))}
