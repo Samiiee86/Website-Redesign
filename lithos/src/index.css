@@ -429,10 +429,6 @@ body {
     transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.5s ease 0.25s;
 }
-.flow-count {
-  font-size: var(--tm-h2-size);
-  line-height: var(--tm-h2-line);
-}
 /* short screens: the listing keeps the product names, drops their one-liners */
 @media (max-height: 740px) {
   .flow-rail .flow-desc {
@@ -480,8 +476,17 @@ body {
   transition: fill 0.5s ease;
 }
 .iso-detail {
-  opacity: 0.55;
-  transition: opacity 0.5s ease;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.iso-name {
+  transition: fill 0.5s ease;
+}
+.iso-guide {
+  fill: none;
+  stroke: var(--tm-border-default);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
 }
 .iso-layer[data-on="true"] :is(.iso-top, .iso-side-l, .iso-side-r, .iso-box, .iso-tint, .iso-ink, .iso-line) {
   stroke: var(--tm-fg-default);
@@ -497,24 +502,27 @@ body {
 }
 .iso-layer[data-on="true"] .iso-detail {
   opacity: 1;
+  transition: opacity 0.5s ease 0.3s;
 }
-.iso-tag {
+.iso-tags {
   opacity: 0;
   transition: opacity 0.2s ease;
 }
-.iso-layer[data-on="true"] .iso-tag {
+.iso-tags[data-on="true"] {
   opacity: 1;
-  transition: opacity 0.5s ease 0.45s;
+  transition: opacity 0.5s ease 0.3s;
 }
-.iso-lead,
-.iso-guide {
+.iso-lead {
   fill: none;
   stroke: var(--tm-fg-subtle);
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
-.iso-guide {
-  stroke: var(--tm-border-default);
+.iso-pin {
+  fill: var(--tm-bg-surface);
+  stroke: var(--tm-fg-default);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
 }
 @media (prefers-reduced-motion: reduce) {
   .flow-move,

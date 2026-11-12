@@ -785,7 +785,7 @@ export const reviews = {
 export const pioneerSmall = [
   {
     key: "agents",
-    title: "Agent to Agent Testing",
+    title: "Agent Testing",
     body: "Agents talk to your chat, voice and phone agents and grade every answer.",
     cta: "Explore Agent Testing",
     window: "testmu.ai / agent-testing",
