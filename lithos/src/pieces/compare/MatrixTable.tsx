@@ -139,7 +139,7 @@ export default function MatrixTable({
                   onClick={() => setPick(i)}
                   className={`h-8 whitespace-nowrap rounded px-3 text-b3 font-medium transition-colors duration-200 ${FOCUS} ${
                     i === pick
-                      ? "bg-surface text-foreground shadow-[var(--tm-shadow-resting-sm)]"
+                      ? "bg-surface text-foreground [box-shadow:var(--tm-shadow-resting-sm)]"
                       : "text-muted-foreground hover:bg-[var(--tm-segment-hover)]"
                   }`}
                 >
@@ -161,7 +161,7 @@ export default function MatrixTable({
         {/* desktop: the white column, one sheet from the flag to the foot */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 hidden border border-foreground bg-surface shadow-[var(--tm-shadow-floating-md)] lg:block"
+          className="pointer-events-none absolute inset-y-0 hidden border border-foreground bg-surface [box-shadow:var(--tm-shadow-floating-md)] lg:block"
           style={{
             left: `${((LABEL_FR + at) / (LABEL_FR + n)) * 100}%`,
             width: `${100 / (LABEL_FR + n)}%`,

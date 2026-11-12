@@ -189,7 +189,7 @@ export function SpecSheet({
                 role="row"
                 className={`${GRID} ${
                   hl
-                    ? "z-[2] border border-foreground bg-surface shadow-[var(--tm-shadow-floating-md)]"
+                    ? "z-[2] border border-foreground bg-surface [box-shadow:var(--tm-shadow-floating-md)]"
                     : "border-b border-border lg:border-b-0"
                 }`}
               >
