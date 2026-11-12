@@ -1,7 +1,7 @@
 import { BarChart3, ClipboardList, Smartphone, Zap } from "lucide-react";
 import { scenery } from "../lib/scenery";
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, useInView, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { products } from "../lib/content";
 import { DEMOS, type DemoKey } from "../components/Demos";
 import { Reveal, Section, ArrowChip, SlideArrow } from "../lib/ui";
@@ -96,10 +96,10 @@ function BigCard({ id, index }: { id: string; index: number }) {
   );
 }
 
-export function UnifiedHeading() {
+function UnifiedHeading() {
   return (
     <Reveal className="mb-12">
-        <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-end lg:gap-14 xl:grid-cols-[minmax(0,1fr)_400px]">
+        <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-center lg:gap-14 xl:grid-cols-[minmax(0,1fr)_400px]">
           {/* on wide screens the first line holds together and the second
               wraps once, so the heading sets in three lines */}
           <h2>
@@ -406,166 +406,13 @@ function ProductSwitcher() {
   );
 }
 
-/* --- sticky edition (default) -------------------------------------------
-   After agentwork.com: the copy scrolls in a narrow left column, one screen
-   per product, while the frame on the right stays pinned and simply swaps
-   its painting and live demo when the next product reaches the middle of
-   the screen. Nothing to click. Phones get each demo under its own copy. */
+export type UnifiedVariant = "rows" | "switcher" | "bento";
 
-type Step = (typeof STEPS)[number];
-
-function Plate({ step }: { step: Step }) {
-  const tab = products.tabs.find((t) => t.id === step.id)!;
-  const Demo = DEMOS[tab.demo as DemoKey];
+export default function Unified({ variant = "rows" }: { variant?: UnifiedVariant }) {
   return (
-    <>
-      <img
-        src={step.scene}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover"
-        loading="lazy"
-      />
-      <div className="relative w-full max-w-[560px]">
-        <Demo />
-      </div>
-    </>
-  );
-}
-
-function Chapter({
-  step,
-  index,
-  onActive,
-}: {
-  step: Step;
-  index: number;
-  onActive: (i: number) => void;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  /* a chapter is "on" while it crosses the middle line of the screen */
-  const inView = useInView(ref, { margin: "-50% 0px -50% 0px" });
-  useEffect(() => {
-    if (inView) onActive(index);
-  }, [inView, index, onActive]);
-
-  const tab = products.tabs.find((t) => t.id === step.id)!;
-  const Icon = step.icon;
-  return (
-    <div ref={ref} className="sticky-chapter py-12 lg:py-0">
-      <div className="sticky-chapter-inner flex w-full flex-col">
-      <p className="mono flex items-center gap-2.5 text-b4 uppercase tracking-[0.18em] text-muted-foreground">
-        <Icon size={16} className="text-foreground" />
-        {step.product}
-      </p>
-      <h3 className="mt-5">{step.title}</h3>
-      <p className="mt-4 text-b1 text-muted-foreground">{step.body}</p>
-      <a
-        href="#top"
-        className="group/btn mt-6 inline-flex items-center gap-2 self-start border-b border-foreground pb-1 text-b3 font-medium text-foreground"
-      >
-        {tab.cta}
-        <SlideArrow />
-      </a>
-
-      {/* phones: the demo sits under its own copy */}
-      <div
-        data-cursor={step.product}
-        className="relative mt-8 flex min-h-[380px] items-center justify-center overflow-hidden border border-border px-4 py-8 lg:hidden"
-      >
-        <Plate step={step} />
-      </div>
-
-      <div className="mt-8 lg:mt-auto">
-        <p className="text-b3 font-medium text-foreground">Highlights</p>
-        <ul className="mt-2">
-          {step.points.map((pt, k) => (
-            <li
-              key={pt}
-              className="flex items-center justify-between gap-4 border-b border-border py-4 text-b2 text-foreground"
-            >
-              {pt}
-              <span className="pixel flex-none text-b4 text-muted-foreground">
-                {String(k + 1).padStart(2, "0")}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      </div>
-    </div>
-  );
-}
-
-function StickyScroll() {
-  const [active, setActive] = useState(0);
-  const step = STEPS[active];
-  return (
-    <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,5fr)_minmax(0,8fr)] lg:gap-16">
-      <div>
-        {STEPS.map((s, i) => (
-          <Chapter key={s.id} step={s} index={i} onActive={setActive} />
-        ))}
-      </div>
-
-      {/* the pinned frame runs out to the page's margin line */}
-      <div className="hidden lg:-mr-8 lg:block">
-        <div className="sticky-frame flex items-center">
-          <div
-            data-cursor={step.product}
-            className="sticky-frame-inner relative w-full overflow-hidden border border-border bg-surface"
-          >
-            {/* every painting stays mounted, so a swap never waits on a download */}
-            {STEPS.map((s, i) => (
-              <img
-                key={s.id}
-                src={s.scene}
-                alt=""
-                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-                  i === active ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))}
-            <AnimatePresence initial={false}>
-              <motion.div
-                key={step.id}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.15 } }}
-                exit={{ opacity: 0, transition: { duration: 0.15 } }}
-                className="absolute inset-0 flex items-center justify-center px-12"
-              >
-                <div className="w-full max-w-[560px]">
-                  <StageDemo id={step.id} />
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function StageDemo({ id }: { id: string }) {
-  const tab = products.tabs.find((t) => t.id === id)!;
-  const Demo = DEMOS[tab.demo as DemoKey];
-  return <Demo />;
-}
-
-export type UnifiedVariant = "sticky" | "rows" | "switcher" | "bento";
-
-export default function Unified({ variant = "sticky" }: { variant?: UnifiedVariant }) {
-  return (
-    <Section id="unified" className={variant === "sticky" ? "lg:!pb-12" : ""}>
+    <Section id="unified">
       <UnifiedHeading />
-      {variant === "bento" ? (
-        <BentoGrid />
-      ) : variant === "rows" ? (
-        <StepRows />
-      ) : variant === "switcher" ? (
-        <ProductSwitcher />
-      ) : (
-        <StickyScroll />
-      )}
+      {variant === "bento" ? <BentoGrid /> : variant === "rows" ? <StepRows /> : <ProductSwitcher />}
     </Section>
   );
 }

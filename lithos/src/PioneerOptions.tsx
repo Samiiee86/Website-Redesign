@@ -3,7 +3,6 @@ import GuideLines from "./components/GuideLines";
 import type { ReactNode } from "react";
 import Bento from "./sections/Bento";
 import Unified from "./sections/Unified";
-import Flow from "./sections/Flow";
 
 /* Review page for layout options: each option renders its section, one
    after another. Opened with ?options=pioneer or /options.html. */
@@ -20,24 +19,6 @@ const OPTIONS: { id: string; name: string; note: string; render: () => ReactNode
     name: "Unified · Bento (previous)",
     note: "The earlier Unified fold: four flagship cards with live demos over three platform cards. The home page now uses alternating product rows.",
     render: () => <Unified variant="bento" />,
-  },
-  {
-    id: "flow-diagram",
-    name: "Flow · Static diagram (previous home)",
-    note: "The four stages as connected cards. This version's home page tells the same story in the pinned scrolling flow.",
-    render: () => <Flow />,
-  },
-  {
-    id: "unified-sticky",
-    name: "Unified · Sticky scroll (previous home)",
-    note: "Copy scrolls on the left while one demo frame stays pinned on the right. Replaced here by the pinned Plan to Analysis flow.",
-    render: () => <Unified variant="sticky" />,
-  },
-  {
-    id: "unified-rows",
-    name: "Unified · Alternating rows (previous home)",
-    note: "Four rows with copy on one side and the demo on a painting on the other, alternating sides.",
-    render: () => <Unified variant="rows" />,
   },
   {
     id: "unified-switcher",
