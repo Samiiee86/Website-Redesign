@@ -1,17 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import {
-  Bot,
-  Check,
-  ClipboardList,
-  MessagesSquare,
-  Plug,
-  ShieldCheck,
-  Sparkles,
-  SquareTerminal,
-  Zap,
-  type LucideIcon,
-} from "lucide-react";
+import { Check } from "lucide-react";
 import { platform } from "../lib/content";
 import { Section, SlideArrow } from "../lib/ui";
 import { UnifiedHeading } from "./Unified";
@@ -21,7 +10,8 @@ import { UnifiedHeading } from "./Unified";
    sits mid-column with its products, finished steps park above it and the
    coming ones below. On the right the same four steps are a stack of
    isometric plates that stays whole: the open step's plate shows its
-   screen, in words, and the others park around it as named slabs. Scrolling is the only control. It
+   screen, in words, and the others park above and below it with clear air
+   around the open one. Scrolling is the only control. It
    replaces both the static workflow diagram and the product rows, so the
    story is told once. */
 
@@ -55,75 +45,48 @@ const num = (i: number) => String(i + 1).padStart(2, "0");
 
 /* ---------- the product listing for one step ---------- */
 
-const ICONS: Record<string, LucideIcon> = {
-  "Test Manager": ClipboardList,
-  "Kane AI": Bot,
-  "Kane CLI": SquareTerminal,
-  "MCP Server": Plug,
-  "Agent Testing": MessagesSquare,
-  "Agent Assurance": ShieldCheck,
-  HyperExecute: Zap,
-  "Test Intelligence": Sparkles,
-};
-
-const CAPTION_ROW = "mono text-b5 uppercase tracking-[0.14em] text-muted-foreground";
-
-/* The step's products as one joined white frame, each with its icon, name
-   and one-liner; what they include follows as small tags. */
+/* The step's products as plain rows (name, one-liner, arrow), then what
+   they include as a quiet ticked list. */
 function Listing({ index }: { index: number }) {
   const stage = platform.stages[index];
   return (
     <>
-      <p className={`mt-6 ${CAPTION_ROW}`}>
-        {stage.products.length > 1 ? "Products" : "Product"}
-      </p>
-      <ul className="mt-2 grid gap-px border border-border bg-border">
-        {stage.products.map((p) => {
-          const Icon = ICONS[p.name] ?? Sparkles;
-          const desc = p.desc || (p.name === "MCP Server" ? MCP_DESC : "");
-          return (
-            <li key={p.name} className="bg-surface">
-              <a
-                href="#top"
-                className="flow-row group/btn flex items-center gap-3 px-4 py-3 transition-colors duration-300 hover:bg-background"
-              >
-                <span className="flow-tile flex h-8 w-8 flex-none items-center justify-center border border-border bg-background text-foreground">
-                  <Icon size={16} strokeWidth={1.5} />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="flex items-center gap-2 text-b3 font-medium text-foreground">
-                    {p.name}
-                    {"badge" in p && p.badge && (
-                      <span className="mono rounded-sm bg-[color:var(--tm-bg-accent-muted)] px-1 text-b5 font-medium uppercase text-accent">
-                        {p.badge}
-                      </span>
-                    )}
-                  </span>
-                  {desc && (
-                    <span className="flow-desc block text-b3 text-muted-foreground">{desc}</span>
+      <ul className="mt-6 border-t border-border">
+        {stage.products.map((p) => (
+          <li key={p.name} className="border-b border-border">
+            <a href="#top" className="group/btn flex items-start justify-between gap-4 py-3">
+              {/* name beside its one-liner; on phones the one-liner drops below */}
+              <span className="grid min-w-0 flex-1 gap-x-4 sm:grid-cols-[152px_minmax(0,1fr)]">
+                <span className="flex items-center gap-2 text-b3 font-medium text-foreground">
+                  {p.name}
+                  {"badge" in p && p.badge && (
+                    <span className="mono rounded-sm bg-[color:var(--tm-bg-accent-muted)] px-1 text-b5 font-medium uppercase text-accent">
+                      {p.badge}
+                    </span>
                   )}
                 </span>
-                <SlideArrow />
-              </a>
-            </li>
-          );
-        })}
+                <span className="flow-desc text-b3 text-muted-foreground">
+                  {p.desc || (p.name === "MCP Server" ? MCP_DESC : "")}
+                </span>
+              </span>
+              <SlideArrow className="mt-1" />
+            </a>
+          </li>
+        ))}
       </ul>
       {stage.checks.length > 0 && (
-        <>
-          <p className={`mt-5 ${CAPTION_ROW}`}>Includes</p>
-          <ul className="mt-2 flex flex-wrap gap-2">
-            {stage.checks.map((c) => (
-              <li
-                key={c}
-                className="flow-tag inline-flex items-center gap-1.5 rounded-sm border border-border bg-surface px-2 py-1 text-b4 text-foreground"
-              >
-                <Check size={16} strokeWidth={1.5} className="flex-none text-[color:var(--tm-fg-success)]" />
-                {c}
-              </li>
-            ))}
-          </ul>
-        </>
+        <ul
+          className={`mt-5 grid gap-x-6 gap-y-2 ${
+            stage.checks.length > 3 ? "grid-cols-2" : "grid-cols-1"
+          }`}
+        >
+          {stage.checks.map((c) => (
+            <li key={c} className="flex items-start gap-2 text-b3 text-muted-foreground">
+              <Check size={16} strokeWidth={1.5} className="mt-1 flex-none text-foreground" />
+              {c}
+            </li>
+          ))}
+        </ul>
       )}
     </>
   );
@@ -423,12 +386,12 @@ const TAGS: { l: [string, Pt]; r: [string, Pt] }[] = [
   { l: ["Test Intelligence", P(32, 110)], r: ["Flaky tests", P(200, 100)] },
 ];
 
-const CHAR = 8.9; /* advance of one tracked mono capital, in view units */
+const CHAR = 10.4; /* advance of one tracked mono capital, in view units */
 const TAG_Y = 0; /* callouts sit in the gap between this plate and the pile above */
 
 function Tag({ side, text, to }: { side: "l" | "r"; text: string; to: Pt }) {
   const left = side === "l";
-  const x = left ? -264 : 124;
+  const x = left ? -292 : 124;
   const [tx, ty] = to;
   const from = left ? x + 20 + text.length * CHAR : x - 8;
   return (
@@ -440,7 +403,7 @@ function Tag({ side, text, to }: { side: "l" | "r"; text: string; to: Pt }) {
         x={x + 12}
         y={TAG_Y}
         dominantBaseline="central"
-        className="mono fill-foreground text-b4 uppercase tracking-[0.14em]"
+        className="mono fill-foreground text-b3 uppercase tracking-[0.14em]"
       >
         {text}
       </text>
@@ -448,50 +411,37 @@ function Tag({ side, text, to }: { side: "l" | "r"; text: string; to: Pt }) {
   );
 }
 
-/* One plate. Parked plates are blank slabs that only carry their name; the
-   open one shows its screen and its callouts. */
+/* One plate. Parked plates are blank slabs; the open one shows its screen
+   and its callouts. The step names live on the left, not on the drawing. */
 function Plate({
   index,
   on,
-  named = false,
+  tags = false,
 }: {
   index: number;
   on: boolean;
-  named?: boolean;
+  tags?: boolean;
 }) {
   const Art = ART[index];
   return (
     <g className="iso-layer" data-on={on}>
       <Box u={0} v={0} w={N} d={N} h={T} z={-T} />
       <Art />
-      {named && (
-        <>
-          <text
-            x={-222}
-            y={N / 2 + T / 2}
-            textAnchor="end"
-            dominantBaseline="central"
-            className="mono text-b4 uppercase tracking-[0.14em]"
-          >
-            <tspan className="fill-muted-foreground">{num(index)}</tspan>
-            <tspan dx={8} className={`iso-name ${on ? "fill-foreground" : "fill-muted-foreground"}`}>
-              {STAGES[index].name}
-            </tspan>
-          </text>
-          <g className="iso-tags" data-on={on}>
-            <Tag side="l" text={TAGS[index].l[0]} to={TAGS[index].l[1]} />
-            <Tag side="r" text={TAGS[index].r[0]} to={TAGS[index].r[1]} />
-          </g>
-        </>
+      {tags && (
+        <g className="iso-tags" data-on={on}>
+          <Tag side="l" text={TAGS[index].l[0]} to={TAGS[index].l[1]} />
+          <Tag side="r" text={TAGS[index].r[0]} to={TAGS[index].r[1]} />
+        </g>
       )}
     </g>
   );
 }
 
 const MOVE = { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const };
-const PARK = 44; /* between two parked plates */
-const ABOVE = 244; /* from the open plate up to the pile above it: clear of its screen */
-const BELOW = 76; /* from the open plate down to the pile under it */
+const GAP = 48; /* clear air between the open plate and either pile */
+const PARK = 56; /* between two parked plates */
+const ABOVE = N + T + GAP; /* from the open plate up to the pile above it */
+const BELOW = N + T + GAP; /* from the open plate down to the pile under it */
 
 /* The whole stack stays in view. Finished steps pile up above the open
    plate and the coming ones wait in a pile beneath it, the same way the
@@ -508,7 +458,7 @@ function Stack({ active }: { active: number }) {
   const shift = -(rel(0) + rel(last) + N + T) / 2;
   const at = (j: number) => rel(j) + shift;
   return (
-    <svg viewBox="-326 -320 620 640" className="relative h-full w-full" aria-hidden>
+    <svg viewBox="-300 -480 640 960" className="relative h-full w-full" aria-hidden>
       {/* dashed guides down the stack's corners, marching toward the last plate */}
       {[-208, 208].map((x) => (
         <motion.line
@@ -526,7 +476,7 @@ function Stack({ active }: { active: number }) {
         const j = last - k;
         return (
           <motion.g key={j} initial={false} animate={{ y: at(j) }} transition={MOVE}>
-            <Plate index={j} on={j === active} named />
+            <Plate index={j} on={j === active} tags />
           </motion.g>
         );
       })}
