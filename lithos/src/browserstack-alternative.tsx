@@ -12,6 +12,7 @@ import Enterprise from "./sections/Enterprise";
 import Footer from "./sections/Footer";
 import CompareDuel from "./pieces/CompareDuel";
 import SpecTable, { type SpecRow } from "./pieces/SpecTable";
+import { FoldHead } from "./pieces/compare/parts";
 import type { MatrixGroup } from "./pieces/compare/MatrixTable";
 
 /* BrowserStack alternative page (browserstack-alternative.html).
@@ -358,6 +359,132 @@ function Code({ src }: { src: string }) {
   return <pre>{out}</pre>;
 }
 
+/* ---------- reviews: the kit's reviews-plain fold ---------- */
+
+/* The seven reviews the live page shows, word for word, with where each
+   was posted. The third one is the wide cell. */
+const IMG = "https://assets.testmuai.com/resources/images";
+type Review = {
+  name: string;
+  by: string;
+  quote: string;
+  img: string;
+  url: string;
+  /* where it was posted: X uses the kit's X mark, the rest their icon */
+  on: "x" | { icon: string; label: string };
+};
+
+const reviews: Review[] = [
+  {
+    name: "Matthew Bryson",
+    by: "@mbrysonuk",
+    quote: "Second day using @lambdatesting [now TestMu AI] and it's already proven itself a lot faster than Cross Browser Testing and BrowserStack, at half the price!",
+    img: `${IMG}/matthew-bryson-review.jpg`,
+    url: "https://twitter.com/mbrysonuk/status/1238148964693803009",
+    on: "x",
+  },
+  {
+    name: "Eric G",
+    by: "Capterra reviewer",
+    quote: "Seems like a good alternative to BrowserStack. The inclusion of a free tier is a definite plus. There were a good mix of real devices.",
+    img: `${IMG}/lambdaTestReview/capterra-logo-icon-2.png`,
+    url: "https://www.capterra.com/p/170732/LambdaTest/reviews/",
+    on: { icon: `${IMG}/lambdaTestReview/Capterra.svg`, label: "Posted on Capterra" },
+  },
+  {
+    name: "Hiroyuki Maruno",
+    by: "@hirokyMaruno",
+    quote: "For cross browser testing, BrowserStack seems to be the default, but it's too heavy, difficult to use, and expensive. So I'm trying out other testing tools. So far, [LambdaTest, now TestMu AI] seems to be the best.",
+    img: `${IMG}/peroyuki_-review.png`,
+    url: "https://twitter.com/peroyuki_/status/1269886996693962752",
+    on: "x",
+  },
+  {
+    name: "Karine Kirche",
+    by: "AWS Marketplace",
+    quote: "My experiences with BrowserStack and [LambdaTest, now TestMu AI] include conducting very important tests on both products. I was really surprised by LambdaTest. It was a very good service and for the price, I think it is a very good solution.",
+    img: `${IMG}/AWS.svg`,
+    url: "https://aws.amazon.com/marketplace/pp/prodview-7k2ipipotz3tk",
+    on: { icon: `${IMG}/lambdaTestReview/web-icon.svg`, label: "Posted on AWS Marketplace" },
+  },
+  {
+    name: "Youpi78",
+    by: "@youpi78",
+    quote: "If you've used BrowserStack, give a try to @lambdatesting [now TestMu AI]. It is much faster and very cost-effective.",
+    img: `${IMG}/youpi78.png`,
+    url: "https://twitter.com/youpi78130/status/1277628858943115264",
+    on: "x",
+  },
+  {
+    name: "James Davis",
+    by: "CTO at Roster",
+    quote: "I evaluated a lot of AI automation testing tools earlier this year and ended up going with @lambdatesting [now TestMu AI]. We've been using them for a couple months and my QA team loves it. KaneAI is ahead of the competition. We highly recommend.",
+    img: `${IMG}/james-davis.png`,
+    url: "https://www.linkedin.com/posts/inovacode_hi-fellow-techies-our-dev-qa-teams-are-activity-7311091687005593601-Pu0e/",
+    on: { icon: `${IMG}/lambdaTestReview/Linkedin.svg`, label: "Posted on LinkedIn" },
+  },
+  {
+    name: "Ben Pritchard",
+    by: "@yesiamben",
+    quote: "Super top notch customer support from @lambdatesting [now TestMu AI] - just throwing it out there if you're looking for a decent browser testing platform, they get my full double thumbs up. 👍👍",
+    img: `${IMG}/ben.png`,
+    url: "https://twitter.com/yesiamben/status/1222937857565822976",
+    on: "x",
+  },
+];
+
+function Source({ r }: { r: Review }) {
+  return (
+    <a href={r.url} target="_blank" rel="noreferrer" className="flex-none">
+      {r.on === "x" ? (
+        <svg className="tm-review__x" viewBox="0 0 24 24" aria-label="Posted on X">
+          <path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L2 3h6.4l4.4 5.8zm-1.1 16.2h1.7L7.4 4.7H5.6z" />
+        </svg>
+      ) : (
+        <img className="tm-review__x" src={r.on.icon} alt={r.on.label} loading="lazy" />
+      )}
+    </a>
+  );
+}
+
+function Reviews() {
+  return (
+    <Section>
+      <FoldHead
+        lead="What reviewers say about"
+        title="TestMu AI and BrowserStack"
+        body="Reviews from people who used both, as they posted them."
+      >
+        <a
+          href="https://www.testmuai.com/reviews/"
+          className="btn btn-lg btn-secondary mt-8"
+        >
+          View all reviews
+        </a>
+      </FoldHead>
+      <div className="tm-reveal -mx-8">
+        <div className="tm-grid tm-grid--4 tm-rvs tm-rvs--plain">
+          {reviews.map((r, i) => (
+            <article key={r.name} className={`tm-cell tm-rv ${i === 2 ? "tm-rv--wide" : ""}`}>
+              <div className="tm-rv__body">
+                <blockquote>“{r.quote}”</blockquote>
+              </div>
+              <div className="tm-rv__by">
+                <img className="tm-rv__av" src={r.img} alt="" loading="lazy" />
+                <div>
+                  {r.name}
+                  <span>{r.by}</span>
+                </div>
+                <Source r={r} />
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 const MIGRATION = "https://www.testmuai.com/support/docs/browserstack-to-testmu-migration-guide/";
 
 /* kit code-setup, with BrowserStack and TestMu AI as the two tabs. Its
@@ -501,6 +628,7 @@ function Page() {
             rows={alts}
           />
         </div>
+        <Reviews />
         <Steps />
         <Stories />
         <Faq items={faq} />
