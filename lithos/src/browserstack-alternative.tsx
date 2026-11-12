@@ -1,4 +1,4 @@
-import { StrictMode, useEffect, useRef, type ReactNode } from "react";
+import { StrictMode, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import "./index.css";
@@ -445,109 +445,218 @@ function Reviews() {
 
 const MIGRATION = "https://www.testmuai.com/support/docs/browserstack-to-testmu-migration-guide/";
 
-/* inline code, as in the spec sheet */
-const C = ({ children }: { children: string }) => (
-  <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-b3 text-foreground">
-    {children}
-  </code>
-);
+/* ---------- switching: steps linked to the exact lines that change ----------
 
-/* ---------- three steps: the kit's feature-steps fold ---------- */
+   Kit code-setup fold (steps left, code right), rethought: instead of
+   two tabs to flip between, the code is one diff of the same test file,
+   BrowserStack lines out and TestMu AI lines in. Pointing at, tapping or
+   focusing a step lights up only the lines that step changes. */
 
-const steps = [
+type Step = 1 | 2 | 3;
+type Line = { t: string; kind?: "del" | "add"; step?: Step };
+
+const diff: Line[] = [
+  { t: "const capabilities = {" },
+  { t: '  browserName: "Chrome",' },
+  { t: '  "bstack:options": {', kind: "del", step: 3 },
+  { t: '    os: "Windows",', kind: "del", step: 3 },
+  { t: '    osVersion: "11",', kind: "del", step: 3 },
+  { t: "    userName: process.env.BROWSERSTACK_USERNAME,", kind: "del", step: 1 },
+  { t: "    accessKey: process.env.BROWSERSTACK_ACCESS_KEY,", kind: "del", step: 1 },
+  { t: '  "LT:Options": {', kind: "add", step: 3 },
+  { t: '    platformName: "Windows 11",', kind: "add", step: 3 },
+  { t: "    username: process.env.LT_USERNAME,", kind: "add", step: 1 },
+  { t: "    accessKey: process.env.LT_ACCESS_KEY,", kind: "add", step: 1 },
+  { t: "  }," },
+  { t: "};" },
+  { t: "" },
+  { t: "const driver = new Builder()" },
+  { t: '  .usingServer("https://hub-cloud.browserstack.com/wd/hub")', kind: "del", step: 2 },
+  { t: '  .usingServer("https://hub.lambdatest.com/wd/hub")', kind: "add", step: 2 },
+  { t: "  .withCapabilities(capabilities)" },
+  { t: "  .build();" },
+];
+
+/* what Copy puts on the clipboard: the TestMu AI version */
+const afterCode = diff
+  .filter((l) => l.kind !== "del")
+  .map((l) => l.t)
+  .join("\n");
+
+const switchSteps: { n: Step; title: string; body: string }[] = [
   {
-    title: "Copy your username and access key",
-    body: (
-      <>
-        In Account settings, open Password &amp; Security, then copy your
-        username and access key into your <C>.env</C> file.
-      </>
-    ),
+    n: 1,
+    title: "Swap in your TestMu AI login",
+    body: "Copy your username and access key from Account settings into your .env file.",
   },
   {
+    n: 2,
     title: "Point tests at the TestMu AI hub",
-    body: (
-      <>
-        Set the hub URL to <C>hub.lambdatest.com/wd/hub</C>. Keep your test
-        runner, unless it runs through the BrowserStack SDK.
-      </>
-    ),
+    body: "One URL changes. Your test runner stays, unless it runs through the BrowserStack SDK.",
   },
   {
-    title: "Update your capabilities",
-    body: (
-      <>
-        Rebuild <C>bstack:options</C> as <C>LT:Options</C> in the
-        Capabilities Generator. Your Selenium test logic stays the same.
-      </>
-    ),
+    n: 3,
+    title: "Rename the capabilities",
+    body: "bstack:options becomes LT:Options. The test logic stays the same.",
   },
 ];
 
-function Steps() {
+const TINT = {
+  del: "bg-[color-mix(in_srgb,var(--tm-fg-error)_8%,transparent)]",
+  add: "bg-[color-mix(in_srgb,var(--tm-fg-success)_8%,transparent)]",
+};
+const SIGN = {
+  del: "text-[var(--tm-fg-error)]",
+  add: "text-[var(--tm-fg-success)]",
+};
+
+function Switch() {
+  const [on, setOn] = useState<Step | null>(null);
+  const [copied, setCopied] = useState(false);
+  const removed = diff.filter((l) => l.kind === "del").length;
+  const added = diff.filter((l) => l.kind === "add").length;
+
+  const copy = () => {
+    navigator.clipboard?.writeText(afterCode).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    });
+  };
+
   return (
     <Section>
-      <FoldHead
-        lead="Move from BrowserStack"
-        title="in three steps"
-        body={
-          <>
-            Keep your Selenium tests and change how they connect. The{" "}
-            <A href={MIGRATION}>migration guide</A> covers Selenium 3 and 4.
-          </>
-        }
-      >
-        <a
-          href="https://accounts.testmuai.com/register"
-          className="btn btn-lg btn-primary btn-arrow btn-arrow-plain mt-8"
-        >
-          Start testing now
-          <ArrowChip />
-        </a>
-      </FoldHead>
-      <div className="tm-reveal -mx-8">
-        <ol className="tm-grid tm-grid--3 tm-steps2">
-          {steps.map((s, i) => (
-            <li key={s.title} className="tm-cell tm-step">
-              <span className="tm-step__n">{i + 1}</span>
-              {/* H5 and B2: the kit's 20px step title is off the type scale */}
-              <h3 className="!text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">
-                {s.title}
-              </h3>
-              <p className="!text-b2">{s.body}</p>
-            </li>
-          ))}
-        </ol>
+      <div className="tm-setup">
+        <div className="tm-reveal">
+          <h2 className="tm-head__title">
+            <span className="tm-head__lead">Switch over</span>
+            <span className="tm-head__main">in three steps</span>
+          </h2>
+          <p className="tm-head__text" style={{ marginTop: 24 }}>
+            Keep your Selenium tests when you leave BrowserStack. Pick a step to
+            see the exact lines it changes.
+          </p>
+          <ol className="tm-steps" onMouseLeave={() => setOn(null)}>
+            {switchSteps.map((st) => {
+              const active = on === st.n;
+              const dim = on !== null && !active;
+              return (
+                <li key={st.n} className="!block !p-0">
+                  <button
+                    type="button"
+                    aria-pressed={active}
+                    onMouseEnter={() => setOn(st.n)}
+                    onFocus={() => setOn(st.n)}
+                    onClick={() => setOn(active ? null : st.n)}
+                    className={`grid w-full grid-cols-[40px_1fr] gap-3 py-5 text-left transition-opacity duration-200 ${
+                      dim ? "opacity-40" : "opacity-100"
+                    }`}
+                  >
+                    <span className="tm-label">{`0${st.n}`}</span>
+                    <span>
+                      <b>{st.title}</b>
+                      <p>{st.body}</p>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+          <div className="mt-8 flex flex-wrap items-center gap-6">
+            <a
+              href="https://accounts.testmuai.com/register"
+              className="btn btn-lg btn-primary btn-arrow btn-arrow-plain"
+            >
+              Start testing now
+              <ArrowChip />
+            </a>
+            <a className="tm-link" href={MIGRATION}>
+              Migration guide
+              <span className="tm-arw" aria-hidden="true">
+                <Arrow />
+                <Arrow />
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div className="tm-reveal">
+          <div className="tm-code tm-code--boxed">
+            <div className="tm-code__bar">
+              {/* the key to the diff, where the tabs used to be */}
+              <div className="flex items-center gap-5 py-3 pl-2 font-mono text-b4">
+                <span className="flex items-center gap-2">
+                  <span className={SIGN.del}>−</span>BrowserStack
+                </span>
+                <span className="flex items-center gap-2">
+                  <span className={SIGN.add}>+</span>TestMu AI
+                </span>
+              </div>
+              <div className="tm-code__tools">
+                <button className="tm-btn tm-btn--secondary" onClick={copy}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <rect x="9" y="9" width="12" height="12" rx="2" />
+                    <path d="M5 15V5a2 2 0 0 1 2-2h8" />
+                  </svg>
+                  {copied ? "Copied" : "Copy"}
+                </button>
+              </div>
+            </div>
+            <pre className="!max-h-none !pr-0" aria-label="The test file, with the BrowserStack lines removed and the TestMu AI lines added">
+              {diff.map((l, i) => {
+                const lit = on !== null && l.step === on;
+                const dim = on !== null && !lit;
+                return (
+                  <span
+                    key={i}
+                    className={`ln transition-opacity duration-200 ${l.kind ? TINT[l.kind] : ""} ${
+                      dim ? "opacity-30" : "opacity-100"
+                    }`}
+                  >
+                    <span aria-hidden className={`inline-block w-4 ${l.kind ? SIGN[l.kind] : ""}`}>
+                      {l.kind === "del" ? "−" : l.kind === "add" ? "+" : " "}
+                    </span>
+                    {l.t || " "}
+                  </span>
+                );
+              })}
+            </pre>
+            <div className="tm-code__status">
+              <span>test.js</span>
+              <span>
+                {removed} removed · {added} added
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </Section>
   );
 }
 
-/* ---------- methodology: section head plus joined boxes ---------- */
+/* ---------- methodology: the kit's reasons fold, numbers first ---------- */
 
-const facts: { label: string; value: ReactNode }[] = [
-  { label: "Last updated", value: "November 2026" },
-  { label: "What we compared", value: "9 product pairs, 44 feature and pricing rows" },
+const stats = [
+  { label: "Product pairs", value: "9" },
+  { label: "Rows compared", value: "44" },
+  { label: "Alternatives", value: "6" },
+  { label: "Prices checked", value: "Oct 2026" },
+];
+
+const notes = [
   {
-    label: "Sources",
-    value: (
-      <>
-        BrowserStack's pricing, product pages and docs, checked 14 October
-        2026, and TestMu AI's plans and docs. How we check facts:{" "}
-        <A href="https://www.testmuai.com/editorial-policy/">editorial policy</A>.
-      </>
-    ),
+    text: "Every price is a monthly list price in USD for annual billing, from each vendor's own pricing page.",
+    link: "How we check facts",
+    href: "https://www.testmuai.com/editorial-policy/",
   },
   {
-    label: "One product at a time",
-    value: (
-      <span className="flex flex-col gap-2">
-        <A href="https://www.testmuai.com/blog/testmu-vs-browserstack-automate/">BrowserStack Automate vs HyperExecute</A>
-        <A href="https://www.testmuai.com/blog/testmu-vs-browserstack-live/">BrowserStack Live and App Live vs TestMu AI</A>
-        <A href="https://www.testmuai.com/blog/testmu-vs-browserstack-test-management/">BrowserStack Test Management review</A>
-        <A href="https://www.testmuai.com/testmu-alternative/">TestMu AI alternatives</A>
-      </span>
-    ),
+    text: "BrowserStack Automate against HyperExecute, one product at a time.",
+    link: "Read the comparison",
+    href: "https://www.testmuai.com/blog/testmu-vs-browserstack-automate/",
+  },
+  {
+    text: "BrowserStack Live and App Live against TestMu AI, side by side.",
+    link: "Read the comparison",
+    href: "https://www.testmuai.com/blog/testmu-vs-browserstack-live/",
   },
 ];
 
@@ -555,17 +664,38 @@ function Methodology() {
   return (
     <Section>
       <FoldHead
-        lead="How we compared"
-        title="each BrowserStack product"
-        body="Each BrowserStack product against its TestMu AI counterpart, on features and monthly list price for annual billing. Where a feature is plan-gated or sold separately, the table names that plan."
+        lead="How we compared,"
+        title="and our sources"
+        body="Each BrowserStack product against its TestMu AI counterpart, from public pricing pages, product pages and docs. Where a feature is plan-gated, the table names the plan."
       />
-      <div className="tm-join tm-reveal !-mx-8">
-        {facts.map((f) => (
-          <div key={f.label} className="flex flex-col gap-3">
-            <span className="tm-label">{f.label}</span>
-            <span className="text-b2 text-foreground">{f.value}</span>
+      <div className="tm-reveal -mx-8">
+        <div className="tm-reasons">
+          <div className="tm-stats">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <p className="tm-label">{s.label}</p>
+                <p className="tm-pixel">{s.value}</p>
+              </div>
+            ))}
           </div>
-        ))}
+          <div className="tm-grid tm-grid--3">
+            {notes.map((n) => (
+              <a key={n.text} className="tm-cell tm-report" href={n.href}>
+                {/* H5 on the type scale, so three fit side by side */}
+                <p className="!text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">
+                  {n.text}
+                </p>
+                <span className="tm-link">
+                  {n.link}
+                  <span className="tm-arw" aria-hidden="true">
+                    <Arrow />
+                    <Arrow />
+                  </span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </Section>
   );
@@ -622,11 +752,14 @@ function Page() {
           />
         </div>
         <Methodology />
-        <Reviews />
+        <Switch />
         <Stories />
-        <Steps />
+        <Reviews />
         <Faq items={faq} />
-        <Enterprise />
+        <Enterprise
+          title="Ready to leave BrowserStack?"
+          body="Talk to our team about plans, parallel sessions and a move that fits your renewal date."
+        />
         <Footer />
       </main>
     </div>
