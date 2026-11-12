@@ -1,6 +1,17 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Check } from "lucide-react";
+import {
+  Bot,
+  Check,
+  ClipboardList,
+  MessagesSquare,
+  Plug,
+  ShieldCheck,
+  Sparkles,
+  SquareTerminal,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
 import { platform } from "../lib/content";
 import { Section, SlideArrow } from "../lib/ui";
 import { UnifiedHeading } from "./Unified";
@@ -44,53 +55,75 @@ const num = (i: number) => String(i + 1).padStart(2, "0");
 
 /* ---------- the product listing for one step ---------- */
 
+const ICONS: Record<string, LucideIcon> = {
+  "Test Manager": ClipboardList,
+  "Kane AI": Bot,
+  "Kane CLI": SquareTerminal,
+  "MCP Server": Plug,
+  "Agent Testing": MessagesSquare,
+  "Agent Assurance": ShieldCheck,
+  HyperExecute: Zap,
+  "Test Intelligence": Sparkles,
+};
+
+const CAPTION_ROW = "mono text-b5 uppercase tracking-[0.14em] text-muted-foreground";
+
+/* The step's products as one joined white frame, each with its icon, name
+   and one-liner; what they include follows as small tags. */
 function Listing({ index }: { index: number }) {
   const stage = platform.stages[index];
   return (
     <>
-      <ul className="mt-5 border-t border-border">
-        {stage.products.map((p) => (
-          <li key={p.name} className="border-b border-border">
-            <a
-              href="#top"
-              className="group/btn flex items-start justify-between gap-4 py-2"
-            >
-              {/* name beside its one-liner; on phones the one-liner drops below */}
-              <span className="grid min-w-0 flex-1 gap-x-4 sm:grid-cols-[152px_minmax(0,1fr)]">
-                <span className="flex items-center gap-2 text-b3 font-medium text-foreground">
-                  {p.name}
-                  {"badge" in p && p.badge && (
-                    <span className="mono rounded-sm bg-secondary px-1 text-b5 font-medium uppercase text-foreground">
-                      {p.badge}
-                    </span>
+      <p className={`mt-6 ${CAPTION_ROW}`}>
+        {stage.products.length > 1 ? "Products" : "Product"}
+      </p>
+      <ul className="mt-2 grid gap-px border border-border bg-border">
+        {stage.products.map((p) => {
+          const Icon = ICONS[p.name] ?? Sparkles;
+          const desc = p.desc || (p.name === "MCP Server" ? MCP_DESC : "");
+          return (
+            <li key={p.name} className="bg-surface">
+              <a
+                href="#top"
+                className="flow-row group/btn flex items-center gap-3 px-4 py-3 transition-colors duration-300 hover:bg-background"
+              >
+                <span className="flow-tile flex h-8 w-8 flex-none items-center justify-center border border-border bg-background text-foreground">
+                  <Icon size={16} strokeWidth={1.5} />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="flex items-center gap-2 text-b3 font-medium text-foreground">
+                    {p.name}
+                    {"badge" in p && p.badge && (
+                      <span className="mono rounded-sm bg-[color:var(--tm-bg-accent-muted)] px-1 text-b5 font-medium uppercase text-accent">
+                        {p.badge}
+                      </span>
+                    )}
+                  </span>
+                  {desc && (
+                    <span className="flow-desc block text-b3 text-muted-foreground">{desc}</span>
                   )}
                 </span>
-                <span className="flow-desc text-b3 text-muted-foreground">
-                  {p.desc || (p.name === "MCP Server" ? MCP_DESC : "")}
-                </span>
-              </span>
-              <SlideArrow className="mt-1" />
-            </a>
-          </li>
-        ))}
+                <SlideArrow />
+              </a>
+            </li>
+          );
+        })}
       </ul>
       {stage.checks.length > 0 && (
-        <ul
-          className={`mt-4 grid gap-x-6 gap-y-1 ${
-            stage.checks.length > 3 ? "grid-cols-2" : "grid-cols-1"
-          }`}
-        >
-          {stage.checks.map((c) => (
-            <li key={c} className="flex items-start gap-2 text-b3 text-foreground">
-              <Check
-                size={16}
-                strokeWidth={1.5}
-                className="mt-[2px] flex-none text-muted-foreground"
-              />
-              {c}
-            </li>
-          ))}
-        </ul>
+        <>
+          <p className={`mt-5 ${CAPTION_ROW}`}>Includes</p>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {stage.checks.map((c) => (
+              <li
+                key={c}
+                className="flow-tag inline-flex items-center gap-1.5 rounded-sm border border-border bg-surface px-2 py-1 text-b4 text-foreground"
+              >
+                <Check size={16} strokeWidth={1.5} className="flex-none text-[color:var(--tm-fg-success)]" />
+                {c}
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </>
   );
@@ -475,7 +508,7 @@ function Stack({ active }: { active: number }) {
   const shift = -(rel(0) + rel(last) + N + T) / 2;
   const at = (j: number) => rel(j) + shift;
   return (
-    <svg viewBox="-326 -320 620 640" className="h-full w-full" aria-hidden>
+    <svg viewBox="-326 -320 620 640" className="relative h-full w-full" aria-hidden>
       {/* dashed guides down the stack's corners, marching toward the last plate */}
       {[-208, 208].map((x) => (
         <motion.line
@@ -645,6 +678,8 @@ function Pinned() {
         </div>
 
         <div className="relative overflow-hidden border-l border-border p-8">
+          {/* a faint dot field behind the stack, fading out before the edges */}
+          <div aria-hidden className="flow-dots absolute inset-0" />
           <Stack active={active} />
         </div>
       </div>
@@ -667,8 +702,9 @@ function Stacked() {
           </p>
           <h3 className="mt-3">{s.title}</h3>
           <p className="mt-3 text-b2 text-muted-foreground">{s.body}</p>
-          <div className="mt-6 flex justify-center border border-border px-4 py-8">
-            <svg viewBox="-216 -8 432 268" className="w-full max-w-[460px]" aria-hidden>
+          <div className="relative mt-6 flex justify-center overflow-hidden border border-border px-4 py-8">
+            <div aria-hidden className="flow-dots absolute inset-0" />
+            <svg viewBox="-216 -8 432 268" className="relative w-full max-w-[460px]" aria-hidden>
               <Plate index={j} on />
             </svg>
           </div>
