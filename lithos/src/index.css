@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
 /* TestMu DS tokens (managed by .testmu, updated by the kit) */
 @import "../.testmu/tokens/tokens.css";
+/* TestMu DS section kit: the ready-made boxes, folds and controls (tm-join, tm-fold, tm-btn ...).
+   Scoped to tm- class names, so pages that don't use them are unchanged. */
+@import "../.testmu/tokens/testmu.css";
 
 /* VCR OSD Mono, the bug game's pixel type, is registered in
    src/components/BugGuard/pixelText.ts so it stays outside the site styles. */
@@ -53,6 +56,11 @@
   font-family: var(--font-body);
 }
 
+/* kit code blocks: the coloured spans inside keep the block's Space Mono
+   instead of taking Manrope from the rule above */
+.tm :where(pre, code) * {
+  font-family: inherit;
+}
 .pixel {
   font-family: var(--font-pixel);
   font-weight: 400;

@@ -13,6 +13,8 @@ export default defineConfig({
         options: resolve(__dirname, 'options.html'),
         // library.html shows each building block on its own
         library: resolve(__dirname, 'library.html'),
+        // the BrowserStack alternative page, built from kit folds
+        browserstackAlternative: resolve(__dirname, 'browserstack-alternative.html'),
       },
     },
   },

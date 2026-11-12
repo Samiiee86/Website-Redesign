@@ -92,8 +92,6 @@ export default function SpecTable({
   columns,
   rows,
 }: Props) {
-  const facts = columns.slice(1);
-
   return (
     <Section>
       <FoldHead lead={lead} title={title} body={body}>
@@ -110,10 +108,37 @@ export default function SpecTable({
       </FoldHead>
 
       <Reveal delay={0.08}>
+        <SpecSheet
+          label={`${lead} ${title}`}
+          columns={columns}
+          rows={rows}
+          className="-mx-8"
+        />
+      </Reveal>
+    </Section>
+  );
+}
+
+/* The table on its own, for pages that bring their own section head
+   (a kit fold). The caller sets how far it bleeds. */
+export function SpecSheet({
+  label,
+  columns,
+  rows,
+  className = "",
+}: {
+  label: string;
+  columns: string[];
+  rows: SpecRow[];
+  className?: string;
+}) {
+  const facts = columns.slice(1);
+
+  return (
         <div
           role="table"
-          aria-label={`${lead} ${title}`}
-          className="relative -mx-8 border-y border-border bg-surface"
+          aria-label={label}
+          className={`relative border-y border-border bg-surface ${className}`}
           style={{ "--n": facts.length } as CSSProperties}
         >
           {/* column names: pinned under the 56px header */}
@@ -207,7 +232,5 @@ export default function SpecTable({
             );
           })}
         </div>
-      </Reveal>
-    </Section>
   );
 }
