@@ -443,6 +443,9 @@ body {
 .iso-box,
 .iso-tint,
 .iso-ink,
+.iso-soft,
+.iso-go,
+.iso-warn,
 .iso-line {
   stroke: var(--tm-border-default);
   stroke-width: 1;
@@ -465,11 +468,20 @@ body {
 .iso-line {
   fill: none;
 }
-.iso-tint {
+.iso-tint,
+.iso-soft,
+.iso-go,
+.iso-warn {
   fill: var(--tm-bg-fill);
 }
 .iso-ink {
   fill: var(--tm-border-default);
+}
+.iso-t-go {
+  fill: var(--tm-green-600);
+}
+.iso-t-blue {
+  fill: var(--tm-blue-700);
 }
 .iso-bar {
   fill: var(--tm-border-default);
@@ -488,14 +500,44 @@ body {
   stroke-width: 1;
   vector-effect: non-scaling-stroke;
 }
-.iso-layer[data-on="true"] :is(.iso-top, .iso-side-l, .iso-side-r, .iso-box, .iso-tint, .iso-ink, .iso-line) {
-  stroke: var(--tm-fg-default);
+/* the open plate: soft grey lines, and colour only where it means something:
+   blue for what is selected or running, green for passed, orange for flaky */
+.iso-layer[data-on="true"] :is(.iso-top, .iso-side-l, .iso-side-r, .iso-box, .iso-tint, .iso-line) {
+  stroke: var(--tm-gray-400);
 }
 .iso-layer[data-on="true"] .iso-top {
   fill: var(--tm-bg-surface);
 }
+.iso-layer[data-on="true"] .iso-tint {
+  fill: var(--tm-blue-000);
+}
 .iso-layer[data-on="true"] .iso-ink {
-  fill: var(--tm-bg-inverse);
+  fill: var(--tm-blue-500);
+  stroke: var(--tm-blue-600);
+}
+/* large blue surfaces stay pale; only small marks take the full blue */
+.iso-layer[data-on="true"] .iso-soft {
+  fill: var(--tm-blue-100);
+  stroke: var(--tm-blue-300);
+}
+.iso-layer[data-on="true"] .iso-blue-l {
+  fill: var(--tm-blue-200);
+  stroke: var(--tm-blue-300);
+}
+.iso-layer[data-on="true"] .iso-blue-r {
+  fill: var(--tm-blue-300);
+  stroke: var(--tm-blue-400);
+}
+.iso-layer[data-on="true"] .iso-go {
+  fill: var(--tm-green-000);
+  stroke: var(--tm-green-300);
+}
+.iso-layer[data-on="true"] .iso-warn {
+  fill: var(--tm-orange-000);
+  stroke: var(--tm-orange-300);
+}
+.iso-layer[data-on="true"] .iso-line-warn {
+  stroke: var(--tm-orange-400);
 }
 .iso-layer[data-on="true"] .iso-bar {
   fill: var(--tm-fg-subtle);

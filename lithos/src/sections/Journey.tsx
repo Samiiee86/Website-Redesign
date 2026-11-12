@@ -176,6 +176,7 @@ function Box({
   h,
   z = 0,
   top = "iso-top",
+  blue = false,
 }: {
   u: number;
   v: number;
@@ -184,16 +185,17 @@ function Box({
   h: number;
   z?: number;
   top?: string;
+  blue?: boolean;
 }) {
   const t = z + h;
   return (
     <g>
       <polygon
-        className="iso-side-l"
+        className={blue ? "iso-side-l iso-blue-l" : "iso-side-l"}
         points={poly(P(u, v + d, t), P(u + w, v + d, t), P(u + w, v + d, z), P(u, v + d, z))}
       />
       <polygon
-        className="iso-side-r"
+        className={blue ? "iso-side-r iso-blue-r" : "iso-side-r"}
         points={poly(P(u + w, v, t), P(u + w, v + d, t), P(u + w, v + d, z), P(u + w, v, z))}
       />
       <Flat u={u} v={v} w={w} d={d} z={t} className={top} />
@@ -201,7 +203,7 @@ function Box({
   );
 }
 
-const ON_INK = "text-b3 font-medium fill-background";
+const ON_SOFT = "text-b3 font-medium iso-t-blue";
 const CAPTION = "mono text-b5 uppercase fill-muted-foreground";
 
 /* Plan: Test Manager's list of test cases, the AI-written ones ready to run */
@@ -215,8 +217,8 @@ function PlanArt() {
   ];
   return (
     <g className="iso-detail">
-      <Flat u={16} v={16} w={208} d={26} className="iso-ink" />
-      <Word u={26} v={34} className={ON_INK}>
+      <Flat u={16} v={16} w={208} d={26} className="iso-soft" />
+      <Word u={26} v={34} className={ON_SOFT}>
         Test cases
       </Word>
       {cases.map((title, k) => {
@@ -227,8 +229,13 @@ function PlanArt() {
             <Word u={42} v={v + 13}>
               {title}
             </Word>
-            <Flat u={184} v={v} w={40} d={16} />
-            <Word u={204} v={v + 12} anchor="middle" className="mono text-b5 uppercase fill-foreground">
+            <Flat u={184} v={v} w={40} d={16} className={k < 3 ? "iso-go" : "iso-box"} />
+            <Word
+              u={204}
+              v={v + 12}
+              anchor="middle"
+              className={`mono text-b5 uppercase ${k < 3 ? "iso-t-go" : "fill-muted-foreground"}`}
+            >
               {k < 3 ? "Ready" : "Draft"}
             </Word>
           </g>
@@ -250,7 +257,7 @@ function AuthorArt() {
       <Word u={26} v={56}>
         Test the checkout flow
       </Word>
-      <Box u={196} v={62} w={18} d={14} h={5} top="iso-ink" />
+      <Box u={196} v={62} w={18} d={14} h={5} top="iso-ink" blue />
       {steps.map((step, k) => {
         const v = 98 + k * 26;
         return (
@@ -274,7 +281,8 @@ function AuthorArt() {
   );
 }
 
-/* Execute: one runner per browser and device; the tall dark ones are mid-run */
+/* Execute: one runner per browser and device: the tall blue ones are
+   mid-run, the green ones have passed, the white one is queued */
 function ExecuteArt() {
   const grid = [
     ["Chrome", "Safari", "Edge"],
@@ -296,13 +304,21 @@ function ExecuteArt() {
           const h = on ? 16 : 5;
           return (
             <g key={name}>
-              <Box u={u} v={v} w={58} d={58} h={h} top={on ? "iso-ink" : "iso-top"} />
+              <Box
+                u={u}
+                v={v}
+                w={58}
+                d={58}
+                h={h}
+                blue={on}
+                top={on ? "iso-soft" : name === "Opera" ? "iso-top" : "iso-go"}
+              />
               <Word
                 u={u + 29}
                 v={v + 34}
                 z={h}
                 anchor="middle"
-                className={on ? ON_INK : "text-b3 fill-foreground"}
+                className={on ? ON_SOFT : "text-b3 fill-foreground"}
               >
                 {name}
               </Word>
@@ -328,6 +344,7 @@ function AnalysisArt() {
           w={22}
           d={22}
           h={h}
+          blue={k === bars.length - 1}
           top={k === bars.length - 1 ? "iso-ink" : "iso-top"}
         />
       ))}
@@ -340,20 +357,20 @@ function AnalysisArt() {
         const v = 104 + k * 36;
         return (
           <g key={text}>
-            <Flat u={26} v={v} w={12} d={12} className={k < 2 ? "iso-ink" : "iso-box"} />
+            <Flat u={26} v={v} w={12} d={12} className={["iso-warn", "iso-ink", "iso-go"][k]} />
             <Word u={46} v={v + 11}>
               {text}
             </Word>
           </g>
         );
       })}
-      <Flat u={168} v={72} w={56} d={70} />
+      <Flat u={168} v={72} w={56} d={70} className="iso-warn" />
       <polyline
-        className="iso-line"
+        className="iso-line iso-line-warn"
         points={poly(P(176, 126), P(186, 98), P(196, 118), P(206, 88), P(216, 106))}
       />
-      <Flat u={168} v={154} w={56} d={70} className="iso-tint" />
-      <Word u={196} v={190} anchor="middle" className="pixel text-b1 fill-foreground">
+      <Flat u={168} v={154} w={56} d={70} className="iso-go" />
+      <Word u={196} v={190} anchor="middle" className="pixel text-b1 iso-t-go">
         98%
       </Word>
       <Word u={196} v={208} anchor="middle" className={CAPTION}>
