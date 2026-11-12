@@ -29,6 +29,11 @@ export type SpecRow = {
   name: string;
   /* where the row name leads, e.g. the tool's docs */
   href?: string;
+  /* shown in place of the name (the name stays as its alt text) */
+  logo?: string;
+  /* lift this row out as the one white box, outlined in black on a soft
+     shadow, the same treatment as TestMu AI's column in the head to head */
+  highlight?: boolean;
   cells: SpecCell[];
 };
 
@@ -53,9 +58,15 @@ const tint = (col: number) => (col % 2 === 0 ? LIGHT : "lg:bg-background");
 const GRID =
   "relative grid lg:grid-cols-[minmax(0,1.1fr)_repeat(var(--n),minmax(0,1fr))]";
 
-function Value({ cell }: { cell: SpecCell }) {
+function Value({ cell, strong = false }: { cell: SpecCell; strong?: boolean }) {
   if (typeof cell === "string")
-    return <span className="text-b2 text-muted-foreground">{cell}</span>;
+    return (
+      <span
+        className={`text-b2 ${strong ? "font-medium text-foreground" : "text-muted-foreground"}`}
+      >
+        {cell}
+      </span>
+    );
 
   return (
     <span className="flex items-start gap-3 text-b2 text-foreground">
@@ -163,19 +174,37 @@ export function SpecSheet({
             /* desktop: a dotted line under every cell but the last row's,
                each inset by the cell's own padding, so the dots stop
                short of the next column (as in the ElevenLabs reference) */
-            const dots = ri < rows.length - 1 ? DOTS : "";
+            const hl = !!r.highlight;
+            /* the lifted row has no dots, and nor does the row above it,
+               so no dots run into its outline */
+            const dots =
+              ri < rows.length - 1 && !hl && !rows[ri + 1]?.highlight
+                ? DOTS
+                : "";
+            /* the lifted row is one white sheet: no column tints */
+            const bg = (col: number) => (hl ? "" : tint(col));
             return (
               <div
                 key={r.name}
                 role="row"
-                className={`${GRID} border-b border-border lg:border-b-0`}
+                className={`${GRID} ${
+                  hl
+                    ? "z-[2] border border-foreground bg-surface shadow-[var(--tm-shadow-floating-md)]"
+                    : "border-b border-border lg:border-b-0"
+                }`}
               >
                 <div
                   role="rowheader"
-                  className={`px-4 pb-2 pt-6 lg:px-8 lg:py-0 ${tint(0)}`}
+                  className={`px-4 pb-2 pt-6 lg:px-8 lg:py-0 ${bg(0)}`}
                 >
                   <div className={`lg:h-full lg:py-8 ${dots}`}>
-                    {r.href ? (
+                    {r.logo ? (
+                      <img
+                        src={r.logo}
+                        alt={r.name}
+                        className="h-5 w-auto lg:h-6"
+                      />
+                    ) : r.href ? (
                       <a
                         href={r.href}
                         className={`group inline-flex items-center gap-2 text-foreground underline-offset-4 hover:underline ${FOCUS}`}
@@ -212,7 +241,7 @@ export function SpecSheet({
                   <div
                     key={facts[i]}
                     role="cell"
-                    className={`px-4 py-3 last:pb-6 lg:px-6 lg:py-0 lg:last:pb-0 ${tint(i + 1)}`}
+                    className={`px-4 py-3 last:pb-6 lg:px-6 lg:py-0 lg:last:pb-0 ${bg(i + 1)}`}
                   >
                     <div
                       className={`lg:flex lg:h-full lg:items-center lg:py-8 ${dots}`}
@@ -224,7 +253,7 @@ export function SpecSheet({
                       >
                         {facts[i]}
                       </span>
-                      <Value cell={cell} />
+                      <Value cell={cell} strong={hl} />
                     </div>
                   </div>
                 ))}

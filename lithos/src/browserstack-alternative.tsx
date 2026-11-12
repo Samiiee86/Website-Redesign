@@ -88,6 +88,8 @@ const altColumns = ["Alternative", "Plans", "Real devices", "Best for", "One lim
 const alts: SpecRow[] = [
   {
     name: "TestMu AI",
+    logo: "/testmu-logo-dark.svg",
+    highlight: true,
     cells: [
       "Free plan, then $15/mo per session",
       "50,000+",
