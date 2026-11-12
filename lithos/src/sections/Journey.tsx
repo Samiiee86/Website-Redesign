@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { platform } from "../lib/content";
 import { Section, SlideArrow } from "../lib/ui";
 import { UnifiedHeading } from "./Unified";
@@ -579,14 +579,93 @@ function Rail({ active }: { active: number }) {
   );
 }
 
+/* ---------- the whole ecosystem in one view ---------- */
+
+/* All four steps side by side in joined white boxes, each with its plate,
+   every product and everything it includes, like the old workflow diagram.
+   The pinned section opens on this; scrolling on walks through the steps. */
+function Overview({ compact = false }: { compact?: boolean }) {
+  return (
+    <div
+      className={`grid gap-px border border-border bg-border ${
+        compact ? "grid-cols-1 sm:grid-cols-2" : "w-full grid-cols-4"
+      }`}
+    >
+      {STAGES.map((s, j) => {
+        const stage = platform.stages[j];
+        return (
+          <div key={s.name} className="relative flex flex-col bg-surface p-6">
+            <p className="flex items-center gap-3">
+              <span className="mono text-b4 text-muted-foreground">{num(j)}</span>
+              <span className="mono text-b4 uppercase tracking-[0.14em] text-foreground">
+                {s.name}
+              </span>
+            </p>
+            {!compact && (
+              <div className="flow-ov-plate relative mt-4 flex items-center justify-center">
+                <div aria-hidden className="flow-dots absolute inset-0" />
+                <svg viewBox="-216 -8 432 268" className="relative h-full w-full" aria-hidden>
+                  <Plate index={j} on />
+                </svg>
+              </div>
+            )}
+            <ul className="mt-4 flex flex-col gap-2 border-t border-border pt-4">
+              {stage.products.map((p) => (
+                <li key={p.name}>
+                  <span className="flex items-center gap-2 text-b3 font-medium text-foreground">
+                    {p.name}
+                    {"badge" in p && p.badge && (
+                      <span className="mono rounded-sm bg-[color:var(--tm-bg-accent-muted)] px-1 text-b5 font-medium uppercase text-accent">
+                        {p.badge}
+                      </span>
+                    )}
+                  </span>
+                  {!compact && (
+                    <span className="flow-desc block text-b4 text-muted-foreground">
+                      {p.desc || (p.name === "MCP Server" ? MCP_DESC : "")}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+            {!compact && stage.checks.length > 0 && (
+              <ul className="mt-4 flex flex-col gap-1 border-t border-dashed border-border pt-4">
+                {stage.checks.map((c) => (
+                  <li key={c} className="flex items-start gap-2 text-b4 text-muted-foreground">
+                    <Check size={16} strokeWidth={1.5} className="flex-none text-foreground" />
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {/* the hand-off to the next step, sitting on the shared hairline */}
+            {!compact && j < STAGES.length - 1 && (
+              <span
+                aria-hidden
+                className="flow-ov-arrow absolute -right-3 z-10 flex h-6 w-6 items-center justify-center rounded-full border border-border bg-background text-foreground"
+              >
+                <ArrowRight size={16} strokeWidth={1.5} />
+              </span>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 /* ---------- pinned (desktop) ---------- */
 
 const HEADER = 56; /* the fixed header the panel pins under */
+
+/* share of the scroll spent on the whole-ecosystem view before step 01 */
+const OVERVIEW = 0.22;
 
 function Pinned() {
   const track = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLSpanElement>(null);
   const [active, setActive] = useState(0);
+  const [overview, setOverview] = useState(true);
 
   useEffect(() => {
     let raf = 0;
@@ -597,8 +676,10 @@ function Pinned() {
       const r = el.getBoundingClientRect();
       const travel = r.height - (window.innerHeight - HEADER);
       const p = Math.min(1, Math.max(0, (HEADER - r.top) / travel));
-      if (bar.current) bar.current.style.transform = `scaleY(${p})`;
-      setActive(Math.min(STAGES.length - 1, Math.floor(p * STAGES.length)));
+      const q = Math.max(0, (p - OVERVIEW) / (1 - OVERVIEW));
+      if (bar.current) bar.current.style.transform = `scaleY(${q})`;
+      setOverview(p < OVERVIEW);
+      setActive(Math.min(STAGES.length - 1, Math.floor(q * STAGES.length)));
     };
     const queue = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -615,22 +696,39 @@ function Pinned() {
 
   return (
     <div ref={track} className="flow-track -mx-8">
-      <div className="flow-pin grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)] border-t border-border">
-        <div className="relative">
-          {/* how far through the flow you are, drawn on the page's margin line */}
-          <span
-            ref={bar}
-            aria-hidden
-            className="absolute -left-px top-0 h-full w-px origin-top bg-foreground"
-            style={{ transform: "scaleY(0)" }}
-          />
-          <Rail active={active} />
+      <div className="flow-pin relative border-t border-border">
+        {/* first the whole ecosystem at once */}
+        <div
+          className={`flow-ov absolute inset-0 z-10 flex items-center bg-background p-8 ${
+            overview ? "flow-ov-on" : "flow-ov-off"
+          }`}
+          {...(overview ? {} : { inert: "" })}
+        >
+          <Overview />
         </div>
 
-        <div className="relative overflow-hidden border-l border-border p-8">
-          {/* a faint dot field behind the stack, fading out before the edges */}
-          <div aria-hidden className="flow-dots absolute inset-0" />
-          <Stack active={active} />
+        {/* then one step at a time */}
+        <div
+          className={`flow-walk grid h-full grid-cols-[minmax(0,5fr)_minmax(0,7fr)] ${
+            overview ? "flow-walk-off" : "flow-walk-on"
+          }`}
+        >
+          <div className="relative">
+            {/* how far through the flow you are, drawn on the page's margin line */}
+            <span
+              ref={bar}
+              aria-hidden
+              className="absolute -left-px top-0 h-full w-px origin-top bg-foreground"
+              style={{ transform: "scaleY(0)" }}
+            />
+            <Rail active={active} />
+          </div>
+
+          <div className="relative overflow-hidden border-l border-border p-8">
+            {/* a faint dot field behind the stack, fading out before the edges */}
+            <div aria-hidden className="flow-dots absolute inset-0" />
+            <Stack active={active} />
+          </div>
         </div>
       </div>
     </div>
@@ -642,6 +740,7 @@ function Pinned() {
 function Stacked() {
   return (
     <div className="flex flex-col gap-16">
+      <Overview compact />
       {STAGES.map((s, j) => (
         <div key={s.name}>
           <p className="flex items-center gap-3">

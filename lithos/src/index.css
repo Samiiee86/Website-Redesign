@@ -407,7 +407,37 @@ body {
 
 /* ---------- Journey: the pinned Plan to Analysis flow ---------- */
 .flow-track {
-  height: calc((100vh - var(--tm-space-56)) * 3.8);
+  height: calc((100vh - var(--tm-space-56)) * 4.6);
+}
+/* the whole-ecosystem view lifts away as the walk-through settles in */
+.flow-ov {
+  transition:
+    opacity 0.5s ease,
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.flow-ov-on {
+  opacity: 1;
+  transform: none;
+}
+.flow-ov-off {
+  opacity: 0;
+  transform: translateY(calc(var(--tm-space-32) * -1)) scale(0.98);
+  pointer-events: none;
+}
+.flow-walk {
+  transition: opacity 0.6s ease 0.15s;
+}
+.flow-walk-off {
+  opacity: 0;
+}
+.flow-walk-on {
+  opacity: 1;
+}
+.flow-ov-plate {
+  height: 26vh;
+}
+.flow-ov-arrow {
+  top: calc(var(--tm-space-64) + 13vh);
 }
 .flow-pin {
   position: sticky;
@@ -431,7 +461,8 @@ body {
 }
 /* short screens: the listing keeps the product names, drops their one-liners */
 @media (max-height: 800px) {
-  .flow-rail .flow-desc {
+  .flow-rail .flow-desc,
+  .flow-ov .flow-desc {
     display: none;
   }
 }
@@ -565,7 +596,9 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .flow-move,
-  .flow-body-on {
+  .flow-body-on,
+  .flow-ov,
+  .flow-walk {
     transition: none;
   }
 }
