@@ -469,7 +469,11 @@ function Reviews() {
           {reviews.map((r, i) => (
             <article key={r.name} className={`tm-cell tm-rv ${i === 2 ? "tm-rv--wide" : ""}`}>
               <div className="tm-rv__body">
-                <blockquote>“{r.quote}”</blockquote>
+                {/* every quote, the wide one too, in B1 (18/28, regular), as on
+                    the live site: the kit's 20px and 32px are off the type scale */}
+                <blockquote className="!max-w-none !text-b1 !font-normal !tracking-normal">
+                  “{r.quote}”
+                </blockquote>
               </div>
               <div className="tm-rv__by">
                 <img className="tm-rv__av" src={r.img} alt="" loading="lazy" />
