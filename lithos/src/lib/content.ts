@@ -167,7 +167,7 @@ export const platform = {
 export const products = {
   eyebrow: "Unified Quality Engineering for Enterprise",
   title:
-    "Plan, run and analyze every test in one place. Test management, a fast execution cloud, real devices and AI insights, built to work together.",
+    "Plan, author, execute and analyze every test in one place. Test management, AI agents, a fast execution cloud and AI insights, built to work together.",
   tabs: [
     {
       id: "test-manager",

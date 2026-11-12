@@ -404,3 +404,121 @@ body {
     height: min(680px, calc(100vh - 136px));
   }
 }
+
+/* ---------- Journey: the pinned Plan to Analysis flow ---------- */
+.flow-track {
+  height: calc((100vh - var(--tm-space-56)) * 3.8);
+}
+.flow-pin {
+  position: sticky;
+  top: var(--tm-space-56);
+  height: calc(100vh - var(--tm-space-56));
+}
+.flow-move {
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.2s ease;
+}
+.flow-body-off {
+  opacity: 0;
+  pointer-events: none;
+}
+.flow-body-on {
+  opacity: 1;
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.5s ease 0.25s;
+}
+.flow-count {
+  font-size: var(--tm-h2-size);
+  line-height: var(--tm-h2-line);
+}
+/* short screens: the listing keeps the product names, drops their one-liners */
+@media (max-height: 740px) {
+  .flow-rail .flow-desc {
+    display: none;
+  }
+}
+
+/* the isometric plates: quiet until their step is open */
+.iso-top,
+.iso-side-l,
+.iso-side-r,
+.iso-box,
+.iso-tint,
+.iso-ink,
+.iso-line {
+  stroke: var(--tm-border-default);
+  stroke-width: 1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition:
+    fill 0.5s ease,
+    stroke 0.5s ease;
+}
+.iso-top {
+  fill: var(--tm-bg-default);
+}
+.iso-side-l {
+  fill: var(--tm-bg-fill);
+}
+.iso-side-r {
+  fill: var(--tm-bg-muted);
+}
+.iso-box,
+.iso-line {
+  fill: none;
+}
+.iso-tint {
+  fill: var(--tm-bg-fill);
+}
+.iso-ink {
+  fill: var(--tm-border-default);
+}
+.iso-bar {
+  fill: var(--tm-border-default);
+  transition: fill 0.5s ease;
+}
+.iso-detail {
+  opacity: 0.55;
+  transition: opacity 0.5s ease;
+}
+.iso-layer[data-on="true"] :is(.iso-top, .iso-side-l, .iso-side-r, .iso-box, .iso-tint, .iso-ink, .iso-line) {
+  stroke: var(--tm-fg-default);
+}
+.iso-layer[data-on="true"] .iso-top {
+  fill: var(--tm-bg-surface);
+}
+.iso-layer[data-on="true"] .iso-ink {
+  fill: var(--tm-bg-inverse);
+}
+.iso-layer[data-on="true"] .iso-bar {
+  fill: var(--tm-fg-subtle);
+}
+.iso-layer[data-on="true"] .iso-detail {
+  opacity: 1;
+}
+.iso-tag {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.iso-layer[data-on="true"] .iso-tag {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.45s;
+}
+.iso-lead,
+.iso-guide {
+  fill: none;
+  stroke: var(--tm-fg-subtle);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.iso-guide {
+  stroke: var(--tm-border-default);
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-move,
+  .flow-body-on {
+    transition: none;
+  }
+}

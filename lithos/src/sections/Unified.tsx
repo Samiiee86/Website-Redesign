@@ -96,7 +96,7 @@ function BigCard({ id, index }: { id: string; index: number }) {
   );
 }
 
-function UnifiedHeading() {
+export function UnifiedHeading() {
   return (
     <Reveal className="mb-12">
         <div className="grid gap-6 lg:grid-cols-[1.4fr_0.9fr] lg:items-end lg:gap-14 xl:grid-cols-[minmax(0,1fr)_400px]">

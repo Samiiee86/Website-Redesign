@@ -4,8 +4,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import TrustedBy from "./sections/TrustedBy";
 import Bento from "./sections/Bento";
-import Flow from "./sections/Flow";
-import Unified from "./sections/Unified";
+import Journey from "./sections/Journey";
 import Stories from "./sections/Stories";
 import Reasons from "./sections/Reasons";
 import Integrations from "./sections/Integrations";
@@ -30,8 +29,7 @@ export default function App() {
 
           <TrustedBy />
           <Bento />
-          <Flow />
-          <Unified />
+          <Journey />
           <Integrations />
           <Stories />
           <Reasons />
