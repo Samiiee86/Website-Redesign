@@ -450,26 +450,30 @@ const MIGRATION = "https://www.testmuai.com/support/docs/browserstack-to-testmu-
 
    Kit feature-steps cards. Each card shows only the one thing that
    changes, as a plain swap: what you have on BrowserStack, then what it
-   becomes on TestMu AI. No code file to read. */
+   becomes on TestMu AI, on a white panel over a painted scene (the kit's
+   feature card media). No code file to read. */
 
-const swaps: { title: string; body: string; from: string; to: string }[] = [
+const swaps: { title: string; body: string; from: string; to: string; scene: string }[] = [
   {
     title: "Swap your login",
     body: "Copy your username and access key from Account settings into your .env file.",
     from: "BROWSERSTACK_USERNAME",
     to: "LT_USERNAME",
+    scene: "/kit/img/shore.webp",
   },
   {
     title: "Change the hub URL",
     body: "One line. Your test runner stays, unless it runs through the BrowserStack SDK.",
     from: "hub-cloud.browserstack.com",
     to: "hub.lambdatest.com",
+    scene: "/kit/img/hills.webp",
   },
   {
     title: "Rename the capabilities",
     body: "Rebuild them in the Capabilities Generator. Your test logic stays the same.",
     from: "bstack:options",
     to: "LT:Options",
+    scene: "/kit/img/meadow.webp",
   },
 ];
 
@@ -506,20 +510,24 @@ function Switch() {
               </h3>
               <p className="!mb-8 !text-b2">{w.body}</p>
 
-              {/* the swap: before, then after */}
-              <div className="mt-auto flex flex-col gap-3 bg-[var(--tm-bg-fill)] p-5">
-                <div className="flex flex-col gap-1">
-                  <span className="tm-label">BrowserStack</span>
-                  <code className="break-all font-mono text-b3 text-muted-foreground line-through decoration-[var(--tm-fg-subtle)]">
-                    {w.from}
-                  </code>
-                </div>
-                <ArrowDown size={20} strokeWidth={1.5} aria-label="becomes" className="text-foreground" />
-                <div className="flex flex-col gap-1">
-                  <span className="tm-label !text-foreground">TestMu AI</span>
-                  <code className="break-all font-mono text-b3 font-medium text-foreground">
-                    {w.to}
-                  </code>
+              {/* the swap, as the kit's card media: a white panel on a
+                  painted scene, set into the corner like product UI */}
+              <div className="tm-fcard__media mt-auto !aspect-[4/3]">
+                <img className="tm-scene" src={w.scene} alt="" loading="lazy" />
+                <div className="tm-fcard__ui flex !w-[78%] flex-col gap-3 bg-surface p-5">
+                  <div className="flex flex-col gap-1">
+                    <span className="tm-label">BrowserStack</span>
+                    <code className="break-all font-mono text-b3 text-muted-foreground line-through decoration-[var(--tm-fg-subtle)]">
+                      {w.from}
+                    </code>
+                  </div>
+                  <ArrowDown size={20} strokeWidth={1.5} aria-label="becomes" className="text-foreground" />
+                  <div className="flex flex-col gap-1">
+                    <span className="tm-label !text-foreground">TestMu AI</span>
+                    <code className="break-all font-mono text-b3 font-medium text-foreground">
+                      {w.to}
+                    </code>
+                  </div>
                 </div>
               </div>
             </li>
