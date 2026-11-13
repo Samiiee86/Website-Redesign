@@ -705,6 +705,8 @@ function Page() {
             groups={duel}
           />
         </div>
+        <Switch />
+        <GartnerCta />
         <div id="alternatives">
           <SpecTable
             lead="Six BrowserStack alternatives,"
@@ -714,8 +716,6 @@ function Page() {
             rows={alts}
           />
         </div>
-        <Switch />
-        <GartnerCta />
         <Methodology />
         <Stories />
         <Reviews />
