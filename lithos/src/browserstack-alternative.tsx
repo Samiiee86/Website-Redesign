@@ -508,7 +508,7 @@ function Switch() {
               <h3 className="!mt-4 !text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">
                 {w.title}
               </h3>
-              <p className="!mb-6 !mt-2 !text-b2">{w.body}</p>
+              <p className="!mb-6 !mt-1 !text-b2">{w.body}</p>
 
               {/* the swap, as the kit's card media: a white panel on a
                   painted scene, set into the corner like product UI */}
