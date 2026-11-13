@@ -520,16 +520,17 @@ function GartnerQuadrant() {
                 />
               ))}
               {q.lit && (
-                <span className="absolute left-3 top-10 flex flex-col gap-2">
-                  <span className="grid size-10 place-items-center bg-[var(--tm-bg-inverse)] sm:size-14">
-                    <svg width="24" height="27" viewBox="0 0 16.02 18.02" fill="var(--tm-fg-inverse)" aria-hidden>
+                /* the mark and the wordmark on one line, centred in the square */
+                <span className="absolute left-3 top-1/2 flex -translate-y-1/2 items-center gap-1.5 sm:gap-2">
+                  <span className="grid size-6 place-items-center bg-[var(--tm-bg-inverse)] sm:size-8">
+                    <svg viewBox="0 0 16.02 18.02" fill="var(--tm-fg-inverse)" aria-hidden className="h-3 w-auto sm:h-4">
                       <path d="M16.0117 0H11.2082V11.6085H16.0117V0Z" />
                       <path d="M4.80469 0H0.00118828V6.60481L4.80469 11.6085V0Z" />
                       <path d="M4.80469 11.6094H0.00118828V18.014H4.80469V11.6094Z" />
                       <path d="M11.207 11.6094H4.80237L8.60514 16.4129H11.207V11.6094Z" />
                     </svg>
                   </span>
-                  <img src="/kit/cta/testmu-wordmark-dark.svg" alt="TestMu AI" width={97} height={19} className="h-4 w-auto sm:h-5" />
+                  <img src="/kit/cta/testmu-wordmark-dark.svg" alt="TestMu AI" width={97} height={19} className="h-3 w-auto sm:h-3.5" />
                 </span>
               )}
             </div>
