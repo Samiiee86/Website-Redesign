@@ -466,112 +466,80 @@ const steps: Step[] = [
 const LEADER = "text-[length:calc(var(--tm-h1-size)*8/7)] lg:text-[length:calc(var(--tm-h1-size)*16/7)]";
 const MQ_SUB = "text-[length:var(--tm-h4-size)] lg:text-[length:calc(var(--tm-h3-size)*9/8)]";
 
-/* The Magic Quadrant as four squares in the banner's style: outlined in
-   white, the Leaders square lit with a glow, TestMu AI as a big black tile
-   inside it. Other vendors are unnamed dots, placed roughly as in the
-   report; the full citation sits in the Gartner FAQ answer. */
-const Q = { x: 56, y: 8, s: 128, gap: 8 };
-const quads = [
-  { name: "Challengers", x: Q.x, y: Q.y },
-  { name: "Leaders", x: Q.x + Q.s + Q.gap, y: Q.y, lit: true },
-  { name: "Niche players", x: Q.x, y: Q.y + Q.s + Q.gap },
-  { name: "Visionaries", x: Q.x + Q.s + Q.gap, y: Q.y + Q.s + Q.gap },
+/* The Magic Quadrant as four joined squares in the banner's style: the
+   Leaders square lit white with a glow, TestMu AI as a big black tile in
+   it; the other three are frosted glass over the glow and rings. Other
+   vendors are unnamed dots, placed roughly as in the report; the full
+   citation sits in the Gartner FAQ answer. Built from blocks, not SVG,
+   because glass (backdrop blur) only works on page blocks. */
+type Quad = { name: string; lit?: boolean; dots: [number, number][] };
+const quads: Quad[] = [
+  { name: "Challengers", dots: [[66, 66], [80, 59], [87, 73], [72, 80], [56, 86]] },
+  { name: "Leaders", lit: true, dots: [[55, 28], [72, 39], [61, 17]] },
+  { name: "Niche players", dots: [[12, 47], [82, 28]] },
+  { name: "Visionaries", dots: [[19, 41]] },
 ];
-/* other vendors, by quadrant */
-const dots: [number, number, boolean?][] = [
-  [262, 44, true], [284, 58, true], [270, 30, true],
-  [140, 92], [158, 84], [168, 102], [148, 110], [128, 118],
-  [72, 204], [168, 160],
-  [216, 196],
-];
+const MONO_LABEL = "font-mono text-b5 uppercase tracking-[1px]";
+const LINE = "border-[color-mix(in_srgb,var(--tm-fg-inverse)_40%,transparent)]";
 
 function GartnerQuadrant() {
-  const L = quads[1];
-  const tile = { x: L.x + 16, y: L.y + 36, s: 48 };
   return (
-    <svg
-      viewBox="0 0 360 301"
+    <div
       role="img"
       aria-label="Gartner Magic Quadrant, September 2026: TestMu AI in the Leaders quadrant"
-      className="relative mx-auto block w-full max-w-[400px] flex-none lg:mx-0 lg:w-[400px] lg:self-center"
+      className="relative mx-auto flex flex-none flex-col gap-4 lg:mx-0 lg:w-[400px] lg:items-center lg:self-center"
     >
-      <defs>
-        <filter id="mq-glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="10" />
-        </filter>
-      </defs>
+      <div className="flex gap-4">
+        {/* y axis, read bottom to top */}
+        <span className={`${MONO_LABEL} self-end text-[var(--tm-fg-inverse-muted)] [writing-mode:vertical-rl] rotate-180`}>
+          Ability to execute →
+        </span>
 
-      {/* glow behind the lit square */}
-      <rect x={L.x - 4} y={L.y - 4} width={Q.s + 8} height={Q.s + 8} fill="var(--tm-fg-inverse)" opacity="0.35" filter="url(#mq-glow)" />
+        <div className="relative">
+          {/* glow behind the lit square, top right */}
+          <span aria-hidden className="absolute right-0 top-0 h-1/2 w-1/2 bg-[var(--tm-fg-inverse)] opacity-40 blur-xl" />
 
-      {quads.map((q) => (
-        <g key={q.name}>
-          <rect
-            x={q.x + 0.75}
-            y={q.y + 0.75}
-            width={Q.s - 1.5}
-            height={Q.s - 1.5}
-            fill={q.lit ? "var(--tm-fg-inverse)" : "none"}
-            stroke="var(--tm-fg-inverse)"
-            strokeOpacity={q.lit ? 1 : 0.6}
-            strokeWidth="1.5"
-          />
-          <text
-            x={q.x + 12}
-            y={q.y + 22}
-            fill={q.lit ? "var(--tm-fg-default)" : "var(--tm-fg-inverse-muted)"}
-            style={{ font: "400 10px/14px var(--tm-font-mono)", letterSpacing: 1, textTransform: "uppercase" }}
-          >
-            {q.name}
-          </text>
-        </g>
-      ))}
-
-      {dots.map(([x, y, inLit]) => (
-        <circle
-          key={`${x}-${y}`}
-          cx={x}
-          cy={y}
-          r="3"
-          fill={inLit ? "var(--tm-fg-default)" : "var(--tm-fg-inverse)"}
-          opacity={inLit ? 0.25 : 0.5}
-        />
-      ))}
-
-      {/* TestMu AI: the big tile, with its name under it */}
-      <rect x={tile.x} y={tile.y} width={tile.s} height={tile.s} fill="var(--tm-bg-inverse)" />
-      <g transform={`translate(${tile.x + 12} ${tile.y + 12}) scale(1.4)`} fill="var(--tm-fg-inverse)">
-        <path d="M16.0117 0H11.2082V11.6085H16.0117V0Z" />
-        <path d="M4.80469 0H0.00118828V6.60481L4.80469 11.6085V0Z" />
-        <path d="M4.80469 11.6094H0.00118828V18.014H4.80469V11.6094Z" />
-        <path d="M11.207 11.6094H4.80237L8.60514 16.4129H11.207V11.6094Z" />
-      </g>
-      <text
-        x={tile.x}
-        y={tile.y + tile.s + 24}
-        fill="var(--tm-fg-default)"
-        style={{ font: "500 16px/24px var(--tm-font-sans)" }}
-      >
-        TestMu AI
-      </text>
-
-      {/* axes */}
-      <text
-        transform={`translate(${Q.x - 16} ${Q.y + 2 * Q.s + Q.gap}) rotate(-90)`}
-        fill="var(--tm-fg-inverse-muted)"
-        style={{ font: "400 10px/14px var(--tm-font-mono)", letterSpacing: 1, textTransform: "uppercase" }}
-      >
-        Ability to execute →
-      </text>
-      <text
-        x={Q.x}
-        y={Q.y + 2 * Q.s + Q.gap + 22}
-        fill="var(--tm-fg-inverse-muted)"
-        style={{ font: "400 10px/14px var(--tm-font-mono)", letterSpacing: 1, textTransform: "uppercase" }}
-      >
-        Completeness of vision →
-      </text>
-    </svg>
+          <div className={`relative grid grid-cols-2 border-l border-t ${LINE}`}>
+            {quads.map((q) => (
+              <div
+                key={q.name}
+                className={`relative size-[120px] border-b border-r sm:size-[144px] ${LINE} ${
+                  q.lit
+                    ? "bg-[var(--tm-fg-inverse)] text-[var(--tm-fg-default)]"
+                    : "bg-[color-mix(in_srgb,var(--tm-fg-inverse)_6%,transparent)] text-[var(--tm-fg-inverse-muted)] backdrop-blur-md"
+                }`}
+              >
+                <span className={`absolute left-3 top-3 ${MONO_LABEL}`}>{q.name}</span>
+                {q.dots.map(([x, y]) => (
+                  <span
+                    key={`${x}-${y}`}
+                    aria-hidden
+                    className={`absolute size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full ${
+                      q.lit ? "bg-[var(--tm-fg-default)] opacity-25" : "bg-[var(--tm-fg-inverse)] opacity-50"
+                    }`}
+                    style={{ left: `${x}%`, top: `${y}%` }}
+                  />
+                ))}
+                {q.lit && (
+                  <span className="absolute left-3 top-10 flex flex-col gap-2">
+                    <span className="grid size-10 place-items-center bg-[var(--tm-bg-inverse)] sm:size-14">
+                      <svg width="24" height="27" viewBox="0 0 16.02 18.02" fill="var(--tm-fg-inverse)" aria-hidden>
+                        <path d="M16.0117 0H11.2082V11.6085H16.0117V0Z" />
+                        <path d="M4.80469 0H0.00118828V6.60481L4.80469 11.6085V0Z" />
+                        <path d="M4.80469 11.6094H0.00118828V18.014H4.80469V11.6094Z" />
+                        <path d="M11.207 11.6094H4.80237L8.60514 16.4129H11.207V11.6094Z" />
+                      </svg>
+                    </span>
+                    <span className="text-b2 font-medium text-[var(--tm-fg-default)]">TestMu AI</span>
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <span className={`${MONO_LABEL} pl-8 text-[var(--tm-fg-inverse-muted)]`}>Completeness of vision →</span>
+    </div>
   );
 }
 
