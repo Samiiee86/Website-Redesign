@@ -546,6 +546,24 @@ function GartnerCta() {
   );
 }
 
+/* one side of a swap: a small coloured tag and the vendor, then the value
+   on a soft wash with a 2px bar, red for what goes, green for what comes */
+function SwapRow({ tone, tag, who, value }: { tone: "red" | "green"; tag: string; who: string; value: string }) {
+  const c =
+    tone === "red"
+      ? { tag: "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]", row: "bg-[var(--tm-red-000)] text-[var(--tm-red-500)] [box-shadow:inset_2px_0_0_var(--tm-red-400)]" }
+      : { tag: "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]", row: "bg-[var(--tm-green-000)] text-[var(--tm-green-500)] [box-shadow:inset_2px_0_0_var(--tm-green-400)]" };
+  return (
+    <div className="flex flex-col gap-2">
+      <span className="flex items-center gap-2">
+        <span className={`tag rounded-sm px-1.5 py-0.5 font-mono text-b5 uppercase tracking-[1px] ${c.tag}`}>{tag}</span>
+        <span className="text-b4 text-muted-foreground">{who}</span>
+      </span>
+      <code className={`block break-all px-3 py-2 font-mono text-b4 ${c.row}`}>{value}</code>
+    </div>
+  );
+}
+
 function Switch() {
   return (
     <Section>
@@ -577,20 +595,13 @@ function Switch() {
                   painted scene, set into the corner like product UI */}
               <div className="tm-fcard__media mt-auto !aspect-[4/3]">
                 <img className="tm-scene" src={w.scene} alt="" loading="lazy" />
-                <div className="tm-fcard__ui flex !w-[78%] flex-col gap-3 bg-surface p-5">
-                  <div className="flex flex-col gap-1">
-                    <span className="tm-label">BrowserStack</span>
-                    <code className="break-all font-mono text-b3 text-muted-foreground line-through decoration-[var(--tm-fg-subtle)]">
-                      {w.from}
-                    </code>
-                  </div>
-                  <ArrowDown size={20} strokeWidth={1.5} aria-label="becomes" className="text-foreground" />
-                  <div className="flex flex-col gap-1">
-                    <span className="tm-label !text-foreground">TestMu AI</span>
-                    <code className="break-all font-mono text-b3 font-medium text-foreground">
-                      {w.to}
-                    </code>
-                  </div>
+                {/* the same language as the hero code: a red "before" row
+                    and a green "after" row, each with a side bar; nothing
+                    struck out, so both values read cleanly */}
+                <div className="tm-fcard__ui flex !w-[84%] flex-col gap-3 bg-surface p-5">
+                  <SwapRow tone="red" tag="Before" who="BrowserStack" value={w.from} />
+                  <ArrowDown size={16} strokeWidth={1.5} aria-label="becomes" className="ml-3 text-muted-foreground" />
+                  <SwapRow tone="green" tag="After" who="TestMu AI" value={w.to} />
                 </div>
               </div>
             </li>
