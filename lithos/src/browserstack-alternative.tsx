@@ -480,6 +480,7 @@ const quads: Quad[] = [
   { name: "Visionaries", dots: [[19, 41]] },
 ];
 const MONO_LABEL = "font-mono text-b5 uppercase tracking-[1px]";
+const AXIS = "font-mono text-b5 uppercase tracking-[1px] text-[var(--tm-fg-inverse)]";
 const LINE = "border-[color-mix(in_srgb,var(--tm-fg-inverse)_40%,transparent)]";
 
 function GartnerQuadrant() {
@@ -487,58 +488,56 @@ function GartnerQuadrant() {
     <div
       role="img"
       aria-label="Gartner Magic Quadrant, September 2026: TestMu AI in the Leaders quadrant"
-      className="relative mx-auto flex flex-none flex-col gap-4 lg:mx-0 lg:w-[400px] lg:items-center lg:self-center"
+      className="relative mx-auto grid flex-none grid-cols-[auto_auto] gap-4 lg:mx-0"
     >
-      <div className="flex gap-4">
-        {/* y axis, read bottom to top */}
-        <span className={`${MONO_LABEL} self-end text-[var(--tm-fg-inverse-muted)] [writing-mode:vertical-rl] rotate-180`}>
-          Ability to execute →
-        </span>
+      {/* y axis, read bottom to top, centred on the grid */}
+      <span className={`${AXIS} col-start-1 row-start-1 self-center [writing-mode:vertical-rl] rotate-180`}>
+        Ability to execute →
+      </span>
+      <div className="relative col-start-2 row-start-1">
+        {/* glow behind the lit square, top right */}
+        <span aria-hidden className="absolute right-0 top-0 h-1/2 w-1/2 bg-[var(--tm-fg-inverse)] opacity-40 blur-xl" />
 
-        <div className="relative">
-          {/* glow behind the lit square, top right */}
-          <span aria-hidden className="absolute right-0 top-0 h-1/2 w-1/2 bg-[var(--tm-fg-inverse)] opacity-40 blur-xl" />
-
-          <div className={`relative grid grid-cols-2 border-l border-t ${LINE}`}>
-            {quads.map((q) => (
-              <div
-                key={q.name}
-                className={`relative size-[120px] border-b border-r sm:size-[144px] ${LINE} ${
-                  q.lit
-                    ? "bg-[var(--tm-fg-inverse)] text-[var(--tm-fg-default)]"
-                    : "bg-[color-mix(in_srgb,var(--tm-fg-inverse)_6%,transparent)] text-[var(--tm-fg-inverse-muted)] backdrop-blur-md"
-                }`}
-              >
-                <span className={`absolute left-3 top-3 ${MONO_LABEL}`}>{q.name}</span>
-                {q.dots.map(([x, y]) => (
-                  <span
-                    key={`${x}-${y}`}
-                    aria-hidden
-                    className={`absolute size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full ${
-                      q.lit ? "bg-[var(--tm-fg-default)] opacity-25" : "bg-[var(--tm-fg-inverse)] opacity-50"
-                    }`}
-                    style={{ left: `${x}%`, top: `${y}%` }}
-                  />
-                ))}
-                {q.lit && (
-                  <span className="absolute left-3 top-10 flex flex-col gap-2">
-                    <span className="grid size-10 place-items-center bg-[var(--tm-bg-inverse)] sm:size-14">
-                      <svg width="24" height="27" viewBox="0 0 16.02 18.02" fill="var(--tm-fg-inverse)" aria-hidden>
-                        <path d="M16.0117 0H11.2082V11.6085H16.0117V0Z" />
-                        <path d="M4.80469 0H0.00118828V6.60481L4.80469 11.6085V0Z" />
-                        <path d="M4.80469 11.6094H0.00118828V18.014H4.80469V11.6094Z" />
-                        <path d="M11.207 11.6094H4.80237L8.60514 16.4129H11.207V11.6094Z" />
-                      </svg>
-                    </span>
-                    <span className="text-b2 font-medium text-[var(--tm-fg-default)]">TestMu AI</span>
+        <div className={`relative grid grid-cols-2 border-l border-t ${LINE}`}>
+          {quads.map((q) => (
+            <div
+              key={q.name}
+              className={`relative size-[120px] border-b border-r sm:size-[144px] ${LINE} ${
+                q.lit
+                  ? "bg-[var(--tm-fg-inverse)] text-[var(--tm-fg-default)]"
+                  : "bg-[color-mix(in_srgb,var(--tm-fg-inverse)_6%,transparent)] text-[var(--tm-fg-inverse-muted)] backdrop-blur-md"
+              }`}
+            >
+              <span className={`absolute left-3 top-3 ${MONO_LABEL}`}>{q.name}</span>
+              {q.dots.map(([x, y]) => (
+                <span
+                  key={`${x}-${y}`}
+                  aria-hidden
+                  className={`absolute size-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full ${
+                    q.lit ? "bg-[var(--tm-fg-default)] opacity-25" : "bg-[var(--tm-fg-inverse)] opacity-50"
+                  }`}
+                  style={{ left: `${x}%`, top: `${y}%` }}
+                />
+              ))}
+              {q.lit && (
+                <span className="absolute left-3 top-10 flex flex-col gap-2">
+                  <span className="grid size-10 place-items-center bg-[var(--tm-bg-inverse)] sm:size-14">
+                    <svg width="24" height="27" viewBox="0 0 16.02 18.02" fill="var(--tm-fg-inverse)" aria-hidden>
+                      <path d="M16.0117 0H11.2082V11.6085H16.0117V0Z" />
+                      <path d="M4.80469 0H0.00118828V6.60481L4.80469 11.6085V0Z" />
+                      <path d="M4.80469 11.6094H0.00118828V18.014H4.80469V11.6094Z" />
+                      <path d="M11.207 11.6094H4.80237L8.60514 16.4129H11.207V11.6094Z" />
+                    </svg>
                   </span>
-                )}
-              </div>
-            ))}
-          </div>
+                  <img src="/kit/cta/testmu-wordmark-dark.svg" alt="TestMu AI" width={97} height={19} className="h-4 w-auto sm:h-5" />
+                </span>
+              )}
+            </div>
+          ))}
         </div>
       </div>
-      <span className={`${MONO_LABEL} pl-8 text-[var(--tm-fg-inverse-muted)]`}>Completeness of vision →</span>
+      {/* x axis, centred under the grid */}
+      <span className={`${AXIS} col-start-2 row-start-2 justify-self-center`}>Completeness of vision →</span>
     </div>
   );
 }
@@ -548,25 +547,6 @@ function GartnerCta() {
   return (
     <Section className="!py-0">
       <div className="relative -mx-8 overflow-hidden bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
-        {/* rings and line behind the chart, under the glow as in Figma, so
-            the glow hides their lower half */}
-        <div aria-hidden className="pointer-events-none absolute right-28 top-10 hidden h-[301px] w-[400px] mix-blend-lighten lg:block">
-            <div aria-hidden className="pointer-events-none absolute left-1/2 top-[-4px] hidden size-[450px] -translate-x-1/2 lg:block">
-              <img src="/kit/cta/gartner-ring-outer.png" alt="" className="absolute inset-[-3.68%] size-[107.36%] max-w-none" />
-            </div>
-            <div aria-hidden className="pointer-events-none absolute left-1/2 top-[48px] hidden size-[311px] -translate-x-1/2 lg:block">
-              <img src="/kit/cta/gartner-ring-inner.png" alt="" className="absolute inset-[-1.52%] size-[103.04%] max-w-none" />
-            </div>
-            <img
-              aria-hidden
-              src="/kit/cta/gartner-line.svg"
-              alt=""
-              width={123.58}
-              height={4.73}
-              className="pointer-events-none absolute left-1/2 top-[-40px] hidden origin-top-left rotate-90 lg:block"
-            />
-        </div>
-
         {/* warm horizon glow */}
         <img
           src="/kit/cta/gartner-glow.svg"
@@ -575,8 +555,8 @@ function GartnerCta() {
           className="pointer-events-none absolute inset-x-0 bottom-0 h-[402px] w-full lg:bottom-auto lg:top-10"
         />
 
-        <div className="relative flex flex-col gap-12 px-6 py-12 lg:flex-row lg:items-start lg:justify-between lg:py-10 lg:pl-12 lg:pr-28">
-          <div className="flex flex-col lg:pt-2">
+        <div className="relative flex flex-col gap-12 px-6 py-12 lg:flex-row lg:items-center lg:justify-between lg:p-12">
+          <div className="flex flex-col">
             <p className="text-[length:var(--tm-h4-size)] font-medium leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">TestMu AI has been named a</p>
             <div className="flex items-center gap-7">
               <p className={`${LEADER} font-[family-name:var(--tm-font-pixel)] leading-none`}>
