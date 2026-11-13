@@ -564,11 +564,12 @@ function Tag({ ok, children }: { ok: boolean; children: string }) {
   );
 }
 
+/* divs, not p: the kit sizes every p in a step card at 16px */
 function StepUi({ ui }: { ui: Step["ui"] }) {
   if (ui === "keys")
     return (
       <div className={PANEL}>
-        <p className="border-b border-border px-4 py-3 text-b3 font-medium">Access keys</p>
+        <div className="border-b border-border px-4 py-3 text-b3 font-medium">Access keys</div>
         {[
           ["Username", "qa-team"],
           ["Access key", "••••••••••••"],
@@ -590,29 +591,35 @@ function StepUi({ ui }: { ui: Step["ui"] }) {
 
   if (ui === "run")
     return (
-      <div className={`${PANEL} gap-3 p-4`}>
-        <p className={`${MONO} text-muted-foreground`}>$ mvn test</p>
-        <p className={`${MONO} flex items-center gap-2`}>
-          <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
-          Connected to TestMu AI
-        </p>
-        <p className={`${MONO} flex items-center gap-2`}>
-          <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
-          12 tests in parallel
-        </p>
-        {/* progress: three quarters done */}
-        <span className="mt-1 block h-1 bg-[var(--tm-bg-muted)]">
-          <span className="block h-full w-3/4 bg-[var(--tm-green-400)]" />
-        </span>
+      <div className={PANEL}>
+        <div className="flex items-center justify-between border-b border-border px-4 py-3 text-b3 font-medium">
+          Test run
+          <span className="text-b4 font-normal text-muted-foreground">Running</span>
+        </div>
+        <div className="flex flex-col gap-3 p-4">
+          <div className={`${MONO} text-muted-foreground`}>$ mvn test</div>
+          <div className={`${MONO} flex items-center gap-2`}>
+            <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
+            Connected to TestMu AI
+          </div>
+          <div className={`${MONO} flex items-center gap-2`}>
+            <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
+            12 tests in parallel
+          </div>
+          {/* progress: three quarters done */}
+          <span className="mt-1 block h-1 bg-[var(--tm-bg-muted)]">
+            <span className="block h-full w-3/4 bg-[var(--tm-green-400)]" />
+          </span>
+        </div>
       </div>
     );
 
   return (
     <div className={PANEL}>
-      <p className="flex items-center justify-between border-b border-border px-4 py-3 text-b3 font-medium">
+      <div className="flex items-center justify-between border-b border-border px-4 py-3 text-b3 font-medium">
         Test runs
         <span className="text-b4 font-normal text-muted-foreground">46 of 48 passed</span>
-      </p>
+      </div>
       {[
         ["Checkout flow", "Chrome 148", true],
         ["Sign in", "Safari 26", true],
