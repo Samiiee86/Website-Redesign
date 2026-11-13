@@ -480,7 +480,8 @@ const quads: Quad[] = [
   { name: "Visionaries", dots: [[19, 41]] },
 ];
 const MONO_LABEL = "font-mono text-b5 uppercase tracking-[1px]";
-const AXIS = "font-mono text-b5 uppercase tracking-[1px] text-[var(--tm-fg-inverse)]";
+/* axis names on small black tags, so they read over the bright glow */
+const AXIS = "tag rounded-sm bg-[var(--tm-bg-inverse)] px-2 py-1 font-mono text-b4 uppercase tracking-[1px] text-[var(--tm-fg-inverse)]";
 const LINE = "border-[color-mix(in_srgb,var(--tm-fg-inverse)_40%,transparent)]";
 
 function GartnerQuadrant() {
