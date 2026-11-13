@@ -483,8 +483,9 @@ const LEADER = "text-[length:calc(var(--tm-h1-size)*8/7)] lg:text-[length:calc(v
 const MQ_SUB = "text-[length:var(--tm-h4-size)] lg:text-[length:calc(var(--tm-h3-size)*9/8)]";
 
 function GartnerCta() {
+  /* no top or bottom padding: the banner meets the section lines */
   return (
-    <Section>
+    <Section className="!py-0">
       <div className="relative -mx-8 overflow-hidden bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
         {/* rings and line behind the chart, under the glow as in Figma, so
             the glow hides their lower half */}
@@ -534,7 +535,7 @@ function GartnerCta() {
               in the Gartner® Magic Quadrant™
             </p>
             <a
-              className="tm-btn tm-btn--secondary mt-7 self-start"
+              className="tm-btn tm-btn--secondary mt-10 self-start"
               href="https://www.testmuai.com/gartner-magic-quadrant-agentic-software-quality-assurance-platforms/"
             >
               Get the report
