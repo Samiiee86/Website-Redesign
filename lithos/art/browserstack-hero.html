@@ -55,17 +55,27 @@
   }
   /* the popup covers the middle, so the after label sits at the far edge */
   .pane + .pane .pane__top { justify-content: flex-end; }
-  .pane__top span { font-family: var(--tm-font-mono); font-size: 10px; line-height: 14px; letter-spacing: 1px; text-transform: uppercase; font-weight: 400; color: var(--tm-fg-subtle); }
-  .code { padding: 20px 0; font-family: var(--tm-font-mono); font-size: 12px; line-height: 36px; white-space: pre; }
+  /* before and after as small colour tags */
+  .pane__top span { font-family: var(--tm-font-mono); font-size: 10px; line-height: 14px; letter-spacing: 1px; text-transform: uppercase; font-weight: 400; padding: 2px 6px; border-radius: var(--tm-radius-sm); }
+  .pane .pane__top span { background: var(--tm-red-000); color: var(--tm-red-500); }
+  .pane + .pane .pane__top span { background: var(--tm-green-000); color: var(--tm-green-500); }
+  .code { padding: 20px 0; font-family: var(--tm-font-mono); font-size: 12px; line-height: 36px; white-space: pre; color: var(--tm-fg-default); }
   .ln { display: grid; grid-template-columns: 40px 20px 1fr; padding-right: 12px; }
   .ln i { font-style: normal; text-align: right; padding-right: 12px; color: var(--tm-fg-subtle); }
   .ln b { font-weight: 400; }
-  .s { color: var(--tm-fg-link); }
-  .del { background: var(--tm-bg-fill); }
-  .del b { color: var(--tm-fg-error); }
-  .del em { font-style: normal; color: var(--tm-fg-subtle); text-decoration: line-through; }
-  .add { background: var(--tm-bg-accent-muted); }
-  .add b { color: var(--tm-fg-success); }
+  /* colour only where it means something: strings blue, and the words
+     that change red (gone) or green (new) */
+  .k { color: inherit; }
+  .s { color: var(--tm-blue-500); }
+  .f { color: inherit; }
+  .del, .add { box-shadow: inset 2px 0 0 var(--c); }
+  .del { --c: var(--tm-red-400); }
+  .add { --c: var(--tm-green-400); }
+  .del b { color: var(--tm-red-500); }
+  .add b { color: var(--tm-green-500); }
+  .w { padding: 2px 0; border-radius: var(--tm-radius-sm); }
+  .del .w { background: var(--tm-red-000); color: var(--tm-red-500); }
+  .add .w { background: var(--tm-green-000); color: var(--tm-green-500); }
 </style>
 </head>
 <body>
@@ -80,11 +90,11 @@
   <div class="panes">
     <div class="pane">
       <div class="pane__top"><span>Before</span>BrowserStack</div>
-<div class="code"><div class="ln"><i>1</i><b></b><span>caps.setCapability(<span class="s">"browserName"</span>, <span class="s">"Chrome"</span>);</span></div><div class="ln"><i>2</i><b></b><span>HashMap&lt;String, Object&gt; opts = new HashMap&lt;&gt;();</span></div><div class="ln del"><i>3</i><b>−</b><em>opts.put("userName", BROWSERSTACK_USERNAME);</em></div><div class="ln del"><i>4</i><b>−</b><em>opts.put("accessKey", BROWSERSTACK_ACCESS_KEY);</em></div><div class="ln del"><i>5</i><b>−</b><em>caps.setCapability("bstack:options", opts);</em></div><div class="ln"><i>6</i><b></b><span> </span></div><div class="ln"><i>7</i><b></b><span>URL hub = new URL(</span></div><div class="ln del"><i>8</i><b>−</b><em>  "https://hub-cloud.browserstack.com/wd/hub");</em></div><div class="ln"><i>9</i><b></b><span>driver = new RemoteWebDriver(hub, caps);</span></div></div>
+<div class="code"><div class="ln"><i>1</i><b></b><span>caps.<span class="f">setCapability</span>(<span class="s">"browserName"</span>, <span class="s">"Chrome"</span>);</span></div><div class="ln"><i>2</i><b></b><span>HashMap&lt;String, Object&gt; opts = <span class="k">new</span> HashMap&lt;&gt;();</span></div><div class="ln del"><i>3</i><b>−</b><span>opts.<span class="f">put</span>(<span class="s">"<span class="w">userName</span>"</span>, <span class="w">BROWSERSTACK_USERNAME</span>);</span></div><div class="ln del"><i>4</i><b>−</b><span>opts.<span class="f">put</span>(<span class="s">"accessKey"</span>, <span class="w">BROWSERSTACK_ACCESS_KEY</span>);</span></div><div class="ln del"><i>5</i><b>−</b><span>caps.<span class="f">setCapability</span>(<span class="s">"<span class="w">bstack:options</span>"</span>, opts);</span></div><div class="ln"><i>6</i><b></b><span> </span></div><div class="ln"><i>7</i><b></b><span>URL hub = <span class="k">new</span> URL(</span></div><div class="ln del"><i>8</i><b>−</b><span>  <span class="s">"https://<span class="w">hub-cloud.browserstack.com</span>/wd/hub"</span>);</span></div><div class="ln"><i>9</i><b></b><span>driver = <span class="k">new</span> RemoteWebDriver(hub, caps);</span></div></div>
     </div>
     <div class="pane">
       <div class="pane__top"><span>After</span>TestMu AI</div>
-<div class="code"><div class="ln"><i>1</i><b></b><span>caps.setCapability(<span class="s">"browserName"</span>, <span class="s">"Chrome"</span>);</span></div><div class="ln"><i>2</i><b></b><span>HashMap&lt;String, Object&gt; opts = new HashMap&lt;&gt;();</span></div><div class="ln add"><i>3</i><b>+</b><span>opts.put(<span class="s">"username"</span>, LT_USERNAME);</span></div><div class="ln add"><i>4</i><b>+</b><span>opts.put(<span class="s">"accessKey"</span>, LT_ACCESS_KEY);</span></div><div class="ln add"><i>5</i><b>+</b><span>caps.setCapability(<span class="s">"LT:Options"</span>, opts);</span></div><div class="ln"><i>6</i><b></b><span> </span></div><div class="ln"><i>7</i><b></b><span>URL hub = new URL(</span></div><div class="ln add"><i>8</i><b>+</b><span>  <span class="s">"https://hub.lambdatest.com/wd/hub"</span>);</span></div><div class="ln"><i>9</i><b></b><span>driver = new RemoteWebDriver(hub, caps);</span></div></div>
+<div class="code"><div class="ln"><i>1</i><b></b><span>caps.<span class="f">setCapability</span>(<span class="s">"browserName"</span>, <span class="s">"Chrome"</span>);</span></div><div class="ln"><i>2</i><b></b><span>HashMap&lt;String, Object&gt; opts = <span class="k">new</span> HashMap&lt;&gt;();</span></div><div class="ln add"><i>3</i><b>+</b><span>opts.<span class="f">put</span>(<span class="s">"<span class="w">username</span>"</span>, <span class="w">LT_USERNAME</span>);</span></div><div class="ln add"><i>4</i><b>+</b><span>opts.<span class="f">put</span>(<span class="s">"accessKey"</span>, <span class="w">LT_ACCESS_KEY</span>);</span></div><div class="ln add"><i>5</i><b>+</b><span>caps.<span class="f">setCapability</span>(<span class="s">"<span class="w">LT:Options</span>"</span>, opts);</span></div><div class="ln"><i>6</i><b></b><span> </span></div><div class="ln"><i>7</i><b></b><span>URL hub = <span class="k">new</span> URL(</span></div><div class="ln add"><i>8</i><b>+</b><span>  <span class="s">"https://<span class="w">hub.lambdatest.com</span>/wd/hub"</span>);</span></div><div class="ln"><i>9</i><b></b><span>driver = <span class="k">new</span> RemoteWebDriver(hub, caps);</span></div></div>
     </div>
   </div>
 </body>
