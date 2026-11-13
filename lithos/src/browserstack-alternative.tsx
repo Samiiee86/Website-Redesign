@@ -1,7 +1,7 @@
 import { StrictMode, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
-import { ArrowDown, SquareArrowOutUpRight } from "lucide-react";
+import { Check, Copy, SquareArrowOutUpRight } from "lucide-react";
 import "./index.css";
 import { ArrowChip, Section } from "./lib/ui";
 import GuideLines from "./components/GuideLines";
@@ -430,34 +430,32 @@ function Reviews() {
 }
 
 
-/* ---------- switching: three cards, one swap each ----------
+/* ---------- switching: the move in three steps ----------
 
-   Kit feature-steps cards. Each card shows only the one thing that
-   changes, as a plain swap: what you have on BrowserStack, then what it
-   becomes on TestMu AI, on a white panel over a painted scene (the kit's
-   feature card media). No code file to read. */
+   Kit feature-steps cards. The hero already shows the code change, so
+   these show the move itself: your keys, the first run, the results. Each
+   is a small TestMu AI view on a painted scene (kit feature card media). */
 
-const swaps: { title: string; body: string; from: string; to: string; scene: string }[] = [
+type Step = { title: string; body: string; scene: string; ui: "keys" | "run" | "results" };
+
+const steps: Step[] = [
   {
-    title: "Swap your login",
-    body: "Copy your username and access key from Account settings into your .env file.",
-    from: "BROWSERSTACK_USERNAME",
-    to: "LT_USERNAME",
+    title: "Get your keys",
+    body: "Sign up free, then copy your username and access key from Account settings.",
     scene: "/kit/img/shore.webp",
+    ui: "keys",
   },
   {
-    title: "Change the hub URL",
-    body: "One line. Your test runner stays, unless it runs through the BrowserStack SDK.",
-    from: "hub-cloud.browserstack.com",
-    to: "hub.lambdatest.com",
+    title: "Point your tests at TestMu AI",
+    body: "Change the hub URL and capabilities. Your runner and test logic stay as they are.",
     scene: "/kit/img/hills.webp",
+    ui: "run",
   },
   {
-    title: "Rename the capabilities",
-    body: "Rebuild them in the Capabilities Generator. Your test logic stays the same.",
-    from: "bstack:options",
-    to: "LT:Options",
+    title: "See every result",
+    body: "Your suite runs in parallel, with video, logs and screenshots for every test.",
     scene: "/kit/img/meadow.webp",
+    ui: "results",
   },
 ];
 
@@ -546,20 +544,88 @@ function GartnerCta() {
   );
 }
 
-/* one side of a swap: a small coloured tag and the vendor, then the value
-   on a soft wash with a 2px bar, red for what goes, green for what comes */
-function SwapRow({ tone, tag, who, value }: { tone: "red" | "green"; tag: string; who: string; value: string }) {
-  const c =
-    tone === "red"
-      ? { tag: "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]", row: "bg-[var(--tm-red-000)] text-[var(--tm-red-500)] [box-shadow:inset_2px_0_0_var(--tm-red-400)]" }
-      : { tag: "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]", row: "bg-[var(--tm-green-000)] text-[var(--tm-green-500)] [box-shadow:inset_2px_0_0_var(--tm-green-400)]" };
+/* the small product views on each step's painted scene: what you see in
+   TestMu AI at that point of the move */
+const PANEL = "tm-fcard__ui flex !w-[84%] flex-col bg-surface";
+const ROW = "flex items-center justify-between gap-3 px-4 py-2";
+const MONO = "font-mono text-b4";
+
+function Tag({ ok, children }: { ok: boolean; children: string }) {
   return (
-    <div className="flex flex-col gap-2">
-      <span className="flex items-center gap-2">
-        <span className={`tag rounded-sm px-1.5 py-0.5 font-mono text-b5 uppercase tracking-[1px] ${c.tag}`}>{tag}</span>
-        <span className="text-b4 text-muted-foreground">{who}</span>
-      </span>
-      <code className={`block break-all px-3 py-2 font-mono text-b4 ${c.row}`}>{value}</code>
+    <span
+      className={`tag rounded-sm px-1.5 py-0.5 font-mono text-b5 uppercase tracking-[1px] ${
+        ok
+          ? "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]"
+          : "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]"
+      }`}
+    >
+      {children}
+    </span>
+  );
+}
+
+function StepUi({ ui }: { ui: Step["ui"] }) {
+  if (ui === "keys")
+    return (
+      <div className={PANEL}>
+        <p className="border-b border-border px-4 py-3 text-b3 font-medium">Access keys</p>
+        {[
+          ["Username", "qa-team"],
+          ["Access key", "••••••••••••"],
+        ].map(([k, v], i) => (
+          <div key={k} className={`${ROW} ${i ? "border-t border-border" : ""}`}>
+            <span className="flex flex-col gap-0.5">
+              <span className="text-b4 text-muted-foreground">{k}</span>
+              <span className={MONO}>{v}</span>
+            </span>
+            {i ? (
+              <Copy size={16} strokeWidth={1.5} aria-hidden className="text-muted-foreground" />
+            ) : (
+              <Tag ok>Copied</Tag>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+
+  if (ui === "run")
+    return (
+      <div className={`${PANEL} gap-3 p-4`}>
+        <p className={`${MONO} text-muted-foreground`}>$ mvn test</p>
+        <p className={`${MONO} flex items-center gap-2`}>
+          <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
+          Connected to TestMu AI
+        </p>
+        <p className={`${MONO} flex items-center gap-2`}>
+          <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
+          12 tests in parallel
+        </p>
+        {/* progress: three quarters done */}
+        <span className="mt-1 block h-1 bg-[var(--tm-bg-muted)]">
+          <span className="block h-full w-3/4 bg-[var(--tm-green-400)]" />
+        </span>
+      </div>
+    );
+
+  return (
+    <div className={PANEL}>
+      <p className="flex items-center justify-between border-b border-border px-4 py-3 text-b3 font-medium">
+        Test runs
+        <span className="text-b4 font-normal text-muted-foreground">46 of 48 passed</span>
+      </p>
+      {[
+        ["Checkout flow", "Chrome 148", true],
+        ["Sign in", "Safari 26", true],
+        ["Search filters", "Edge 148", false],
+      ].map(([t, b, ok], i) => (
+        <div key={t as string} className={`${ROW} ${i ? "border-t border-border" : ""}`}>
+          <span className="flex flex-col gap-0.5">
+            <span className="text-b4 font-medium">{t}</span>
+            <span className="text-b5 text-muted-foreground">{b}</span>
+          </span>
+          <Tag ok={ok as boolean}>{ok ? "Passed" : "Failed"}</Tag>
+        </div>
+      ))}
     </div>
   );
 }
@@ -570,7 +636,7 @@ function Switch() {
       <FoldHead
         lead="Switch over"
         title="in three steps"
-        body="Keep your Selenium tests when you leave BrowserStack. Three small changes, shown below."
+        body="Keep your Selenium tests when you leave BrowserStack. Three steps from your current suite to your first run on TestMu AI."
       >
         <a
           href="https://accounts.testmuai.com/register"
@@ -582,7 +648,7 @@ function Switch() {
       </FoldHead>
       <div className="tm-reveal -mx-8">
         <ol className="tm-grid tm-grid--3 tm-steps2">
-          {swaps.map((w, i) => (
+          {steps.map((w, i) => (
             <li key={w.title} className="tm-cell tm-step">
               <span className="tm-step__n">{i + 1}</span>
               {/* H5 and B2: the kit's 20px step title is off the type scale */}
@@ -591,18 +657,11 @@ function Switch() {
               </h3>
               <p className="!mb-6 !mt-1 !text-b2">{w.body}</p>
 
-              {/* the swap, as the kit's card media: a white panel on a
-                  painted scene, set into the corner like product UI */}
+              {/* what you see in TestMu AI at this step, as the kit's card
+                  media: a white panel on a painted scene */}
               <div className="tm-fcard__media mt-auto !aspect-[4/3]">
                 <img className="tm-scene" src={w.scene} alt="" loading="lazy" />
-                {/* the same language as the hero code: a red "before" row
-                    and a green "after" row, each with a side bar; nothing
-                    struck out, so both values read cleanly */}
-                <div className="tm-fcard__ui flex !w-[84%] flex-col gap-3 bg-surface p-5">
-                  <SwapRow tone="red" tag="Before" who="BrowserStack" value={w.from} />
-                  <ArrowDown size={16} strokeWidth={1.5} aria-label="becomes" className="ml-3 text-muted-foreground" />
-                  <SwapRow tone="green" tag="After" who="TestMu AI" value={w.to} />
-                </div>
+                <StepUi ui={w.ui} />
               </div>
             </li>
           ))}
@@ -717,7 +776,6 @@ function Page() {
           />
         </div>
         <Switch />
-        <GartnerCta />
         <div id="alternatives">
           <SpecTable
             lead="Six BrowserStack alternatives,"
@@ -727,6 +785,7 @@ function Page() {
             rows={alts}
           />
         </div>
+        <GartnerCta />
         <Methodology />
         <Stories />
         <Reviews />
