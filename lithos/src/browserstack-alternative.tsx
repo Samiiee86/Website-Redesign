@@ -260,7 +260,8 @@ const Arrow = () => (
   </svg>
 );
 
-const HERO = "/kit/hero/cross-browser-testing";
+/* background from the "vs" hero fold: the compare pages' own scene */
+const HERO = "/kit/hero/browserstack-alternative";
 
 /* kit hero-media, with the cross browser testing hero fold's video */
 function Hero() {
@@ -297,7 +298,7 @@ function Hero() {
           <div className="tm-hero__screen">
             {/* drawn from tokens in art/browserstack-hero.html, rendered at 2x */}
             <img
-              src="/kit/hero/browserstack-alternative/screen.webp"
+              src={`${HERO}/screen.webp`}
               width={2000}
               height={1104}
               fetchPriority="high"
