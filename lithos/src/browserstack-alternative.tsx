@@ -547,12 +547,9 @@ const stats = [
   { label: "Prices checked", value: "Oct 2026" },
 ];
 
+/* two cards under four numbers, as the kit's reasons fold ships, so every
+   other line of the numbers meets a card edge */
 const notes = [
-  {
-    text: "Every price is a monthly list price in USD for annual billing, from each vendor's own pricing page.",
-    link: "How we check facts",
-    href: "https://www.testmuai.com/editorial-policy/",
-  },
   {
     text: "BrowserStack Automate against HyperExecute, one product at a time.",
     link: "Read the comparison",
@@ -571,7 +568,16 @@ function Methodology() {
       <FoldHead
         lead="How we compared,"
         title="and our sources"
-        body="Each BrowserStack product against its TestMu AI counterpart, from public pricing pages, product pages and docs. Where a feature is plan-gated, the table names the plan."
+        body={
+          <>
+            Each BrowserStack product against its TestMu AI counterpart, from
+            public pricing, product pages and docs. Prices are monthly list
+            prices in USD, billed yearly.{" "}
+            <A href="https://www.testmuai.com/editorial-policy/">
+              How we check facts
+            </A>
+          </>
+        }
       />
       <div className="tm-reveal -mx-8">
         <div className="tm-reasons">
@@ -583,13 +589,11 @@ function Methodology() {
               </div>
             ))}
           </div>
-          <div className="tm-grid tm-grid--3">
+          <div className="tm-grid tm-grid--2">
             {notes.map((n) => (
               <a key={n.text} className="tm-cell tm-report" href={n.href}>
-                {/* H5 on the type scale, so three fit side by side */}
-                <p className="!text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">
-                  {n.text}
-                </p>
+                {/* the kit's 24/32 report line, H4 tracking */}
+                <p className="!tracking-[var(--tm-h4-tracking)]">{n.text}</p>
                 <span className="tm-link">
                   {n.link}
                   <span className="tm-arw" aria-hidden="true">
