@@ -505,10 +505,10 @@ function Switch() {
             <li key={w.title} className="tm-cell tm-step">
               <span className="tm-step__n">{i + 1}</span>
               {/* H5 and B2: the kit's 20px step title is off the type scale */}
-              <h3 className="!text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">
+              <h3 className="!mt-4 !text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">
                 {w.title}
               </h3>
-              <p className="!mb-8 !text-b2">{w.body}</p>
+              <p className="!mb-6 !mt-2 !text-b2">{w.body}</p>
 
               {/* the swap, as the kit's card media: a white panel on a
                   painted scene, set into the corner like product UI */}
