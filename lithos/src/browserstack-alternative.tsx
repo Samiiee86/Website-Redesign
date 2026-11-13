@@ -500,7 +500,7 @@ function GartnerCta() {
 
         <div className="relative flex flex-col gap-12 px-6 py-12 lg:flex-row lg:items-start lg:justify-between lg:py-10 lg:pl-12 lg:pr-28">
           <div className="flex flex-col lg:pt-2">
-            <p className="text-h4 font-medium">TestMu AI has been named a</p>
+            <p className="text-[length:var(--tm-h4-size)] font-medium leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">TestMu AI has been named a</p>
             <div className="flex items-center gap-7">
               <p className={`${LEADER} font-[family-name:var(--tm-font-pixel)] leading-none`}>
                 Leader
