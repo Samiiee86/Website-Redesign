@@ -11,12 +11,13 @@
 <link rel="stylesheet" href="../.testmu/tokens/tokens.css" />
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1000px; height: 552px; overflow: hidden; }
+  html, body { width: 1000px; height: 552px; overflow: hidden; background: transparent; }
   body {
     position: relative;
     font-family: var(--tm-font-sans);
     color: var(--tm-fg-default);
-    background: var(--tm-bg-default);
+    /* see-through, so the panes sit straight on the hero's painted scene */
+    background: transparent;
     -webkit-font-smoothing: antialiased;
   }
 

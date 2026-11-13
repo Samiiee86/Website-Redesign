@@ -295,7 +295,8 @@ function Hero() {
         </div>
         <div className="tm-hero__stage">
           <img className="tm-scene" src={`${HERO}/hero-bg.jpg`} alt="" />
-          <div className="tm-hero__screen">
+          {/* the picture is see-through: the panes sit on the scene itself */}
+          <div className="tm-hero__screen !overflow-visible !bg-transparent">
             {/* drawn from tokens in art/browserstack-hero.html, rendered at 2x */}
             <img
               src={`${HERO}/screen.webp`}
@@ -473,6 +474,89 @@ const swaps: { title: string; body: string; from: string; to: string; scene: str
     scene: "/kit/img/meadow.webp",
   },
 ];
+
+/* ---------- Gartner CTA: the banner from Figma (Website, 17022:29139) ---------- */
+
+/* Figma's display sizes, built from the type tokens: 128 = 2 x H1 + 16,
+   36 = H3 x 9/8. The rings, line, chart and glow are Figma's own assets. */
+const LEADER = "text-[length:calc(var(--tm-h1-size)*8/7)] lg:text-[length:calc(var(--tm-h1-size)*16/7)]";
+const MQ_SUB = "text-[length:var(--tm-h4-size)] lg:text-[length:calc(var(--tm-h3-size)*9/8)]";
+
+function GartnerCta() {
+  return (
+    <Section>
+      <div className="relative -mx-8 overflow-hidden bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
+        {/* rings and line behind the chart, under the glow as in Figma, so
+            the glow hides their lower half */}
+        <div aria-hidden className="pointer-events-none absolute right-28 top-10 hidden h-[301px] w-[300px] mix-blend-lighten lg:block">
+            <div aria-hidden className="pointer-events-none absolute left-1/2 top-[-4px] hidden size-[450px] -translate-x-1/2 lg:block">
+              <img src="/kit/cta/gartner-ring-outer.png" alt="" className="absolute inset-[-3.68%] size-[107.36%] max-w-none" />
+            </div>
+            <div aria-hidden className="pointer-events-none absolute left-1/2 top-[48px] hidden size-[311px] -translate-x-1/2 lg:block">
+              <img src="/kit/cta/gartner-ring-inner.png" alt="" className="absolute inset-[-1.52%] size-[103.04%] max-w-none" />
+            </div>
+            <img
+              aria-hidden
+              src="/kit/cta/gartner-line.svg"
+              alt=""
+              width={123.58}
+              height={4.73}
+              className="pointer-events-none absolute left-1/2 top-[-40px] hidden origin-top-left rotate-90 lg:block"
+            />
+        </div>
+
+        {/* warm horizon glow */}
+        <img
+          src="/kit/cta/gartner-glow.svg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-[402px] w-full lg:bottom-auto lg:top-10"
+        />
+
+        <div className="relative flex flex-col gap-12 px-6 py-12 lg:flex-row lg:items-start lg:justify-between lg:py-10 lg:pl-12 lg:pr-28">
+          <div className="flex flex-col lg:pt-2">
+            <p className="text-h4 font-medium">TestMu AI has been named a</p>
+            <div className="flex items-center gap-7">
+              <p className={`${LEADER} font-[family-name:var(--tm-font-pixel)] leading-none`}>
+                Leader
+              </p>
+              {/* the quadrant mark: four squares, the leaders' one lit */}
+              <span aria-hidden className="relative hidden grid-cols-2 gap-2 sm:grid">
+                <span className="size-9 border-[1.5px] border-[var(--tm-fg-inverse)] opacity-60" />
+                <span className="relative size-9 border-[1.5px] border-[var(--tm-fg-inverse)] bg-[var(--tm-fg-inverse)]">
+                  <span className="absolute -inset-1 bg-[var(--tm-fg-inverse)] opacity-40 blur-md" />
+                </span>
+                <span className="size-9 border-[1.5px] border-[var(--tm-fg-inverse)] opacity-60" />
+                <span className="size-9 border-[1.5px] border-[var(--tm-fg-inverse)] opacity-60" />
+              </span>
+            </div>
+            <p className={`${MQ_SUB} font-[family-name:var(--tm-font-pixel)] leading-10 [text-wrap:balance]`}>
+              in the Gartner® Magic Quadrant™
+            </p>
+            <a
+              className="tm-btn tm-btn--secondary mt-7 self-start"
+              href="https://www.testmuai.com/gartner-magic-quadrant-agentic-software-quality-assurance-platforms/"
+            >
+              Get the report
+              <img src="/kit/cta/link-external.svg" alt="" width={24} height={24} />
+            </a>
+          </div>
+
+          {/* the chart (its rings and line sit under the glow, above) */}
+          <div className="relative mx-auto w-[300px] flex-none lg:mx-0">
+            <div className="relative h-[301px] w-[300px] overflow-hidden bg-[var(--tm-bg-surface)]">
+              <img
+                src="/kit/cta/gartner-mq.png"
+                alt="Gartner Magic Quadrant for Agentic Software Quality Assurance Platforms, September 2026, with TestMu AI in the Leaders quadrant"
+                className="absolute left-[-1.01%] top-[-15.22%] h-[123.08%] w-[101.01%] max-w-none"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
 
 function Switch() {
   return (
@@ -658,6 +742,7 @@ function Page() {
           />
         </div>
         <Methodology />
+        <GartnerCta />
         <Switch />
         <Stories />
         <Reviews />
