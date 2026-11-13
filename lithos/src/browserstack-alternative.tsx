@@ -152,14 +152,6 @@ const alts: SpecRow[] = [
 
 /* ---------- this page's questions, in the site's FAQ ---------- */
 
-const A = ({ href, children }: { href: string; children: string }) => (
-  <a
-    href={href}
-    className="text-[var(--tm-fg-link)] underline-offset-4 hover:underline"
-  >
-    {children}
-  </a>
-);
 
 const faq = [
   {
@@ -171,7 +163,7 @@ const faq = [
         Automate, Percy, Accessibility, Low Code Automation and Test
         Management. It prices live testing per parallel session instead of
         per user, and adds KaneAI for writing tests and{" "}
-        <A href="https://www.testmuai.com/hyperexecute/">HyperExecute</A>,
+        HyperExecute,
         which runs suites up to 70% faster than traditional grids.
       </>
     ),
@@ -185,7 +177,7 @@ const faq = [
     a: (
       <>
         On several products, at{" "}
-        <A href="https://www.testmuai.com/pricing/">annual list prices</A>.
+        annual list prices.
         Desktop live testing is $15 a month per parallel session against $29
         per user. Desktop automation is $79 per parallel against $99. SmartUI
         is $299 a month for 25,000 screenshots against $449 on Percy.
@@ -203,9 +195,7 @@ const faq = [
     a: (
       <>
         Yes. TestMu AI offers SaaS, private cloud and on-premise, including a{" "}
-        <A href="https://www.testmuai.com/private-real-device-cloud/">
-          Private Real Device Cloud
-        </A>{" "}
+        Private Real Device Cloud{" "}
         that hosts real devices in your own infrastructure. BrowserStack's
         docs list no on-premise option for its browser and device clouds.
       </>
@@ -217,7 +207,7 @@ const faq = [
       <>
         SOC 2 Type II, ISO 27001:2022, ISO 27017:2015 and ISO 27701:2019,
         listed in the{" "}
-        <A href="https://www.testmuai.com/trust/security/">Trust Center</A>.
+        Trust Center.
         Data is encrypted at rest with AES-256 and in transit with TLS 1.2
         and above.
       </>
@@ -229,10 +219,7 @@ const faq = [
       <>
         Yes. TestMu AI is a Leader in the 2026 Gartner® Magic Quadrant™ for
         Agentic Software Quality Assurance Platforms. Read the report on our{" "}
-        <A href="https://www.testmuai.com/gartner-magic-quadrant-agentic-software-quality-assurance-platforms/">
-          Gartner Magic Quadrant page
-        </A>
-        .
+        Gartner Magic Quadrant page.
         <span className="mt-4 block text-b3">
           Gartner, Magic Quadrant for Agentic Software Quality Assurance
           Platforms, By Ross Power, Sushant Singhal, C.A. Swan, 12 October
@@ -442,7 +429,6 @@ function Reviews() {
   );
 }
 
-const MIGRATION = "https://www.testmuai.com/support/docs/browserstack-to-testmu-migration-guide/";
 
 /* ---------- switching: three cards, one swap each ----------
 
@@ -566,13 +552,7 @@ function Switch() {
       <FoldHead
         lead="Switch over"
         title="in three steps"
-        body={
-          <>
-            Keep your Selenium tests when you leave BrowserStack. Three small
-            changes, shown below. The{" "}
-            <A href={MIGRATION}>migration guide</A> has the details.
-          </>
-        }
+        body="Keep your Selenium tests when you leave BrowserStack. Three small changes, shown below."
       >
         <a
           href="https://accounts.testmuai.com/register"
@@ -651,16 +631,7 @@ function Methodology() {
       <FoldHead
         lead="How we compared,"
         title="and our sources"
-        body={
-          <>
-            Each BrowserStack product against its TestMu AI counterpart, from
-            public pricing, product pages and docs. Prices are monthly list
-            prices in USD, billed yearly.{" "}
-            <A href="https://www.testmuai.com/editorial-policy/">
-              How we check facts
-            </A>
-          </>
-        }
+        body="Each BrowserStack product against its TestMu AI counterpart, from public pricing, product pages and docs. Prices are monthly list prices in USD, billed yearly."
       />
       <div className="tm-reveal -mx-8">
         <div className="tm-reasons">
