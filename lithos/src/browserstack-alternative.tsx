@@ -743,9 +743,9 @@ function Page() {
             rows={alts}
           />
         </div>
-        <Methodology />
-        <GartnerCta />
         <Switch />
+        <GartnerCta />
+        <Methodology />
         <Stories />
         <Reviews />
         <Faq items={faq} />
