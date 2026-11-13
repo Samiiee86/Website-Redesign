@@ -1,7 +1,7 @@
 import { StrictMode, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, SquareArrowOutUpRight } from "lucide-react";
 import "./index.css";
 import { ArrowChip, Section } from "./lib/ui";
 import GuideLines from "./components/GuideLines";
@@ -539,7 +539,8 @@ function GartnerCta() {
               href="https://www.testmuai.com/gartner-magic-quadrant-agentic-software-quality-assurance-platforms/"
             >
               Get the report
-              <img src="/kit/cta/link-external.svg" alt="" width={24} height={24} />
+              {/* Lucide, at the text's size; stroke 2 matches the 500 text weight */}
+              <SquareArrowOutUpRight size={16} strokeWidth={2} aria-hidden />
             </a>
           </div>
 
