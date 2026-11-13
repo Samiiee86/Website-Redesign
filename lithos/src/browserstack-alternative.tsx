@@ -295,18 +295,14 @@ function Hero() {
         <div className="tm-hero__stage">
           <img className="tm-scene" src={`${HERO}/hero-bg.jpg`} alt="" />
           <div className="tm-hero__screen">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster={`${HERO}/cbt-demo-poster.jpg`}
-              aria-label="A live test session in Chrome on Windows 11"
-            >
-              <source src={`${HERO}/cbt-demo.webm`} type="video/webm" />
-              <source src={`${HERO}/cbt-demo.mp4`} type="video/mp4" />
-            </video>
+            {/* drawn from tokens in art/browserstack-hero.html, rendered at 2x */}
+            <img
+              src="/kit/hero/browserstack-alternative/screen.webp"
+              width={2000}
+              height={1104}
+              fetchPriority="high"
+              alt="TestMu AI's migrate from BrowserStack screen: the same Java test before and after, with four lines changed"
+            />
           </div>
         </div>
       </div>
