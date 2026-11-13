@@ -301,7 +301,7 @@ function Hero() {
               width={2000}
               height={1104}
               fetchPriority="high"
-              alt="TestMu AI's migrate from BrowserStack screen: the same Java test before and after, with four lines changed"
+              alt="Are you migrating from BrowserStack? The same Java test before and after, with four lines changed"
             />
           </div>
         </div>

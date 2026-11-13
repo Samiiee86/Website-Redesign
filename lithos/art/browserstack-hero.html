@@ -2,7 +2,9 @@
 <!-- Source of the BrowserStack alternative hero picture.
      Drawn at the kit's hero screen size (1000 x 552) from TestMu tokens only,
      then rendered at 2x to public/kit/hero/browserstack-alternative/screen.webp.
-     Not part of the site build: open it, change it, render it again. -->
+     Not part of the site build: open it, change it, render it again.
+     Minimal on purpose: the before and after code, and one floating box
+     asking where you are migrating from. -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -11,142 +13,78 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1000px; height: 552px; overflow: hidden; }
   body {
+    position: relative;
     font-family: var(--tm-font-sans);
     color: var(--tm-fg-default);
-    background: var(--tm-bg-surface);
+    background: var(--tm-bg-default);
     -webkit-font-smoothing: antialiased;
   }
-  .app { display: grid; grid-template-rows: 48px 1fr; height: 552px; }
 
-  /* top bar */
-  .bar { display: flex; align-items: center; gap: 16px; padding: 0 20px; border-bottom: 1px solid var(--tm-border-muted); }
-  .bar img { height: 14px; width: auto; }
-  .crumbs { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 18px; color: var(--tm-fg-subtle); }
-  .crumbs b { font-weight: 500; color: var(--tm-fg-default); }
-  .bar .sep { width: 1px; height: 16px; background: var(--tm-border-default); }
-  .bar .end { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--tm-fg-muted); }
-  .avatar { width: 24px; height: 24px; border-radius: var(--tm-radius-full); background: var(--tm-bg-muted); display: grid; place-items: center; font-size: 10px; font-weight: 500; color: var(--tm-fg-default); }
+  /* the floating question */
+  .ask {
+    position: absolute; z-index: 2; top: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 24px;
+    padding: 20px 20px 20px 28px;
+    background: var(--tm-bg-surface);
+    border: 1px solid var(--tm-border-default);
+    box-shadow: var(--tm-shadow-floating-md);
+    white-space: nowrap;
+  }
+  .ask p { font-size: 18px; line-height: 26px; letter-spacing: -0.5px; font-weight: 500; }
+  .pick {
+    position: relative; display: inline-flex; align-items: center; gap: 12px;
+    height: 44px; padding: 0 12px 0 16px;
+    border: 1px solid var(--tm-border-emphasis); border-radius: var(--tm-radius-md);
+    font-size: 16px; line-height: 24px; font-weight: 500;
+    box-shadow: 0 0 0 2px var(--tm-bg-surface), 0 0 0 4px var(--tm-bg-accent);
+  }
+  .pick svg { color: var(--tm-fg-default); }
+  .cursor { position: absolute; right: -16px; bottom: -20px; color: var(--tm-fg-default); }
 
-  .body { display: grid; grid-template-columns: 256px 1fr; min-height: 0; }
-
-  /* left rail */
-  .rail { border-right: 1px solid var(--tm-border-muted); background: var(--tm-bg-default); padding: 20px; display: flex; flex-direction: column; gap: 20px; }
-  .label { font-family: var(--tm-font-mono); font-size: 10px; line-height: 14px; letter-spacing: 1px; text-transform: uppercase; color: var(--tm-fg-subtle); margin-bottom: 8px; }
-  .opts { display: flex; flex-direction: column; gap: 6px; }
-  .opt { display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 12px; border: 1px solid var(--tm-border-default); border-radius: var(--tm-radius-md); background: var(--tm-bg-surface); font-size: 12px; color: var(--tm-fg-muted); }
-  .opt .dot { width: 12px; height: 12px; border-radius: var(--tm-radius-full); border: 1px solid var(--tm-border-default); flex: none; }
-  .opt.on { border-color: var(--tm-border-emphasis); color: var(--tm-fg-default); font-weight: 500; }
-  .opt.on .dot { border: 4px solid var(--tm-bg-inverse); }
-  .opt .tick { margin-left: auto; color: var(--tm-fg-default); }
-  .creds { border: 1px solid var(--tm-border-default); background: var(--tm-bg-surface); padding: 12px; font-family: var(--tm-font-mono); font-size: 10px; line-height: 18px; color: var(--tm-fg-default); position: relative; }
-  .creds span { color: var(--tm-fg-subtle); }
-  .creds svg { position: absolute; top: 12px; right: 12px; color: var(--tm-fg-subtle); }
-  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .tag { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 6px; border-radius: var(--tm-radius-sm); background: var(--tm-bg-surface); border: 1px solid var(--tm-border-default); font-size: 10px; color: var(--tm-fg-default); }
-
-  /* main */
-  .main { display: grid; grid-template-rows: auto 1fr auto; min-height: 0; padding: 20px 20px 0; gap: 16px; }
-  .head { display: flex; align-items: center; justify-content: space-between; }
-  .head h1 { font-size: 14px; line-height: 22px; font-weight: 500; }
-  .head p { font-size: 12px; line-height: 18px; color: var(--tm-fg-muted); }
-  .seg { display: inline-flex; padding: 2px; gap: 2px; border-radius: var(--tm-radius-md); background: var(--tm-bg-muted); }
-  .seg span { padding: 4px 12px; border-radius: var(--tm-radius-sm); font-size: 12px; line-height: 18px; color: var(--tm-fg-muted); }
-  .seg .on { background: var(--tm-bg-surface); color: var(--tm-fg-default); font-weight: 500; }
-
-  .panes { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--tm-border-frame); border: 1px solid var(--tm-border-frame); min-height: 0; }
+  /* before and after */
+  .panes {
+    position: absolute; left: 40px; right: 40px; top: 72px; bottom: 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--tm-border-frame); border: 1px solid var(--tm-border-frame);
+  }
   .pane { background: var(--tm-bg-surface); display: flex; flex-direction: column; min-width: 0; }
-  .pane__top { display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border-bottom: 1px solid var(--tm-border-muted); font-size: 12px; font-weight: 500; }
-  .pane__top .was { color: var(--tm-fg-subtle); font-weight: 400; }
-  .pane__top img { height: 11px; width: auto; }
-  .pane__top .copy { margin-left: auto; color: var(--tm-fg-subtle); }
-  .code { padding: 8px 0; font-family: var(--tm-font-mono); font-size: 10px; line-height: 20px; white-space: pre; color: var(--tm-fg-default); }
-  .ln { display: grid; grid-template-columns: 28px 16px 1fr; padding-right: 8px; }
-  .ln i { font-style: normal; text-align: right; padding-right: 8px; color: var(--tm-fg-subtle); }
-  .ln b { font-weight: 400; color: var(--tm-fg-subtle); }
+  .pane__top {
+    display: flex; align-items: center; gap: 8px; height: 56px; padding: 16px 20px 0;
+    font-size: 14px; line-height: 22px; font-weight: 500;
+  }
+  /* the popup covers the middle, so the after label sits at the far edge */
+  .pane + .pane .pane__top { justify-content: flex-end; }
+  .pane__top span { font-family: var(--tm-font-mono); font-size: 10px; line-height: 14px; letter-spacing: 1px; text-transform: uppercase; font-weight: 400; color: var(--tm-fg-subtle); }
+  .code { padding: 20px 0; font-family: var(--tm-font-mono); font-size: 12px; line-height: 36px; white-space: pre; }
+  .ln { display: grid; grid-template-columns: 40px 20px 1fr; padding-right: 12px; }
+  .ln i { font-style: normal; text-align: right; padding-right: 12px; color: var(--tm-fg-subtle); }
+  .ln b { font-weight: 400; }
+  .s { color: var(--tm-fg-link); }
   .del { background: var(--tm-bg-fill); }
-  .del em { font-style: normal; color: var(--tm-fg-subtle); text-decoration: line-through; text-decoration-color: var(--tm-fg-subtle); }
   .del b { color: var(--tm-fg-error); }
+  .del em { font-style: normal; color: var(--tm-fg-subtle); text-decoration: line-through; }
   .add { background: var(--tm-bg-accent-muted); }
   .add b { color: var(--tm-fg-success); }
-  .s { color: var(--tm-fg-link); }
-  .add .s, .add em { font-style: normal; }
-
-  .foot { display: flex; align-items: center; gap: 8px; height: 60px; font-size: 12px; color: var(--tm-fg-muted); }
-  .foot .ok { color: var(--tm-fg-success); display: inline-flex; }
-  .foot b { color: var(--tm-fg-default); font-weight: 500; }
-  .btn { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: var(--tm-radius-md); background: var(--tm-button-primary); color: var(--tm-fg-inverse); font-size: 12px; font-weight: 500; }
-  .btn.ghost { margin-left: 0; background: var(--tm-button-secondary); color: var(--tm-fg-default); border: 1px solid var(--tm-border-default); }
 </style>
 </head>
 <body>
-<div class="app">
-  <div class="bar">
-    <img src="../public/testmu-logo-dark.svg" alt="" />
-    <span class="sep"></span>
-    <span class="crumbs">Automation <span>/</span> <b>Migrate from BrowserStack</b></span>
-    <span class="end">Docs <span class="avatar">QA</span></span>
+  <div class="ask">
+    <p>Are you migrating from?</p>
+    <span class="pick">BrowserStack
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      <svg class="cursor" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="var(--tm-bg-surface)" stroke-width="1.5" stroke-linejoin="round"><path d="M4.04 2.63a1 1 0 0 1 1.04-.22l15.5 5.9a1 1 0 0 1-.06 1.9l-6.4 1.87a1 1 0 0 0-.68.68l-1.87 6.4a1 1 0 0 1-1.9.06L3.82 3.670a1 1 0 0 1 .22-1.04z"/></svg>
+    </span>
   </div>
 
-  <div class="body">
-    <aside class="rail">
-      <div>
-        <p class="label">Migrating from</p>
-        <div class="opts">
-          <div class="opt on"><span class="dot"></span>BrowserStack
-            <svg class="tick" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </div>
-          <div class="opt"><span class="dot"></span>Sauce Labs</div>
-          <div class="opt"><span class="dot"></span>Selenium Grid</div>
-        </div>
-      </div>
-      <div>
-        <p class="label">Your credentials</p>
-        <div class="creds">LT_USERNAME<span>=</span>qa-team<br />LT_ACCESS_KEY<span>=</span>••••••••••
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-        </div>
-      </div>
-      <div>
-        <p class="label">Run on</p>
-        <div class="tags">
-          <span class="tag">Windows 11</span>
-          <span class="tag">Chrome 148</span>
-          <span class="tag">1024 × 768</span>
-        </div>
-      </div>
-    </aside>
-
-    <section class="main">
-      <div class="head">
-        <div>
-          <h1>Your test, converted</h1>
-          <p>Four lines change. Everything else stays as you wrote it.</p>
-        </div>
-        <div class="seg"><span class="on">Java</span><span>Node.js</span><span>Python</span></div>
-      </div>
-
-      <div class="panes">
-        <div class="pane">
-          <div class="pane__top"><span class="was">Before</span> BrowserStack
-            <svg class="copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-          </div>
-<div class="code"><div class="ln"><i>1</i><b></b><span>caps.setCapability(<span class="s">"browserName"</span>, <span class="s">"Chrome"</span>);</span></div><div class="ln"><i>2</i><b></b><span>HashMap&lt;String, Object&gt; opts = new HashMap&lt;&gt;();</span></div><div class="ln del"><i>3</i><b>−</b><em>opts.put("userName", BROWSERSTACK_USERNAME);</em></div><div class="ln del"><i>4</i><b>−</b><em>opts.put("accessKey", BROWSERSTACK_ACCESS_KEY);</em></div><div class="ln del"><i>5</i><b>−</b><em>caps.setCapability("bstack:options", opts);</em></div><div class="ln"><i>6</i><b></b><span> </span></div><div class="ln"><i>7</i><b></b><span>URL hub = new URL(</span></div><div class="ln del"><i>8</i><b>−</b><em>  "https://hub-cloud.browserstack.com/wd/hub");</em></div><div class="ln"><i>9</i><b></b><span>driver = new RemoteWebDriver(hub, caps);</span></div><div class="ln"><i>10</i><b></b><span>driver.get(<span class="s">"https://shop.example.com"</span>);</span></div><div class="ln"><i>11</i><b></b><span>var box = driver.findElement(By.name(<span class="s">"q"</span>));</span></div><div class="ln"><i>12</i><b></b><span>box.sendKeys(<span class="s">"running shoes"</span>);</span></div><div class="ln"><i>13</i><b></b><span>box.submit();</span></div><div class="ln"><i>14</i><b></b><span>assert driver.getTitle().contains(<span class="s">"Shoes"</span>);</span></div></div>
-        </div>
-        <div class="pane">
-          <div class="pane__top"><span class="was">After</span> TestMu AI
-            <svg class="copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-          </div>
-<div class="code"><div class="ln"><i>1</i><b></b><span>caps.setCapability(<span class="s">"browserName"</span>, <span class="s">"Chrome"</span>);</span></div><div class="ln"><i>2</i><b></b><span>HashMap&lt;String, Object&gt; opts = new HashMap&lt;&gt;();</span></div><div class="ln add"><i>3</i><b>+</b><span>opts.put(<span class="s">"username"</span>, LT_USERNAME);</span></div><div class="ln add"><i>4</i><b>+</b><span>opts.put(<span class="s">"accessKey"</span>, LT_ACCESS_KEY);</span></div><div class="ln add"><i>5</i><b>+</b><span>caps.setCapability(<span class="s">"LT:Options"</span>, opts);</span></div><div class="ln"><i>6</i><b></b><span> </span></div><div class="ln"><i>7</i><b></b><span>URL hub = new URL(</span></div><div class="ln add"><i>8</i><b>+</b><span>  <span class="s">"https://hub.lambdatest.com/wd/hub"</span>);</span></div><div class="ln"><i>9</i><b></b><span>driver = new RemoteWebDriver(hub, caps);</span></div><div class="ln"><i>10</i><b></b><span>driver.get(<span class="s">"https://shop.example.com"</span>);</span></div><div class="ln"><i>11</i><b></b><span>var box = driver.findElement(By.name(<span class="s">"q"</span>));</span></div><div class="ln"><i>12</i><b></b><span>box.sendKeys(<span class="s">"running shoes"</span>);</span></div><div class="ln"><i>13</i><b></b><span>box.submit();</span></div><div class="ln"><i>14</i><b></b><span>assert driver.getTitle().contains(<span class="s">"Shoes"</span>);</span></div></div>
-        </div>
-      </div>
-
-      <div class="foot">
-        <span class="ok"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
-        <span><b>Ready to run.</b> Same test, same framework, new grid.</span>
-        <span class="btn ghost" style="margin-left:auto">Copy all</span>
-        <span class="btn" style="margin-left:0">Run on TestMu AI</span>
-      </div>
-    </section>
+  <div class="panes">
+    <div class="pane">
+      <div class="pane__top"><span>Before</span>BrowserStack</div>
+<div class="code"><div class="ln"><i>1</i><b></b><span>caps.setCapability(<span class="s">"browserName"</span>, <span class="s">"Chrome"</span>);</span></div><div class="ln"><i>2</i><b></b><span>HashMap&lt;String, Object&gt; opts = new HashMap&lt;&gt;();</span></div><div class="ln del"><i>3</i><b>−</b><em>opts.put("userName", BROWSERSTACK_USERNAME);</em></div><div class="ln del"><i>4</i><b>−</b><em>opts.put("accessKey", BROWSERSTACK_ACCESS_KEY);</em></div><div class="ln del"><i>5</i><b>−</b><em>caps.setCapability("bstack:options", opts);</em></div><div class="ln"><i>6</i><b></b><span> </span></div><div class="ln"><i>7</i><b></b><span>URL hub = new URL(</span></div><div class="ln del"><i>8</i><b>−</b><em>  "https://hub-cloud.browserstack.com/wd/hub");</em></div><div class="ln"><i>9</i><b></b><span>driver = new RemoteWebDriver(hub, caps);</span></div></div>
+    </div>
+    <div class="pane">
+      <div class="pane__top"><span>After</span>TestMu AI</div>
+<div class="code"><div class="ln"><i>1</i><b></b><span>caps.setCapability(<span class="s">"browserName"</span>, <span class="s">"Chrome"</span>);</span></div><div class="ln"><i>2</i><b></b><span>HashMap&lt;String, Object&gt; opts = new HashMap&lt;&gt;();</span></div><div class="ln add"><i>3</i><b>+</b><span>opts.put(<span class="s">"username"</span>, LT_USERNAME);</span></div><div class="ln add"><i>4</i><b>+</b><span>opts.put(<span class="s">"accessKey"</span>, LT_ACCESS_KEY);</span></div><div class="ln add"><i>5</i><b>+</b><span>caps.setCapability(<span class="s">"LT:Options"</span>, opts);</span></div><div class="ln"><i>6</i><b></b><span> </span></div><div class="ln"><i>7</i><b></b><span>URL hub = new URL(</span></div><div class="ln add"><i>8</i><b>+</b><span>  <span class="s">"https://hub.lambdatest.com/wd/hub"</span>);</span></div><div class="ln"><i>9</i><b></b><span>driver = new RemoteWebDriver(hub, caps);</span></div></div>
+    </div>
   </div>
-</div>
 </body>
 </html>
