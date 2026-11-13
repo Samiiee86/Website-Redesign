@@ -466,6 +466,115 @@ const steps: Step[] = [
 const LEADER = "text-[length:calc(var(--tm-h1-size)*8/7)] lg:text-[length:calc(var(--tm-h1-size)*16/7)]";
 const MQ_SUB = "text-[length:var(--tm-h4-size)] lg:text-[length:calc(var(--tm-h3-size)*9/8)]";
 
+/* The Magic Quadrant as four squares in the banner's style: outlined in
+   white, the Leaders square lit with a glow, TestMu AI as a big black tile
+   inside it. Other vendors are unnamed dots, placed roughly as in the
+   report; the full citation sits in the Gartner FAQ answer. */
+const Q = { x: 56, y: 8, s: 128, gap: 8 };
+const quads = [
+  { name: "Challengers", x: Q.x, y: Q.y },
+  { name: "Leaders", x: Q.x + Q.s + Q.gap, y: Q.y, lit: true },
+  { name: "Niche players", x: Q.x, y: Q.y + Q.s + Q.gap },
+  { name: "Visionaries", x: Q.x + Q.s + Q.gap, y: Q.y + Q.s + Q.gap },
+];
+/* other vendors, by quadrant */
+const dots: [number, number, boolean?][] = [
+  [262, 44, true], [284, 58, true], [270, 30, true],
+  [140, 92], [158, 84], [168, 102], [148, 110], [128, 118],
+  [72, 204], [168, 160],
+  [216, 196],
+];
+
+function GartnerQuadrant() {
+  const L = quads[1];
+  const tile = { x: L.x + 16, y: L.y + 36, s: 48 };
+  return (
+    <svg
+      viewBox="0 0 360 301"
+      role="img"
+      aria-label="Gartner Magic Quadrant, September 2026: TestMu AI in the Leaders quadrant"
+      className="relative mx-auto block w-full max-w-[400px] flex-none lg:mx-0 lg:w-[400px] lg:self-center"
+    >
+      <defs>
+        <filter id="mq-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10" />
+        </filter>
+      </defs>
+
+      {/* glow behind the lit square */}
+      <rect x={L.x - 4} y={L.y - 4} width={Q.s + 8} height={Q.s + 8} fill="var(--tm-fg-inverse)" opacity="0.35" filter="url(#mq-glow)" />
+
+      {quads.map((q) => (
+        <g key={q.name}>
+          <rect
+            x={q.x + 0.75}
+            y={q.y + 0.75}
+            width={Q.s - 1.5}
+            height={Q.s - 1.5}
+            fill={q.lit ? "var(--tm-fg-inverse)" : "none"}
+            stroke="var(--tm-fg-inverse)"
+            strokeOpacity={q.lit ? 1 : 0.6}
+            strokeWidth="1.5"
+          />
+          <text
+            x={q.x + 12}
+            y={q.y + 22}
+            fill={q.lit ? "var(--tm-fg-default)" : "var(--tm-fg-inverse-muted)"}
+            style={{ font: "400 10px/14px var(--tm-font-mono)", letterSpacing: 1, textTransform: "uppercase" }}
+          >
+            {q.name}
+          </text>
+        </g>
+      ))}
+
+      {dots.map(([x, y, inLit]) => (
+        <circle
+          key={`${x}-${y}`}
+          cx={x}
+          cy={y}
+          r="3"
+          fill={inLit ? "var(--tm-fg-default)" : "var(--tm-fg-inverse)"}
+          opacity={inLit ? 0.25 : 0.5}
+        />
+      ))}
+
+      {/* TestMu AI: the big tile, with its name under it */}
+      <rect x={tile.x} y={tile.y} width={tile.s} height={tile.s} fill="var(--tm-bg-inverse)" />
+      <g transform={`translate(${tile.x + 12} ${tile.y + 12}) scale(1.4)`} fill="var(--tm-fg-inverse)">
+        <path d="M16.0117 0H11.2082V11.6085H16.0117V0Z" />
+        <path d="M4.80469 0H0.00118828V6.60481L4.80469 11.6085V0Z" />
+        <path d="M4.80469 11.6094H0.00118828V18.014H4.80469V11.6094Z" />
+        <path d="M11.207 11.6094H4.80237L8.60514 16.4129H11.207V11.6094Z" />
+      </g>
+      <text
+        x={tile.x}
+        y={tile.y + tile.s + 24}
+        fill="var(--tm-fg-default)"
+        style={{ font: "500 16px/24px var(--tm-font-sans)" }}
+      >
+        TestMu AI
+      </text>
+
+      {/* axes */}
+      <text
+        transform={`translate(${Q.x - 16} ${Q.y + 2 * Q.s + Q.gap}) rotate(-90)`}
+        fill="var(--tm-fg-inverse-muted)"
+        style={{ font: "400 10px/14px var(--tm-font-mono)", letterSpacing: 1, textTransform: "uppercase" }}
+      >
+        Ability to execute →
+      </text>
+      <text
+        x={Q.x}
+        y={Q.y + 2 * Q.s + Q.gap + 22}
+        fill="var(--tm-fg-inverse-muted)"
+        style={{ font: "400 10px/14px var(--tm-font-mono)", letterSpacing: 1, textTransform: "uppercase" }}
+      >
+        Completeness of vision →
+      </text>
+    </svg>
+  );
+}
+
 function GartnerCta() {
   /* no top or bottom padding: the banner meets the section lines */
   return (
@@ -473,7 +582,7 @@ function GartnerCta() {
       <div className="relative -mx-8 overflow-hidden bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
         {/* rings and line behind the chart, under the glow as in Figma, so
             the glow hides their lower half */}
-        <div aria-hidden className="pointer-events-none absolute right-28 top-10 hidden h-[301px] w-[300px] mix-blend-lighten lg:block">
+        <div aria-hidden className="pointer-events-none absolute right-28 top-10 hidden h-[301px] w-[400px] mix-blend-lighten lg:block">
             <div aria-hidden className="pointer-events-none absolute left-1/2 top-[-4px] hidden size-[450px] -translate-x-1/2 lg:block">
               <img src="/kit/cta/gartner-ring-outer.png" alt="" className="absolute inset-[-3.68%] size-[107.36%] max-w-none" />
             </div>
@@ -505,15 +614,6 @@ function GartnerCta() {
               <p className={`${LEADER} font-[family-name:var(--tm-font-pixel)] leading-none`}>
                 Leader
               </p>
-              {/* the quadrant mark: four squares, the leaders' one lit */}
-              <span aria-hidden className="relative hidden grid-cols-2 gap-2 sm:grid">
-                <span className="size-9 border-[1.5px] border-[var(--tm-fg-inverse)] opacity-60" />
-                <span className="relative size-9 border-[1.5px] border-[var(--tm-fg-inverse)] bg-[var(--tm-fg-inverse)]">
-                  <span className="absolute -inset-1 bg-[var(--tm-fg-inverse)] opacity-40 blur-md" />
-                </span>
-                <span className="size-9 border-[1.5px] border-[var(--tm-fg-inverse)] opacity-60" />
-                <span className="size-9 border-[1.5px] border-[var(--tm-fg-inverse)] opacity-60" />
-              </span>
             </div>
             <p className={`${MQ_SUB} font-[family-name:var(--tm-font-pixel)] leading-10 [text-wrap:balance]`}>
               in the Gartner® Magic Quadrant™
@@ -528,16 +628,9 @@ function GartnerCta() {
             </a>
           </div>
 
-          {/* the chart (its rings and line sit under the glow, above) */}
-          <div className="relative mx-auto w-[300px] flex-none lg:mx-0">
-            <div className="relative h-[301px] w-[300px] overflow-hidden bg-[var(--tm-bg-surface)]">
-              <img
-                src="/kit/cta/gartner-mq.png"
-                alt="Gartner Magic Quadrant for Agentic Software Quality Assurance Platforms, September 2026, with TestMu AI in the Leaders quadrant"
-                className="absolute left-[-1.01%] top-[-15.22%] h-[123.08%] w-[101.01%] max-w-none"
-              />
-            </div>
-          </div>
+          {/* the quadrant, drawn in the banner's own style (rings and line
+              sit under the glow, above) */}
+          <GartnerQuadrant />
         </div>
       </div>
     </Section>
