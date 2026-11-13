@@ -649,7 +649,7 @@ function Switch() {
           href="https://accounts.testmuai.com/register"
           className="btn btn-lg btn-primary btn-arrow btn-arrow-plain mt-8"
         >
-          Start testing now
+          Get started free
           <ArrowChip />
         </a>
       </FoldHead>
@@ -777,7 +777,7 @@ function Page() {
             lead="TestMu AI and BrowserStack,"
             title="product by product"
             body="TestMu AI prices per parallel session; BrowserStack prices Live and App Live per user. Monthly list prices, billed annually, checked October 2026."
-            cta="Start free"
+            cta="Get started free"
             rival={{ name: "BrowserStack" }}
             groups={duel}
           />
