@@ -72,20 +72,20 @@ export default function Hero() {
           />
           <div className="absolute inset-0 bg-background/10" />
           <div className="absolute inset-0 flex items-center justify-center p-5 sm:p-7 md:p-14">
-            <div className="aspect-[1000/552] w-full max-w-[1000px] overflow-hidden bg-white">
+            <div className="aspect-[1072/552] w-full max-w-[1072px] overflow-hidden bg-white">
               <video
                 autoPlay
                 muted
                 loop
                 playsInline
                 preload="auto"
-                poster="/img/home-demo-poster.jpg"
+                poster="/img/home-demo-poster.jpg?v=3"
                 disablePictureInPicture
                 aria-label="Product demo: plan test scenarios from an objective, author them on a live browser, execute on the cloud, then analyse failures with root cause analysis"
                 className="block h-full w-full object-cover"
               >
-                <source src="/video/home-demo.webm?v=2" type="video/webm" />
-                <source src="/video/home-demo.mp4?v=2" type="video/mp4" />
+                <source src="/video/home-demo.webm?v=3" type="video/webm" />
+                <source src="/video/home-demo.mp4?v=3" type="video/mp4" />
               </video>
             </div>
           </div>
