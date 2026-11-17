@@ -588,8 +588,8 @@ function GartnerCta() {
 
 /* the small product views on each step's painted scene: what you see in
    TestMu AI at that point of the move */
-const PANEL = "tm-fcard__ui flex !w-[84%] flex-col bg-surface";
-const ROW = "flex items-center justify-between gap-3 px-4 py-2";
+const PANEL = "tm-fcard__ui flex !w-[72%] flex-col bg-surface";
+const ROW = "flex items-center justify-between gap-3 px-3 py-1.5";
 const MONO = "font-mono text-b4";
 
 function Tag({ ok, children }: { ok: boolean; children: string }) {
@@ -611,7 +611,7 @@ function StepUi({ ui }: { ui: Step["ui"] }) {
   if (ui === "keys")
     return (
       <div className={PANEL}>
-        <div className="border-b border-border px-4 py-3 text-b3 font-medium">Access keys</div>
+        <div className="border-b border-border px-3 py-2 text-b3 font-medium">Access keys</div>
         {[
           ["Username", "qa-team"],
           ["Access key", "••••••••••••"],
@@ -634,11 +634,11 @@ function StepUi({ ui }: { ui: Step["ui"] }) {
   if (ui === "run")
     return (
       <div className={PANEL}>
-        <div className="flex items-center justify-between border-b border-border px-4 py-3 text-b3 font-medium">
+        <div className="flex items-center justify-between border-b border-border px-3 py-2 text-b3 font-medium">
           Test run
           <span className="text-b4 font-normal text-muted-foreground">Running</span>
         </div>
-        <div className="flex flex-col gap-3 p-4">
+        <div className="flex flex-col gap-2 p-3">
           <div className={`${MONO} text-muted-foreground`}>$ mvn test</div>
           <div className={`${MONO} flex items-center gap-2`}>
             <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
@@ -658,7 +658,7 @@ function StepUi({ ui }: { ui: Step["ui"] }) {
 
   return (
     <div className={PANEL}>
-      <div className="flex items-center justify-between border-b border-border px-4 py-3 text-b3 font-medium">
+      <div className="flex items-center justify-between border-b border-border px-3 py-2 text-b3 font-medium">
         Test runs
         <span className="text-b4 font-normal text-muted-foreground">46 of 48 passed</span>
       </div>
