@@ -898,7 +898,7 @@ const PLANS = [
 function Plans10() {
   return (
     <Section id="pricing">
-      <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
+      <Reveal className="mb-24 flex flex-wrap items-end justify-between gap-6">
         <div>
           <h2 className="[text-wrap:balance]">TestMu AI pricing</h2>
           <p className="mt-4 text-b1 text-muted-foreground">Billed annually. Pick where you are starting.</p>
@@ -909,10 +909,8 @@ function Plans10() {
         <div className="tm-join [--tm-pad:32px]">
           {PLANS.map((p) => (
             <article key={p.name} className="x-plan">
-              <div className="mb-4 flex items-center justify-between gap-2">
-                <h5 className="m-0">{p.name}</h5>
-                <span className="x-tag tm-lbl tm-lbl--sm">{p.tag}</span>
-              </div>
+              <span className="x-tag text-b3 font-medium">{p.tag}</span>
+              <h5 className="m-0 mb-4">{p.name}</h5>
               <p className="m-0 flex items-baseline gap-2 text-[32px] font-medium leading-[40px] tracking-[-1px]">
                 {p.pre && <small className="text-b3 font-normal tracking-normal text-muted-foreground">{p.pre}</small>}
                 {p.price}
