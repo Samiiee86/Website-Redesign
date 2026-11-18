@@ -232,7 +232,7 @@
 @keyframes x-swap { from { opacity: .3; transform: translateY(6px); } }
 
 /* ---------- story ---------- */
-.h10 .x-story { position: relative; background: var(--tm-bg-inverse); }
+.h10 .x-story { position: relative; background: var(--tm-bg-inverse); overflow: clip; }
 .h10 .x-story-bg { position: sticky; top: 0; height: 100vh; margin-bottom: -100vh; overflow: hidden; }
 .h10 .x-story-bg > div { position: absolute; inset: 0; will-change: opacity; }
 .h10 .x-sun { position: absolute; left: 70%; top: 82%; width: 70vmax; height: 70vmax; margin: -35vmax 0 0 -35vmax; border-radius: var(--tm-radius-full);

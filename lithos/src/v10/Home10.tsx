@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Check, Lock, ArrowUpRight } from "lucide-react";
 import { ArrowChip, Reveal, Section } from "../lib/ui";
-import Integrations from "../sections/Integrations";
 import Stories from "../sections/Stories";
 import Faq from "../sections/Faq";
 import Enterprise from "../sections/Enterprise";
@@ -1206,7 +1205,6 @@ export default function Home10() {
       <Hub10 />
       <Story10 />
       <Dev10 />
-      <Integrations />
       <Stories />
       <Plans10 />
       <Faq items={FAQ} title="Questions about TestMu AI" />
