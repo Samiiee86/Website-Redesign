@@ -336,7 +336,6 @@ const RESULTS = [
   },
 ];
 
-const SRC = "mt-2 block text-b4 text-muted-foreground";
 
 function Proof10() {
   return (
@@ -346,9 +345,6 @@ function Proof10() {
           18,000+ enterprises and 3M+ users in 132 countries have run 1.5B+
           tests on TestMu AI.
         </h3>
-        <span className={SRC}>
-          Source: <TB className="tm-tbtn--sm">TestMu AI company page</TB>
-        </span>
       </Reveal>
       <Reveal delay={0.06}>
         {/* eight columns over two rows: each column is as wide as its
