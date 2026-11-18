@@ -1015,7 +1015,7 @@ function SmallPrint() {
           <ul className="mt-4 list-none p-0">
             {AGENT_LINKS.map((l) => (
               <li key={l}>
-                <a href="#" className="group inline-flex items-center gap-1 py-1 text-b3 text-foreground no-underline">
+                <a href="#" className="group inline-flex items-center gap-1 py-1 text-b2 text-foreground no-underline">
                   {l}
                   <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
@@ -1025,10 +1025,10 @@ function SmallPrint() {
         </div>
         <div className="border-t border-border px-8 py-12 md:px-16 lg:border-l lg:border-t-0" id="x-gartner-note">
           <p className={LABEL}>Notes</p>
-          <p className="mt-4 max-w-[64ch] text-b4 text-muted-foreground">
+          <p className="mt-4 text-b2 text-muted-foreground">
             * Gartner, Magic Quadrant for Agentic Software Quality Assurance Platforms, Ross Power, Sushant Singhal, C.A. Swan, 12 October 2026. Gartner does not endorse any company, vendor, product or service depicted in its publications, and does not advise technology users to select only those vendors with the highest ratings or other designation. Gartner publications consist of the opinions of Gartner's business and technology insights organization and should not be construed as statements of fact. Gartner disclaims all warranties, expressed or implied, with respect to this publication, including any warranties of merchantability or fitness for a particular purpose. GARTNER and MAGIC QUADRANT are trademarks of Gartner, Inc. and/or its affiliates.
           </p>
-          <p className="mt-4 text-b4 text-muted-foreground">Customer results are each customer's own. Demos show sample runs.</p>
+          <p className="mt-4 text-b2 text-muted-foreground">Customer results are each customer's own. Demos show sample runs.</p>
         </div>
       </div>
     </aside>
