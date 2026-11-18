@@ -1015,7 +1015,7 @@ function SmallPrint() {
           <ul className="mt-4 list-none p-0">
             {AGENT_LINKS.map((l) => (
               <li key={l}>
-                <a href="#" className="group inline-flex items-center gap-1 py-1 text-b2 text-foreground no-underline">
+                <a href="#" className="tm-tbtn tm-tbtn--lg group py-1">
                   {l}
                   <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
