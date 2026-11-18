@@ -502,26 +502,29 @@ function Proof10() {
               href={r.href}
               className="x-res group text-foreground no-underline"
             >
-              <div className="flex h-8 items-center justify-between gap-4">
+              <div className="flex items-start justify-between gap-4">
+                <b className="text-[48px] font-medium leading-[58px] tracking-[-2px]">
+                  {r.n}
+                </b>
+                <SlideArrow className="mt-4 text-foreground" />
+              </div>
+              <p className="text-b2 text-muted-foreground">
+                <strong className="font-medium text-foreground">{r.who}</strong>{" "}
+                {r.text}
+              </p>
+              <q className="text-b1 font-medium text-foreground">{r.quote}</q>
+              {/* the person on the left, their company's logo on the right */}
+              <div className="flex items-center justify-between gap-4 self-end">
+                <cite className="text-b3 not-italic text-muted-foreground">
+                  {r.cite}
+                </cite>
                 <img
                   src={r.logo}
                   alt={r.who}
                   className={`logo-ink w-auto ${r.lh}`}
                   loading="lazy"
                 />
-                <SlideArrow className="text-foreground" />
               </div>
-              <b className="text-[48px] font-medium leading-[58px] tracking-[-2px]">
-                {r.n}
-              </b>
-              <p className="text-b2 text-muted-foreground">
-                <strong className="font-medium text-foreground">{r.who}</strong>{" "}
-                {r.text}
-              </p>
-              <q className="text-b1 font-medium text-foreground">{r.quote}</q>
-              <cite className="text-b3 not-italic text-muted-foreground">
-                {r.cite}
-              </cite>
             </a>
           ))}
         </div>
@@ -1049,7 +1052,7 @@ function Dev10() {
               <span className="block text-[color:var(--tm-fg-inverse-muted)]">Run AI tests from</span>
               <span className="block">your terminal and CI</span>
             </h2>
-            <p className="max-w-[32em] text-b1 text-[color:var(--tm-fg-inverse-muted)]">
+            <p className="max-w-[32em] text-b1 text-[color:var(--tm-fg-inverse-muted)] lg:max-w-[440px] lg:justify-self-end">
               One command runs your tagged tests in parallel and returns an exit
               code for CI or your coding agent.
             </p>
