@@ -337,8 +337,23 @@ const RESULTS = [
     cite: "Hrishi Potdar, Boomi",
     src: "Boomi case study",
   },
-  { n: "99.9%", who: "Dashlane", text: "reduced flaky tests by 99.9%.", src: "Dashlane case study" },
-  { n: "70%", who: "Transavia", text: "runs its tests 70% faster.", src: "HyperExecute customer results" },
+  {
+    n: "99.9%",
+    who: "Dashlane",
+    text: "reduced flaky tests by 99.9%.",
+    quote: "HyperExecute is a stable test orchestration platform and has excellent customer support.",
+    cite: "Sagar Uday Kumar, Dashlane",
+    src: "Dashlane case study",
+  },
+  {
+    n: "70%",
+    who: "Transavia",
+    text: "runs its tests 70% faster.",
+    quote:
+      "With efficient cross-browser testing and 70% faster test execution, LambdaTest (now TestMu AI) helped us achieve faster time-to-market and enhanced CX. Their support and cost-effectiveness exceeded our expectations.",
+    cite: "Daniel de Bruijn, Transavia",
+    src: "HyperExecute customer results",
+  },
 ];
 
 const SRC = "mt-2 block text-b4 text-muted-foreground";
