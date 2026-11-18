@@ -937,16 +937,7 @@ function Plans10() {
   return (
     <Section id="pricing">
       <Reveal className="mb-24 flex flex-wrap items-end justify-between gap-6">
-        <div>
-          <h2 className="[text-wrap:balance]">TestMu AI pricing</h2>
-          <p className="mt-4 text-b2 text-muted-foreground">
-            Billed annually. Full list:{" "}
-            <TB>pricing</TB>{" "}
-            or{" "}
-            <TB>pricing.md</TB>
-            .
-          </p>
-        </div>
+        <h2 className="[text-wrap:balance]">TestMu AI pricing</h2>
         <Seg />
       </Reveal>
       <Reveal delay={0.06}>
@@ -974,6 +965,9 @@ function Plans10() {
           ))}
         </div>
       </Reveal>
+      <p className="mt-6 text-b2 text-muted-foreground">
+        Billed annually. Full list: <TB>pricing</TB> or <TB>pricing.md</TB>.
+      </p>
     </Section>
   );
 }
