@@ -399,7 +399,7 @@ const PATHS = [
       ["Describe a flow", "Kane runs it."],
       ["Gate on the exit code", "1 files a bug."],
     ],
-    cta: "Start for free",
+    cta: "Start free",
     note: "Needs Node 18+.",
   },
   {
@@ -909,7 +909,7 @@ const PLANS = [
     post: "",
     for: "Try it on a real project first.",
     list: ["KaneAI free tier", "10,000 Kane CLI credits for 30 days", "300 HyperExecute minutes"],
-    cta: "Start for free",
+    cta: "Start free",
   },
   {
     tag: "Fits growing teams",
