@@ -285,46 +285,29 @@ function Console() {
 
 const CDN_LOGO = "https://assets.testmuai.com/resources/images/testmu-ai/trusted-user/";
 
-/* the fifteen customers named in the design, in its order. `pad` is the
-   blank space each logo file carries on its left and right, as a share of
-   its height (measured from the SVGs), so the outer logos of a row sit on
-   the text line and the frame's right edge. KAYAK has no logo file, so it
-   is set as a wordmark. */
-const PROOF_LOGOS: { name: string; src?: string; pad?: [number, number]; small?: boolean }[] = [
-  { name: "Microsoft", src: CDN_LOGO + "microsoft.svg", pad: [19.8 / 60, 19.9 / 60] },
-  { name: "OpenAI", src: CDN_LOGO + "openai.svg", pad: [22.8 / 60, 22.3 / 60] },
-  { name: "NVIDIA", src: CDN_LOGO + "nvidia.svg", pad: [17.7 / 60, 17.7 / 60] },
-  { name: "Boomi", src: CDN_LOGO + "boomi.svg", pad: [33.4 / 60, 33.3 / 60] },
-  { name: "GitHub", src: CDN_LOGO + "github.svg", pad: [20.4 / 60, 20.4 / 60] },
-  { name: "Akamai", src: CDN_LOGO + "akamai.svg", pad: [30.8 / 60, 30.8 / 60] },
-  { name: "Louis Vuitton", src: CDN_LOGO + "lv.svg", pad: [19.9 / 59, 20.4 / 59] },
-  { name: "NBCUniversal", src: CDN_LOGO + "nbcuniversal.svg", pad: [11.2 / 59, 11.2 / 59] },
-  { name: "Transavia", src: CDN_LOGO + "transavia.svg", pad: [15.9 / 59, 15.9 / 59] },
-  { name: "Tripadvisor", src: CDN_LOGO + "tripadviosr.svg", pad: [9 / 60, 9 / 60] },
-  { name: "Cox", src: CDN_LOGO + "cox.svg", pad: [36.5 / 60, 36.5 / 60] },
-  { name: "Estée Lauder", src: CDN_LOGO + "estee-lauder.svg", pad: [15.9 / 59, 15.9 / 59] },
-  { name: "boohoo", src: CDN_LOGO + "bohoo.svg", pad: [24 / 59, 28 / 59] },
-  { name: "Dashlane", src: "/img/logo-dashlane.svg", pad: [0, 0], small: true },
-  { name: "KAYAK" },
+/* the site's original sixteen customer logos. `pad` is the blank space each
+   logo file carries on its left and right, as a share of its height
+   (measured from the SVGs); trimming it lets the columns size to the
+   logos themselves, so the first column starts on the text line and the
+   last ends on the frame's right edge. */
+const PROOF_LOGOS: { name: string; file: string; pad: [number, number] }[] = [
+  { name: "Microsoft", file: "microsoft", pad: [19.8 / 60, 19.9 / 60] },
+  { name: "OpenAI", file: "openai", pad: [22.8 / 60, 22.3 / 60] },
+  { name: "NVIDIA", file: "nvidia", pad: [17.7 / 60, 17.7 / 60] },
+  { name: "Boomi", file: "boomi", pad: [33.4 / 60, 33.3 / 60] },
+  { name: "GitHub", file: "github", pad: [20.4 / 60, 20.4 / 60] },
+  { name: "Best Egg", file: "best-egg", pad: [15.9 / 60, 16.7 / 60] },
+  { name: "Workday", file: "workday", pad: [30.7 / 60, 32 / 60] },
+  { name: "Akamai", file: "akamai", pad: [30.8 / 60, 30.8 / 60] },
+  { name: "Louis Vuitton", file: "lv", pad: [19.9 / 59, 20.4 / 59] },
+  { name: "NBCUniversal", file: "nbcuniversal", pad: [11.2 / 59, 11.2 / 59] },
+  { name: "City Furniture", file: "city-furniture", pad: [34.7 / 60, 34.7 / 60] },
+  { name: "Cox", file: "cox", pad: [36.5 / 60, 36.5 / 60] },
+  { name: "Transavia", file: "transavia", pad: [15.9 / 59, 15.9 / 59] },
+  { name: "Estée Lauder", file: "estee-lauder", pad: [15.9 / 59, 15.9 / 59] },
+  { name: "Tripadvisor", file: "tripadviosr", pad: [9 / 60, 9 / 60] },
+  { name: "boohoo", file: "bohoo", pad: [24 / 59, 28 / 59] },
 ];
-
-function ProofLogo({ logo }: { logo: (typeof PROOF_LOGOS)[number] }) {
-  if (!logo.src)
-    return (
-      <span className="x-wordmark text-b1 font-medium uppercase tracking-[0.12em] text-foreground">
-        {logo.name}
-      </span>
-    );
-  return (
-    <img
-      src={logo.src}
-      alt={logo.name}
-      className={`logo-ink w-auto ${logo.small ? "h-5" : "h-12 max-w-[150px] md:h-14"}`}
-      style={{ "--pl": logo.pad?.[0] ?? 0, "--pr": logo.pad?.[1] ?? 0 } as React.CSSProperties}
-      loading="lazy"
-    />
-  );
-}
 
 const RESULTS = [
   {
@@ -347,8 +330,7 @@ const RESULTS = [
     n: "70%",
     who: "Transavia",
     text: "runs its tests 70% faster.",
-    quote:
-      "With efficient cross-browser testing and 70% faster test execution, LambdaTest (now TestMu AI) helped us achieve faster time-to-market and enhanced CX. Their support and cost-effectiveness exceeded our expectations.",
+    quote: "Their support and cost-effectiveness exceeded our expectations.",
     cite: "Daniel de Bruijn, Transavia",
     href: "https://www.testmuai.com/hyperexecute/",
   },
@@ -370,17 +352,19 @@ function Proof10() {
         </span>
       </Reveal>
       <Reveal delay={0.06}>
-        {/* two rows, as in the design: eight, then seven */}
-        <div className="mt-12 flex flex-col gap-12 border-y border-border py-10">
-          {[PROOF_LOGOS.slice(0, 8), PROOF_LOGOS.slice(8)].map((row, r) => (
-            <div
-              key={r}
-              className="x-logo-row grid grid-cols-2 items-center justify-items-center gap-x-10 gap-y-12 sm:grid-cols-4 lg:flex lg:justify-between lg:gap-0"
-            >
-              {row.map((logo) => (
-                <ProofLogo key={logo.name} logo={logo} />
-              ))}
-            </div>
+        {/* eight columns over two rows: each column is as wide as its
+            widest logo, the columns spread edge to edge, and both rows
+            share them, so the logos line up top and bottom */}
+        <div className="x-logos mt-12 border-y border-border py-10">
+          {PROOF_LOGOS.map((logo) => (
+            <img
+              key={logo.file}
+              src={CDN_LOGO + logo.file + ".svg"}
+              alt={logo.name}
+              className="logo-ink h-12 w-auto md:h-14"
+              style={{ "--pl": logo.pad[0], "--pr": logo.pad[1] } as React.CSSProperties}
+              loading="lazy"
+            />
           ))}
         </div>
       </Reveal>

@@ -211,13 +211,15 @@
 .h10 .x-statline { color: var(--tm-fg-subtle); max-width: 30em; }
 .h10 .x-statline b { color: var(--tm-fg-default); font-weight: 500; }
 .h10 .x-res b { display: block; }
-/* desktop rows: trim each file's built-in side space on the outer logos */
+/* customer logos: 2, then 4 per row; on desktop eight columns sized to the
+   logos (their built-in side space trimmed), spread edge to edge */
+.h10 .x-logos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: center; align-items: center; gap: 48px 40px; }
+@media (min-width: 640px) { .h10 .x-logos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (min-width: 1024px) {
-  .h10 .x-logo-row > img { max-width: none; }
-  .h10 .x-logo-row > img:first-child { margin-left: calc(var(--pl) * -56px); }
-  .h10 .x-logo-row > img:last-child { margin-right: calc(var(--pr) * -56px); }
-  .h10 .x-logo-row > img.h-5:first-child, .h10 .x-logo-row > img.h-5:last-child { margin: 0; }
+  .h10 .x-logos { grid-template-columns: repeat(8, auto); justify-content: space-between; column-gap: 0; }
+  .h10 .x-logos > img { max-width: none; margin-left: calc(var(--pl) * -56px); margin-right: calc(var(--pr) * -56px); }
 }
+
 .h10 .x-res q { display: block; quotes: "\201C" "\201D"; }
 /* the three results share rows (number, line, quote, name) so they line up */
 .h10 .x-results { grid-auto-rows: auto; }
