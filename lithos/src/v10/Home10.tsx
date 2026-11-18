@@ -51,7 +51,7 @@ function Hero10() {
                 tests web and mobile apps, chat and voice agents, and
                 agent-to-agent workflows, then hands you the evidence.
               </p>
-              <a href="#x-gartner-note" className="x-award group">
+              <a href="#" className="x-award group">
                 <svg className="x-mq" width="40" height="40" viewBox="0 0 40 40" aria-hidden>
                   <rect className="x-mq-frame" x="0.5" y="0.5" width="39" height="39" />
                   <rect className="x-mq-lead" x="20" y="0.5" width="19.5" height="19.5" />
@@ -1005,35 +1005,27 @@ const FAQ = [
   },
 ];
 
-/* the design's closing notes, set in the FAQ's two columns: the links
-   for AI agents on the left, the Gartner note (the hero's asterisk) on
-   the right */
+/* links for AI agents, set in the FAQ's two columns: the label on the
+   left, the links in a row on the right, under the questions */
 const AGENT_LINKS = ["llms.txt", "This page as Markdown", "pricing.md", "MCP server"];
 
 function SmallPrint() {
   return (
-    <aside className="relative z-[1] border-t border-border px-5 sm:px-8" aria-label="Notes">
+    <aside className="relative z-[1] border-t border-border px-5 sm:px-8" aria-label="For AI agents">
       <div className="mx-auto grid w-full max-w-[1240px] lg:grid-cols-[0.4fr_0.6fr]">
-        <div className="px-8 py-12 md:px-16">
+        <div className="flex items-center px-8 pb-4 pt-12 md:px-16 lg:py-12">
           <p className={LABEL}>For AI agents</p>
-          <ul className="mt-4 list-none p-0">
-            {AGENT_LINKS.map((l) => (
-              <li key={l}>
-                <a href="#" className="tm-tbtn tm-tbtn--lg group py-1">
-                  {l}
-                  <SlideArrow />
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
-        <div className="border-t border-border px-8 py-12 md:px-16 lg:border-l lg:border-t-0" id="x-gartner-note">
-          <p className={LABEL}>Notes</p>
-          <p className="mt-4 text-b2 text-muted-foreground">
-            * Gartner, Magic Quadrant for Agentic Software Quality Assurance Platforms, Ross Power, Sushant Singhal, C.A. Swan, 12 October 2026. Gartner does not endorse any company, vendor, product or service depicted in its publications, and does not advise technology users to select only those vendors with the highest ratings or other designation. Gartner publications consist of the opinions of Gartner's business and technology insights organization and should not be construed as statements of fact. Gartner disclaims all warranties, expressed or implied, with respect to this publication, including any warranties of merchantability or fitness for a particular purpose. GARTNER and MAGIC QUADRANT are trademarks of Gartner, Inc. and/or its affiliates.
-          </p>
-          <p className="mt-4 text-b2 text-muted-foreground">Customer results are each customer's own. Demos show sample runs.</p>
-        </div>
+        <ul className="m-0 flex list-none flex-wrap items-center gap-x-8 gap-y-3 px-8 pb-12 pt-0 md:px-16 lg:border-l lg:border-border lg:px-6 lg:py-12">
+          {AGENT_LINKS.map((l) => (
+            <li key={l}>
+              <a href="#" className="tm-tbtn tm-tbtn--lg group">
+                {l}
+                <SlideArrow />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </aside>
   );
