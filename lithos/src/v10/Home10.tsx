@@ -957,7 +957,7 @@ function Plans10() {
               <h5 className="m-0 mb-4">{p.name}</h5>
               <p className="m-0 flex items-baseline gap-2">
                 {p.pre && <small className="text-b3 font-normal tracking-normal text-muted-foreground">{p.pre}</small>}
-                <span className="pixel text-[48px] font-normal leading-[56px] tracking-tight">{p.price}</span>
+                <span className="text-[48px] font-medium leading-[58px] tracking-[-2px]">{p.price}</span>
                 {p.post && <small className="text-b3 font-normal tracking-normal text-muted-foreground">{p.post}</small>}
               </p>
               <p className="mb-6 mt-2 text-b2 text-muted-foreground">{p.for}</p>
