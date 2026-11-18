@@ -477,11 +477,10 @@ const U = ({ children }: { children: React.ReactNode }) => (
     {children}
   </a>
 );
-/* an underlined text button whose arrow slides through on hover, as on the site */
+/* an underlined text button inside a line of text: the underline is enough */
 const TB = ({ children, className = "tm-tbtn--lg" }: { children: React.ReactNode; className?: string }) => (
-  <a href="#" className={`tm-tbtn group ${className}`}>
+  <a href="#" className={`tm-tbtn ${className}`}>
     {children}
-    <SlideArrow />
   </a>
 );
 
@@ -743,10 +742,9 @@ function Story10() {
               blocked
             </code>
           </div>
-          <a className="x-evlink group text-b3 font-medium" href="#">
+          <a className="x-evlink text-b3 font-medium underline underline-offset-4" href="#">
             <Lock size={16} strokeWidth={1.5} aria-hidden />
             Kane CLI saves each run as a .evidence file you open at evidence.lambdatest.com.
-            <SlideArrow />
           </a>
         </div>
       </Chapter>
