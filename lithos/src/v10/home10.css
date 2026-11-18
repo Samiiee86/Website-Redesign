@@ -255,7 +255,7 @@
 .h10 .x-story.day .x-rail li i { background: var(--tm-border-default); }
 .h10 .x-chap { position: relative; height: 210vh; }
 .h10 .x-chap-bg { display: none; }
-.h10 .x-pin { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: 160px minmax(0, 5fr) minmax(0, 6fr); gap: 48px; align-items: center; max-width: 1240px; margin: 0 auto; padding: 80px 32px 40px; }
+.h10 .x-pin { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: 200px minmax(0, 5fr) minmax(0, 6fr); gap: 48px; align-items: center; max-width: 1240px; margin: 0 auto; padding: 80px 32px 40px; }
 .h10 .x-pin > .x-chap-copy { grid-column: 2; }
 .h10 .x-chap-copy { color: var(--tm-fg-inverse); position: relative; text-shadow: 0 1px 16px color-mix(in srgb, var(--tm-bg-inverse) 45%, transparent); }
 .h10 .x-chap-copy::before { content: ""; position: absolute; inset: -18% -22% -18% -30%; z-index: -1; background: radial-gradient(closest-side, color-mix(in srgb, var(--tm-bg-inverse) 50%, transparent), transparent); pointer-events: none; }

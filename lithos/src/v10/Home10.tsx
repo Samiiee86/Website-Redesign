@@ -619,7 +619,7 @@ function Story10() {
           <div className="x-sun" id="x-sun" />
         </div>
         <div className="x-bg-day" id="x-s-day" />
-        <ol className="x-rail text-b4 font-medium" id="x-rail">
+        <ol className="x-rail text-b2 font-medium" id="x-rail">
           {["AI builds it", "TestMu verifies it", "You keep the evidence"].map((s, i) => (
             <li key={s} className={i === 0 ? "on" : ""}>
               <i>
