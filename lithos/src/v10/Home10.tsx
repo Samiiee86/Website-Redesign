@@ -1041,27 +1041,23 @@ function Dev10() {
       id="developers"
     >
       <div className={FRAME}>
-        {/* heading with its button on the left, the description on the right */}
-        <div className="mb-16 grid gap-8 lg:grid-cols-[5fr_7fr] lg:items-end lg:gap-20">
-          <div>
+        {/* heading on the left and description on the right share a baseline;
+            the button sits under the heading */}
+        <div className="mb-16">
+          <div className="grid gap-8 lg:grid-cols-[5fr_7fr] lg:gap-20 lg:[align-items:last_baseline]">
             <h2 className="[text-wrap:balance]">
-              <span className="block text-[color:var(--tm-fg-inverse-muted)]">
-                Run AI tests from
-              </span>
+              <span className="block text-[color:var(--tm-fg-inverse-muted)]">Run AI tests from</span>
               <span className="block">your terminal and CI</span>
             </h2>
-            <button
-              type="button"
-              className="btn btn-lg btn-inverse btn-arrow btn-arrow-plain mt-8"
-            >
-              Start for free
-              <ArrowChip />
-            </button>
+            <p className="max-w-[32em] text-b1 text-[color:var(--tm-fg-inverse-muted)]">
+              One command runs your tagged tests in parallel and returns an exit
+              code for CI or your coding agent.
+            </p>
           </div>
-          <p className="max-w-[32em] text-b1 text-[color:var(--tm-fg-inverse-muted)] lg:pb-2">
-            One command runs your tagged tests in parallel and returns an exit
-            code for CI or your coding agent.
-          </p>
+          <button type="button" className="btn btn-lg btn-inverse btn-arrow btn-arrow-plain mt-8">
+            Start for free
+            <ArrowChip />
+          </button>
         </div>
         <div className="grid items-start gap-12 lg:grid-cols-[5fr_7fr] lg:gap-20">
           <div>
