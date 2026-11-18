@@ -60,12 +60,9 @@
 .h10 .x-h1 > span { display: block; }
 .h10 .x-h1 .x-l2 { color: var(--tm-fg-muted); }
 /* Gartner recognition: a small quadrant with the Leaders corner marked */
-.h10 .x-award {
-  display: flex; align-items: center; gap: 16px; padding: 12px 16px; text-decoration: none;
-  background: color-mix(in srgb, var(--tm-bg-surface) 72%, transparent);
-  border: 1px solid var(--tm-border-frame); transition: border-color .2s, background .2s;
-}
-.h10 .x-award:hover { border-color: var(--tm-border-default); background: var(--tm-bg-surface); }
+.h10 .x-award { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+.h10 .x-award span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--tm-fg-subtle); transition: text-decoration-color .2s; }
+.h10 .x-award:hover span { text-decoration-color: var(--tm-fg-default); }
 .h10 .x-mq { flex: none; }
 .h10 .x-mq-frame { fill: var(--tm-bg-surface); stroke: var(--tm-border-default); }
 .h10 .x-mq-lead { fill: var(--tm-bg-muted); }
