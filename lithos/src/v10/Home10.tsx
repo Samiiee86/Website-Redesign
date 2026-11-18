@@ -1017,19 +1017,35 @@ const FAQ = [
   },
 ];
 
-/* the design's closing notes: links for AI agents and the Gartner note */
+/* the design's closing notes, set in the FAQ's two columns: the links
+   for AI agents on the left, the Gartner note (the hero's asterisk) on
+   the right */
+const AGENT_LINKS = ["llms.txt", "This page as Markdown", "pricing.md", "MCP server"];
+
 function SmallPrint() {
-  const L = "text-inherit underline underline-offset-4";
   return (
-    <aside className="relative z-[1] px-5 pb-16 sm:px-8" aria-label="Notes">
-      <div className="mx-auto w-full max-w-[1240px] border-t border-border px-8 pt-8 text-b4 text-muted-foreground">
-        <p>
-          For AI agents: <a href="#" className={L}>llms.txt</a> · <a href="#" className={L}>This page as Markdown</a> ·{" "}
-          <a href="#" className={L}>pricing.md</a> · <a href="#" className={L}>MCP server</a>
-        </p>
-        <p className="mt-4" id="x-gartner-note">
-          * Gartner, Magic Quadrant for Agentic Software Quality Assurance Platforms, Ross Power, Sushant Singhal, C.A. Swan, 12 October 2026. Gartner does not endorse any company, vendor, product or service depicted in its publications, and does not advise technology users to select only those vendors with the highest ratings or other designation. Gartner publications consist of the opinions of Gartner's business and technology insights organization and should not be construed as statements of fact. Gartner disclaims all warranties, expressed or implied, with respect to this publication, including any warranties of merchantability or fitness for a particular purpose. GARTNER and MAGIC QUADRANT are trademarks of Gartner, Inc. and/or its affiliates. Customer results are each customer's own. Demos show sample runs.
-        </p>
+    <aside className="relative z-[1] border-t border-border px-5 sm:px-8" aria-label="Notes">
+      <div className="mx-auto grid w-full max-w-[1240px] lg:grid-cols-[0.4fr_0.6fr]">
+        <div className="px-8 py-12 md:px-16">
+          <p className={LABEL}>For AI agents</p>
+          <ul className="mt-4 list-none p-0">
+            {AGENT_LINKS.map((l) => (
+              <li key={l}>
+                <a href="#" className="group inline-flex items-center gap-1 py-1 text-b3 text-foreground no-underline">
+                  {l}
+                  <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="border-t border-border px-8 py-12 md:px-16 lg:border-l lg:border-t-0" id="x-gartner-note">
+          <p className={LABEL}>Notes</p>
+          <p className="mt-4 max-w-[64ch] text-b4 text-muted-foreground">
+            * Gartner, Magic Quadrant for Agentic Software Quality Assurance Platforms, Ross Power, Sushant Singhal, C.A. Swan, 12 October 2026. Gartner does not endorse any company, vendor, product or service depicted in its publications, and does not advise technology users to select only those vendors with the highest ratings or other designation. Gartner publications consist of the opinions of Gartner's business and technology insights organization and should not be construed as statements of fact. Gartner disclaims all warranties, expressed or implied, with respect to this publication, including any warranties of merchantability or fitness for a particular purpose. GARTNER and MAGIC QUADRANT are trademarks of Gartner, Inc. and/or its affiliates.
+          </p>
+          <p className="mt-4 text-b4 text-muted-foreground">Customer results are each customer's own. Demos show sample runs.</p>
+        </div>
       </div>
     </aside>
   );
