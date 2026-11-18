@@ -604,7 +604,7 @@ function Chapter({
   n: number;
   tone: "dark" | "light";
   bg: string;
-  title: string;
+  title: [string, string];
   body: string;
   children: React.ReactNode;
 }) {
@@ -613,8 +613,11 @@ function Chapter({
       <div className={`x-chap-bg ${bg}`} aria-hidden />
       <div className="x-pin">
         <div className="x-chap-copy">
-          <p className="mono mb-4 text-b4 opacity-75">{n} of 3</p>
-          <h2 className="mb-6 [text-wrap:balance]">{title}</h2>
+          <p className="mono mb-4 text-b3 opacity-75">{n} of 3</p>
+          <h2 className="mb-6">
+            <span className="block">{title[0]}</span>
+            <span className="block">{title[1]}</span>
+          </h2>
           <p className="max-w-[26em] text-b1">{body}</p>
         </div>
         {children}
@@ -644,7 +647,7 @@ function Story10() {
         </ol>
       </div>
 
-      <Chapter n={1} tone="dark" bg="x-bg-night" title="AI builds it." body="Coding agents open pull requests faster than you can review them. Often the only check is the agent that wrote the change.">
+      <Chapter n={1} tone="dark" bg="x-bg-night" title={["AI", "builds it."]} body="Coding agents open pull requests faster than you can review them. Often the only check is the agent that wrote the change.">
         <div className="x-panel text-b3">
           <div className="x-p-head text-b4 font-medium">
             Merge queue <span className="sm font-normal">sample run</span>
@@ -669,7 +672,7 @@ function Story10() {
         </div>
       </Chapter>
 
-      <Chapter n={2} tone="dark" bg="x-bg-dawn" title="TestMu verifies it." body="Separate agents test the release on real devices and browsers, and talk to your AI agents like customers do.">
+      <Chapter n={2} tone="dark" bg="x-bg-dawn" title={["TestMu", "verifies it."]} body="Separate agents test the release on real devices and browsers, and talk to your AI agents like customers do.">
         <div className="x-panel text-b4">
           <div className="x-p-head font-medium">
             Same release, two reports <span className="sm font-normal">sample run</span>
@@ -712,7 +715,7 @@ function Story10() {
         </div>
       </Chapter>
 
-      <Chapter n={3} tone="light" bg="x-bg-day" title="You keep the evidence." body="Every run keeps steps, screenshots, video, logs and a verdict, ready for your release gate and your auditor.">
+      <Chapter n={3} tone="light" bg="x-bg-day" title={["You keep", "the evidence."]} body="Every run keeps steps, screenshots, video, logs and a verdict, ready for your release gate and your auditor.">
         <div className="x-panel light text-b3">
           <div className="x-p-head text-b4 font-medium">
             Evidence ledger <span className="sm font-normal">sample run</span>

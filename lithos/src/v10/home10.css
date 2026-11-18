@@ -394,3 +394,6 @@
 .h10 .x-pal-foot { display: flex; gap: 16px; padding: 8px 16px; border-top: 1px solid var(--tm-border-muted); color: var(--tm-fg-subtle); }
 .h10 .x-toast { position: fixed; left: 50%; bottom: 28px; z-index: 300; transform: translate(-50%, 20px); opacity: 0; padding: 8px 16px; border-radius: var(--tm-radius-md); background: var(--tm-bg-inverse); color: var(--tm-fg-inverse); pointer-events: none; transition: opacity .25s, transform .25s var(--x-ease); }
 .h10 .x-toast.on { opacity: 1; transform: translate(-50%, 0); }
+/* chapter titles at the H1 size, balanced onto two lines */
+.h10 .x-chap-copy h2 { font-size: var(--tm-h1-size); line-height: var(--tm-h1-line); letter-spacing: var(--tm-h1-tracking); }
+.h10 .x-chap-copy h2 > span { white-space: nowrap; }
