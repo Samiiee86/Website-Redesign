@@ -1416,7 +1416,7 @@ function SmallPrint() {
     >
       <div className="mx-auto grid w-full max-w-[1240px] lg:grid-cols-[0.4fr_0.6fr]">
         <div className="flex items-center px-8 pb-4 pt-12 md:px-16 lg:py-12">
-          <p className={LABEL}>For AI agents</p>
+          <h4 className="m-0 text-foreground">For AI agents</h4>
         </div>
         <ul className="m-0 flex list-none flex-wrap items-center gap-x-8 gap-y-3 px-8 pb-12 pt-0 md:px-16 lg:border-l lg:border-border lg:px-6 lg:py-12">
           {AGENT_LINKS.map((l) => (
