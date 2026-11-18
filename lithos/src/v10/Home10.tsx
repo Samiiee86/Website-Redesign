@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { Check, Lock, ArrowUpRight } from "lucide-react";
-import { ArrowChip, Reveal, Section } from "../lib/ui";
+import { Check, Lock } from "lucide-react";
+import { ArrowChip, Reveal, Section, SlideArrow } from "../lib/ui";
 import Faq from "../sections/Faq";
 import Enterprise from "../sections/Enterprise";
 import Footer from "../sections/Footer";
@@ -337,7 +337,6 @@ const RESULTS = [
 ];
 
 const SRC = "mt-2 block text-b4 text-muted-foreground";
-const SRC_LINK = "text-inherit underline underline-offset-4";
 
 function Proof10() {
   return (
@@ -348,7 +347,7 @@ function Proof10() {
           tests on TestMu AI.
         </h3>
         <span className={SRC}>
-          Source: <a href="#" className={SRC_LINK}>TestMu AI company page</a>
+          Source: <TB className="tm-tbtn--sm">TestMu AI company page</TB>
         </span>
       </Reveal>
       <Reveal delay={0.06}>
@@ -376,12 +375,7 @@ function Proof10() {
             <a key={r.who} href={r.href} className="x-res group text-foreground no-underline">
               <div className="flex items-start justify-between gap-4">
                 <b className="pixel text-[48px] font-normal leading-none tracking-tight">{r.n}</b>
-                <ArrowUpRight
-                  size={20}
-                  strokeWidth={1.5}
-                  aria-hidden
-                  className="text-foreground opacity-0 transition duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100 group-focus-visible:opacity-100"
-                />
+                <SlideArrow className="mt-2 text-foreground" />
               </div>
               <p className="text-b2 text-muted-foreground">
                 <strong className="font-medium text-foreground">{r.who}</strong> {r.text}
@@ -487,6 +481,13 @@ const U = ({ children }: { children: React.ReactNode }) => (
     {children}
   </a>
 );
+/* an underlined text button whose arrow slides through on hover, as on the site */
+const TB = ({ children, className = "tm-tbtn--lg" }: { children: React.ReactNode; className?: string }) => (
+  <a href="#" className={`tm-tbtn group ${className}`}>
+    {children}
+    <SlideArrow />
+  </a>
+);
 
 const HUB: { k: string; c: string; items: [string, React.ReactNode][] }[] = [
   {
@@ -530,7 +531,7 @@ function Hub10() {
           <span className="block">with TestMu AI</span>
         </h2>
         <p className="text-b2 text-muted-foreground">
-          New to this? Read <U>what AI testing is</U> or compare <U>AI testing tools</U>.
+          New to this? Read <TB>what AI testing is</TB> or compare <TB>AI testing tools</TB>.
         </p>
       </Reveal>
       <Reveal delay={0.06}>
@@ -546,7 +547,7 @@ function Hub10() {
                   <li key={t} className="border-b border-border py-5 last:border-b-0">
                     <a href="#" className="group inline-flex items-center gap-1 text-foreground no-underline">
                       <h5 className="m-0">{t}</h5>
-                      <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      <SlideArrow />
                     </a>
                     <p className="mt-2 text-b3 text-muted-foreground">{d}</p>
                   </li>
@@ -746,9 +747,10 @@ function Story10() {
               blocked
             </code>
           </div>
-          <a className="x-evlink text-b3 font-medium" href="#">
+          <a className="x-evlink group text-b3 font-medium" href="#">
             <Lock size={16} strokeWidth={1.5} aria-hidden />
             Kane CLI saves each run as a .evidence file you open at evidence.lambdatest.com.
+            <SlideArrow />
           </a>
         </div>
       </Chapter>
@@ -939,13 +941,9 @@ function Plans10() {
           <h2 className="[text-wrap:balance]">TestMu AI pricing</h2>
           <p className="mt-4 text-b2 text-muted-foreground">
             Billed annually. Full list:{" "}
-            <a href="#" className="tm-tbtn tm-tbtn--lg">
-              pricing
-            </a>{" "}
+            <TB>pricing</TB>{" "}
             or{" "}
-            <a href="#" className="tm-tbtn tm-tbtn--lg">
-              pricing.md
-            </a>
+            <TB>pricing.md</TB>
             .
           </p>
         </div>
@@ -1026,7 +1024,7 @@ function SmallPrint() {
               <li key={l}>
                 <a href="#" className="tm-tbtn tm-tbtn--lg group py-1">
                   {l}
-                  <ArrowUpRight size={16} strokeWidth={1.5} className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <SlideArrow />
                 </a>
               </li>
             ))}
