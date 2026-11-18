@@ -419,7 +419,7 @@ const PROOF_LOGOS: { name: string; file: string; pad: [number, number]; src?: st
     pad: [34.7 / 60, 34.7 / 60],
   },
   { name: "Cox", file: "cox", pad: [36.5 / 60, 36.5 / 60] },
-  { name: "bet365", file: "bet365", pad: [0, 0], src: CDN_CUSTOMER + "bet365-main.svg", tight: true },
+  { name: "Raiffeisen Bank", file: "raiffeisen", pad: [0, 0], src: CDN_CUSTOMER + "RaiffeisenBank.svg", tight: true },
   { name: "Estée Lauder", file: "estee-lauder", pad: [15.9 / 59, 15.9 / 59] },
   { name: "Tripadvisor", file: "tripadviosr", pad: [9 / 60, 9 / 60] },
   { name: "boohoo", file: "bohoo", pad: [24 / 59, 28 / 59] },
