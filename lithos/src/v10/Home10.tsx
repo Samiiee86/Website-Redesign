@@ -316,6 +316,8 @@ const RESULTS = [
   {
     n: "78%",
     who: "Boomi",
+    logo: "/img/logo-boomi.svg",
+    lh: "h-7",
     text: "cut test run time by 78% on HyperExecute.",
     quote: "We have tripled our tests and are now executing tests in less than 2 hours.",
     cite: "Hrishi Potdar, Boomi",
@@ -324,6 +326,8 @@ const RESULTS = [
   {
     n: "99.9%",
     who: "Dashlane",
+    logo: "/img/logo-dashlane.svg",
+    lh: "h-7",
     text: "reduced flaky tests by 99.9%.",
     quote: "HyperExecute is a stable test orchestration platform and has excellent customer support.",
     cite: "Sagar Uday Kumar, Dashlane",
@@ -332,6 +336,8 @@ const RESULTS = [
   {
     n: "70%",
     who: "Transavia",
+    logo: "/img/logo-transavia.svg",
+    lh: "h-5",
     text: "runs its tests 70% faster.",
     quote: "Their support and cost-effectiveness exceeded our expectations.",
     cite: "Daniel de Bruijn, Transavia",
@@ -354,7 +360,7 @@ function Proof10() {
         {/* eight columns over two rows: each column is as wide as its
             widest logo, the columns spread edge to edge, and both rows
             share them, so the logos line up top and bottom */}
-        <div className="x-logos mt-12 border-y border-border py-10">
+        <div className="x-logos mt-12 border-t border-border pt-10">
           {PROOF_LOGOS.map((logo) => (
             <img
               key={logo.file}
@@ -373,10 +379,11 @@ function Proof10() {
         <div className="tm-join x-results mt-12 [--tm-pad:32px]">
           {RESULTS.map((r) => (
             <a key={r.who} href={r.href} className="x-res group text-foreground no-underline">
-              <div className="flex items-start justify-between gap-4">
-                <b className="pixel text-[48px] font-normal leading-none tracking-tight">{r.n}</b>
-                <SlideArrow className="mt-2 text-foreground" />
+              <div className="flex h-8 items-center justify-between gap-4">
+                <img src={r.logo} alt={r.who} className={`logo-ink w-auto ${r.lh}`} loading="lazy" />
+                <SlideArrow className="text-foreground" />
               </div>
+              <b className="text-[48px] font-medium leading-[58px] tracking-[-2px]">{r.n}</b>
               <p className="text-b2 text-muted-foreground">
                 <strong className="font-medium text-foreground">{r.who}</strong> {r.text}
               </p>
