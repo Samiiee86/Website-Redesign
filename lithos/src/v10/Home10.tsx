@@ -35,7 +35,7 @@ function Hero10() {
               </h1>
               <div className="mt-10 flex flex-wrap gap-3">
                 <button className="btn btn-lg btn-primary btn-arrow">
-                  Start free
+                  Start free with Google
                   <ArrowChip />
                 </button>
                 <button className="btn btn-lg btn-secondary">Book a demo</button>
