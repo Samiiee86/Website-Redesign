@@ -330,7 +330,12 @@ function SolutionsPanel({ menu }: { menu: GridMenu }) {
   );
 }
 
-export default function Header() {
+/* `banner` lets a page show its own announcement; the default is the site's. */
+export default function Header({
+  banner = announcement,
+}: {
+  banner?: { text: string; cta: string };
+} = {}) {
   const [open, setOpen] = useState<string | null>(null);
   const [drawer, setDrawer] = useState(false);
   const [section, setSection] = useState<string | null>("products");
@@ -369,9 +374,9 @@ export default function Header() {
   return (
     <>
       <div className="flex h-10 items-center justify-center gap-2.5 bg-[#121212] text-[12px] font-medium leading-none text-white">
-        <span>{announcement.text}</span>
+        <span>{banner.text}</span>
         <a href="#top" className="border-b border-white/45 pb-0.5 text-white">
-          {announcement.cta}
+          {banner.cta}
         </a>
       </div>
 

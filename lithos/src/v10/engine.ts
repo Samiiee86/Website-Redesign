@@ -236,7 +236,7 @@ export function startHome10(root: HTMLElement): () => void {
   $$("[data-copy],[data-copy-from]").forEach((b) => on(b, "click", async () => {
     const s = b.dataset.copyFrom ? $("#" + b.dataset.copyFrom).textContent : b.dataset.copy;
     try { await navigator.clipboard.writeText(s); } catch { /* clipboard blocked */ }
-    const was = b.textContent; b.textContent = "Copied"; setTimeout(() => (b.textContent = was), 1400);
+    window.dispatchEvent(new CustomEvent("x-toast", { detail: "Copied to clipboard" }));
   }));
 
   return () => {

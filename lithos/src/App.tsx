@@ -10,7 +10,12 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative min-h-screen bg-background font-body">
-        <Header />
+        <Header
+          banner={{
+            text: "Test how your agents actually behave across workflows, tools, and actions |",
+            cta: "Try Agent Assurance now! →",
+          }}
+        />
         <main className="relative">
           <GuideLines />
           <Home10 />

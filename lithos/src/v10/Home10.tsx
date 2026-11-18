@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, Lock, ArrowUpRight } from "lucide-react";
 import { ArrowChip, Reveal, Section } from "../lib/ui";
-import { trustedBy } from "../lib/content";
 import Integrations from "../sections/Integrations";
 import Stories from "../sections/Stories";
 import Faq from "../sections/Faq";
@@ -27,45 +26,43 @@ function Hero10() {
       <div className="x-mist" aria-hidden />
       <div className="relative px-5 sm:px-8">
         <div className={FRAME}>
+          <p className="x-eyebrow text-b3 font-medium">When AI verifies AI</p>
           <div className="x-hero-top">
+            {/* left: the headline with the two actions under it */}
             <div>
-              <p className="x-eyebrow text-b3 font-medium">
-                <span className="x-st" aria-hidden>
-                  <i className="x-c-plan" />
-                  <i className="x-c-author" />
-                  <i className="x-c-exec" />
-                  <i className="x-c-analyse" />
-                </span>
-                When AI verifies AI
-              </p>
               <h1 className="x-h1" id="x-h1">
                 <span>The AI testing platform</span>
                 <span className="x-l2">for your apps and AI agents.</span>
               </h1>
-            </div>
-            <div className="flex flex-col gap-6">
-              <p className="text-b1 text-foreground">
-                TestMu AI (formerly LambdaTest) is an AI testing platform that
-                tests web and mobile apps, chat and voice agents, and
-                agent-to-agent workflows, then hands you the evidence.
-              </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="mt-10 flex flex-wrap gap-3">
                 <button className="btn btn-lg btn-primary btn-arrow">
                   Start free
                   <ArrowChip />
                 </button>
                 <button className="btn btn-lg btn-secondary">Book a demo</button>
               </div>
-              <p className="x-award text-b4">
-                <span className="x-mq" aria-hidden>
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </span>
-                A Leader in the 2026 Gartner® Magic Quadrant™ for Agentic
-                Software Quality Assurance Platforms
+            </div>
+            {/* right: the description on top, the Gartner recognition level
+                with the buttons */}
+            <div className="flex flex-col justify-between gap-8">
+              <p className="text-b1 text-foreground">
+                TestMu AI (formerly LambdaTest) is an AI testing platform that
+                tests web and mobile apps, chat and voice agents, and
+                agent-to-agent workflows, then hands you the evidence.
               </p>
+              <a href="#x-gartner-note" className="x-award group">
+                <svg className="x-mq" width="40" height="40" viewBox="0 0 40 40" aria-hidden>
+                  <rect className="x-mq-frame" x="0.5" y="0.5" width="39" height="39" />
+                  <rect className="x-mq-lead" x="20" y="0.5" width="19.5" height="19.5" />
+                  <line className="x-mq-axis" x1="20" y1="0" x2="20" y2="40" />
+                  <line className="x-mq-axis" x1="0" y1="20" x2="40" y2="20" />
+                  <circle className="x-mq-dot" cx="31" cy="9" r="3" />
+                </svg>
+                <span className="text-b3 text-foreground">
+                  A Leader in the 2026 Gartner® Magic Quadrant™ for Agentic
+                  Software Quality Assurance Platforms*
+                </span>
+              </a>
             </div>
           </div>
 
@@ -288,27 +285,48 @@ function Console() {
 
 /* ---------------- proof ---------------- */
 
-/* blank space each logo file carries on its left and right, as a share of
-   its height (measured from the SVGs), so the row's outer logos can sit
-   on the text line and the frame's right edge */
-const LOGO_PAD: Record<string, [number, number]> = {
-  microsoft: [19.8 / 60, 19.9 / 60],
-  openai: [22.8 / 60, 22.3 / 60],
-  nvidia: [17.7 / 60, 17.7 / 60],
-  boomi: [33.4 / 60, 33.3 / 60],
-  github: [20.4 / 60, 20.4 / 60],
-  "best-egg": [15.9 / 60, 16.7 / 60],
-  workday: [30.7 / 60, 32 / 60],
-  akamai: [30.8 / 60, 30.8 / 60],
-  lv: [19.9 / 59, 20.4 / 59],
-  nbcuniversal: [11.2 / 59, 11.2 / 59],
-  "city-furniture": [34.7 / 60, 34.7 / 60],
-  cox: [36.5 / 60, 36.5 / 60],
-  transavia: [15.9 / 59, 15.9 / 59],
-  "estee-lauder": [15.9 / 59, 15.9 / 59],
-  tripadviosr: [9 / 60, 9 / 60],
-  bohoo: [24 / 59, 28 / 59],
-};
+const CDN_LOGO = "https://assets.testmuai.com/resources/images/testmu-ai/trusted-user/";
+
+/* the fifteen customers named in the design, in its order. `pad` is the
+   blank space each logo file carries on its left and right, as a share of
+   its height (measured from the SVGs), so the outer logos of a row sit on
+   the text line and the frame's right edge. KAYAK has no logo file, so it
+   is set as a wordmark. */
+const PROOF_LOGOS: { name: string; src?: string; pad?: [number, number]; small?: boolean }[] = [
+  { name: "Microsoft", src: CDN_LOGO + "microsoft.svg", pad: [19.8 / 60, 19.9 / 60] },
+  { name: "OpenAI", src: CDN_LOGO + "openai.svg", pad: [22.8 / 60, 22.3 / 60] },
+  { name: "NVIDIA", src: CDN_LOGO + "nvidia.svg", pad: [17.7 / 60, 17.7 / 60] },
+  { name: "Boomi", src: CDN_LOGO + "boomi.svg", pad: [33.4 / 60, 33.3 / 60] },
+  { name: "GitHub", src: CDN_LOGO + "github.svg", pad: [20.4 / 60, 20.4 / 60] },
+  { name: "Akamai", src: CDN_LOGO + "akamai.svg", pad: [30.8 / 60, 30.8 / 60] },
+  { name: "Louis Vuitton", src: CDN_LOGO + "lv.svg", pad: [19.9 / 59, 20.4 / 59] },
+  { name: "NBCUniversal", src: CDN_LOGO + "nbcuniversal.svg", pad: [11.2 / 59, 11.2 / 59] },
+  { name: "Transavia", src: CDN_LOGO + "transavia.svg", pad: [15.9 / 59, 15.9 / 59] },
+  { name: "Tripadvisor", src: CDN_LOGO + "tripadviosr.svg", pad: [9 / 60, 9 / 60] },
+  { name: "Cox", src: CDN_LOGO + "cox.svg", pad: [36.5 / 60, 36.5 / 60] },
+  { name: "Estée Lauder", src: CDN_LOGO + "estee-lauder.svg", pad: [15.9 / 59, 15.9 / 59] },
+  { name: "boohoo", src: CDN_LOGO + "bohoo.svg", pad: [24 / 59, 28 / 59] },
+  { name: "Dashlane", src: "/img/logo-dashlane.svg", pad: [0, 0], small: true },
+  { name: "KAYAK" },
+];
+
+function ProofLogo({ logo }: { logo: (typeof PROOF_LOGOS)[number] }) {
+  if (!logo.src)
+    return (
+      <span className="x-wordmark text-b1 font-medium uppercase tracking-[0.12em] text-foreground">
+        {logo.name}
+      </span>
+    );
+  return (
+    <img
+      src={logo.src}
+      alt={logo.name}
+      className={`logo-ink w-auto ${logo.small ? "h-5" : "h-12 max-w-[150px] md:h-14"}`}
+      style={{ "--pl": logo.pad?.[0] ?? 0, "--pr": logo.pad?.[1] ?? 0 } as React.CSSProperties}
+      loading="lazy"
+    />
+  );
+}
 
 const RESULTS = [
   {
@@ -317,10 +335,14 @@ const RESULTS = [
     text: "cut test run time by 78% on HyperExecute.",
     quote: "We have tripled our tests and are now executing tests in less than 2 hours.",
     cite: "Hrishi Potdar, Boomi",
+    src: "Boomi case study",
   },
-  { n: "99.9%", who: "Dashlane", text: "reduced flaky tests by 99.9%." },
-  { n: "70%", who: "Transavia", text: "runs its tests 70% faster." },
+  { n: "99.9%", who: "Dashlane", text: "reduced flaky tests by 99.9%.", src: "Dashlane case study" },
+  { n: "70%", who: "Transavia", text: "runs its tests 70% faster.", src: "HyperExecute customer results" },
 ];
+
+const SRC = "mt-2 block text-b4 text-muted-foreground";
+const SRC_LINK = "text-inherit underline underline-offset-4";
 
 function Proof10() {
   return (
@@ -330,30 +352,20 @@ function Proof10() {
           18,000+ enterprises and 3M+ users in 132 countries have run 1.5B+
           tests on TestMu AI.
         </h3>
+        <span className={SRC}>
+          Source: <a href="#" className={SRC_LINK}>TestMu AI company page</a>
+        </span>
       </Reveal>
       <Reveal delay={0.06}>
-        {/* two rows of eight: the first logo starts on the text line and the
-            last one ends on the frame's right edge */}
+        {/* two rows, as in the design: eight, then seven */}
         <div className="mt-12 flex flex-col gap-12 border-y border-border py-10">
-          {[trustedBy.logos.slice(0, 8), trustedBy.logos.slice(8)].map((row, r) => (
+          {[PROOF_LOGOS.slice(0, 8), PROOF_LOGOS.slice(8)].map((row, r) => (
             <div
               key={r}
-              className="x-logo-row grid grid-cols-2 items-center gap-x-10 gap-y-12 sm:grid-cols-4 lg:flex lg:justify-between lg:gap-0"
+              className="x-logo-row grid grid-cols-2 items-center justify-items-center gap-x-10 gap-y-12 sm:grid-cols-4 lg:flex lg:justify-between lg:gap-0"
             >
               {row.map((logo) => (
-                <img
-                  key={logo.name}
-                  src={logo.src}
-                  alt={logo.name}
-                  className="logo-ink h-12 w-auto max-w-[150px] md:h-14"
-                  style={
-                    {
-                      "--pl": LOGO_PAD[logo.name]?.[0] ?? 0,
-                      "--pr": LOGO_PAD[logo.name]?.[1] ?? 0,
-                    } as React.CSSProperties
-                  }
-                  loading="lazy"
-                />
+                <ProofLogo key={logo.name} logo={logo} />
               ))}
             </div>
           ))}
@@ -370,9 +382,14 @@ function Proof10() {
               {r.quote && (
                 <blockquote className="m-0">
                   <q className="text-b1 font-medium text-foreground">{r.quote}</q>
-                  <cite className="mt-2 block text-b3 not-italic text-muted-foreground">{r.cite}</cite>
                 </blockquote>
               )}
+              <figcaption>
+                {r.cite && <cite className="mt-2 block text-b3 not-italic text-muted-foreground">{r.cite}</cite>}
+                <span className={SRC}>
+                  Source: <a href="#" className={SRC_LINK}>{r.src}</a>
+                </span>
+              </figcaption>
             </figure>
           ))}
         </div>
@@ -412,7 +429,7 @@ const PATHS = [
       ["Connect identity", "SAML SSO and SCIM."],
     ],
     cta: "Book a demo",
-    note: "Your inputs and outputs never train any LLM.",
+    note: "Your inputs and outputs are never used to train any LLM models.",
   },
 ];
 
@@ -464,16 +481,25 @@ function Route10() {
 
 /* ---------------- everything you can test ---------------- */
 
-const HUB: { k: string; c: string; items: [string, string][] }[] = [
+const P = ({ children }: { children: React.ReactNode }) => (
+  <b className="font-medium text-foreground">{children}</b>
+);
+const U = ({ children }: { children: React.ReactNode }) => (
+  <a href="#" className="text-foreground underline underline-offset-4">
+    {children}
+  </a>
+);
+
+const HUB: { k: string; c: string; items: [string, React.ReactNode][] }[] = [
   {
     k: "Apps people use",
     c: "x-c-author",
     items: [
-      ["AI test automation", "KaneAI turns plain English into end-to-end tests and replays them deterministically."],
-      ["AI testing agent for the terminal", "Kane CLI: browser tests your coding agent writes and runs in CI."],
+      ["AI test automation", <><P>KaneAI</P> turns plain English into end-to-end tests and replays them deterministically.</>],
+      ["AI testing agent for the terminal", <><P>Kane CLI</P>: browser tests your coding agent writes and runs in CI.</>],
       ["Cross browser testing", "Manual and automated tests on 3,000+ browsers."],
-      ["Real device testing", "Real Device Cloud: 50,000+ real mobile devices."],
-      ["Visual regression testing", "SmartUI compares screenshots against an approved baseline."],
+      ["Real device testing", <><P>Real Device Cloud</P>: 50,000+ real mobile devices.</>],
+      ["Visual regression testing", <><P>SmartUI</P> compares screenshots against an approved baseline.</>],
       ["Accessibility testing", "Finds accessibility issues in sites and apps."],
     ],
   },
@@ -481,18 +507,18 @@ const HUB: { k: string; c: string; items: [string, string][] }[] = [
     k: "AI agents",
     c: "x-c-exec",
     items: [
-      ["AI agent testing", "Agent Testing covers chatbot, voice agent and IVR testing with simulated customers."],
-      ["AI assurance for agent workflows", "Agent Assurance (Rook) tests agents that call tools and other agents."],
-      ["Browsers for AI agents", "Browser Cloud: cloud browsers your agents drive through Playwright."],
+      ["AI agent testing", <><P>Agent Testing</P> covers <U>chatbot testing</U>, <U>voice agent testing</U> and <U>IVR testing</U> with simulated customers.</>],
+      ["AI assurance for agent workflows", <><P>Agent Assurance</P> (Rook) tests agents that call tools and other agents.</>],
+      ["Browsers for AI agents", <><P>Browser Cloud</P>: cloud browsers your agents drive through Playwright.</>],
     ],
   },
   {
     k: "Run and manage",
     c: "x-c-analyse",
     items: [
-      ["Test orchestration", "HyperExecute runs Selenium, Playwright, Cypress and Appium up to 70% faster than a traditional grid."],
-      ["Test case management", "Test Manager: manual and automated test cases in one place."],
-      ["Test analytics", "Test Insights puts results from every TestMu AI product in one view."],
+      ["Test orchestration", <><P>HyperExecute</P> runs Selenium, Playwright, Cypress and Appium up to 70% faster than a traditional grid.</>],
+      ["Test case management", <><P>Test Manager</P>: manual and automated test cases in one place.</>],
+      ["Test analytics", <><P>Test Insights</P> puts results from every TestMu AI product in one view.</>],
     ],
   },
 ];
@@ -500,11 +526,14 @@ const HUB: { k: string; c: string; items: [string, string][] }[] = [
 function Hub10() {
   return (
     <Section id="products">
-      <Reveal className="mb-12">
+      <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
         <h2 className="[text-wrap:balance]">
           <span className="block text-muted-foreground">Everything you can test</span>
           <span className="block">with TestMu AI</span>
         </h2>
+        <p className="text-b2 text-muted-foreground">
+          New to this? Read <U>what AI testing is</U> or compare <U>AI testing tools</U>.
+        </p>
       </Reveal>
       <Reveal delay={0.06}>
         <div className="tm-join [--tm-pad:32px]">
@@ -718,7 +747,7 @@ function Story10() {
           </div>
           <a className="x-evlink text-b3 font-medium" href="#">
             <Lock size={16} strokeWidth={1.5} aria-hidden />
-            Kane CLI saves each run as a .evidence file you can open later.
+            Kane CLI saves each run as a .evidence file you open at evidence.lambdatest.com.
           </a>
         </div>
       </Chapter>
@@ -768,6 +797,12 @@ function Dev10() {
               {PROMPT}
             </p>
           </div>
+          <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-[color:var(--tm-bg-inverse-muted)] pt-6 text-b2 text-[color:var(--tm-fg-inverse-muted)]">
+            <button type="button" className="btn btn-sm btn-outline-inverse" data-pal>
+              For agents <kbd className="mono rounded-sm border border-current px-1 text-b5 opacity-60">⌘K</kbd>
+            </button>
+            <span>Shortcuts for coding agents.</span>
+          </div>
         </div>
 
         <div className="x-term" id="x-term">
@@ -816,7 +851,7 @@ function Dev10() {
               {"      - "}
               <span className="k">uses</span>: actions/checkout@v4{"\n"}
               {"      - "}
-              <span className="k">uses</span>: <span className="s">testmuai/kane-cli/github-action@main</span>
+              <span className="k">uses</span>: <span className="s">LambdaTest/kane-cli/integrations/github-action/kane-cli-browser-run@main</span>
               {"\n"}
               {"        "}
               <span className="k">with</span>:{"\n"}
@@ -824,10 +859,10 @@ function Dev10() {
               <span className="k">test-files</span>: <span className="s">"tests/**/*_test.md"</span>
               {"\n"}
               {"          "}
-              <span className="k">username</span>: {"${{ secrets.TM_USERNAME }}"}
+              <span className="k">username</span>: {"${{ secrets.LT_USERNAME }}"}
               {"\n"}
               {"          "}
-              <span className="k">access-key</span>: {"${{ secrets.TM_ACCESS_KEY }}"}
+              <span className="k">access-key</span>: {"${{ secrets.LT_ACCESS_KEY }}"}
             </pre>
             <div className="x-ghs text-b4" id="x-ghs">
               <i aria-hidden />
@@ -838,12 +873,12 @@ function Dev10() {
             </div>
           </div>
           <div className="x-pane text-b4" id="x-p-mcp" role="tabpanel" aria-labelledby="x-t-mcp" tabIndex={0} hidden>
-            <button className="btn btn-sm btn-outline-inverse x-copy" type="button" data-copy="claude mcp add --transport http mcp-testmu https://mcp.testmuai.com/mcp">
+            <button className="btn btn-sm btn-outline-inverse x-copy" type="button" data-copy="claude mcp add --transport http mcp-lambdatest https://mcp.lambdatest.com/mcp">
               Copy
             </button>
             <pre>
-              <span className="p">$ </span>claude mcp add --transport http mcp-testmu \{"\n"}
-              {"    "}https://mcp.testmuai.com/mcp{"\n"}
+              <span className="p">$ </span>claude mcp add --transport http mcp-lambdatest \{"\n"}
+              {"    "}https://mcp.lambdatest.com/mcp{"\n"}
               <span className="c"># Works in Cursor, Claude Code, Copilot, Codex and Antigravity.</span>
               {"\n"}
               <span className="c"># Tools cover HyperExecute, automation logs,</span>
@@ -899,10 +934,7 @@ function Plans10() {
   return (
     <Section id="pricing">
       <Reveal className="mb-24 flex flex-wrap items-end justify-between gap-6">
-        <div>
-          <h2 className="[text-wrap:balance]">TestMu AI pricing</h2>
-          <p className="mt-4 text-b1 text-muted-foreground">Billed annually. Pick where you are starting.</p>
-        </div>
+        <h2 className="[text-wrap:balance]">TestMu AI pricing</h2>
         <Seg />
       </Reveal>
       <Reveal delay={0.06}>
@@ -927,6 +959,10 @@ function Plans10() {
           ))}
         </div>
       </Reveal>
+      <p className="mt-6 text-b3 text-muted-foreground">
+        Billed annually. Full list: <a href="#" className="text-inherit underline underline-offset-4">pricing</a> or{" "}
+        <a href="#" className="text-inherit underline underline-offset-4">pricing.md</a>.
+      </p>
     </Section>
   );
 }
@@ -936,11 +972,11 @@ function Plans10() {
 const FAQ = [
   {
     q: "What is TestMu AI?",
-    a: "TestMu AI is an AI testing platform for apps and AI agents. KaneAI and Kane CLI test web and mobile apps. Agent Testing tests chat and voice agents, and Agent Assurance (Rook) tests agent-to-agent workflows. Tests run on HyperExecute, 50,000+ real devices and 3,000+ browsers.",
+    a: "TestMu AI is an AI testing platform for apps and AI agents, made by LambdaTest, Inc. KaneAI and Kane CLI test web and mobile apps. Agent Testing tests chat and voice agents, and Agent Assurance (Rook) tests agent-to-agent workflows. Tests run on HyperExecute, 50,000+ real devices and 3,000+ browsers.",
   },
   {
     q: "Is TestMu AI the same as LambdaTest?",
-    a: "Yes. LambdaTest renamed itself TestMu AI on January 12, 2026. Existing products such as HyperExecute, SmartUI and the Real Device Cloud carried over under the new name. The platform now also tests AI agents, with Agent Testing and Agent Assurance.",
+    a: "Yes. LambdaTest renamed itself TestMu AI on January 12, 2026. The company is still LambdaTest, Inc., and existing products such as HyperExecute, SmartUI and the Real Device Cloud carried over under the new name. The platform now also tests AI agents, with Agent Testing and Agent Assurance.",
   },
   {
     q: "How do you test AI agents?",
@@ -952,17 +988,192 @@ const FAQ = [
   },
   {
     q: "How much does TestMu AI cost?",
-    a: "You can start free. KaneAI has a free tier, Kane CLI includes 10,000 credits for 30 days and HyperExecute includes 300 free minutes. Paid plans are billed annually and start at $17/mo for KaneAI and $44/mo for Agent Assurance. Enterprise pricing is custom.",
+    a: "You can start free. KaneAI has a free tier, Kane CLI includes 10,000 credits for 30 days and HyperExecute includes 300 free minutes. Paid plans are billed annually and start at $17/mo for KaneAI and $44/mo for Agent Assurance. Enterprise pricing is custom, and Agent Testing is priced with sales.",
   },
   {
     q: "Is my data used to train AI models?",
-    a: "No. Your inputs and outputs are never used to train any LLM. TestMu AI holds SOC 2 Type II and ISO 27001, supports GDPR, SAML SSO and SCIM, and offers US or EU data residency. Enterprise plans can also run in a private cloud or on-prem.",
+    a: "No. Your inputs and outputs are never used to train any LLM models. TestMu AI holds SOC 2 Type II and ISO 27001, supports GDPR, SAML SSO and SCIM, and offers US or EU data residency. Enterprise plans can also run in a private cloud or on-prem.",
   },
   {
     q: "Can AI coding agents use TestMu AI?",
-    a: "Yes. A coding agent can install Kane CLI or Rook from npm and connect the TestMu AI MCP server. It can read llms.txt and pricing.md for context. A person approves sign-in and any paid plan.",
+    a: "Yes. A coding agent can install Kane CLI with npm install -g @testmuai/kane-cli, or Rook with npm install -g @testmuai/rook@latest, and connect the MCP server at https://mcp.lambdatest.com/mcp. It can read /llms.txt and /pricing.md for context. A person approves sign-in and any paid plan.",
   },
 ];
+
+/* the design's closing notes: links for AI agents and the Gartner note */
+function SmallPrint() {
+  const L = "text-inherit underline underline-offset-4";
+  return (
+    <aside className="relative z-[1] px-5 pb-16 sm:px-8" aria-label="Notes">
+      <div className="mx-auto w-full max-w-[1240px] border-t border-border px-8 pt-8 text-b4 text-muted-foreground">
+        <p>
+          For AI agents: <a href="#" className={L}>llms.txt</a> · <a href="#" className={L}>This page as Markdown</a> ·{" "}
+          <a href="#" className={L}>pricing.md</a> · <a href="#" className={L}>MCP server</a>
+        </p>
+        <p className="mt-4" id="x-gartner-note">
+          * Gartner, Magic Quadrant for Agentic Software Quality Assurance Platforms, Ross Power, Sushant Singhal, C.A. Swan, 12 October 2026. Gartner does not endorse any company, vendor, product or service depicted in its publications, and does not advise technology users to select only those vendors with the highest ratings or other designation. Gartner publications consist of the opinions of Gartner's business and technology insights organization and should not be construed as statements of fact. Gartner disclaims all warranties, expressed or implied, with respect to this publication, including any warranties of merchantability or fitness for a particular purpose. GARTNER and MAGIC QUADRANT are trademarks of Gartner, Inc. and/or its affiliates. Customer results are each customer's own. Demos show sample runs.
+        </p>
+      </div>
+    </aside>
+  );
+}
+
+/* ---------------- the ⌘K panel for agents ---------------- */
+
+type PalItem = { ico: string; label: string; small: string; copy?: string; copyFrom?: string; page?: boolean; href?: string };
+const PAL: PalItem[] = [
+  { ico: "md", label: "Copy this page as Markdown", small: "for your LLM", page: true },
+  { ico: "↳", label: "Copy a prompt for your coding agent", small: "Kane CLI", copyFrom: "x-agent-prompt" },
+  { ico: "mcp", label: "Copy MCP server command", small: "mcp.lambdatest.com", copy: "claude mcp add --transport http mcp-lambdatest https://mcp.lambdatest.com/mcp" },
+  { ico: "$", label: "Copy Kane CLI install", small: "npm", copy: "npm install -g @testmuai/kane-cli" },
+  { ico: "$", label: "Copy Rook install", small: "npm", copy: "npm install -g @testmuai/rook@latest" },
+  { ico: "txt", label: "Open llms.txt", small: "/llms.txt", href: "/llms.txt" },
+  { ico: "md", label: "Open this page as Markdown", small: "/index.md", href: "/index.md" },
+  { ico: "$", label: "Open pricing as Markdown", small: "/pricing.md", href: "/pricing.md" },
+];
+
+function pageMarkdown(root: HTMLElement) {
+  const L = ["# TestMu AI (formerly LambdaTest): the AI testing platform for your apps and AI agents", ""];
+  L.push(root.querySelector(".x-hero-top p.text-b1")?.textContent ?? "", "");
+  root.querySelectorAll("#products .tm-join > div").forEach((col) => {
+    L.push("## " + (col.querySelector("p")?.textContent ?? ""));
+    col.querySelectorAll("li").forEach((li) => L.push(`- ${li.querySelector("h5")?.textContent}: ${li.querySelector("p")?.textContent}`));
+    L.push("");
+  });
+  L.push("## FAQ");
+  FAQ.forEach((f) => L.push("", "### " + f.q, "", f.a));
+  return L.join("\n");
+}
+
+function Palette({ root }: { root: React.RefObject<HTMLDivElement | null> }) {
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const [act, setAct] = useState(0);
+  const [toast, setToast] = useState("");
+  const input = useRef<HTMLInputElement>(null);
+  const say = (t: string) => {
+    setToast(t);
+    setTimeout(() => setToast(""), 1600);
+  };
+  const shown = PAL.filter((it) => !q.trim() || it.label.toLowerCase().includes(q.toLowerCase().trim()));
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setOpen((o) => !o);
+      }
+      if (e.key === "Escape") setOpen(false);
+    };
+    const onClick = (e: MouseEvent) => {
+      if ((e.target as HTMLElement).closest("[data-pal]")) setOpen(true);
+    };
+    const onToast = (e: Event) => say((e as CustomEvent<string>).detail);
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("click", onClick);
+    window.addEventListener("x-toast", onToast);
+    return () => {
+      window.removeEventListener("x-toast", onToast);
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onClick);
+    };
+  }, []);
+  useEffect(() => {
+    if (open) {
+      setQ("");
+      setAct(0);
+      setTimeout(() => input.current?.focus(), 0);
+    }
+  }, [open]);
+
+  const run = async (it: PalItem) => {
+    if (it.href) {
+      window.location.href = it.href;
+      return;
+    }
+    const text = it.page
+      ? pageMarkdown(root.current!)
+      : it.copyFrom
+        ? (document.getElementById(it.copyFrom)?.textContent ?? "")
+        : (it.copy ?? "");
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      /* clipboard blocked */
+    }
+    setOpen(false);
+    say(it.page ? "Page copied as Markdown" : "Copied to clipboard");
+  };
+
+  return (
+    <>
+      {open && (
+        <div className="x-pal" role="dialog" aria-modal="true" aria-label="For agents" onClick={(e) => e.target === e.currentTarget && setOpen(false)}>
+          <div className="x-pal-box">
+            <div className="x-pal-in">
+              <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
+                <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M11 11l3.5 3.5" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+              <input
+                ref={input}
+                type="text"
+                className="text-b2"
+                placeholder="Shortcuts for AI agents"
+                aria-label="Filter commands"
+                autoComplete="off"
+                value={q}
+                onChange={(e) => {
+                  setQ(e.target.value);
+                  setAct(0);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "ArrowDown") {
+                    e.preventDefault();
+                    setAct((a) => (a + 1) % Math.max(shown.length, 1));
+                  } else if (e.key === "ArrowUp") {
+                    e.preventDefault();
+                    setAct((a) => (a - 1 + shown.length) % Math.max(shown.length, 1));
+                  } else if (e.key === "Enter" && shown[act]) {
+                    e.preventDefault();
+                    run(shown[act]);
+                  }
+                }}
+              />
+              <kbd className="mono rounded-sm border border-current px-1 text-b5 opacity-60">esc</kbd>
+            </div>
+            <ul role="listbox" aria-label="Commands">
+              {shown.map((it, i) => (
+                <li key={it.label}>
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={i === act}
+                    className={`x-pal-it text-b3 font-medium ${i === act ? "act" : ""}`}
+                    onMouseEnter={() => setAct(i)}
+                    onClick={() => run(it)}
+                  >
+                    <span className="ico mono text-b5">{it.ico}</span>
+                    {it.label}
+                    <small className="mono text-b5">{it.small}</small>
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <div className="x-pal-foot text-b4">
+              <span>↑↓ to move</span>
+              <span>↵ to run</span>
+              <span>esc to close</span>
+            </div>
+          </div>
+        </div>
+      )}
+      <div className={`x-toast text-b3 font-medium ${toast ? "on" : ""}`} role="status" aria-live="polite">
+        {toast}
+      </div>
+    </>
+  );
+}
 
 /* ---------------- the page ---------------- */
 
@@ -983,7 +1194,9 @@ export default function Home10() {
       <Integrations />
       <Stories />
       <Plans10 />
-      <Faq items={FAQ} />
+      <Faq items={FAQ} title="Questions about TestMu AI" />
+      <SmallPrint />
+      <Palette root={root} />
       <Enterprise />
       <Footer />
     </div>
