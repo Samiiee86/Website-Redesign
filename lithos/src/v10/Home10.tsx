@@ -52,9 +52,27 @@ function Hero10() {
                 agent-to-agent workflows, then hands you the evidence.
               </p>
               <a href="#" className="x-award group">
-                <svg className="x-mq" width="40" height="40" viewBox="0 0 40 40" aria-hidden>
-                  <rect className="x-mq-frame" x="0.5" y="0.5" width="39" height="39" />
-                  <rect className="x-mq-lead" x="20" y="0.5" width="19.5" height="19.5" />
+                <svg
+                  className="x-mq"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 40 40"
+                  aria-hidden
+                >
+                  <rect
+                    className="x-mq-frame"
+                    x="0.5"
+                    y="0.5"
+                    width="39"
+                    height="39"
+                  />
+                  <rect
+                    className="x-mq-lead"
+                    x="20"
+                    y="0.5"
+                    width="19.5"
+                    height="19.5"
+                  />
                   <line className="x-mq-axis" x1="20" y1="0" x2="20" y2="40" />
                   <line className="x-mq-axis" x1="0" y1="20" x2="40" y2="20" />
                   <circle className="x-mq-dot" cx="31" cy="9" r="3" />
@@ -88,22 +106,49 @@ function Console() {
           Live demo <small className="font-normal">sample run</small>
         </span>
         <div className="x-chips" role="radiogroup" aria-label="Focus a lane">
-          <button type="button" className="x-chip x-all text-b4 font-medium" role="radio" aria-checked="true" data-f="">
+          <button
+            type="button"
+            className="x-chip x-all text-b4 font-medium"
+            role="radio"
+            aria-checked="true"
+            data-f=""
+          >
             All lanes
           </button>
-          <button type="button" className="x-chip text-b4 font-medium" role="radio" aria-checked="false" data-f="0" tabIndex={-1}>
+          <button
+            type="button"
+            className="x-chip text-b4 font-medium"
+            role="radio"
+            aria-checked="false"
+            data-f="0"
+            tabIndex={-1}
+          >
             <i aria-hidden />
             <span>
               Web &amp; mobile<span className="x-lg"> app</span>
             </span>
           </button>
-          <button type="button" className="x-chip text-b4 font-medium" role="radio" aria-checked="false" data-f="1" tabIndex={-1}>
+          <button
+            type="button"
+            className="x-chip text-b4 font-medium"
+            role="radio"
+            aria-checked="false"
+            data-f="1"
+            tabIndex={-1}
+          >
             <i aria-hidden />
             <span>
               Chat &amp; voice<span className="x-lg"> agent</span>
             </span>
           </button>
-          <button type="button" className="x-chip text-b4 font-medium" role="radio" aria-checked="false" data-f="2" tabIndex={-1}>
+          <button
+            type="button"
+            className="x-chip text-b4 font-medium"
+            role="radio"
+            aria-checked="false"
+            data-f="2"
+            tabIndex={-1}
+          >
             <i aria-hidden />
             <span className="x-lg">Agent workflows</span>
             <span className="x-sh">Workflows</span>
@@ -147,7 +192,12 @@ function Console() {
             web / <b>guest checkout</b>
           </p>
           <ul className="x-steps mono text-b4">
-            {["Open /cart as a guest", "Apply code WELCOME10", "Pay with a test card", "Order total matches cart"].map((s) => (
+            {[
+              "Open /cart as a guest",
+              "Apply code WELCOME10",
+              "Pay with a test card",
+              "Order total matches cart",
+            ].map((s) => (
               <li key={s}>
                 <i className="x-ic" />
                 <span>{s}</span>
@@ -171,7 +221,9 @@ function Console() {
           </p>
           <div className="x-wave" aria-hidden />
           <div className="x-bubbles text-b4">
-            <div className="x-bub u">My order arrived broken. I want a refund.</div>
+            <div className="x-bub u">
+              My order arrived broken. I want a refund.
+            </div>
             <div className="x-bub b" id="x-bot-line">
               Sorry about that. Full refund done, plus a $50 credit.
             </div>
@@ -194,16 +246,38 @@ function Console() {
           <p className="x-lane-t mono text-b4">
             tool calls / <b>support → payments</b>
           </p>
-          <svg className="x-graph" viewBox="0 0 300 50" width="300" height="50" preserveAspectRatio="xMidYMid meet" aria-hidden>
+          <svg
+            className="x-graph"
+            viewBox="0 0 300 50"
+            width="300"
+            height="50"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden
+          >
             <rect x="1" y="11" width="112" height="28" />
-            <text x="57" y="29" textAnchor="middle">support-agent</text>
+            <text x="57" y="29" textAnchor="middle">
+              support-agent
+            </text>
             <rect x="187" y="11" width="112" height="28" />
-            <text x="243" y="29" textAnchor="middle">payments-agent</text>
+            <text x="243" y="29" textAnchor="middle">
+              payments-agent
+            </text>
             <line className="edge" x1="113" y1="25" x2="187" y2="25" />
-            <circle className="pkt" id="x-pkt" cx="0" cy="25" r="3.5" opacity="0" />
+            <circle
+              className="pkt"
+              id="x-pkt"
+              cx="0"
+              cy="25"
+              r="3.5"
+              opacity="0"
+            />
           </svg>
           <ul className="x-steps mono text-b4">
-            {["lookup_order(4471)", "issue_refund(order, amount)", "notify_customer(order)"].map((s) => (
+            {[
+              "lookup_order(4471)",
+              "issue_refund(order, amount)",
+              "notify_customer(order)",
+            ].map((s) => (
               <li key={s}>
                 <i className="x-ic" />
                 <span>{s}</span>
@@ -247,24 +321,53 @@ function Console() {
       </div>
 
       <div className="x-tl mono text-b5">
-        <button className="x-tl-btn" id="x-tl-play" type="button" aria-label="Pause demo">
+        <button
+          className="x-tl-btn"
+          id="x-tl-play"
+          type="button"
+          aria-label="Pause demo"
+        >
           <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden>
             <g id="x-ic-pause" fill="currentColor">
               <rect x="2" y="1" width="3" height="10" />
               <rect x="7" y="1" width="3" height="10" />
             </g>
-            <path id="x-ic-play" d="M3 1.5v9l7-4.5z" fill="currentColor" display="none" />
+            <path
+              id="x-ic-play"
+              d="M3 1.5v9l7-4.5z"
+              fill="currentColor"
+              display="none"
+            />
           </svg>
         </button>
         <div className="x-tl-runs" role="group" aria-label="Choose run">
-          <button type="button" className="mono text-b5" data-run="0" aria-pressed="true">
+          <button
+            type="button"
+            className="mono text-b5"
+            data-run="0"
+            aria-pressed="true"
+          >
             Run 1
           </button>
-          <button type="button" className="mono text-b5" data-run="1" aria-pressed="false">
+          <button
+            type="button"
+            className="mono text-b5"
+            data-run="1"
+            aria-pressed="false"
+          >
             Run 2, after fix
           </button>
         </div>
-        <div className="x-track" id="x-track" role="slider" tabIndex={0} aria-label="Scrub demo timeline" aria-valuemin={0} aria-valuemax={12} aria-valuenow={0}>
+        <div
+          className="x-track"
+          id="x-track"
+          role="slider"
+          tabIndex={0}
+          aria-label="Scrub demo timeline"
+          aria-valuemin={0}
+          aria-valuemax={12}
+          aria-valuenow={0}
+        >
           <i className="seg sg1" />
           <span className="lbl lb1">plan</span>
           <i className="seg sg2" />
@@ -286,7 +389,8 @@ function Console() {
 
 /* ---------------- proof ---------------- */
 
-const CDN_LOGO = "https://assets.testmuai.com/resources/images/testmu-ai/trusted-user/";
+const CDN_LOGO =
+  "https://assets.testmuai.com/resources/images/testmu-ai/trusted-user/";
 
 /* the site's original sixteen customer logos. `pad` is the blank space each
    logo file carries on its left and right, as a share of its height
@@ -304,7 +408,11 @@ const PROOF_LOGOS: { name: string; file: string; pad: [number, number] }[] = [
   { name: "Akamai", file: "akamai", pad: [30.8 / 60, 30.8 / 60] },
   { name: "Louis Vuitton", file: "lv", pad: [19.9 / 59, 20.4 / 59] },
   { name: "NBCUniversal", file: "nbcuniversal", pad: [11.2 / 59, 11.2 / 59] },
-  { name: "City Furniture", file: "city-furniture", pad: [34.7 / 60, 34.7 / 60] },
+  {
+    name: "City Furniture",
+    file: "city-furniture",
+    pad: [34.7 / 60, 34.7 / 60],
+  },
   { name: "Cox", file: "cox", pad: [36.5 / 60, 36.5 / 60] },
   { name: "Transavia", file: "transavia", pad: [15.9 / 59, 15.9 / 59] },
   { name: "Estée Lauder", file: "estee-lauder", pad: [15.9 / 59, 15.9 / 59] },
@@ -319,7 +427,8 @@ const RESULTS = [
     logo: "/img/logo-boomi.svg",
     lh: "h-7",
     text: "cut test run time by 78% on HyperExecute.",
-    quote: "We have tripled our tests and are now executing tests in less than 2 hours.",
+    quote:
+      "We have tripled our tests and are now executing tests in less than 2 hours.",
     cite: "Hrishi Potdar, Boomi",
     href: "https://www.testmuai.com/customers/boomi/",
   },
@@ -329,7 +438,8 @@ const RESULTS = [
     logo: "/img/logo-dashlane.svg",
     lh: "h-7",
     text: "reduced flaky tests by 99.9%.",
-    quote: "HyperExecute is a stable test orchestration platform and has excellent customer support.",
+    quote:
+      "HyperExecute is a stable test orchestration platform and has excellent customer support.",
     cite: "Sagar Uday Kumar, Dashlane",
     href: "https://www.testmuai.com/customers/dashlane/",
   },
@@ -345,15 +455,16 @@ const RESULTS = [
   },
 ];
 
-
 function Proof10() {
   return (
     <Section>
       <Reveal>
         <h3 className="max-w-[30em] text-[color:var(--tm-fg-subtle)] [text-wrap:balance]">
           <b className="font-medium text-foreground">18,000+ enterprises</b> and{" "}
-          <b className="font-medium text-foreground">3M+ users</b> in 132 countries have run{" "}
-          <b className="font-medium text-foreground">1.5B+ tests</b> on TestMu AI.
+          <b className="font-medium text-foreground">3M+ users</b> in 132
+          countries have run{" "}
+          <b className="font-medium text-foreground">1.5B+ tests</b> on TestMu
+          AI.
         </h3>
       </Reveal>
       <Reveal delay={0.06}>
@@ -367,7 +478,12 @@ function Proof10() {
               src={CDN_LOGO + logo.file + ".svg"}
               alt={logo.name}
               className="logo-ink h-12 w-auto md:h-14"
-              style={{ "--pl": logo.pad[0], "--pr": logo.pad[1] } as React.CSSProperties}
+              style={
+                {
+                  "--pl": logo.pad[0],
+                  "--pr": logo.pad[1],
+                } as React.CSSProperties
+              }
               loading="lazy"
             />
           ))}
@@ -378,17 +494,31 @@ function Proof10() {
             shared rows so the three read across as one band */}
         <div className="tm-join x-results mt-12 [--tm-pad:32px]">
           {RESULTS.map((r) => (
-            <a key={r.who} href={r.href} className="x-res group text-foreground no-underline">
+            <a
+              key={r.who}
+              href={r.href}
+              className="x-res group text-foreground no-underline"
+            >
               <div className="flex h-8 items-center justify-between gap-4">
-                <img src={r.logo} alt={r.who} className={`logo-ink w-auto ${r.lh}`} loading="lazy" />
+                <img
+                  src={r.logo}
+                  alt={r.who}
+                  className={`logo-ink w-auto ${r.lh}`}
+                  loading="lazy"
+                />
                 <SlideArrow className="text-foreground" />
               </div>
-              <b className="text-[48px] font-medium leading-[58px] tracking-[-2px]">{r.n}</b>
+              <b className="text-[48px] font-medium leading-[58px] tracking-[-2px]">
+                {r.n}
+              </b>
               <p className="text-b2 text-muted-foreground">
-                <strong className="font-medium text-foreground">{r.who}</strong> {r.text}
+                <strong className="font-medium text-foreground">{r.who}</strong>{" "}
+                {r.text}
               </p>
               <q className="text-b1 font-medium text-foreground">{r.quote}</q>
-              <cite className="text-b3 not-italic text-muted-foreground">{r.cite}</cite>
+              <cite className="text-b3 not-italic text-muted-foreground">
+                {r.cite}
+              </cite>
             </a>
           ))}
         </div>
@@ -436,7 +566,12 @@ function Seg() {
   return (
     <div className="tm-seg" role="group" aria-label="Your team" data-seg>
       {["Startup", "Growing team", "Enterprise"].map((s, i) => (
-        <button key={s} type="button" aria-pressed={i === 0} tabIndex={i === 0 ? 0 : -1}>
+        <button
+          key={s}
+          type="button"
+          aria-pressed={i === 0}
+          tabIndex={i === 0 ? 0 : -1}
+        >
           {s}
         </button>
       ))}
@@ -460,7 +595,9 @@ function Route10() {
                 <ol className="tm-join x-seg-steps m-0 list-none">
                   {p.steps.map(([b, s]) => (
                     <li key={b} className="text-b3 text-muted-foreground">
-                      <b className="block text-b2 font-medium text-foreground">{b}</b>
+                      <b className="block text-b2 font-medium text-foreground">
+                        {b}
+                      </b>
                       {s}
                     </li>
                   ))}
@@ -470,7 +607,9 @@ function Route10() {
                     {p.cta}
                     <ArrowChip />
                   </button>
-                  <small className="text-b3 text-muted-foreground">{p.note}</small>
+                  <small className="text-b3 text-muted-foreground">
+                    {p.note}
+                  </small>
                 </div>
               </div>
             ))}
@@ -492,7 +631,13 @@ const U = ({ children }: { children: React.ReactNode }) => (
   </a>
 );
 /* an underlined text button inside a line of text: the underline is enough */
-const TB = ({ children, className = "tm-tbtn--lg" }: { children: React.ReactNode; className?: string }) => (
+const TB = ({
+  children,
+  className = "tm-tbtn--lg",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <a href="#" className={`tm-tbtn ${className}`}>
     {children}
   </a>
@@ -503,30 +648,94 @@ const HUB: { k: string; c: string; items: [string, React.ReactNode][] }[] = [
     k: "Apps people use",
     c: "x-c-author",
     items: [
-      ["AI test automation", <><P>KaneAI</P> turns plain English into end-to-end tests and replays them deterministically.</>],
-      ["AI testing agent for the terminal", <><P>Kane CLI</P>: browser tests your coding agent writes and runs in CI.</>],
-      ["Cross browser testing", "Manual and automated tests on 3,000+ browsers."],
-      ["Real device testing", <><P>Real Device Cloud</P>: 50,000+ real mobile devices.</>],
-      ["Visual regression testing", <><P>SmartUI</P> compares screenshots against an approved baseline.</>],
-      ["Accessibility testing", "Finds accessibility issues in sites and apps."],
+      [
+        "AI test automation",
+        <>
+          <P>KaneAI</P> turns plain English into end-to-end tests and replays
+          them deterministically.
+        </>,
+      ],
+      [
+        "AI testing agent for the terminal",
+        <>
+          <P>Kane CLI</P>: browser tests your coding agent writes and runs in
+          CI.
+        </>,
+      ],
+      [
+        "Cross browser testing",
+        "Manual and automated tests on 3,000+ browsers.",
+      ],
+      [
+        "Real device testing",
+        <>
+          <P>Real Device Cloud</P>: 50,000+ real mobile devices.
+        </>,
+      ],
+      [
+        "Visual regression testing",
+        <>
+          <P>SmartUI</P> compares screenshots against an approved baseline.
+        </>,
+      ],
+      [
+        "Accessibility testing",
+        "Finds accessibility issues in sites and apps.",
+      ],
     ],
   },
   {
     k: "AI agents",
     c: "x-c-exec",
     items: [
-      ["AI agent testing", <><P>Agent Testing</P> covers <U>chatbot testing</U>, <U>voice agent testing</U> and <U>IVR testing</U> with simulated customers.</>],
-      ["AI assurance for agent workflows", <><P>Agent Assurance</P> (Rook) tests agents that call tools and other agents.</>],
-      ["Browsers for AI agents", <><P>Browser Cloud</P>: cloud browsers your agents drive through Playwright.</>],
+      [
+        "AI agent testing",
+        <>
+          <P>Agent Testing</P> covers <U>chatbot testing</U>,{" "}
+          <U>voice agent testing</U> and <U>IVR testing</U> with simulated
+          customers.
+        </>,
+      ],
+      [
+        "AI assurance for agent workflows",
+        <>
+          <P>Agent Assurance</P> (Rook) tests agents that call tools and other
+          agents.
+        </>,
+      ],
+      [
+        "Browsers for AI agents",
+        <>
+          <P>Browser Cloud</P>: cloud browsers your agents drive through
+          Playwright.
+        </>,
+      ],
     ],
   },
   {
     k: "Run and manage",
     c: "x-c-analyse",
     items: [
-      ["Test orchestration", <><P>HyperExecute</P> runs Selenium, Playwright, Cypress and Appium up to 70% faster than a traditional grid.</>],
-      ["Test case management", <><P>Test Manager</P>: manual and automated test cases in one place.</>],
-      ["Test analytics", <><P>Test Insights</P> puts results from every TestMu AI product in one view.</>],
+      [
+        "Test orchestration",
+        <>
+          <P>HyperExecute</P> runs Selenium, Playwright, Cypress and Appium up
+          to 70% faster than a traditional grid.
+        </>,
+      ],
+      [
+        "Test case management",
+        <>
+          <P>Test Manager</P>: manual and automated test cases in one place.
+        </>,
+      ],
+      [
+        "Test analytics",
+        <>
+          <P>Test Insights</P> puts results from every TestMu AI product in one
+          view.
+        </>,
+      ],
     ],
   },
 ];
@@ -536,11 +745,14 @@ function Hub10() {
     <Section id="products">
       <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
         <h2 className="[text-wrap:balance]">
-          <span className="block text-muted-foreground">Everything you can test</span>
+          <span className="block text-muted-foreground">
+            Everything you can test
+          </span>
           <span className="block">with TestMu AI</span>
         </h2>
         <p className="text-b2 text-muted-foreground">
-          New to this? Read <TB>what AI testing is</TB> or compare <TB>AI testing tools</TB>.
+          New to this? Read <TB>what AI testing is</TB> or compare{" "}
+          <TB>AI testing tools</TB>.
         </p>
       </Reveal>
       <Reveal delay={0.06}>
@@ -553,9 +765,17 @@ function Hub10() {
               </p>
               <ul className="mt-4 list-none p-0">
                 {col.items.map(([t, d]) => (
-                  <li key={t} className="border-b border-border py-5 last:border-b-0">
-                    <a href="#" className="group inline-flex items-center gap-1 text-foreground no-underline">
-                      <h5 className="m-0 decoration-1 underline-offset-4 group-hover:underline">{t}</h5>
+                  <li
+                    key={t}
+                    className="border-b border-border py-5 last:border-b-0"
+                  >
+                    <a
+                      href="#"
+                      className="group inline-flex items-center gap-1 text-foreground no-underline"
+                    >
+                      <h5 className="m-0 decoration-1 underline-offset-4 group-hover:underline">
+                        {t}
+                      </h5>
                       <SlideArrow />
                     </a>
                     <p className="mt-2 text-b3 text-muted-foreground">{d}</p>
@@ -630,18 +850,26 @@ function Story10() {
         </div>
         <div className="x-bg-day" id="x-s-day" />
         <ol className="x-rail text-b2 font-medium" id="x-rail">
-          {["AI builds it", "TestMu verifies it", "You keep the evidence"].map((s, i) => (
-            <li key={s} className={i === 0 ? "on" : ""}>
-              <i>
-                <b />
-              </i>
-              {s}
-            </li>
-          ))}
+          {["AI builds it", "TestMu verifies it", "You keep the evidence"].map(
+            (s, i) => (
+              <li key={s} className={i === 0 ? "on" : ""}>
+                <i>
+                  <b />
+                </i>
+                {s}
+              </li>
+            ),
+          )}
         </ol>
       </div>
 
-      <Chapter n={1} tone="dark" bg="x-bg-night" title={["AI", "builds it."]} body="Coding agents open pull requests faster than you can review them. Often the only check is the agent that wrote the change.">
+      <Chapter
+        n={1}
+        tone="dark"
+        bg="x-bg-night"
+        title={["AI", "builds it."]}
+        body="Coding agents open pull requests faster than you can review them. Often the only check is the agent that wrote the change."
+      >
         <div className="x-panel text-b3">
           <div className="x-p-head text-b4 font-medium">
             Merge queue <span className="sm font-normal">sample run</span>
@@ -653,7 +881,9 @@ function Story10() {
                 <span className="av mono text-b5">{a}</span>
                 <span className="nm font-medium">
                   {t}
-                  <small className="mono text-b5 font-normal">coding agent</small>
+                  <small className="mono text-b5 font-normal">
+                    coding agent
+                  </small>
                 </span>
                 <span className="x-pchip text-b5 font-medium">Merged</span>
               </li>
@@ -661,22 +891,37 @@ function Story10() {
           </ul>
           <div className="x-gap">
             <b id="x-gapn">47</b>
-            <span className="text-b4 font-medium">changes this week that only their builder checked</span>
+            <span className="text-b4 font-medium">
+              changes this week that only their builder checked
+            </span>
           </div>
         </div>
       </Chapter>
 
-      <Chapter n={2} tone="dark" bg="x-bg-dawn" title={["TestMu", "verifies it."]} body="Separate agents test the release on real devices and browsers, and talk to your AI agents like customers do.">
+      <Chapter
+        n={2}
+        tone="dark"
+        bg="x-bg-dawn"
+        title={["TestMu", "verifies it."]}
+        body="Separate agents test the release on real devices and browsers, and talk to your AI agents like customers do."
+      >
         <div className="x-panel text-b4">
           <div className="x-p-head font-medium">
-            Same release, two reports <span className="sm font-normal">sample run</span>
+            Same release, two reports{" "}
+            <span className="sm font-normal">sample run</span>
           </div>
           <div className="x-two">
             <div className="x-rep self">
-              <p className="x-rep-t text-b3 font-medium">The builder's own check</p>
+              <p className="x-rep-t text-b3 font-medium">
+                The builder's own check
+              </p>
               <p className="rep-by mono text-b5">coding agent</p>
               <ul>
-                {["Unit tests pass", "Lint and types clean", "Self-review: looks good"].map((s) => (
+                {[
+                  "Unit tests pass",
+                  "Lint and types clean",
+                  "Self-review: looks good",
+                ].map((s) => (
                   <li key={s}>
                     <i className="p text-b5">ok</i>
                     {s}
@@ -686,17 +931,22 @@ function Story10() {
               <p className="end font-medium">Ready to merge</p>
             </div>
             <div className="x-rep tm">
-              <p className="x-rep-t text-b3 font-medium">TestMu AI, independent</p>
+              <p className="x-rep-t text-b3 font-medium">
+                TestMu AI, independent
+              </p>
               <p className="rep-by mono text-b5">KaneAI, Agent Testing, Rook</p>
               <ul>
                 <li>
-                  <i className="p text-b5">pass</i>Checkout on 4 browsers, 2 phones
+                  <i className="p text-b5">pass</i>Checkout on 4 browsers, 2
+                  phones
                 </li>
                 <li>
-                  <i className="f text-b5">fail</i>Refund-bot offers credit above policy
+                  <i className="f text-b5">fail</i>Refund-bot offers credit
+                  above policy
                 </li>
                 <li>
-                  <i className="u text-b5">unable</i>Carrier sandbox down, not guessed
+                  <i className="u text-b5">unable</i>Carrier sandbox down, not
+                  guessed
                 </li>
               </ul>
               <p className="end font-medium">Release held, bug filed</p>
@@ -709,7 +959,13 @@ function Story10() {
         </div>
       </Chapter>
 
-      <Chapter n={3} tone="light" bg="x-bg-day" title={["You keep", "the evidence."]} body="Every run keeps steps, screenshots, video, logs and a verdict, ready for your release gate and your auditor.">
+      <Chapter
+        n={3}
+        tone="light"
+        bg="x-bg-day"
+        title={["You keep", "the evidence."]}
+        body="Every run keeps steps, screenshots, video, logs and a verdict, ready for your release gate and your auditor."
+      >
         <div className="x-panel light text-b3">
           <div className="x-p-head text-b4 font-medium">
             Evidence ledger <span className="sm font-normal">sample run</span>
@@ -756,9 +1012,13 @@ function Story10() {
               blocked
             </code>
           </div>
-          <a className="x-evlink text-b3 font-medium underline underline-offset-4" href="#">
+          <a
+            className="x-evlink text-b3 font-medium underline underline-offset-4"
+            href="#"
+          >
             <Lock size={16} strokeWidth={1.5} aria-hidden />
-            Kane CLI saves each run as a .evidence file you open at evidence.lambdatest.com.
+            Kane CLI saves each run as a .evidence file you open at
+            evidence.lambdatest.com.
           </a>
         </div>
       </Chapter>
@@ -773,132 +1033,229 @@ const PROMPT =
 
 function Dev10() {
   return (
-    <section className="x-dev relative z-[1] px-5 py-24 sm:px-8 md:py-32" id="developers">
-      <div className={`${FRAME} grid items-center gap-12 lg:grid-cols-[5fr_7fr] lg:gap-20`}>
-        <div>
-          <h2 className="[text-wrap:balance]">
-            <span className="block text-[color:var(--tm-fg-inverse-muted)]">Run AI tests from</span>
-            <span className="block">your terminal and CI</span>
-          </h2>
-          <p className="mb-8 mt-6 max-w-[28em] text-b1 text-[color:var(--tm-fg-inverse-muted)]">
-            One command runs your tagged tests in parallel and returns an exit
-            code for CI or your coding agent.
-          </p>
-          <ul className="x-codes mono text-b4 m-0 mb-8 grid max-w-[420px] list-none grid-cols-2 gap-px border border-[color:var(--tm-bg-inverse-muted)] bg-[color:var(--tm-bg-inverse-muted)] p-0" aria-label="Kane CLI exit codes">
-            {[
-              ["0", "pass"],
-              ["1", "fail"],
-              ["2", "setup or sign-in"],
-              ["3", "timeout"],
-            ].map(([c, s]) => (
-              <li key={c} data-c={c} className={c === "0" ? "on" : ""}>
-                <b>{c}</b>
-                {s}
-              </li>
-            ))}
-          </ul>
-          <div className="x-prompt">
-            <div className="mb-4 flex items-center justify-between gap-4">
-              <p className="text-b2 font-medium">Paste this to your coding agent</p>
-              <button className="btn btn-sm btn-outline-inverse" type="button" data-copy-from="x-agent-prompt">
-                Copy prompt
-              </button>
-            </div>
-            <p id="x-agent-prompt" className="mono text-b4 text-[color:var(--tm-fg-inverse-muted)]">
-              {PROMPT}
-            </p>
-          </div>
-          <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-[color:var(--tm-bg-inverse-muted)] pt-6 text-b2 text-[color:var(--tm-fg-inverse-muted)]">
-            <button type="button" className="btn btn-lg btn-inverse btn-arrow btn-arrow-plain">
+    <section
+      className="x-dev relative z-[1] px-5 py-24 sm:px-8 md:py-32"
+      id="developers"
+    >
+      <div className={FRAME}>
+        {/* heading with its button on the left, the description on the right */}
+        <div className="mb-16 grid gap-8 lg:grid-cols-[5fr_7fr] lg:items-end lg:gap-20">
+          <div>
+            <h2 className="[text-wrap:balance]">
+              <span className="block text-[color:var(--tm-fg-inverse-muted)]">
+                Run AI tests from
+              </span>
+              <span className="block">your terminal and CI</span>
+            </h2>
+            <button
+              type="button"
+              className="btn btn-lg btn-inverse btn-arrow btn-arrow-plain mt-8"
+            >
               Start for free
               <ArrowChip />
             </button>
           </div>
+          <p className="max-w-[32em] text-b1 text-[color:var(--tm-fg-inverse-muted)] lg:pb-2">
+            One command runs your tagged tests in parallel and returns an exit
+            code for CI or your coding agent.
+          </p>
         </div>
+        <div className="grid items-start gap-12 lg:grid-cols-[5fr_7fr] lg:gap-20">
+          <div>
+            <ul
+              className="x-codes mono text-b4 m-0 mb-8 grid max-w-[420px] list-none grid-cols-2 gap-px border border-[color:var(--tm-bg-inverse-muted)] bg-[color:var(--tm-bg-inverse-muted)] p-0"
+              aria-label="Kane CLI exit codes"
+            >
+              {[
+                ["0", "pass"],
+                ["1", "fail"],
+                ["2", "setup or sign-in"],
+                ["3", "timeout"],
+              ].map(([c, s]) => (
+                <li key={c} data-c={c} className={c === "0" ? "on" : ""}>
+                  <b>{c}</b>
+                  {s}
+                </li>
+              ))}
+            </ul>
+            <div className="x-prompt">
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <p className="text-b2 font-medium">
+                  Paste this to your coding agent
+                </p>
+                <button
+                  className="btn btn-sm btn-outline-inverse"
+                  type="button"
+                  data-copy-from="x-agent-prompt"
+                >
+                  Copy prompt
+                </button>
+              </div>
+              <p
+                id="x-agent-prompt"
+                className="mono text-b4 text-[color:var(--tm-fg-inverse-muted)]"
+              >
+                {PROMPT}
+              </p>
+            </div>
+          </div>
 
-        <div className="x-term" id="x-term">
-          <div className="x-term-bar">
-            <span className="d" />
-            <span className="d" />
-            <span className="d" />
-            <div className="x-tabs text-b3" role="tablist" aria-label="Ways to run">
-              <button role="tab" id="x-t-term" aria-controls="x-p-term" aria-selected="true">
-                Terminal
-              </button>
-              <button role="tab" id="x-t-gh" aria-controls="x-p-gh" aria-selected="false" tabIndex={-1}>
-                GitHub Actions
-              </button>
-              <button role="tab" id="x-t-mcp" aria-controls="x-p-mcp" aria-selected="false" tabIndex={-1}>
-                MCP
-              </button>
+          <div className="x-term" id="x-term">
+            <div className="x-term-bar">
+              <span className="d" />
+              <span className="d" />
+              <span className="d" />
+              <div
+                className="x-tabs text-b3"
+                role="tablist"
+                aria-label="Ways to run"
+              >
+                <button
+                  role="tab"
+                  id="x-t-term"
+                  aria-controls="x-p-term"
+                  aria-selected="true"
+                >
+                  Terminal
+                </button>
+                <button
+                  role="tab"
+                  id="x-t-gh"
+                  aria-controls="x-p-gh"
+                  aria-selected="false"
+                  tabIndex={-1}
+                >
+                  GitHub Actions
+                </button>
+                <button
+                  role="tab"
+                  id="x-t-mcp"
+                  aria-controls="x-p-mcp"
+                  aria-selected="false"
+                  tabIndex={-1}
+                >
+                  MCP
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="x-pane text-b4" id="x-p-term" role="tabpanel" aria-labelledby="x-t-term" tabIndex={0}>
-            <button className="btn btn-sm btn-outline-inverse x-copy" type="button" data-copy="npm install -g @testmuai/kane-cli">
-              Copy install
-            </button>
-            <pre id="x-term-out" aria-live="off" />
-          </div>
-          <div className="x-pane text-b4" id="x-p-gh" role="tabpanel" aria-labelledby="x-t-gh" tabIndex={0} hidden>
-            <button className="btn btn-sm btn-outline-inverse x-copy" type="button" data-copy-from="x-gh-yaml">
-              Copy
-            </button>
-            <pre id="x-gh-yaml">
-              <span className="c"># .github/workflows/verify.yml</span>
-              {"\n"}
-              <span className="k">on</span>: [pull_request]{"\n"}
-              <span className="k">permissions</span>:{"\n"}
-              {"  "}
-              <span className="k">contents</span>: read{"\n"}
-              {"  "}
-              <span className="k">pull-requests</span>: write{"\n"}
-              <span className="k">jobs</span>:{"\n"}
-              {"  "}
-              <span className="k">verify</span>:{"\n"}
-              {"    "}
-              <span className="k">runs-on</span>: ubuntu-latest{"\n"}
-              {"    "}
-              <span className="k">steps</span>:{"\n"}
-              {"      - "}
-              <span className="k">uses</span>: actions/checkout@v4{"\n"}
-              {"      - "}
-              <span className="k">uses</span>: <span className="s">LambdaTest/kane-cli/integrations/github-action/kane-cli-browser-run@main</span>
-              {"\n"}
-              {"        "}
-              <span className="k">with</span>:{"\n"}
-              {"          "}
-              <span className="k">test-files</span>: <span className="s">"tests/**/*_test.md"</span>
-              {"\n"}
-              {"          "}
-              <span className="k">username</span>: {"${{ secrets.LT_USERNAME }}"}
-              {"\n"}
-              {"          "}
-              <span className="k">access-key</span>: {"${{ secrets.LT_ACCESS_KEY }}"}
-            </pre>
-            <div className="x-ghs text-b4" id="x-ghs">
-              <i aria-hidden />
-              <span id="x-ghs-t">verify / kane-cli: passed, verdict posted to the pull request</span>
-              <code className="mono" id="x-ghs-c">
-                exit 0
-              </code>
+            <div
+              className="x-pane text-b4"
+              id="x-p-term"
+              role="tabpanel"
+              aria-labelledby="x-t-term"
+              tabIndex={0}
+            >
+              <button
+                className="btn btn-sm btn-outline-inverse x-copy"
+                type="button"
+                data-copy="npm install -g @testmuai/kane-cli"
+              >
+                Copy install
+              </button>
+              <pre id="x-term-out" aria-live="off" />
             </div>
-          </div>
-          <div className="x-pane text-b4" id="x-p-mcp" role="tabpanel" aria-labelledby="x-t-mcp" tabIndex={0} hidden>
-            <button className="btn btn-sm btn-outline-inverse x-copy" type="button" data-copy="claude mcp add --transport http mcp-lambdatest https://mcp.lambdatest.com/mcp">
-              Copy
-            </button>
-            <pre>
-              <span className="p">$ </span>claude mcp add --transport http mcp-lambdatest \{"\n"}
-              {"    "}https://mcp.lambdatest.com/mcp{"\n"}
-              <span className="c"># Works in Cursor, Claude Code, Copilot, Codex and Antigravity.</span>
-              {"\n"}
-              <span className="c"># Tools cover HyperExecute, automation logs,</span>
-              {"\n"}
-              <span className="c"># accessibility and SmartUI. Sign-in is OAuth.</span>
-              {"\n\n"}
-              <span className="p">$ </span>npm install -g @testmuai/rook@latest{"\n"}
-              <span className="c"># Rook maps what your agent can do, then tests and judges it.</span>
-            </pre>
+            <div
+              className="x-pane text-b4"
+              id="x-p-gh"
+              role="tabpanel"
+              aria-labelledby="x-t-gh"
+              tabIndex={0}
+              hidden
+            >
+              <button
+                className="btn btn-sm btn-outline-inverse x-copy"
+                type="button"
+                data-copy-from="x-gh-yaml"
+              >
+                Copy
+              </button>
+              <pre id="x-gh-yaml">
+                <span className="c"># .github/workflows/verify.yml</span>
+                {"\n"}
+                <span className="k">on</span>: [pull_request]{"\n"}
+                <span className="k">permissions</span>:{"\n"}
+                {"  "}
+                <span className="k">contents</span>: read{"\n"}
+                {"  "}
+                <span className="k">pull-requests</span>: write{"\n"}
+                <span className="k">jobs</span>:{"\n"}
+                {"  "}
+                <span className="k">verify</span>:{"\n"}
+                {"    "}
+                <span className="k">runs-on</span>: ubuntu-latest{"\n"}
+                {"    "}
+                <span className="k">steps</span>:{"\n"}
+                {"      - "}
+                <span className="k">uses</span>: actions/checkout@v4{"\n"}
+                {"      - "}
+                <span className="k">uses</span>:{" "}
+                <span className="s">
+                  LambdaTest/kane-cli/integrations/github-action/kane-cli-browser-run@main
+                </span>
+                {"\n"}
+                {"        "}
+                <span className="k">with</span>:{"\n"}
+                {"          "}
+                <span className="k">test-files</span>:{" "}
+                <span className="s">"tests/**/*_test.md"</span>
+                {"\n"}
+                {"          "}
+                <span className="k">username</span>:{" "}
+                {"${{ secrets.LT_USERNAME }}"}
+                {"\n"}
+                {"          "}
+                <span className="k">access-key</span>:{" "}
+                {"${{ secrets.LT_ACCESS_KEY }}"}
+              </pre>
+              <div className="x-ghs text-b4" id="x-ghs">
+                <i aria-hidden />
+                <span id="x-ghs-t">
+                  verify / kane-cli: passed, verdict posted to the pull request
+                </span>
+                <code className="mono" id="x-ghs-c">
+                  exit 0
+                </code>
+              </div>
+            </div>
+            <div
+              className="x-pane text-b4"
+              id="x-p-mcp"
+              role="tabpanel"
+              aria-labelledby="x-t-mcp"
+              tabIndex={0}
+              hidden
+            >
+              <button
+                className="btn btn-sm btn-outline-inverse x-copy"
+                type="button"
+                data-copy="claude mcp add --transport http mcp-lambdatest https://mcp.lambdatest.com/mcp"
+              >
+                Copy
+              </button>
+              <pre>
+                <span className="p">$ </span>claude mcp add --transport http
+                mcp-lambdatest \{"\n"}
+                {"    "}https://mcp.lambdatest.com/mcp{"\n"}
+                <span className="c">
+                  # Works in Cursor, Claude Code, Copilot, Codex and
+                  Antigravity.
+                </span>
+                {"\n"}
+                <span className="c">
+                  # Tools cover HyperExecute, automation logs,
+                </span>
+                {"\n"}
+                <span className="c">
+                  # accessibility and SmartUI. Sign-in is OAuth.
+                </span>
+                {"\n\n"}
+                <span className="p">$ </span>npm install -g
+                @testmuai/rook@latest{"\n"}
+                <span className="c">
+                  # Rook maps what your agent can do, then tests and judges it.
+                </span>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
@@ -916,7 +1273,11 @@ const PLANS = [
     pre: "",
     post: "",
     for: "Try it on a real project first.",
-    list: ["KaneAI free tier", "10,000 Kane CLI credits for 30 days", "300 HyperExecute minutes"],
+    list: [
+      "KaneAI free tier",
+      "10,000 Kane CLI credits for 30 days",
+      "300 HyperExecute minutes",
+    ],
     cta: "Start for free",
   },
   {
@@ -926,7 +1287,11 @@ const PLANS = [
     pre: "From",
     post: "/mo",
     for: "A verdict and evidence on every pull request.",
-    list: ["KaneAI from $17/mo", "Agent Assurance from $44/mo", "HyperExecute and real devices"],
+    list: [
+      "KaneAI from $17/mo",
+      "Agent Assurance from $44/mo",
+      "HyperExecute and real devices",
+    ],
     cta: "See all prices",
   },
   {
@@ -936,7 +1301,11 @@ const PLANS = [
     pre: "",
     post: "",
     for: "One release gate for all your apps and agents.",
-    list: ["SAML SSO, SCIM, SOC 2 Type II, ISO 27001", "US or EU data residency", "Private cloud or on-prem"],
+    list: [
+      "SAML SSO, SCIM, SOC 2 Type II, ISO 27001",
+      "US or EU data residency",
+      "Private cloud or on-prem",
+    ],
     cta: "Book a demo",
   },
 ];
@@ -955,9 +1324,19 @@ function Plans10() {
               <span className="x-tag text-b3 font-medium">{p.tag}</span>
               <h5 className="m-0 mb-4">{p.name}</h5>
               <p className="m-0 flex items-baseline gap-2">
-                {p.pre && <small className="text-b3 font-normal tracking-normal text-muted-foreground">{p.pre}</small>}
-                <span className="text-[48px] font-medium leading-[58px] tracking-[-2px]">{p.price}</span>
-                {p.post && <small className="text-b3 font-normal tracking-normal text-muted-foreground">{p.post}</small>}
+                {p.pre && (
+                  <small className="text-b3 font-normal tracking-normal text-muted-foreground">
+                    {p.pre}
+                  </small>
+                )}
+                <span className="text-[48px] font-medium leading-[58px] tracking-[-2px]">
+                  {p.price}
+                </span>
+                {p.post && (
+                  <small className="text-b3 font-normal tracking-normal text-muted-foreground">
+                    {p.post}
+                  </small>
+                )}
               </p>
               <p className="mb-6 mt-2 text-b2 text-muted-foreground">{p.for}</p>
               <ul className="m-0 mb-8 grid list-none gap-3 border-t border-border p-0 pt-6 text-b3">
@@ -1015,11 +1394,19 @@ const FAQ = [
 
 /* links for AI agents, set in the FAQ's two columns: the label on the
    left, the links in a row on the right, under the questions */
-const AGENT_LINKS = ["llms.txt", "This page as Markdown", "pricing.md", "MCP server"];
+const AGENT_LINKS = [
+  "llms.txt",
+  "This page as Markdown",
+  "pricing.md",
+  "MCP server",
+];
 
 function SmallPrint() {
   return (
-    <aside className="relative z-[1] border-t border-border px-5 sm:px-8" aria-label="For AI agents">
+    <aside
+      className="relative z-[1] border-t border-border px-5 sm:px-8"
+      aria-label="For AI agents"
+    >
       <div className="mx-auto grid w-full max-w-[1240px] lg:grid-cols-[0.4fr_0.6fr]">
         <div className="flex items-center px-8 pb-4 pt-12 md:px-16 lg:py-12">
           <p className={LABEL}>For AI agents</p>
@@ -1041,24 +1428,76 @@ function SmallPrint() {
 
 /* ---------------- the ⌘K panel for agents ---------------- */
 
-type PalItem = { ico: string; label: string; small: string; copy?: string; copyFrom?: string; page?: boolean; href?: string };
+type PalItem = {
+  ico: string;
+  label: string;
+  small: string;
+  copy?: string;
+  copyFrom?: string;
+  page?: boolean;
+  href?: string;
+};
 const PAL: PalItem[] = [
-  { ico: "md", label: "Copy this page as Markdown", small: "for your LLM", page: true },
-  { ico: "↳", label: "Copy a prompt for your coding agent", small: "Kane CLI", copyFrom: "x-agent-prompt" },
-  { ico: "mcp", label: "Copy MCP server command", small: "mcp.lambdatest.com", copy: "claude mcp add --transport http mcp-lambdatest https://mcp.lambdatest.com/mcp" },
-  { ico: "$", label: "Copy Kane CLI install", small: "npm", copy: "npm install -g @testmuai/kane-cli" },
-  { ico: "$", label: "Copy Rook install", small: "npm", copy: "npm install -g @testmuai/rook@latest" },
+  {
+    ico: "md",
+    label: "Copy this page as Markdown",
+    small: "for your LLM",
+    page: true,
+  },
+  {
+    ico: "↳",
+    label: "Copy a prompt for your coding agent",
+    small: "Kane CLI",
+    copyFrom: "x-agent-prompt",
+  },
+  {
+    ico: "mcp",
+    label: "Copy MCP server command",
+    small: "mcp.lambdatest.com",
+    copy: "claude mcp add --transport http mcp-lambdatest https://mcp.lambdatest.com/mcp",
+  },
+  {
+    ico: "$",
+    label: "Copy Kane CLI install",
+    small: "npm",
+    copy: "npm install -g @testmuai/kane-cli",
+  },
+  {
+    ico: "$",
+    label: "Copy Rook install",
+    small: "npm",
+    copy: "npm install -g @testmuai/rook@latest",
+  },
   { ico: "txt", label: "Open llms.txt", small: "/llms.txt", href: "/llms.txt" },
-  { ico: "md", label: "Open this page as Markdown", small: "/index.md", href: "/index.md" },
-  { ico: "$", label: "Open pricing as Markdown", small: "/pricing.md", href: "/pricing.md" },
+  {
+    ico: "md",
+    label: "Open this page as Markdown",
+    small: "/index.md",
+    href: "/index.md",
+  },
+  {
+    ico: "$",
+    label: "Open pricing as Markdown",
+    small: "/pricing.md",
+    href: "/pricing.md",
+  },
 ];
 
 function pageMarkdown(root: HTMLElement) {
-  const L = ["# TestMu AI (formerly LambdaTest): the AI testing platform for your apps and AI agents", ""];
+  const L = [
+    "# TestMu AI (formerly LambdaTest): the AI testing platform for your apps and AI agents",
+    "",
+  ];
   L.push(root.querySelector(".x-hero-top p.text-b1")?.textContent ?? "", "");
   root.querySelectorAll("#products .tm-join > div").forEach((col) => {
     L.push("## " + (col.querySelector("p")?.textContent ?? ""));
-    col.querySelectorAll("li").forEach((li) => L.push(`- ${li.querySelector("h5")?.textContent}: ${li.querySelector("p")?.textContent}`));
+    col
+      .querySelectorAll("li")
+      .forEach((li) =>
+        L.push(
+          `- ${li.querySelector("h5")?.textContent}: ${li.querySelector("p")?.textContent}`,
+        ),
+      );
     L.push("");
   });
   L.push("## FAQ");
@@ -1076,7 +1515,10 @@ function Palette({ root }: { root: React.RefObject<HTMLDivElement | null> }) {
     setToast(t);
     setTimeout(() => setToast(""), 1600);
   };
-  const shown = PAL.filter((it) => !q.trim() || it.label.toLowerCase().includes(q.toLowerCase().trim()));
+  const shown = PAL.filter(
+    (it) =>
+      !q.trim() || it.label.toLowerCase().includes(q.toLowerCase().trim()),
+  );
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -1129,12 +1571,29 @@ function Palette({ root }: { root: React.RefObject<HTMLDivElement | null> }) {
   return (
     <>
       {open && (
-        <div className="x-pal" role="dialog" aria-modal="true" aria-label="For agents" onClick={(e) => e.target === e.currentTarget && setOpen(false)}>
+        <div
+          className="x-pal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="For agents"
+          onClick={(e) => e.target === e.currentTarget && setOpen(false)}
+        >
           <div className="x-pal-box">
             <div className="x-pal-in">
               <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden>
-                <circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M11 11l3.5 3.5" stroke="currentColor" strokeWidth="1.5" />
+                <circle
+                  cx="7"
+                  cy="7"
+                  r="5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M11 11l3.5 3.5"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
               </svg>
               <input
                 ref={input}
@@ -1154,14 +1613,18 @@ function Palette({ root }: { root: React.RefObject<HTMLDivElement | null> }) {
                     setAct((a) => (a + 1) % Math.max(shown.length, 1));
                   } else if (e.key === "ArrowUp") {
                     e.preventDefault();
-                    setAct((a) => (a - 1 + shown.length) % Math.max(shown.length, 1));
+                    setAct(
+                      (a) => (a - 1 + shown.length) % Math.max(shown.length, 1),
+                    );
                   } else if (e.key === "Enter" && shown[act]) {
                     e.preventDefault();
                     run(shown[act]);
                   }
                 }}
               />
-              <kbd className="mono rounded-sm border border-current px-1 text-b5 opacity-60">esc</kbd>
+              <kbd className="mono rounded-sm border border-current px-1 text-b5 opacity-60">
+                esc
+              </kbd>
             </div>
             <ul role="listbox" aria-label="Commands">
               {shown.map((it, i) => (
@@ -1189,7 +1652,11 @@ function Palette({ root }: { root: React.RefObject<HTMLDivElement | null> }) {
           </div>
         </div>
       )}
-      <div className={`x-toast text-b3 font-medium ${toast ? "on" : ""}`} role="status" aria-live="polite">
+      <div
+        className={`x-toast text-b3 font-medium ${toast ? "on" : ""}`}
+        role="status"
+        aria-live="polite"
+      >
         {toast}
       </div>
     </>
