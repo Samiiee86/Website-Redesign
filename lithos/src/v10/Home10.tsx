@@ -37,7 +37,10 @@ function Hero10() {
                   Start free with Google
                   <ArrowChip />
                 </button>
-                <button className="btn btn-lg btn-secondary">Book a demo</button>
+                <button className="btn btn-lg btn-secondary btn-arrow btn-arrow-plain">
+                  Book a demo
+                  <ArrowChip />
+                </button>
               </div>
             </div>
             {/* right: the description on top, the Gartner recognition level
@@ -396,7 +399,7 @@ const PATHS = [
       ["Describe a flow", "Kane runs it."],
       ["Gate on the exit code", "1 files a bug."],
     ],
-    cta: "Start free",
+    cta: "Start for free",
     note: "Needs Node 18+.",
   },
   {
@@ -455,7 +458,10 @@ function Route10() {
                   ))}
                 </ol>
                 <div className="mt-6 flex flex-wrap items-center gap-4">
-                  <button className="btn btn-lg btn-primary">{p.cta}</button>
+                  <button className="btn btn-lg btn-primary btn-arrow btn-arrow-plain">
+                    {p.cta}
+                    <ArrowChip />
+                  </button>
                   <small className="text-b3 text-muted-foreground">{p.note}</small>
                 </div>
               </div>
@@ -903,7 +909,7 @@ const PLANS = [
     post: "",
     for: "Try it on a real project first.",
     list: ["KaneAI free tier", "10,000 Kane CLI credits for 30 days", "300 HyperExecute minutes"],
-    cta: "Start free",
+    cta: "Start for free",
   },
   {
     tag: "Fits growing teams",
@@ -960,7 +966,10 @@ function Plans10() {
                   <li key={l}>{l}</li>
                 ))}
               </ul>
-              <button className="btn btn-lg btn-secondary mt-auto w-full justify-center">{p.cta}</button>
+              <button className="btn btn-lg btn-secondary btn-arrow btn-arrow-plain mt-auto w-full justify-center">
+                {p.cta}
+                <ArrowChip />
+              </button>
             </article>
           ))}
         </div>
