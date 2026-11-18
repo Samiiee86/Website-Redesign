@@ -218,7 +218,13 @@
   .h10 .x-logo-row > img:last-child { margin-right: calc(var(--pr) * -56px); }
   .h10 .x-logo-row > img.h-5:first-child, .h10 .x-logo-row > img.h-5:last-child { margin: 0; }
 }
-.h10 .x-res q { display: block; margin-top: 16px; quotes: "\201C" "\201D"; }
+.h10 .x-res q { display: block; quotes: "\201C" "\201D"; }
+/* the three results share rows (number, line, quote, name) so they line up */
+.h10 .x-results { grid-auto-rows: auto; }
+.h10 .x-res { display: grid; grid-row: span 4; grid-template-rows: subgrid; row-gap: 16px; transition: background .2s; }
+.h10 .x-res:hover { background: var(--tm-bg-default); }
+.h10 .x-res > p, .h10 .x-res > q { margin: 0; }
+.h10 .x-res > cite { align-self: end; }
 
 /* ---------- route ---------- */
 .h10 .x-seg-steps { counter-reset: s; }

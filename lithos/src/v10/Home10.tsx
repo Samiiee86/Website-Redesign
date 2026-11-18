@@ -333,7 +333,7 @@ const RESULTS = [
     text: "cut test run time by 78% on HyperExecute.",
     quote: "We have tripled our tests and are now executing tests in less than 2 hours.",
     cite: "Hrishi Potdar, Boomi",
-    src: "Boomi case study",
+    href: "https://www.testmuai.com/customers/boomi/",
   },
   {
     n: "99.9%",
@@ -341,7 +341,7 @@ const RESULTS = [
     text: "reduced flaky tests by 99.9%.",
     quote: "HyperExecute is a stable test orchestration platform and has excellent customer support.",
     cite: "Sagar Uday Kumar, Dashlane",
-    src: "Dashlane case study",
+    href: "https://www.testmuai.com/customers/dashlane/",
   },
   {
     n: "70%",
@@ -350,7 +350,7 @@ const RESULTS = [
     quote:
       "With efficient cross-browser testing and 70% faster test execution, LambdaTest (now TestMu AI) helped us achieve faster time-to-market and enhanced CX. Their support and cost-effectiveness exceeded our expectations.",
     cite: "Daniel de Bruijn, Transavia",
-    src: "HyperExecute customer results",
+    href: "https://www.testmuai.com/hyperexecute/",
   },
 ];
 
@@ -385,25 +385,26 @@ function Proof10() {
         </div>
       </Reveal>
       <Reveal delay={0.1}>
-        <div className="tm-join mt-12 [--tm-pad:32px]">
+        {/* each result is one link; number, line, quote and name sit on
+            shared rows so the three read across as one band */}
+        <div className="tm-join x-results mt-12 [--tm-pad:32px]">
           {RESULTS.map((r) => (
-            <figure key={r.who} className="x-res m-0">
-              <b className="pixel text-[48px] font-normal leading-none tracking-tight">{r.n}</b>
-              <p className="mt-4 text-b2 text-muted-foreground">
+            <a key={r.who} href={r.href} className="x-res group text-foreground no-underline">
+              <div className="flex items-start justify-between gap-4">
+                <b className="pixel text-[48px] font-normal leading-none tracking-tight">{r.n}</b>
+                <ArrowUpRight
+                  size={20}
+                  strokeWidth={1.5}
+                  aria-hidden
+                  className="text-foreground opacity-0 transition duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:opacity-100 group-focus-visible:opacity-100"
+                />
+              </div>
+              <p className="text-b2 text-muted-foreground">
                 <strong className="font-medium text-foreground">{r.who}</strong> {r.text}
               </p>
-              {r.quote && (
-                <blockquote className="m-0">
-                  <q className="text-b1 font-medium text-foreground">{r.quote}</q>
-                </blockquote>
-              )}
-              <figcaption>
-                {r.cite && <cite className="mt-2 block text-b3 not-italic text-muted-foreground">{r.cite}</cite>}
-                <span className={SRC}>
-                  Source: <a href="#" className={SRC_LINK}>{r.src}</a>
-                </span>
-              </figcaption>
-            </figure>
+              <q className="text-b1 font-medium text-foreground">{r.quote}</q>
+              <cite className="text-b3 not-italic text-muted-foreground">{r.cite}</cite>
+            </a>
           ))}
         </div>
       </Reveal>
