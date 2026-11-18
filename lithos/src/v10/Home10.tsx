@@ -546,7 +546,7 @@ function Hub10() {
                 {col.items.map(([t, d]) => (
                   <li key={t} className="border-b border-border py-5 last:border-b-0">
                     <a href="#" className="group inline-flex items-center gap-1 text-foreground no-underline">
-                      <h5 className="m-0">{t}</h5>
+                      <h5 className="m-0 decoration-1 underline-offset-4 group-hover:underline">{t}</h5>
                       <SlideArrow />
                     </a>
                     <p className="mt-2 text-b3 text-muted-foreground">{d}</p>
