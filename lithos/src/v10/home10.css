@@ -198,6 +198,12 @@
 .h10 .x-statline { color: var(--tm-fg-subtle); max-width: 30em; }
 .h10 .x-statline b { color: var(--tm-fg-default); font-weight: 500; }
 .h10 .x-res b { display: block; }
+/* desktop rows: trim each file's built-in side space on the outer logos */
+@media (min-width: 1024px) {
+  .h10 .x-logo-row > img { max-width: none; }
+  .h10 .x-logo-row > img:first-child { margin-left: calc(var(--pl) * -56px); }
+  .h10 .x-logo-row > img:last-child { margin-right: calc(var(--pr) * -56px); }
+}
 .h10 .x-res q { display: block; margin-top: 16px; quotes: "\201C" "\201D"; }
 
 /* ---------- route ---------- */

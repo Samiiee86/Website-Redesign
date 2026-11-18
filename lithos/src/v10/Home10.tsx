@@ -288,6 +288,28 @@ function Console() {
 
 /* ---------------- proof ---------------- */
 
+/* blank space each logo file carries on its left and right, as a share of
+   its height (measured from the SVGs), so the row's outer logos can sit
+   on the text line and the frame's right edge */
+const LOGO_PAD: Record<string, [number, number]> = {
+  microsoft: [19.8 / 60, 19.9 / 60],
+  openai: [22.8 / 60, 22.3 / 60],
+  nvidia: [17.7 / 60, 17.7 / 60],
+  boomi: [33.4 / 60, 33.3 / 60],
+  github: [20.4 / 60, 20.4 / 60],
+  "best-egg": [15.9 / 60, 16.7 / 60],
+  workday: [30.7 / 60, 32 / 60],
+  akamai: [30.8 / 60, 30.8 / 60],
+  lv: [19.9 / 59, 20.4 / 59],
+  nbcuniversal: [11.2 / 59, 11.2 / 59],
+  "city-furniture": [34.7 / 60, 34.7 / 60],
+  cox: [36.5 / 60, 36.5 / 60],
+  transavia: [15.9 / 59, 15.9 / 59],
+  "estee-lauder": [15.9 / 59, 15.9 / 59],
+  tripadviosr: [9 / 60, 9 / 60],
+  bohoo: [24 / 59, 28 / 59],
+};
+
 const RESULTS = [
   {
     n: "78%",
@@ -304,21 +326,36 @@ function Proof10() {
   return (
     <Section>
       <Reveal>
-        <h3 className="x-statline [text-wrap:balance]">
-          <b>18,000+ enterprises</b> and <b>3M+ users</b> in 132 countries
-          have run <b>1.5B+ tests</b> on TestMu AI.
+        <h3 className="max-w-[30em] text-foreground [text-wrap:balance]">
+          18,000+ enterprises and 3M+ users in 132 countries have run 1.5B+
+          tests on TestMu AI.
         </h3>
       </Reveal>
       <Reveal delay={0.06}>
-        <div className="mt-12 grid grid-cols-2 items-center gap-x-10 gap-y-12 border-y border-border py-10 sm:grid-cols-4 lg:grid-cols-8">
-          {trustedBy.logos.map((logo) => (
-            <img
-              key={logo.name}
-              src={logo.src}
-              alt={logo.name}
-              className="logo-ink mx-auto h-12 w-auto max-w-[150px] md:h-14"
-              loading="lazy"
-            />
+        {/* two rows of eight: the first logo starts on the text line and the
+            last one ends on the frame's right edge */}
+        <div className="mt-12 flex flex-col gap-12 border-y border-border py-10">
+          {[trustedBy.logos.slice(0, 8), trustedBy.logos.slice(8)].map((row, r) => (
+            <div
+              key={r}
+              className="x-logo-row grid grid-cols-2 items-center gap-x-10 gap-y-12 sm:grid-cols-4 lg:flex lg:justify-between lg:gap-0"
+            >
+              {row.map((logo) => (
+                <img
+                  key={logo.name}
+                  src={logo.src}
+                  alt={logo.name}
+                  className="logo-ink h-12 w-auto max-w-[150px] md:h-14"
+                  style={
+                    {
+                      "--pl": LOGO_PAD[logo.name]?.[0] ?? 0,
+                      "--pr": LOGO_PAD[logo.name]?.[1] ?? 0,
+                    } as React.CSSProperties
+                  }
+                  loading="lazy"
+                />
+              ))}
+            </div>
           ))}
         </div>
       </Reveal>
