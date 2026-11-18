@@ -397,11 +397,16 @@ const CDN_LOGO =
    (measured from the SVGs); trimming it lets the columns size to the
    logos themselves, so the first column starts on the text line and the
    last ends on the frame's right edge. */
-const PROOF_LOGOS: { name: string; file: string; pad: [number, number] }[] = [
+const CDN_CUSTOMER = "https://assets.testmuai.com/resources/images/customer/";
+
+/* `src` overrides the CDN file for logos taken from the customers page;
+   those files are cropped tight, so they carry no padding and a smaller
+   height (`tight`) */
+const PROOF_LOGOS: { name: string; file: string; pad: [number, number]; src?: string; tight?: boolean }[] = [
   { name: "Microsoft", file: "microsoft", pad: [19.8 / 60, 19.9 / 60] },
   { name: "OpenAI", file: "openai", pad: [22.8 / 60, 22.3 / 60] },
   { name: "NVIDIA", file: "nvidia", pad: [17.7 / 60, 17.7 / 60] },
-  { name: "Boomi", file: "boomi", pad: [33.4 / 60, 33.3 / 60] },
+  { name: "Whatfix", file: "whatfix", pad: [0, 0], src: CDN_CUSTOMER + "Whatfix.svg", tight: true },
   { name: "GitHub", file: "github", pad: [20.4 / 60, 20.4 / 60] },
   { name: "Best Egg", file: "best-egg", pad: [15.9 / 60, 16.7 / 60] },
   { name: "Workday", file: "workday", pad: [30.7 / 60, 32 / 60] },
@@ -414,7 +419,7 @@ const PROOF_LOGOS: { name: string; file: string; pad: [number, number] }[] = [
     pad: [34.7 / 60, 34.7 / 60],
   },
   { name: "Cox", file: "cox", pad: [36.5 / 60, 36.5 / 60] },
-  { name: "Transavia", file: "transavia", pad: [15.9 / 59, 15.9 / 59] },
+  { name: "bet365", file: "bet365", pad: [0, 0], src: CDN_CUSTOMER + "bet365-main.svg", tight: true },
   { name: "Estée Lauder", file: "estee-lauder", pad: [15.9 / 59, 15.9 / 59] },
   { name: "Tripadvisor", file: "tripadviosr", pad: [9 / 60, 9 / 60] },
   { name: "boohoo", file: "bohoo", pad: [24 / 59, 28 / 59] },
@@ -477,9 +482,9 @@ function Proof10() {
           {PROOF_LOGOS.map((logo) => (
             <img
               key={logo.file}
-              src={CDN_LOGO + logo.file + ".svg"}
+              src={logo.src ?? CDN_LOGO + logo.file + ".svg"}
               alt={logo.name}
-              className="logo-ink h-12 w-auto md:h-14"
+              className={`logo-ink w-auto ${logo.tight ? "h-5 md:h-6" : "h-12 md:h-14"}`}
               style={
                 {
                   "--pl": logo.pad[0],

@@ -64,10 +64,10 @@
 .h10 .x-award span { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: var(--tm-fg-subtle); transition: text-decoration-color .2s; }
 .h10 .x-award:hover span { text-decoration-color: var(--tm-fg-default); }
 .h10 .x-mq { flex: none; }
-.h10 .x-mq-frame { fill: var(--tm-bg-surface); stroke: var(--tm-border-default); }
-.h10 .x-mq-lead { fill: var(--tm-bg-muted); }
-.h10 .x-mq-axis { stroke: var(--tm-border-default); stroke-dasharray: 2 2; }
-.h10 .x-mq-dot { fill: var(--tm-fg-default); }
+.h10 .x-mq-frame { fill: none; stroke: var(--tm-fg-subtle); }
+.h10 .x-mq-lead { fill: none; stroke: var(--tm-fg-default); }
+.h10 .x-mq-axis { stroke: var(--tm-fg-subtle); stroke-dasharray: 2 2; }
+.h10 .x-mq-dot { fill: none; stroke: var(--tm-fg-default); stroke-width: 1.5; }
 
 /* ---------- console ---------- */
 .h10 .x-console {
