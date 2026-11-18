@@ -344,9 +344,10 @@ function Proof10() {
   return (
     <Section>
       <Reveal>
-        <h3 className="max-w-[30em] text-foreground [text-wrap:balance]">
-          18,000+ enterprises and 3M+ users in 132 countries have run 1.5B+
-          tests on TestMu AI.
+        <h3 className="max-w-[30em] text-[color:var(--tm-fg-subtle)] [text-wrap:balance]">
+          <b className="font-medium text-foreground">18,000+ enterprises</b> and{" "}
+          <b className="font-medium text-foreground">3M+ users</b> in 132 countries have run{" "}
+          <b className="font-medium text-foreground">1.5B+ tests</b> on TestMu AI.
         </h3>
       </Reveal>
       <Reveal delay={0.06}>
