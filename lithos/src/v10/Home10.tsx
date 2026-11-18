@@ -471,7 +471,9 @@ function Proof10() {
         {/* eight columns over two rows: each column is as wide as its
             widest logo, the columns spread edge to edge, and both rows
             share them, so the logos line up top and bottom */}
-        <div className="x-logos mt-12 border-t border-border pt-10">
+        {/* the rule runs edge to edge between the frame lines */}
+        <div className="-mx-8 mt-12 border-t border-border px-8 pt-10">
+        <div className="x-logos">
           {PROOF_LOGOS.map((logo) => (
             <img
               key={logo.file}
@@ -487,6 +489,7 @@ function Proof10() {
               loading="lazy"
             />
           ))}
+        </div>
         </div>
       </Reveal>
       <Reveal delay={0.1}>
