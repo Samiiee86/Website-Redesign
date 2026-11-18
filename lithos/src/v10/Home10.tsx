@@ -399,7 +399,7 @@ const PATHS = [
       ["Describe a flow", "Kane runs it."],
       ["Gate on the exit code", "1 files a bug."],
     ],
-    cta: "Start free",
+    cta: "Start for free",
     note: "Needs Node 18+.",
   },
   {
@@ -801,10 +801,10 @@ function Dev10() {
             </p>
           </div>
           <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-[color:var(--tm-bg-inverse-muted)] pt-6 text-b2 text-[color:var(--tm-fg-inverse-muted)]">
-            <button type="button" className="btn btn-sm btn-outline-inverse" data-pal>
-              For agents <kbd className="mono rounded-sm border border-current px-1 text-b5 opacity-60">⌘K</kbd>
+            <button type="button" className="btn btn-lg btn-inverse btn-arrow btn-arrow-plain">
+              Start for free
+              <ArrowChip />
             </button>
-            <span>Shortcuts for coding agents.</span>
           </div>
         </div>
 
@@ -909,7 +909,7 @@ const PLANS = [
     post: "",
     for: "Try it on a real project first.",
     list: ["KaneAI free tier", "10,000 Kane CLI credits for 30 days", "300 HyperExecute minutes"],
-    cta: "Start free",
+    cta: "Start for free",
   },
   {
     tag: "Fits growing teams",
