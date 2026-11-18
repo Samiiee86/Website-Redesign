@@ -406,4 +406,8 @@
 .h10 .x-toast.on { opacity: 1; transform: translate(-50%, 0); }
 /* chapter titles at the H1 size, balanced onto two lines */
 .h10 .x-chap-copy h2 { font-size: var(--tm-h1-size); line-height: var(--tm-h1-line); letter-spacing: var(--tm-h1-tracking); }
+/* Sameer asked for 72px story titles (2026-11-18), above the H1 token */
+@media (min-width: 1101px) {
+  .h10 .x-chap-copy h2 { font-size: 72px; line-height: 80px; } /* ds-ignore: 72px titles requested by Sameer */
+}
 .h10 .x-chap-copy h2 > span { white-space: nowrap; }
