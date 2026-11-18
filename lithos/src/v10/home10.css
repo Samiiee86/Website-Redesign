@@ -354,3 +354,6 @@
   .h10 *, .h10 *::before, .h10 *::after { animation: none !important; transition: none !important; }
 }
 .h10 .x-pane .btn { font-family: var(--tm-font-sans); }
+/* copy buttons on the dark band: a quiet outline that firms up on hover */
+.h10 .x-dev .btn-outline-inverse { border-color: color-mix(in srgb, var(--tm-fg-inverse) 18%, transparent); background: color-mix(in srgb, var(--tm-fg-inverse) 4%, transparent); }
+.h10 .x-dev .btn-outline-inverse:hover { border-color: color-mix(in srgb, var(--tm-fg-inverse) 40%, transparent); }
