@@ -949,9 +949,9 @@ function Plans10() {
             <article key={p.name} className="x-plan">
               <span className="x-tag text-b3 font-medium">{p.tag}</span>
               <h5 className="m-0 mb-4">{p.name}</h5>
-              <p className="m-0 flex items-baseline gap-2 text-[32px] font-medium leading-[40px] tracking-[-1px]">
+              <p className="m-0 flex items-baseline gap-2">
                 {p.pre && <small className="text-b3 font-normal tracking-normal text-muted-foreground">{p.pre}</small>}
-                {p.price}
+                <span className="pixel text-[48px] font-normal leading-[56px] tracking-tight">{p.price}</span>
                 {p.post && <small className="text-b3 font-normal tracking-normal text-muted-foreground">{p.post}</small>}
               </p>
               <p className="mb-6 mt-2 text-b2 text-muted-foreground">{p.for}</p>
