@@ -1,43 +1,19 @@
 import { MotionConfig } from "motion/react";
 import GuideLines from "./components/GuideLines";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import TrustedBy from "./sections/TrustedBy";
-import Bento from "./sections/Bento";
-import Journey from "./sections/Journey";
-import Stories from "./sections/Stories";
-import Reasons from "./sections/Reasons";
-import Integrations from "./sections/Integrations";
-import Shipped from "./sections/Shipped";
-import Rebrand from "./sections/Rebrand";
-import Faq from "./sections/Faq";
-import Enterprise from "./sections/Enterprise";
-import Footer from "./sections/Footer";
+import Home10 from "./v10/Home10";
 
+/* Version 10 of the home page: the "When AI verifies AI" layout. The earlier
+   home (hero, logo wall, Pioneer bento, stack flow and the rest) stays on
+   the other version branches. */
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative min-h-screen bg-background font-body">
         <Header />
-
-        {/* The hero is content-height: no viewport lock, so tall monitors
-            don't get a dead band between the sea card and the logo wall. */}
-        <Hero />
-
         <main className="relative">
           <GuideLines />
-
-          <TrustedBy />
-          <Bento />
-          <Journey />
-          <Integrations />
-          <Stories />
-          <Reasons />
-          <Shipped />
-          <Rebrand />
-          <Faq />
-          <Enterprise />
-          <Footer />
+          <Home10 />
         </main>
       </div>
     </MotionConfig>
