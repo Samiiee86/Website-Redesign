@@ -50,10 +50,11 @@ import { SpecSheet, type SpecRow } from "./pieces/SpecTable";
    - Every other section starts from a kit fold, with no eyebrow labels
      over the headings: statement (what agent verification is),
      the home page's Pioneer layout (graded on evidence), the pieces library's
-     comparison table (evals against assurance), feature-tour (the four
-     phases and the IDE), code-setup (run Rook CLI), feature-pointers (the
-     six test types, the one pointer design on the page), two joined cards (exit
-     codes), feature-cards-image (teams; one verdict in three places).
+     comparison table (evals against assurance), the home page's product
+     rows (the four phases and the IDE), two joined scene cards (run Rook
+     CLI), feature-pointers (the six test types, the one pointer design on
+     the page), the spec sheet (teams), feature-cards-image (one verdict in
+     three places).
 
    Copy is the live page's (testmuai.com/agent-assurance), in sentence
    case, with links in running text turned into plain words. */
@@ -898,7 +899,7 @@ function Phases() {
 /* ---------- run Rook CLI: two ways in, the command first ----------
 
    Built like Kane Explore's "Start from your browser or terminal": two
-   cards, each a painted scene with the command in a terminal and a Copy
+   joined white cards (as in the rest of the page), each a painted scene with the command in a terminal and a Copy
    button, then a mono label, one sentence (lead in black, the rest
    muted) and Copy command as the only action. */
 
@@ -947,7 +948,7 @@ const ways: Way[] = [
 function WayCard({ w }: { w: Way }) {
   const { done, copy } = useCopy(w.cmd);
   return (
-    <article className="flex min-w-0 flex-col">
+    <article className="tm-cell flex min-w-0 flex-col p-8 lg:p-10">
       <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden px-6 py-8 md:px-10">
         <img src={w.scene} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <div className={`relative flex w-full max-w-[480px] items-start justify-between gap-4 px-5 py-4 ${T_BG} [box-shadow:var(--tm-shadow-floating-md)]`}>
@@ -993,10 +994,12 @@ function RunRook() {
       >
         <PrimaryBtn href={TRIAL}>Start free trial</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal grid grid-cols-1 gap-6 md:grid-cols-2">
-        {ways.map((w) => (
-          <WayCard key={w.label} w={w} />
-        ))}
+      <div className="tm-reveal -mx-8">
+        <div className="tm-grid tm-grid--2">
+          {ways.map((w) => (
+            <WayCard key={w.label} w={w} />
+          ))}
+        </div>
       </div>
     </Section>
   );
@@ -1034,72 +1037,6 @@ function TestTypes() {
               <p>{body}</p>
             </div>
           ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-/* ---------- exit codes: one run, seen two ways ----------
-
-   The live page's point, told with one example so it reads at a glance:
-   the same run exits 0 (the exit code only says it finished), while its
-   report shows 5 failed criteria and blocks the build. Two joined cards,
-   each a title, one line and a small read-out. */
-
-const OUT = "flex flex-col gap-2 border border-border bg-background px-5 py-4 font-mono text-b3";
-const okIcon = <Check size={14} strokeWidth={2} className="text-[var(--tm-fg-success)]" aria-hidden />;
-const badIcon = <X size={14} strokeWidth={2} className="text-[var(--tm-fg-error)]" aria-hidden />;
-
-function ExitCodes() {
-  return (
-    <Section>
-      <FoldHead
-        lead="A green exit code"
-        title="is not a passing agent"
-        body="Exit code 0 means the run finished, not that your agent passed. Gate your CI on the exit code alone and you can ship a broken agent. Gate it on the report instead."
-      >
-        <PrimaryBtn href={DEMO}>Book a demo</PrimaryBtn>
-      </FoldHead>
-      <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--2">
-          <div className="tm-cell flex flex-col gap-6 p-8 lg:p-10">
-            <div className="flex flex-col gap-2">
-              <h3 className="text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">
-                What the exit code tells you
-              </h3>
-              <p className="text-b2 text-muted-foreground">
-                0 means the run finished, pass or fail. 1 means the command broke: signed out, bad flags, or a run that never started.
-              </p>
-            </div>
-            <div className={`${OUT} mt-auto`}>
-              <p><span className="text-muted-foreground">$</span> rook run --headless</p>
-              <p className="flex items-center gap-2">{okIcon}Run finished</p>
-              <p className="flex items-center justify-between gap-3">
-                <span className="text-muted-foreground">exit code</span>
-                <span className="tag rounded-sm bg-[var(--tm-green-000)] px-2 py-0.5 text-b4 text-[var(--tm-green-500)]">0</span>
-              </p>
-            </div>
-          </div>
-
-          <div className="tm-cell flex flex-col gap-6 p-8 lg:p-10">
-            <div className="flex flex-col gap-2">
-              <h3 className="text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">
-                What the report tells you
-              </h3>
-              <p className="text-b2 text-muted-foreground">
-                Check the run finished and covered every scenario, then fail the build on the per-criterion verdicts.
-              </p>
-            </div>
-            <div className={`${OUT} mt-auto`}>
-              <p className="flex items-center gap-2">{okIcon}38 of 38 scenarios covered</p>
-              <p className="flex items-center gap-2">{badIcon}5 criteria failed</p>
-              <p className="flex items-center justify-between gap-3">
-                <span className="text-muted-foreground">gate</span>
-                <span className="tag rounded-sm bg-[var(--tm-red-000)] px-2 py-0.5 text-b4 text-[var(--tm-red-500)]">Build blocked</span>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </Section>
@@ -1311,7 +1248,6 @@ function Page() {
         <Phases />
         <RunRook />
         <TestTypes />
-        <ExitCodes />
         <Teams />
         <Stories />
         <OneVerdict />
