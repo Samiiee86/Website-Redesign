@@ -161,9 +161,9 @@ function Statement() {
     <Section>
       <div className="tm-statement tm-reveal">
         {/* the kit's 22px paragraph and 55px heading line are off the
-            type scale: H2 line, and the H4 size at regular weight */}
+            type scale: H2 line, and the paragraph at B1 */}
         <h2 className="!leading-[var(--tm-h2-line)]">What is AI agent verification?</h2>
-        <p className="!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)]">
+        <p className="!text-[length:var(--tm-b1-size)] !leading-[var(--tm-b1-line)]">
           AI agent verification is checking that an AI agent did what its task
           required, by running it for real and grading each criterion against
           the evidence the run recorded: tool calls, changed files and
@@ -931,7 +931,6 @@ const ways: Way[] = [
     cmd: "npm install -g @testmuai/rook@latest",
     lines: [
       { text: "npm install -g @testmuai/rook@latest" },
-      { text: "# or with Homebrew", note: true },
       { text: "brew install lambdatest/rook/rook" },
     ],
   },
@@ -945,7 +944,7 @@ const ways: Way[] = [
   },
 ];
 
-/* a copy button for one command line in the dark terminal */
+/* one command as a white copy button, the same as the hero's */
 function LineCopy({ cmd }: { cmd: string }) {
   const { done, copy } = useCopy(cmd);
   return (
@@ -953,10 +952,11 @@ function LineCopy({ cmd }: { cmd: string }) {
       type="button"
       onClick={copy}
       aria-label={`Copy ${cmd}`}
-      className={`btn flex h-8 flex-none items-center gap-1.5 rounded-md border px-3 text-b4 ${T_LINE} ${T_FG} transition-colors hover:bg-[var(--tm-bg-inverse-muted)]`}
+      className="tm-btn tm-btn--secondary max-w-full justify-between gap-3 [box-shadow:var(--tm-shadow-floating-sm)]"
     >
-      {done ? <Check size={12} strokeWidth={2} aria-hidden /> : <Copy size={12} strokeWidth={1.5} aria-hidden />}
-      {done ? "Copied" : "Copy"}
+      <code className="truncate font-mono text-b3">{cmd}</code>
+      {done ? <Check size={16} strokeWidth={1.5} className="flex-none" aria-hidden /> : <Copy size={16} strokeWidth={1.5} className="flex-none" aria-hidden />}
+      <span className="sr-only" aria-live="polite">{done ? "Copied" : ""}</span>
     </button>
   );
 }
@@ -967,19 +967,12 @@ function WayCard({ w }: { w: Way }) {
     <article className="tm-cell flex min-w-0 flex-col p-8 lg:p-10">
       <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden px-6 py-8 md:px-10">
         <img src={w.scene} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        <div className={`relative flex w-full max-w-[480px] flex-col gap-1 px-5 py-4 ${T_BG} [box-shadow:var(--tm-shadow-floating-md)]`}>
-          {w.lines.map((l) =>
-            l.note ? (
-              <span key={l.text} className={`font-mono text-b3 ${T_MUTED}`}>
-                {l.text}
-              </span>
-            ) : (
-              <span key={l.text} className="flex items-center justify-between gap-4">
-                <code className={`min-w-0 truncate font-mono text-b3 ${T_FG}`}>{l.text}</code>
-                <LineCopy cmd={l.text} />
-              </span>
-            ),
-          )}
+        <div className="relative flex flex-col items-center gap-3">
+          {w.lines
+            .filter((l) => !l.note)
+            .map((l) => (
+              <LineCopy key={l.text} cmd={l.text} />
+            ))}
         </div>
       </div>
       <p className="mt-5 text-b1 text-muted-foreground">
