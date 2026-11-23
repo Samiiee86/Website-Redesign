@@ -48,13 +48,9 @@ type Props = {
   rows: SpecRow[];
 };
 
-/* desktop: every other column, the first included, is Mistral's soft
-   off-white (#FAFBF8), made from the design system's white mixed 60/40
-   with the page ground; the rest show the page ground (#F5F4F0), which
-   is already Mistral's cream. */
-const LIGHT =
-  "lg:bg-[color-mix(in_srgb,var(--tm-bg-surface)_60%,var(--tm-bg-default))]";
-const tint = (col: number) => (col % 2 === 0 ? LIGHT : "lg:bg-background");
+/* No column tints: every column sits on the page ground, as in the
+   head to head, so the white TestMu AI row is the only white on desktop. */
+const tint = (_col: number) => "lg:bg-background";
 
 const GRID =
   "relative grid lg:grid-cols-[minmax(0,1.1fr)_repeat(var(--n),minmax(0,1fr))]";
@@ -154,7 +150,7 @@ export function SpecSheet({
         <div
           role="table"
           aria-label={label}
-          className={`relative border-y border-border bg-surface ${className}`}
+          className={`relative border-y border-border bg-surface lg:bg-background ${className}`}
           style={{ "--n": facts.length } as CSSProperties}
         >
           {/* column names: pinned under the 56px header */}
