@@ -163,7 +163,7 @@ export function SpecSheet({
                 key={c}
                 role="columnheader"
                 className={`py-5 text-foreground ${H5} ${tint(i)} ${
-                  i === 0 ? "px-8" : "px-6"
+                  i === 0 ? "px-8" : "px-6 lg:border-l lg:border-border"
                 }`}
               >
                 {c}
@@ -242,7 +242,7 @@ export function SpecSheet({
                   <div
                     key={facts[i]}
                     role="cell"
-                    className={`px-4 py-3 last:pb-6 lg:px-6 lg:py-0 lg:last:pb-0 ${bg(i + 1)}`}
+                    className={`px-4 py-3 last:pb-6 lg:border-l lg:border-border lg:px-6 lg:py-0 lg:last:pb-0 ${bg(i + 1)}`}
                   >
                     <div
                       className={`lg:flex lg:h-full lg:items-center lg:py-8 ${dots}`}
