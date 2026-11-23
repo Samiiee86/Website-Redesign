@@ -13,9 +13,12 @@ import { DOTS, FOCUS, H5, counts, type Cell } from "./cells";
    - Every option column is centred: its name, its ticks, its values.
      Only the feature names on the left read from the left.
    - Column names are one line each. Only TestMu AI carries a logo.
-   - TestMu AI is the one white column, outlined in black and lifted on
-     a shadow. A flag stands on top of it and the button sits at its
-     foot, above the last line.
+   - TestMu AI is the one white column, framed in a 2px black line with
+     no shadow, like the highlighted card in Sameer's pricing designs. A
+     black flag stands on top of it and the button sits at its foot.
+   - Its values sit in green pills and its ticks are green (the
+     "included" chips from the pricing cards); the others stay plain
+     grey, so every row reads as TestMu AI's.
    - Categories are grey bands across the table, with the white
      TestMu AI column running unbroken through them. The name is H5
      medium over regular feature names.
@@ -161,7 +164,7 @@ export default function MatrixTable({
         {/* desktop: the white column, one sheet from the flag to the foot */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-y-0 hidden border border-foreground bg-surface [box-shadow:var(--tm-shadow-floating-md)] lg:block"
+          className="pointer-events-none absolute inset-y-0 hidden border-2 border-foreground bg-surface lg:block"
           style={{
             left: `${((LABEL_FR + at) / (LABEL_FR + n)) * 100}%`,
             width: `${100 / (LABEL_FR + n)}%`,

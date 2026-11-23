@@ -9,9 +9,9 @@ import { H5_LG, type Cell } from "./cells";
 
    Modelled on the references Sameer picked (Mistral, Bobbin): a ruled
    grid on the page ground, every column centred, outline ticks, and TestMu AI as the one
-   white column, outlined in black and lifted on a shadow, with a flag
-   standing on top of it. No added colour: white, the page ground, greys
-   and black. */
+   white column, framed in 2px black with a flag standing on top of it.
+   Its values are green pills and green ticks; everything else is white,
+   the page ground, greys and black. */
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const VIEW = { once: true, margin: "0px 0px -6% 0px" } as const;
@@ -25,14 +25,18 @@ export function Tick({
   tone = "strong",
 }: {
   delay?: number;
-  tone?: "strong" | "plain";
+  tone?: "strong" | "plain" | "win";
 }) {
   const still = useReducedMotion();
   return (
     <span
       aria-hidden
       className={`grid flex-none place-items-center ${
-        tone === "strong" ? "text-foreground" : "text-muted-foreground"
+        tone === "win"
+          ? "size-9 rounded-full bg-[var(--tm-green-000)] text-[var(--tm-green-500)]"
+          : tone === "strong"
+            ? "text-foreground"
+            : "text-muted-foreground"
       }`}
     >
       <svg
@@ -82,7 +86,7 @@ export function Mark({
   if (value === true)
     return (
       <>
-        <Tick delay={delay} tone={ours ? "strong" : "plain"} />
+        <Tick delay={delay} tone={ours ? "win" : "plain"} />
         <span className="sr-only">Included</span>
       </>
     );
@@ -96,12 +100,17 @@ export function Mark({
     );
 
   const text = typeof value === "object" ? value.text : value;
+  /* TestMu AI's values: a green pill on desktop, the "included" chip
+     from the pricing cards (phones keep the green text, no pill, as
+     long values wrap there); the others: plain grey text */
+  if (ours)
+    return (
+      <span className="pill min-w-0 text-center text-b3 font-medium tabular-nums text-[var(--tm-green-600)] lg:rounded-full lg:border lg:border-[var(--tm-green-200)] lg:bg-[var(--tm-green-000)] lg:px-3 lg:py-1 lg:text-b2">
+        {text}
+      </span>
+    );
   return (
-    <span
-      className={`min-w-0 text-center text-b3 tabular-nums lg:text-b2 ${
-        ours ? "font-medium text-foreground" : "text-muted-foreground"
-      }`}
-    >
+    <span className="min-w-0 text-center text-b3 tabular-nums text-muted-foreground lg:text-b2">
       {text}
     </span>
   );
@@ -126,7 +135,7 @@ export function OursHead({
   return (
     <div
       role="columnheader"
-      className={`-mt-9 flex flex-col border border-foreground border-b-border bg-surface ${className}`}
+      className={`-mt-9 flex flex-col border-x-2 border-b border-t-2 border-foreground border-b-border bg-surface ${className}`}
     >
       <span className="flex h-9 flex-none items-center justify-center gap-2 bg-[var(--tm-bg-inverse)] font-mono text-b5 uppercase tracking-[0.14em] text-[var(--tm-fg-inverse)] lg:text-b4">
         <Sparkles size={16} strokeWidth={1.5} aria-hidden />
