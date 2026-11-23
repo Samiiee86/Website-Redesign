@@ -1085,6 +1085,7 @@ function Teams() {
           columns={["Team", "What it gives them", "Where they use it"]}
           rows={teams}
           className="-mx-8"
+          greyHead
         />
       </Reveal>
     </Section>

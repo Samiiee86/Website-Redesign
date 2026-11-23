@@ -138,11 +138,15 @@ export function SpecSheet({
   columns,
   rows,
   className = "",
+  greyHead = false,
 }: {
   label: string;
   columns: string[];
   rows: SpecRow[];
   className?: string;
+  /* the column names on the grey fill band (bg-fill), as the group band
+     in the comparison table, so the head reads apart from the rows */
+  greyHead?: boolean;
 }) {
   const facts = columns.slice(1);
 
@@ -162,7 +166,7 @@ export function SpecSheet({
               <div
                 key={c}
                 role="columnheader"
-                className={`py-5 text-foreground ${H5} ${tint(i)} ${
+                className={`py-5 text-foreground ${H5} ${greyHead ? "lg:bg-[var(--tm-bg-fill)]" : tint(i)} ${
                   i === 0 ? "px-8" : "px-6 lg:border-l lg:border-border"
                 }`}
               >
