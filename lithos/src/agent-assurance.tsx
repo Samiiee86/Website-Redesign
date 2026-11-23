@@ -945,28 +945,41 @@ const ways: Way[] = [
   },
 ];
 
+/* a copy button for one command line in the dark terminal */
+function LineCopy({ cmd }: { cmd: string }) {
+  const { done, copy } = useCopy(cmd);
+  return (
+    <button
+      type="button"
+      onClick={copy}
+      aria-label={`Copy ${cmd}`}
+      className={`btn flex h-8 flex-none items-center gap-1.5 rounded-md border px-3 text-b4 ${T_LINE} ${T_FG} transition-colors hover:bg-[var(--tm-bg-inverse-muted)]`}
+    >
+      {done ? <Check size={12} strokeWidth={2} aria-hidden /> : <Copy size={12} strokeWidth={1.5} aria-hidden />}
+      {done ? "Copied" : "Copy"}
+    </button>
+  );
+}
+
 function WayCard({ w }: { w: Way }) {
   const { done, copy } = useCopy(w.cmd);
   return (
     <article className="tm-cell flex min-w-0 flex-col p-8 lg:p-10">
       <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden px-6 py-8 md:px-10">
         <img src={w.scene} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-        <div className={`relative flex w-full max-w-[480px] items-start justify-between gap-4 px-5 py-4 ${T_BG} [box-shadow:var(--tm-shadow-floating-md)]`}>
-          <pre className={`min-w-0 overflow-x-auto font-mono text-b3 [&_span]:font-mono ${T_FG}`}>
-            {w.lines.map((l) => (
-              <span key={l.text} className={`block ${l.note ? T_MUTED : ""}`}>
+        <div className={`relative flex w-full max-w-[480px] flex-col gap-1 px-5 py-4 ${T_BG} [box-shadow:var(--tm-shadow-floating-md)]`}>
+          {w.lines.map((l) =>
+            l.note ? (
+              <span key={l.text} className={`font-mono text-b3 ${T_MUTED}`}>
                 {l.text}
               </span>
-            ))}
-          </pre>
-          <button
-            type="button"
-            onClick={copy}
-            className={`btn flex h-8 flex-none items-center gap-1.5 rounded-md border px-3 text-b4 ${T_LINE} ${T_FG} transition-colors hover:bg-[var(--tm-bg-inverse-muted)]`}
-          >
-            {done ? <Check size={12} strokeWidth={2} aria-hidden /> : <Copy size={12} strokeWidth={1.5} aria-hidden />}
-            {done ? "Copied" : "Copy"}
-          </button>
+            ) : (
+              <span key={l.text} className="flex items-center justify-between gap-4">
+                <code className={`min-w-0 truncate font-mono text-b3 ${T_FG}`}>{l.text}</code>
+                <LineCopy cmd={l.text} />
+              </span>
+            ),
+          )}
         </div>
       </div>
       <p className="mt-5 text-b1 text-muted-foreground">
