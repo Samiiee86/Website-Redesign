@@ -211,13 +211,18 @@ export default function MatrixTable({
                   </span>
                 </div>
                 {/* the band runs through TestMu AI's column too, drawing
-                    the column's black sides over it so the frame stays */}
+                    the column's black sides over it so the frame stays.
+                    Inside the white column the same grey looks darker
+                    (white above and below it), so there it is mixed a
+                    quarter with white to read the same as outside. */}
                 {cols.map((c) => (
                   <div
                     key={key(c)}
                     aria-hidden
-                    className={`hidden bg-[var(--tm-bg-fill)] lg:block ${
-                      c.ours ? "border-x-2 border-foreground" : ""
+                    className={`hidden lg:block ${
+                      c.ours
+                        ? "border-x-2 border-foreground bg-[color-mix(in_srgb,var(--tm-bg-fill)_75%,var(--tm-bg-surface))]"
+                        : "bg-[var(--tm-bg-fill)]"
                     }`}
                   />
                 ))}
