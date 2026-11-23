@@ -544,7 +544,7 @@ function FromEvals() {
    - Discover, generate, run: the Rook terminal, styled as in the hero
      video (dark screen, amber prompts, the ROOK status bar).
    - Report, IDE: the retro glitch look (the evidence page): white cards on
-     the cross-stitch dither mountain, joined by lines with orange dots,
+     painted scenes from the hero folds, joined by lines with orange dots,
      with mono chips. */
 
 const T_BG = "bg-[var(--tm-bg-inverse)]";
@@ -555,22 +555,14 @@ const T_AMBER = "text-[var(--tm-orange-300)]";
 const T_CYAN = "text-[var(--tm-blue-300)]";
 const T_FAIL = "text-[var(--tm-red-300)]";
 
-/* the stage: a painted scene (or the dither) with the picture centred on it */
-function Stage({ scene, dither, children }: { scene?: string; dither?: boolean; children: ReactNode }) {
+/* the stage: a painted scene with the picture centred on it */
+function Stage({ scene, wide, children }: { scene: string; wide?: boolean; children: ReactNode }) {
   return (
     <div
-      className={`relative flex h-[380px] items-center justify-center overflow-hidden border border-border px-6 md:h-[540px] md:px-12 ${dither ? "bg-[var(--tm-bg-fill)]" : ""}`}
+      className="relative flex h-[380px] items-center justify-center overflow-hidden border border-border px-6 md:h-[540px] md:px-12"
     >
-      {scene && <img src={scene} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />}
-      {dither && (
-        <img
-          src={`${AA}/dither-mountain.jpg`}
-          alt=""
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover object-bottom opacity-70 mix-blend-multiply"
-        />
-      )}
-      <div className={`relative w-full ${dither ? "max-w-[600px]" : "max-w-[560px]"}`}>{children}</div>
+      <img src={scene} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      <div className={`relative w-full ${wide ? "max-w-[600px]" : "max-w-[560px]"}`}>{children}</div>
     </div>
   );
 }
@@ -731,9 +723,9 @@ const VLink = () => (
 );
 
 /* the evidence-page layout: two cards either side of the main one, one below */
-function Glitch({ left, right, main, below }: { left: ReactNode; right: ReactNode; main: ReactNode; below: ReactNode }) {
+function Glitch({ scene, left, right, main, below }: { scene: string; left: ReactNode; right: ReactNode; main: ReactNode; below: ReactNode }) {
   return (
-    <Stage dither>
+    <Stage scene={scene} wide>
       <div className="flex flex-col">
         <div className="flex items-center justify-center">
           <div className="hidden flex-1 items-center sm:flex">
@@ -759,6 +751,7 @@ function Glitch({ left, right, main, below }: { left: ReactNode; right: ReactNod
 function ReportView() {
   return (
     <Glitch
+      scene={`${AA}/scene-fog-hills.jpg`}
       left={
         <>
           <Check size={16} strokeWidth={1.5} className="text-[var(--tm-fg-success)]" aria-hidden />3 passed
@@ -796,6 +789,7 @@ function ReportView() {
 function IdeView() {
   return (
     <Glitch
+      scene={`${AA}/scene-snow-lake.jpg`}
       left={
         <>
           <Bot size={16} strokeWidth={1.5} aria-hidden />
