@@ -588,7 +588,8 @@ function GartnerCta() {
 
 /* the small product views on each step's painted scene: what you see in
    TestMu AI at that point of the move */
-const PANEL = "tm-fcard__ui flex !w-[72%] flex-col bg-surface";
+/* centred on its scene: the kit pins card UI to the top left */
+const PANEL = "tm-fcard__ui flex !w-[72%] flex-col bg-surface !left-1/2 !top-1/2 -translate-x-1/2 -translate-y-1/2";
 const ROW = "flex items-center justify-between gap-3 px-3 py-1.5";
 const MONO = "font-mono text-b4";
 
