@@ -36,7 +36,14 @@ const MCP_CLIENTS = [
   { name: "Windsurf", src: "/img/integrations/color/windsurf.svg" },
 ];
 
-export default function Reasons() {
+/* `integrations={false}` drops the integrations & MCP card, for pages that
+   give integrations a fold of their own; enterprise security then spans
+   the row, its copy on the left and the badges on the right. */
+export default function Reasons({
+  integrations = true,
+}: {
+  integrations?: boolean;
+} = {}) {
   return (
     <Section>
       <Reveal className="mb-12">
@@ -113,15 +120,21 @@ export default function Reasons() {
           </div>
 
           {/* enterprise-grade security (line badges) beside the MCP card */}
-          <div className="grid border-t border-border lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-            <div className="flex flex-col gap-8 border-b border-border p-8 lg:border-b-0 lg:border-r">
+          <div className={`grid border-t border-border ${integrations ? "lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]" : ""}`}>
+            <div
+              className={
+                integrations
+                  ? "flex flex-col gap-8 border-b border-border p-8 lg:border-b-0 lg:border-r"
+                  : "flex flex-col gap-8 p-8 lg:flex-row lg:items-center lg:justify-between lg:gap-16"
+              }
+            >
               <div>
                 <h3>{security.title}</h3>
                 <p className="mt-3 max-w-[480px] text-b2 leading-relaxed text-muted-foreground">
                   {security.body}
                 </p>
               </div>
-              <div className="mt-auto grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-7 sm:gap-x-4 sm:gap-y-6">
+              <div className={`grid grid-cols-4 gap-x-3 gap-y-6 sm:grid-cols-7 sm:gap-x-4 sm:gap-y-6 ${integrations ? "mt-auto" : "lg:flex-none"}`}>
                 {CERT_NAMES.map((name) => (
                   <div
                     key={name}
@@ -135,6 +148,7 @@ export default function Reasons() {
 
             {/* integrations & MCP: a coding agent calling TestMu through MCP,
                 and the agents it works with */}
+            {integrations && (
             <div className="flex flex-col gap-6 p-8">
               <div>
                 <h3>{integrationsCard.title}</h3>
@@ -177,6 +191,7 @@ export default function Reasons() {
                 </div>
               </div>
             </div>
+            )}
           </div>
 
           {/* ratings */}
