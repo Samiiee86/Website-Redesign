@@ -16,6 +16,7 @@ import {
   MousePointerClick,
   RotateCw,
   ShieldCheck,
+  SquareTerminal,
   Users,
   X,
   Zap,
@@ -220,12 +221,13 @@ const PILL = "pill flex w-fit items-center gap-2 rounded-full border border-bord
 const OK_TAG = "tag flex w-fit items-center gap-1.5 rounded-sm bg-[var(--tm-green-000)] px-2.5 py-1 text-b4 text-[var(--tm-green-500)]";
 const BAD_TAG = "tag flex w-fit items-center gap-1.5 rounded-sm bg-[var(--tm-red-000)] px-2.5 py-1 text-b4 text-[var(--tm-red-500)]";
 
-/* the tall card: the agent's word against what the run recorded */
-function ClaimWindow({ play }: { play: boolean }) {
-  const rows = [
-    { k: "Goal", v: "Tell @alex on Discord the deploy finished" },
-    { k: "Agent says", v: "“Message sent to @alex.”", quiet: true },
-    { k: "Tool call", v: "message · channel discord · no bot token" },
+/* the tall card: a Rook terminal, the agent's word against what the run
+   recorded, typed out line by line */
+function ClaimTerminal({ play }: { play: boolean }) {
+  const lines = [
+    { k: "goal", v: "Tell @alex on Discord the deploy finished" },
+    { k: "agent", v: "\u201cMessage sent to @alex.\u201d", quiet: true },
+    { k: "tool", v: "message \u00b7 discord \u00b7 no bot token" },
   ];
   return (
     <div className="w-full overflow-hidden border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
@@ -235,28 +237,28 @@ function ClaimWindow({ play }: { play: boolean }) {
             <span key={i} className="size-2 rounded-full bg-[var(--tm-border-default)]" />
           ))}
         </span>
-        <span className="mx-auto border border-border bg-background px-3 py-0.5 font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">
-          Rook · SC-018
+        <span className="mx-auto flex items-center gap-1.5 font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">
+          <SquareTerminal size={12} strokeWidth={1.5} aria-hidden />
+          rook \u2014 terminal
         </span>
       </div>
-      <div className="flex flex-col">
-        {rows.map((r, i) => (
-          <motion.div
-            key={r.k}
-            {...rise(play, 0.15 + i * 0.35)}
-            className="grid grid-cols-[96px_1fr] gap-3 border-b border-border px-4 py-3 text-b3"
-          >
-            <span className="text-muted-foreground">{r.k}</span>
-            <span className={r.quiet ? "italic text-muted-foreground" : "text-foreground"}>{r.v}</span>
-          </motion.div>
+      <div className="flex flex-col gap-2 px-4 py-4 font-mono text-b4 text-foreground">
+        <motion.p {...rise(play, 0.1)}>
+          <span className="text-muted-foreground">$</span> rook run SC-018
+        </motion.p>
+        {lines.map((l, i) => (
+          <motion.p key={l.k} {...rise(play, 0.45 + i * 0.35)} className="grid grid-cols-[56px_1fr] gap-2">
+            <span className="text-muted-foreground">{l.k}</span>
+            <span className={l.quiet ? "text-muted-foreground" : ""}>{l.v}</span>
+          </motion.p>
         ))}
-        <motion.div {...rise(play, 1.4)} className="flex items-center justify-between gap-3 px-4 py-3">
-          <span className={BAD_TAG}>
+        <motion.p {...rise(play, 1.6)} className="flex items-center justify-between gap-3 pt-1">
+          <span className="flex items-center gap-2 text-[var(--tm-fg-error)]">
             <X size={12} strokeWidth={2} aria-hidden />
-            Fail · the message never left
+            FAIL the message never left
           </span>
-          <span className="font-mono text-b4 text-muted-foreground">1m 07s</span>
-        </motion.div>
+          <span className="text-muted-foreground">1m 07s</span>
+        </motion.p>
       </div>
     </div>
   );
@@ -277,11 +279,11 @@ function BlindSpot({ play }: { play: boolean }) {
           {...rise(play, 0.4)}
           className="tag flex w-fit items-center gap-1.5 rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2.5 py-1 text-b4 text-foreground"
         >
-          <CircleHelp size={12} strokeWidth={2} aria-hidden />1 unable to verify
+          <CircleHelp size={12} strokeWidth={2} aria-hidden />1 unverified
         </motion.span>
       </div>
       <motion.span {...rise(play, 0.8)} className={PILL}>
-        Verified pass 29% · 26 never ran
+        Verified pass 29%
       </motion.span>
     </div>
   );
@@ -440,14 +442,14 @@ function Evidence() {
               />
               <div className="relative flex flex-1 items-center justify-center px-8 pb-6 pt-12">
                 <div className="w-full max-w-[460px]">
-                  <ClaimWindow key={big.run} play={big.play} />
+                  <ClaimTerminal key={big.run} play={big.play} />
                 </div>
               </div>
               <div className="relative p-8">
                 <CardText
                   big
                   title="Grade the effect, not the account"
-                  body="An agent's account of what it did is the weakest evidence available about what it did. It is the one party with a reason to be wrong."
+                  body="An agent's own account is the weakest evidence. We grade what the run actually changed."
                 />
               </div>
             </div>
@@ -455,13 +457,13 @@ function Evidence() {
               <EvCard
                 className="border-b border-border"
                 title="Publish the blind spot"
-                body="Anything Agent Assurance could not verify is reported as unverifiable. Never a quiet pass, never a guessed fail, never folded into the pass rate."
+                body="What it can't verify is reported as such, never folded into the pass rate."
                 Visual={BlindSpot}
               />
               <EvCard
                 className="flex-1"
                 title="No tests to write"
-                body="Point it at a repository, a PRD, or a folder of policy docs. It reads what you have and derives functional and adversarial scenarios from it."
+                body="Point it at a repo, a PRD or policy docs, and it writes the scenarios."
                 Visual={Sources}
               />
             </div>
@@ -470,12 +472,12 @@ function Evidence() {
             <EvCard
               className="border-border max-lg:border-b lg:border-r"
               title="Adversarial by default"
-              body="Prompt injection, instruction override, and tool misuse are a first-class scenario family, not an add-on you configure."
+              body="Prompt injection and tool misuse are tested on every run, not added on."
               Visual={AttackTrace}
             />
             <EvCard
               title="Runs in your CI"
-              body="Headless subcommands and a JSON report, with published gate recipes for GitHub Actions, Jenkins, and Argo CD."
+              body="Headless runs and a JSON report, with gate recipes for GitHub Actions, Jenkins and Argo CD."
               Visual={CiGate}
             />
           </div>
