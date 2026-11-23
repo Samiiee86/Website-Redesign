@@ -17,7 +17,11 @@ import {
   MousePointerClick,
   RotateCw,
   ShieldCheck,
+  Code,
+  Play,
+  Search,
   Sparkle,
+  Sparkles,
   SquareTerminal,
   TriangleAlert,
   Users,
@@ -550,22 +554,23 @@ const T_MUTED = "text-[var(--tm-fg-inverse-muted)]";
 const T_AMBER = "text-[var(--tm-orange-300)]";
 const T_CYAN = "text-[var(--tm-blue-300)]";
 const T_FAIL = "text-[var(--tm-red-300)]";
-const RISE = "motion-safe:[animation:tm-rise_.6s_var(--tm-ease-out)]";
 
 /* the stage: a painted scene (or the dither) with the picture centred on it */
 function Stage({ scene, dither, children }: { scene?: string; dither?: boolean; children: ReactNode }) {
   return (
-    <div className={`absolute inset-0 flex items-center justify-center px-6 py-10 md:px-12 ${dither ? "bg-[var(--tm-bg-fill)]" : ""}`}>
-      {scene && <img src={scene} alt="" loading="lazy" className="tm-scene absolute inset-0 h-full w-full object-cover" />}
+    <div
+      className={`relative flex h-[380px] items-center justify-center overflow-hidden border border-border px-6 md:h-[540px] md:px-12 ${dither ? "bg-[var(--tm-bg-fill)]" : ""}`}
+    >
+      {scene && <img src={scene} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />}
       {dither && (
         <img
           src={`${AA}/dither-mountain.jpg`}
           alt=""
           loading="lazy"
-          className="tm-scene absolute inset-x-0 bottom-0 h-full w-full object-cover object-bottom opacity-70 mix-blend-multiply"
+          className="absolute inset-0 h-full w-full object-cover object-bottom opacity-70 mix-blend-multiply"
         />
       )}
-      <div className={`relative w-full max-w-[600px] ${RISE}`}>{children}</div>
+      <div className={`relative w-full ${dither ? "max-w-[600px]" : "max-w-[560px]"}`}>{children}</div>
     </div>
   );
 }
@@ -827,6 +832,7 @@ function IdeView() {
 const phases = [
   {
     tab: "Discover",
+    icon: Search,
     title: "Discover your agent from a repo, PRD, or docs",
     body: "A repository, a PRD, or a folder of policy docs. Where an agent declares nothing, it says so.",
     view: <DiscoverView />,
@@ -834,6 +840,7 @@ const phases = [
   },
   {
     tab: "Generate",
+    icon: Sparkles,
     title: "Generate functional and adversarial scenarios",
     body: "Functional and adversarial scenarios, each carrying its own gradable criteria.",
     view: <GenerateView />,
@@ -841,6 +848,7 @@ const phases = [
   },
   {
     tab: "Run and judge",
+    icon: Play,
     title: "Run your agent and judge what it changed",
     body: "The agent is invoked for real, and each criterion is judged against what actually changed.",
     view: <RunView />,
@@ -848,6 +856,7 @@ const phases = [
   },
   {
     tab: "Report",
+    icon: FileChartColumn,
     title: "Report verdicts as pass, fail, or unable to verify",
     body: "Each verdict quotes the evidence it rests on, and the run states how much of the suite it never got to.",
     view: <ReportView />,
@@ -855,6 +864,7 @@ const phases = [
   },
   {
     tab: "Test in your IDE",
+    icon: Code,
     title: "Test your agent with Rook from Google Antigravity",
     body: "The TestMu AI plugin in the Antigravity Marketplace adds the Rook skill. With Rook CLI installed, the Antigravity agent can run it for you: generate scenarios, run your agent and report the verdicts.",
     view: <IdeView />,
@@ -872,38 +882,41 @@ function Phases() {
       >
         <PrimaryBtn href={DEMO}>Book a demo</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal -mx-8" data-tm-step-root data-autoplay>
-        <div className="tm-tour__tabs" role="tablist">
-          {phases.map((t) => (
-            <button key={t.tab} role="tab" data-step>
-              {t.tab}
-              <span className="tm-progress" aria-hidden="true" />
-            </button>
-          ))}
-        </div>
-        {phases.map((t, i) => (
-          <div key={t.tab} className="tm-tour__panel" role="tabpanel" data-step-panel={i} data-hide hidden={i > 0}>
-            <div className="tm-tour__main">
-              <div className="tm-tour__copy">
-                <h3 className="[text-wrap:balance]">{t.title}</h3>
-                <p>{t.body}</p>
-                <KitLink href={i === phases.length - 1 ? TRIAL : DEMO}>
-                  {i === phases.length - 1 ? "Start free trial" : "Book a demo"}
-                </KitLink>
-              </div>
-              <div className="tm-tour__media">
+      {/* the home page's product rows: label, heading, body and link beside
+          a window on its own scene, sides swapping row by row */}
+      <div className="-mx-8">
+        {phases.map((t, i) => {
+          const Icon = t.icon;
+          const flip = i % 2 === 1;
+          const last = i === phases.length - 1;
+          return (
+            <div
+              key={t.tab}
+              className={`grid grid-cols-[minmax(0,1fr)] gap-10 px-8 py-12 last:pb-0 md:py-14 md:last:pb-0 lg:gap-14 ${
+                flip ? "lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)]"
+              }`}
+            >
+              <Reveal className={`flex flex-col justify-end ${flip ? "lg:order-2" : ""}`}>
+                <p className="mono flex items-center gap-2.5 text-b4 uppercase tracking-[0.18em] text-muted-foreground">
+                  <Icon size={16} strokeWidth={1.5} className="text-foreground" aria-hidden />
+                  {t.tab}
+                </p>
+                <h3 className="mt-5 [text-wrap:balance]">{t.title}</h3>
+                <p className="mt-4 max-w-[480px] text-b1 text-muted-foreground">{t.body}</p>
+                <a
+                  href={last ? TRIAL : DEMO}
+                  className="group/btn mt-6 inline-flex items-center gap-2 self-start border-b border-foreground pb-1 text-b3 font-medium text-foreground"
+                >
+                  {last ? "Start free trial" : "Book a demo"}
+                  <SlideArrow />
+                </a>
+              </Reveal>
+              <Reveal delay={0.08} className={flip ? "lg:order-1" : ""}>
                 {t.view}
-              </div>
+              </Reveal>
             </div>
-            <div className="tm-tour__perks">
-              {t.points.map((p) => (
-                <div key={p}>
-                  <b>{p}</b>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );
