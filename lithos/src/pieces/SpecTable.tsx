@@ -31,8 +31,9 @@ export type SpecRow = {
   href?: string;
   /* shown in place of the name (the name stays as its alt text) */
   logo?: string;
-  /* lift this row out as the one white box, outlined in black on a soft
-     shadow, the same treatment as TestMu AI's column in the head to head */
+  /* lift this row out as the one white box, framed in 2px black with no
+     shadow, its values a step bigger in medium weight: the same treatment
+     as TestMu AI's column in the head to head */
   highlight?: boolean;
   cells: SpecCell[];
 };
@@ -62,7 +63,11 @@ function Value({ cell, strong = false }: { cell: SpecCell; strong?: boolean }) {
   if (typeof cell === "string")
     return (
       <span
-        className={`text-b2 ${strong ? "font-medium text-foreground" : "text-muted-foreground"}`}
+        className={
+          strong
+            ? "text-b2 font-medium text-foreground lg:text-b1"
+            : "text-b2 text-muted-foreground"
+        }
       >
         {cell}
       </span>
@@ -189,7 +194,7 @@ export function SpecSheet({
                 role="row"
                 className={`${GRID} ${
                   hl
-                    ? "z-[2] border border-foreground bg-surface [box-shadow:var(--tm-shadow-floating-md)]"
+                    ? "z-[2] border-2 border-foreground bg-surface"
                     : "border-b border-border lg:border-b-0"
                 }`}
               >
