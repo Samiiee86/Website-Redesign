@@ -69,25 +69,6 @@ const Arrow = () => (
   </svg>
 );
 
-function KitLink({ children, href }: { children: ReactNode; href?: string }) {
-  const inner = (
-    <>
-      {children}
-      <span className="tm-arw" aria-hidden="true">
-        <Arrow />
-        <Arrow />
-      </span>
-    </>
-  );
-  return href ? (
-    <a className="tm-link" href={href}>
-      {inner}
-    </a>
-  ) : (
-    <span className="tm-link">{inner}</span>
-  );
-}
-
 function PrimaryBtn({ href, children }: { href: string; children: ReactNode }) {
   return (
     <a href={href} className="btn btn-lg btn-primary btn-arrow btn-arrow-plain mt-8">
@@ -914,66 +895,91 @@ function Phases() {
   );
 }
 
-/* ---------- run Rook CLI: two joined cards, as on the live page ----------
+/* ---------- run Rook CLI: two ways in, the command first ----------
 
-   The live page's two cards (install the CLI; drive it from a coding
-   agent), kept minimal: icon and title, one line, the command to copy,
-   and a link. The button sits in the heading. */
+   Built like Kane Explore's "Start from your browser or terminal": two
+   cards, each a painted scene with the command in a terminal and a Copy
+   button, then a mono label, one sentence (lead in black, the rest
+   muted) and Copy command as the only action. */
 
-const AGENT_IMG = "https://assets.testmuai.com/resources/images/agents";
-
-function CopyField({ cmd }: { cmd: string }) {
+function useCopy(text: string) {
   const [done, setDone] = useState(false);
-  return (
-    <div className="input flex h-11 items-center justify-between gap-3 rounded-md border border-border bg-background pl-4 pr-1">
-      <code className="truncate font-mono text-b3 text-foreground">
-        <span className="text-muted-foreground">$ </span>
-        {cmd}
-      </code>
-      <button
-        type="button"
-        aria-label={`Copy ${cmd}`}
-        className="btn grid size-9 flex-none place-items-center rounded-md text-muted-foreground transition-colors hover:bg-[var(--tm-button-secondary-hover)] hover:text-foreground"
-        onClick={() =>
-          navigator.clipboard?.writeText(cmd).then(() => {
-            setDone(true);
-            setTimeout(() => setDone(false), 1600);
-          })
-        }
-      >
-        {done ? <Check size={16} strokeWidth={1.5} aria-hidden /> : <Copy size={16} strokeWidth={1.5} aria-hidden />}
-      </button>
-    </div>
-  );
+  const copy = () =>
+    navigator.clipboard?.writeText(text).then(() => {
+      setDone(true);
+      setTimeout(() => setDone(false), 1600);
+    });
+  return { done, copy };
 }
 
-function RookCard({
-  icon: Icon,
-  title,
-  body,
-  children,
-  link,
-}: {
-  icon: typeof SquareTerminal;
-  title: string;
-  body: ReactNode;
-  children: ReactNode;
-  link: { label: string; href: string };
-}) {
+type Way = {
+  scene: string;
+  label: string;
+  lead: string;
+  rest: string;
+  cmd: string;
+  lines: { text: string; note?: boolean }[];
+};
+
+const ways: Way[] = [
+  {
+    scene: `${AA}/scene-pink-clouds.jpg`,
+    label: "Rook CLI",
+    lead: "Install it in your terminal.",
+    rest: "macOS, Linux, Windows x64 or WSL. Node 20+ for npm only, and no Docker.",
+    cmd: "npm install -g @testmuai/rook@latest",
+    lines: [
+      { text: "npm install -g @testmuai/rook@latest" },
+      { text: "# or with Homebrew", note: true },
+      { text: "brew install lambdatest/rook/rook" },
+    ],
+  },
+  {
+    scene: `${AA}/scene-blue-clouds.jpg`,
+    label: "Rook skill",
+    lead: "Or drive it from your coding agent.",
+    rest: "Adds the skill to Claude Code, Codex CLI and Gemini CLI in one go, with setup pages for 7 more.",
+    cmd: "npx @testmuai/rook-skill",
+    lines: [{ text: "npx @testmuai/rook-skill" }],
+  },
+];
+
+function WayCard({ w }: { w: Way }) {
+  const { done, copy } = useCopy(w.cmd);
   return (
-    <div className="tm-cell flex flex-col gap-6 p-8 lg:p-10">
-      <div className="flex flex-col gap-2">
-        <h3 className="flex items-center gap-3 text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">
-          <Icon size={20} strokeWidth={1.5} aria-hidden />
-          {title}
-        </h3>
-        <p className="text-b2 text-muted-foreground">{body}</p>
+    <article className="flex min-w-0 flex-col">
+      <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden px-6 py-8 md:px-10">
+        <img src={w.scene} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className={`relative flex w-full max-w-[480px] items-start justify-between gap-4 px-5 py-4 ${T_BG} [box-shadow:var(--tm-shadow-floating-md)]`}>
+          <pre className={`min-w-0 overflow-x-auto font-mono text-b3 [&_span]:font-mono ${T_FG}`}>
+            {w.lines.map((l) => (
+              <span key={l.text} className={`block ${l.note ? T_MUTED : ""}`}>
+                {l.text}
+              </span>
+            ))}
+          </pre>
+          <button
+            type="button"
+            onClick={copy}
+            className={`btn flex h-8 flex-none items-center gap-1.5 rounded-md border px-3 text-b4 ${T_LINE} ${T_FG} transition-colors hover:bg-[var(--tm-bg-inverse-muted)]`}
+          >
+            {done ? <Check size={12} strokeWidth={2} aria-hidden /> : <Copy size={12} strokeWidth={1.5} aria-hidden />}
+            {done ? "Copied" : "Copy"}
+          </button>
+        </div>
       </div>
-      <div className="flex flex-col gap-3">{children}</div>
-      <div className="mt-auto pt-2">
-        <KitLink href={link.href}>{link.label}</KitLink>
-      </div>
-    </div>
+      <p className="mt-5 text-b1 text-muted-foreground">
+        <span className="mb-1 block font-mono text-b4 uppercase tracking-[1px]">{w.label}</span>
+        <span className="font-medium text-foreground">{w.lead}</span> {w.rest}
+      </p>
+      <button type="button" onClick={copy} className="tm-link mt-4 self-start">
+        {done ? "Copied" : "Copy command"}
+        <span className="tm-arw" aria-hidden="true">
+          <Arrow />
+          <Arrow />
+        </span>
+      </button>
+    </article>
   );
 }
 
@@ -987,42 +993,10 @@ function RunRook() {
       >
         <PrimaryBtn href={TRIAL}>Start free trial</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--2">
-          <RookCard
-            icon={SquareTerminal}
-            title="Install the CLI"
-            body="macOS, Linux, Windows x64 or WSL. Node 20+ for npm only. No Docker."
-            link={{ label: "Read the install guide", href: `${SITE}/support/docs/rook-installation/` }}
-          >
-            <CopyField cmd="brew install lambdatest/rook/rook" />
-            <CopyField cmd="npm install -g @testmuai/rook@latest" />
-          </RookCard>
-
-          <RookCard
-            icon={Bot}
-            title="Or drive it from your coding agent"
-            body={
-              <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                Works with
-                {[
-                  { name: "Claude Code", img: "claude-code.svg" },
-                  { name: "Codex CLI", img: "openai-codex.svg" },
-                  { name: "Gemini CLI", img: "gemini-code-assist.svg" },
-                ].map((a) => (
-                  <span key={a.name} className="inline-flex items-center gap-1.5 text-foreground">
-                    <img src={`${AGENT_IMG}/${a.img}`} alt="" className="size-4" loading="lazy" />
-                    {a.name}
-                  </span>
-                ))}
-                and 7 more.
-              </span>
-            }
-            link={{ label: "Use Rook with coding agents", href: `${SITE}/support/docs/agent-assurance-quickstart/` }}
-          >
-            <CopyField cmd="npx @testmuai/rook-skill" />
-          </RookCard>
-        </div>
+      <div className="tm-reveal grid grid-cols-1 gap-6 md:grid-cols-2">
+        {ways.map((w) => (
+          <WayCard key={w.label} w={w} />
+        ))}
       </div>
     </Section>
   );
