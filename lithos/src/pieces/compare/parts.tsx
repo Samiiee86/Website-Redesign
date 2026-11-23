@@ -10,8 +10,7 @@ import { H5_LG, type Cell } from "./cells";
    Modelled on the references Sameer picked (Mistral, Bobbin): a ruled
    grid on the page ground, every column centred, outline ticks, and TestMu AI as the one
    white column, framed in 2px black with a flag standing on top of it.
-   Its values are green pills and green ticks; everything else is white,
-   the page ground, greys and black. */
+   No added colour: white, the page ground, greys and black. */
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const VIEW = { once: true, margin: "0px 0px -6% 0px" } as const;
@@ -25,18 +24,14 @@ export function Tick({
   tone = "strong",
 }: {
   delay?: number;
-  tone?: "strong" | "plain" | "win";
+  tone?: "strong" | "plain";
 }) {
   const still = useReducedMotion();
   return (
     <span
       aria-hidden
       className={`grid flex-none place-items-center ${
-        tone === "win"
-          ? "size-9 rounded-full bg-[var(--tm-green-000)] text-[var(--tm-green-500)]"
-          : tone === "strong"
-            ? "text-foreground"
-            : "text-muted-foreground"
+        tone === "strong" ? "text-foreground" : "text-muted-foreground"
       }`}
     >
       <svg
@@ -86,7 +81,7 @@ export function Mark({
   if (value === true)
     return (
       <>
-        <Tick delay={delay} tone={ours ? "win" : "plain"} />
+        <Tick delay={delay} tone={ours ? "strong" : "plain"} />
         <span className="sr-only">Included</span>
       </>
     );
@@ -100,12 +95,12 @@ export function Mark({
     );
 
   const text = typeof value === "object" ? value.text : value;
-  /* TestMu AI's values: a green pill on desktop, the "included" chip
-     from the pricing cards (phones keep the green text, no pill, as
-     long values wrap there); the others: plain grey text */
+  /* TestMu AI's values a step bigger and in medium weight (B1 on
+     desktop), the others regular grey B2, so the win shows in the type
+     alone, with no added colour */
   if (ours)
     return (
-      <span className="pill min-w-0 text-center text-b3 font-medium tabular-nums text-[var(--tm-green-600)] lg:rounded-full lg:border lg:border-[var(--tm-green-200)] lg:bg-[var(--tm-green-000)] lg:px-3 lg:py-1 lg:text-b2">
+      <span className="min-w-0 text-center text-b2 font-medium tabular-nums text-foreground lg:text-b1">
         {text}
       </span>
     );

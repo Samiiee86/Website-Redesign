@@ -16,9 +16,10 @@ import { DOTS, FOCUS, H5, counts, type Cell } from "./cells";
    - TestMu AI is the one white column, framed in a 2px black line with
      no shadow, like the highlighted card in Sameer's pricing designs. A
      black flag stands on top of it and the button sits at its foot.
-   - Its values sit in green pills and its ticks are green (the
-     "included" chips from the pricing cards); the others stay plain
-     grey, so every row reads as TestMu AI's.
+   - Its values are a step bigger and medium weight; the others stay
+     regular grey, so every row reads as TestMu AI's without colour.
+   - Category bands run across the whole table, through the TestMu AI
+     column too (inside its black frame), so each band reads as one row.
    - Categories are grey bands across the table, with the white
      TestMu AI column running unbroken through them. The name is H5
      medium over regular feature names.
@@ -196,9 +197,9 @@ export default function MatrixTable({
           <div key={g.label || gi} role="rowgroup">
             {/* the group name: a grey band across the whole table, as in
                 Sameer's earlier comparison design. The name is H5 in
-                medium weight over regular feature names. The white TestMu AI
-                column stays white through the band, one unbroken column. No
-                lines on the band: its colour parts it from the rows. */}
+                medium weight over regular feature names. The band runs
+                through the TestMu AI column too. No lines on the band: its
+                colour parts it from the rows. */}
             {g.label && (
               <div role="row" className={GRID}>
                 <div
@@ -209,12 +210,14 @@ export default function MatrixTable({
                     {g.label}
                   </span>
                 </div>
+                {/* the band runs through TestMu AI's column too, drawing
+                    the column's black sides over it so the frame stays */}
                 {cols.map((c) => (
                   <div
                     key={key(c)}
                     aria-hidden
-                    className={`hidden lg:block ${
-                      c.ours ? "" : "bg-[var(--tm-bg-fill)]"
+                    className={`hidden bg-[var(--tm-bg-fill)] lg:block ${
+                      c.ours ? "border-x-2 border-foreground" : ""
                     }`}
                   />
                 ))}
