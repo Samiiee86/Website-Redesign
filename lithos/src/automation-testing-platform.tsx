@@ -4,14 +4,9 @@ import { MotionConfig } from "motion/react";
 import {
   ArrowLeftRight,
   ArrowUp,
-  Bandage,
-  Camera,
   Check,
   Cloud,
   EyeOff,
-  FileCode2,
-  Gauge,
-  Globe,
   KeyRound,
   Link2,
   MonitorOff,
@@ -20,7 +15,6 @@ import {
   Signal,
   SquareTerminal,
   TextCursorInput,
-  Timer,
   Waypoints,
   X,
 } from "lucide-react";
@@ -50,7 +44,8 @@ import { FoldHead } from "./pieces/compare/parts";
      the kit's hero-media markup.
    - Every other section starts from a kit fold: feature-tour (the
      platform, one tab per module), feature-pointers-stat (agent skills),
-     framework-cards, feature-pointers (capabilities; the QA lifecycle),
+     framework-cards, bento (capabilities, with the live page's pictures),
+     feature-pointers (beyond the basics; the QA lifecycle),
      feature-cards-image (enterprise HyperExecute).
    - Integrations: the home page's integrations fold, with the MCP server
      and Kane CLI added under it as two joined boxes.
@@ -562,24 +557,20 @@ function Frameworks() {
   );
 }
 
-/* ---------- capabilities: the kit's feature pointers, twelve ----------
+/* ---------- capabilities: the kit's bento, as on the live page ----------
 
-   The live page's two lists (in every session, and beyond the basics) as
-   one 4 x 3 grid, each with a Lucide icon. */
+   The live page's six capabilities with its own pictures, which are
+   already drawn at the kit's bento sizes (860 x 536 narrow, 1348 x 536
+   wide) and in the same narrow / wide order. */
 
+const BENTO = "/kit/bento";
 const capabilities = [
-  { icon: Bandage, name: "Self-healing locators", body: "When a locator changes or is renamed, the platform re-resolves it at runtime so a single DOM change no longer fails a passing test." },
-  { icon: Timer, name: "SmartWait for stable runs", body: "Replace hardcoded sleep() calls with condition-based waits so a test pauses only until the element is actionable." },
-  { icon: Gauge, name: "Core web vitals per build", body: "Capture Lighthouse performance metrics from each test run without adding a separate auditing tool." },
-  { icon: Globe, name: "Geo and timezone emulation", body: "Validate localized flows across 170+ regions and timezones without proxies or physical devices." },
-  { icon: FileCode2, name: "HTTP header injection", body: "Inject custom HTTP headers into any test session to exercise auth states, feature flags, and A/B variants." },
-  { icon: Camera, name: "Camera and media mocking", body: "Inject mock video into WebRTC and camera-based flows to automate them without physical hardware." },
-  { icon: MonitorOff, name: "Headless execution", body: "Run automated tests in headless mode to maximize execution speed in your CI/CD pipeline." },
-  { icon: Signal, name: "Network throttling", body: "Validate behavior under simulated 2G, 3G, 4G, and 5G network conditions before release." },
-  { icon: KeyRound, name: "Secure tunnel", body: "Automate apps behind firewalls and VPNs over an encrypted private tunnel." },
-  { icon: SquareTerminal, name: "Chrome DevTools Protocol", body: "Intercept requests, grab logs, and run performance traces on the cloud." },
-  { icon: ArrowLeftRight, name: "WebDriver BiDi", body: "Stream live browser events to your test runner across Chrome and Firefox." },
-  { icon: EyeOff, name: "Data masking", body: "Keep sensitive data out of logs and recordings during remote sessions." },
+  { size: "narrow", img: "auto-healing", name: "Self-healing locators", body: "When a locator changes or is renamed, the platform re-resolves it at runtime so a single DOM change no longer fails a passing test." },
+  { size: "wide", img: "testmuai-smartwait", name: "SmartWait for stable runs", body: "Replace hardcoded sleep() calls with condition-based waits so a test pauses only until the element is actionable." },
+  { size: "wide", img: "performance-reports-for-automated-tests", name: "Core web vitals per build", body: "Capture Lighthouse performance metrics from each test run without adding a separate auditing tool." },
+  { size: "narrow", img: "geolocation-time-zone", name: "Geo and timezone emulation", body: "Validate localized flows across 170+ regions and timezones without proxies or physical devices." },
+  { size: "narrow", img: "custom-header-injection", name: "HTTP header injection", body: "Inject custom HTTP headers into any test session to exercise auth states, feature flags, and A/B variants." },
+  { size: "wide", img: "mock-video-injection", name: "Camera and media mocking", body: "Inject mock video into WebRTC and camera-based flows to automate them without physical hardware." },
 ];
 
 function Capabilities() {
@@ -588,6 +579,44 @@ function Capabilities() {
       <FoldHead
         lead="Capabilities baked into"
         title="every test session"
+        body="Self-healing locators, smart waits, performance metrics and more, on every run with nothing extra to set up."
+      />
+      <div className="tm-reveal -mx-8">
+        <div className="tm-bento" data-tm-anim>
+          {capabilities.map((c) => (
+            <div key={c.name} className={`tm-bento__cell tm-bento__cell--${c.size}`}>
+              <h3 className="tm-h4">{c.name}</h3>
+              <p>{c.body}</p>
+              {/* the whole picture, as on the live page: the kit's fixed
+                  220px crop would cut the bottom of each one */}
+              <div className="tm-bento__media !h-auto">
+                <img className="tm-fit !h-auto" src={`${BENTO}/${c.img}.png`} alt="" loading="lazy" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- beyond the basics: the kit's feature pointers ---------- */
+
+const extras = [
+  { icon: MonitorOff, name: "Headless execution", body: "Run automated tests in headless mode to maximize execution speed in your CI/CD pipeline." },
+  { icon: Signal, name: "Network throttling", body: "Validate behavior under simulated 2G, 3G, 4G, and 5G network conditions before release." },
+  { icon: KeyRound, name: "Secure tunnel", body: "Automate apps behind firewalls and VPNs over an encrypted private tunnel." },
+  { icon: SquareTerminal, name: "Chrome DevTools Protocol", body: "Intercept requests, grab logs, and run performance traces on the cloud." },
+  { icon: ArrowLeftRight, name: "WebDriver BiDi", body: "Stream live browser events to your test runner across Chrome and Firefox." },
+  { icon: EyeOff, name: "Data masking", body: "Keep sensitive data out of logs and recordings during remote sessions." },
+];
+
+function BeyondBasics() {
+  return (
+    <Section>
+      <FoldHead
+        lead="Automate beyond"
+        title="the basics"
         body="Simulate real network conditions, test web and mobile apps behind your firewall, drive the browser over CDP and WebDriver BiDi, and keep sensitive data out of your logs, on every test run."
       >
         <a href={SIGNUP} className="btn btn-lg btn-primary btn-arrow btn-arrow-plain mt-8">
@@ -596,8 +625,8 @@ function Capabilities() {
         </a>
       </FoldHead>
       <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--4">
-          {capabilities.map(({ icon: Icon, name, body }) => (
+        <div className="tm-grid tm-grid--3">
+          {extras.map(({ icon: Icon, name, body }) => (
             <div key={name} className="tm-cell tm-pt">
               <span className="tm-pt__ico">
                 <Icon aria-hidden />
@@ -875,6 +904,7 @@ function Page() {
         <AgentSkills />
         <Frameworks />
         <Capabilities />
+        <BeyondBasics />
         <EnterpriseHyper />
         <Rebrand />
         <Lifecycle />
