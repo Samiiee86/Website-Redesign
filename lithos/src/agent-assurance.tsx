@@ -2,11 +2,9 @@ import { StrictMode, useEffect, useRef, useState, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig, motion, useInView, useReducedMotion } from "motion/react";
 import {
-  BadgeCheck,
   Bot,
   Blocks,
   BookOpen,
-  CalendarCheck,
   Check,
   CircleHelp,
   ClipboardList,
@@ -24,7 +22,6 @@ import {
   Sparkles,
   SquareTerminal,
   TriangleAlert,
-  Users,
   X,
   Zap,
 } from "lucide-react";
@@ -41,6 +38,7 @@ import Enterprise from "./sections/Enterprise";
 import Footer from "./sections/Footer";
 import { FoldHead } from "./pieces/compare/parts";
 import MatrixTable, { type MatrixGroup } from "./pieces/compare/MatrixTable";
+import { SpecSheet, type SpecRow } from "./pieces/SpecTable";
 
 /* Agent Assurance page (agent-assurance.html).
 
@@ -1134,18 +1132,19 @@ function ExitCodes() {
   );
 }
 
-/* ---------- teams: the kit's image cards ----------
+/* ---------- teams: the pieces library's spec sheet ----------
 
-   The live page's second pointer list, changed to image cards so the
-   page keeps one pointer design (the six test types). */
+   The live page's second list of points. The six test types above are
+   already pointers, so the teams read as a sheet instead: one row per
+   team, what it gives them, and where they use it. No pictures. */
 
-const teams = [
-  { icon: FolderCode, scene: "/kit/img/hills.webp", title: "Engineers building agents", body: "A generated suite in minutes without writing tests, plus a run-over-run diff that separates a real regression from a flaky scenario." },
-  { icon: BadgeCheck, scene: "/kit/img/meadow.webp", title: "QA and test engineering", body: "A unit of coverage that survives scrutiny. Criteria proved against evidence, and an explicit account of everything that was not checked." },
-  { icon: FileChartColumn, scene: "/kit/img/shore.webp", title: "Engineering leaders", body: "Two numbers instead of one. Verified pass, which counts only passes and fails, and beside it the Assurance gap, the share of criteria nobody could verify, so you can see how much of the result was observed rather than inferred." },
-  { icon: CalendarCheck, scene: "/kit/img/mountain-lake.webp", title: "Platform and DevEx teams", body: "One assurance step that drops into CI for every agent your product teams ship, replacing a homemade eval script per repository." },
-  { icon: ShieldCheck, scene: "/kit/img/dunes.webp", title: "Security and risk", body: "Prompt injection and tool misuse become a repeatable test, with a recorded verdict when the agent is compromised. Each attack verdict rests on quotes from the target." },
-  { icon: Users, scene: "/kit/img/sunlit-clouds.webp", title: "Compliance and audit", body: "Per-criterion evidence retained as plain files, an explicit record of what could not be verified on each run, and a full session transcript that stays on your machine unless you export it." },
+const teams: SpecRow[] = [
+  { name: "Engineers building agents", cells: ["A generated suite in minutes without writing tests, plus a run-over-run diff that separates a real regression from a flaky scenario.", { text: "The terminal", code: "rook run" }] },
+  { name: "QA and test engineering", cells: ["A unit of coverage that survives scrutiny. Criteria proved against evidence, and an explicit account of everything that was not checked.", { text: "The local viewer", code: "rook ui" }] },
+  { name: "Engineering leaders", cells: ["Two numbers instead of one: Verified pass, and beside it the Assurance gap, the share of criteria nobody could verify.", "The Cloud UI"] },
+  { name: "Platform and DevEx teams", cells: ["One assurance step that drops into CI for every agent your product teams ship, replacing a homemade eval script per repository.", { text: "Your CI", code: "--headless" }] },
+  { name: "Security and risk", cells: ["Prompt injection and tool misuse become a repeatable test, with a recorded verdict when the agent is compromised.", "Attack verdicts, quoted"] },
+  { name: "Compliance and audit", cells: ["Per-criterion evidence kept as plain files, a record of what could not be verified, and a session transcript that stays on your machine.", { text: "Your repo", code: ".testmuai/" }] },
 ];
 
 function Teams() {
@@ -1156,30 +1155,100 @@ function Teams() {
         title="engineers, and security"
         body="One generated suite, graded on evidence, and what it gives each team that ships or signs off an agent."
       />
-      <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--3">
-          {teams.map(({ icon: Icon, scene, title, body }) => (
-            <div key={title} className="tm-cell tm-fcard2">
-              <div className="tm-well grid place-items-center">
-                <img className="tm-fit absolute inset-0" src={scene} alt="" loading="lazy" />
-                <Icon size={64} strokeWidth={1} className="relative text-[var(--tm-fg-inverse)]" aria-hidden />
-              </div>
-              <h3>{title}</h3>
-              <p>{body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Reveal delay={0.08}>
+        <SpecSheet
+          label="Agent assurance for each team"
+          columns={["Team", "What it gives them", "Where they use it"]}
+          rows={teams}
+          className="-mx-8"
+        />
+      </Reveal>
     </Section>
   );
 }
 
-/* ---------- one verdict, three places: the kit's image cards ---------- */
+/* ---------- one verdict, three places: the kit's image cards ----------
+
+   Each card's picture is drawn small on its own painted scene, as on the
+   home page: the viewer in a browser window, the Rook terminal, and a CI
+   job reading the report. */
+
+const MINI = "w-full overflow-hidden border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]";
+
+function MiniBar({ label, dark = false }: { label: string; dark?: boolean }) {
+  return (
+    <div className={`flex items-center gap-2 border-b px-3 py-1.5 ${dark ? T_LINE : "border-border"}`}>
+      <span className="flex gap-1">
+        {[0, 1, 2].map((i) => (
+          <span key={i} className={`size-1.5 rounded-full ${dark ? "bg-[var(--tm-bg-inverse-muted)]" : "bg-[var(--tm-border-default)]"}`} />
+        ))}
+      </span>
+      <span className={`mx-auto font-mono text-b5 uppercase tracking-[1px] ${dark ? T_MUTED : "text-muted-foreground"}`}>{label}</span>
+      <span className="w-[26px]" />
+    </div>
+  );
+}
+
+function BrowserMini() {
+  return (
+    <div className={MINI}>
+      <MiniBar label="rook ui · local" />
+      <img src={`${AA}/agent-assurance-browser.webp`} alt="" loading="lazy" className="block aspect-[16/10] w-full object-cover object-left-top" />
+    </div>
+  );
+}
+
+function TerminalMini() {
+  return (
+    <div className={`w-full overflow-hidden border font-mono [&_div]:font-mono [&_span]:font-mono ${T_LINE} ${T_BG} [box-shadow:var(--tm-shadow-floating-md)]`}>
+      <MiniBar label="rook / run" dark />
+      <div className={`flex flex-col gap-1 px-4 py-3 text-b5 ${T_FG}`}>
+        <div><span className={T_AMBER}>? </span>Run this plan? 6 scenarios</div>
+        <div className={T_CYAN}>› proceed · run it</div>
+        <div className={T_MUTED}>  discard · run nothing</div>
+        <div className="mt-1 flex justify-between"><span>◇ SC-004</span><span className={T_MUTED}>12s · judging</span></div>
+        <div className={T_FAIL}>⚠ SC-004  Fail</div>
+        <div className={T_MUTED}>· · · · · · · · ·  4/6 scenarios</div>
+      </div>
+      <div className={`flex items-center gap-2 font-mono text-b5 ${T_MUTED}`}>
+        <span className="bg-[var(--tm-orange-300)] px-2 py-0.5 font-medium text-[var(--tm-fg-default)]">ROOK</span>
+        <span>ticket-triage</span>
+      </div>
+    </div>
+  );
+}
+
+function CiMini() {
+  const steps = [
+    { ok: true, cmd: "rook run --headless", note: "exit 0" },
+    { ok: true, cmd: "rook report --json", note: "6 of 6 covered" },
+    { ok: false, cmd: "gate on verdicts", note: "2 failed" },
+  ];
+  return (
+    <div className={MINI}>
+      <MiniBar label="ci · agent-gate" />
+      <div className="flex flex-col gap-1.5 p-3">
+        {steps.map((s) => (
+          <div key={s.cmd} className="flex items-center gap-2 border border-border px-2.5 py-1.5">
+            {s.ok ? (
+              <Check size={12} strokeWidth={2} className="flex-none text-[var(--tm-fg-success)]" aria-hidden />
+            ) : (
+              <X size={12} strokeWidth={2} className="flex-none text-[var(--tm-fg-error)]" aria-hidden />
+            )}
+            <span className="truncate font-mono text-b5">{s.cmd}</span>
+            <span className="ml-auto flex-none text-b5 text-muted-foreground">{s.note}</span>
+          </div>
+        ))}
+        <span className="tag mt-0.5 self-end rounded-sm bg-[var(--tm-red-000)] px-2 py-0.5 text-b5 text-[var(--tm-red-500)]">Build blocked</span>
+      </div>
+    </div>
+  );
+}
 
 const places = [
-  { img: "agent-assurance-browser.webp", title: "The browser", body: "A local viewer that reads the run off disk with no login, and a hosted view your team shares, with the call graph, versions and run history. Both are read-only: the CLI is what changes anything." },
-  { img: "agent-assurance-terminal.webp", title: "The terminal", body: "An interactive session for the engineer who owns the agent. Anything that spends shows you its plan and asks before it runs, so nothing is spent without your say-so." },
-  { img: "agent-assurance-ci.webp", title: "Your CI pipeline", body: "Headless subcommands and one JSON document per run. Published gate recipes for GitHub Actions, Jenkins, and Argo CD check the run finished before they read a single verdict." },
+  { scene: "/kit/img/shore.webp", Mini: BrowserMini, title: "The browser", body: "A local viewer that reads the run off disk with no login, and a hosted view your team shares, with the call graph, versions and run history. Both are read-only: the CLI is what changes anything." },
+  { scene: "/kit/img/mountain-lake.webp", Mini: TerminalMini, title: "The terminal", body: "An interactive session for the engineer who owns the agent. Anything that spends shows you its plan and asks before it runs, so nothing is spent without your say-so." },
+  { scene: "/kit/img/dunes.webp", Mini: CiMini, title: "Your CI pipeline", body: "Headless subcommands and one JSON document per run. Published gate recipes for GitHub Actions, Jenkins, and Argo CD check the run finished before they read a single verdict." },
 ];
 
 function OneVerdict() {
@@ -1194,13 +1263,16 @@ function OneVerdict() {
       </FoldHead>
       <div className="tm-reveal -mx-8">
         <div className="tm-grid tm-grid--3">
-          {places.map((p) => (
-            <div key={p.title} className="tm-cell tm-fcard2">
-              <div className="tm-well">
-                <img className="tm-fit" src={`${AA}/${p.img}`} alt="" loading="lazy" />
+          {places.map(({ scene, Mini, title, body }) => (
+            <div key={title} className="tm-cell tm-fcard2">
+              <div className="tm-well grid place-items-center px-6">
+                <img className="tm-fit absolute inset-0" src={scene} alt="" loading="lazy" />
+                <div className="relative w-full">
+                  <Mini />
+                </div>
               </div>
-              <h3>{p.title}</h3>
-              <p>{p.body}</p>
+              <h3>{title}</h3>
+              <p>{body}</p>
             </div>
           ))}
         </div>
