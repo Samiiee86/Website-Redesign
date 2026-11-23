@@ -48,7 +48,7 @@ import MatrixTable, { type MatrixGroup } from "./pieces/compare/MatrixTable";
      the home page's Pioneer layout (graded on evidence), the pieces library's
      comparison table (evals against assurance), feature-tour (the four
      phases and the IDE), code-setup (run Rook CLI), feature-pointers (the
-     six test types, the one pointer design on the page), reasons (exit
+     six test types, the one pointer design on the page), two joined cards (exit
      codes), feature-cards-image (teams; one verdict in three places).
 
    Copy is the live page's (testmuai.com/agent-assurance), in sentence
@@ -767,49 +767,65 @@ function TestTypes() {
   );
 }
 
-/* ---------- exit codes: the kit's reasons block ----------
+/* ---------- exit codes: one run, seen two ways ----------
 
-   The two codes as big numbers, then the two steps of a real gate as the
-   report cards under them. */
+   The live page's point, told with one example so it reads at a glance:
+   the same run exits 0 (the exit code only says it finished), while its
+   report shows 5 failed criteria and blocks the build. Two joined cards,
+   each a title, one line and a small read-out. */
 
-const codes = [
-  { code: "0", title: "The run finished", body: "Pass or fail, the code reads the same" },
-  { code: "1", title: "The command failed", body: "Signed out, refused, unreachable, bad flags, or a run that never started" },
-];
-
-const gate = [
-  "Step one: confirm the run finished and covered every scenario you selected. A partial run still writes a report.",
-  "Step two: read the per-criterion verdicts. Fail the build on those. Treat exit 1 as a broken command, not a failing agent.",
-];
+const OUT = "flex flex-col gap-2 border border-border bg-background px-5 py-4 font-mono text-b3";
+const okIcon = <Check size={14} strokeWidth={2} className="text-[var(--tm-fg-success)]" aria-hidden />;
+const badIcon = <X size={14} strokeWidth={2} className="text-[var(--tm-fg-error)]" aria-hidden />;
 
 function ExitCodes() {
   return (
     <Section>
       <FoldHead
-        lead="Exit code 0 means the run finished,"
-        title="pass or fail"
-        body="Gate on the exit code and you will ship a broken agent. Zero means the run finished. The scenarios inside may all have failed. Gate on the report."
+        lead="A green exit code"
+        title="is not a passing agent"
+        body="Exit code 0 means the run finished, not that your agent passed. Gate your CI on the exit code alone and you can ship a broken agent. Gate it on the report instead."
       >
         <PrimaryBtn href={DEMO}>Book a demo</PrimaryBtn>
       </FoldHead>
       <div className="tm-reveal -mx-8">
-        <div className="tm-reasons">
-          <div className="tm-grid tm-grid--2">
-            {codes.map((c) => (
-              <div key={c.code} className="tm-cell flex flex-col items-center gap-3 px-8 py-10 text-center">
-                <p className="tm-label">Exit {c.code}</p>
-                <p className="tm-pixel text-[length:var(--tm-h1-size)] leading-none">{c.code}</p>
-                <p className="text-b1 font-medium">{c.title}</p>
-                <p className="text-b2 text-muted-foreground">{c.body}</p>
-              </div>
-            ))}
+        <div className="tm-grid tm-grid--2">
+          <div className="tm-cell flex flex-col gap-6 p-8 lg:p-10">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">
+                What the exit code tells you
+              </h3>
+              <p className="text-b2 text-muted-foreground">
+                0 means the run finished, pass or fail. 1 means the command broke: signed out, bad flags, or a run that never started.
+              </p>
+            </div>
+            <div className={`${OUT} mt-auto`}>
+              <p><span className="text-muted-foreground">$</span> rook run --headless</p>
+              <p className="flex items-center gap-2">{okIcon}Run finished</p>
+              <p className="flex items-center justify-between gap-3">
+                <span className="text-muted-foreground">exit code</span>
+                <span className="tag rounded-sm bg-[var(--tm-green-000)] px-2 py-0.5 text-b4 text-[var(--tm-green-500)]">0</span>
+              </p>
+            </div>
           </div>
-          <div className="tm-grid tm-grid--2">
-            {gate.map((g) => (
-              <div key={g} className="tm-cell tm-report">
-                <p className="!tracking-[var(--tm-h4-tracking)]">{g}</p>
-              </div>
-            ))}
+
+          <div className="tm-cell flex flex-col gap-6 p-8 lg:p-10">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">
+                What the report tells you
+              </h3>
+              <p className="text-b2 text-muted-foreground">
+                Check the run finished and covered every scenario, then fail the build on the per-criterion verdicts.
+              </p>
+            </div>
+            <div className={`${OUT} mt-auto`}>
+              <p className="flex items-center gap-2">{okIcon}38 of 38 scenarios covered</p>
+              <p className="flex items-center gap-2">{badIcon}5 criteria failed</p>
+              <p className="flex items-center justify-between gap-3">
+                <span className="text-muted-foreground">gate</span>
+                <span className="tag rounded-sm bg-[var(--tm-red-000)] px-2 py-0.5 text-b4 text-[var(--tm-red-500)]">Build blocked</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
