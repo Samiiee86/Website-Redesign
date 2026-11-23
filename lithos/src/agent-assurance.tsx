@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { MotionConfig, motion, useInView, useReducedMotion } from "motion/react";
 import {
   BadgeCheck,
+  Bot,
   Blocks,
   BookOpen,
   CalendarCheck,
@@ -614,86 +615,154 @@ function Phases() {
   );
 }
 
-/* ---------- run Rook CLI: the kit's code setup ---------- */
+/* ---------- run Rook CLI: two joined cards, as on the live page ----------
 
-const C = ({ children }: { children: ReactNode }) => <span className="c">{children}</span>;
-const S = ({ children }: { children: ReactNode }) => <span className="s">{children}</span>;
+   The live page's two cards (install the CLI; drive it from a coding
+   agent), set the same way so they read as a pair: icon and title, the
+   command to copy, a row of facts, then a small window of what happens
+   next. The button sits in the heading. */
+
+const AGENT_IMG = "https://assets.testmuai.com/resources/images/agents";
+
+function CopyField({ cmd }: { cmd: string }) {
+  const [done, setDone] = useState(false);
+  return (
+    <div className="input flex h-11 items-center justify-between gap-3 rounded-md border border-border bg-background pl-4 pr-1">
+      <code className="truncate font-mono text-b3 text-foreground">
+        <span className="text-muted-foreground">$ </span>
+        {cmd}
+      </code>
+      <button
+        type="button"
+        aria-label={`Copy ${cmd}`}
+        className="btn grid size-9 flex-none place-items-center rounded-md text-muted-foreground transition-colors hover:bg-[var(--tm-button-secondary-hover)] hover:text-foreground"
+        onClick={() =>
+          navigator.clipboard?.writeText(cmd).then(() => {
+            setDone(true);
+            setTimeout(() => setDone(false), 1600);
+          })
+        }
+      >
+        {done ? <Check size={16} strokeWidth={1.5} aria-hidden /> : <Copy size={16} strokeWidth={1.5} aria-hidden />}
+      </button>
+    </div>
+  );
+}
+
+function Window({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="flex flex-1 flex-col border border-border bg-surface">
+      <div className="flex items-center gap-2 border-b border-border px-3 py-2">
+        <span className="flex gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="size-2 rounded-full bg-[var(--tm-border-default)]" />
+          ))}
+        </span>
+        <span className="mx-auto font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">{title}</span>
+      </div>
+      <div className="flex flex-1 flex-col gap-2 px-4 py-4 font-mono text-b4 text-foreground">{children}</div>
+    </div>
+  );
+}
+
+function RookCard({
+  icon: Icon,
+  title,
+  children,
+  link,
+}: {
+  icon: typeof SquareTerminal;
+  title: string;
+  children: ReactNode;
+  link: { label: string; href: string };
+}) {
+  return (
+    <div className="tm-cell flex flex-col gap-6 p-8 lg:p-10">
+      <h3 className="flex items-center gap-3 text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">
+        <Icon size={24} strokeWidth={1.5} aria-hidden />
+        {title}
+      </h3>
+      {children}
+      <div className="mt-auto pt-2">
+        <KitLink href={link.href}>{link.label}</KitLink>
+      </div>
+    </div>
+  );
+}
+
+const TAG = "tag rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2.5 py-1 text-b4 text-muted-foreground";
 
 function RunRook() {
   return (
     <Section>
-      <div className="tm-setup">
-        <div className="tm-reveal">
-          <h2 className="tm-head__title">
-            <span className="tm-head__lead">Run Rook CLI yourself</span>
-            <span className="tm-head__main">or from your coding agent</span>
-          </h2>
-          <p className="tm-head__text mt-6">Two ways in, both public, both one command.</p>
-          <ol className="tm-steps">
-            <li>
-              <span className="tm-label">01</span>
-              <div>
-                <b>Install the CLI</b>
-                <p>macOS, Linux, Windows x64, or WSL. Node 20+ for npm only. No Docker.</p>
-              </div>
-            </li>
-            <li>
-              <span className="tm-label">02</span>
-              <div>
-                <b>Sign in and point it at your agent</b>
-                <p>Sign in, pick a project, and point it at your agent. The quickstart does the whole loop on a sample agent.</p>
-              </div>
-            </li>
-            <li>
-              <span className="tm-label">03</span>
-              <div>
-                <b>Or drive it from your coding agent</b>
-                <p>The skill works with Claude Code, Codex CLI, Gemini CLI and 7 more. The skill is not the CLI, so install both.</p>
-              </div>
-            </li>
-          </ol>
-          <div className="mt-8">
-            <KitLink href={`${SITE}/support/docs/agent-assurance-quickstart/`}>Read the quickstart</KitLink>
-          </div>
-        </div>
-        <div className="tm-reveal">
-          <div className="tm-code tm-code--boxed" data-tm-code data-tm-tabs>
-            <div className="tm-code__bar">
-              <div className="tm-code__tabs" role="tablist">
-                <button role="tab" data-tab="npm" aria-selected="true">npm</button>
-                <button role="tab" data-tab="brew" aria-selected="false">Homebrew</button>
-                <button role="tab" data-tab="skill" aria-selected="false">Coding agent</button>
-              </div>
-              <div className="tm-code__tools">
-                <button className="tm-btn tm-btn--secondary" data-tm-copy>
-                  <Copy size={16} strokeWidth={1.5} aria-hidden />
-                  Copy
-                </button>
-                <a className="tm-btn tm-btn--secondary" href={`${SITE}/support/docs/rook-installation/`}>
-                  <BookOpen size={16} strokeWidth={1.5} aria-hidden />
-                  Docs
-                </a>
-              </div>
+      <FoldHead
+        lead="Run Rook CLI yourself"
+        title="or from your coding agent"
+        body="Two ways in, both public, both one command. The skill is not the CLI, so install both."
+      >
+        <PrimaryBtn href={TRIAL}>Start free trial</PrimaryBtn>
+      </FoldHead>
+      <div className="tm-reveal -mx-8">
+        <div className="tm-grid tm-grid--2">
+          <RookCard
+            icon={SquareTerminal}
+            title="Install the CLI"
+            link={{ label: "Read the install guide", href: `${SITE}/support/docs/rook-installation/` }}
+          >
+            <div className="flex flex-col gap-3">
+              <CopyField cmd="brew install lambdatest/rook/rook" />
+              <CopyField cmd="npm install -g @testmuai/rook@latest" />
             </div>
-            <div data-panel="npm" data-label="Terminal · npm">
-              <pre className="!text-b3">
-                <C># Node 20+</C>{"\n"}npm install -g @testmuai/rook@latest{"\n\n"}
-                <C># sign in, pick a project, point it at your agent</C>{"\n"}rook
-              </pre>
+            <div className="flex flex-wrap gap-2">
+              <span className={TAG}>macOS, Linux, Windows x64, or WSL</span>
+              <span className={TAG}>Node 20+ for npm only</span>
+              <span className={TAG}>No Docker</span>
             </div>
-            <div data-panel="brew" data-label="Terminal · Homebrew" hidden>
-              <pre className="!text-b3">
-                <C># no Node needed</C>{"\n"}brew install lambdatest/rook/rook{"\n\n"}
-                <C># sign in, pick a project, point it at your agent</C>{"\n"}rook
-              </pre>
+            {/* what happens next: sign in, pick a project, point it at
+                your agent */}
+            <Window title="rook — terminal">
+              <p><span className="text-muted-foreground">$</span> rook</p>
+              <p className="flex items-center gap-2"><Check size={12} strokeWidth={2} className="text-[var(--tm-fg-success)]" aria-hidden />Signed in</p>
+              <p className="flex items-center gap-2"><Check size={12} strokeWidth={2} className="text-[var(--tm-fg-success)]" aria-hidden />Project · support-agents</p>
+              <p className="text-muted-foreground">Point it at your agent: command, HTTP or MCP</p>
+            </Window>
+          </RookCard>
+
+          <RookCard
+            icon={Bot}
+            title="Or drive it from your coding agent"
+            link={{ label: "Use Rook with coding agents", href: `${SITE}/support/docs/agent-assurance-quickstart/` }}
+          >
+            <div className="flex flex-col gap-3">
+              <CopyField cmd="npx @testmuai/rook-skill" />
             </div>
-            <div data-panel="skill" data-label="Claude Code, Codex CLI, Gemini CLI" hidden>
-              <pre className="!text-b3">
-                <C># installs the Rook skill for your coding agents</C>{"\n"}npx @testmuai/rook-skill{"\n\n"}
-                <C># then ask your agent</C>{"\n"}&gt; <S>Use rook to test my agent against its refund policy</S>
-              </pre>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { name: "Claude Code", img: "claude-code.svg" },
+                { name: "Codex CLI", img: "openai-codex.svg" },
+                { name: "Gemini CLI", img: "gemini-code-assist.svg" },
+              ].map((a) => (
+                <span key={a.name} className="tag flex items-center gap-2 rounded-sm border border-border bg-surface px-2.5 py-1 text-b4 text-foreground">
+                  <img src={`${AGENT_IMG}/${a.img}`} alt="" className="size-4" loading="lazy" />
+                  {a.name}
+                </span>
+              ))}
+              <span className="tag rounded-sm border border-dashed border-border px-2.5 py-1 text-b4 text-muted-foreground">+ 7 more</span>
             </div>
-          </div>
+            {/* what you type in the coding agent */}
+            <Window title="claude code">
+              <p className="text-muted-foreground">Skill installed · /rook</p>
+              <p>
+                <span className="text-muted-foreground">&gt;</span> Use rook to test my agent against its refund policy
+              </p>
+              <p className="flex items-center gap-2"><Check size={12} strokeWidth={2} className="text-[var(--tm-fg-success)]" aria-hidden />Read refund_policy.md</p>
+              <p className="flex items-center gap-2"><Check size={12} strokeWidth={2} className="text-[var(--tm-fg-success)]" aria-hidden />38 scenarios ready</p>
+              <p className="text-muted-foreground">
+                Run 38 scenarios on staging? (y/n)
+                <span className="ml-1 inline-block h-3 w-1.5 translate-y-0.5 animate-pulse bg-foreground" aria-hidden />
+              </p>
+            </Window>
+          </RookCard>
         </div>
       </div>
     </Section>
