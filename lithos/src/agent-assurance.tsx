@@ -1,27 +1,28 @@
 import { StrictMode, useEffect, useRef, useState, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
-import { MotionConfig } from "motion/react";
+import { MotionConfig, motion, useInView, useReducedMotion } from "motion/react";
 import {
   BadgeCheck,
   Blocks,
   BookOpen,
   CalendarCheck,
   Check,
+  CircleHelp,
   ClipboardList,
   Copy,
   FileChartColumn,
   FileText,
   FolderCode,
   MousePointerClick,
-  RefreshCw,
   RotateCw,
-  ShieldAlert,
   ShieldCheck,
   Users,
+  X,
   Zap,
 } from "lucide-react";
 import "./index.css";
-import { ArrowChip, Section } from "./lib/ui";
+import { ArrowChip, Reveal, Section, SlideArrow } from "./lib/ui";
+import { scenery } from "./lib/scenery";
 import GuideLines from "./components/GuideLines";
 import Header from "./components/Header";
 import TrustedBy from "./sections/TrustedBy";
@@ -42,7 +43,7 @@ import MatrixTable, { type MatrixGroup } from "./pieces/compare/MatrixTable";
      agent-assurance): its copy, video, scene and copyable install line.
    - Every other section starts from a kit fold, with no eyebrow labels
      over the headings: statement (what agent verification is),
-     feature-cards-two-boxes (graded on evidence), the pieces library's
+     the home page's Pioneer layout (graded on evidence), the pieces library's
      comparison table (evals against assurance), feature-tour (the four
      phases and the IDE), code-setup (run Rook CLI), feature-pointers (the
      six test types, the one pointer design on the page), reasons (exit
@@ -187,30 +188,233 @@ function Statement() {
   );
 }
 
-/* ---------- graded on evidence: the kit's two cards with boxes ---------- */
+/* ---------- graded on evidence: the home page's Pioneer layout ----------
 
-const bigCards = [
-  {
-    scene: "/kit/img/shore.webp",
-    ui: `${AA}/agent-assurance-effect.png`,
-    title: "Grade the effect, not the account",
-    body: "An agent's account of what it did is the weakest evidence available about what it did. It is the one party with a reason to be wrong.",
-  },
-  {
-    scene: "/kit/img/hills.webp",
-    ui: `${AA}/agent-assurance-gap.png`,
-    title: "Publish the blind spot",
-    body: "Anything Agent Assurance could not verify is reported as unverifiable. Never a quiet pass, never a guessed fail, never folded into the pass rate.",
-  },
+   Same build as the home page's "Pioneer of AI Agentic Testing Cloud"
+   fold (sections/Bento.tsx, the gumloop row): one tall card on a painted
+   scene with a product window, and four quiet cards, each with a small
+   live detail beside its copy. Every detail plays once as it scrolls in. */
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+const rise = (play: boolean, at: number) =>
+  play
+    ? {
+        initial: { opacity: 0, y: 10 },
+        animate: { opacity: 1, y: 0 },
+        transition: { delay: at, duration: 0.4, ease: EASE },
+      }
+    : { initial: false as const, animate: { opacity: 1, y: 0 } };
+
+function usePlay() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.5 });
+  const reduce = useReducedMotion();
+  const [run, setRun] = useState(0);
+  useEffect(() => {
+    if (inView && !reduce) setRun((r) => r + 1);
+  }, [inView, reduce]);
+  return { ref, run, play: run > 0 && inView && !reduce };
+}
+
+const PILL = "pill flex w-fit items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-b3 text-foreground [box-shadow:var(--tm-shadow-floating-sm)]";
+const OK_TAG = "tag flex w-fit items-center gap-1.5 rounded-sm bg-[var(--tm-green-000)] px-2.5 py-1 text-b4 text-[var(--tm-green-500)]";
+const BAD_TAG = "tag flex w-fit items-center gap-1.5 rounded-sm bg-[var(--tm-red-000)] px-2.5 py-1 text-b4 text-[var(--tm-red-500)]";
+
+/* the tall card: the agent's word against what the run recorded */
+function ClaimWindow({ play }: { play: boolean }) {
+  const rows = [
+    { k: "Goal", v: "Tell @alex on Discord the deploy finished" },
+    { k: "Agent says", v: "“Message sent to @alex.”", quiet: true },
+    { k: "Tool call", v: "message · channel discord · no bot token" },
+  ];
+  return (
+    <div className="w-full overflow-hidden border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+      <div className="flex items-center gap-2 border-b border-border px-3 py-2">
+        <span className="flex gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <span key={i} className="size-2 rounded-full bg-[var(--tm-border-default)]" />
+          ))}
+        </span>
+        <span className="mx-auto border border-border bg-background px-3 py-0.5 font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">
+          Rook · SC-018
+        </span>
+      </div>
+      <div className="flex flex-col">
+        {rows.map((r, i) => (
+          <motion.div
+            key={r.k}
+            {...rise(play, 0.15 + i * 0.35)}
+            className="grid grid-cols-[96px_1fr] gap-3 border-b border-border px-4 py-3 text-b3"
+          >
+            <span className="text-muted-foreground">{r.k}</span>
+            <span className={r.quiet ? "italic text-muted-foreground" : "text-foreground"}>{r.v}</span>
+          </motion.div>
+        ))}
+        <motion.div {...rise(play, 1.4)} className="flex items-center justify-between gap-3 px-4 py-3">
+          <span className={BAD_TAG}>
+            <X size={12} strokeWidth={2} aria-hidden />
+            Fail · the message never left
+          </span>
+          <span className="font-mono text-b4 text-muted-foreground">1m 07s</span>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+/* the blind spot: three verdicts, and the gap said out loud */
+function BlindSpot({ play }: { play: boolean }) {
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <div className="flex flex-wrap justify-center gap-2">
+        <motion.span {...rise(play, 0.1)} className={OK_TAG}>
+          <Check size={12} strokeWidth={2} aria-hidden />2 passed
+        </motion.span>
+        <motion.span {...rise(play, 0.25)} className={BAD_TAG}>
+          <X size={12} strokeWidth={2} aria-hidden />5 failed
+        </motion.span>
+        <motion.span
+          {...rise(play, 0.4)}
+          className="tag flex w-fit items-center gap-1.5 rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2.5 py-1 text-b4 text-foreground"
+        >
+          <CircleHelp size={12} strokeWidth={2} aria-hidden />1 unable to verify
+        </motion.span>
+      </div>
+      <motion.span {...rise(play, 0.8)} className={PILL}>
+        Verified pass 29% · 26 never ran
+      </motion.span>
+    </div>
+  );
+}
+
+/* no tests to write: what you hand it, and what comes back */
+function Sources({ play }: { play: boolean }) {
+  const src = [
+    { icon: FolderCode, label: "Repo" },
+    { icon: FileText, label: "PRD" },
+    { icon: BookOpen, label: "Policy docs" },
+  ];
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <div className="flex gap-2">
+        {src.map(({ icon: Icon, label }, i) => (
+          <motion.span
+            key={label}
+            {...rise(play, 0.1 + i * 0.12)}
+            className="flex items-center gap-1.5 rounded-md border border-border bg-surface px-2.5 py-1.5 text-b4 text-muted-foreground"
+          >
+            <Icon size={14} strokeWidth={1.5} aria-hidden />
+            {label}
+          </motion.span>
+        ))}
+      </div>
+      <motion.span {...rise(play, 0.7)} className={PILL}>
+        <span className="grid size-4 place-items-center rounded-full bg-[var(--tm-fg-success)] text-[var(--tm-fg-inverse)]">
+          <Check size={10} strokeWidth={2.5} aria-hidden />
+        </span>
+        38 scenarios generated
+      </motion.span>
+    </div>
+  );
+}
+
+/* adversarial by default: the attack family, as a live trace */
+const ATTACKS = [
+  { t: "Prompt injection in a ticket", at: "0:04" },
+  { t: "Instruction override", at: "0:09" },
+  { t: "Tool misuse: refunds.delete", at: "0:12", hit: true },
+  { t: "Data exfiltration request", at: "0:15" },
 ];
 
-const boxes = [
-  { icon: FileText, title: "No tests to write", body: "Point it at a repository, a PRD, or a folder of policy docs. It reads what you have and derives functional and adversarial scenarios from it." },
-  { icon: ShieldAlert, title: "Adversarial by default", body: "Prompt injection, instruction override, and tool misuse are a first-class scenario family, not an add-on you configure." },
-  { icon: RefreshCw, title: "Runs in your CI", body: "Headless subcommands and a JSON report, with published gate recipes for GitHub Actions, Jenkins, and Argo CD." },
-];
+function AttackTrace({ play }: { play: boolean }) {
+  return (
+    <div className="w-full max-w-[320px]">
+      <p className="flex items-center gap-2 text-b3 text-muted-foreground">
+        <span className="grid size-5 place-items-center rounded-full border border-border bg-surface">
+          <motion.span
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1.4, repeat: Infinity }}
+            className="size-2 rounded-full bg-[var(--tm-red-400)]"
+          />
+        </span>
+        Running adversarial scenarios…
+      </p>
+      <div className="ml-2.5 mt-2 border-l border-border pl-4 [mask-image:linear-gradient(to_bottom,black_70%,transparent)]">
+        {ATTACKS.map((row, i) => (
+          <motion.div
+            key={row.t}
+            {...rise(play, 0.2 + i * 0.3)}
+            className="flex items-center justify-between gap-3 py-1.5 text-b3"
+          >
+            <span className={row.hit ? "text-foreground" : "text-muted-foreground"}>{row.t}</span>
+            <span className="font-mono text-b4 text-muted-foreground">{row.at}</span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* runs in your CI: the headless command and the gate's answer */
+function CiGate({ play }: { play: boolean }) {
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <motion.span {...rise(play, 0.1)} className={`${PILL} whitespace-nowrap font-mono !text-b4`}>
+        rook run --headless --json
+      </motion.span>
+      <motion.span {...rise(play, 0.9)} className={OK_TAG}>
+        <Check size={12} strokeWidth={2} aria-hidden />
+        Run finished · gate read 38 verdicts
+      </motion.span>
+    </div>
+  );
+}
+
+function CardText({ title, body, big = false }: { title: string; body: string; big?: boolean }) {
+  return (
+    <div>
+      <h4 className="text-foreground [text-wrap:balance]">{title}</h4>
+      <p className={`mt-2 text-b2 leading-relaxed text-muted-foreground ${big ? "max-w-[520px]" : "max-w-[300px]"}`}>
+        {body}
+      </p>
+      <a
+        href={`${SITE}/support/docs/agent-assurance-quickstart/`}
+        className="group/btn mt-4 inline-flex items-center gap-2 border-b border-foreground pb-1 text-b3 font-medium text-foreground"
+      >
+        Learn more
+        <SlideArrow />
+      </a>
+    </div>
+  );
+}
+
+function EvCard({
+  title,
+  body,
+  Visual,
+  className = "",
+}: {
+  title: string;
+  body: string;
+  Visual: (p: { play: boolean }) => ReactNode;
+  className?: string;
+}) {
+  const { ref, run, play } = usePlay();
+  return (
+    <div
+      ref={ref}
+      className={`grid min-h-[300px] gap-8 p-8 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] sm:items-center ${className}`}
+    >
+      <CardText title={title} body={body} />
+      <div className="flex items-center justify-center">
+        <Visual key={run} play={play} />
+      </div>
+    </div>
+  );
+}
 
 function Evidence() {
+  const big = usePlay();
   return (
     <Section>
       <FoldHead
@@ -220,33 +424,63 @@ function Evidence() {
       >
         <PrimaryBtn href={DEMO}>Book a demo</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal -mx-8">
-        <div className="tm-bigx">
-          <div className="tm-grid tm-grid--2 tm-bigx__pair">
-            {bigCards.map((c) => (
-              <div key={c.title} className="tm-cell tm-big">
-                <img className="tm-scene" src={c.scene} alt="" loading="lazy" />
-                <div className="tm-big__copy">
-                  <h3>{c.title}</h3>
-                  <p>{c.body}</p>
-                </div>
-                <div className="tm-big__ui">
-                  <img src={c.ui} alt="" loading="lazy" />
+      <Reveal delay={0.08}>
+        <div className="-mx-8 border-y border-border bg-surface">
+          <div className="grid lg:grid-cols-2">
+            <div
+              ref={big.ref}
+              className="relative flex min-h-[600px] flex-col overflow-hidden border-border max-lg:border-b lg:border-r"
+            >
+              {/* the painting fills the card; the copy sits on a white wash
+                  that rises from the foot */}
+              <img src={scenery.mountainLake} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_52%,color-mix(in_srgb,var(--tm-bg-surface)_92%,transparent)_70%,var(--tm-bg-surface)_100%)]"
+              />
+              <div className="relative flex flex-1 items-center justify-center px-8 pb-6 pt-12">
+                <div className="w-full max-w-[460px]">
+                  <ClaimWindow key={big.run} play={big.play} />
                 </div>
               </div>
-            ))}
+              <div className="relative p-8">
+                <CardText
+                  big
+                  title="Grade the effect, not the account"
+                  body="An agent's account of what it did is the weakest evidence available about what it did. It is the one party with a reason to be wrong."
+                />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <EvCard
+                className="border-b border-border"
+                title="Publish the blind spot"
+                body="Anything Agent Assurance could not verify is reported as unverifiable. Never a quiet pass, never a guessed fail, never folded into the pass rate."
+                Visual={BlindSpot}
+              />
+              <EvCard
+                className="flex-1"
+                title="No tests to write"
+                body="Point it at a repository, a PRD, or a folder of policy docs. It reads what you have and derives functional and adversarial scenarios from it."
+                Visual={Sources}
+              />
+            </div>
           </div>
-          <div className="tm-join">
-            {boxes.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="tm-bigx__box">
-                <Icon className="tm-ico32" size={32} strokeWidth={1.5} aria-hidden />
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </div>
-            ))}
+          <div className="grid border-t border-border lg:grid-cols-2">
+            <EvCard
+              className="border-border max-lg:border-b lg:border-r"
+              title="Adversarial by default"
+              body="Prompt injection, instruction override, and tool misuse are a first-class scenario family, not an add-on you configure."
+              Visual={AttackTrace}
+            />
+            <EvCard
+              title="Runs in your CI"
+              body="Headless subcommands and a JSON report, with published gate recipes for GitHub Actions, Jenkins, and Argo CD."
+              Visual={CiGate}
+            />
           </div>
         </div>
-      </div>
+      </Reveal>
     </Section>
   );
 }
