@@ -17,6 +17,8 @@ export default defineConfig({
         browserstackAlternative: resolve(__dirname, 'browserstack-alternative.html'),
         // the automation testing platform page, built from kit folds
         automationTestingPlatform: resolve(__dirname, 'automation-testing-platform.html'),
+        // the agent assurance page, built from kit folds
+        agentAssurance: resolve(__dirname, 'agent-assurance.html'),
       },
     },
   },
