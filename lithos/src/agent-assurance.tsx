@@ -498,7 +498,7 @@ const evals: MatrixGroup[] = [
 
    The live page's quote (testmuai.com/agent-assurance), in the kit's
    joined cells: the quote and its byline on the left (second half
-   in grey, as live), and on a tinted cell the published test behind it:
+   in grey, as live), and on a painted scene the published test behind it:
    its two counts in the pixel face, then what changed between the two
    judge builds, in the quote's own words. */
 
@@ -541,38 +541,45 @@ function PublishedTest() {
             </figcaption>
           </figure>
 
-          {/* the published test behind it: the two counts, then what changed
-              between the two judge builds, in the quote's own words */}
-          <div className="tm-cell flex flex-col gap-8 !bg-[var(--tm-bg-fill)] !p-8 lg:!p-12">
-            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Published test</span>
-            <div className="grid grid-cols-2 gap-px border border-border bg-border">
-              {[
-                ["10", "Attacks"],
-                ["2", "Judge builds"],
-              ].map(([n, k]) => (
-                <span key={k} className="flex flex-col gap-2 bg-surface px-5 py-4">
-                  <span className="pixel text-[48px] leading-none">{n}</span>
-                  <span className="text-b3 text-muted-foreground">{k}</span>
-                </span>
-              ))}
-            </div>
-            <div className="flex flex-col">
-              {[
-                { b: "Judge build 1", t: "An unsupported claim counts as a breach", tag: "Breach", tone: "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]" },
-                { b: "Judge build 2", t: "A breach needs trace-backed confirmation", tag: "Confirmed", tone: "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]" },
-              ].map((r, i) => (
-                <div key={r.b} className={`flex gap-4 ${i ? "pt-4" : "pb-4"}`}>
-                  <span className="flex flex-col items-center pt-1.5">
-                    <span className={`size-2 flex-none rounded-full ${i ? "bg-[var(--tm-green-400)]" : "bg-[var(--tm-border-default)]"}`} />
-                    {i === 0 && <span className="mt-1 w-px flex-1 bg-border" />}
+          {/* the published test behind it, as white cards on a painted scene
+              (the hero folds' misty valley), joined by the retro dotted line:
+              its two counts, then what changed between the two judge builds,
+              in the quote's own words */}
+          <div className="tm-cell relative flex flex-col justify-center overflow-hidden !p-6 md:!p-10">
+            <img src={`${AA}/scene-valley.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+            <div className="relative flex flex-col">
+              <span className="tag mx-auto flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-1 font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">
+                <span className="size-1.5 rounded-full bg-[var(--tm-orange-400)]" />
+                Published test
+              </span>
+              <VLink />
+              <div className="grid grid-cols-2 gap-px border border-border bg-border [box-shadow:var(--tm-shadow-floating-md)]">
+                {[
+                  ["10", "Attacks"],
+                  ["2", "Judge builds"],
+                ].map(([n, k]) => (
+                  <span key={k} className="flex flex-col gap-2 bg-surface px-5 py-4">
+                    <span className="pixel text-[48px] leading-none">{n}</span>
+                    <span className="text-b3 text-muted-foreground">{k}</span>
                   </span>
-                  <span className="flex min-w-0 flex-1 flex-col gap-1">
-                    <span className="font-mono text-b4 uppercase tracking-[1px] text-muted-foreground">{r.b}</span>
-                    <span className="text-b2">{r.t}</span>
-                  </span>
-                  <span className={`tag h-fit flex-none rounded-sm px-2 py-0.5 text-b4 ${r.tone}`}>{r.tag}</span>
-                </div>
-              ))}
+                ))}
+              </div>
+              <VLink />
+              <div className="flex flex-col border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+                {[
+                  { b: "Judge build 1", t: "An unsupported claim counts as a breach", tag: "Breach", tone: "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]", dot: "bg-[var(--tm-border-default)]" },
+                  { b: "Judge build 2", t: "A breach needs trace-backed confirmation", tag: "Confirmed", tone: "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]", dot: "bg-[var(--tm-green-400)]" },
+                ].map((r) => (
+                  <div key={r.b} className="flex gap-3 border-b border-border px-5 py-4 last:border-b-0">
+                    <span className={`mt-1.5 size-2 flex-none rounded-full ${r.dot}`} />
+                    <span className="flex min-w-0 flex-1 flex-col gap-1">
+                      <span className="font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">{r.b}</span>
+                      <span className="text-b3">{r.t}</span>
+                    </span>
+                    <span className={`tag h-fit flex-none rounded-sm px-2 py-0.5 text-b4 ${r.tone}`}>{r.tag}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
