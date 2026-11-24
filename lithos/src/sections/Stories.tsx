@@ -53,9 +53,33 @@ function VideoModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-export default function Stories() {
-  const { hero, wide } = storiesGrid;
+/* A page can bring its own stories (`content`); the home page keeps the
+   default. A headline case with an `image` shows that photo and links to
+   its case study instead of playing the customer film. */
+export type StoriesContent = {
+  body?: string;
+  hero: {
+    brand: string;
+    brandAlt: string;
+    image?: string;
+    href?: string;
+    stat: string;
+    statLabel: string;
+    quote: string;
+    name: string;
+    role: string;
+    action: string;
+  };
+  cells: { brand: string; href: string; stat: string; desc: string }[];
+  wide: { brand: string; brandAlt: string; brandClass?: string; href: string; stat: string; desc: string; action: string; image: string };
+};
+
+export default function Stories({ content }: { content?: StoriesContent } = {}) {
+  const hero = content?.hero ?? { ...storiesGrid.hero, brandAlt: "Dashlane", image: undefined, href: undefined };
+  const wide = content?.wide ?? { ...storiesGrid.wide, brandAlt: "Best Egg" };
+  const cells = content?.cells ?? storiesGrid.cells;
   const [playerOpen, setPlayerOpen] = useState(false);
+  const still = Boolean(hero.image);
 
   return (
     <Section>
@@ -68,7 +92,7 @@ export default function Stories() {
             <span className="block">TestMu AI (formerly LambdaTest)</span>
           </h2>
           <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
-            {storiesGrid.body}
+            {content?.body ?? storiesGrid.body}
           </p>
         </div>
         <button className="btn btn-lg btn-secondary mt-8">
@@ -83,21 +107,30 @@ export default function Stories() {
             {/* the video sits on a white frame; the quote shares the surface */}
             <div className="p-6 lg:pr-0">
               <div
-                data-cursor="Play video"
-                role="button"
+                data-cursor={still ? "Read case study" : "Play video"}
+                role={still ? "link" : "button"}
                 tabIndex={0}
-                onClick={() => setPlayerOpen(true)}
-                onKeyDown={(e) => e.key === "Enter" && setPlayerOpen(true)}
+                onClick={() => (still ? hero.href && window.location.assign(hero.href) : setPlayerOpen(true))}
+                onKeyDown={(e) => e.key === "Enter" && (still ? hero.href && window.location.assign(hero.href) : setPlayerOpen(true))}
                 className="group relative h-[270px] cursor-pointer overflow-hidden md:h-full md:min-h-[380px]"
               >
-                <video
-                  src={CUSTOMER_PREVIEW}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                />
+                {still ? (
+                  <img
+                    src={hero.image}
+                    alt=""
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                ) : (
+                  <video
+                    src={CUSTOMER_PREVIEW}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  />
+                )}
                 <div
                   className="absolute inset-0"
                   style={{
@@ -116,8 +149,9 @@ export default function Stories() {
                     </p>
                   </div>
                   <span className="flex shrink-0 items-center gap-2 rounded-[6px] border border-white bg-white/10 px-4 py-2 text-b3 font-medium uppercase text-white backdrop-blur-md transition-colors group-hover:bg-white/20">
-                    <Play size={13} className="fill-white" />
+                    {!still && <Play size={13} className="fill-white" />}
                     {hero.action}
+                    {still && <ArrowUpRight size={14} />}
                   </span>
                 </div>
               </div>
@@ -126,7 +160,7 @@ export default function Stories() {
             <div className="flex flex-col justify-between gap-8 p-6 md:p-8 lg:pl-6">
               <img
                 src={hero.brand}
-                alt="Dashlane"
+                alt={hero.brandAlt}
                 className="h-9 w-auto max-w-[147px] object-contain object-left"
               />
               <div>
@@ -147,7 +181,7 @@ export default function Stories() {
           {/* supporting cases: two white cards, Best Egg's photo runs to the
               surface edges */}
           <div className="grid border-t border-border lg:grid-cols-[1fr_1fr_2fr]">
-            {storiesGrid.cells.map((cell) => (
+            {cells.map((cell) => (
               <a
                 key={cell.brand}
                 href={cell.href}
@@ -199,8 +233,8 @@ export default function Stories() {
               <div className="relative flex h-full flex-col justify-between p-6 md:p-8">
                 <img
                   src={wide.brand}
-                  alt="Best Egg"
-                  className="h-9 w-auto max-w-[157px] object-contain object-left"
+                  alt={wide.brandAlt}
+                  className={`h-9 w-auto max-w-[157px] object-contain object-left ${"brandClass" in wide ? wide.brandClass ?? "" : ""}`}
                 />
                 <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                   <div>

@@ -1,6 +1,11 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import {
   ArrowLeft,
+  ArrowRight,
+  BellOff,
+  Bot,
+  Globe,
+  Monitor,
   Check,
   ChevronDown,
   ChevronLeft,
@@ -23,6 +28,7 @@ import {
   Server,
   ShieldCheck,
   Sparkles,
+  Wand2,
   SquareTerminal,
   Timer,
   Upload,
@@ -836,5 +842,287 @@ export function A11yScreen() {
         </div>
       </div>
     </div>
+  );
+}
+
+/* ---------- HyperExecute page: the six features ---------- */
+
+/* a box in the grid diagram */
+const Node = ({ icon: Icon, name, note, tone = "" }: { icon: typeof Monitor; name: string; note: string; tone?: string }) => (
+  <span className={`flex flex-col items-center gap-1 rounded-lg border border-border bg-surface px-4 py-3 text-center ${tone}`}>
+    <Icon size={16} strokeWidth={1.5} aria-hidden />
+    <span className="text-b4 font-medium">{name}</span>
+    <span className={`text-b5 ${SUB}`}>{note}</span>
+  </span>
+);
+const Hop = ({ bad }: { bad?: boolean }) => (
+  <span className="flex flex-1 flex-col items-center gap-1">
+    <span className={`flex w-full items-center ${bad ? "text-[var(--tm-red-500)]" : SUB}`}>
+      <span className="h-px flex-1 bg-current" />
+      <ArrowRight size={12} strokeWidth={1.5} aria-hidden />
+    </span>
+    {bad && <span className={`tag rounded-sm bg-[var(--tm-red-000)] px-1.5 text-b5 text-[var(--tm-red-500)] ${MONO}`}>hop</span>}
+  </span>
+);
+
+/* a traditional grid against one HyperExecute VM */
+export function GridScreen() {
+  return (
+    <div className="grid h-full grid-cols-2 gap-px bg-[var(--tm-border-muted)]">
+      <div className="flex flex-col bg-surface px-6 pt-5">
+        <span className="flex items-center justify-between">
+          <span className="text-b3 font-medium">Traditional grid</span>
+          <Pill tone="plain">Every command</Pill>
+        </span>
+        <div className="mt-8 flex items-center">
+          <Node icon={FileText} name="Test runner" note="your CI" />
+          <Hop bad />
+          <Node icon={Server} name="Hub" note="routes" />
+          <Hop bad />
+          <Node icon={Monitor} name="Node" note="browser" />
+        </div>
+        <div className="mt-8 flex flex-col gap-2 text-b4">
+          {["Logs on separate parts", "Nodes stay up, need patching", "Flakes from the network"].map((t) => (
+            <span key={t} className="flex items-center gap-2"><X size={12} strokeWidth={1.5} className="text-[var(--tm-red-500)]" aria-hidden /> {t}</span>
+          ))}
+        </div>
+        <span className="mt-auto mb-5 flex items-baseline gap-2 border-t border-[var(--tm-border-muted)] pt-3">
+          <span className={`text-b5 ${SUB}`}>Suite run</span>
+          <span className="text-h5 font-medium">41m 20s</span>
+        </span>
+      </div>
+      <div className="flex flex-col bg-surface px-6 pt-5">
+        <span className="flex items-center justify-between">
+          <span className="text-b3 font-medium">HyperExecute</span>
+          <Pill tone="ok"><Check size={10} strokeWidth={2} aria-hidden /> 0 hops</Pill>
+        </span>
+        <div className="mt-8 flex flex-col gap-2 rounded-lg border border-[var(--tm-green-200)] bg-[var(--tm-green-000)] p-3">
+          <span className={`flex items-center justify-between text-b5 ${SUB}`}>
+            <span className={MONO}>task VM · vm-07</span>
+            <span>one machine</span>
+          </span>
+          <div className="flex items-center gap-2">
+            <Node icon={FileText} name="Test runner" note="your script" />
+            <Node icon={Monitor} name="Browser" note="same VM" />
+            <Node icon={Package} name="Deps" note="cached" />
+          </div>
+        </div>
+        <div className="mt-6 flex flex-col gap-2 text-b4">
+          {["Logs kept per test", "VM wiped after the run", "Fewer infra flakes"].map((t) => (
+            <span key={t} className="flex items-center gap-2"><Check size={12} strokeWidth={1.5} className="text-[var(--tm-fg-success)]" aria-hidden /> {t}</span>
+          ))}
+        </div>
+        <span className="mt-auto mb-5 flex items-baseline gap-2 border-t border-[var(--tm-border-muted)] pt-3">
+          <span className={`text-b5 ${SUB}`}>Suite run</span>
+          <span className="text-h5 font-medium">12m 24s</span>
+          <span className="text-b5 text-[var(--tm-fg-success)]">70% faster</span>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/* the live page's release-regression job: 24 VMs from one YAML value */
+export function SplitScreen() {
+  const done = (i: number) => i < 19;
+  return (
+    <div className="flex h-full flex-col px-6 pt-5">
+      <div className="flex items-center gap-2">
+        <span className="text-b3 font-medium">release-regression</span>
+        <Pill tone="blue"><span className="size-1.5 rounded-full bg-[var(--tm-blue-500)]" /> Running</Pill>
+        <span className={`ml-auto text-b5 ${SUB} ${MONO}`}>autosplit: true · concurrency: 24</span>
+      </div>
+      <div className="mt-4 flex items-center justify-between">
+        <span className="text-b4 font-medium">24 parallel VMs</span>
+        <span className={`text-b5 ${SUB}`}>19 done · 5 running</span>
+      </div>
+      <div className="mt-2 grid grid-cols-8 gap-1.5">
+        {Array.from({ length: 24 }).map((_, i) => (
+          <span
+            key={i}
+            className={`tag flex h-10 flex-col items-center justify-center rounded-sm border text-b5 ${
+              done(i) ? "border-[var(--tm-green-100)] bg-[var(--tm-green-000)]" : "border-[var(--tm-blue-100)] bg-[var(--tm-bg-accent-muted)]"
+            }`}
+          >
+            <span className={`${MONO} ${SUB}`}>vm-{String(i + 1).padStart(2, "0")}</span>
+            <span className={done(i) ? "text-[var(--tm-fg-success)]" : "text-[var(--tm-blue-500)]"}>{done(i) ? "passed" : "running"}</span>
+          </span>
+        ))}
+      </div>
+      <div className="mt-4 grid grid-cols-2 overflow-hidden rounded-lg border border-border">
+        {[
+          ["Each VM runs", "Test runner, browser, dependencies"],
+          ["How the suite splits", "By test discovery, no shard scripts"],
+        ].map(([k, v], i) => (
+          <span key={k} className={`flex flex-col gap-0.5 px-4 py-3 ${i ? "border-l border-border" : ""}`}>
+            <span className={`text-b5 ${SUB}`}>{k}</span>
+            <span className="text-b4 font-medium">{v}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* AI root cause analysis on a failed test */
+export function RcaScreen() {
+  const kinds = ["Product", "Script", "Environment", "No action"];
+  return (
+    <div className="flex h-full flex-col px-6 pt-5">
+      <div className="flex items-center gap-2">
+        <Fail s={16} />
+        <span className="text-b3 font-medium">checkout.spec · pays with a saved card</span>
+        <span className="ml-auto"><Btn><Sparkles size={12} strokeWidth={1.5} aria-hidden /> AI RCA</Btn></span>
+      </div>
+      <div className="mt-4 grid min-h-0 flex-1 grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-3 pb-5">
+        <div className="flex flex-col gap-3">
+          <div className="rounded-lg border border-border px-3 py-2">
+            <span className={`text-b5 ${SUB}`}>Failure type</span>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {kinds.map((k, i) => (
+                <span key={k} className={`tag rounded-sm border px-2 py-0.5 text-b5 ${i === 0 ? "border-foreground bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]" : `border-border ${SUB}`}`}>{k}</span>
+              ))}
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-lg border border-border">
+            <span className={`flex h-7 items-center justify-between bg-[var(--tm-bg-fill)] px-3 text-b5 ${SUB}`}>
+              <span className={MONO}>git diff · 7be6f667</span>
+              <span>pricing.ts</span>
+            </span>
+            <div className={`flex flex-col px-3 py-2 text-b5 ${MONO}`}>
+              <span className="bg-[var(--tm-red-000)] text-[var(--tm-red-500)]">- total = sum(items)</span>
+              <span className="bg-[var(--tm-green-000)] text-[var(--tm-green-500)]">+ total = sum(items) * rate</span>
+              <span className={SUB}>  return round(total)</span>
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 rounded-lg border border-[var(--tm-blue-200)] bg-[var(--tm-bg-accent-muted)] px-4 py-3">
+          <span className="flex items-center gap-2 text-b4 font-medium">
+            <img src={`${ICON}/ai-sparkle.svg`} alt="" className="!static size-3.5 !shadow-none ![animation:none]" /> Root cause
+            <span className={`ml-auto text-b5 font-normal ${SUB}`}>in 24s</span>
+          </span>
+          <span className="text-b4">The total is multiplied by an exchange rate that is undefined for saved cards, so the pay button stays disabled.</span>
+          <span className={`mt-1 text-b5 ${SUB}`}>Steps to fix</span>
+          {["Default rate to 1 when the card has no currency", "Add a unit test for saved-card totals", "Rerun the failed scenarios only"].map((t, i) => (
+            <span key={t} className="flex items-start gap-2 text-b4">
+              <span className={`flex size-4 flex-none items-center justify-center rounded-full bg-surface text-b5 ${MONO}`}>{i + 1}</span>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* flaky test detection over the last 10 runs */
+export function FlakyScreen() {
+  const rows = [
+    { n: "search filters by size", b: "chrome.png", r: 82, sev: "High", muted: true },
+    { n: "applies a promo code", b: "firefox.png", r: 64, sev: "Medium" },
+    { n: "guest checkout", b: "edge.png", r: 41, sev: "Low" },
+    { n: "signs in with SSO", b: "chrome.png", r: 27, sev: "Low" },
+    { n: "tracks an order", b: "firefox.png", r: 8, sev: "" },
+  ];
+  const tone = (s: string) =>
+    s === "High" ? "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]" : s === "Medium" ? "bg-[var(--tm-orange-000)] text-[var(--tm-orange-600)]" : "bg-[var(--tm-bg-fill)] text-muted-foreground";
+  return (
+    <div className="flex h-full flex-col px-6 pt-5">
+      <div className="flex items-center gap-2">
+        <span className="text-b3 font-medium">Flaky tests</span>
+        <span className="ml-auto flex gap-2">
+          <Btn>Window: last 10 runs <ChevronDown size={12} strokeWidth={1.5} aria-hidden /></Btn>
+          <Btn>Threshold 20% <ChevronDown size={12} strokeWidth={1.5} aria-hidden /></Btn>
+        </span>
+      </div>
+      <div className="mt-4 overflow-hidden rounded-lg border border-border">
+        <div className={`grid h-8 grid-cols-[minmax(0,1fr)_120px_120px_96px] items-center gap-3 bg-[var(--tm-bg-fill)] px-4 text-b5 ${SUB}`}>
+          <span>Test · browser</span><span>Last 10 runs</span><span>Flake rate</span><span>Severity</span>
+        </div>
+        {rows.map((r) => (
+          <div key={r.n} className="grid h-11 grid-cols-[minmax(0,1fr)_120px_120px_96px] items-center gap-3 border-t border-[var(--tm-border-muted)] px-4 text-b4">
+            <span className="flex min-w-0 items-center gap-2"><Img n={r.b} s={12} /><span className="truncate">{r.n}</span>{r.muted && <BellOff size={12} strokeWidth={1.5} className={SUB} aria-hidden />}</span>
+            <span className="flex gap-0.5">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <span key={i} className={`h-3 flex-1 rounded-sm ${(i * 7 + r.r) % 100 < r.r ? "bg-[var(--tm-red-300)]" : "bg-[var(--tm-green-300)]"}`} />
+              ))}
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-[var(--tm-bg-fill)]"><span className="block h-full bg-foreground" style={{ width: `${r.r}%` }} /></span>
+              <span className={`w-8 text-right text-b5 ${MONO}`}>{r.r}%</span>
+            </span>
+            <span>{r.sev ? <span className={`tag rounded-sm px-2 py-0.5 text-b5 ${tone(r.sev)}`}>{r.muted ? "Muted" : r.sev}</span> : <span className={`text-b5 ${SUB}`}>Stable</span>}</span>
+          </div>
+        ))}
+      </div>
+      <span className={`mt-3 flex items-center gap-1.5 text-b5 ${SUB}`}>
+        <Info size={12} strokeWidth={1.5} aria-hidden /> Failed five times in a row: muted until you unmute it
+      </span>
+    </div>
+  );
+}
+
+/* auto-healing: the broken locator and the healed one */
+export function HealScreen() {
+  return (
+    <div className="flex h-full flex-col px-6 pt-5">
+      <div className="flex items-center gap-2">
+        <Pass s={16} />
+        <span className="text-b3 font-medium">checkout.spec · pays with a saved card</span>
+        <span className="ml-auto"><Pill tone="ok"><Wand2 size={10} strokeWidth={2} aria-hidden /> Healed</Pill></span>
+      </div>
+      <div className="mt-5 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-3">
+        <div className="flex flex-col gap-2 rounded-lg border border-[var(--tm-red-200)] bg-[var(--tm-red-000)] px-4 py-3">
+          <span className="flex items-center justify-between text-b5"><span className="font-medium">Original locator</span><span className={`tag rounded-sm border border-[var(--tm-red-200)] px-1 ${MONO} text-[var(--tm-red-500)]`}>xpath</span></span>
+          <span className={`text-b4 text-[var(--tm-red-500)] ${MONO}`}>//*[@id='pay-btn']</span>
+          <span className={`text-b5 ${SUB}`}>Not found after the release</span>
+        </div>
+        <span className="flex items-center"><ArrowRight size={16} strokeWidth={1.5} aria-hidden /></span>
+        <div className="flex flex-col gap-2 rounded-lg border border-[var(--tm-green-200)] bg-[var(--tm-green-000)] px-4 py-3">
+          <span className="flex items-center justify-between text-b5"><span className="font-medium">Healed locator</span><span className={`tag rounded-sm border border-[var(--tm-green-200)] px-1 ${MONO} text-[var(--tm-green-500)]`}>css</span></span>
+          <span className={`text-b4 text-[var(--tm-green-500)] ${MONO}`}>button[data-test='pay']</span>
+          <span className={`text-b5 ${SUB}`}>Rebuilt from the recorded DOM</span>
+        </div>
+      </div>
+      <div className="mt-4 overflow-hidden rounded-lg border border-border">
+        <Tabs className="px-4 pt-2" items={["Commands", "Heal log", "DOM"]} on={1} />
+        {[
+          ["Record", "DOM snapshot taken at the last pass", "1.2s"],
+          ["Detect", "//*[@id='pay-btn'] matched nothing", "0.3s"],
+          ["Heal", "Matched by text, role and position", "0.4s"],
+          ["Continue", "Clicked, run carried on", "0.1s"],
+        ].map(([k, v, t]) => (
+          <span key={k} className="flex h-9 items-center gap-3 border-t border-[var(--tm-border-muted)] px-4 text-b4">
+            <Check size={12} strokeWidth={1.5} className="text-[var(--tm-fg-success)]" aria-hidden />
+            <span className="w-16 font-medium">{k}</span>
+            <span className={`min-w-0 flex-1 truncate ${SUB}`}>{v}</span>
+            <span className={`text-b5 ${SUB}`}>{t}</span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* the live page's agent skill transcript */
+export function SkillScreen() {
+  return (
+    <Terminal tabs={["Problems", "Output", "Terminal"]} on={2} right="claude-code" status={["hyperexecute-skill", "UTF-8"]}>
+      <TL><span className={T_MUTED}>$</span> <span className={T_CMD}>npx skills add https://github.com/LambdaTest/agent-skills.git \</span></TL>
+      <TL className={T_CMD}>    --skill hyperexecute-skill</TL>
+      <TL><span className={T_MUTED}>$</span> export LT_USERNAME=<span className={T_WARN}>"&lt;your_username&gt;"</span></TL>
+      <TL><span className={T_MUTED}>$</span> export LT_ACCESS_KEY=<span className={T_WARN}>"&lt;your_access_key&gt;"</span></TL>
+      <span className="my-2 h-px flex-none bg-[var(--tm-bg-inverse-muted)]" />
+      <TL><span className={T_WARN}>&gt;</span> run my Playwright suite on HyperExecute</TL>
+      <span className="h-2 flex-none" />
+      <TL><span className={T_OK}>✓</span> hyperexecute.yaml written and validated</TL>
+      <TL><span className={T_WARN}>?</span> Submit the job to HyperExecute cloud? <span className={T_MUTED}>(y/N)</span> y</TL>
+      <TL><span className={T_OK}>✓</span> Job submitted, logs and artifacts downloaded</TL>
+      <span className="h-2 flex-none" />
+      <TL className={T_MUTED}>
+        <Bot size={12} strokeWidth={1.5} className="mr-2 inline" aria-hidden />
+        48 passed · 1.9m · <Globe size={12} strokeWidth={1.5} className="mx-1 inline" aria-hidden /> hyperexecute.lambdatest.com/job/482
+      </TL>
+    </Terminal>
   );
 }

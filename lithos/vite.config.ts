@@ -18,6 +18,8 @@ export default defineConfig({
         saucelabsAlternative: resolve(__dirname, 'saucelabs-alternative.html'),
         // the automation testing platform page, built from kit folds
         automationTestingPlatform: resolve(__dirname, 'automation-testing-platform.html'),
+        // the HyperExecute page, built from kit folds
+        hyperexecute: resolve(__dirname, 'hyperexecute.html'),
         // the agent assurance page, built from kit folds
         agentAssurance: resolve(__dirname, 'agent-assurance.html'),
       },
