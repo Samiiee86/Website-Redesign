@@ -499,7 +499,7 @@ const evals: MatrixGroup[] = [
    quote card: a tinted card with square marks in its corners, the test's
    tag line where a logo would sit, the quote with a hanging open quote and
    its key phrase marked in the accent, the byline under it, and the
-   portrait framed on the hero folds' misty valley on the right. */
+   portrait on the right. */
 
 const QUOTE = {
   tags: ["Published test", "10 attacks", "2 judge builds"],
@@ -522,7 +522,7 @@ function PublishedTest() {
         <span className={`${corner} bottom-4 left-4`} aria-hidden />
         <span className={`${corner} bottom-4 right-4`} aria-hidden />
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
           <div className="flex flex-col gap-10 lg:gap-16">
             <p className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">{QUOTE.tags.join(" · ")}</p>
             <div className="flex flex-1 flex-col justify-between gap-10 lg:pl-[16%]">
@@ -549,13 +549,13 @@ function PublishedTest() {
             </div>
           </div>
 
-          {/* the portrait, framed on a painted scene */}
-          <div className="relative grid aspect-[4/3] place-items-center overflow-hidden sm:aspect-[2/1] lg:aspect-[4/5] lg:self-end">
-            <img src={`${AA}/scene-valley.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-            <span className="relative bg-surface p-1.5 [box-shadow:var(--tm-shadow-floating-md)]">
-              <img src={QUOTE.photo} alt={QUOTE.name} loading="lazy" className="block size-28 max-w-none object-cover" />
-            </span>
-          </div>
+          {/* the portrait, on its own */}
+          <img
+            src={QUOTE.photo}
+            alt={QUOTE.name}
+            loading="lazy"
+            className="size-40 max-w-none object-cover md:size-48 lg:self-center"
+          />
         </div>
       </figure>
     </Section>
