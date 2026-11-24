@@ -1,9 +1,11 @@
-import { StrictMode, useEffect, useRef, type ReactNode } from "react";
+import { StrictMode, useEffect, useRef, useState, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import {
   ArrowLeftRight,
+  ArrowRight,
   Check,
+  Copy,
   Cloud,
   EyeOff,
   FileChartColumn,
@@ -604,6 +606,35 @@ const stacks: Stack[] = [
   },
 ];
 
+/* every language and framework links to its TestMu AI docs page, as on the live page */
+const SEL: Record<string, string> = {
+  Java: "java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid",
+  JavaScript: "javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid",
+  Python: "python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid",
+  PHP: "php-with-selenium-running-php-automation-scripts-on-testmu-selenium-grid",
+  Ruby: "ruby-with-selenium-running-ruby-automation-scripts-on-testmu-selenium-grid",
+  "C#": "c-with-selenium-running-c-automation-scripts-on-testmu-selenium-grid",
+};
+const FW_SLUG: Record<string, string> = { NightwatchJS: "nightwatch", AngularJS: "angular", "Test::Unit": "testunit" };
+const FW_LINKS: Record<string, string> = {
+  "Playwright|Java": "java-with-playwright/",
+  "Playwright|JUnit": "java-with-playwright/?framework=junit",
+  "Playwright|Playwright": "playwright-testing/",
+  "Playwright|Playwright Test": "playwright-test-runner/",
+  "Playwright|Python": "python-with-playwright/",
+  "Playwright|C#": "csharp-with-playwright/",
+  "Cypress|Cypress": "getting-started-with-cypress-testing/",
+  "Puppeteer|JavaScript": "puppeteer-testing/",
+  "Puppeteer|Jest": "puppeteer-testing-with-jest/",
+  "Puppeteer|Mocha": "puppeteer-testing-with-mocha/",
+  "Puppeteer|Python": "puppeteer-testing-with-pytest-pyppeteer/",
+};
+function fwHref(suite: string, docs: string, lang: string, fw: string, j: number) {
+  if (suite === "Selenium" && SEL[lang]) return `${DOCS}/${SEL[lang]}/` + (j === 0 ? "" : `?framework=${FW_SLUG[fw] ?? fw.toLowerCase()}`);
+  const path = FW_LINKS[`${suite}|${fw}`];
+  return path ? `${DOCS}/${path}` : docs;
+}
+
 function Stacks() {
   return (
     <Section>
@@ -671,7 +702,13 @@ function Stacks() {
                     </span>
                     <span className="flex flex-wrap gap-x-6 gap-y-2 text-b3 text-muted-foreground">
                       {l.fw.map((f, j) => (
-                        <span key={`${f}-${j}`}>{f}</span>
+                        <a
+                          key={`${f}-${j}`}
+                          href={fwHref(s.name, s.docs, l.lang, f, j)}
+                          className="transition-colors duration-150 hover:text-foreground hover:underline hover:underline-offset-4 focus-visible:text-foreground"
+                        >
+                          {f}
+                        </a>
                       ))}
                     </span>
                   </div>
@@ -1031,7 +1068,9 @@ const AGENTS = [
   { name: "Windsurf", src: "/img/integrations/color/windsurf.svg" },
 ];
 
-const dev = [
+type Dev = { name: string; href: string; line: string; cmd?: string; icon: ReactNode };
+
+const dev: Dev[] = [
   {
     name: "MCP server",
     href: `${SITE}/mcp/`,
@@ -1042,9 +1081,62 @@ const dev = [
     name: "Kane CLI",
     href: `${SITE}/kane-cli/`,
     line: "npm install -g kane-cli",
+    cmd: "npm install -g kane-cli",
     icon: <SquareTerminal size={20} strokeWidth={1.5} aria-hidden />,
   },
+  {
+    name: "Rook CLI",
+    href: `${SITE}/agent-assurance/`,
+    line: "npm install -g @testmuai/rook",
+    cmd: "npm install -g @testmuai/rook",
+    icon: (
+      <svg width="16" height="19" viewBox="0 0 12 14" aria-hidden>
+        <path d="M1.5 1h2v1.6h1.6V1h1.8v1.6h1.6V1h2v3.4L9 5.6v4.6l1.6 1.4V13H1.4v-1.4L3 10.2V5.6L1.5 4.4z" fill="currentColor" />
+      </svg>
+    ),
+  },
 ];
+
+/* a tile: the name links to the product (arrow on hover); a command tile also copies its command */
+function DevTile({ name, href, line, cmd, icon }: Dev) {
+  const [done, setDone] = useState(false);
+  const copy = () =>
+    cmd &&
+    navigator.clipboard?.writeText(cmd).then(() => {
+      setDone(true);
+      setTimeout(() => setDone(false), 1600);
+    });
+  return (
+    <div className="group relative flex items-center gap-3 py-1">
+      <span className="flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5">
+        {icon}
+      </span>
+      <span className="flex min-w-0 flex-col">
+        <a href={href} className="flex items-center gap-1.5 text-b2 text-foreground after:absolute after:inset-0 after:content-['']">
+          {name}
+          <ArrowRight
+            size={14}
+            strokeWidth={1.5}
+            aria-hidden
+            className="-translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 group-focus-within:translate-x-0 group-focus-within:opacity-100"
+          />
+        </a>
+        <span className="truncate font-mono text-b4 text-muted-foreground">{line}</span>
+      </span>
+      {cmd && (
+        <button
+          type="button"
+          onClick={copy}
+          aria-label={`Copy ${cmd}`}
+          className="relative z-10 flex size-8 flex-none items-center justify-center rounded-md border border-border bg-surface text-muted-foreground opacity-0 [box-shadow:var(--tm-shadow-resting-xs)] transition-opacity duration-200 hover:text-foreground focus-visible:opacity-100 group-hover:opacity-100 [@media(hover:none)]:opacity-100"
+        >
+          {done ? <Check size={14} strokeWidth={1.5} aria-hidden /> : <Copy size={14} strokeWidth={1.5} aria-hidden />}
+          <span className="sr-only" aria-live="polite">{done ? "Copied" : ""}</span>
+        </button>
+      )}
+    </div>
+  );
+}
 
 function Integrations() {
   return (
@@ -1058,7 +1150,7 @@ function Integrations() {
           </h2>
           <p className="mt-4 max-w-[380px] text-b2 leading-relaxed text-muted-foreground">
             120+ integrations with the tools you already use, plus a native
-            MCP server for your coding agents and Kane CLI for your terminal.
+            MCP server for your coding agents, and Kane CLI and Rook CLI for your terminal.
           </p>
           <a href={`${SITE}/integrations/`} className="btn btn-lg btn-secondary mt-8">
             {integrations.cta}
@@ -1078,21 +1170,13 @@ function Integrations() {
                 </a>
               </li>
             ))}
-          {/* the MCP server and Kane CLI, as two more tiles with a line each */}
+          {/* the MCP server, Kane CLI and Rook CLI, as tiles with a line each */}
           <li className="col-span-full mt-4 border-t border-border pt-6">
             <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">For your coding agents and terminal</span>
           </li>
           <li className="col-span-full grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
-            {dev.map(({ name, href, line, icon }) => (
-              <a key={name} href={href} className="group flex items-center gap-3 py-1">
-                <span className="flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5">
-                  {icon}
-                </span>
-                <span className="flex min-w-0 flex-col">
-                  <span className="text-b2 text-foreground">{name}</span>
-                  <span className="truncate font-mono text-b4 text-muted-foreground">{line}</span>
-                </span>
-              </a>
+            {dev.map((d) => (
+              <DevTile key={d.name} {...d} />
             ))}
           </li>
         </ul>
