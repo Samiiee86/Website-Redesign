@@ -6,24 +6,15 @@ import {
   ArrowRight,
   Check,
   Copy,
-  Cloud,
   EyeOff,
   FileChartColumn,
-  GitPullRequest,
   KeyRound,
   Layers,
-  Link2,
   MonitorOff,
-  MousePointerClick,
   Play,
-  ShieldCheck,
   Signal,
-  Sparkle,
   Sparkles,
   SquareTerminal,
-  TextCursorInput,
-  Timer,
-  Waypoints,
   Zap,
 } from "lucide-react";
 import "./index.css";
@@ -39,25 +30,21 @@ import Faq from "./sections/Faq";
 import Enterprise from "./sections/Enterprise";
 import Footer from "./sections/Footer";
 import { FoldHead } from "./pieces/compare/parts";
+import { LABEL, LazyVideo } from "./pieces/Retro";
 import {
-  AppWindow,
-  Caption,
-  CHIP,
-  Cmd,
-  Done,
-  Gap,
-  Glitch,
-  LABEL,
-  LazyVideo,
-  Ln,
-  OK_PILL,
-  Stage,
-  T_AMBER,
-  T_FAIL,
-  T_MUTED,
-  T_OK,
-  Term,
-} from "./pieces/Retro";
+  AuthoringScreen,
+  CARD,
+  GovernanceScreen,
+  HyperScreen,
+  KaneCliScreen,
+  ParallelScreen,
+  PipelineScreen,
+  PlaywrightScreen,
+  PrivateCloudScreen,
+  ReportingScreen,
+  ROW,
+  Scene,
+} from "./pieces/Screens";
 
 /* Automation testing platform page (automation-testing-platform.html).
 
@@ -166,230 +153,20 @@ function Hero() {
   );
 }
 
-function Tag({ tone, children }: { tone: "ok" | "bad" | "plain"; children: ReactNode }) {
-  const c =
-    tone === "ok"
-      ? "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]"
-      : tone === "bad"
-        ? "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]"
-        : "bg-[var(--tm-bg-fill)] text-muted-foreground";
-  return <span className={`tag flex-none rounded-sm px-1.5 py-0.5 font-mono text-b5 uppercase ${c}`}>{children}</span>;
-}
-
-const Ok = () => <Check size={16} strokeWidth={1.5} className="flex-none text-[var(--tm-fg-success)]" aria-hidden />;
-
 /* ---------- the platform: the home page's product rows ----------
 
    As on the home page (testmuai-redesign): label, heading, body and link
    beside a picture on its own painted scene, sides swapping row by row.
-   The pictures are drawn from tokens in the retro glitch look of the
-   hero-fold videos: the dark terminal for Kane CLI, Playwright and
-   HyperExecute, the light product window for KaneAI and test reporting,
-   and joined cards for parallel runs. Scenes are the hero folds' own. */
+   Each picture is a product screen drawn from scratch in the hero-fold
+   videos' look (pieces/Screens), on a hero fold's painted scene. */
 
 const ATP = "/kit/atp";
 
-function KaneCliView() {
-  return (
-    <Stage scene={`${ATP}/scene-cli.jpg`}>
-      <Term label="kane-cli / run" bar={{ name: "KANE CLI", path: "~/shop/checkout", right: "web · chrome 128" }}>
-        <Cmd>kane-cli run "verify checkout flow on staging"</Cmd>
-        <Ln k="target">staging.acme.com · Chrome 128</Ln>
-        <Ln k="plan">12 steps from 1 objective</Ln>
-        <Gap />
-        {[
-          ["01", "Search for running shoes"],
-          ["02", "Add the first result to the cart"],
-          ["03", "Check out as a guest"],
-          ["04", "Pay with the test card"],
-          ["05", "Confirm the order number shows"],
-        ].map(([n, t]) => (
-          <p key={n} className="flex min-w-0 gap-3">
-            <span className={`w-14 flex-none ${T_MUTED}`}>{n}</span>
-            <span className="min-w-0 flex-1 truncate">{t}</span>
-            <span className={`flex-none ${T_OK}`}>passed</span>
-          </p>
-        ))}
-        <Done>12 tests generated · 12 passed · 41s · exit 0</Done>
-      </Term>
-    </Stage>
-  );
-}
-
-function AuthoringView() {
-  return (
-    <Stage scene={`${ATP}/scene-author.jpg`}>
-      <AppWindow path="kaneai" icon={Sparkles} right={<Sparkle size={16} strokeWidth={1.5} aria-hidden />}>
-        <Caption tag={<span className={LABEL}>Web · Chrome</span>}>Login flow · 4 steps</Caption>
-        <div className="flex flex-col gap-2 px-5">
-          {[
-            { icon: Link2, text: "Go to www.testmuai.com" },
-            { icon: MousePointerClick, text: "Click on login" },
-            { icon: TextCursorInput, text: "Enter email as johndoe@acme.com" },
-            { icon: TextCursorInput, text: "Enter password as *******" },
-          ].map(({ icon: Icon, text }) => (
-            <div key={text} className="flex items-center justify-between gap-3 border border-border px-4 py-2.5 text-b3">
-              <span className="flex min-w-0 items-center gap-3">
-                <Icon size={16} strokeWidth={1.5} className="flex-none text-muted-foreground" aria-hidden />
-                <span className="truncate">{text}</span>
-              </span>
-              <Ok />
-            </div>
-          ))}
-        </div>
-        <div className="m-5 mb-0 flex flex-col gap-3 border border-border bg-[var(--tm-bg-fill)] px-4 py-3">
-          <span className="text-b3">Check the dashboard greets the user by name</span>
-          <span className="tag flex w-fit items-center gap-1.5 rounded-sm border border-[var(--tm-orange-300)] bg-surface px-2 py-1 text-b4 text-[var(--tm-orange-500)]">
-            <Sparkles size={12} strokeWidth={1.5} aria-hidden />
-            Author step
-          </span>
-        </div>
-        <div className="mt-5 flex items-center justify-between bg-[var(--tm-bg-accent-muted)] px-5 py-3 text-b3 text-[var(--tm-fg-link)]">
-          4 steps authored, ready to run
-          <Check size={16} strokeWidth={1.5} aria-hidden />
-        </div>
-      </AppWindow>
-    </Stage>
-  );
-}
-
-function PlaywrightView() {
-  return (
-    <Stage scene={`${ATP}/scene-pw.jpg`}>
-      <Term label="playwright / test">
-        <Cmd>npx playwright test --workers=4</Cmd>
-        <Ln k="hub">wss://cdp.testmuai.com/playwright</Ln>
-        <p className={T_MUTED}>Running 48 tests using 4 workers</p>
-        <Gap />
-        {[
-          { b: "chromium", on: "Windows 11", t: "24s" },
-          { b: "firefox", on: "macOS Sonoma", t: "27s" },
-          { b: "webkit", on: "iPhone 16 · real device", t: "31s", healed: true },
-          { b: "chrome", on: "Galaxy S25 · real device", t: "29s" },
-        ].map((r) => (
-          <p key={r.b} className="flex min-w-0 gap-3">
-            <span className={`flex-none ${T_OK}`}>✓</span>
-            <span className="w-16 flex-none">{r.b}</span>
-            <span className={`min-w-0 flex-1 truncate ${T_MUTED}`}>{r.on}</span>
-            {r.healed && <span className={`flex-none ${T_AMBER}`}>healed</span>}
-            <span className={`flex-none ${T_MUTED}`}>{r.t}</span>
-          </p>
-        ))}
-        <Done>48 passed (1.9m) · 1 locator healed</Done>
-      </Term>
-    </Stage>
-  );
-}
-
-function ParallelView() {
-  return (
-    <Glitch
-      scene={`${ATP}/scene-par.jpg`}
-      left={
-        <>
-          <Layers size={16} strokeWidth={1.5} aria-hidden />
-          50 sessions
-        </>
-      }
-      right={
-        <>
-          <Timer size={16} strokeWidth={1.5} aria-hidden />
-          6m 12s
-        </>
-      }
-      main={
-        <>
-          <span className="flex items-center justify-between gap-6 text-b3 font-medium">
-            Build #482
-            <span className={OK_PILL}>Running</span>
-          </span>
-          <span className="grid grid-cols-10 gap-1">
-            {Array.from({ length: 50 }).map((_, i) => (
-              <span key={i} className={`size-3 ${i < 44 ? "bg-[var(--tm-green-200)]" : "bg-[var(--tm-bg-fill)]"}`} />
-            ))}
-          </span>
-          <span className="flex gap-2">
-            <span className={CHIP}>1,240 tests</span>
-            <span className={CHIP}>44 of 50 done</span>
-          </span>
-        </>
-      }
-      below={
-        <>
-          <GitPullRequest size={16} strokeWidth={1.5} aria-hidden />
-          Full regression on every pull request
-        </>
-      }
-    />
-  );
-}
-
-function HyperView() {
-  return (
-    <Stage scene={`${ATP}/scene-hx.jpg`}>
-      <Term label="hyperexecute / run" bar={{ name: "HYPEREXECUTE", path: "job 7f3a · auto-split", right: "64 lanes" }}>
-        <Cmd>hyperexecute --config he.yaml --smart-split</Cmd>
-        <Ln k="split">1,204 tests across 64 lanes</Ln>
-        <Gap />
-        {[
-          ["checkout.spec", "41s", true],
-          ["auth.spec", "38s", true],
-          ["search.spec", "44s", true],
-          ["payments.spec", "failed", false],
-        ].map(([n, t, ok]) => (
-          <p key={n as string} className="flex min-w-0 gap-3">
-            <span className={`flex-none ${ok ? T_OK : T_FAIL}`}>{ok ? "✓" : "✕"}</span>
-            <span className="min-w-0 flex-1 truncate">{n as string}</span>
-            <span className={`flex-none ${ok ? T_MUTED : T_FAIL}`}>{t as string}</span>
-          </p>
-        ))}
-        <Gap />
-        <Ln k="cause" className={T_AMBER}>
-          #checkout not interactable · retrying 2 tests
-        </Ln>
-        <Done>Done in 4m 12s · 70% faster than a grid</Done>
-      </Term>
-    </Stage>
-  );
-}
-
-function ReportingView() {
-  return (
-    <Stage scene={`${ATP}/scene-rep.jpg`}>
-      <AppWindow path="test-analytics" icon={FileChartColumn} right={<Sparkle size={16} strokeWidth={1.5} aria-hidden />}>
-        <Caption tag={<Tag tone="bad">Failed</Tag>}>Selenium test #14 · checkout</Caption>
-        <div className="flex gap-4 border-b border-border px-5 pb-2 text-b4 text-muted-foreground">
-          <span className="border-b border-foreground pb-1 text-foreground">Network</span>
-          <span>Console</span>
-          <span>Commands</span>
-          <span>Video</span>
-        </div>
-        <div className="flex flex-col">
-          {[
-            { m: "GET", p: "/api/products", s: "200", t: "182ms", ok: true },
-            { m: "POST", p: "/api/cart", s: "500", t: "1.2s", ok: false },
-            { m: "GET", p: "/checkout", s: "200", t: "240ms", ok: true },
-          ].map((r) => (
-            <div key={r.p} className="flex items-center justify-between gap-3 border-b border-border px-5 py-2.5 font-mono text-b4">
-              <span className="flex items-center gap-3">
-                <span className="w-10 font-mono text-muted-foreground">{r.m}</span>
-                <span className="font-mono">{r.p}</span>
-              </span>
-              <span className="flex items-center gap-3">
-                <span className={`font-mono ${r.ok ? "text-muted-foreground" : "text-[var(--tm-fg-error)]"}`}>{r.s}</span>
-                <span className="font-mono text-muted-foreground">{r.t}</span>
-              </span>
-            </div>
-          ))}
-        </div>
-        <div className="flex items-start gap-3 bg-[var(--tm-bg-accent-muted)] px-5 py-3 text-b3 text-[var(--tm-fg-link)]">
-          <Sparkles size={16} strokeWidth={1.5} className="mt-0.5 flex-none" aria-hidden />
-          Add to cart failed: the cart API returned 500 after the price change.
-        </div>
-      </AppWindow>
-    </Stage>
-  );
-}
+const RowShot = ({ scene, children }: { scene: string; children: ReactNode }) => (
+  <Scene scene={`${ATP}/scene-${scene}.jpg`} {...ROW}>
+    {children}
+  </Scene>
+);
 
 const rows = [
   {
@@ -398,7 +175,7 @@ const rows = [
     title: "Author web and mobile tests with AI from your terminal",
     body: "Describe a test in natural language and Kane CLI runs it on your web or mobile app. The same command runs on your machine, in CI, or inside an AI coding agent.",
     link: { label: "Try Kane CLI", href: `${SITE}/kane-cli/` },
-    view: <KaneCliView />,
+    view: <RowShot scene="cli"><KaneCliScreen /></RowShot>,
   },
   {
     label: "AI test authoring",
@@ -406,7 +183,7 @@ const rows = [
     title: "Author tests in natural language with KaneAI",
     body: "Describe a scenario in natural language and KaneAI plans, authors, and maintains the test case for you, no scripting required.",
     link: { label: "View documentation", href: `${SITE}/support/docs/getting-started-with-kane-ai/` },
-    view: <AuthoringView />,
+    view: <RowShot scene="author"><AuthoringScreen /></RowShot>,
   },
   {
     label: "Playwright testing",
@@ -414,7 +191,7 @@ const rows = [
     title: "Run your existing Playwright suite at scale",
     body: "Run your existing Playwright suite on the test automation platform at scale without changing test code, reporters, or CI configuration.",
     link: { label: "View documentation", href: `${SITE}/support/docs/playwright-testing/` },
-    view: <PlaywrightView />,
+    view: <RowShot scene="pw"><PlaywrightScreen /></RowShot>,
   },
   {
     label: "Parallel execution",
@@ -422,7 +199,7 @@ const rows = [
     title: "Ship faster with parallel testing at scale",
     body: "Split your suite across concurrent cloud sessions and cut total run time from hours to minutes. No grid setup, no code changes.",
     link: { label: "Get started free", href: SIGNUP },
-    view: <ParallelView />,
+    view: <RowShot scene="par"><ParallelScreen /></RowShot>,
   },
   {
     label: "HyperExecute",
@@ -430,7 +207,7 @@ const rows = [
     title: "Run automation tests 70% faster with HyperExecute",
     body: "HyperExecute is an AI-native orchestration platform that executes automation suites up to 70% faster than a conventional cloud grid.",
     link: { label: "View documentation", href: `${SITE}/support/docs/getting-started-with-hyperexecute/` },
-    view: <HyperView />,
+    view: <RowShot scene="hx"><HyperScreen /></RowShot>,
   },
   {
     label: "Test reporting",
@@ -438,7 +215,7 @@ const rows = [
     title: "Debug test failures with AI reporting",
     body: "Every test session is captured in full and AI surfaces the exact failure, so your team resolves defects without reproducing them locally.",
     link: { label: "Get started free", href: SIGNUP },
-    view: <ReportingView />,
+    view: <RowShot scene="rep"><ReportingScreen /></RowShot>,
   },
 ];
 
@@ -825,19 +602,19 @@ function BeyondBasics() {
 
 const hyper = [
   {
-    icon: Cloud,
+    screen: <PrivateCloudScreen />,
     scene: "/kit/img/hills.webp",
     title: "HyperExecute for private cloud",
     body: "Keep every automated test run inside your private cloud, with all data behind your firewall and full control over runners and storage.",
   },
   {
-    icon: ShieldCheck,
+    screen: <GovernanceScreen />,
     scene: "/kit/img/meadow.webp",
     title: "Enterprise access and governance",
     body: "Run teams at scale with SSO, role-based access, audit trails, and policy enforcement applied across the whole organization.",
   },
   {
-    icon: Waypoints,
+    screen: <PipelineScreen />,
     scene: "/kit/img/shore.webp",
     title: "CLI integrations with every pipeline",
     body: "Drop the HyperExecute CLI into any CI/CD pipeline to push scripts and keep end-to-end testing tied to each deployment.",
@@ -859,12 +636,13 @@ function EnterpriseHyper() {
       </FoldHead>
       <div className="tm-reveal -mx-8">
         <div className="tm-grid tm-grid--3">
-          {hyper.map(({ icon: Icon, scene, title, body }) => (
+          {hyper.map(({ screen, scene, title, body }) => (
             <a key={title} className="tm-cell tm-fcard2" href={`${SITE}/hyperexecute/`}>
-              <div className="tm-well grid place-items-center">
-                <img className="tm-fit absolute inset-0" src={scene} alt="" loading="lazy" />
-                {/* the kit's cards carry one white mark on the scene */}
-                <Icon size={64} strokeWidth={1} className="relative text-[var(--tm-fg-inverse)]" aria-hidden />
+              {/* the kit card's scene, with the product screen on it, as in the hero folds */}
+              <div className="tm-well">
+                <Scene scene={scene} card {...CARD}>
+                  {screen}
+                </Scene>
               </div>
               <h3>{title}</h3>
               <p>{body}</p>
@@ -1075,7 +853,7 @@ const dev: Dev[] = [
     name: "MCP server",
     href: `${SITE}/mcp/`,
     line: "Claude Code, Cursor, Copilot and more",
-    icon: <img src="/img/integrations/color/mcp.svg" alt="" className="size-5 object-contain" loading="lazy" />,
+    icon: <img src="/img/integrations/color/mcp.svg" alt="" className="size-5 object-contain" />,
   },
   {
     name: "Kane CLI",
@@ -1159,12 +937,12 @@ function Integrations() {
 
         <ul className="grid grid-cols-2 content-start gap-x-8 gap-y-4 sm:grid-cols-3">
           {integrations.items
-            .filter((item) => item.name !== "MCP Server")
+            .filter((item) => !["MCP Server", "GitLab", "CircleCI"].includes(item.name))
             .map((item) => (
               <li key={item.name}>
                 <a href={`${SITE}/integrations/`} className="group flex items-center gap-3 py-1">
                   <span className="flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5">
-                    <img src={`/img/integrations/color/${item.icon}.svg`} alt="" className="size-5 object-contain" loading="lazy" />
+                    <img src={`/img/integrations/color/${item.icon}.svg`} alt="" className="size-5 object-contain" />
                   </span>
                   <span className="text-b2 text-foreground">{item.name}</span>
                 </a>
