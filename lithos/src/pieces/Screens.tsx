@@ -62,10 +62,15 @@ export function Fit({ w, h, children }: { w: number; h: number; children: ReactN
   );
 }
 
-/* the hero fold's stage: a painted scene with the screen centred on it */
+/* the hero fold's stage: a painted scene with the screen centred on it; rows use the
+   home page's stage height (380, 540 from tablet up) */
 export function Scene({ scene, w, h, card, children }: { scene: string; w: number; h: number; card?: boolean; children: ReactNode }) {
   return (
-    <div className={`relative grid h-full place-items-center overflow-hidden bg-[var(--tm-bg-fill)] ${card ? "p-6" : "border border-border p-6 md:p-12"}`}>
+    <div
+      className={`relative grid place-items-center overflow-hidden bg-[var(--tm-bg-fill)] ${
+        card ? "h-full p-6" : "h-[380px] border border-border px-6 md:h-[540px] md:px-12"
+      }`}
+    >
       <img src={scene} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
       <div className="relative w-full bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
         <Fit w={w} h={h}>{children}</Fit>
