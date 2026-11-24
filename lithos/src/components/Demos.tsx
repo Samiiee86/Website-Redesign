@@ -387,13 +387,18 @@ function AssuranceDemo() {
   return (
     <Window title="rook · agent assurance" icon={ShieldCheck} right={<Terminal size={11} />} dark>
       <video
-        src="/video/rook-cli-session.mp4"
         autoPlay
         loop
         muted
         playsInline
-        className="block w-full"
-      />
+        preload="auto"
+        poster="/img/agent-assurance-demo-poster.jpg?v=1"
+        aria-label="Rook CLI: explore an agent, generate scenarios, run them, then read the results in the web report"
+        className="block aspect-[1072/552] w-full object-cover"
+      >
+        <source src="/video/agent-assurance-demo.webm?v=1" type="video/webm" />
+        <source src="/video/agent-assurance-demo.mp4?v=1" type="video/mp4" />
+      </video>
     </Window>
   );
 }
