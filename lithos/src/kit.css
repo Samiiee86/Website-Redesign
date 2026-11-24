@@ -1,0 +1,8 @@
+/* TestMu DS section kit (tm-join, tm-fold, tm-tour ...) for the kit pages
+   only. The home page doesn't load this file, so it is unchanged. */
+@import "../.testmu/tokens/testmu.css";
+/* kit code blocks: the coloured spans inside keep the block's Space Mono
+   instead of taking Manrope from the page rule */
+.tm :where(pre, code) * {
+  font-family: inherit;
+}

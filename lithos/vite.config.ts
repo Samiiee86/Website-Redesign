@@ -11,6 +11,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         options: resolve(__dirname, 'options.html'),
+        // the automation testing platform page, built from kit folds
+        automationTestingPlatform: resolve(__dirname, 'automation-testing-platform.html'),
       },
     },
   },

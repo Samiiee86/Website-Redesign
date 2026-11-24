@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown, Minus, Plus } from "lucide-react";
 import { faq } from "../lib/content";
@@ -11,10 +11,15 @@ import { Section } from "../lib/ui";
 const FIRST = 8;
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-export default function Faq() {
+/* `items` swaps in a page's own questions; the home page uses the default. */
+export default function Faq({
+  items = faq,
+}: {
+  items?: { q: string; a: ReactNode }[];
+}) {
   const [open, setOpen] = useState<number | null>(null);
   const [all, setAll] = useState(false);
-  const shown = all ? faq : faq.slice(0, FIRST);
+  const shown = all ? items : items.slice(0, FIRST);
 
   return (
     <Section className="!py-0 md:!py-0">
@@ -62,7 +67,7 @@ export default function Faq() {
             );
           })}
 
-          {faq.length > FIRST && (
+          {items.length > FIRST && (
             <div className="border-t border-border">
               <button
                 onClick={() => {
