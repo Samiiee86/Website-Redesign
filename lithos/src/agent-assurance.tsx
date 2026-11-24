@@ -503,6 +503,10 @@ const evals: MatrixGroup[] = [
 const QUOTE = {
   tags: ["Published test", "10 attacks", "2 judge builds"],
   before: "The newer judge stopped treating an unsupported claim as a breach and ",
+  counts: [
+    ["10", "attacks"],
+    ["2", "judge builds"],
+  ],
   mark: "moved toward trace-backed confirmation.",
   name: "Victor Ematin",
   role: "AI Quality Engineering Lead, Independent practice",
@@ -517,11 +521,18 @@ function PublishedTest() {
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
           <div className="flex flex-col gap-10 lg:gap-16">
-            <p className="flex items-start gap-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
-              <span className="mt-1.5 size-1.5 flex-none rounded-full bg-[var(--tm-hero-arrow)]" aria-hidden />
-              <span>
-                <span className="text-foreground">{QUOTE.tags[0]}</span> · {QUOTE.tags.slice(1).join(" · ")}
+            {/* the tag line: the counts in the pixel face, so they read first */}
+            <p className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
+              <span className="flex items-center gap-2 text-foreground">
+                <span className="size-1.5 flex-none rounded-full bg-[var(--tm-hero-arrow)]" aria-hidden />
+                {QUOTE.tags[0]}
               </span>
+              {QUOTE.counts.map(([n, k]) => (
+                <span key={k} className="flex items-baseline gap-2">
+                  <span className="pixel text-[24px] leading-none tracking-normal text-foreground">{n}</span>
+                  {k}
+                </span>
+              ))}
             </p>
             <div className="flex flex-1 flex-col justify-between gap-10 lg:pl-[16%]">
               <blockquote className="relative text-[24px] leading-[32px] tracking-[-1px] md:text-[32px] md:leading-[40px]">
@@ -529,10 +540,9 @@ function PublishedTest() {
                   “
                 </span>
                 {QUOTE.before}
-                <mark className="bg-[var(--tm-bg-accent-muted)] px-1 text-[var(--tm-fg-link)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+                <mark className="bg-[var(--tm-bg-inverse)] px-1 text-[var(--tm-fg-inverse)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
                   {QUOTE.mark}
-                </mark>
-                ”
+                </mark>”
               </blockquote>
               <figcaption className="flex flex-col gap-4">
                 <span className="flex flex-col">
