@@ -2,6 +2,7 @@ import { StrictMode, useEffect, useRef, useState, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig, motion, useInView, useReducedMotion } from "motion/react";
 import {
+  ArrowUpRight,
   Bot,
   Blocks,
   BookOpen,
@@ -491,6 +492,60 @@ const evals: MatrixGroup[] = [
     ],
   },
 ];
+
+/* ---------- a published test: the kit's wide review card ----------
+
+   The live page's quote (testmuai.com/agent-assurance), in the kit's
+   reviews fold: the wide customer card, alone across the frame. Its tag
+   line on top, the quote below with its second half in grey (as live),
+   and the byline with the photo, role and the LinkedIn thread. */
+
+const QUOTE = {
+  tags: ["Published test", "10 attacks", "2 judge builds"],
+  lead: "The newer judge stopped treating an unsupported claim as a breach",
+  rest: "and moved toward trace-backed confirmation.",
+  name: "Victor Ematin",
+  role: "AI Quality Engineering Lead, Independent practice",
+  photo: "https://assets.testmuai.com/resources/images/victor-ematin-headshot.webp",
+  link: "https://www.linkedin.com/posts/victor-ematin_aiquality-agentassurance-aisecurity-ugcPost-7521078454981906432-xV-l/",
+};
+
+function PublishedTest() {
+  return (
+    <Section>
+      <div className="tm-reveal -mx-8">
+        <div className="tm-grid tm-grid--2">
+          <figure className="tm-cell tm-rv tm-rv--wide !min-h-0">
+            <div className="tm-rv__body !gap-12 lg:!px-12 lg:!pb-12 lg:!pt-10">
+              <p className="tm-rv__tags !text-muted-foreground">
+                {QUOTE.tags.map((t, i) => (
+                  <span key={t} className="flex items-center">
+                    {i > 0 && <i className="tm-sq" />}
+                    {t}
+                  </span>
+                ))}
+              </p>
+              <blockquote className="!max-w-[880px] [text-wrap:balance]">
+                “{QUOTE.lead} <span className="text-muted-foreground">{QUOTE.rest}”</span>
+              </blockquote>
+            </div>
+            <figcaption className="tm-rv__by !flex-wrap !gap-4 lg:!px-12 lg:!py-6">
+              <img className="tm-rv__av avatar rounded-full" src={QUOTE.photo} alt="" loading="lazy" />
+              <div>
+                {QUOTE.name}
+                <span>{QUOTE.role}</span>
+              </div>
+              <a className="tm-link inline-flex flex-none items-center gap-1.5" href={QUOTE.link} target="_blank" rel="noreferrer">
+                Read the thread on LinkedIn
+                <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden />
+              </a>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </Section>
+  );
+}
 
 function FromEvals() {
   return (
@@ -1252,6 +1307,7 @@ function Page() {
         <TrustedBy />
         <Statement />
         <Evidence />
+        <PublishedTest />
         <FromEvals />
         <Phases />
         <RunRook />
