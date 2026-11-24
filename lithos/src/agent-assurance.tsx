@@ -493,18 +493,17 @@ const evals: MatrixGroup[] = [
   },
 ];
 
-/* ---------- a published test: the quote card ----------
+/* ---------- a published test: the quote in a joined frame ----------
 
-   The live page's quote (testmuai.com/agent-assurance) as a customer
-   quote card: a tinted card with square marks in its corners, the test's
-   tag line where a logo would sit, the quote with a hanging open quote and
-   its key phrase marked in the accent, the byline under it, and the
-   portrait on the right. */
+   The live page's quote (testmuai.com/agent-assurance) in the kit's
+   joined cells, edge to edge with the frame: the quote on top in the
+   heading's two tones (grey lead, black key phrase), then a row of three
+   cells: who said it, the test's two counts in the pixel face, and the
+   LinkedIn thread. */
 
 const QUOTE = {
-  tags: ["Published test", "10 attacks", "2 judge builds"],
-  before: "The newer judge stopped treating an unsupported claim as a breach and ",
-  mark: "moved toward trace-backed confirmation.",
+  lead: "The newer judge stopped treating an unsupported claim as a breach",
+  main: "and moved toward trace-backed confirmation.",
   name: "Victor Ematin",
   role: "AI Quality Engineering Lead, Independent practice",
   photo: "https://assets.testmuai.com/resources/images/victor-ematin-headshot.webp",
@@ -512,50 +511,49 @@ const QUOTE = {
 };
 
 function PublishedTest() {
-  const corner = "absolute size-1.5 bg-[var(--tm-gray-300)]";
   return (
     <Section>
-      <figure className="tm-reveal relative border border-border bg-[var(--tm-bg-fill)] p-6 md:p-10 lg:p-12">
-        {/* the card's corner marks */}
-        <span className={`${corner} left-4 top-4`} aria-hidden />
-        <span className={`${corner} right-4 top-4`} aria-hidden />
-        <span className={`${corner} bottom-4 left-4`} aria-hidden />
-        <span className={`${corner} bottom-4 right-4`} aria-hidden />
+      <figure className="tm-reveal -mx-8 grid gap-px border-y border-border bg-border">
+        {/* the quote */}
+        <div className="flex flex-col gap-8 bg-surface px-8 py-10 lg:px-12 lg:py-16">
+          <span className="flex items-center gap-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
+            <span className="size-1.5 rounded-full bg-[var(--tm-hero-arrow)]" aria-hidden />
+            Published test
+          </span>
+          <blockquote className="max-w-[960px] text-[24px] font-medium leading-[32px] tracking-[-1px] [text-wrap:balance] md:text-[32px] md:leading-[40px]">
+            <span className="text-muted-foreground">“{QUOTE.lead}</span> {QUOTE.main}”
+          </blockquote>
+        </div>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
-          <div className="flex flex-col gap-10 lg:gap-16">
-            <p className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">{QUOTE.tags.join(" · ")}</p>
-            <div className="flex flex-1 flex-col justify-between gap-10 lg:pl-[16%]">
-              <blockquote className="relative text-[24px] leading-[32px] tracking-[-1px] md:text-[32px] md:leading-[40px]">
-                <span className="absolute right-full pr-1.5" aria-hidden>
-                  “
-                </span>
-                {QUOTE.before}
-                <mark className="bg-[var(--tm-bg-accent)] px-0.5 text-[var(--tm-fg-inverse)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
-                  {QUOTE.mark}
-                </mark>
-                ”
-              </blockquote>
-              <figcaption className="flex flex-col gap-4">
-                <span className="flex flex-col">
-                  <span className="text-b2 font-medium">{QUOTE.name}</span>
-                  <span className="text-b3 text-muted-foreground">{QUOTE.role}</span>
-                </span>
-                <a className="tm-link inline-flex items-center gap-1.5 self-start" href={QUOTE.link} target="_blank" rel="noreferrer">
-                  Read the thread on LinkedIn
-                  <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden />
-                </a>
-              </figcaption>
-            </div>
+        {/* who said it, the test's counts, the thread */}
+        <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)]">
+          <figcaption className="flex items-center gap-4 bg-surface px-8 py-6 md:col-span-2 lg:col-span-1 lg:px-12">
+            <img src={QUOTE.photo} alt="" loading="lazy" className="size-16 max-w-none flex-none object-cover" />
+            <span className="flex min-w-0 flex-col">
+              <span className="text-b2 font-medium">{QUOTE.name}</span>
+              <span className="text-b3 text-muted-foreground">{QUOTE.role}</span>
+            </span>
+          </figcaption>
+          <div className="grid grid-cols-2 gap-px bg-border">
+            {[
+              ["10", "Attacks"],
+              ["2", "Judge builds"],
+            ].map(([n, k]) => (
+              <span key={k} className="flex flex-col justify-center gap-1 bg-surface px-6 py-6">
+                <span className="pixel text-[32px] leading-none">{n}</span>
+                <span className="text-b3 text-muted-foreground">{k}</span>
+              </span>
+            ))}
           </div>
-
-          {/* the portrait, on its own */}
-          <img
-            src={QUOTE.photo}
-            alt={QUOTE.name}
-            loading="lazy"
-            className="size-40 max-w-none object-cover md:size-48 lg:self-center"
-          />
+          <a
+            className="group flex items-center justify-between gap-4 bg-surface px-8 py-6 transition-colors duration-200 hover:bg-[var(--tm-bg-fill)] lg:px-12"
+            href={QUOTE.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span className="text-b2 font-medium">Read the thread on LinkedIn</span>
+            <ArrowUpRight size={20} strokeWidth={1.5} className="flex-none transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+          </a>
         </div>
       </figure>
     </Section>
