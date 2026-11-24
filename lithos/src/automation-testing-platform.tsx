@@ -143,7 +143,8 @@ function Hero() {
         </div>
         <div className="tm-hero__stage">
           <img className="tm-scene" src={`${HERO}/hero-bg.jpg`} alt="" />
-          <div className="tm-hero__screen">
+          {/* the hero fold's own frame: 1072 x 552, the videos' ratio (the kit draws 1000 x 552 and trims the sides) */}
+          <div className="tm-hero__screen !max-w-[1072px] !aspect-[1072/552]">
             <video
               autoPlay
               muted
