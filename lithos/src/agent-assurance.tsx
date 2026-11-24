@@ -3,7 +3,6 @@ import { createRoot } from "react-dom/client";
 import { MotionConfig, motion, useInView, useReducedMotion } from "motion/react";
 import {
   ArrowUpRight,
-  Quote,
   Bot,
   Blocks,
   BookOpen,
@@ -494,17 +493,18 @@ const evals: MatrixGroup[] = [
   },
 ];
 
-/* ---------- a published test: the quote beside its evidence ----------
+/* ---------- a published test: the quote card ----------
 
-   The live page's quote (testmuai.com/agent-assurance), in the kit's
-   joined cells: the quote and its byline on the left (second half
-   in grey, as live), and on a painted scene the published test behind it:
-   its two counts in the pixel face, then what changed between the two
-   judge builds, in the quote's own words. */
+   The live page's quote (testmuai.com/agent-assurance) as a customer
+   quote card: a tinted card with square marks in its corners, the test's
+   tag line where a logo would sit, the quote with a hanging open quote and
+   its key phrase marked in the accent, the byline under it, and the
+   portrait framed on the hero folds' misty valley on the right. */
 
 const QUOTE = {
-  lead: "The newer judge stopped treating an unsupported claim as a breach",
-  rest: "and moved toward trace-backed confirmation.",
+  tags: ["Published test", "10 attacks", "2 judge builds"],
+  before: "The newer judge stopped treating an unsupported claim as a breach and ",
+  mark: "moved toward trace-backed confirmation.",
   name: "Victor Ematin",
   role: "AI Quality Engineering Lead, Independent practice",
   photo: "https://assets.testmuai.com/resources/images/victor-ematin-headshot.webp",
@@ -512,78 +512,52 @@ const QUOTE = {
 };
 
 function PublishedTest() {
+  const corner = "absolute size-1.5 bg-[var(--tm-gray-300)]";
   return (
     <Section>
-      <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--2 lg:!grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-          {/* the quote and who said it */}
-          <figure className="tm-cell flex flex-col justify-between gap-12 !p-8 lg:!p-12">
-            <div className="flex flex-col gap-8">
-              <span className="flex size-10 items-center justify-center rounded-full border border-border">
-                <Quote size={16} strokeWidth={1.5} aria-hidden />
-              </span>
-              <blockquote className="text-[24px] font-medium leading-[32px] tracking-[-1px] [text-wrap:balance] md:text-[32px] md:leading-[40px]">
-                {QUOTE.lead} <span className="text-muted-foreground">{QUOTE.rest}</span>
+      <figure className="tm-reveal relative border border-border bg-[var(--tm-bg-fill)] p-6 md:p-10 lg:p-12">
+        {/* the card's corner marks */}
+        <span className={`${corner} left-4 top-4`} aria-hidden />
+        <span className={`${corner} right-4 top-4`} aria-hidden />
+        <span className={`${corner} bottom-4 left-4`} aria-hidden />
+        <span className={`${corner} bottom-4 right-4`} aria-hidden />
+
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-16">
+          <div className="flex flex-col gap-10 lg:gap-16">
+            <p className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">{QUOTE.tags.join(" · ")}</p>
+            <div className="flex flex-1 flex-col justify-between gap-10 lg:pl-[16%]">
+              <blockquote className="relative text-[24px] leading-[32px] tracking-[-1px] md:text-[32px] md:leading-[40px]">
+                <span className="absolute right-full pr-1.5" aria-hidden>
+                  “
+                </span>
+                {QUOTE.before}
+                <mark className="bg-[var(--tm-bg-accent)] px-0.5 text-[var(--tm-fg-inverse)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+                  {QUOTE.mark}
+                </mark>
+                ”
               </blockquote>
-            </div>
-            <figcaption className="flex flex-col items-start gap-4 border-t border-border pt-6 xl:flex-row xl:items-center xl:justify-between xl:gap-6">
-              <span className="flex min-w-0 items-center gap-4">
-                <img className="avatar size-12 max-w-none flex-none rounded-full object-cover" src={QUOTE.photo} alt="" loading="lazy" />
-                <span className="flex min-w-0 flex-col">
+              <figcaption className="flex flex-col gap-4">
+                <span className="flex flex-col">
                   <span className="text-b2 font-medium">{QUOTE.name}</span>
                   <span className="text-b3 text-muted-foreground">{QUOTE.role}</span>
                 </span>
-              </span>
-              <a className="tm-link inline-flex flex-none items-center gap-1.5" href={QUOTE.link} target="_blank" rel="noreferrer">
-                Read the thread on LinkedIn
-                <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden />
-              </a>
-            </figcaption>
-          </figure>
-
-          {/* the published test behind it, as white cards on a painted scene
-              (the hero folds' misty valley), joined by the retro dotted line:
-              its two counts, then what changed between the two judge builds,
-              in the quote's own words */}
-          <div className="tm-cell relative flex flex-col justify-center overflow-hidden !p-6 md:!p-10">
-            <img src={`${AA}/scene-valley.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-            <div className="relative flex flex-col">
-              <span className="tag mx-auto flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-1 font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">
-                <span className="size-1.5 rounded-full bg-[var(--tm-orange-400)]" />
-                Published test
-              </span>
-              <VLink />
-              <div className="grid grid-cols-2 gap-px border border-border bg-border [box-shadow:var(--tm-shadow-floating-md)]">
-                {[
-                  ["10", "Attacks"],
-                  ["2", "Judge builds"],
-                ].map(([n, k]) => (
-                  <span key={k} className="flex flex-col gap-2 bg-surface px-5 py-4">
-                    <span className="pixel text-[48px] leading-none">{n}</span>
-                    <span className="text-b3 text-muted-foreground">{k}</span>
-                  </span>
-                ))}
-              </div>
-              <VLink />
-              <div className="flex flex-col border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
-                {[
-                  { b: "Judge build 1", t: "An unsupported claim counts as a breach", tag: "Breach", tone: "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]", dot: "bg-[var(--tm-border-default)]" },
-                  { b: "Judge build 2", t: "A breach needs trace-backed confirmation", tag: "Confirmed", tone: "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]", dot: "bg-[var(--tm-green-400)]" },
-                ].map((r) => (
-                  <div key={r.b} className="flex gap-3 border-b border-border px-5 py-4 last:border-b-0">
-                    <span className={`mt-1.5 size-2 flex-none rounded-full ${r.dot}`} />
-                    <span className="flex min-w-0 flex-1 flex-col gap-1">
-                      <span className="font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">{r.b}</span>
-                      <span className="text-b3">{r.t}</span>
-                    </span>
-                    <span className={`tag h-fit flex-none rounded-sm px-2 py-0.5 text-b4 ${r.tone}`}>{r.tag}</span>
-                  </div>
-                ))}
-              </div>
+                <a className="tm-link inline-flex items-center gap-1.5 self-start" href={QUOTE.link} target="_blank" rel="noreferrer">
+                  Read the thread on LinkedIn
+                  <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden />
+                </a>
+              </figcaption>
             </div>
           </div>
+
+          {/* the portrait, framed on a painted scene */}
+          <div className="relative grid aspect-[4/3] place-items-center overflow-hidden sm:aspect-[2/1] lg:aspect-[4/5] lg:self-end">
+            <img src={`${AA}/scene-valley.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+            <span className="relative bg-surface p-1.5 [box-shadow:var(--tm-shadow-floating-md)]">
+              <img src={QUOTE.photo} alt={QUOTE.name} loading="lazy" className="block size-28 max-w-none object-cover" />
+            </span>
+          </div>
         </div>
-      </div>
+      </figure>
     </Section>
   );
 }
