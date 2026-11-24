@@ -15,6 +15,7 @@ export default defineConfig({
         library: resolve(__dirname, 'library.html'),
         // the BrowserStack alternative page, built from kit folds
         browserstackAlternative: resolve(__dirname, 'browserstack-alternative.html'),
+        saucelabsAlternative: resolve(__dirname, 'saucelabs-alternative.html'),
         // the automation testing platform page, built from kit folds
         automationTestingPlatform: resolve(__dirname, 'automation-testing-platform.html'),
         // the agent assurance page, built from kit folds
