@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { MotionConfig, motion, useInView, useReducedMotion } from "motion/react";
 import {
   ArrowUpRight,
+  Quote,
   Bot,
   Blocks,
   BookOpen,
@@ -493,15 +494,15 @@ const evals: MatrixGroup[] = [
   },
 ];
 
-/* ---------- a published test: the kit's wide review card ----------
+/* ---------- a published test: the quote beside its evidence ----------
 
    The live page's quote (testmuai.com/agent-assurance), in the kit's
-   reviews fold: the wide customer card, alone across the frame. Its tag
-   line on top, the quote below with its second half in grey (as live),
-   and the byline with the photo, role and the LinkedIn thread. */
+   joined cells: the quote and its byline on the left (second half
+   in grey, as live), and on a tinted cell the published test behind it:
+   its two counts in the pixel face, then what changed between the two
+   judge builds, in the quote's own words. */
 
 const QUOTE = {
-  tags: ["Published test", "10 attacks", "2 judge builds"],
   lead: "The newer judge stopped treating an unsupported claim as a breach",
   rest: "and moved toward trace-backed confirmation.",
   name: "Victor Ematin",
@@ -514,33 +515,66 @@ function PublishedTest() {
   return (
     <Section>
       <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--2">
-          <figure className="tm-cell tm-rv tm-rv--wide !min-h-0">
-            <div className="tm-rv__body !gap-12 lg:!px-12 lg:!pb-12 lg:!pt-10">
-              <p className="tm-rv__tags !text-muted-foreground">
-                {QUOTE.tags.map((t, i) => (
-                  <span key={t} className="flex items-center">
-                    {i > 0 && <i className="tm-sq" />}
-                    {t}
-                  </span>
-                ))}
-              </p>
-              <blockquote className="!max-w-[880px] [text-wrap:balance]">
-                “{QUOTE.lead} <span className="text-muted-foreground">{QUOTE.rest}”</span>
+        <div className="tm-grid tm-grid--2 lg:!grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+          {/* the quote and who said it */}
+          <figure className="tm-cell flex flex-col justify-between gap-12 !p-8 lg:!p-12">
+            <div className="flex flex-col gap-8">
+              <span className="flex size-10 items-center justify-center rounded-full border border-border">
+                <Quote size={16} strokeWidth={1.5} aria-hidden />
+              </span>
+              <blockquote className="text-[24px] font-medium leading-[32px] tracking-[-1px] [text-wrap:balance] md:text-[32px] md:leading-[40px]">
+                {QUOTE.lead} <span className="text-muted-foreground">{QUOTE.rest}</span>
               </blockquote>
             </div>
-            <figcaption className="tm-rv__by !flex-wrap !gap-4 lg:!px-12 lg:!py-6">
-              <img className="tm-rv__av avatar rounded-full" src={QUOTE.photo} alt="" loading="lazy" />
-              <div>
-                {QUOTE.name}
-                <span>{QUOTE.role}</span>
-              </div>
+            <figcaption className="flex flex-col items-start gap-4 border-t border-border pt-6 xl:flex-row xl:items-center xl:justify-between xl:gap-6">
+              <span className="flex min-w-0 items-center gap-4">
+                <img className="avatar size-12 max-w-none flex-none rounded-full object-cover" src={QUOTE.photo} alt="" loading="lazy" />
+                <span className="flex min-w-0 flex-col">
+                  <span className="text-b2 font-medium">{QUOTE.name}</span>
+                  <span className="text-b3 text-muted-foreground">{QUOTE.role}</span>
+                </span>
+              </span>
               <a className="tm-link inline-flex flex-none items-center gap-1.5" href={QUOTE.link} target="_blank" rel="noreferrer">
                 Read the thread on LinkedIn
                 <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden />
               </a>
             </figcaption>
           </figure>
+
+          {/* the published test behind it: the two counts, then what changed
+              between the two judge builds, in the quote's own words */}
+          <div className="tm-cell flex flex-col gap-8 !bg-[var(--tm-bg-fill)] !p-8 lg:!p-12">
+            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Published test</span>
+            <div className="grid grid-cols-2 gap-px border border-border bg-border">
+              {[
+                ["10", "Attacks"],
+                ["2", "Judge builds"],
+              ].map(([n, k]) => (
+                <span key={k} className="flex flex-col gap-2 bg-surface px-5 py-4">
+                  <span className="pixel text-[48px] leading-none">{n}</span>
+                  <span className="text-b3 text-muted-foreground">{k}</span>
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-col">
+              {[
+                { b: "Judge build 1", t: "An unsupported claim counts as a breach", tag: "Breach", tone: "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]" },
+                { b: "Judge build 2", t: "A breach needs trace-backed confirmation", tag: "Confirmed", tone: "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]" },
+              ].map((r, i) => (
+                <div key={r.b} className={`flex gap-4 ${i ? "pt-4" : "pb-4"}`}>
+                  <span className="flex flex-col items-center pt-1.5">
+                    <span className={`size-2 flex-none rounded-full ${i ? "bg-[var(--tm-green-400)]" : "bg-[var(--tm-border-default)]"}`} />
+                    {i === 0 && <span className="mt-1 w-px flex-1 bg-border" />}
+                  </span>
+                  <span className="flex min-w-0 flex-1 flex-col gap-1">
+                    <span className="font-mono text-b4 uppercase tracking-[1px] text-muted-foreground">{r.b}</span>
+                    <span className="text-b2">{r.t}</span>
+                  </span>
+                  <span className={`tag h-fit flex-none rounded-sm px-2 py-0.5 text-b4 ${r.tone}`}>{r.tag}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </Section>
