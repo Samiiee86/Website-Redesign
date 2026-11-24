@@ -440,29 +440,14 @@ function Stacks() {
           <div key={s.name} className="tm-tour__panel" role="tabpanel" data-step-panel={i} data-hide hidden={i > 0}>
             <div className="tm-tour__main">
               <div className="tm-tour__copy !justify-start">
-                <span className="flex size-14 items-center justify-center border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)]">
-                  <img src={`${IMG}/${s.logo}-automation-cloud.svg`} alt="" className="size-8 object-contain" />
+                <span className="tm-pt__ico tm-pt__ico--brand">
+                  <img src={`${IMG}/${s.logo}-automation-cloud.svg`} alt="" loading="lazy" />
                 </span>
-                <h3 className="mt-6">{s.name}</h3>
+                <h3 className="mt-4">{s.name}</h3>
                 <p>{s.body}</p>
-                {/* the stack at a glance: two numbers in the pixel face */}
-                <div className="mt-6 grid grid-cols-2 gap-px border border-border bg-border">
-                  {[
-                    [s.langs.length, s.langs.length === 1 ? "Language" : "Languages"],
-                    [s.langs.reduce((n, l) => n + l.fw.length, 0), s.langs.reduce((n, l) => n + l.fw.length, 0) === 1 ? "Framework" : "Frameworks"],
-                  ].map(([n, k]) => (
-                    <span key={k} className="flex flex-col gap-2 bg-surface px-4 py-3">
-                      <span className="pixel text-[32px] leading-none">{n}</span>
-                      <span className="text-b4 text-muted-foreground">{k}</span>
-                    </span>
-                  ))}
-                </div>
                 {s.skill && (
-                  <div className="mt-4 flex flex-col gap-3 border border-border bg-[var(--tm-bg-fill)] px-4 py-4">
-                    <span className="flex items-center gap-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
-                      <Sparkles size={16} strokeWidth={1.5} className="text-foreground" aria-hidden />
-                      Agent skill
-                    </span>
+                  <div className="mt-6 flex flex-col gap-3">
+                    <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Agent skill</span>
                     <span className="flex flex-wrap gap-2">
                       {s.skill.map((l) => (
                         <span key={l} className={LABEL}>
@@ -470,41 +455,36 @@ function Stacks() {
                         </span>
                       ))}
                     </span>
+                  </div>
+                )}
+                <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+                  <KitLink as="a" href={s.docs}>
+                    Read the docs
+                  </KitLink>
+                  {s.skill && (
                     <KitLink as="a" href={SKILLS_REPO}>
                       View the skill on GitHub
                     </KitLink>
-                  </div>
-                )}
-                <div className="mt-6">
-                  <KitLink as="a" href={s.docs}>
-                    Read the {s.name} docs
-                  </KitLink>
+                  )}
                 </div>
               </div>
-              {/* every language as a joined card: its icon tile, a count, and each framework as a tag;
-                  rows share the height, and an odd last card stretches across */}
-              <div className={`grid gap-px !bg-border ${s.langs.length > 1 ? "sm:grid-cols-2" : ""}`}>
+              <div className="flex flex-col justify-center px-8 py-6 lg:px-12">
                 {s.langs.map((l) => (
-                  <div key={l.lang} className="flex flex-col gap-4 bg-surface px-6 py-6 sm:[&:last-child:nth-child(odd)]:col-span-2 lg:px-8">
-                    <span className="flex items-center gap-3">
-                      <span className="flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)]">
-                        {l.icon ? (
-                          <img src={`${LANG_ICON}/${l.icon}`} alt="" className="size-5 object-contain" />
-                        ) : (
-                          <span className="font-mono text-b4 font-medium">{l.lang.slice(0, 2)}</span>
-                        )}
-                      </span>
-                      <span className="text-b1 font-medium">{l.lang}</span>
-                      <span className={`${LABEL} ml-auto font-mono`} title={`${l.fw.length} frameworks`}>
-                        {l.fw.length}
-                      </span>
+                  <div key={l.lang} className="flex flex-col gap-2 border-b border-border py-4 last:border-b-0 sm:flex-row sm:items-start sm:gap-6">
+                    <span className="flex w-40 flex-none items-center gap-3 text-b2 font-medium">
+                      {l.icon ? (
+                        <img src={`${LANG_ICON}/${l.icon}`} alt="" className="size-5 object-contain" loading="lazy" />
+                      ) : (
+                        <span className="size-5" />
+                      )}
+                      {l.lang}
                     </span>
-                    <span className="flex flex-wrap gap-2">
+                    <span className="flex flex-wrap gap-x-6 gap-y-2 text-b3 text-muted-foreground">
                       {l.fw.map((f, j) => (
                         <a
                           key={`${f}-${j}`}
                           href={fwHref(s.name, s.docs, l.lang, f, j)}
-                          className="tag rounded-sm border border-border bg-background px-2 py-1 text-b3 text-foreground transition-colors duration-150 hover:border-foreground hover:bg-surface focus-visible:border-foreground"
+                          className="transition-colors duration-150 hover:text-foreground hover:underline hover:underline-offset-4 focus-visible:text-foreground"
                         >
                           {f}
                         </a>
