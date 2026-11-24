@@ -188,7 +188,7 @@ const TL = ({ children, className = "" }: { children?: ReactNode; className?: st
 /* a dark log panel with line numbers, as in the HyperExecute dashboard */
 function Log({ lines }: { lines: ReactNode[] }) {
   return (
-    <div className={`flex flex-col gap-0.5 bg-[var(--tm-bg-inverse)] px-4 py-3 text-b5 ${MONO} ${T_FG}`}>
+    <div className={`flex flex-col gap-0.5 rounded-b-lg bg-[var(--tm-bg-inverse)] px-4 py-3 text-b5 ${MONO} ${T_FG}`}>
       {lines.map((l, i) => (
         <p key={i} className="flex min-w-0 gap-4 whitespace-pre">
           <span className={`w-4 flex-none text-right ${T_MUTED}`}>{i + 1}</span>
@@ -280,7 +280,7 @@ export function AuthoringScreen() {
           <Img n="chrome.png" s={12} /> Running live in Chrome 128
         </span>
       </div>
-      <div className="mx-6 mt-2 flex flex-none flex-col border border-border">
+      <div className="mx-6 mt-2 flex flex-none flex-col overflow-hidden rounded-lg border border-border">
         {steps.map(([s, k], i) => (
           <div key={s} className="flex h-9 items-center gap-3 border-b border-[var(--tm-border-muted)] px-3 text-b4 last:border-b-0">
             <span className={`w-4 flex-none text-b5 ${SUB}`}>{i + 1}</span>
@@ -290,7 +290,7 @@ export function AuthoringScreen() {
           </div>
         ))}
       </div>
-      <div className="mx-6 mt-4 flex h-10 flex-none items-center gap-2 border border-foreground px-3 text-b4">
+      <div className="mx-6 mt-4 input flex h-10 flex-none items-center gap-2 rounded-md border border-foreground px-3 text-b4">
         <Sparkles size={14} strokeWidth={1.5} className="text-[var(--tm-blue-500)]" aria-hidden />
         <span className={SUB}>Describe the next step…</span>
         <span className={`ml-auto flex items-center gap-1 text-b5 ${SUB}`}>
@@ -362,7 +362,7 @@ export function PlaywrightScreen() {
             <span className="button flex size-7 flex-none items-center justify-center rounded-md border border-border"><Copy size={12} strokeWidth={1.5} aria-hidden /></span>
           </span>
         </div>
-        <div className="mt-3 flex gap-8 border border-border px-4 py-2 text-b5">
+        <div className="mt-3 flex gap-8 rounded-lg border border-border px-4 py-2 text-b5">
           <span className="flex flex-col gap-0.5"><span className={SUB}>Time taken</span><span className="text-b4 font-medium">31s</span></span>
           <span className="flex flex-col gap-0.5">
             <span className={SUB}>Configuration</span>
@@ -374,7 +374,7 @@ export function PlaywrightScreen() {
           </span>
         </div>
         <div className="mt-3 flex min-h-0 flex-1 flex-col gap-3 pb-4">
-          <div className="flex h-24 flex-none border border-border">
+          <div className="flex h-24 flex-none overflow-hidden rounded-lg border border-border">
             <img src={`${ICON}/thumb.png`} alt="" className="!static h-full w-36 flex-none object-cover !shadow-none ![animation:none]" />
             <span className="flex flex-1 flex-col justify-center gap-2 px-4 text-b5">
               <span className="text-b4 font-medium">Session recording</span>
@@ -386,7 +386,7 @@ export function PlaywrightScreen() {
               </span>
             </span>
           </div>
-          <div className="flex min-h-0 min-w-0 flex-1 flex-col border border-border px-3 pt-2">
+          <div className="flex min-h-0 min-w-0 flex-1 flex-col rounded-lg border border-border px-3 pt-2">
             <Tabs items={["Commands", "Logs", "Network"]} />
             <span className="mt-2 text-b5 font-medium">5 commands</span>
             {cmds.map((r) => (
@@ -421,7 +421,7 @@ export function ParallelScreen() {
           <Btn><Download size={12} strokeWidth={1.5} aria-hidden /> Export</Btn>
         </span>
       </div>
-      <div className="mt-4 grid grid-cols-4 border border-border">
+      <div className="mt-4 grid grid-cols-4 overflow-hidden rounded-lg border border-border">
         {[
           ["Tests", "1,240", ""],
           ["Parallel sessions", "50", ""],
@@ -451,7 +451,7 @@ export function ParallelScreen() {
           return (
             <span
               key={i}
-              className={`flex h-10 items-center justify-center gap-1 border px-1 text-b5 ${
+              className={`tag flex h-10 items-center justify-center gap-1 rounded-sm border px-1 text-b5 ${
                 s === "ok"
                   ? "border-[var(--tm-green-100)] bg-[var(--tm-green-000)]"
                   : s === "fail"
@@ -465,7 +465,7 @@ export function ParallelScreen() {
           );
         })}
       </div>
-      <div className="mt-5 flex h-1.5 overflow-hidden">
+      <div className="mt-5 flex h-1.5 overflow-hidden rounded-full">
         <span className="w-[88%] bg-[var(--tm-green-400)]" />
         <span className="w-[2%] bg-[var(--tm-red-400)]" />
         <span className="flex-1 bg-[var(--tm-blue-200)]" />
@@ -510,7 +510,7 @@ export function HyperScreen() {
         <span className="flex items-center gap-1"><Clock size={12} strokeWidth={1.5} aria-hidden /> 4m 12s</span>
         <span className="flex items-center gap-1"><Timer size={12} strokeWidth={1.5} aria-hidden /> 70% faster</span>
         <span className="flex items-center gap-1"><User size={12} strokeWidth={1.5} aria-hidden /> username</span>
-        <span className="flex h-1.5 w-28 overflow-hidden"><span className="w-[92%] bg-[var(--tm-green-500)]" /><span className="flex-1 bg-[var(--tm-orange-300)]" /></span>
+        <span className="flex h-1.5 w-28 overflow-hidden rounded-full"><span className="w-[92%] bg-[var(--tm-green-500)]" /><span className="flex-1 bg-[var(--tm-orange-300)]" /></span>
         <span className={`${MONO} ${SUB}`}>7be6f667</span>
       </div>
       <Tabs className="mt-3" items={["Tasks", <>Insights <Pill tone="plain">Beta</Pill></>]} />
@@ -519,7 +519,7 @@ export function HyperScreen() {
           <Field>Search</Field>
           <span className={`text-b5 font-medium ${SUB}`}>Execution tasks</span>
           {tasks.map(([n, t, ok], i) => (
-            <span key={n} className={`flex flex-col gap-1 whitespace-nowrap border px-3 py-2 ${i === 2 ? "border-transparent bg-[var(--tm-bg-muted)]" : "border-border"}`}>
+            <span key={n} className={`flex flex-col gap-1 whitespace-nowrap rounded-lg border px-3 py-2 ${i === 2 ? "border-transparent bg-[var(--tm-bg-muted)]" : "border-border"}`}>
               <span className="flex items-center gap-2 text-b4 font-medium">{ok ? <Pass s={14} /> : <Fail s={14} />} {n}</span>
               <span className={`flex items-center gap-1 pl-6 text-b5 ${SUB}`}><Clock size={10} strokeWidth={1.5} aria-hidden /> {t} · <Img n="windows.png" s={10} /> Win 11</span>
             </span>
@@ -527,14 +527,14 @@ export function HyperScreen() {
         </div>
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex items-center">
-            <span className="flex border border-border text-b4">
+            <span className="segment flex overflow-hidden rounded-md border border-border text-b4">
               <span className="px-3 py-1">Pre steps</span>
               <span className="border-x border-border bg-[var(--tm-bg-muted)] px-3 py-1 font-medium">Scenarios</span>
               <span className="px-3 py-1">Post steps</span>
             </span>
             <span className="ml-auto"><Btn><FileText size={12} strokeWidth={1.5} aria-hidden /> Task metrics</Btn></span>
           </div>
-          <div className="mt-2 flex h-9 items-center gap-2 border border-border px-3 text-b4 font-medium">
+          <div className="mt-2 flex h-9 items-center gap-2 rounded-t-lg border border-border px-3 text-b4 font-medium">
             <ChevronDown size={12} strokeWidth={1.5} aria-hidden />
             <Fail s={14} /> payments.spec · pays with a saved card
             <span className={`ml-auto flex items-center gap-1 text-b5 font-normal ${SUB}`}><Clock size={10} strokeWidth={1.5} aria-hidden /> 41s</span>
@@ -550,7 +550,7 @@ export function HyperScreen() {
               <span className={T_MUTED}>[INFO] Total time: 41.2 s</span>,
             ]}
           />
-          <div className="mt-2 flex items-start gap-2 border border-border bg-[var(--tm-bg-accent-muted)] px-3 py-2 text-b5">
+          <div className="mt-2 flex items-start gap-2 rounded-lg border border-border bg-[var(--tm-bg-accent-muted)] px-3 py-2 text-b5">
             <Sparkles size={12} strokeWidth={1.5} className="mt-0.5 flex-none text-[var(--tm-blue-500)]" aria-hidden />
             <span><span className="font-medium">Root cause:</span> the cookie banner covered the pay button. Auto-heal retried and the test passed.</span>
           </div>
@@ -558,7 +558,7 @@ export function HyperScreen() {
             ["checkout.spec · guest checkout", "38s"],
             ["search.spec · filters by size", "44s"],
           ].map(([n, t]) => (
-            <div key={n} className="mt-2 flex h-9 items-center gap-2 border border-border px-3 text-b4 font-medium">
+            <div key={n} className="mt-2 flex h-9 items-center gap-2 rounded-lg border border-border px-3 text-b4 font-medium">
               <ChevronRight size={12} strokeWidth={1.5} aria-hidden />
               <Pass s={14} /> {n}
               <span className={`ml-auto flex items-center gap-1 text-b5 font-normal ${SUB}`}><Clock size={10} strokeWidth={1.5} aria-hidden /> {t}</span>
@@ -583,7 +583,7 @@ export function ReportingScreen() {
     ["brave.png", "Brave", 146, 142, 4],
   ] as const;
   const Widget = ({ title, children }: { title: string; children: ReactNode }) => (
-    <div className="flex min-h-0 flex-col border border-border px-3 py-2">
+    <div className="flex min-h-0 flex-col rounded-lg border border-border px-3 py-2">
       <span className="flex items-center gap-1.5 text-b4 font-medium">
         {title} <Info size={10} strokeWidth={1.5} className={SUB} aria-hidden />
         <MoreHorizontal size={12} strokeWidth={1.5} className={`ml-auto ${SUB}`} aria-hidden />
@@ -612,7 +612,7 @@ export function ReportingScreen() {
           </span>
           <span className="mt-2 flex min-h-0 flex-1 items-end gap-1.5">
             {BARS.map((b, i) => (
-              <span key={i} className={`flex-1 ${i % 4 === 1 ? "bg-[var(--tm-orange-300)]" : "bg-[var(--tm-green-400)]"}`} style={{ height: `${b}%` }} />
+              <span key={i} className={`flex-1 rounded-t-sm ${i % 4 === 1 ? "bg-[var(--tm-orange-300)]" : "bg-[var(--tm-green-400)]"}`} style={{ height: `${b}%` }} />
             ))}
           </span>
         </Widget>
@@ -679,7 +679,7 @@ export function PrivateCloudScreen() {
         <span className="ml-auto"><Pill tone="ok"><Check size={10} strokeWidth={2} aria-hidden /> Connected</Pill></span>
       </div>
       <span className={`mt-1 text-b5 ${SUB}`}>Your VPC · us-east-1 · Kubernetes 1.30</span>
-      <div className="mt-3 flex flex-col border border-border">
+      <div className="mt-3 flex flex-col overflow-hidden rounded-lg border border-border">
         {runners.map(([n, k, j]) => (
           <span key={n} className="flex h-8 items-center gap-2 border-b border-[var(--tm-border-muted)] px-3 text-b4 last:border-b-0">
             <Server size={12} strokeWidth={1.5} className={SUB} aria-hidden />
@@ -689,7 +689,7 @@ export function PrivateCloudScreen() {
           </span>
         ))}
       </div>
-      <div className="mt-auto mb-4 flex items-center gap-2 border border-border bg-[var(--tm-bg-fill)] px-3 py-2 text-b5">
+      <div className="mt-auto mb-4 flex items-center gap-2 rounded-md border border-border bg-[var(--tm-bg-fill)] px-3 py-2 text-b5">
         <Lock size={12} strokeWidth={1.5} aria-hidden />
         <span className={MONO}>s3://acme-test-artifacts</span>
         <span className={`ml-auto ${SUB}`}>Data stays in your cloud</span>
@@ -762,11 +762,11 @@ export function A11yScreen() {
     <div className="flex h-full flex-col px-6 pt-4">
       <div className="flex items-center">
         <Tabs className="flex-1" items={["Issue summary", "All issues", "Mobile view"]} />
-        <span className="ml-4 flex items-center gap-2 border border-border px-3 py-1 text-b4 font-medium [box-shadow:var(--tm-shadow-floating-sm)]">
+        <span className="ml-4 button flex items-center gap-2 rounded-md border border-border px-3 py-1 text-b4 font-medium [box-shadow:var(--tm-shadow-floating-sm)]">
           <Img n="chrome.png" s={14} /> Chrome extension
         </span>
       </div>
-      <div className="mt-3 grid grid-cols-5 border border-border">
+      <div className="mt-3 grid grid-cols-5 overflow-hidden rounded-lg border border-border">
         {[
           ["Total issues", "100"],
           ["Issue types", "3"],
@@ -782,7 +782,7 @@ export function A11yScreen() {
       </div>
       <span className="mt-3 text-b3 font-medium">Issue breakdown</span>
       <div className="mt-2 grid min-h-0 flex-1 grid-cols-2 gap-3 pb-4">
-        <div className="flex flex-col border border-border px-3 py-2">
+        <div className="flex flex-col rounded-lg border border-border px-3 py-2">
           <span className="flex items-center justify-between text-b4">
             Most severe <span className={SUB}><span className="font-medium text-foreground">{total}</span> issues</span>
           </span>
@@ -795,7 +795,7 @@ export function A11yScreen() {
                 return el;
               })}
             </svg>
-            <div className="flex flex-1 flex-col border border-border">
+            <div className="flex flex-1 flex-col overflow-hidden rounded-md border border-border">
               {SEV.map((x) => (
                 <span key={x.k} className="flex h-7 items-center gap-2 border-b border-[var(--tm-border-muted)] px-2 text-b5 last:border-b-0">
                   <span className="size-2 flex-none rounded-full" style={{ background: x.c }} />
@@ -807,11 +807,11 @@ export function A11yScreen() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col border border-border px-3 py-2">
+        <div className="flex flex-col rounded-lg border border-border px-3 py-2">
           <span className="flex items-center justify-between text-b4">
             WCAG guidelines <span className={SUB}><span className="font-medium text-foreground">15</span> guidelines</span>
           </span>
-          <div className="mt-2 flex flex-col border border-border">
+          <div className="mt-2 flex flex-col overflow-hidden rounded-md border border-border">
             <span className={`flex h-6 items-center justify-between bg-[var(--tm-bg-fill)] px-2 text-b5 ${SUB}`}>
               <span>WCAG criteria</span>
               <span>Issues</span>

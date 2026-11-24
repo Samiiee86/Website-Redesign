@@ -165,6 +165,9 @@ function Hero() {
 
 const ATP = "/kit/atp";
 
+/* one tab bar for every tabbed fold on the page: 48px tall, B2 text */
+const TAB_BAR = "tm-tour__tabs [&>button]:!py-3 [&>button]:!text-b2 [&>button]:whitespace-nowrap";
+
 const RowShot = ({ scene, children }: { scene: string; children: ReactNode }) => (
   <Scene scene={`${ATP}/scene-${scene}.jpg`} {...ROW}>
     {children}
@@ -430,7 +433,7 @@ function Stacks() {
       </FoldHead>
       <div className="tm-reveal -mx-8" data-tm-step-root>
         {/* seven tabs share the frame on desktop */}
-        <div className="tm-tour__tabs lg:[grid-auto-columns:minmax(0,1fr)]" role="tablist">
+        <div className={`${TAB_BAR} lg:[grid-auto-columns:minmax(0,1fr)]`} role="tablist">
           {stacks.map((s) => (
             <button key={s.name} role="tab" data-step>
               {s.name}
@@ -786,7 +789,7 @@ function Lifecycle() {
       />
       <div className="tm-reveal -mx-8" data-tm-step-root data-autoplay>
         {/* eight tabs fit the frame: each sized to its name */}
-        <div className="tm-tour__tabs lg:[grid-auto-columns:auto] lg:[&>button]:!px-3 lg:[&>button]:!text-b2 [&>button]:whitespace-nowrap" role="tablist">
+        <div className={`${TAB_BAR} lg:[grid-auto-columns:auto] lg:[&>button]:!px-3`} role="tablist">
           {products.map((p) => (
             <button key={p.tab} role="tab" data-step>
               {p.tab}
