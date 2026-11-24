@@ -16,6 +16,7 @@ export default defineConfig({
         // the BrowserStack alternative page, built from kit folds
         browserstackAlternative: resolve(__dirname, 'browserstack-alternative.html'),
         saucelabsAlternative: resolve(__dirname, 'saucelabs-alternative.html'),
+        perfectoAlternative: resolve(__dirname, 'perfecto-alternative.html'),
         // the automation testing platform page, built from kit folds
         automationTestingPlatform: resolve(__dirname, 'automation-testing-platform.html'),
         // the HyperExecute page, built from kit folds

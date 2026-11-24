@@ -1,4 +1,5 @@
-import { gartnerFaq, mountAlternativePage, type Review } from "./alternatives/AlternativePage";
+import { gartnerFaq, mountAlternativePage } from "./alternatives/AlternativePage";
+import { customerPosts } from "./alternatives/reviews";
 import MigrateShot, { type ShotLine } from "./alternatives/MigrateShot";
 import type { SpecRow } from "./pieces/SpecTable";
 import type { MatrixGroup } from "./pieces/compare/MatrixTable";
@@ -124,38 +125,6 @@ const faq = [
   gartnerFaq,
 ];
 
-/* ---------- reviews: the customer posts the live page shows ---------- */
-
-const IMG = "https://assets.testmuai.com/resources/images";
-const LINKEDIN = { icon: `${IMG}/lambdaTestReview/Linkedin.svg`, label: "Posted on LinkedIn" };
-
-const reviews: Review[] = [
-  {
-    name: "Suryateja Goud",
-    by: "suryateja-goud",
-    quote: "I'm pleased to announce that I've recently gained hands-on experience exploring Kane AI through the Lambda Tool and it's been a fantastic journey of upskilling!",
-    img: `${IMG}/suryateja-goud.webp`,
-    url: "https://www.linkedin.com/feed/update/urn:li:share:7353106221194752004/",
-    on: LINKEDIN,
-  },
-  {
-    name: "Microsoft India",
-    by: "@MicrosoftIndia",
-    quote: "See how @testmuai is #Futureready to enable blazing-fast test orchestration seamlessly integrated with organizations' existing CI/CD platforms, using #Microsoft Azure.",
-    img: `${IMG}/MicrosoftIndia-tweet-review.png`,
-    url: "https://x.com/testmuai",
-    on: "x",
-  },
-  {
-    name: "Best Egg",
-    by: "best-egg",
-    quote: "As Best Egg expanded its product offerings and entered new markets, we knew our old testing infrastructure couldn't keep up. With support from Tenny Agustin, our Engineering Operations Lead, we modernized our approach with @testmuai.",
-    img: `${IMG}/best-egg.webp`,
-    url: "https://www.linkedin.com/feed/update/urn:li:activity:7353518165764513792/",
-    on: LINKEDIN,
-  },
-];
-
 /* ---------- the hero picture: the same test before and after ---------- */
 
 const common1: ShotLine = { code: ["caps.setCapability(", { s: '"browserName"' }, ", ", { s: '"Chrome"' }, ");"] };
@@ -238,7 +207,7 @@ mountAlternativePage({
     lead: "What customers say about",
     title: "TestMu AI",
     body: "Posts from customers and partners, as they shared them.",
-    items: reviews,
+    items: customerPosts,
   },
   faq,
   enterprise: {

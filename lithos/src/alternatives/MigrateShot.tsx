@@ -12,22 +12,31 @@ import "./migrate-shot.css";
      { s: "..." }    a string, in blue
      { w: "..." }    a word that changes (red before, green after)
      { sw: "..." }   a word that changes, inside a string
-   A line is a change when `change` is set. */
+   A line is a change when `change` is set. A `filler` row is an empty,
+   unnumbered row that keeps the two sides level when one side has a line
+   the other has not (as in a split diff). Past nine rows the lines sit
+   closer so the code still fits. */
 
 type Piece = string | { s: string } | { w: string } | { sw: string };
-export type ShotLine = { change?: boolean; code: Piece[] };
+export type ShotLine = { change?: boolean; filler?: boolean; code: Piece[] };
 
 const W = 1000;
 
 function Code({ lines, side }: { lines: ShotLine[]; side: "before" | "after" }) {
+  let n = 0;
   return (
-    <div className="mshot__code">
-      {lines.map((l, i) => (
+    <div className={`mshot__code ${lines.length > 9 ? "mshot__code--tight" : ""}`}>
+      {lines.map((l, i) =>
+        l.filler ? (
+          <div key={i} className="mshot__ln mshot__fill" aria-hidden>
+            {" "}
+          </div>
+        ) : (
         <div
           key={i}
           className={`mshot__ln ${l.change ? (side === "before" ? "mshot__del" : "mshot__add") : ""}`}
         >
-          <i>{i + 1}</i>
+          <i>{++n}</i>
           <b>{l.change ? (side === "before" ? "−" : "+") : ""}</b>
           <span>
             {l.code.length === 0
@@ -47,7 +56,8 @@ function Code({ lines, side }: { lines: ShotLine[]; side: "before" | "after" }) 
                 )}
           </span>
         </div>
-      ))}
+        ),
+      )}
     </div>
   );
 }
@@ -82,7 +92,7 @@ export default function MigrateShot({
     <div
       ref={box}
       role="img"
-      aria-label={`Are you migrating from ${rival}? The same Java test before and after, with four lines changed`}
+      aria-label={`Are you migrating from ${rival}? The same Java test before and after, with the lines that change marked`}
       className="relative h-full w-full"
     >
       <div ref={shot} className="mshot" aria-hidden>

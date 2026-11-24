@@ -60,6 +60,10 @@
 .mshot__pane + .mshot__pane .mshot__tag { background: var(--tm-green-000); color: var(--tm-green-500); }
 
 .mshot__code { padding: 20px 0; font-family: var(--tm-font-mono); font-size: 12px; line-height: 36px; white-space: pre; }
+.mshot__code--tight { line-height: 32px; }
+/* an empty row that keeps both sides level */
+.mshot__fill { background: var(--tm-bg-fill); height: 36px; }
+.mshot__code--tight .mshot__fill { height: 32px; }
 /* the site sets Manrope on every element, so the code's inner pieces
    are named here too */
 .mshot__code * { font-family: var(--tm-font-mono); }
