@@ -65,8 +65,8 @@ export function Fit({ w, h, children }: { w: number; h: number; children: ReactN
 /* the hero fold's stage: a painted scene with the screen centred on it */
 export function Scene({ scene, w, h, card, children }: { scene: string; w: number; h: number; card?: boolean; children: ReactNode }) {
   return (
-    <div className={`relative grid h-full place-items-center overflow-hidden ${card ? "p-6" : "border border-border p-6 md:p-12"}`}>
-      <img src={scene} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+    <div className={`relative grid h-full place-items-center overflow-hidden bg-[var(--tm-bg-fill)] ${card ? "p-6" : "border border-border p-6 md:p-12"}`}>
+      <img src={scene} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
       <div className="relative w-full bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
         <Fit w={w} h={h}>{children}</Fit>
       </div>
@@ -91,7 +91,7 @@ const T_FAIL = "text-[var(--tm-red-300)]";
 const T_CMD = "text-[var(--tm-blue-200)]";
 
 const Img = ({ n, s = 16, round }: { n: string; s?: number; round?: boolean }) => (
-  <img src={`${ICON}/${n}`} alt="" width={s} height={s} className={`flex-none ${round ? "rounded-full" : ""}`} style={{ width: s, height: s }} />
+  <img src={`${ICON}/${n}`} alt="" width={s} height={s} className={`!static flex-none !shadow-none ![animation:none] ${round ? "rounded-full" : ""}`} style={{ width: s, height: s }} />
 );
 const Pass = ({ s = 16 }: { s?: number }) => <Img n="st_pass.png" s={s} />;
 const Fail = ({ s = 16 }: { s?: number }) => <Img n="st_fail.png" s={s} />;
@@ -715,5 +715,99 @@ export function PipelineScreen() {
       <TL><span className={T_OK}>✓</span> 1,204 tests passed <span className={T_MUTED}>(4m 12s)</span></TL>
       <TL><span className={T_WARN}>◆</span> Deploy to staging</TL>
     </Terminal>
+  );
+}
+
+/* ---------- accessibility: the issue summary (accessibility-devtools) ---------- */
+
+const SEV = [
+  { k: "Critical", n: 20, c: "var(--tm-red-500)" },
+  { k: "Serious", n: 14, c: "var(--tm-orange-400)" },
+  { k: "Moderate", n: 9, c: "var(--tm-blue-500)" },
+  { k: "Minor", n: 6, c: "var(--tm-gray-400)" },
+];
+
+export function A11yScreen() {
+  const total = SEV.reduce((a, b) => a + b.n, 0);
+  let at = 0;
+  const C = 2 * Math.PI * 30;
+  return (
+    <div className="flex h-full flex-col px-6 pt-4">
+      <div className="flex items-center">
+        <Tabs className="flex-1" items={["Issue summary", "All issues", "Mobile view"]} />
+        <span className="ml-4 flex items-center gap-2 border border-border px-3 py-1 text-b4 font-medium [box-shadow:var(--tm-shadow-floating-sm)]">
+          <Img n="chrome.png" s={14} /> Chrome extension
+        </span>
+      </div>
+      <div className="mt-3 grid grid-cols-5 border border-border">
+        {[
+          ["Total issues", "100"],
+          ["Issue types", "3"],
+          ["Element groups", "25"],
+          ["WCAG guidelines", "15"],
+          ["Best practices", "43"],
+        ].map(([k, v], i) => (
+          <span key={k} className={`flex flex-col gap-0.5 px-3 py-2 ${i ? "border-l border-border" : ""}`}>
+            <span className={`text-b5 ${SUB}`}>{k}</span>
+            <span className="text-h5 font-medium">{v}</span>
+          </span>
+        ))}
+      </div>
+      <span className="mt-3 text-b3 font-medium">Issue breakdown</span>
+      <div className="mt-2 grid min-h-0 flex-1 grid-cols-2 gap-3 pb-4">
+        <div className="flex flex-col border border-border px-3 py-2">
+          <span className="flex items-center justify-between text-b4">
+            Most severe <span className={SUB}><span className="font-medium text-foreground">{total}</span> issues</span>
+          </span>
+          <div className="mt-2 flex flex-1 items-center gap-4">
+            <svg viewBox="0 0 80 80" className="size-24 flex-none -rotate-90" aria-hidden>
+              {SEV.map((x) => {
+                const len = (x.n / total) * C;
+                const el = <circle key={x.k} cx="40" cy="40" r="30" fill="none" strokeWidth="12" stroke={x.c} strokeDasharray={`${len} ${C}`} strokeDashoffset={-at} />;
+                at += len;
+                return el;
+              })}
+            </svg>
+            <div className="flex flex-1 flex-col border border-border">
+              {SEV.map((x) => (
+                <span key={x.k} className="flex h-7 items-center gap-2 border-b border-[var(--tm-border-muted)] px-2 text-b5 last:border-b-0">
+                  <span className="size-2 flex-none rounded-full" style={{ background: x.c }} />
+                  <span className="flex-1">{x.k}</span>
+                  <span className="font-medium">{x.n}</span>
+                  <ChevronRight size={12} strokeWidth={1.5} className={SUB} aria-hidden />
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col border border-border px-3 py-2">
+          <span className="flex items-center justify-between text-b4">
+            WCAG guidelines <span className={SUB}><span className="font-medium text-foreground">15</span> guidelines</span>
+          </span>
+          <div className="mt-2 flex flex-col border border-border">
+            <span className={`flex h-6 items-center justify-between bg-[var(--tm-bg-fill)] px-2 text-b5 ${SUB}`}>
+              <span>WCAG criteria</span>
+              <span>Issues</span>
+            </span>
+            {[
+              ["1.3.1 Info and relationships", 24],
+              ["1.4.3 Contrast", 18],
+              ["4.1.1 Parsing", 12],
+              ["4.1.2 Name, role, value", 9],
+            ].map(([k, n]) => (
+              <span key={k} className="flex h-7 items-center gap-2 border-t border-[var(--tm-border-muted)] px-2 text-b5">
+                <span className="min-w-0 flex-1 truncate">{k}</span>
+                <span className="flex h-1 w-16 gap-0.5">
+                  {SEV.map((x) => (
+                    <span key={x.k} className="flex-1" style={{ background: x.c }} />
+                  ))}
+                </span>
+                <span className="w-5 text-right font-medium">{n}</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

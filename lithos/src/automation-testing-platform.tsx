@@ -32,7 +32,9 @@ import Footer from "./sections/Footer";
 import { FoldHead } from "./pieces/compare/parts";
 import { LABEL, LazyVideo } from "./pieces/Retro";
 import {
+  A11yScreen,
   AuthoringScreen,
+  Fit,
   CARD,
   GovernanceScreen,
   HyperScreen,
@@ -438,14 +440,29 @@ function Stacks() {
           <div key={s.name} className="tm-tour__panel" role="tabpanel" data-step-panel={i} data-hide hidden={i > 0}>
             <div className="tm-tour__main">
               <div className="tm-tour__copy !justify-start">
-                <span className="tm-pt__ico tm-pt__ico--brand">
-                  <img src={`${IMG}/${s.logo}-automation-cloud.svg`} alt="" loading="lazy" />
+                <span className="flex size-14 items-center justify-center border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)]">
+                  <img src={`${IMG}/${s.logo}-automation-cloud.svg`} alt="" className="size-8 object-contain" />
                 </span>
-                <h3 className="mt-4">{s.name}</h3>
+                <h3 className="mt-6">{s.name}</h3>
                 <p>{s.body}</p>
+                {/* the stack at a glance: two numbers in the pixel face */}
+                <div className="mt-6 grid grid-cols-2 gap-px border border-border bg-border">
+                  {[
+                    [s.langs.length, s.langs.length === 1 ? "Language" : "Languages"],
+                    [s.langs.reduce((n, l) => n + l.fw.length, 0), s.langs.reduce((n, l) => n + l.fw.length, 0) === 1 ? "Framework" : "Frameworks"],
+                  ].map(([n, k]) => (
+                    <span key={k} className="flex flex-col gap-2 bg-surface px-4 py-3">
+                      <span className="pixel text-[32px] leading-none">{n}</span>
+                      <span className="text-b4 text-muted-foreground">{k}</span>
+                    </span>
+                  ))}
+                </div>
                 {s.skill && (
-                  <div className="mt-6 flex flex-col gap-3">
-                    <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Agent skill</span>
+                  <div className="mt-4 flex flex-col gap-3 border border-border bg-[var(--tm-bg-fill)] px-4 py-4">
+                    <span className="flex items-center gap-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
+                      <Sparkles size={16} strokeWidth={1.5} className="text-foreground" aria-hidden />
+                      Agent skill
+                    </span>
                     <span className="flex flex-wrap gap-2">
                       {s.skill.map((l) => (
                         <span key={l} className={LABEL}>
@@ -453,36 +470,41 @@ function Stacks() {
                         </span>
                       ))}
                     </span>
-                  </div>
-                )}
-                <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
-                  <KitLink as="a" href={s.docs}>
-                    Read the docs
-                  </KitLink>
-                  {s.skill && (
                     <KitLink as="a" href={SKILLS_REPO}>
                       View the skill on GitHub
                     </KitLink>
-                  )}
+                  </div>
+                )}
+                <div className="mt-6">
+                  <KitLink as="a" href={s.docs}>
+                    Read the {s.name} docs
+                  </KitLink>
                 </div>
               </div>
-              <div className="flex flex-col justify-center px-8 py-6 lg:px-12">
+              {/* every language as a joined card: its icon tile, a count, and each framework as a tag;
+                  rows share the height, and an odd last card stretches across */}
+              <div className={`grid gap-px !bg-border ${s.langs.length > 1 ? "sm:grid-cols-2" : ""}`}>
                 {s.langs.map((l) => (
-                  <div key={l.lang} className="flex flex-col gap-2 border-b border-border py-4 last:border-b-0 sm:flex-row sm:items-start sm:gap-6">
-                    <span className="flex w-40 flex-none items-center gap-3 text-b2 font-medium">
-                      {l.icon ? (
-                        <img src={`${LANG_ICON}/${l.icon}`} alt="" className="size-5 object-contain" loading="lazy" />
-                      ) : (
-                        <span className="size-5" />
-                      )}
-                      {l.lang}
+                  <div key={l.lang} className="flex flex-col gap-4 bg-surface px-6 py-6 sm:[&:last-child:nth-child(odd)]:col-span-2 lg:px-8">
+                    <span className="flex items-center gap-3">
+                      <span className="flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)]">
+                        {l.icon ? (
+                          <img src={`${LANG_ICON}/${l.icon}`} alt="" className="size-5 object-contain" />
+                        ) : (
+                          <span className="font-mono text-b4 font-medium">{l.lang.slice(0, 2)}</span>
+                        )}
+                      </span>
+                      <span className="text-b1 font-medium">{l.lang}</span>
+                      <span className={`${LABEL} ml-auto font-mono`} title={`${l.fw.length} frameworks`}>
+                        {l.fw.length}
+                      </span>
                     </span>
-                    <span className="flex flex-wrap gap-x-6 gap-y-2 text-b3 text-muted-foreground">
+                    <span className="flex flex-wrap gap-2">
                       {l.fw.map((f, j) => (
                         <a
                           key={`${f}-${j}`}
                           href={fwHref(s.name, s.docs, l.lang, f, j)}
-                          className="transition-colors duration-150 hover:text-foreground hover:underline hover:underline-offset-4 focus-visible:text-foreground"
+                          className="tag rounded-sm border border-border bg-background px-2 py-1 text-b3 text-foreground transition-colors duration-150 hover:border-foreground hover:bg-surface focus-visible:border-foreground"
                         >
                           {f}
                         </a>
@@ -603,19 +625,19 @@ function BeyondBasics() {
 const hyper = [
   {
     screen: <PrivateCloudScreen />,
-    scene: "/kit/img/hills.webp",
+    scene: `${ATP}/scene-cloud.jpg`,
     title: "HyperExecute for private cloud",
     body: "Keep every automated test run inside your private cloud, with all data behind your firewall and full control over runners and storage.",
   },
   {
     screen: <GovernanceScreen />,
-    scene: "/kit/img/meadow.webp",
+    scene: `${ATP}/scene-gov.jpg`,
     title: "Enterprise access and governance",
     body: "Run teams at scale with SSO, role-based access, audit trails, and policy enforcement applied across the whole organization.",
   },
   {
     screen: <PipelineScreen />,
-    scene: "/kit/img/shore.webp",
+    scene: `${ATP}/scene-pipe.jpg`,
     title: "CLI integrations with every pipeline",
     body: "Drop the HyperExecute CLI into any CI/CD pipeline to push scripts and keep end-to-end testing tied to each deployment.",
   },
@@ -661,15 +683,16 @@ function EnterpriseHyper() {
    the product's video, and three points under it. Each video is that
    product's own hero-fold video (Web redesign/hero-folds), on that hero
    fold's painted scene. KaneAI uses the home hero video (plan, author,
-   execute, analyse). Accessibility has no hero video, so it shows its
-   hero fold's still (accessibility-devtools). */
+   execute, analyse). Accessibility has no hero video, so it shows an
+   accessibility screen drawn in the same look (pieces/Screens). Scenes
+   load with the page, so a tab never opens on an empty frame. */
 
 type Product = {
   tab: string;
   body: string;
   cta: string;
   href: string;
-  media: { video: string; scene: string } | { still: string };
+  media: { video: string; scene: string } | { screen: ReactNode; scene: string };
   perks: { b: string; p: string }[];
 };
 
@@ -763,7 +786,7 @@ const products: Product[] = [
     body: "Automate inclusive-experience checks for web and mobile apps.",
     cta: "More about accessibility",
     href: `${SITE}/accessibility-testing/`,
-    media: { still: "stage-a11y" },
+    media: { screen: <A11yScreen />, scene: "a11y" },
     perks: [
       { b: "Standards scanning", p: "Audit web and app screens against WCAG, ADA, and Section 508 rules." },
       { b: "Recurring audits", p: "Schedule accessibility scans to repeat daily, weekly, or monthly." },
@@ -801,24 +824,22 @@ function Lifecycle() {
                 </KitLink>
               </div>
               <div className="tm-tour__media">
-                {"still" in p.media ? (
-                  <img className="tm-fit" src={`${ATP}/${p.media.still}.jpg`} alt="" loading="lazy" />
-                ) : (
-                  <>
-                    <img className="tm-fit" src={`${ATP}/scene-${p.media.scene}.jpg`} alt="" loading="lazy" />
-                    {/* the hero fold's screen: the video centred on its scene */}
-                    <div className="absolute inset-0 flex items-center justify-center p-8 lg:p-10">
-                      <div className="w-full border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
-                        <LazyVideo
-                          className="block aspect-[1072/552] w-full"
-                          src={`${ATP}/video-${p.media.video}.mp4`}
-                          poster={`${ATP}/poster-${p.media.video}.jpg`}
-                          label={`${p.tab} product demo`}
-                        />
-                      </div>
-                    </div>
-                  </>
-                )}
+                <img className="tm-fit" src={`${ATP}/scene-${p.media.scene}.jpg`} alt="" decoding="async" />
+                {/* the hero fold's screen, centred on its scene: the video, or a drawn screen */}
+                <div className="absolute inset-0 flex items-center justify-center p-8 lg:p-10">
+                  <div className="w-full border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+                    {"screen" in p.media ? (
+                      <Fit {...ROW}>{p.media.screen}</Fit>
+                    ) : (
+                      <LazyVideo
+                        className="block aspect-[1072/552] w-full"
+                        src={`${ATP}/video-${p.media.video}.mp4`}
+                        poster={`${ATP}/poster-${p.media.video}.jpg`}
+                        label={`${p.tab} product demo`}
+                      />
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="tm-tour__perks">
