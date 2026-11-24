@@ -46,6 +46,7 @@ import {
   ReportingScreen,
   ROW,
   Scene,
+  TAB,
 } from "./pieces/Screens";
 
 /* Automation testing platform page (automation-testing-platform.html).
@@ -809,7 +810,7 @@ function Lifecycle() {
                 <div className="absolute inset-0 flex items-center justify-center p-8 lg:p-10">
                   <div className="w-full border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
                     {"screen" in p.media ? (
-                      <Fit {...ROW}>{p.media.screen}</Fit>
+                      <Fit {...TAB}>{p.media.screen}</Fit>
                     ) : (
                       <LazyVideo
                         className="block aspect-[1072/552] w-full"

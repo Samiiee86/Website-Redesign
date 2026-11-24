@@ -79,8 +79,10 @@ export function Scene({ scene, w, h, card, children }: { scene: string; w: numbe
   );
 }
 
-/* row screens share the hero frames' ratio (1072 x 552) */
-export const ROW = { w: 800, h: 412 };
+/* row screens: a compact canvas, so on the 540 stage the UI reads at close
+   to its real size; the tab screen keeps the hero frames' ratio (1072 x 552) */
+export const ROW = { w: 680, h: 480 };
+export const TAB = { w: 800, h: 412 };
 export const CARD = { w: 420, h: 280 };
 
 /* ---------- parts ---------- */
@@ -180,7 +182,7 @@ function Terminal({ tabs, on = 0, right, status, children }: { tabs: string[]; o
   );
 }
 const TL = ({ children, className = "" }: { children?: ReactNode; className?: string }) => (
-  <p className={`h-5 min-w-0 truncate whitespace-pre ${className}`}>{children}</p>
+  <p className={`h-6 min-w-0 truncate whitespace-pre leading-6 ${className}`}>{children}</p>
 );
 
 /* a dark log panel with line numbers, as in the HyperExecute dashboard */
@@ -228,6 +230,10 @@ export function KaneCliScreen() {
       <TL>
         <span className={T_OK}>PASSED</span> 6 of 6 steps · 7.0s · exit 0
       </TL>
+      <span className="h-2 flex-none" />
+      <TL className={T_MUTED}>
+        PS C:\Users\username\shop-app&gt; <span className="inline-block h-3 w-2 bg-[var(--tm-fg-inverse)] align-middle" />
+      </TL>
     </Terminal>
   );
 }
@@ -268,15 +274,15 @@ export function AuthoringScreen() {
           Default / Checkout
         </span>
       </div>
-      <div className="mx-12 mt-3 flex flex-none items-center justify-between">
+      <div className="mx-6 mt-4 flex flex-none items-center justify-between">
         <span className="text-b4 font-medium">5 steps authored</span>
         <span className={`flex items-center gap-2 text-b5 ${SUB}`}>
           <Img n="chrome.png" s={12} /> Running live in Chrome 128
         </span>
       </div>
-      <div className="mx-12 mt-2 flex flex-none flex-col border border-border">
+      <div className="mx-6 mt-2 flex flex-none flex-col border border-border">
         {steps.map(([s, k], i) => (
-          <div key={s} className="flex h-7 items-center gap-3 border-b border-[var(--tm-border-muted)] px-3 text-b4 last:border-b-0">
+          <div key={s} className="flex h-9 items-center gap-3 border-b border-[var(--tm-border-muted)] px-3 text-b4 last:border-b-0">
             <span className={`w-4 flex-none text-b5 ${SUB}`}>{i + 1}</span>
             <span className="min-w-0 flex-1 truncate">{s}</span>
             <Pill tone="blue">{k}</Pill>
@@ -284,7 +290,7 @@ export function AuthoringScreen() {
           </div>
         ))}
       </div>
-      <div className="mx-12 mt-3 flex h-8 flex-none items-center gap-2 border border-foreground px-3 text-b4">
+      <div className="mx-6 mt-4 flex h-10 flex-none items-center gap-2 border border-foreground px-3 text-b4">
         <Sparkles size={14} strokeWidth={1.5} className="text-[var(--tm-blue-500)]" aria-hidden />
         <span className={SUB}>Describe the next step…</span>
         <span className={`ml-auto flex items-center gap-1 text-b5 ${SUB}`}>
@@ -316,6 +322,9 @@ export function PlaywrightScreen() {
     ["filters by size", "15s", true],
     ["signs in with SSO", "20s", true],
     ["updates the address", "16s", true],
+    ["removes a cart item", "14s", true],
+    ["tracks an order", "19s", true],
+    ["changes the currency", "13s", true],
   ] as const;
   const cmds = [
     { c: "page.goto", k: "url", v: "https://staging.acme.com", t: "412ms" },
@@ -326,7 +335,7 @@ export function PlaywrightScreen() {
   ];
   return (
     <div className="flex h-full">
-      <div className="flex w-48 flex-none flex-col border-r border-[var(--tm-border-muted)] px-4 pt-4">
+      <div className="flex w-44 flex-none flex-col border-r border-[var(--tm-border-muted)] px-4 pt-4">
         <span className="text-b3 font-medium">Tests</span>
         <Field className="mt-2">Search tests</Field>
         <span className="mt-2 flex items-center gap-3 text-b5">
@@ -335,7 +344,7 @@ export function PlaywrightScreen() {
         </span>
         <div className="mt-2 flex flex-col">
           {tests.map(([n, t, ok], i) => (
-            <span key={n} className={`flex h-7 items-center gap-2 border-l-2 px-2 text-b5 ${i === 0 ? "border-foreground bg-[var(--tm-bg-muted)] font-medium" : "border-transparent"}`}>
+            <span key={n} className={`flex h-8 items-center gap-2 border-l-2 px-2 text-b5 ${i === 0 ? "border-foreground bg-[var(--tm-bg-muted)] font-medium" : "border-transparent"}`}>
               {ok ? <Pass s={12} /> : <Fail s={12} />}
               <span className="min-w-0 flex-1 truncate">{n}</span>
               <span className={SUB}>{t}</span>
@@ -344,13 +353,13 @@ export function PlaywrightScreen() {
         </div>
       </div>
       <div className="flex min-w-0 flex-1 flex-col px-5 pt-4">
-        <span className={`text-b5 ${SUB}`}>Builds › Playwright · nightly</span>
+        <span className={`text-b5 ${SUB}`}>Builds › Playwright · nightly › checkout.spec.ts</span>
         <div className="mt-1 flex items-center gap-2">
           <Pill tone="ok"><Check size={10} strokeWidth={2} aria-hidden /> Passed</Pill>
-          <span className="text-b3 font-medium">checkout.spec.ts › pays with a saved card</span>
+          <span className="min-w-0 truncate text-b3 font-medium">pays with a saved card</span>
           <span className="ml-auto flex gap-2">
             <Btn tone="go">Re-run <ChevronDown size={12} strokeWidth={1.5} aria-hidden /></Btn>
-            <Btn>Test ID <Copy size={12} strokeWidth={1.5} aria-hidden /></Btn>
+            <span className="button flex size-7 flex-none items-center justify-center rounded-md border border-border"><Copy size={12} strokeWidth={1.5} aria-hidden /></span>
           </span>
         </div>
         <div className="mt-3 flex gap-8 border border-border px-4 py-2 text-b5">
@@ -364,28 +373,31 @@ export function PlaywrightScreen() {
             <span className="flex items-center gap-1.5 text-b4"><Img n="avatar.png" s={12} round /> username</span>
           </span>
         </div>
-        <div className="mt-3 flex min-h-0 flex-1 gap-3">
-          <div className="flex min-w-0 flex-1 flex-col border border-border px-3 pt-2">
-            <Tabs items={["All commands", "Logs", "Network", "Trace"]} />
+        <div className="mt-3 flex min-h-0 flex-1 flex-col gap-3 pb-4">
+          <div className="flex h-24 flex-none border border-border">
+            <img src={`${ICON}/thumb.png`} alt="" className="!static h-full w-36 flex-none object-cover !shadow-none ![animation:none]" />
+            <span className="flex flex-1 flex-col justify-center gap-2 px-4 text-b5">
+              <span className="text-b4 font-medium">Session recording</span>
+              <span className="flex items-center gap-2">
+                <Play size={10} strokeWidth={1.5} aria-hidden />
+                <span className={MONO}>0:09</span>
+                <span className="h-0.5 flex-1 bg-border"><span className="block h-full w-1/3 bg-foreground" /></span>
+                <span className={MONO}>0:31</span>
+              </span>
+            </span>
+          </div>
+          <div className="flex min-h-0 min-w-0 flex-1 flex-col border border-border px-3 pt-2">
+            <Tabs items={["Commands", "Logs", "Network"]} />
             <span className="mt-2 text-b5 font-medium">5 commands</span>
             {cmds.map((r) => (
-              <span key={r.c} className="flex h-6 min-w-0 items-center gap-2 text-b5">
+              <span key={r.c} className="flex h-7 min-w-0 items-center gap-2 text-b5">
                 <Check size={12} strokeWidth={1.5} className="flex-none text-[var(--tm-fg-success)]" aria-hidden />
                 <span className={`flex-none ${MONO}`}>{r.c}</span>
                 <span className={`tag flex-none rounded-sm border px-1 ${MONO} ${r.healed ? "border-[var(--tm-orange-200)] bg-[var(--tm-orange-000)] text-[var(--tm-orange-600)]" : `border-border ${SUB}`}`}>{r.k}</span>
-                <span className={`min-w-0 flex-1 truncate ${SUB}`}>{r.v}</span>
+                <span className="min-w-0 flex-1" />
                 <span className={`flex-none ${SUB}`}>{r.t}</span>
               </span>
             ))}
-          </div>
-          <div className="flex w-52 flex-none flex-col border border-border">
-            <img src={`${ICON}/thumb.png`} alt="" className="h-28 w-full object-cover" />
-            <span className="flex items-center gap-2 px-2 py-1.5 text-b5">
-              <Play size={10} strokeWidth={1.5} aria-hidden />
-              <span className={MONO}>0:09</span>
-              <span className="h-0.5 flex-1 bg-border"><span className="block h-full w-1/3 bg-foreground" /></span>
-              <span className={MONO}>0:31</span>
-            </span>
           </div>
         </div>
       </div>
@@ -433,13 +445,13 @@ export function ParallelScreen() {
           <span className="flex items-center gap-1"><span className="size-2 bg-[var(--tm-red-200)]" /> Failed</span>
         </span>
       </div>
-      <div className="mt-2 grid grid-cols-10 gap-1">
+      <div className="mt-2 grid grid-cols-10 gap-1.5">
         {Array.from({ length: 50 }).map((_, i) => {
           const s = state(i);
           return (
             <span
               key={i}
-              className={`flex h-7 items-center gap-1 border px-1.5 text-b5 ${
+              className={`flex h-10 items-center justify-center gap-1 border px-1 text-b5 ${
                 s === "ok"
                   ? "border-[var(--tm-green-100)] bg-[var(--tm-green-000)]"
                   : s === "fail"
@@ -453,7 +465,7 @@ export function ParallelScreen() {
           );
         })}
       </div>
-      <div className="mt-4 flex h-1.5 overflow-hidden">
+      <div className="mt-5 flex h-1.5 overflow-hidden">
         <span className="w-[88%] bg-[var(--tm-green-400)]" />
         <span className="w-[2%] bg-[var(--tm-red-400)]" />
         <span className="flex-1 bg-[var(--tm-blue-200)]" />
@@ -503,13 +515,13 @@ export function HyperScreen() {
       </div>
       <Tabs className="mt-3" items={["Tasks", <>Insights <Pill tone="plain">Beta</Pill></>]} />
       <div className="mt-3 flex min-h-0 flex-1 gap-4">
-        <div className="flex w-44 flex-none flex-col gap-1.5">
+        <div className="flex w-40 flex-none flex-col gap-2">
           <Field>Search</Field>
           <span className={`text-b5 font-medium ${SUB}`}>Execution tasks</span>
           {tasks.map(([n, t, ok], i) => (
-            <span key={n} className={`flex flex-col gap-0.5 border px-3 py-1.5 ${i === 2 ? "border-transparent bg-[var(--tm-bg-muted)]" : "border-border"}`}>
+            <span key={n} className={`flex flex-col gap-1 whitespace-nowrap border px-3 py-2 ${i === 2 ? "border-transparent bg-[var(--tm-bg-muted)]" : "border-border"}`}>
               <span className="flex items-center gap-2 text-b4 font-medium">{ok ? <Pass s={14} /> : <Fail s={14} />} {n}</span>
-              <span className={`flex items-center gap-1.5 pl-6 text-b5 ${SUB}`}><Clock size={10} strokeWidth={1.5} aria-hidden /> {t} · <Img n="windows.png" s={10} /> Windows 11</span>
+              <span className={`flex items-center gap-1 pl-6 text-b5 ${SUB}`}><Clock size={10} strokeWidth={1.5} aria-hidden /> {t} · <Img n="windows.png" s={10} /> Win 11</span>
             </span>
           ))}
         </div>
@@ -542,6 +554,16 @@ export function HyperScreen() {
             <Sparkles size={12} strokeWidth={1.5} className="mt-0.5 flex-none text-[var(--tm-blue-500)]" aria-hidden />
             <span><span className="font-medium">Root cause:</span> the cookie banner covered the pay button. Auto-heal retried and the test passed.</span>
           </div>
+          {[
+            ["checkout.spec · guest checkout", "38s"],
+            ["search.spec · filters by size", "44s"],
+          ].map(([n, t]) => (
+            <div key={n} className="mt-2 flex h-9 items-center gap-2 border border-border px-3 text-b4 font-medium">
+              <ChevronRight size={12} strokeWidth={1.5} aria-hidden />
+              <Pass s={14} /> {n}
+              <span className={`ml-auto flex items-center gap-1 text-b5 font-normal ${SUB}`}><Clock size={10} strokeWidth={1.5} aria-hidden /> {t}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -601,10 +623,10 @@ export function ReportingScreen() {
             ))}
             {browsers.map(([ic, n, r, p, f]) => (
               <span key={n} className="contents">
-                <span className="flex h-5 items-center gap-1.5"><Img n={ic} s={12} /> {n}</span>
-                <span className="flex h-5 items-center">{r}</span>
-                <span className="flex h-5 items-center text-[var(--tm-fg-success)]">{p}</span>
-                <span className="flex h-5 items-center text-[var(--tm-fg-error)]">{f}</span>
+                <span className="flex h-6 items-center gap-1.5"><Img n={ic} s={12} /> {n}</span>
+                <span className="flex h-6 items-center">{r}</span>
+                <span className="flex h-6 items-center text-[var(--tm-fg-success)]">{p}</span>
+                <span className="flex h-6 items-center text-[var(--tm-fg-error)]">{f}</span>
               </span>
             ))}
           </div>
@@ -612,9 +634,9 @@ export function ReportingScreen() {
         <Widget title="Test health snapshot">
           <div className="mt-2 grid grid-cols-3 gap-x-4 gap-y-3">
             {[
-              ["Total unique tests", "34,221", "16%"],
-              ["Consistently passing", "23,411", "12%"],
-              ["Consistently failing", "632", "4%"],
+              ["Total tests", "34,221", "16%"],
+              ["Passing", "23,411", "12%"],
+              ["Failing", "632", "4%"],
               ["Flaky", "905", "8%"],
               ["Completing", "56", "16%"],
               ["Inconsistent", "32", "2%"],
