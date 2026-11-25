@@ -45,9 +45,18 @@ const duel: MatrixGroup[] = [
     ],
   },
   {
+    /* the live page's "Kane CLI and mabl agentic testing harness" columns */
+    label: "Coding agent checks",
+    rows: [
+      { name: "Check before a pull request", values: ["Writes and runs a test in real Chrome", "Finds affected tests, flags gaps"] },
+      { name: "Result in CI", values: ["Fails the pull request on a failed check", "Advisory, always exits 0"] },
+      { name: "Mobile devices", values: ["Real Android and iOS devices", "Virtual, or Android over USB"] },
+      { name: "Where tests are saved", values: ["A _test.md file in your repo", "mabl's cloud workspace"] },
+    ],
+  },
+  {
     label: "Plans and security",
     rows: [
-      { name: "Published pricing", values: ["KaneAI from $17 per agent", "Quote only"] },
       { name: "Free plan", values: [true, "14-day trial"] },
       { name: "Security certifications", values: ["SOC 2 Type II, ISO 27001, 27017, 27701", "SOC 2 Type II"] },
     ],
@@ -144,7 +153,7 @@ const faq = [
   },
   {
     q: "Can I export my tests out of mabl?",
-    a: "Yes. The mabl CLI exports browser tests as Playwright or Selenium IDE files, and test cases as CSV. The code runs on TestMu AI's cloud grid with an endpoint change, and the CSV imports into Test Manager. Some steps do not export, such as file uploads, drag and drop, API steps and email tests, so you re-create those in KaneAI in plain English.",
+    a: "Yes. The mabl CLI exports browser tests as Playwright or Selenium IDE files, and test cases as CSV. The code runs on TestMu AI's cloud grid with an endpoint change, and the CSV imports into Test Manager. Some steps do not export, such as file uploads, drag and drop, API steps and email tests, so you re-create those in KaneAI in plain English. Export your mabl run history too before you leave.",
   },
   {
     q: "Does mabl run cloud tests on Windows or macOS?",
@@ -204,7 +213,87 @@ mountAlternativePage({
     groups: duel,
   },
   switchBody:
-    "Export your browser tests from mabl as Playwright or Selenium IDE code. Then three steps to your first run on TestMu AI.",
+    "KaneAI does not import mabl tests, so the move starts from mabl's own export. Three steps from your mabl workspace to your first run on TestMu AI.",
+  /* the live page's six migration steps, as three */
+  switchSteps: [
+    {
+      title: "Export your tests from mabl",
+      body: "Export each browser test as Playwright or Selenium IDE code, and the test cases you keep as CSV.",
+      scene: "/kit/img/shore.webp",
+      ui: "export",
+      cmd: "mabl tests export --format playwright",
+    },
+    {
+      title: "Run the code on TestMu AI",
+      body: "Point the Playwright code at the TestMu AI endpoint, and import the CSV into Test Manager.",
+      scene: "/kit/img/hills.webp",
+      ui: "run",
+      cmd: "npx playwright test",
+    },
+    {
+      title: "Re-create the rest in KaneAI",
+      body: "Write mobile tests and the steps the export drops in plain English, then run them all on HyperExecute.",
+      scene: "/kit/img/meadow.webp",
+      ui: "results",
+    },
+  ],
+  pricing: {
+    lead: "mabl quotes every plan,",
+    title: "TestMu AI lists every price",
+    body: "mabl bills cloud runs in credits, so costs are harder to predict. Prices checked 17 November 2026.",
+    rival: {
+      price: "Quote only",
+      note: "No list prices",
+      label: "How it is sold",
+      items: [
+        "Plans start at 500 cloud-run credits a month",
+        "A browser cloud run uses 1 credit, a mobile run 5 and an API run 0.1",
+        "Mobile app testing is a paid add-on",
+        "Unused credits reset each billing period",
+        "Median contract of $36,000 a year, from Vendr contract data",
+      ],
+    },
+    ours: {
+      price: "$199",
+      note: "/parallel a month",
+      flag: "Listed prices",
+      label: "What you get",
+      items: [
+        "Billed annually, for web and native app tests on real Android and iOS devices",
+        "KaneAI at $17, $89 or $179 per agent a month, billed annually",
+        "Native mobile test authoring on KaneAI Max",
+        "Free tiers with no credit card",
+        "Every plan price on the pricing page",
+      ],
+    },
+  },
+  choose: {
+    lead: "When to choose",
+    title: "TestMu AI or mabl",
+    body: "Pick by what you test and where it has to run.",
+    items: [
+      {
+        pick: "TestMu AI",
+        title: "Native apps on real devices",
+        body: "mabl runs native app tests on virtual devices, with real phones only as Android devices plugged in over USB. TestMu AI runs them on 50,000+ real Android and iOS devices.",
+      },
+      {
+        pick: "TestMu AI",
+        title: "Safari on macOS and Edge on Windows",
+        body: "mabl runs every cloud test on Linux, with WebKit in place of Safari. TestMu AI runs Safari on macOS, Edge on Windows and older versions across 3,000+ combinations.",
+      },
+      {
+        pick: "TestMu AI",
+        title: "Mobile tests as Appium code",
+        body: "mabl exports browser tests as Playwright or Selenium IDE code, but not mobile tests. KaneAI exports web tests as Selenium or Playwright and mobile tests as Appium.",
+      },
+      {
+        pick: "mabl",
+        title: "Only current browsers on Linux",
+        body: "mabl covers current Chrome, Edge, Firefox and WebKit on Linux, and its quote includes unlimited cloud concurrency. TestMu AI fits once you need older versions, macOS or real devices.",
+      },
+    ],
+  },
   alts: {
     lead: "Seven mabl alternatives,",
     title: "side by side",

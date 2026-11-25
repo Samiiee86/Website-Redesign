@@ -51,8 +51,14 @@ export type AltPage = {
     screen: ReactNode;
   };
   duel: { lead: string; title: string; body: string; groups: MatrixGroup[] };
-  /* the "switch over" description */
+  /* the "switch over" description, and the page's own three steps when
+     the move is not a hub change (mabl: export first) */
   switchBody: string;
+  switchSteps?: Step[];
+  /* the rival's pricing against TestMu AI's, when the rival quotes */
+  pricing?: Pricing;
+  /* when to choose which, as joined cards */
+  choose?: Choose;
   alts: { lead: string; title: string; body: string; columns: string[]; rows: SpecRow[] };
   methodology: {
     body: string;
@@ -198,7 +204,14 @@ function Reviews({ reviews }: { reviews: AltPage["reviews"] }) {
    these show the move itself: your keys, the first run, the results. Each
    is a small TestMu AI view on a painted scene (kit feature card media). */
 
-type Step = { title: string; body: string; scene: string; ui: "keys" | "run" | "results" };
+export type Step = {
+  title: string;
+  body: string;
+  scene: string;
+  ui: "keys" | "export" | "run" | "results";
+  /* the command the panel shows ("export" and "run") */
+  cmd?: string;
+};
 
 const steps: Step[] = [
   {
@@ -370,7 +383,28 @@ function Tag({ ok, children }: { ok: boolean; children: string }) {
 }
 
 /* divs, not p: the kit sizes every p in a step card at 16px */
-function StepUi({ ui }: { ui: Step["ui"] }) {
+function StepUi({ ui, cmd }: { ui: Step["ui"]; cmd?: string }) {
+  if (ui === "export")
+    return (
+      <div className={PANEL}>
+        <div className="flex items-center justify-between border-b border-border px-3 py-2 text-b3 font-medium">
+          Terminal
+          <span className="text-b4 font-normal text-muted-foreground">Done</span>
+        </div>
+        <div className="flex flex-col gap-2 p-3">
+          <div className={`${MONO} text-muted-foreground`}>$ {cmd}</div>
+          <div className={`${MONO} flex items-center gap-2`}>
+            <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
+            24 browser tests exported
+          </div>
+          <div className={`${MONO} flex items-center gap-2`}>
+            <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
+            Test cases saved as CSV
+          </div>
+        </div>
+      </div>
+    );
+
   if (ui === "keys")
     return (
       <div className={PANEL}>
@@ -402,7 +436,7 @@ function StepUi({ ui }: { ui: Step["ui"] }) {
           <span className="text-b4 font-normal text-muted-foreground">Running</span>
         </div>
         <div className="flex flex-col gap-2 p-3">
-          <div className={`${MONO} text-muted-foreground`}>$ mvn test</div>
+          <div className={`${MONO} text-muted-foreground`}>$ {cmd ?? "mvn test"}</div>
           <div className={`${MONO} flex items-center gap-2`}>
             <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
             Connected to TestMu AI
@@ -442,7 +476,7 @@ function StepUi({ ui }: { ui: Step["ui"] }) {
   );
 }
 
-function Switch({ body }: { body: string }) {
+function Switch({ body, own }: { body: string; own?: Step[] }) {
   return (
     <Section>
       <FoldHead
@@ -460,7 +494,7 @@ function Switch({ body }: { body: string }) {
       </FoldHead>
       <div className="tm-reveal -mx-8">
         <ol className="tm-grid tm-grid--3 tm-steps2">
-          {steps.map((w, i) => (
+          {(own ?? steps).map((w, i) => (
             <li key={w.title} className="tm-cell tm-step">
               <span className="tm-step__n">{i + 1}</span>
               {/* H5 and B2: the kit's 20px step title is off the type scale */}
@@ -473,11 +507,113 @@ function Switch({ body }: { body: string }) {
                   media: a white panel on a painted scene */}
               <div className="tm-fcard__media mt-auto !aspect-[4/3]">
                 <img className="tm-scene" src={w.scene} alt="" loading="lazy" />
-                <StepUi ui={w.ui} />
+                <StepUi ui={w.ui} cmd={w.cmd} />
               </div>
             </li>
           ))}
         </ol>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- pricing: the kit's pricing fold, two plans ----------
+   The rival's way of selling against TestMu AI's listed price, as two
+   joined plan cells; TestMu AI's carries the kit's ink border and flag. */
+
+export type Pricing = {
+  lead: string;
+  title: string;
+  body: string;
+  rival: { price: string; note: string; label: string; items: string[] };
+  ours: { price: string; note: string; flag: string; label: string; items: string[] };
+};
+
+const Tick = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M20 6 9 17l-5-5" />
+  </svg>
+);
+const Dash = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M5 12h14" />
+  </svg>
+);
+
+function PricingDuel({ rival, p }: { rival: string; p: Pricing }) {
+  return (
+    <Section>
+      <FoldHead lead={p.lead} title={p.title} body={p.body} />
+      <div className="tm-reveal -mx-8">
+        <div className="tm-grid tm-grid--2 tm-pcs">
+          <div className="tm-cell tm-pc">
+            <div className="tm-pc__top">
+              <h3>{rival} pricing</h3>
+              <div className="tm-pc__price">
+                <span className="tm-pixel">{p.rival.price}</span>
+                <small>{p.rival.note}</small>
+              </div>
+            </div>
+            <ul className="tm-pc__list">
+              <li className="tm-label">{p.rival.label}</li>
+              {p.rival.items.map((t) => (
+                <li key={t}>
+                  <Dash />
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="tm-cell tm-pc tm-pc--popular">
+            <span className="tm-pc__flag">{p.ours.flag}</span>
+            <div className="tm-pc__top">
+              <h3>TestMu AI pricing</h3>
+              <div className="tm-pc__price">
+                <span className="tm-pixel">{p.ours.price}</span>
+                <small>{p.ours.note}</small>
+              </div>
+            </div>
+            <ul className="tm-pc__list">
+              <li className="tm-label">{p.ours.label}</li>
+              {p.ours.items.map((t) => (
+                <li key={t}>
+                  <Tick />
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- when to choose which: the kit's feature pointers ----------
+   Joined white cells, each naming the pick first (kit label), then the
+   case and why. */
+
+export type Choose = {
+  lead: string;
+  title: string;
+  body: string;
+  items: { pick: string; title: string; body: string }[];
+};
+
+function ChooseCards({ c }: { c: Choose }) {
+  return (
+    <Section>
+      <FoldHead lead={c.lead} title={c.title} body={c.body} />
+      <div className="tm-reveal -mx-8">
+        <div className={`tm-grid ${c.items.length === 4 ? "tm-grid--2" : "tm-grid--3"}`}>
+          {c.items.map((it) => (
+            <div key={it.title} className="tm-cell tm-pt">
+              <p className="tm-label">{it.pick}</p>
+              <h3>{it.title}</h3>
+              <p>{it.body}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </Section>
   );
@@ -565,7 +701,9 @@ function Page({ p }: { p: AltPage }) {
             groups={p.duel.groups}
           />
         </div>
-        <Switch body={p.switchBody} />
+        {p.pricing && <PricingDuel rival={p.rival} p={p.pricing} />}
+        {p.choose && <ChooseCards c={p.choose} />}
+        <Switch body={p.switchBody} own={p.switchSteps} />
         <div id="alternatives">
           <SpecTable
             lead={p.alts.lead}
