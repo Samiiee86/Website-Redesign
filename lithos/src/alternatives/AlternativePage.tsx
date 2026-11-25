@@ -211,6 +211,9 @@ export type Step = {
   ui: "keys" | "export" | "run" | "results";
   /* the command the panel shows ("export" and "run") */
   cmd?: string;
+  /* the "export" panel's name and done lines, when not a terminal */
+  panel?: string;
+  lines?: string[];
 };
 
 const steps: Step[] = [
@@ -383,24 +386,22 @@ function Tag({ ok, children }: { ok: boolean; children: string }) {
 }
 
 /* divs, not p: the kit sizes every p in a step card at 16px */
-function StepUi({ ui, cmd }: { ui: Step["ui"]; cmd?: string }) {
+function StepUi({ ui, cmd, panel, lines }: { ui: Step["ui"]; cmd?: string; panel?: string; lines?: string[] }) {
   if (ui === "export")
     return (
       <div className={PANEL}>
         <div className="flex items-center justify-between border-b border-border px-3 py-2 text-b3 font-medium">
-          Terminal
+          {panel ?? "Terminal"}
           <span className="text-b4 font-normal text-muted-foreground">Done</span>
         </div>
         <div className="flex flex-col gap-2 p-3">
-          <div className={`${MONO} text-muted-foreground`}>$ {cmd}</div>
-          <div className={`${MONO} flex items-center gap-2`}>
-            <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
-            24 browser tests exported
-          </div>
-          <div className={`${MONO} flex items-center gap-2`}>
-            <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
-            Test cases saved as CSV
-          </div>
+          {cmd && <div className={`${MONO} text-muted-foreground`}>$ {cmd}</div>}
+          {(lines ?? ["24 browser tests exported", "Test cases saved as CSV"]).map((l) => (
+            <div key={l} className={`${MONO} flex items-center gap-2`}>
+              <Check size={16} strokeWidth={2} aria-hidden className="text-[var(--tm-green-500)]" />
+              {l}
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -507,7 +508,7 @@ function Switch({ body, own }: { body: string; own?: Step[] }) {
                   media: a white panel on a painted scene */}
               <div className="tm-fcard__media mt-auto !aspect-[4/3]">
                 <img className="tm-scene" src={w.scene} alt="" loading="lazy" />
-                <StepUi ui={w.ui} cmd={w.cmd} />
+                <StepUi ui={w.ui} cmd={w.cmd} panel={w.panel} lines={w.lines} />
               </div>
             </li>
           ))}
