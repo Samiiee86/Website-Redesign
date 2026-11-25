@@ -19,6 +19,7 @@ export default defineConfig({
         perfectoAlternative: resolve(__dirname, 'perfecto-alternative.html'),
         mablAlternative: resolve(__dirname, 'mabl-alternative.html'),
         testimAlternative: resolve(__dirname, 'testim-alternative.html'),
+        kobitonAlternative: resolve(__dirname, 'kobiton-alternative.html'),
         // the automation testing platform page, built from kit folds
         automationTestingPlatform: resolve(__dirname, 'automation-testing-platform.html'),
         // the HyperExecute page, built from kit folds

@@ -214,6 +214,8 @@ export type Step = {
   /* the "export" panel's name and done lines, when not a terminal */
   panel?: string;
   lines?: string[];
+  /* the "results" panel's rows, when not the desktop browser runs */
+  results?: { name: string; sub: string; ok: boolean }[];
 };
 
 const steps: Step[] = [
@@ -386,7 +388,7 @@ function Tag({ ok, children }: { ok: boolean; children: string }) {
 }
 
 /* divs, not p: the kit sizes every p in a step card at 16px */
-function StepUi({ ui, cmd, panel, lines }: { ui: Step["ui"]; cmd?: string; panel?: string; lines?: string[] }) {
+function StepUi({ ui, cmd, panel, lines, results }: { ui: Step["ui"]; cmd?: string; panel?: string; lines?: string[]; results?: Step["results"] }) {
   if (ui === "export")
     return (
       <div className={PANEL}>
@@ -460,11 +462,11 @@ function StepUi({ ui, cmd, panel, lines }: { ui: Step["ui"]; cmd?: string; panel
         Test runs
         <span className="text-b4 font-normal text-muted-foreground">46 of 48 passed</span>
       </div>
-      {[
+      {(results?.map((r) => [r.name, r.sub, r.ok]) ?? [
         ["Checkout flow", "Chrome 148", true],
         ["Sign in", "Safari 26", true],
         ["Search filters", "Edge 148", false],
-      ].map(([t, b, ok], i) => (
+      ]).map(([t, b, ok], i) => (
         <div key={t as string} className={`${ROW} ${i ? "border-t border-border" : ""}`}>
           <span className="flex flex-col gap-0.5">
             <span className="text-b4 font-medium">{t}</span>
@@ -508,7 +510,7 @@ function Switch({ body, own }: { body: string; own?: Step[] }) {
                   media: a white panel on a painted scene */}
               <div className="tm-fcard__media mt-auto !aspect-[4/3]">
                 <img className="tm-scene" src={w.scene} alt="" loading="lazy" />
-                <StepUi ui={w.ui} cmd={w.cmd} panel={w.panel} lines={w.lines} />
+                <StepUi ui={w.ui} cmd={w.cmd} panel={w.panel} lines={w.lines} results={w.results} />
               </div>
             </li>
           ))}
