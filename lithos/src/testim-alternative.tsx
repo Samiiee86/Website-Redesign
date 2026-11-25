@@ -214,8 +214,8 @@ mountAlternativePage({
     lines: ["Testim alternatives,", "compared feature by feature"],
     promise:
       "Tests you can export as code, browsers and real devices in one account, and listed prices. KaneAI starts at $17 per agent a month; Testim quotes every plan.",
-    /* the "vs" hero fold's scene, shared by the compare pages */
-    scene: "/kit/hero/browserstack-alternative/hero-bg.jpg",
+    /* a hero fold scene of its own; no two alternative pages share one */
+    scene: "/kit/hero/testim-alternative/hero-bg.jpg",
     screen: <MigrateShot rival="Testim" before={before} after={after} />,
   },
   duel: {

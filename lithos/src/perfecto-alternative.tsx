@@ -163,8 +163,8 @@ mountAlternativePage({
     lines: ["Perfecto alternatives,", "compared feature by feature"],
     promise:
       "A free plan and self-serve prices from $15 a month, where Perfecto is quote only. 3,000+ browsers and 50,000+ real devices.",
-    /* the "vs" hero fold's scene, shared by the compare pages */
-    scene: "/kit/hero/browserstack-alternative/hero-bg.jpg",
+    /* a hero fold scene of its own; no two alternative pages share one */
+    scene: "/kit/hero/perfecto-alternative/hero-bg.jpg",
     screen: <MigrateShot rival="Perfecto" before={before} after={after} />,
   },
   duel: {

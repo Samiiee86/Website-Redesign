@@ -163,8 +163,8 @@ mountAlternativePage({
     lines: ["Sauce Labs alternatives,", "compared feature by feature"],
     promise:
       "Start free, then live testing from $15 a month against $39 on Sauce Labs. 50,000+ real devices and 3,000+ browsers.",
-    /* the "vs" hero fold's scene, shared by the compare pages */
-    scene: "/kit/hero/browserstack-alternative/hero-bg.jpg",
+    /* a hero fold scene of its own; no two alternative pages share one */
+    scene: "/kit/hero/saucelabs-alternative/hero-bg.jpg",
     screen: <MigrateShot rival="Sauce Labs" before={before} after={after} />,
   },
   duel: {
