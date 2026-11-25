@@ -1,4 +1,6 @@
 import { gartnerFaq, mountAlternativePage } from "./alternatives/AlternativePage";
+import { Panel, Rows } from "./alternatives/ChoosePanels";
+import { deployment, hyperexecute, realDevices } from "./alternatives/choose-views";
 import { customerPosts } from "./alternatives/reviews";
 import MigrateShot, { type ShotLine } from "./alternatives/MigrateShot";
 import type { SpecRow } from "./pieces/SpecTable";
@@ -172,6 +174,77 @@ mountAlternativePage({
     title: "feature by feature",
     body: "Both price per parallel session. Monthly list prices, billed annually, checked November 2026.",
     groups: duel,
+  },
+  pricing: {
+    lead: "Sauce Labs from $39,",
+    title: "TestMu AI from $15",
+    body: "Both price per parallel session. Monthly list prices, billed annually, checked 17 November 2026.",
+    rival: {
+      price: "$39",
+      note: "/parallel a month",
+      label: "How it is sold",
+      items: [
+        "Live Testing at $39 per parallel a month",
+        "Virtual Device Cloud at $149 per parallel",
+        "Real Device Cloud at $199 per parallel",
+        "28-day trial, then no free plan",
+        "AI agents need an Enterprise plan",
+      ],
+    },
+    ours: {
+      price: "$15",
+      note: "/parallel a month",
+      flag: "Listed prices",
+      label: "What you get",
+      items: [
+        "Live testing at $15 per parallel a month",
+        "Desktop web automation at $79 per parallel",
+        "Real device automation at $199 per parallel",
+        "Free plan with no credit card",
+        "KaneAI from $17 per agent a month",
+      ],
+    },
+  },
+  choose: {
+    lead: "When to choose",
+    title: "TestMu AI or Sauce Labs",
+    body: "Pick by what you test and where it has to run, and stay where Sauce Labs is strongest.",
+    items: [
+      {
+        pick: "Pick TestMu AI",
+        title: "Five times the real devices",
+        body: "Sauce Labs runs 10,000+ real devices. TestMu AI runs 50,000+ real Android and iOS devices.",
+        media: realDevices("/kit/hero/browser-emulator-online/hero-bg.jpg"),
+      },
+      {
+        pick: "Pick TestMu AI",
+        title: "Faster suites without sharding by hand",
+        body: "Sauce Labs splits suites with saucectl. HyperExecute splits, retries and reports for you, and runs suites up to 70% faster.",
+        media: hyperexecute("/kit/hero/cross-browser-testing/hero-bg.jpg"),
+      },
+      {
+        pick: "Pick TestMu AI",
+        title: "Real devices behind your firewall",
+        body: "Sauce Labs hosts test runs in its own clouds. TestMu AI runs real devices and HyperExecute inside your network on Enterprise.",
+        media: deployment("/kit/hero/appium-mobile-testing/hero-bg.jpg"),
+      },
+      {
+        pick: "Stay on Sauce Labs",
+        title: "Crash reports from production",
+        body: "Sauce Labs sells Sauce Error Reporting for production crash monitoring, which TestMu AI does not offer.",
+        media: (
+          <Panel title="Stay on Sauce Labs when" scene={"/kit/hero/automation-testing-platform/hero-bg.jpg"}>
+            <Rows
+              rows={[
+                { name: "Error reporting", sub: "Production crash monitoring", tag: "Sauce Labs" },
+                { name: "A long track record", sub: "Running since 2008", tag: "Mature" },
+                { name: "ISO 42001", sub: "With SOC 2 Type II and ISO 27001", tag: "Certified" },
+              ]}
+            />
+          </Panel>
+        ),
+      },
+    ],
   },
   switchBody:
     "Keep your Selenium and Appium tests when you leave Sauce Labs. Three steps from your current suite to your first run on TestMu AI.",

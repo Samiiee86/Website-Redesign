@@ -1,4 +1,6 @@
 import { gartnerFaq, mountAlternativePage } from "./alternatives/AlternativePage";
+import { Panel, Rows } from "./alternatives/ChoosePanels";
+import { hyperexecute, kanePlans } from "./alternatives/choose-views";
 import MigrateShot, { type ShotLine } from "./alternatives/MigrateShot";
 import { customerPosts } from "./alternatives/reviews";
 import type { SpecRow } from "./pieces/SpecTable";
@@ -172,6 +174,86 @@ mountAlternativePage({
     title: "feature by feature",
     body: "Perfecto sells quote-only plans with a 12-month minimum term, so this compares what each includes rather than list prices.",
     groups: duel,
+  },
+  pricing: {
+    lead: "Perfecto quotes every plan,",
+    title: "TestMu AI lists every price",
+    body: "Perfecto sells quote-only plans with a 12-month minimum term. TestMu AI prices are monthly list prices, billed annually.",
+    rival: {
+      price: "Quote only",
+      note: "No list prices",
+      label: "How it is sold",
+      items: [
+        "Every plan sold by quote",
+        "12-month minimum term",
+        "14-day free trial",
+        "Email-only support",
+        "Costs almost 3x TestMu AI",
+      ],
+    },
+    ours: {
+      price: "$15",
+      note: "/parallel a month",
+      flag: "Listed prices",
+      label: "What you get",
+      items: [
+        "Live testing at $15 per parallel a month",
+        "Desktop web automation at $79 per parallel",
+        "Real device automation at $199 per parallel",
+        "Free plan with no credit card",
+        "24/7 support",
+      ],
+    },
+  },
+  choose: {
+    lead: "When to choose",
+    title: "TestMu AI or Perfecto",
+    body: "Pick by what you test and how you buy it, and stay where Perfecto is strongest.",
+    items: [
+      {
+        pick: "Pick TestMu AI",
+        title: "AI that writes your tests",
+        body: "Perfecto has no generative AI testing agent. KaneAI writes and maintains tests from plain language, from $17 per agent a month.",
+        media: kanePlans("/kit/hero/browser-emulator-online/hero-bg.jpg"),
+      },
+      {
+        pick: "Pick TestMu AI",
+        title: "Accessibility to WCAG 2.1",
+        body: "Perfecto checks accessibility against WCAG 2.0 only. TestMu AI checks WCAG 2.0 and 2.1.",
+        media: (
+          <Panel title="Accessibility scan" note="Checkout page" scene={"/kit/hero/cross-browser-testing/hero-bg.jpg"}>
+            <Rows
+              rows={[
+                { name: "WCAG 2.0", sub: "Automated checks", tag: "Covered", ok: true },
+                { name: "WCAG 2.1", sub: "Automated checks", tag: "Covered", ok: true },
+                { name: "Issues found", sub: "With the element and the fix", tag: "Reported", ok: true },
+              ]}
+            />
+          </Panel>
+        ),
+      },
+      {
+        pick: "Pick TestMu AI",
+        title: "Faster suites with orchestration",
+        body: "Perfecto has no test orchestration. HyperExecute splits, retries and reports for you, and runs suites up to 70% faster.",
+        media: hyperexecute("/kit/hero/automation-testing-platform/hero-bg.jpg"),
+      },
+      {
+        pick: "Stay on Perfecto",
+        title: "Devices on live carrier networks",
+        body: "Perfecto runs real and virtual devices in one enterprise cloud, including devices connected to live carrier networks.",
+        media: (
+          <Panel title="Stay on Perfecto when" scene={"/kit/hero/browserstack-alternative/hero-bg.jpg"}>
+            <Rows
+              rows={[
+                { name: "Carrier networks", sub: "Devices on live mobile networks", tag: "Perfecto" },
+                { name: "Real and virtual devices", sub: "In one enterprise cloud", tag: "Perfecto" },
+              ]}
+            />
+          </Panel>
+        ),
+      },
+    ],
   },
   switchBody:
     "Keep your Selenium and Appium tests when you leave Perfecto. Three steps from your current suite to your first run on TestMu AI.",
