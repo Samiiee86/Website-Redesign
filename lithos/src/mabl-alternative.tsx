@@ -155,22 +155,21 @@ const faq = [
 
 /* ---------- the hero picture: the same exported test before and after ----------
    mabl's Playwright export runs in a local browser; on TestMu AI the same
-   test connects to the cloud instead. The launch line faces the connect
-   call, and empty rows keep both sides level. */
+   test connects to the cloud instead. The five lines of local launch
+   settings face the five lines of cloud settings, so no row is empty. */
 
 const imports: ShotLine = { code: ["const { chromium } = require(", { s: '"playwright"' }, ");"] };
-const filler: ShotLine = { filler: true, code: [] };
 const page: ShotLine = { code: ["const page = await browser.newPage();"] };
 const goto: ShotLine = { code: ["await page.goto(", { s: '"https://shop.example.com"' }, ");"] };
 const click: ShotLine = { code: ["await page.click(", { s: '"text=Add to cart"' }, ");"] };
 
 const before: ShotLine[] = [
   imports,
-  filler,
-  filler,
-  { change: true, code: ["const browser = await chromium.", { w: "launch" }, "();"] },
-  filler,
-  filler,
+  { change: true, code: ["const browser = await chromium.", { w: "launch" }, "({"] },
+  { change: true, code: ["  ", { w: "headless" }, ": true,"] },
+  { change: true, code: ["  channel: ", { sw: "chrome" }, ","] },
+  { change: true, code: ["  viewport: { width: 1280, height: 720 },"] },
+  { change: true, code: ["});"] },
   page,
   goto,
   click,
