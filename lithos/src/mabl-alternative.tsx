@@ -278,7 +278,7 @@ mountAlternativePage({
         title: "Native apps on real devices",
         body: "mabl runs native app tests on virtual devices. TestMu AI runs them on 50,000+ real Android and iOS devices.",
         media: (
-          <Panel title="Real devices" note="50,000+" scene="/kit/hero/real-device-cloud/hero-bg.jpg">
+          <Panel title="Real devices" note="50,000+" scene="/kit/hero/browser-emulator-online/hero-bg.jpg">
             <Rows
               rows={[
                 { name: "iPhone 16 Pro", sub: "iOS 18", tag: "Real device", ok: true },
@@ -328,7 +328,7 @@ mountAlternativePage({
         title: "Only current browsers on Linux",
         body: "mabl covers current Chrome, Edge, Firefox and WebKit on Linux, and its quote includes unlimited cloud concurrency.",
         media: (
-          <Panel title="Linux" note="Current versions" scene="/kit/hero/browser-cloud/hero-bg.jpg">
+          <Panel title="Linux" note="Current versions" scene="/kit/hero/automation-testing-platform/hero-bg.jpg">
             <Rows
               rows={[
                 { name: "Chrome", sub: "Current version", tag: "Linux" },
