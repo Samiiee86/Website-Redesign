@@ -589,15 +589,16 @@ function PricingDuel({ rival, p }: { rival: string; p: Pricing }) {
   );
 }
 
-/* ---------- when to choose which: the kit's feature pointers ----------
-   Joined white cells, each naming the pick first (kit label), then the
-   case and why. */
+/* ---------- when to choose which: the kit's bento ----------
+   Narrow and wide cells that swap sides each row. Each names the pick in
+   a small tag, says the case, and shows it as a small TestMu AI view
+   (ChoosePanels) in the cell's media box. */
 
 export type Choose = {
   lead: string;
   title: string;
   body: string;
-  items: { pick: string; title: string; body: string }[];
+  items: { pick: string; title: string; body: string; media: ReactNode }[];
 };
 
 function ChooseCards({ c }: { c: Choose }) {
@@ -605,14 +606,22 @@ function ChooseCards({ c }: { c: Choose }) {
     <Section>
       <FoldHead lead={c.lead} title={c.title} body={c.body} />
       <div className="tm-reveal -mx-8">
-        <div className={`tm-grid ${c.items.length === 4 ? "tm-grid--2" : "tm-grid--3"}`}>
-          {c.items.map((it) => (
-            <div key={it.title} className="tm-cell tm-pt">
-              <p className="tm-label">{it.pick}</p>
-              <h3>{it.title}</h3>
-              <p>{it.body}</p>
-            </div>
-          ))}
+        <div className="tm-bento">
+          {c.items.map((it, i) => {
+            /* narrow, wide / wide, narrow */
+            const wide = i % 4 === 1 || i % 4 === 2;
+            return (
+              <div key={it.title} className={`tm-bento__cell ${wide ? "tm-bento__cell--wide" : "tm-bento__cell--narrow"}`}>
+                <span className="tag self-start rounded-sm bg-[var(--tm-bg-fill)] px-1.5 py-0.5 text-b4 font-medium">
+                  {it.pick}
+                </span>
+                <h3 className="tm-h4 mt-2 [text-wrap:balance]">{it.title}</h3>
+                {/* B2: the kit's 18px bento line is longer than these */}
+                <p className="!text-b2">{it.body}</p>
+                <div className="tm-bento__media">{it.media}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </Section>

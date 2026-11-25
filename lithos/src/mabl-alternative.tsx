@@ -1,6 +1,7 @@
 import { gartnerFaq, mountAlternativePage } from "./alternatives/AlternativePage";
 import MigrateShot, { type ShotLine } from "./alternatives/MigrateShot";
 import { customerPosts } from "./alternatives/reviews";
+import { CodePanel, Panel, Rows } from "./alternatives/ChoosePanels";
 import type { SpecRow } from "./pieces/SpecTable";
 import type { MatrixGroup } from "./pieces/compare/MatrixTable";
 
@@ -273,24 +274,69 @@ mountAlternativePage({
     body: "Pick by what you test and where it has to run.",
     items: [
       {
-        pick: "TestMu AI",
+        pick: "Pick TestMu AI",
         title: "Native apps on real devices",
-        body: "mabl runs native app tests on virtual devices, with real phones only as Android devices plugged in over USB. TestMu AI runs them on 50,000+ real Android and iOS devices.",
+        body: "mabl runs native app tests on virtual devices. TestMu AI runs them on 50,000+ real Android and iOS devices.",
+        media: (
+          <Panel title="Real devices" note="50,000+">
+            <Rows
+              rows={[
+                { name: "iPhone 16 Pro", sub: "iOS 18", tag: "Real device", ok: true },
+                { name: "Galaxy S25", sub: "Android 15", tag: "Real device", ok: true },
+                { name: "Pixel 9", sub: "Android 15", tag: "Real device", ok: true },
+              ]}
+            />
+          </Panel>
+        ),
       },
       {
-        pick: "TestMu AI",
+        pick: "Pick TestMu AI",
         title: "Safari on macOS and Edge on Windows",
-        body: "mabl runs every cloud test on Linux, with WebKit in place of Safari. TestMu AI runs Safari on macOS, Edge on Windows and older versions across 3,000+ combinations.",
+        body: "mabl runs every cloud test on Linux, with WebKit in place of Safari. TestMu AI runs real Safari, Edge and older versions across 3,000+ combinations.",
+        media: (
+          <Panel title="Browsers" note="3,000+ combinations">
+            <Rows
+              rows={[
+                { name: "Safari 26", sub: "macOS Tahoe", tag: "macOS" },
+                { name: "Edge 148", sub: "Windows 11", tag: "Windows" },
+                { name: "Chrome 120", sub: "Windows 10", tag: "Older version" },
+              ]}
+            />
+          </Panel>
+        ),
       },
       {
-        pick: "TestMu AI",
+        pick: "Pick TestMu AI",
         title: "Mobile tests as Appium code",
-        body: "mabl exports browser tests as Playwright or Selenium IDE code, but not mobile tests. KaneAI exports web tests as Selenium or Playwright and mobile tests as Appium.",
+        body: "mabl exports browser tests, but not mobile tests. KaneAI exports web tests as Selenium or Playwright and mobile tests as Appium.",
+        media: (
+          <CodePanel
+            tabs={["Selenium", "Playwright", "Appium"]}
+            active="Appium"
+            lines={[
+              'driver.findElement(AppiumBy.accessibilityId("Search"))',
+              '    .sendKeys("running shoes");',
+              'driver.findElement(AppiumBy.accessibilityId("Add to cart"))',
+              "    .click();",
+            ]}
+          />
+        ),
       },
       {
-        pick: "mabl",
+        pick: "Pick mabl",
         title: "Only current browsers on Linux",
-        body: "mabl covers current Chrome, Edge, Firefox and WebKit on Linux, and its quote includes unlimited cloud concurrency. TestMu AI fits once you need older versions, macOS or real devices.",
+        body: "mabl covers current Chrome, Edge, Firefox and WebKit on Linux, and its quote includes unlimited cloud concurrency.",
+        media: (
+          <Panel title="Linux" note="Current versions">
+            <Rows
+              rows={[
+                { name: "Chrome", sub: "Current version", tag: "Linux" },
+                { name: "Edge and Firefox", sub: "Current versions", tag: "Linux" },
+                { name: "WebKit", sub: "Current version", tag: "Linux" },
+              ]}
+            />
+          </Panel>
+        ),
       },
     ],
   },
