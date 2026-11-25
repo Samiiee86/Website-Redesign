@@ -92,7 +92,7 @@ export default function MigrateShot({
     <div
       ref={box}
       role="img"
-      aria-label={`Are you migrating from ${rival}? The same Java test before and after, with the lines that change marked`}
+      aria-label={`Are you migrating from ${rival}? The same test before and after, with the lines that change marked`}
       className="relative h-full w-full"
     >
       <div ref={shot} className="mshot" aria-hidden>
