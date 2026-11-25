@@ -1,7 +1,6 @@
 import { gartnerFaq, mountAlternativePage } from "./alternatives/AlternativePage";
 import MigrateShot, { type ShotLine } from "./alternatives/MigrateShot";
 import { customerPosts } from "./alternatives/reviews";
-import { CodePanel, Panel, Rows } from "./alternatives/ChoosePanels";
 import type { SpecRow } from "./pieces/SpecTable";
 import type { MatrixGroup } from "./pieces/compare/MatrixTable";
 
@@ -14,7 +13,6 @@ import type { MatrixGroup } from "./pieces/compare/MatrixTable";
      head, in groups;
    - its pricing block is the pricing fold;
    - its four migration steps become the three switch steps;
-   - "when to stay on Testim" and the reasons to switch are the bento;
    - the eight alternatives keep best for, plans and the limitation. */
 
 /* ---------- head to head ---------- */
@@ -253,79 +251,6 @@ mountAlternativePage({
         "Every plan price on the pricing page",
       ],
     },
-  },
-  choose: {
-    lead: "When to choose",
-    title: "TestMu AI or Testim",
-    body: "Pick by why you are switching, and stay where Testim is strongest.",
-    items: [
-      {
-        pick: "Pick TestMu AI",
-        title: "Tests as code you own",
-        body: "Testim exports code only on Professional, with no Appium. KaneAI exports Selenium and Playwright on every plan, and Appium on Max.",
-        media: (
-          <CodePanel
-            scene="/kit/hero/appium-mobile-testing/hero-bg.jpg"
-            tabs={["Selenium", "Playwright", "Appium"]}
-            active="Playwright"
-            lines={[
-              'await page.goto("https://app.example.com/login");',
-              'await page.fill("#email", "qa@example.com");',
-              'await page.click("text=Sign in");',
-              'await expect(page).toHaveURL(/dashboard/);',
-            ]}
-          />
-        ),
-      },
-      {
-        pick: "Pick TestMu AI",
-        title: "Native apps on real devices",
-        body: "Testim Mobile runs on simulators and emulators, with real devices sold separately. TestMu AI runs them on 50,000+ real Android and iOS devices.",
-        media: (
-          <Panel title="Real devices" note="50,000+" scene="/kit/hero/browser-emulator-online/hero-bg.jpg">
-            <Rows
-              rows={[
-                { name: "iPhone 16 Pro", sub: "iOS 18", tag: "Real device", ok: true },
-                { name: "Galaxy S25", sub: "Android 15", tag: "Real device", ok: true },
-                { name: "Pixel 9", sub: "Android 15", tag: "Real device", ok: true },
-              ]}
-            />
-          </Panel>
-        ),
-      },
-      {
-        pick: "Pick TestMu AI",
-        title: "API, database and visual checks in one run",
-        body: "Testim keeps API steps, accessibility and Applitools on Professional. KaneAI Pro checks APIs, databases and WCAG in the same run, and SmartUI catches visual changes.",
-        media: (
-          <Panel title="Test run" note="Checkout flow" scene="/kit/hero/cross-browser-testing/hero-bg.jpg">
-            <Rows
-              rows={[
-                { name: "REST API", sub: "POST /orders returns 201", tag: "Passed", ok: true },
-                { name: "Database", sub: "Order saved in PostgreSQL", tag: "Passed", ok: true },
-                { name: "WCAG 2.2", sub: "No contrast issues", tag: "Passed", ok: true },
-              ]}
-            />
-          </Panel>
-        ),
-      },
-      {
-        pick: "Stay on Testim",
-        title: "Salesforce, or all in on Tricentis",
-        body: "Testim Salesforce has metadata-aware steps that KaneAI does not, and Testim fits teams consolidating on Tricentis or on the free Community plan.",
-        media: (
-          <Panel title="Stay on Testim when" scene="/kit/hero/automation-testing-platform/hero-bg.jpg">
-            <Rows
-              rows={[
-                { name: "Testim Salesforce", sub: "Metadata-aware steps", tag: "Salesforce" },
-                { name: "Tricentis suite", sub: "Tosca, qTest and SeaLights", tag: "Tricentis" },
-                { name: "Community plan", sub: "One free plan per organization", tag: "Free" },
-              ]}
-            />
-          </Panel>
-        ),
-      },
-    ],
   },
   switchBody:
     "KaneAI does not import Testim tests, so the move starts from Testim's Playwright export on the Professional plan. Three steps to your first run on TestMu AI.",

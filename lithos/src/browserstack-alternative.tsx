@@ -1,6 +1,4 @@
 import { gartnerFaq, mountAlternativePage, type Review } from "./alternatives/AlternativePage";
-import { Panel, Rows } from "./alternatives/ChoosePanels";
-import { deployment, kanePlans, realDevices } from "./alternatives/choose-views";
 import type { SpecRow } from "./pieces/SpecTable";
 import type { MatrixGroup } from "./pieces/compare/MatrixTable";
 
@@ -323,47 +321,6 @@ mountAlternativePage({
         "Free plans with no credit card",
       ],
     },
-  },
-  choose: {
-    lead: "When to choose",
-    title: "TestMu AI or BrowserStack",
-    body: "Pick by what you test, where it has to run and how you buy it.",
-    items: [
-      {
-        pick: "Pick TestMu AI",
-        title: "Desktop browsers and real devices together",
-        body: "BrowserStack sells desktop browsers separately from its real device plans. TestMu AI includes them, with 50,000+ real devices.",
-        media: realDevices("/kit/hero/browser-emulator-online/hero-bg.jpg"),
-      },
-      {
-        pick: "Pick TestMu AI",
-        title: "Apple Pay, SIM and biometrics on every plan",
-        body: "BrowserStack keeps these device features on Team Pro and up. TestMu AI includes them on its real device plans.",
-        media: (
-          <Panel title="Device features" scene={"/kit/hero/cross-browser-testing/hero-bg.jpg"}>
-            <Rows
-              rows={[
-                { name: "Apple Pay", sub: "On real iPhones", tag: "Included", ok: true },
-                { name: "SIM", sub: "For OTP and calls", tag: "Included", ok: true },
-                { name: "Biometrics", sub: "Face ID and fingerprint", tag: "Included", ok: true },
-              ]}
-            />
-          </Panel>
-        ),
-      },
-      {
-        pick: "Pick TestMu AI",
-        title: "Real devices behind your firewall",
-        body: "BrowserStack has no on-premise devices. TestMu AI runs real devices in a private cloud or inside your own network on Enterprise.",
-        media: deployment("/kit/hero/appium-mobile-testing/hero-bg.jpg"),
-      },
-      {
-        pick: "Pick TestMu AI",
-        title: "AI test authoring at a listed price",
-        body: "BrowserStack's AI test authoring is quote only. KaneAI starts at $17 per agent a month.",
-        media: kanePlans("/kit/hero/automation-testing-platform/hero-bg.jpg"),
-      },
-    ],
   },
   switchBody:
     "Keep your Selenium tests when you leave BrowserStack. Three steps from your current suite to your first run on TestMu AI.",
