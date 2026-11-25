@@ -278,7 +278,7 @@ mountAlternativePage({
         title: "Native apps on real devices",
         body: "mabl runs native app tests on virtual devices. TestMu AI runs them on 50,000+ real Android and iOS devices.",
         media: (
-          <Panel title="Real devices" note="50,000+">
+          <Panel title="Real devices" note="50,000+" scene="/kit/hero/real-device-cloud/hero-bg.jpg">
             <Rows
               rows={[
                 { name: "iPhone 16 Pro", sub: "iOS 18", tag: "Real device", ok: true },
@@ -294,7 +294,7 @@ mountAlternativePage({
         title: "Safari on macOS and Edge on Windows",
         body: "mabl runs every cloud test on Linux, with WebKit in place of Safari. TestMu AI runs real Safari, Edge and older versions across 3,000+ combinations.",
         media: (
-          <Panel title="Browsers" note="3,000+ combinations">
+          <Panel title="Browsers" note="3,000+ combinations" scene="/kit/hero/cross-browser-testing/hero-bg.jpg">
             <Rows
               rows={[
                 { name: "Safari 26", sub: "macOS Tahoe", tag: "macOS" },
@@ -311,6 +311,7 @@ mountAlternativePage({
         body: "mabl exports browser tests, but not mobile tests. KaneAI exports web tests as Selenium or Playwright and mobile tests as Appium.",
         media: (
           <CodePanel
+            scene="/kit/hero/appium-mobile-testing/hero-bg.jpg"
             tabs={["Selenium", "Playwright", "Appium"]}
             active="Appium"
             lines={[
@@ -327,7 +328,7 @@ mountAlternativePage({
         title: "Only current browsers on Linux",
         body: "mabl covers current Chrome, Edge, Firefox and WebKit on Linux, and its quote includes unlimited cloud concurrency.",
         media: (
-          <Panel title="Linux" note="Current versions">
+          <Panel title="Linux" note="Current versions" scene="/kit/hero/browser-cloud/hero-bg.jpg">
             <Rows
               rows={[
                 { name: "Chrome", sub: "Current version", tag: "Linux" },

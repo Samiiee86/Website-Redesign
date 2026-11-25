@@ -1,15 +1,16 @@
 import type { ReactNode } from "react";
 
 /* Small TestMu AI views for the "when to choose" bento cells: white
-   panels with hairlines on the fill tint, Manrope on the type scale, mono
-   only for real code. No scenes and no dark fills inside the cells. */
+   panels with hairlines on a hero fold's painted scene (fill tint while it
+   loads), Manrope on the type scale, mono only for real code. */
 
 const ROW = "flex items-center justify-between gap-3 px-4 py-2.5";
 
-export function Panel({ title, note, children }: { title: string; note?: string; children: ReactNode }) {
+export function Panel({ title, note, scene, children }: { title: string; note?: string; scene?: string; children: ReactNode }) {
   return (
-    <div className="flex h-full items-center justify-center bg-[var(--tm-bg-fill)] p-6">
-      <div className="w-full max-w-[440px] border border-border bg-surface [box-shadow:var(--tm-shadow-floating-sm)]">
+    <div className="relative flex h-full items-center justify-center bg-[var(--tm-bg-fill)] p-6">
+      {scene && <img className="absolute inset-0 size-full object-cover" src={scene} alt="" loading="lazy" />}
+      <div className="relative w-full max-w-[440px] border border-border bg-surface [box-shadow:var(--tm-shadow-floating-sm)]">
         <div className="flex items-center justify-between border-b border-border px-4 py-2.5 text-b3 font-medium">
           {title}
           {note && <span className="text-b4 font-normal text-muted-foreground">{note}</span>}
@@ -51,10 +52,11 @@ export function Rows({ rows }: { rows: { name: string; sub: string; tag: string;
 }
 
 /* a code view with framework tabs, the active one underlined */
-export function CodePanel({ tabs, active, lines }: { tabs: string[]; active: string; lines: string[] }) {
+export function CodePanel({ tabs, active, lines, scene }: { tabs: string[]; active: string; lines: string[]; scene?: string }) {
   return (
-    <div className="flex h-full items-center justify-center bg-[var(--tm-bg-fill)] p-6">
-      <div className="w-full max-w-[560px] border border-border bg-surface [box-shadow:var(--tm-shadow-floating-sm)]">
+    <div className="relative flex h-full items-center justify-center bg-[var(--tm-bg-fill)] p-6">
+      {scene && <img className="absolute inset-0 size-full object-cover" src={scene} alt="" loading="lazy" />}
+      <div className="relative w-full max-w-[560px] border border-border bg-surface [box-shadow:var(--tm-shadow-floating-sm)]">
         <div className="flex items-center gap-4 border-b border-border px-4 text-b3">
           <span className="py-2.5 font-medium">Export</span>
           {tabs.map((t) => (
