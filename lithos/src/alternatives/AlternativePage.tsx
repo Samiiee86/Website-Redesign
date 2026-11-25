@@ -20,9 +20,9 @@ import type { MatrixGroup } from "../pieces/compare/MatrixTable";
    (browserstack-alternative, saucelabs-alternative, ...). Each page only
    brings its own words and data (an AltPage); the flow is the same:
 
-   header, hero, logo wall, head to head, switch steps, other
-   alternatives, Gartner banner, how we compared, customer stories,
-   reviews, FAQ, enterprise call, footer.
+   header, hero, logo wall, head to head, (when to choose), switch steps,
+   other alternatives, Gartner banner, how we compared, customer stories,
+   reviews, (pricing), FAQ, enterprise call, footer.
 
    Shared folds come from the site (header, logo wall, stories, FAQ,
    enterprise, footer); the tables from the pieces library; the hero,
@@ -711,7 +711,6 @@ function Page({ p }: { p: AltPage }) {
             groups={p.duel.groups}
           />
         </div>
-        {p.pricing && <PricingDuel rival={p.rival} p={p.pricing} />}
         {p.choose && <ChooseCards c={p.choose} />}
         <Switch body={p.switchBody} own={p.switchSteps} />
         <div id="alternatives">
@@ -727,6 +726,9 @@ function Page({ p }: { p: AltPage }) {
         <Methodology m={p.methodology} />
         <Stories />
         <Reviews reviews={p.reviews} />
+        {/* the price last, once the proof is in, so the reader decides
+            here; the FAQ then answers the cost questions */}
+        {p.pricing && <PricingDuel rival={p.rival} p={p.pricing} />}
         <Faq items={p.faq} />
         <Enterprise title={p.enterprise.title} body={p.enterprise.body} />
         <Footer />
