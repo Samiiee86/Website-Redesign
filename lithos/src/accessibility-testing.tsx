@@ -150,7 +150,7 @@ function Hero() {
           </p>
         </div>
         <div className="tm-actions tm-hero__actions">
-          <a className="tm-btn tm-btn--primary tm-btn--arrow" href={SIGNUP}>
+          <a className="tm-btn tm-btn--primary tm-btn--arrow tm-btn--plain" href={SIGNUP}>
             Start free
             <span className="tm-chip" aria-hidden="true">
               <span>
