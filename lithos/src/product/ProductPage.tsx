@@ -48,8 +48,8 @@ const HoverArrow = () => (
   </span>
 );
 
-/* card titles in H4 (24/32), card text in B1 (18/28), the DS sizes */
-const H4 = "!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !tracking-[var(--tm-h4-tracking)] !font-medium";
+/* card titles 20/28 (the kit's own card title size, as Sameer asked), card text B1 (18/28) */
+const H4 = "!text-[20px] !leading-[28px] !tracking-[-0.5px] !font-medium";
 /* boxes as on the home page: edge to edge between the frame lines,
    joined by 1px hairlines, no gaps */
 const JOIN = "tm-reveal -mx-8 grid gap-px border-y border-border bg-[var(--tm-border-default)]";
