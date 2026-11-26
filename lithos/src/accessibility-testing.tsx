@@ -20,6 +20,7 @@ import Header from "./components/Header";
 import TrustedBy from "./sections/TrustedBy";
 import Reasons from "./sections/Reasons";
 import Faq from "./sections/Faq";
+import Enterprise from "./sections/Enterprise";
 import Footer from "./sections/Footer";
 import CompareDuel from "./pieces/CompareDuel";
 import type { MatrixGroup } from "./pieces/compare/MatrixTable";
@@ -402,37 +403,6 @@ function Related() {
   );
 }
 
-/* ---------- closing call: the live page's dark banner ---------- */
-
-function Final() {
-  return (
-    <Section className="!py-0 md:!py-0">
-      <div className="tm-reveal -mx-8 flex flex-col gap-8 bg-[var(--tm-bg-inverse)] p-8 text-[var(--tm-fg-inverse)] md:p-12 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex max-w-[640px] flex-col gap-3">
-          <h2 className="!text-[length:var(--tm-h3-size)] !leading-[var(--tm-h3-line)] !tracking-[var(--tm-h3-tracking)] [text-wrap:balance]">
-            Find accessibility issues before an audit does
-          </h2>
-          <p className="text-b1 text-[var(--tm-fg-inverse-muted)]">Free plan: 25 accessibility scans, valid for lifetime.</p>
-        </div>
-        <div className="tm-actions flex-none">
-          <a className="tm-btn tm-btn--secondary tm-btn--arrow tm-btn--plain" href={SIGNUP}>
-            Start free
-            <span className="tm-chip" aria-hidden="true">
-              <span>
-                <Arrow />
-                <Arrow />
-              </span>
-            </span>
-          </a>
-          <a className="tm-btn tm-btn--outline-inverse" href={`${SITE}/demo/`}>
-            Book a demo
-          </a>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
 /* ---------- FAQ: the live page's five questions ---------- */
 
 const faq: { q: string; a: ReactNode }[] = [
@@ -488,7 +458,12 @@ function Page() {
         <Related />
         <Faq title="What teams ask before an accessibility audit" items={faq} />
         <Reasons integrations={false} />
-        <Final />
+        <Enterprise
+          title="Find accessibility issues before an audit does"
+          body="Free plan: 25 accessibility scans, valid for lifetime."
+          primary="Start free"
+          secondary="Book a demo"
+        />
         <Footer />
       </main>
     </div>
