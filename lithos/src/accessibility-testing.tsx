@@ -121,62 +121,71 @@ function RunCard() {
 
 const builtFor = ["Accessibility leads", "Front-end developers", "QA engineers", "Compliance teams"];
 
+/* the live page's hero, as it is: text on the left (pill label, black and
+   grey headline, line, buttons, free plan note, "built for" pills), the
+   painted scene on the right with the sample run card overlapping it */
 function Hero() {
   return (
-    <section className="tm-hero tm-hero--media">
+    <section className="tm-hero tm-hero--split">
       <div className="tm-frame tm-hero__inner">
-        <nav aria-label="Breadcrumb" className="tm-crumbs mb-8">
+        <nav aria-label="Breadcrumb" className="tm-crumbs mb-10">
           <a href={SITE}>TestMu AI</a>
           <span aria-hidden>/</span>
           <span aria-current="page">Accessibility Testing</span>
         </nav>
-        <p className="mb-4 flex items-center gap-2 font-mono text-b4 uppercase tracking-[1px] text-muted-foreground">
-          <span>Accessibility Testing</span>
-          <span aria-hidden>·</span>
-          <time dateTime="2026-11">Updated November 2026</time>
-        </p>
-        <div className="tm-hero__top">
-          <h1>
-            <span className="tm-nowrap">Accessibility testing tool</span>
-            <span className="tm-nowrap">for websites and native mobile apps.</span>
-          </h1>
-          <p className="tm-hero__promise">
-            TestMu AI's accessibility testing tool scans websites and native
-            iOS and Android apps for WCAG 2.2, ADA, Section 508 and European
-            Accessibility Act issues. It runs automated checks on real
-            devices and with screen readers, then ties each issue to the
-            exact rule it fails and the fix.
-          </p>
-        </div>
-        <div className="tm-actions tm-hero__actions">
-          <a className="tm-btn tm-btn--primary tm-btn--arrow tm-btn--plain" href={SIGNUP}>
-            Start free
-            <span className="tm-chip" aria-hidden="true">
-              <span>
-                <Arrow />
-                <Arrow />
-              </span>
-            </span>
-          </a>
-          <a className="tm-btn tm-btn--secondary" href={`${SITE}/demo/`}>
-            Book a demo
-          </a>
-          <span className="self-center text-b3 text-muted-foreground">
-            Free plan: 25 accessibility scans, valid for lifetime.
-          </span>
-        </div>
-        <ul className="mt-6 flex flex-wrap items-center gap-2">
-          <li className="mr-1 font-mono text-b4 uppercase tracking-[1px] text-muted-foreground">Built for</li>
-          {builtFor.map((b) => (
-            <li key={b} className="tag rounded-sm border border-border bg-surface px-2 py-1 text-b4">
-              {b}
-            </li>
-          ))}
-        </ul>
-        <div className="tm-hero__stage">
-          <img className="tm-scene" src={`${HERO}/hero-bg.png`} alt="Accessibility testing on TestMu AI" />
-          <div className="relative z-[1] flex w-full justify-center">
-            <RunCard />
+        <div className="tm-hero__grid lg:!grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+          <div>
+            <p className="pill mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-b4">
+              <ShieldCheck size={16} strokeWidth={1.5} aria-hidden />
+              <span className="font-medium">Accessibility Testing</span>
+              <span aria-hidden className="text-muted-foreground">·</span>
+              <time dateTime="2026-11" className="text-muted-foreground">Updated November 2026</time>
+            </p>
+            <h1 className="!text-[length:var(--tm-h2-size)] !leading-[var(--tm-h2-line)] !tracking-[var(--tm-h2-tracking)] [text-wrap:balance]">
+              Accessibility testing tool{" "}
+              <span className="text-muted-foreground">for websites and native mobile apps.</span>
+            </h1>
+            <p className="tm-hero__promise !max-w-none">
+              TestMu AI's accessibility testing tool scans websites and native
+              iOS and Android apps for WCAG 2.2, ADA, Section 508 and European
+              Accessibility Act issues. It runs automated checks on real
+              devices and with screen readers, then ties each issue to the
+              exact rule it fails and the fix.
+            </p>
+            <div className="tm-actions tm-hero__actions">
+              <a className="tm-btn tm-btn--primary tm-btn--arrow tm-btn--plain" href={SIGNUP}>
+                Start free
+                <span className="tm-chip" aria-hidden="true">
+                  <span>
+                    <Arrow />
+                    <Arrow />
+                  </span>
+                </span>
+              </a>
+              <a className="tm-btn tm-btn--secondary" href={`${SITE}/demo/`}>
+                Book a demo
+              </a>
+            </div>
+            <p className="mt-4 text-b4 text-muted-foreground">
+              Free plan: 25 accessibility scans, valid for lifetime.
+            </p>
+            <ul className="mt-6 flex flex-wrap items-center gap-2">
+              <li className="mr-1 text-b4 text-muted-foreground">Built for</li>
+              {builtFor.map((b) => (
+                <li key={b} className="pill rounded-full bg-[var(--tm-bg-muted)] px-3 py-1 text-b4">
+                  {b}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* the scene, with the run card hanging off its lower edge */}
+          <div className="relative">
+            <div className="relative aspect-[16/10] overflow-hidden border border-border">
+              <img className="absolute inset-0 size-full object-cover" src={`${HERO}/hero-bg.png`} alt="Accessibility testing on TestMu AI" />
+            </div>
+            <div className="relative -mt-16 ml-auto w-[92%] lg:-mt-32 lg:w-[72%]">
+              <RunCard />
+            </div>
           </div>
         </div>
       </div>
