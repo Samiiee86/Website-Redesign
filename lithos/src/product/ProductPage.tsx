@@ -430,7 +430,7 @@ function CodePanel({ c }: { c: NonNullable<Extract<Sec, { type: "cmp" }>["code"]
   /* the live page's black terminal: name and Copy on top, the commands,
      the note under them */
   return (
-    <div className="flex h-full flex-col bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
+    <div className="flex flex-col bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
       <div className="flex items-center justify-between gap-4 border-b border-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] px-6 py-3">
         <span className="font-mono text-b4 text-[var(--tm-fg-inverse-muted)]">{c.label}</span>
         <button
@@ -447,7 +447,7 @@ function CodePanel({ c }: { c: NonNullable<Extract<Sec, { type: "cmp" }>["code"]
       <pre className="m-0 overflow-x-auto px-6 py-6 font-mono text-b3 leading-[var(--tm-b2-line)] text-[var(--tm-bg-muted)]">
         <code>{c.code}</code>
       </pre>
-      {c.note && <p className="mt-auto px-6 pb-6 text-b3 text-[var(--tm-fg-inverse-muted)]">{c.note}</p>}
+      {c.note && <p className="px-6 pb-6 text-b3 text-[var(--tm-fg-inverse-muted)]">{c.note}</p>}
     </div>
   );
 }
@@ -459,8 +459,8 @@ const framed = (first: boolean, last: boolean) =>
 
 function PlainTable({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
   return (
-    <div className="h-full overflow-x-auto bg-surface">
-      <table className="w-full min-w-[520px] border-collapse text-left">
+    <div className="overflow-x-auto bg-surface">
+      <table className="w-full min-w-[480px] border-collapse text-left">
         <caption className="sr-only">{s.caption}</caption>
         <thead>
           <tr className="bg-background">
@@ -505,9 +505,13 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
         }
       />
       {s.code ? (
-        <div className="tm-reveal -mx-8 grid gap-px border-y border-border bg-[var(--tm-border-default)] lg:grid-cols-2">
+        /* as on the live page: the terminal (narrower, its own height) and
+           the table side by side, with space between them */
+        <div className="tm-reveal grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
           <CodePanel c={s.code} />
-          <PlainTable s={s} />
+          <div className="border border-border">
+            <PlainTable s={s} />
+          </div>
         </div>
       ) : (
         <Reveal delay={0.08} className="-mx-8">
