@@ -992,16 +992,20 @@ function CiCd() {
           <li className="col-span-full mt-4 border-t border-border pt-6">
             <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Three steps on every pipeline</span>
           </li>
-          <li className="col-span-full flex flex-col gap-3">
-            {ciSteps.map((st) => (
-              <span key={st.n} className="flex items-center gap-3 py-1">
-                <span className={`${TILE} font-mono text-b4`}>{st.n}</span>
-                <span className="flex min-w-0 flex-1 flex-col gap-x-6 sm:flex-row sm:items-center">
-                  <span className="text-b2 text-foreground sm:w-48 sm:flex-none">{st.title}</span>
-                  <span className="min-w-0 truncate font-mono text-b4 text-muted-foreground">{st.line}</span>
-                </span>
-              </span>
-            ))}
+          {/* the three steps as one joined frame, a row each: the big
+              number, the step, and what you type or set as a code chip */}
+          <li className="col-span-full">
+            <ol className="flex flex-col border border-border bg-surface">
+              {ciSteps.map((st) => (
+                <li key={st.n} className="flex items-center gap-6 border-b border-border px-6 py-5 last:border-b-0">
+                  <span className="pixel w-10 flex-none text-[32px] leading-none">{st.n}</span>
+                  <span className="flex min-w-0 flex-1 flex-col items-start gap-2">
+                    <span className="text-[length:var(--tm-h5-size)] font-medium leading-[var(--tm-h5-line)] tracking-[var(--tm-h5-tracking)]">{st.title}</span>
+                    <code className="tag max-w-full break-all rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2 py-1 font-mono text-b4">{st.line}</code>
+                  </span>
+                </li>
+              ))}
+            </ol>
           </li>
         </ul>
       </div>
