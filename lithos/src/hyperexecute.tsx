@@ -487,14 +487,6 @@ function StepLine({ paused }: { paused: boolean }) {
   );
 }
 
-/* a card's heading with its step number in front */
-const StepTitle = ({ n, children }: { n: string; children: ReactNode }) => (
-  <h3 className="flex items-baseline gap-3">
-    <span className="font-mono text-b3 text-muted-foreground">{n}</span>
-    {children}
-  </h3>
-);
-
 function MeasureIt() {
   const [step, setStep] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -1004,43 +996,54 @@ const pipelines: [string, string, string?][] = [
   ["Semaphore", "semaphore-integration-with-hyperexecute"],
 ];
 
-/* the three CI steps' pictures, drawn in the hero-fold look */
-const TERM = "flex h-full flex-col gap-1.5 bg-[var(--tm-bg-inverse)] px-5 py-4 font-mono text-b4 text-[var(--tm-fg-inverse)] [&_*]:font-mono";
-const TM = "text-[var(--tm-fg-inverse-muted)]";
-const TOK = "text-[var(--tm-green-200)]";
+/* the three CI steps' panels, in the switch-over steps' style (as on the
+   alternative pages): a small white panel on a painted scene */
+const PANEL = "tm-fcard__ui flex !w-[72%] flex-col bg-surface !left-1/2 !top-1/2 -translate-x-1/2 -translate-y-1/2";
+const PMONO = "font-mono text-b4";
+const OK = () => <Check size={16} strokeWidth={2} aria-hidden className="flex-none text-[var(--tm-green-500)]" />;
 
 function DownloadMini() {
   return (
-    <div className={TERM}>
-      <span className={`flex gap-4 border-b border-[var(--tm-bg-inverse-muted)] pb-2 ${TM}`}>
-        <span className="text-[var(--tm-fg-inverse)]">Linux</span>
-        <span>macOS</span>
-        <span>Windows</span>
-      </span>
-      <span>
-        <span className={TM}>$</span> curl -O …/hyperexecute
-      </span>
-      <span className={TM}>  100%  ████████████  one file</span>
-      <span>
-        <span className={TM}>$</span> chmod +x hyperexecute
-      </span>
-      <span className={TOK}>✓ ready · no plugin</span>
+    <div className={PANEL}>
+      <div className="flex items-center justify-between border-b border-border px-3 py-2 text-b3 font-medium">
+        Download
+        <span className="text-b4 font-normal text-muted-foreground">One file</span>
+      </div>
+      <div className="flex flex-col gap-2 p-3">
+        <div className="flex gap-1.5">
+          {["Linux", "macOS", "Windows"].map((o, i) => (
+            <span key={o} className={`tag rounded-sm border px-1.5 text-b5 ${i ? "border-border text-muted-foreground" : "border-foreground"}`}>
+              {o}
+            </span>
+          ))}
+        </div>
+        <div className={`${PMONO} flex items-center gap-2`}>
+          <OK />
+          hyperexecute downloaded
+        </div>
+        <div className={`${PMONO} flex items-center gap-2`}>
+          <OK />
+          No plugin needed
+        </div>
+      </div>
     </div>
   );
 }
 
 function SecretsMini() {
   return (
-    <div className="flex h-full flex-col gap-3 bg-surface p-5 text-b4">
-      <span className="flex items-center gap-2 font-medium">
-        <KeyRound size={14} strokeWidth={1.5} aria-hidden /> CI secrets
-      </span>
-      {["LT_USERNAME", "LT_ACCESS_KEY"].map((k) => (
-        <span key={k} className="flex items-center gap-3 rounded-md border border-border px-3 py-2">
-          <span className="font-mono">{k}</span>
-          <span className="ml-auto font-mono text-muted-foreground">••••••••</span>
-          <Check size={14} strokeWidth={1.5} className="text-[var(--tm-fg-success)]" aria-hidden />
-        </span>
+    <div className={PANEL}>
+      <div className="flex items-center gap-2 border-b border-border px-3 py-2 text-b3 font-medium">
+        <KeyRound size={16} strokeWidth={1.5} aria-hidden /> CI secrets
+      </div>
+      {["LT_USERNAME", "LT_ACCESS_KEY"].map((k, i) => (
+        <div key={k} className={`flex items-center justify-between gap-3 px-3 py-2 ${i ? "border-t border-border" : ""}`}>
+          <span className="flex flex-col gap-0.5">
+            <span className={PMONO}>{k}</span>
+            <span className="font-mono text-b4 text-muted-foreground">••••••••</span>
+          </span>
+          <OK />
+        </div>
       ))}
     </div>
   );
@@ -1048,21 +1051,29 @@ function SecretsMini() {
 
 function YamlMini() {
   return (
-    <div className={TERM}>
-      <span>
-        <span className={TM}>$</span> ./hyperexecute --config hyperexecute.yaml
-      </span>
-      <span className={TM}>· reading hyperexecute.yaml</span>
-      <span className={TM}>· discovering tests</span>
-      <span className={TOK}>✓ job started on HyperExecute</span>
+    <div className={PANEL}>
+      <div className="flex items-center justify-between border-b border-border px-3 py-2 text-b3 font-medium">
+        CI job
+        <span className="text-b4 font-normal text-muted-foreground">Running</span>
+      </div>
+      <div className="flex flex-col gap-2 p-3">
+        <div className={`${PMONO} text-muted-foreground`}>$ ./hyperexecute --config hyperexecute.yaml</div>
+        <div className={`${PMONO} flex items-center gap-2`}>
+          <OK />
+          Job started on HyperExecute
+        </div>
+        <span className="mt-1 block h-1 bg-[var(--tm-bg-muted)]">
+          <span className="block h-full w-3/4 bg-[var(--tm-green-400)]" />
+        </span>
+      </div>
     </div>
   );
 }
 
 const ciSteps = [
-  { n: "01", title: "Download the CLI", body: "Pull the binary into your CI job. One file, no plugin.", line: "Linux · macOS · Windows", screen: <DownloadMini />, scene: "cli" },
-  { n: "02", title: "Set two secrets", body: "Expose them from your CI secret store.", line: "LT_USERNAME · LT_ACCESS_KEY", screen: <SecretsMini />, scene: "gov" },
-  { n: "03", title: "Point it at your YAML", body: "Run the CLI against your config, and the suite runs on HyperExecute.", line: "./hyperexecute --config hyperexecute.yaml", screen: <YamlMini />, scene: "pipe" },
+  { n: "01", title: "Download the CLI", body: "Pull the binary into your CI job. One file, no plugin.", line: "Linux · macOS · Windows", screen: <DownloadMini />, scene: "/kit/img/shore.webp" },
+  { n: "02", title: "Set two secrets", body: "Expose them from your CI secret store.", line: "LT_USERNAME · LT_ACCESS_KEY", screen: <SecretsMini />, scene: "/kit/img/hills.webp" },
+  { n: "03", title: "Point it at your YAML", body: "Run the CLI against your config, and the suite runs on HyperExecute.", line: "./hyperexecute --config hyperexecute.yaml", screen: <YamlMini />, scene: "/kit/img/meadow.webp" },
 ];
 
 const TILE = "flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5";
@@ -1101,19 +1112,20 @@ function CiCd() {
           ))}
         </ul>
       </div>
-      {/* the same three steps on every pipeline, as picture cards */}
+      {/* the same three steps on every pipeline: the switch-over steps of
+          the alternative pages, a number, the step, then a small panel of
+          that step on a painted scene */}
       <div className="tm-reveal -mx-8 mt-16">
-        <ol className="tm-grid tm-grid--3">
-          {ciSteps.map((st) => (
-            <li key={st.n} className="tm-cell tm-fcard2">
-              <div className="tm-well">
-                <Scene scene={`${ATP}/scene-${st.scene}.jpg`} card {...CARD}>
-                  {st.screen}
-                </Scene>
+        <ol className="tm-grid tm-grid--3 tm-steps2">
+          {ciSteps.map((st, i) => (
+            <li key={st.n} className="tm-cell tm-step">
+              <span className="tm-step__n">{i + 1}</span>
+              <h3 className="!mt-4 !text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">{st.title}</h3>
+              <p className="!mb-6 !mt-1 !text-b2">{st.body}</p>
+              <div className="tm-fcard__media mt-auto !aspect-[4/3]">
+                <img className="tm-scene" src={st.scene} alt="" loading="lazy" />
+                {st.screen}
               </div>
-              <StepTitle n={st.n}>{st.title}</StepTitle>
-              <p>{st.body}</p>
-              <code className="tag max-w-full self-start break-all rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2 py-1 font-mono text-b4">{st.line}</code>
             </li>
           ))}
         </ol>
