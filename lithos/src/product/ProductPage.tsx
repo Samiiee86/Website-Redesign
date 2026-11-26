@@ -6,7 +6,6 @@ import Header from "../components/Header";
 import TrustedBy from "../sections/TrustedBy";
 import Reasons from "../sections/Reasons";
 import Faq from "../sections/Faq";
-import Enterprise from "../sections/Enterprise";
 import Footer from "../sections/Footer";
 import { Reveal } from "../lib/ui";
 import { FoldHead } from "../pieces/compare/parts";
@@ -31,7 +30,7 @@ import type { PageData, Run, Sec } from "./types";
    - the comparison as the pieces library head to head; data tables as the
      spec table
    - shared folds: header, logo wall, more reasons (in place of the live
-     Gartner and numbers strip), FAQ, closing call, footer */
+     Gartner and numbers strip), FAQ, the live closing banner, footer */
 
 const SITE = "https://www.testmuai.com";
 const DEMO = `${SITE}/demo/`;
@@ -795,6 +794,48 @@ function Related({ s }: { s: Extract<Sec, { type: "rel" }> }) {
   );
 }
 
+/* ---------- closing call: the live page's dark banner ----------
+   Black, with the live page's blue glow rising from the right; the
+   heading, line and buttons centred, as on the home page's closing call.
+   Runs edge to edge between the frame lines, sharp corners. */
+
+function Final({ s, ctas }: { s: Extract<Sec, { type: "final" }>; ctas: PageData["hero"]["ctas"] }) {
+  const list = s.ctas.length ? s.ctas : ctas;
+  return (
+    <Section className="!py-0 md:!py-0">
+      <div className="tm-reveal relative -mx-8 overflow-hidden bg-[var(--tm-bg-inverse)] px-8 py-24 text-center text-[var(--tm-fg-inverse)] md:py-28">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 w-2/3 bg-[radial-gradient(ellipse_60%_80%_at_75%_45%,color-mix(in_srgb,var(--tm-blue-500)_55%,transparent),color-mix(in_srgb,var(--tm-blue-900)_45%,transparent)_45%,transparent_75%)]"
+        />
+        <div className="relative mx-auto flex max-w-[760px] flex-col items-center gap-4">
+          <h2 className="[text-wrap:balance]">{s.head}</h2>
+          {s.body && <p className="text-b1 text-[var(--tm-fg-inverse-muted)]">{s.body}</p>}
+          <div className="tm-actions mt-6 justify-center">
+            {list.map((c, i) =>
+              i === 0 ? (
+                <a key={c.label} className="tm-btn tm-btn--secondary tm-btn--arrow tm-btn--plain" href={c.href ?? DEMO}>
+                  {c.label}
+                  <span className="tm-chip" aria-hidden="true">
+                    <span>
+                      <Arrow />
+                      <Arrow />
+                    </span>
+                  </span>
+                </a>
+              ) : (
+                <a key={c.label} className="tm-btn tm-btn--outline-inverse" href={c.href ?? DEMO}>
+                  {c.label}
+                </a>
+              ),
+            )}
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 /* ---------- page ---------- */
 
 declare global {
@@ -861,14 +902,7 @@ export default function ProductPage({ d }: { d: PageData }) {
         {body}
         {faq && <Faq title={faq.head} items={faq.items} />}
         <Reasons integrations={false} />
-        {final && (
-          <Enterprise
-            title={final.head}
-            body={final.body}
-            primary={final.ctas[0]?.label}
-            secondary={final.ctas[1]?.label}
-          />
-        )}
+        {final && <Final s={final} ctas={d.hero.ctas} />}
         <Footer />
       </main>
     </div>
