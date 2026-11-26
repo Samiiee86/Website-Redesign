@@ -639,7 +639,7 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
   return (
     <Section>
       {/* Live / Automation, as underline tabs */}
-      <div role="tablist" aria-label="Testing type" className="mb-10 inline-flex border-b border-border">
+      <div role="tablist" aria-label="Testing type" className="mb-8 inline-flex border-b border-border">
         {s.tabs.map((t, i) => (
           <button
             key={t}
@@ -647,17 +647,18 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
             type="button"
             aria-selected={tab === i}
             onClick={() => setTab(i)}
-            className={`-mb-px w-40 border-b-2 py-3 text-b1 transition-colors duration-200 ${tab === i ? "border-[var(--tm-border-emphasis)] font-medium text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
+            className={`relative w-32 py-2 text-b3 transition-colors duration-200 ${tab === i ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground"}`}
           >
             {t}
+            {tab === i && <span aria-hidden className="absolute inset-x-0 -bottom-px h-0.5 bg-[var(--tm-border-emphasis)]" />}
           </button>
         ))}
       </div>
 
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px]">
         <div className="min-w-0">
           {/* Android / Apple, then the search */}
-          <div className="flex flex-col gap-4 border-b border-border pb-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col-reverse gap-4 border-b border-border sm:flex-row sm:items-end sm:justify-between">
             <div role="tablist" aria-label="Platform" className="flex gap-2">
               {(["android", "ios"] as const).map((o) => (
                 <button
@@ -671,13 +672,14 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
                     setBrand(s.groups.findIndex((g) => (g.os ?? "android") === o));
                     setQ("");
                   }}
-                  className={`grid size-11 place-items-center rounded-md border transition-colors duration-200 ${os === o ? "border-[var(--tm-border-emphasis)] bg-surface" : "border-transparent hover:bg-[var(--tm-bg-fill)]"}`}
+                  className={`relative grid h-10 w-12 place-items-center transition-opacity duration-200 ${os === o ? "" : "opacity-60 hover:opacity-100"}`}
                 >
-                  {icon(o) && <img src={icon(o)} alt="" className="h-6 w-auto" />}
+                  {icon(o) && <img src={icon(o)} alt="" className="h-5 w-auto" />}
+                  {os === o && <span aria-hidden className="absolute inset-x-0 -bottom-px h-0.5 bg-[var(--tm-border-emphasis)]" />}
                 </button>
               ))}
             </div>
-            <label className="tm-field w-full sm:w-[360px]">
+            <label className="tm-field tm-field--sm mb-3 w-full sm:w-[320px]">
               <span className="tm-field__box">
                 <Search aria-hidden />
                 <input type="search" placeholder="Search" aria-label="Search devices" value={q} onChange={(e) => setQ(e.target.value)} />
@@ -685,7 +687,7 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
             </label>
           </div>
 
-          <div className="grid gap-6 pt-6 md:grid-cols-[200px_minmax(0,1fr)] md:gap-0">
+          <div className="grid gap-6 pt-6 md:grid-cols-[160px_minmax(0,1fr)] md:gap-0">
             {/* the brands, by their logos */}
             <ul className="flex flex-wrap gap-2 md:flex-col md:gap-1 md:border-r md:border-border md:pr-6">
               {brands.map((g) => {
@@ -699,14 +701,14 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
                         setBrand(g.i);
                         setQ("");
                       }}
-                      className={`flex h-12 w-full items-center justify-between gap-3 rounded-md border-l-2 px-3 transition-colors duration-200 ${on ? "border-[var(--tm-hero-arrow)] bg-[var(--tm-bg-fill)]" : "border-transparent hover:bg-[var(--tm-bg-fill)]"}`}
+                      className={`flex h-10 w-full items-center justify-between gap-3 border-l-2 px-3 transition-colors duration-200 ${on ? "border-[var(--tm-hero-arrow)] bg-[var(--tm-bg-fill)]" : "border-transparent hover:bg-[var(--tm-bg-fill)]"}`}
                     >
                       {g.logo ? (
-                        <img src={g.logo} alt={g.name.replace(/^(Android|iOS)\s+/, "")} className={`h-6 w-auto max-w-[120px] object-contain ${on ? "" : "opacity-70"}`} />
+                        <img src={g.logo} alt={g.name.replace(/^(Android|iOS)\s+/, "")} className={`h-4 w-auto max-w-[96px] object-contain ${on ? "" : "opacity-70"}`} />
                       ) : (
-                        <span className="text-b1 font-medium">{g.name.replace(/^(Android|iOS)\s+/, "")}</span>
+                        <span className="text-b3 font-medium">{g.name.replace(/^(Android|iOS)\s+/, "")}</span>
                       )}
-                      {on && <ArrowRight size={16} strokeWidth={1.5} aria-hidden className="flex-none" />}
+                      {on && <ArrowRight size={14} strokeWidth={1.5} aria-hidden className="flex-none" />}
                     </button>
                   </li>
                 );
@@ -714,13 +716,13 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
             </ul>
 
             {/* the devices, two columns: name, OS mark, version */}
-            <ul className="grid content-start gap-x-10 sm:grid-cols-2 md:pl-8">
+            <ul className="grid content-start gap-x-8 sm:grid-cols-2 md:pl-6">
               {list.map(({ d: [name, ver], os: o }, i) => (
                 <li key={`${name}-${ver}-${i}`}>
-                  <a href={s.href} className="group flex items-center justify-between gap-3 border-b border-border py-3 text-b2 transition-colors duration-200 hover:text-foreground">
+                  <a href={s.href} className="group flex items-center justify-between gap-3 border-b border-border py-2 text-b3 transition-colors duration-200 hover:text-foreground">
                     <span className="group-hover:underline group-hover:underline-offset-4">{name}</span>
                     <span className="flex flex-none items-center gap-2 text-muted-foreground">
-                      {icon(o) && <img src={icon(o)} alt="" className="h-4 w-auto" />}
+                      {icon(o) && <img src={icon(o)} alt="" className="h-3 w-auto" />}
                       <span className="w-6 text-right">{version(ver)}</span>
                     </span>
                   </a>
@@ -735,14 +737,24 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
           {s.promos.map((p, i) => (
             <div
               key={p.title}
-              className={`relative flex min-h-[280px] flex-col items-start gap-3 overflow-hidden p-8 text-[var(--tm-fg-inverse)] ${i === 0 ? "bg-[var(--tm-bg-inverse)]" : "bg-[var(--tm-bg-accent)]"}`}
+              className={`flex flex-col items-start gap-2 overflow-hidden px-6 pt-8 text-[var(--tm-fg-inverse)] ${i === 0 ? "bg-[linear-gradient(to_bottom,var(--tm-bg-inverse),var(--tm-blue-700))]" : "bg-[var(--tm-bg-accent)]"}`}
             >
-              <h3 className={`relative z-[1] ${H4}`}>{p.title}</h3>
-              <p className="relative z-[1] text-b2 text-[color-mix(in_srgb,var(--tm-fg-inverse)_80%,transparent)]">{p.body}</p>
-              <a className="tm-btn tm-btn--secondary relative z-[1] mt-2" href={p.href ?? `${SITE}/contact-us/`}>
+              <h3 className="!text-[18px] !leading-[26px] !tracking-[-0.5px] !font-medium [text-wrap:balance]">{p.title}</h3>
+              <p className="text-b3 text-[var(--tm-fg-inverse)]">{p.body}</p>
+              <a className="tm-btn tm-btn--secondary tm-btn--sm mt-2" href={p.href ?? `${SITE}/contact-us/`}>
                 {p.cta}
               </a>
-              {p.img && <img src={p.img} alt="" aria-hidden className="pointer-events-none absolute bottom-0 right-0 max-h-[150px] w-auto" loading="lazy" />}
+              {/* live: the picture sits under the button and runs to the
+                  card's bottom edge (phones wide, logo small and right) */}
+              {p.img && (
+                <img
+                  src={p.img}
+                  alt=""
+                  aria-hidden
+                  className={`pointer-events-none -mr-2 self-end ${i === 0 ? "mt-6 w-4/5 max-w-[272px]" : "mt-12 w-2/5 max-w-[128px]"}`}
+                  loading="lazy"
+                />
+              )}
             </div>
           ))}
         </div>
