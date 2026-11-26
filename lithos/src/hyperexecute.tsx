@@ -8,6 +8,9 @@ import {
   Bot,
   BellOff,
   CalendarClock,
+  GitCommit,
+  KeyRound,
+  Timer,
   Check,
   FileArchive,
   Layers,
@@ -462,7 +465,113 @@ function Measured() {
   );
 }
 
-/* ---------- measure it on your own suite: the kit's feature steps ---------- */
+/* ---------- measure it on your own suite: picture cards, one per step ----------
+
+   Each step as the kit's image card: a small picture of that step drawn
+   in the hero-fold look on a painted scene, then the number and heading. */
+
+const STEPCARD = { w: 300, h: 200 };
+const MINI = "flex h-full flex-col gap-2 bg-surface p-4 text-b5";
+const MINI_MONO = "font-mono [&_*]:font-mono";
+
+function PinMini() {
+  return (
+    <div className={MINI}>
+      <span className="font-medium text-b4">checkout-suite</span>
+      <span className={`flex items-center gap-2 rounded-md border border-border px-2 py-1.5 ${MINI_MONO}`}>
+        <GitCommit size={12} strokeWidth={1.5} aria-hidden /> a1f9c2e
+        <span className="tag ml-auto rounded-sm bg-[var(--tm-bg-inverse)] px-1.5 text-[var(--tm-fg-inverse)]">pinned</span>
+      </span>
+      <span className="flex flex-col gap-1.5 pt-1">
+        {["Run A", "Run B"].map((r) => (
+          <span key={r} className="flex items-center justify-between">
+            {r}
+            <span className={`text-muted-foreground ${MINI_MONO}`}>a1f9c2e</span>
+          </span>
+        ))}
+      </span>
+    </div>
+  );
+}
+
+function TwiceMini() {
+  return (
+    <div className={MINI}>
+      {[
+        ["Current grid", "20 parallel"],
+        ["HyperExecute", "20 parallel"],
+      ].map(([k, v], i) => (
+        <span key={k} className="flex flex-col gap-1.5 rounded-md border border-border px-2 py-2">
+          <span className="flex items-center justify-between">
+            <span className="font-medium">{k}</span>
+            <span className="text-muted-foreground">{v}</span>
+          </span>
+          <span className="flex gap-0.5">
+            {Array.from({ length: 20 }).map((_, j) => (
+              <span key={j} className={`h-2 flex-1 ${i ? "bg-[var(--tm-fg-default)]" : "bg-[var(--tm-border-default)]"}`} />
+            ))}
+          </span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function TimeMini() {
+  return (
+    <div className={MINI}>
+      <span className="flex items-center gap-2 font-medium text-b4">
+        <Timer size={12} strokeWidth={1.5} aria-hidden /> Wall-clock, 5 runs
+      </span>
+      {["Run 1", "Run 2", "Run 3", "Run 4", "Run 5"].map((r) => (
+        <span key={r} className="flex items-center gap-2">
+          <span className="w-10 text-muted-foreground">{r}</span>
+          <span className="h-1.5 flex-1 bg-[var(--tm-bg-fill)]">
+            <span className="block h-full w-3/5 bg-[var(--tm-fg-default)]" />
+          </span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function MedianMini() {
+  return (
+    <div className={MINI}>
+      <span className="font-medium text-b4">Median of 5 runs</span>
+      {[
+        ["Current grid", "w-full bg-[var(--tm-border-default)]"],
+        ["HyperExecute", "w-2/5 bg-[var(--tm-fg-default)]"],
+      ].map(([k, bar]) => (
+        <span key={k} className="flex flex-col gap-1">
+          <span className="text-muted-foreground">{k}</span>
+          <span className="h-3 w-full bg-[var(--tm-bg-fill)]">
+            <span className={`block h-full ${bar}`} />
+          </span>
+        </span>
+      ))}
+      <span className="mt-auto flex items-center justify-between border-t border-border pt-2">
+        Results that changed
+        <span className={MINI_MONO}>0%</span>
+      </span>
+    </div>
+  );
+}
+
+const MEASURE_PICS = [
+  { screen: <PinMini />, scene: "author" },
+  { screen: <TwiceMini />, scene: "par" },
+  { screen: <TimeMini />, scene: "rep" },
+  { screen: <MedianMini />, scene: "hx" },
+];
+
+/* a card's heading with its step number in front */
+const StepTitle = ({ n, children }: { n: string; children: ReactNode }) => (
+  <h3 className="flex items-baseline gap-3">
+    <span className="font-mono text-b3 text-muted-foreground">{n}</span>
+    {children}
+  </h3>
+);
 
 function MeasureIt() {
   return (
@@ -473,11 +582,15 @@ function MeasureIt() {
         body="The figure that counts is your own. Run one suite at the same commit and concurrency on your current setup and on HyperExecute, then compare."
       />
       <div className="tm-reveal -mx-8">
-        <ol className="tm-grid tm-grid--4 tm-steps2">
+        <ol className="tm-grid tm-grid--4">
           {measure.map((m, i) => (
-            <li key={m.title} className="tm-cell tm-step">
-              <span className="tm-step__n">{i + 1}</span>
-              <h3>{m.title}</h3>
+            <li key={m.title} className="tm-cell tm-fcard2">
+              <div className="tm-well">
+                <Scene scene={`${ATP}/scene-${MEASURE_PICS[i].scene}.jpg`} card {...STEPCARD}>
+                  {MEASURE_PICS[i].screen}
+                </Scene>
+              </div>
+              <StepTitle n={String(i + 1).padStart(2, "0")}>{m.title}</StepTitle>
               <p>{m.body}</p>
             </li>
           ))}
@@ -948,10 +1061,65 @@ const pipelines: [string, string, string?][] = [
   ["Semaphore", "semaphore-integration-with-hyperexecute"],
 ];
 
+/* the three CI steps' pictures, drawn in the hero-fold look */
+const TERM = "flex h-full flex-col gap-1.5 bg-[var(--tm-bg-inverse)] px-5 py-4 font-mono text-b4 text-[var(--tm-fg-inverse)] [&_*]:font-mono";
+const TM = "text-[var(--tm-fg-inverse-muted)]";
+const TOK = "text-[var(--tm-green-200)]";
+
+function DownloadMini() {
+  return (
+    <div className={TERM}>
+      <span className={`flex gap-4 border-b border-[var(--tm-bg-inverse-muted)] pb-2 ${TM}`}>
+        <span className="text-[var(--tm-fg-inverse)]">Linux</span>
+        <span>macOS</span>
+        <span>Windows</span>
+      </span>
+      <span>
+        <span className={TM}>$</span> curl -O …/hyperexecute
+      </span>
+      <span className={TM}>  100%  ████████████  one file</span>
+      <span>
+        <span className={TM}>$</span> chmod +x hyperexecute
+      </span>
+      <span className={TOK}>✓ ready · no plugin</span>
+    </div>
+  );
+}
+
+function SecretsMini() {
+  return (
+    <div className="flex h-full flex-col gap-3 bg-surface p-5 text-b4">
+      <span className="flex items-center gap-2 font-medium">
+        <KeyRound size={14} strokeWidth={1.5} aria-hidden /> CI secrets
+      </span>
+      {["LT_USERNAME", "LT_ACCESS_KEY"].map((k) => (
+        <span key={k} className="flex items-center gap-3 rounded-md border border-border px-3 py-2">
+          <span className="font-mono">{k}</span>
+          <span className="ml-auto font-mono text-muted-foreground">••••••••</span>
+          <Check size={14} strokeWidth={1.5} className="text-[var(--tm-fg-success)]" aria-hidden />
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function YamlMini() {
+  return (
+    <div className={TERM}>
+      <span>
+        <span className={TM}>$</span> ./hyperexecute --config hyperexecute.yaml
+      </span>
+      <span className={TM}>· reading hyperexecute.yaml</span>
+      <span className={TM}>· discovering tests</span>
+      <span className={TOK}>✓ job started on HyperExecute</span>
+    </div>
+  );
+}
+
 const ciSteps = [
-  { n: "01", title: "Download the CLI", body: "Pull the binary into your CI job. One file, no plugin.", line: "Linux · macOS · Windows" },
-  { n: "02", title: "Set two secrets", body: "Expose them from your CI secret store.", line: "LT_USERNAME · LT_ACCESS_KEY" },
-  { n: "03", title: "Point it at your YAML", body: "Run the CLI against your config, and the suite runs on HyperExecute.", line: "./hyperexecute --config hyperexecute.yaml" },
+  { n: "01", title: "Download the CLI", body: "Pull the binary into your CI job. One file, no plugin.", line: "Linux · macOS · Windows", screen: <DownloadMini />, scene: "cli" },
+  { n: "02", title: "Set two secrets", body: "Expose them from your CI secret store.", line: "LT_USERNAME · LT_ACCESS_KEY", screen: <SecretsMini />, scene: "gov" },
+  { n: "03", title: "Point it at your YAML", body: "Run the CLI against your config, and the suite runs on HyperExecute.", line: "./hyperexecute --config hyperexecute.yaml", screen: <YamlMini />, scene: "pipe" },
 ];
 
 const TILE = "flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5";
@@ -990,15 +1158,19 @@ function CiCd() {
           ))}
         </ul>
       </div>
-      {/* the kit's feature steps: the same three steps on every pipeline */}
+      {/* the same three steps on every pipeline, as picture cards */}
       <div className="tm-reveal -mx-8 mt-16">
-        <ol className="tm-grid tm-grid--3 tm-steps2">
+        <ol className="tm-grid tm-grid--3">
           {ciSteps.map((st) => (
-            <li key={st.n} className="tm-cell tm-step !min-h-0">
-              <span className="tm-step__n">{st.n}</span>
-              <h3>{st.title}</h3>
+            <li key={st.n} className="tm-cell tm-fcard2">
+              <div className="tm-well">
+                <Scene scene={`${ATP}/scene-${st.scene}.jpg`} card {...CARD}>
+                  {st.screen}
+                </Scene>
+              </div>
+              <StepTitle n={st.n}>{st.title}</StepTitle>
               <p>{st.body}</p>
-              <code className="tag mt-6 max-w-full self-start break-all rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2 py-1 font-mono text-b4">{st.line}</code>
+              <code className="tag max-w-full self-start break-all rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2 py-1 font-mono text-b4">{st.line}</code>
             </li>
           ))}
         </ol>
@@ -1025,19 +1197,50 @@ function OwnCloud() {
       >
         <PrimaryBtn href={`${SITE}/request-demo/`}>Book a demo</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--3">
-          {ownCloud.map((c) => (
-            <div key={c.title} className="tm-cell tm-fcard2">
-              <div className="tm-well">
-                <Scene scene={`${ATP}/scene-${c.scene}.jpg`} card {...CARD}>
-                  {c.screen}
-                </Scene>
+      {/* the big card: private cloud on its painted scene; governance and
+          the three clouds as two boxes stacked beside it */}
+      <div className="tm-reveal -mx-8 border-y border-border bg-surface">
+        <div className="grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+          <div className="relative flex min-h-[600px] flex-col overflow-hidden border-border max-lg:border-b lg:border-r">
+            <img src={`${ATP}/scene-${ownCloud[0].scene}.jpg`} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_52%,color-mix(in_srgb,var(--tm-bg-surface)_92%,transparent)_70%,var(--tm-bg-surface)_100%)]"
+            />
+            <div className="relative flex flex-1 items-center justify-center px-8 pb-6 pt-12">
+              <div className="w-full max-w-[520px] bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+                <Fit {...CARD}>{ownCloud[0].screen}</Fit>
               </div>
-              <h3>{c.title}</h3>
-              <p>{c.body}</p>
             </div>
-          ))}
+            <div className="relative p-8">
+              <h3 className={`[text-wrap:balance] ${H4}`}>{ownCloud[0].title}</h3>
+              <p className="mt-2 max-w-[560px] text-b2 text-muted-foreground">{ownCloud[0].body}</p>
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <div className="flex flex-1 flex-col gap-6 border-b border-border p-8">
+              <div className="w-full max-w-[360px] border border-border bg-surface [box-shadow:var(--tm-shadow-floating-sm)]">
+                <Fit {...CARD}>{ownCloud[1].screen}</Fit>
+              </div>
+              <div>
+                <h3 className={`[text-wrap:balance] ${H5}`}>{ownCloud[1].title}</h3>
+                <p className="mt-2 text-b2 text-muted-foreground">{ownCloud[1].body}</p>
+              </div>
+            </div>
+            <div className="flex flex-1 flex-col gap-6 p-8">
+              <span className="flex gap-3">
+                {["aws", "azure", "googlecloud"].map((c) => (
+                  <span key={c} className="flex size-14 items-center justify-center border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)]">
+                    <img src={`/img/integrations/color/${c}.svg`} alt={c === "aws" ? "AWS" : c === "azure" ? "Microsoft Azure" : "Google Cloud"} className="size-8 object-contain" />
+                  </span>
+                ))}
+              </span>
+              <div>
+                <h3 className={`[text-wrap:balance] ${H5}`}>{ownCloud[2].title}</h3>
+                <p className="mt-2 text-b2 text-muted-foreground">{ownCloud[2].body}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Section>
