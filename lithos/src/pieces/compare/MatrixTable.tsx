@@ -186,8 +186,7 @@ export default function MatrixTable({
           } as CSSProperties
         }
       >
-        {/* plain: one white sheet behind the whole table, under the flag */}
-        {plain && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-9 hidden bg-surface lg:block" />}
+
         {/* desktop: the white column, one sheet from the flag to the foot */}
         <div
           aria-hidden
@@ -198,6 +197,10 @@ export default function MatrixTable({
           }}
         />
 
+        {/* the rows, with (plain) one white sheet behind them and an outline
+            round them that ends at the last row; the foot stays outside */}
+        <div className="relative">
+        {plain && <div aria-hidden className="pointer-events-none absolute inset-0 -z-[1] hidden bg-surface lg:block" />}
         {/* column names: pinned under the 56px header */}
         <div role="row" className={`${GRID} sticky top-14 z-10`}>
           <div
@@ -327,9 +330,8 @@ export default function MatrixTable({
           </div>
         )}
 
-        {/* plain: the outline round the whole table, drawn on top so the
-            grey header cells don't hide its sides */}
-        {plain && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-9 z-[11] hidden border border-border lg:block" />}
+        {plain && <div aria-hidden className="pointer-events-none absolute inset-0 z-[11] hidden border border-border lg:block" />}
+        </div>
 
         {/* the foot: the button in the TestMu AI column; the other columns
             end at the last row, with nothing below them */}
