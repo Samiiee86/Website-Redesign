@@ -18,7 +18,6 @@ import { Section } from "./lib/ui";
 import GuideLines from "./components/GuideLines";
 import Header from "./components/Header";
 import TrustedBy from "./sections/TrustedBy";
-import Stories from "./sections/Stories";
 import Reasons from "./sections/Reasons";
 import Faq from "./sections/Faq";
 import Enterprise from "./sections/Enterprise";
@@ -40,7 +39,7 @@ import type { MatrixGroup } from "./pieces/compare/MatrixTable";
    - teams: the kit's pricing cells, without prices
    - related: feature pointers for the four products, then the two
      resource groups as report cells
-   - shared folds: logo wall, customer stories, more reasons (in place of
+   - shared folds: logo wall, more reasons (in place of
      the live page's Gartner and numbers strip), FAQ with the page's own
      heading and questions, the closing call with the page's own words */
 
@@ -429,7 +428,6 @@ function Page() {
         />
         <Teams />
         <Related />
-        <Stories />
         <Reasons integrations={false} />
         <Faq title="What teams ask before an accessibility audit" items={faq} />
         <Enterprise
