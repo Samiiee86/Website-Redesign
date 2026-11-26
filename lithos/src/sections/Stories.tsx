@@ -72,6 +72,9 @@ export type StoriesContent = {
   };
   cells: { brand: string; href: string; stat: string; desc: string }[];
   wide: { brand: string; brandAlt: string; brandClass?: string; href: string; stat: string; desc: string; action: string; image: string };
+  /* quotes from the page's reviews, shown in place of the logo row so
+     stories and reviews are one fold */
+  quotes?: { quote: string; name: string; role: string; img: string; round?: boolean }[];
 };
 
 export default function Stories({ content }: { content?: StoriesContent } = {}) {
@@ -254,9 +257,32 @@ export default function Stories({ content }: { content?: StoriesContent } = {}) 
             </a>
           </div>
 
+          {/* the page's reviews, in place of the logo row */}
+          {content?.quotes && (
+            <div className="grid gap-px border-t border-border bg-border md:grid-cols-3">
+              {content.quotes.map((q) => (
+                <figure key={q.name} className="flex flex-col justify-between gap-8 bg-surface p-6 md:p-8">
+                  <blockquote className="text-b1 text-foreground">“{q.quote}”</blockquote>
+                  <figcaption className="flex items-center gap-3">
+                    <img
+                      src={q.img}
+                      alt=""
+                      loading="lazy"
+                      className={q.round === false ? "h-6 w-auto flex-none object-contain" : "avatar size-10 flex-none rounded-full object-cover"}
+                    />
+                    <span className="flex min-w-0 flex-col">
+                      <span className="text-b2 font-medium">{q.name}</span>
+                      <span className="text-b3 text-muted-foreground">{q.role}</span>
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
+
           {/* more customer stories: one row of logos in ink, each opens its
               case study */}
-          <div className="grid grid-cols-2 gap-px border-t border-border bg-border sm:grid-cols-3 lg:grid-cols-6">
+          {!content?.quotes && <div className="grid grid-cols-2 gap-px border-t border-border bg-border sm:grid-cols-3 lg:grid-cols-6">
             {customerStrip.logos.map((logo) => (
               <a
                 key={logo.name}
@@ -280,7 +306,7 @@ export default function Stories({ content }: { content?: StoriesContent } = {}) 
                 />
               </a>
             ))}
-          </div>
+          </div>}
         </div>
       </Reveal>
       <AnimatePresence>

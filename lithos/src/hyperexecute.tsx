@@ -3,17 +3,11 @@ import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import {
   Archive,
-  ArrowUpNarrowWide,
   BellOff,
   CalendarClock,
   Check,
   FileArchive,
-  Gauge,
-  Globe,
-  OctagonX,
   RotateCcw,
-  ScrollText,
-  Split,
 } from "lucide-react";
 import "./index.css";
 import { ArrowChip, Section } from "./lib/ui";
@@ -27,7 +21,6 @@ import Enterprise from "./sections/Enterprise";
 import Footer from "./sections/Footer";
 import { FoldHead } from "./pieces/compare/parts";
 import MatrixTable, { type MatrixGroup } from "./pieces/compare/MatrixTable";
-import { LABEL } from "./pieces/Retro";
 import {
   CARD,
   Fit,
@@ -37,6 +30,8 @@ import {
   HealScreen,
   PrivateCloudScreen,
   RcaScreen,
+  LoadScreen,
+  ROW,
   Scene,
   SkillScreen,
   SplitScreen,
@@ -311,37 +306,23 @@ function VsGrid() {
   );
 }
 
-/* ---------- measured results: joined result cards, then steps ---------- */
+/* ---------- measured results: the kit's stat fold, then its steps ----------
+
+   feature-pointers-stat: one ink number cell (2 x 2) and the three
+   published results as pointers; then feature-steps, each step led by a
+   big number, for measuring it on your own suite. */
 
 const results = [
-  {
-    name: "Lereta",
-    href: `${SITE}/customers/lereta/`,
-    stat: "70%",
-    before: "Tests that should have taken under 10 minutes ran for hours, and many were flaky.",
-    after: "Runner and browser on one machine, cutting network traffic. Nearly zero flaky tests.",
-  },
-  {
-    name: "Boomi",
-    href: `${SITE}/customers/boomi/`,
-    stat: "78%",
-    before: "9.5 hours to run the full test base on internal infrastructure.",
-    after: "Under 4 hours on the first runs, then about 2 hours once Boomi also modularized its tests.",
-  },
-  {
-    name: "Dashlane",
-    href: `${SITE}/customers/dashlane/`,
-    stat: "~50%",
-    before: "About 80 seconds for about 70 test cases on in-house infrastructure.",
-    after: "About 40 seconds for the same tests, with flaky tests cut by 99.9%.",
-  },
+  { name: "Lereta", href: `${SITE}/customers/lereta/`, stat: "70%", line: "Runner and browser on one machine: tests that ran for hours now finish in minutes, nearly flake-free." },
+  { name: "Boomi", href: `${SITE}/customers/boomi/`, stat: "78%", line: "From 9.5 hours to under 4 on the first runs, then about 2 hours once its tests were modularized." },
+  { name: "Dashlane", href: `${SITE}/customers/dashlane/`, stat: "~50%", line: "About 80 seconds down to about 40 for the same 70 tests, with flaky tests cut by 99.9%." },
 ];
 
 const measure = [
-  "Pick one suite and pin it to one commit, so both runs test the same code.",
-  "Run it on your current grid and on HyperExecute at the same concurrency.",
-  "Time each run from the first test starting to the last result, and repeat it at least five times.",
-  "Compare the median wall-clock time, and the share of tests whose result changed between runs.",
+  { title: "Pin one suite", body: "Pick one suite and pin it to one commit, so both runs test the same code." },
+  { title: "Run it twice", body: "Run it on your current grid and on HyperExecute at the same concurrency." },
+  { title: "Time every run", body: "From the first test starting to the last result, and repeat it at least five times." },
+  { title: "Compare the medians", body: "The median wall-clock time, and the share of tests whose result changed between runs." },
 ];
 
 function Measured() {
@@ -350,75 +331,64 @@ function Measured() {
       <FoldHead
         lead="Where “up to 70% faster”"
         title="comes from"
-        body="Each figure is that team's own measurement against the setup it replaced, not a controlled benchmark, so your result depends on your suite. Sources: each customer's published case study."
+        body="Each figure is that team's own measurement against the setup it replaced, not a controlled benchmark, so your result depends on your suite."
       />
       <div className="tm-reveal -mx-8 flex flex-col">
-        <div className="tm-join !mx-0">
+        <div className="tm-grid tm-grid--4 !border-b-0">
+          <div className="tm-stat-tile">
+            <span className="tm-label">Up to</span>
+            <div>
+              <p className="tm-pixel">70%</p>
+              <p>Faster than a traditional test grid, as measured by the three teams beside it on their own suites.</p>
+            </div>
+            <a className="tm-btn tm-btn--secondary" href={HE_SIGNUP}>
+              Run your first job free
+            </a>
+          </div>
           {results.map((r) => (
-            <a key={r.name} href={r.href} className="group flex flex-col gap-6 !p-8 transition-colors duration-200 hover:bg-[var(--tm-bg-fill)]">
+            <a key={r.name} href={r.href} className="tm-cell group flex flex-col justify-between gap-6 !p-8 transition-colors duration-200 hover:bg-[var(--tm-bg-fill)]">
               <span className="flex items-center justify-between">
                 <span className="text-b1 font-medium">{r.name}</span>
                 <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Faster by</span>
               </span>
-              <span className="pixel text-[56px] leading-none">{r.stat}</span>
-              <span className="flex flex-col gap-4 border-t border-border pt-6">
-                <span className="flex flex-col gap-1">
-                  <span className="font-mono text-b4 uppercase tracking-[1px] text-muted-foreground">Before</span>
-                  <span className="text-b2 text-muted-foreground">{r.before}</span>
-                </span>
-                <span className="flex flex-col gap-1">
-                  <span className="font-mono text-b4 uppercase tracking-[1px] text-muted-foreground">With HyperExecute</span>
-                  <span className="text-b2">{r.after}</span>
-                </span>
-              </span>
-              <span className="mt-auto">
-                <span className="tm-link">
-                  Read the case study
-                  <span className="tm-arw" aria-hidden="true">
-                    <Arrow />
-                    <Arrow />
-                  </span>
-                </span>
+              <span className="flex flex-col gap-3">
+                <span className="pixel text-[48px] leading-none">{r.stat}</span>
+                <span className="text-b3 text-muted-foreground">{r.line}</span>
               </span>
             </a>
           ))}
+          <div className="tm-cell flex flex-col justify-between gap-6 !p-8">
+            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Your suite</span>
+            <span className="text-b2">Measure it the same way on your own suite, in four steps below.</span>
+          </div>
         </div>
-        {/* measure it on your own suite */}
-        <div className="flex flex-col gap-2 border-t border-border bg-surface px-8 pb-6 pt-10">
-          <h3 className="[text-wrap:balance]">Measure it on your own suite</h3>
-        </div>
-        <div className="tm-join !mx-0">
+        <ol className="tm-grid tm-grid--4 tm-steps2">
           {measure.map((m, i) => (
-            <div key={m} className="flex flex-col gap-4 !p-8">
-              <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Step {String(i + 1).padStart(2, "0")}</span>
-              <span className="text-b2">{m}</span>
-            </div>
+            <li key={m.title} className="tm-cell tm-step">
+              <span className="tm-step__n">{i + 1}</span>
+              <h3>{m.title}</h3>
+              <p>{m.body}</p>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </Section>
   );
 }
 
-/* ---------- red build triage: the kit's feature cards ---------- */
+/* ---------- red build triage: one failure, three causes ----------
+
+   The retro glitch look of the home page and the hero folds: white cards
+   on a painted scene, joined by black lines with orange dots. The red
+   build on top, the three places it can come from below. */
 
 const triage = [
-  {
-    kind: "Environment",
-    title: "Your runner",
-    body: "Every task gets a fresh VM that is torn down after the run, and root cause analysis labels environment failures, so infrastructure noise isn't mistaken for a bug.",
-  },
-  {
-    kind: "Script",
-    title: "Your test",
-    body: "Flaky test detection scores how often a test's result flips between runs, and the analysis labels script failures, so an unstable test gets fixed, not rerun until it passes.",
-  },
-  {
-    kind: "Product",
-    title: "Your code",
-    body: "When the cause is in your code, the analysis reads the test's logs and the job's git diff, names the root cause and lists the steps to fix it.",
-  },
+  { kind: "Environment", title: "Your runner", body: "Every task gets a fresh VM that is torn down after the run, and the analysis labels environment failures, so infrastructure noise isn't mistaken for a bug." },
+  { kind: "Script", title: "Your test", body: "Flaky test detection scores how often a result flips between runs, so an unstable test gets fixed, not rerun until it passes." },
+  { kind: "Product", title: "Your code", body: "When the cause is in your code, the analysis reads the logs and the job's git diff, names the root cause and lists the steps to fix it." },
 ];
+
+const Dot = () => <span className="size-1.5 flex-none rounded-full bg-[var(--tm-orange-400)]" />;
 
 function Triage() {
   return (
@@ -428,27 +398,182 @@ function Triage() {
         title="your runner, your test or your code"
         body="HyperExecute complements your CI. Your pipeline still triggers the run. When it goes red, HyperExecute shows where the failure came from, so you fix the cause instead of rerunning the build."
       />
-      <div className="tm-reveal tm-join !-mx-8">
-        {triage.map((t) => (
-          <div key={t.kind} className="flex flex-col gap-4 !p-8">
-            <span className={LABEL + " self-start font-mono uppercase tracking-[1px]"}>{t.kind}</span>
-            <h3 className="mt-4 !text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !tracking-[var(--tm-h4-tracking)]">{t.title}</h3>
-            <p className="text-b2 text-muted-foreground">{t.body}</p>
+      <div className="tm-reveal relative -mx-8 overflow-hidden border-y border-border px-6 py-12 md:px-12 md:py-16">
+        <img src={`${ATP}/scene-hx.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="relative mx-auto flex max-w-[1000px] flex-col items-center">
+          {/* the red build */}
+          <div className="flex items-center gap-3 border border-border bg-surface px-5 py-3 [box-shadow:var(--tm-shadow-floating-md)]">
+            <span className="size-2 rounded-full bg-[var(--tm-red-500)]" />
+            <span className="text-b2 font-medium">Build #482 failed</span>
+            <span className="tag rounded-sm bg-[var(--tm-red-000)] px-2 py-0.5 font-mono text-b5 text-[var(--tm-red-500)]">12 of 1,204</span>
           </div>
-        ))}
+          {/* the line down, then across to the three causes (desktop) */}
+          <span className="flex h-10 flex-col items-center">
+            <Dot />
+            <span className="w-px flex-1 bg-foreground" />
+          </span>
+          <span className="hidden h-px w-2/3 bg-foreground md:block" />
+          <div className="grid w-full gap-6 md:grid-cols-3 md:gap-8">
+            {triage.map((t) => (
+              <div key={t.kind} className="flex flex-col items-center">
+                <span className="hidden h-8 flex-col items-center md:flex">
+                  <span className="w-px flex-1 bg-foreground" />
+                  <Dot />
+                </span>
+                <div className="flex w-full flex-col gap-3 border border-border bg-surface p-6 [box-shadow:var(--tm-shadow-floating-md)]">
+                  <span className="tag self-start rounded-sm border border-border px-2 py-0.5 font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">{t.kind}</span>
+                  <h3 className="!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !tracking-[var(--tm-h4-tracking)]">{t.title}</h3>
+                  <p className="text-b3 text-muted-foreground">{t.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </Section>
   );
 }
 
-/* ---------- 8 orchestration controls: the kit's feature pointers ---------- */
+/* ---------- 8 orchestration controls: the five-card bento, then three ----------
 
-const controls = [
-  { icon: Split, title: "Turn one suite into many tasks", body: "Auto-Split spreads your discovered tests across parallel machines. Matrix runs every browser and OS pair you list. Hybrid does both." },
-  { icon: ArrowUpNarrowWide, title: "Critical suites clear the queue", body: "Label a job high, medium or low with the jobLabel key, and your release-critical suites go to the front of the queue." },
-  { icon: OctagonX, title: "Fail-fast aborts a broken build", body: "Set a threshold and the job stops once that many tests fail in a row, so a broken build stops burning your parallels." },
-  { icon: RotateCcw, title: "Rerun only the failed scenarios", body: "A 900-scenario job ends with 20 failures. Click Re-Run on the job page and only those 20 run again, on the same commit or the latest one." },
-  { icon: FileArchive, title: "Every run saves its artifacts", body: "Every test keeps its own video, screenshots, and command, network and console logs, collected into one archive you can download." },
+   As on the Agent Assurance page: the big card on a painted scene with its
+   picture, two cards stacked beside it, two below, each with a small
+   picture; the last three controls as one row of joined cells. */
+
+const H5 = "!text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]";
+const H4 = "!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !tracking-[var(--tm-h4-tracking)]";
+
+function MatrixMini() {
+  const browsers = [
+    ["chrome.png", "Chrome"],
+    ["firefox.png", "Firefox"],
+    ["edge.png", "Edge"],
+  ];
+  const os = ["Windows 11", "macOS", "Linux"];
+  return (
+    <div className="w-full border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+      <div className="flex items-center justify-between border-b border-border px-4 py-3">
+        <span className="font-mono text-b4">hyperexecute.yaml</span>
+        <span className="flex overflow-hidden rounded-md border border-border text-b4">
+          <span className="px-2 py-0.5 text-muted-foreground">Auto-split</span>
+          <span className="border-x border-border bg-[var(--tm-bg-muted)] px-2 py-0.5 font-medium">Matrix</span>
+          <span className="px-2 py-0.5 text-muted-foreground">Hybrid</span>
+        </span>
+      </div>
+      <div className="grid grid-cols-[96px_repeat(3,minmax(0,1fr))] text-b4">
+        <span />
+        {os.map((o) => (
+          <span key={o} className="px-2 py-2 text-center text-muted-foreground">{o}</span>
+        ))}
+        {browsers.map(([ic, b]) => (
+          <span key={b} className="contents">
+            <span className="flex items-center gap-2 border-t border-border px-4 py-2.5">
+              <img src={`${ATP}/icons/${ic}`} alt="" className="size-3.5" /> {b}
+            </span>
+            {os.map((o) => (
+              <span key={o} className="flex items-center justify-center border-t border-border py-2.5">
+                <span className="tag rounded-sm bg-[var(--tm-green-000)] px-2 font-mono text-b5 text-[var(--tm-green-500)]">task</span>
+              </span>
+            ))}
+          </span>
+        ))}
+      </div>
+      <div className="flex items-center justify-between border-t border-border px-4 py-3 text-b4">
+        <span className="text-muted-foreground">9 tasks from one suite</span>
+        <span className="font-medium">9 VMs in parallel</span>
+      </div>
+    </div>
+  );
+}
+
+function QueueMini() {
+  return (
+    <div className="flex w-full max-w-[280px] flex-col border border-border bg-surface text-b4 [box-shadow:var(--tm-shadow-floating-sm)]">
+      {[
+        ["release-critical", "High", "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]", "running"],
+        ["checkout-smoke", "Medium", "bg-[var(--tm-orange-000)] text-[var(--tm-orange-600)]", "next"],
+        ["nightly-visual", "Low", "bg-[var(--tm-bg-fill)] text-muted-foreground", "queued"],
+      ].map(([n, l, tone, st]) => (
+        <span key={n} className="flex items-center gap-2 border-b border-border px-3 py-2.5 last:border-b-0">
+          <span className="min-w-0 flex-1 truncate font-mono">{n}</span>
+          <span className={`tag rounded-sm px-1.5 text-b5 ${tone}`}>{l}</span>
+          <span className="w-14 text-right text-b5 text-muted-foreground">{st}</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function FailFastMini() {
+  const runs = ["ok", "ok", "ok", "ok", "fail", "fail", "fail", "stop", "stop", "stop", "stop", "stop"];
+  return (
+    <div className="flex w-full max-w-[280px] flex-col gap-3 border border-border bg-surface p-4 [box-shadow:var(--tm-shadow-floating-sm)]">
+      <span className="flex flex-wrap gap-1.5">
+        {runs.map((r, i) => (
+          <span
+            key={i}
+            className={`size-4 ${r === "ok" ? "bg-[var(--tm-green-300)]" : r === "fail" ? "bg-[var(--tm-red-400)]" : "border border-dashed border-border"}`}
+          />
+        ))}
+      </span>
+      <span className="flex items-center justify-between text-b4">
+        <span className="font-mono text-muted-foreground">failFast: 3</span>
+        <span className="tag rounded-sm bg-[var(--tm-red-000)] px-1.5 text-b5 text-[var(--tm-red-500)]">Job stopped</span>
+      </span>
+    </div>
+  );
+}
+
+function RerunMini() {
+  return (
+    <div className="flex w-full max-w-[280px] flex-col gap-3 border border-border bg-surface p-4 [box-shadow:var(--tm-shadow-floating-sm)]">
+      <span className="flex items-baseline gap-2 whitespace-nowrap">
+        <span className="pixel text-[32px] leading-none text-[var(--tm-red-500)]">20</span>
+        <span className="text-b4 text-muted-foreground">of 900 scenarios failed</span>
+      </span>
+      <span className="flex h-1.5 overflow-hidden rounded-full">
+        <span className="w-[97.8%] bg-[var(--tm-green-400)]" />
+        <span className="flex-1 bg-[var(--tm-red-400)]" />
+      </span>
+      <span className="btn flex h-9 items-center justify-center gap-2 rounded-md bg-[var(--tm-button-primary)] text-b4 font-medium text-[var(--tm-fg-inverse)]">
+        <RotateCcw size={14} strokeWidth={1.5} aria-hidden /> Re-run the 20 failed
+      </span>
+    </div>
+  );
+}
+
+function ArtifactsMini() {
+  return (
+    <div className="flex w-full max-w-[280px] flex-col border border-border bg-surface text-b4 [box-shadow:var(--tm-shadow-floating-sm)]">
+      {[
+        ["video.mp4", "4.2 MB"],
+        ["screenshots/", "18 files"],
+        ["network.har", "860 KB"],
+        ["console.log", "12 KB"],
+      ].map(([f, sz]) => (
+        <span key={f} className="flex items-center gap-2 border-b border-border px-3 py-2 last:border-b-0">
+          <FileArchive size={14} strokeWidth={1.5} className="text-muted-foreground" aria-hidden />
+          <span className="min-w-0 flex-1 font-mono">{f}</span>
+          <span className="text-b5 text-muted-foreground">{sz}</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function BentoCard({ title, body, visual, className = "" }: { title: string; body: string; visual: ReactNode; className?: string }) {
+  return (
+    <div className={`grid min-h-[280px] gap-8 p-8 sm:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] sm:items-center ${className}`}>
+      <div>
+        <h3 className={`[text-wrap:balance] ${H4}`}>{title}</h3>
+        <p className="mt-2 max-w-[300px] text-b2 text-muted-foreground">{body}</p>
+      </div>
+      <div className="flex items-center justify-center">{visual}</div>
+    </div>
+  );
+}
+
+const moreControls = [
   { icon: CalendarClock, title: "Schedule runs without a CI server", body: "Group your jobs under a named Project, then schedule Workflows to run once, later, or weekly, and chain one run into the next." },
   { icon: BellOff, title: "Auto-mute noisy tests", body: "Tests that fail five times in a row are muted automatically, and stay muted until you unmute them." },
   { icon: Archive, title: "Jobs archiving", body: "Archive stale jobs to declutter your workspace and find active runs faster." },
@@ -464,25 +589,81 @@ function Controls() {
       >
         <PrimaryBtn href={SIGNUP}>Start free with Google</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal tm-join !-mx-8">
-        {controls.map(({ icon: Icon, title, body }) => (
-          <div key={title} className="flex flex-col gap-3 !p-8">
-            <Icon size={20} strokeWidth={1.5} aria-hidden />
-            <h3 className="mt-6 !text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)] [text-wrap:balance]">{title}</h3>
-            <p className="text-b3 text-muted-foreground">{body}</p>
+      <div className="tm-reveal -mx-8 border-y border-border bg-surface">
+        <div className="grid lg:grid-cols-2">
+          {/* the big card: the painting fills it, the copy sits on a white wash */}
+          <div className="relative flex min-h-[560px] flex-col overflow-hidden border-border max-lg:border-b lg:border-r">
+            <img src={`${ATP}/scene-par.jpg`} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_52%,color-mix(in_srgb,var(--tm-bg-surface)_92%,transparent)_70%,var(--tm-bg-surface)_100%)]"
+            />
+            <div className="relative flex flex-1 items-center justify-center px-8 pb-6 pt-12">
+              <div className="w-full max-w-[460px]">
+                <MatrixMini />
+              </div>
+            </div>
+            <div className="relative p-8">
+              <h3 className={`[text-wrap:balance] ${H4}`}>Turn one suite into many tasks</h3>
+              <p className="mt-2 max-w-[520px] text-b2 text-muted-foreground">
+                Auto-Split spreads your discovered tests across parallel machines. Matrix runs every browser and OS pair you list. Hybrid does both.
+              </p>
+            </div>
           </div>
-        ))}
+          <div className="flex flex-col">
+            <BentoCard
+              className="border-b border-border"
+              title="Critical suites clear the queue"
+              body="Label a job high, medium or low with the jobLabel key, and release-critical suites go to the front."
+              visual={<QueueMini />}
+            />
+            <BentoCard
+              className="flex-1"
+              title="Fail-fast aborts a broken build"
+              body="Set a threshold and the job stops once that many tests fail in a row, so it stops burning your parallels."
+              visual={<FailFastMini />}
+            />
+          </div>
+        </div>
+        <div className="grid border-t border-border lg:grid-cols-2">
+          <BentoCard
+            className="border-border max-lg:border-b lg:border-r"
+            title="Rerun only the failed scenarios"
+            body="A 900-scenario job ends with 20 failures. Click Re-Run and only those 20 run again, on the same commit or the latest one."
+            visual={<RerunMini />}
+          />
+          <BentoCard
+            title="Every run saves its artifacts"
+            body="Every test keeps its own video, screenshots, and command, network and console logs, in one archive you can download."
+            visual={<ArtifactsMini />}
+          />
+        </div>
+        {/* the last three controls */}
+        <div className="grid gap-px border-t border-border bg-border md:grid-cols-3">
+          {moreControls.map(({ icon: Icon, title, body }) => (
+            <div key={title} className="flex gap-4 bg-surface p-8">
+              <Icon size={20} strokeWidth={1.5} className="mt-0.5 flex-none" aria-hidden />
+              <div className="flex flex-col gap-2">
+                <h3 className={H5}>{title}</h3>
+                <p className="text-b3 text-muted-foreground">{body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </Section>
   );
 }
 
-/* ---------- performance testing: the kit's feature pointers ---------- */
+/* ---------- performance testing: steps beside the load test screen ----------
+
+   The kit's code-setup shape: the copy and three numbered points on the
+   left, the product screen on its painted scene on the right. */
 
 const perf = [
-  { icon: ScrollText, title: "Works with the scripts you have", body: "Your JMeter and Gatling scripts run without changes." },
-  { icon: Gauge, title: "See bottlenecks as they happen", body: "Watch response times, throughput and errors per endpoint in real time, and spot which API slows down first." },
-  { icon: Globe, title: "Test from where your users are", body: "Generate load from any of six cloud regions. Enterprise plans can split one run across several to compare response times." },
+  { title: "Works with the scripts you have", body: "Your JMeter and Gatling scripts run without changes." },
+  { title: "See bottlenecks as they happen", body: "Watch response times, throughput and errors per endpoint in real time, and spot which API slows down first." },
+  { title: "Test from where your users are", body: "Generate load from any of six cloud regions. Enterprise plans can split one run across several to compare response times." },
 ];
 
 function Performance() {
@@ -491,24 +672,58 @@ function Performance() {
       <FoldHead
         lead="Run your JMeter and Gatling plans"
         title="on HyperExecute"
-        body="Simulate real-world traffic against your apps and APIs. HyperExecute provisions the load generators for each run and removes them when it ends. Run load, stress and soak tests to see how your app behaves on an ordinary day and on its busiest one."
+        body="Simulate real-world traffic against your apps and APIs. HyperExecute provisions the load generators for each run and removes them when it ends."
       >
         <PrimaryBtn href={`${SITE}/performance-testing/`}>Explore performance testing</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal tm-join !-mx-8">
-        {perf.map(({ icon: Icon, title, body }) => (
-          <div key={title} className="flex flex-col gap-3 !p-8">
-            <Icon size={20} strokeWidth={1.5} aria-hidden />
-            <h3 className="mt-6 !text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">{title}</h3>
-            <p className="text-b3 text-muted-foreground">{body}</p>
-          </div>
-        ))}
+      <div className="tm-setup tm-reveal">
+        <ol className="tm-steps !mt-0">
+          {perf.map((p, i) => (
+            <li key={p.title}>
+              <span className="tm-label">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <b>{p.title}</b>
+                <p>{p.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <Scene scene={`${ATP}/scene-rep.jpg`} {...ROW}>
+          <LoadScreen />
+        </Scene>
       </div>
     </Section>
   );
 }
 
-/* ---------- customer stories: the live page's four ---------- */
+/* ---------- customer stories and reviews: one fold ----------
+
+   The live page's four stories, with its three review quotes in place
+   of the logo row, so stories and reviews are one fold. */
+
+const quotes = [
+  {
+    quote: "New testing platform alert! I recently tried out @testmuai's HyperExecute, an end-to-end smart test orchestration platform. I was amazed at its speed and 'intelligence'.",
+    name: "Sanjay Kumar",
+    role: "@SanjayKumaarr",
+    img: `${IMG}/sanjay.png`,
+    round: true,
+  },
+  {
+    quote: "Now, we worry less about the orchestration, infrastructure and focus more on our tests.",
+    name: "Hrishi Potdar",
+    role: "Quality Engineering Architect, Boomi",
+    img: `${IMG}/testu/hrishi-potdar.png`,
+    round: true,
+  },
+  {
+    quote: "LambdaTest is doing for test automation what Kubernetes did for container orchestration, creating that next level of efficiency around test automation so that people can actually focus on testing versus test orchestration.",
+    name: "Satya Nadella",
+    role: "Chairman & CEO, Microsoft, Future Ready Technology Summit 2023",
+    img: `${IMG}/microsoft.svg`,
+    round: false,
+  },
+];
 
 const stories: StoriesContent = {
   body: "Every number here comes from a published customer story, in the team's own words.",
@@ -538,59 +753,8 @@ const stories: StoriesContent = {
     action: "Read case study",
     image: `${IMG}/customer/fyscal-technologies-main.webp`,
   },
+  quotes,
 };
-
-/* ---------- reviews and quotes: the kit's reviews ---------- */
-
-const quotes = [
-  {
-    quote: "New testing platform alert! I recently tried out @testmuai's HyperExecute, an end-to-end smart test orchestration platform. I was amazed at its speed and 'intelligence'.",
-    name: "Sanjay Kumar",
-    role: "@SanjayKumaarr",
-    img: `${IMG}/sanjay.png`,
-    round: true,
-  },
-  {
-    quote: "Now, we worry less about the orchestration, infrastructure and focus more on our tests.",
-    name: "Hrishi Potdar",
-    role: "Quality Engineering Architect, Boomi",
-    img: `${IMG}/testu/hrishi-potdar.png`,
-    round: true,
-  },
-  {
-    quote: "LambdaTest is doing for test automation what Kubernetes did for container orchestration, creating that next level of efficiency around test automation so that people can actually focus on testing versus test orchestration.",
-    name: "Satya Nadella",
-    role: "Chairman & CEO, Microsoft, Future Ready Technology Summit 2023",
-    img: `${IMG}/microsoft.svg`,
-    round: false,
-  },
-];
-
-function Quotes() {
-  return (
-    <Section>
-      <FoldHead lead="HyperExecute" title="reviews and quotes" body="What teams and leaders say after running their suites on HyperExecute." />
-      <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--3 tm-rvs">
-          {quotes.map((q) => (
-            <article key={q.name} className="tm-cell tm-rv">
-              <div className="tm-rv__body">
-                <blockquote>“{q.quote}”</blockquote>
-              </div>
-              <div className="tm-rv__by">
-                <img className={q.round ? "tm-rv__av avatar rounded-full" : "h-6 w-auto flex-none object-contain"} src={q.img} alt="" loading="lazy" />
-                <div>
-                  {q.name}
-                  <span>{q.role}</span>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
 
 /* ---------- frameworks: the minimal tabs, one per framework ---------- */
 
@@ -696,13 +860,87 @@ function Frameworks() {
   );
 }
 
-/* ---------- CI/CD: the kit's steps, then the pipelines as tags ---------- */
+/* ---------- CI/CD: the kit's code setup ----------
+
+   Steps on the left, the pipeline config in tabs on the right (the kit's
+   boxed code block: copy button, line numbers and status bar come from
+   kit/js/testmu.js), then every pipeline with a guide as a tag. */
 
 const ciSteps = [
   { title: "Download the CLI", body: "Pull the binary into your job on Linux, macOS or Windows." },
   { title: "Set two secrets", body: "Expose LT_USERNAME and LT_ACCESS_KEY from your CI secret store." },
   { title: "Point it at your YAML", body: "Run ./hyperexecute --config hyperexecute.yaml." },
 ];
+
+const CLI = "curl -O https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute";
+const ciFiles = [
+  {
+    id: "github",
+    tab: "GitHub Actions",
+    label: ".github/workflows/e2e.yml",
+    code: [
+      "name: e2e",
+      "on: [push]",
+      "jobs:",
+      "  hyperexecute:",
+      "    runs-on: ubuntu-latest",
+      "    steps:",
+      "      - uses: actions/checkout@v4",
+      `      - run: ${CLI} && chmod +x hyperexecute`,
+      "      - run: ./hyperexecute --config hyperexecute.yaml",
+      "        env:",
+      "          LT_USERNAME: ${{ secrets.LT_USERNAME }}",
+      "          LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}",
+    ],
+  },
+  {
+    id: "jenkins",
+    tab: "Jenkins",
+    label: "Jenkinsfile",
+    code: [
+      "pipeline {",
+      "  agent any",
+      "  environment {",
+      "    LT_USERNAME = credentials('lt-username')",
+      "    LT_ACCESS_KEY = credentials('lt-access-key')",
+      "  }",
+      "  stages {",
+      "    stage('HyperExecute') {",
+      "      steps {",
+      `        sh '${CLI} && chmod +x hyperexecute'`,
+      "        sh './hyperexecute --config hyperexecute.yaml'",
+      "      }",
+      "    }",
+      "  }",
+      "}",
+    ],
+  },
+  {
+    id: "gitlab",
+    tab: "GitLab CI",
+    label: ".gitlab-ci.yml",
+    code: [
+      "hyperexecute:",
+      "  stage: test",
+      "  image: ubuntu:latest",
+      "  script:",
+      `    - ${CLI}`,
+      "    - chmod +x hyperexecute",
+      "    - ./hyperexecute --config hyperexecute.yaml",
+      "  variables:",
+      "    LT_USERNAME: $LT_USERNAME",
+      "    LT_ACCESS_KEY: $LT_ACCESS_KEY",
+    ],
+  },
+];
+
+/* the kit's code colours: keys in the accent, quoted strings in green */
+const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const paint = (line: string) =>
+  esc(line)
+    .replace(/^(\s*-?\s*)([A-Za-z_]+)(:)/, '$1<span class="f">$2</span>$3')
+    .replace(/('[^']*')/g, '<span class="s">$1</span>');
+
 const pipelines: [string, string, string?][] = [
   ["Jenkins", "jenkins-with-hyperexecute", "jenkins"],
   ["GitHub Actions", "github-actions-with-hyperexecute", "github"],
@@ -724,33 +962,68 @@ function CiCd() {
       <FoldHead
         lead="Run HyperExecute from"
         title="any CI/CD pipeline"
-        body="One binary and one config file, wired in with the same three steps on every platform. See the CI/CD guide, the CLI reference and the YAML parameters in the docs."
-      >
-        <div className="mt-8">
-          <KitLink href={`${DOCS}/hyperexecute-integration-with-ci-cd-tools/`}>Read the CI/CD guide</KitLink>
+        body="One binary and one config file, wired in with the same three steps on every platform."
+      />
+      <div className="tm-setup">
+        <div className="tm-reveal">
+          <ol className="tm-steps !mt-0">
+            {ciSteps.map((s, i) => (
+              <li key={s.title}>
+                <span className="tm-label">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <b>{s.title}</b>
+                  <p>{s.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <div className="mt-7">
+            <KitLink href={`${DOCS}/hyperexecute-integration-with-ci-cd-tools/`}>Read the CI/CD guide</KitLink>
+          </div>
         </div>
-      </FoldHead>
-      <div className="tm-reveal -mx-8 flex flex-col">
-        <div className="tm-join !mx-0">
-          {ciSteps.map((s, i) => (
-            <div key={s.title} className="flex flex-col gap-3 !p-8">
-              <span className="pixel text-[32px] leading-none text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-6 !text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">{s.title}</h3>
-              <p className="text-b3 text-muted-foreground">{s.body}</p>
+        <div className="tm-reveal flex flex-col gap-6">
+          <div className="tm-code tm-code--boxed" data-tm-code data-tm-tabs>
+            <div className="tm-code__bar">
+              <div className="tm-code__tabs" role="tablist">
+                {ciFiles.map((f, i) => (
+                  <button key={f.id} role="tab" data-tab={f.id} aria-selected={i === 0}>
+                    {f.tab}
+                  </button>
+                ))}
+              </div>
+              <div className="tm-code__tools">
+                <button className="tm-btn tm-btn--secondary" data-tm-copy>
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="9" y="9" width="12" height="12" rx="2" />
+                    <path d="M5 15V5a2 2 0 0 1 2-2h8" />
+                  </svg>
+                  Copy
+                </button>
+              </div>
             </div>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-2 border-t border-border bg-surface px-8 py-6">
-          {pipelines.map(([name, slug, icon]) => (
-            <a
-              key={name}
-              href={d(slug)}
-              className="tag flex items-center gap-2 rounded-sm border border-border bg-background px-3 py-1.5 text-b3 transition-colors duration-150 hover:border-foreground hover:bg-surface"
-            >
-              {icon && <img src={`/img/integrations/color/${icon}.svg`} alt="" className="size-4 object-contain" />}
-              {name}
-            </a>
-          ))}
+            {ciFiles.map((f, i) => (
+              <div key={f.id} data-panel={f.id} data-label={f.label} hidden={i > 0}>
+                <pre dangerouslySetInnerHTML={{ __html: f.code.map(paint).join("\n") }} />
+              </div>
+            ))}
+            <div className="tm-code__status">
+              <span data-lang />
+              <span data-lines />
+            </div>
+          </div>
+          {/* every pipeline with a guide */}
+          <div className="flex flex-wrap gap-2">
+            {pipelines.map(([name, slug, icon]) => (
+              <a
+                key={name}
+                href={d(slug)}
+                className="tag flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-1.5 text-b3 transition-colors duration-150 hover:border-foreground"
+              >
+                {icon && <img src={`/img/integrations/color/${icon}.svg`} alt="" className="size-4 object-contain" />}
+                {name}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </Section>
@@ -925,7 +1198,6 @@ function Page() {
         <Controls />
         <Performance />
         <Stories content={stories} />
-        <Quotes />
         <Frameworks />
         <CiCd />
         <OwnCloud />

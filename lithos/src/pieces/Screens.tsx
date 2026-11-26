@@ -1126,3 +1126,60 @@ export function SkillScreen() {
     </Terminal>
   );
 }
+
+/* ---------- HyperExecute page: a load test run (JMeter on HyperExecute) ---------- */
+
+const RPS = [38, 52, 61, 70, 78, 84, 88, 86, 90, 94, 92, 96, 95, 97, 93, 96, 98, 97, 99, 96];
+const LAT = [30, 28, 29, 31, 30, 33, 36, 40, 52, 61, 58, 44, 38, 35, 33, 32, 31, 30, 31, 30];
+
+export function LoadScreen() {
+  const line = (pts: number[]) => pts.map((v, i) => `${(i / (pts.length - 1)) * 200},${60 - v * 0.55}`).join(" ");
+  return (
+    <div className="flex h-full flex-col px-6 pt-5">
+      <div className="flex items-center gap-2">
+        <span className="text-b3 font-medium">checkout-load.jmx</span>
+        <Pill tone="blue"><span className="size-1.5 rounded-full bg-[var(--tm-blue-500)]" /> Running</Pill>
+        <span className={`ml-auto text-b5 ${SUB} ${MONO}`}>JMeter · 2,000 users · 6 regions</span>
+      </div>
+      <div className="mt-4 grid grid-cols-3 overflow-hidden rounded-lg border border-border">
+        {[
+          ["Throughput", "1,240 req/s"],
+          ["p95 response", "312 ms"],
+          ["Errors", "0.4%"],
+        ].map(([k, v], i) => (
+          <span key={k} className={`flex flex-col gap-1 px-4 py-3 ${i ? "border-l border-border" : ""}`}>
+            <span className={`text-b5 ${SUB}`}>{k}</span>
+            <span className="text-h5 font-medium">{v}</span>
+          </span>
+        ))}
+      </div>
+      <div className="mt-3 flex flex-col rounded-lg border border-border px-3 py-2">
+        <span className="flex items-center justify-between text-b5">
+          <span className="font-medium">Requests and response time</span>
+          <span className={`flex gap-3 ${SUB}`}>
+            <span className="flex items-center gap-1"><span className="size-1.5 rounded-full bg-[var(--tm-green-400)]" /> req/s</span>
+            <span className="flex items-center gap-1"><span className="size-1.5 rounded-full bg-[var(--tm-orange-300)]" /> p95</span>
+          </span>
+        </span>
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none" className="mt-2 h-24 w-full" aria-hidden>
+          <polyline fill="none" strokeWidth="1.5" vectorEffect="non-scaling-stroke" className="stroke-[var(--tm-green-400)]" points={line(RPS)} />
+          <polyline fill="none" strokeWidth="1.5" vectorEffect="non-scaling-stroke" className="stroke-[var(--tm-orange-300)]" points={line(LAT)} />
+        </svg>
+      </div>
+      <div className="mt-3 overflow-hidden rounded-lg border border-border">
+        {[
+          ["POST /api/cart", "412 ms", "0.9%", true],
+          ["GET /api/products", "128 ms", "0.1%", false],
+          ["POST /api/checkout", "286 ms", "0.3%", false],
+        ].map(([e, t, er, slow]) => (
+          <span key={e as string} className="flex h-8 items-center gap-3 border-b border-[var(--tm-border-muted)] px-3 text-b5 last:border-b-0">
+            <span className={`min-w-0 flex-1 truncate ${MONO}`}>{e as string}</span>
+            <span className={slow ? "text-[var(--tm-orange-600)]" : SUB}>{t as string}</span>
+            <span className={`w-10 text-right ${SUB}`}>{er as string}</span>
+            {slow && <span className="tag rounded-sm bg-[var(--tm-orange-000)] px-1.5 text-[var(--tm-orange-600)]">slows first</span>}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
