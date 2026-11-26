@@ -486,7 +486,10 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
         /* as on the live page: the terminal (narrower, its own height) and
            the table side by side, with space between them */
         <div className="tm-reveal grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-          <CodePanel c={s.code} />
+          {/* starts level with the table's head row; the flag stands above */}
+          <div className="lg:mt-9">
+            <CodePanel c={s.code} />
+          </div>
           {/* the same framed head to head as on every other page */}
           <CompareTable
             label={`${lead} ${title}`}
