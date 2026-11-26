@@ -139,7 +139,7 @@ function Tag({ st }: { st: Run["rows"][number]["st"] }) {
       : st.kind === "fail"
         ? "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]"
         : "bg-[var(--tm-bg-muted)] text-muted-foreground";
-  return <span className={`tag flex-none rounded-sm px-2 py-0.5 font-mono text-b4 font-medium uppercase tracking-[1px] ${tone}`}>{st.label}</span>;
+  return <span className={`tag flex-none rounded-sm px-1.5 py-0.5 font-mono text-b5 font-medium uppercase tracking-[1px] ${tone}`}>{st.label}</span>;
 }
 
 /* the live hero's sample run card, in its own colours: off-white head and
@@ -158,14 +158,14 @@ function RunCard({ run }: { run: Run }) {
   const rule = dark ? "border-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)]" : "border-border";
   return (
     <div className={`flex w-full flex-col border text-left [box-shadow:var(--tm-shadow-floating-md)] ${shell}`}>
-      <div className={`flex items-center justify-between gap-3 border-b px-5 py-4 ${bar}`}>
+      <div className={`flex items-center justify-between gap-3 border-b px-4 py-3 ${bar}`}>
         <span className="flex min-w-0 items-center gap-3">
           <span className="flex flex-none gap-1.5" aria-hidden>
             {[0, 1, 2].map((i) => (
               <i key={i} className={`block size-2.5 rounded-full ${dark ? "bg-[var(--tm-fg-inverse-muted)]" : "bg-[var(--tm-border-default)]"}`} />
             ))}
           </span>
-          <span className="truncate font-mono text-b3">{run.title}</span>
+          <span className="truncate font-mono text-b4">{run.title}</span>
         </span>
         {run.live && (
           <span className={`flex flex-none items-center gap-2 whitespace-nowrap font-mono text-b4 uppercase tracking-[1px] ${dark ? "text-[var(--tm-green-200)]" : "text-[var(--tm-green-500)]"}`}>
@@ -193,19 +193,19 @@ function RunCard({ run }: { run: Run }) {
         {run.rows.map((r, i) => (
           <li
             key={`${r.who}-${i}`}
-            className={`flex items-center gap-3 px-4 py-3 sm:gap-4 sm:px-5 ${i && !dark ? `border-t border-dashed ${rule}` : ""}`}
+            className={`flex items-center gap-3 px-4 py-2 ${i && !dark ? `border-t border-dashed ${rule}` : ""}`}
           >
-            {r.pr && <span aria-hidden className="flex-none font-mono text-b3 text-[var(--tm-green-200)]">{r.pr}</span>}
-            <span className={`w-20 flex-none truncate font-mono text-b4 uppercase tracking-[1px] sm:w-28 ${muted}`}>{r.who}</span>
-            <span className="min-w-0 flex-1 font-mono text-b3">{r.text}</span>
+            {r.pr && <span aria-hidden className="flex-none font-mono text-b4 text-[var(--tm-green-200)]">{r.pr}</span>}
+            <span className={`w-20 flex-none truncate font-mono text-b5 uppercase tracking-[1px] sm:w-24 ${muted}`}>{r.who}</span>
+            <span className="min-w-0 flex-1 font-mono text-b4">{r.text}</span>
             <Tag st={r.st} />
           </li>
         ))}
       </ol>
       {(run.verdict || run.evid) && (
-        <div className={`flex flex-col gap-1 border-t px-5 py-4 ${bar}`}>
+        <div className={`flex flex-col gap-1 border-t px-4 py-3 ${bar}`}>
           {run.verdict && (
-            <span className={`font-mono text-b2 font-medium ${dark ? "text-[var(--tm-green-200)]" : ""}`}>{run.verdict}</span>
+            <span className={`font-mono text-b3 font-medium ${dark ? "text-[var(--tm-green-200)]" : ""}`}>{run.verdict}</span>
           )}
           {run.evid && (
             <span className={`flex items-center gap-2 font-mono text-b4 ${muted}`}>
@@ -260,7 +260,7 @@ function Hero({ d }: { d: PageData }) {
             )}
           </nav>
         )}
-        <div className="tm-hero__grid lg:!grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+        <div className="tm-hero__grid lg:!grid-cols-[minmax(0,630fr)_minmax(0,466fr)]">
           <div className="min-w-0">
             {h.eyebrow.length > 0 && (
               <p className="pill mb-6 inline-flex flex-wrap items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-b4">
