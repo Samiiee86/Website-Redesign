@@ -802,7 +802,7 @@ function Related({ s }: { s: Extract<Sec, { type: "rel" }> }) {
 function Final({ s, ctas }: { s: Extract<Sec, { type: "final" }>; ctas: PageData["hero"]["ctas"] }) {
   const list = s.ctas.length ? s.ctas : ctas;
   return (
-    <Section className="!py-0 md:!py-0">
+    <Section className="!pt-0 md:!pt-0">
       <div className="tm-reveal relative -mx-8 overflow-hidden bg-[var(--tm-bg-inverse)] px-8 py-24 text-center text-[var(--tm-fg-inverse)] md:py-28">
         <span
           aria-hidden
