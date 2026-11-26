@@ -253,7 +253,7 @@ function How() {
         <ol className="grid gap-px border-y border-[var(--tm-bg-inverse-muted)] bg-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] md:grid-cols-3">
           {steps.map((s, i) => (
             <li key={s.title} className="flex flex-col gap-2 bg-[var(--tm-bg-inverse-muted)] p-8">
-              <span className="font-mono text-b4 font-medium text-[var(--tm-blue-300)]">
+              <span className="font-mono text-b1 font-medium text-[var(--tm-blue-300)]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <h3 className={`mt-2 ${H5}`}>{s.title}</h3>
