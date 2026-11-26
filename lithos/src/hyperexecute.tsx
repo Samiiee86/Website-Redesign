@@ -1172,24 +1172,6 @@ function OwnCloud() {
   );
 }
 
-/* ---------- open source: the kit's CTA band ---------- */
-
-function OpenSource() {
-  return (
-    <Section>
-      <div className="tm-reveal -mx-8 flex flex-col gap-6 border-y border-border bg-surface px-8 py-10 lg:flex-row lg:items-center lg:justify-between lg:px-12">
-        <div className="flex max-w-[640px] flex-col gap-3">
-          <h3>Open source</h3>
-          <p className="text-b2 text-muted-foreground">
-            We strongly believe in the open-source community and owe much of our success to it. To give back, we're offering 10 free parallel sessions of HyperExecute.
-          </p>
-        </div>
-        <KitLink href={`${SITE}/open-source/`}>Get in touch</KitLink>
-      </div>
-    </Section>
-  );
-}
-
 /* ---------- products and docs: the kit's link catalog ---------- */
 
 const related = [
@@ -1291,7 +1273,6 @@ function Page() {
         <Performance />
         <OwnCloud />
         <Stories content={stories} />
-        <OpenSource />
         <Related />
         <Reasons integrations={false} />
         <Faq items={faq} />
