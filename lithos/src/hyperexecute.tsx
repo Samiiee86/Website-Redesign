@@ -607,14 +607,14 @@ function Performance() {
       >
         <PrimaryBtn href={`${SITE}/performance-testing/`}>Explore performance testing</PrimaryBtn>
       </FoldHead>
-      <div className="tm-setup tm-reveal">
+      <div className="tm-setup tm-reveal lg:!items-center">
         <ol className="tm-steps !mt-0">
           {perf.map((p, i) => (
             <li key={p.title}>
-              <span className="tm-label">{String(i + 1).padStart(2, "0")}</span>
+              <span className="tm-label !pt-1">{String(i + 1).padStart(2, "0")}</span>
               <div>
-                <b>{p.title}</b>
-                <p>{p.body}</p>
+                <b className={H5}>{p.title}</b>
+                <p className="!mt-1 !text-b2">{p.body}</p>
               </div>
             </li>
           ))}
