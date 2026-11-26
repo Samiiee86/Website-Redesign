@@ -49,13 +49,17 @@ type Props = {
   /* white table, grey head row, straight row lines, outline (the product
      pages, like their comparison table) */
   plain?: boolean;
+  /* desktop column plan (grid-template-columns), when the columns should
+     not share the width evenly, e.g. short columns hugging their words */
+  cols?: string;
 };
 
 /* No column tints: every column sits on the page ground, as in the
    head to head, so the white TestMu AI row is the only white on desktop. */
 const tint = (_col: number) => "lg:bg-background";
 
-const GRID =
+const GRID_BASE = "relative grid";
+const GRID_EVEN =
   "relative grid lg:grid-cols-[minmax(0,1.1fr)_repeat(var(--n),minmax(0,1fr))]";
 
 function Value({ cell, strong = false }: { cell: SpecCell; strong?: boolean }) {
@@ -107,6 +111,7 @@ export default function SpecTable({
   columns,
   rows,
   plain = false,
+  cols,
 }: Props) {
   return (
     <Section>
@@ -130,6 +135,7 @@ export default function SpecTable({
           rows={rows}
           className="-mx-8"
           plain={plain}
+          cols={cols}
         />
       </Reveal>
     </Section>
@@ -145,6 +151,7 @@ export function SpecSheet({
   className = "",
   greyHead = false,
   plain = false,
+  cols,
 }: {
   label: string;
   columns: string[];
@@ -154,7 +161,9 @@ export function SpecSheet({
      in the comparison table, so the head reads apart from the rows */
   greyHead?: boolean;
   plain?: boolean;
+  cols?: string;
 }) {
+  const GRID = cols ? `${GRID_BASE} lg:grid-cols-[var(--cols)]` : GRID_EVEN;
   /* plain: white cells, grey head, straight lines under every row, an
      outline, every word at 16px */
   const cellBg = (col: number) => (plain ? "lg:bg-surface" : tint(col));
@@ -169,7 +178,7 @@ export function SpecSheet({
               ? "lg:border-x [&_[role=cell]_*]:!text-b2 [&_[role=columnheader]]:!text-b2 [&_[role=rowheader]_span]:!text-b2 [&_[role=rowheader]_span]:!font-medium [&_[role=rowheader]_span]:!tracking-normal"
               : ""
           } ${className}`}
-          style={{ "--n": facts.length } as CSSProperties}
+          style={{ "--n": facts.length, ...(cols ? { "--cols": cols } : {}) } as CSSProperties}
         >
           {/* column names: pinned under the 56px header */}
           <div

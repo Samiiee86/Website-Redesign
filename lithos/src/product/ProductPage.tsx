@@ -762,6 +762,19 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
   );
 }
 
+/* the desktop column plan for a reference table: when one column holds
+   long text (a list of models), the short columns hug their longest
+   words and the long ones share the rest; otherwise all share evenly */
+const HUG = 28;
+function hugCols(cols: string[], rows: string[][]): string | undefined {
+  const len = cols.map((c, i) => Math.max(c.length, ...rows.map((r) => (r[i] ?? "").length)));
+  if (!len.some((l) => l > HUG * 2)) return undefined;
+  /* side padding: 32px on the first column, 24px on the others */
+  return len
+    .map((l, i) => (l <= HUG ? `calc(${l}ch + ${i === 0 ? 64 : 48}px)` : "minmax(0,1fr)"))
+    .join(" ");
+}
+
 /* a reference table (types, browsers, devices ...), as the spec table */
 function Data({ s }: { s: Extract<Sec, { type: "data" }> }) {
   const [lead, title] = split(s.head);
@@ -784,6 +797,7 @@ function Data({ s }: { s: Extract<Sec, { type: "data" }> }) {
       columns={s.cols}
       rows={s.rows.map(([name, ...cells]) => ({ name, cells }))}
       plain
+      cols={hugCols(s.cols, s.rows)}
     />
   );
 }
