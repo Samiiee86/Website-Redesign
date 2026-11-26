@@ -157,7 +157,7 @@ function RunCard({ run }: { run: Run }) {
   const muted = dark ? "text-[var(--tm-fg-inverse-muted)]" : "text-muted-foreground";
   const rule = dark ? "border-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)]" : "border-border";
   return (
-    <div className={`flex w-full flex-col border text-left [box-shadow:var(--tm-shadow-floating-md)] ${shell}`}>
+    <div className={`flex w-full flex-col border text-left ${dark ? "[box-shadow:var(--tm-shadow-floating-lg)]" : "[box-shadow:var(--tm-shadow-floating-md)]"} ${shell}`}>
       <div className={`flex items-center justify-between gap-3 border-b px-4 py-3 ${bar}`}>
         <span className="flex min-w-0 items-center gap-3">
           <span className="flex flex-none gap-1.5" aria-hidden>
@@ -244,10 +244,10 @@ function Hero({ d }: { d: PageData }) {
   const h = d.hero;
   const Pill = icon(h.eyebrow[0] ?? "", d.slug);
   return (
-    <section className="tm-hero tm-hero--split">
+    <section className="tm-hero tm-hero--split lg:!pt-10">
       <div className="tm-frame tm-hero__inner">
         {d.crumb.length > 1 && (
-          <nav aria-label="Breadcrumb" className="tm-crumbs mb-10">
+          <nav aria-label="Breadcrumb" className="tm-crumbs mb-6">
             {d.crumb.map((c, i) =>
               i < d.crumb.length - 1 ? (
                 <span key={c} className="contents">
@@ -260,7 +260,7 @@ function Hero({ d }: { d: PageData }) {
             )}
           </nav>
         )}
-        <div className="tm-hero__grid lg:!grid-cols-[minmax(0,630fr)_minmax(0,466fr)]">
+        <div className="tm-hero__grid lg:!grid-cols-[minmax(0,1fr)_466px]">
           <div className="min-w-0">
             {h.eyebrow.length > 0 && (
               <p className="pill mb-6 inline-flex flex-wrap items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-b4">
@@ -307,7 +307,8 @@ function Hero({ d }: { d: PageData }) {
           <div className="relative min-w-0">
             {h.image ? (
               <>
-                {/* the whole picture at its own shape, as on the live page: no crop */}
+                {/* the whole picture at its own shape in the live page's 466px
+                    column: no crop, live size */}
                 <div className="overflow-hidden border border-border">
                   <img className="block h-auto w-full" src={h.image.src} alt={h.image.alt} fetchPriority="high" />
                 </div>
