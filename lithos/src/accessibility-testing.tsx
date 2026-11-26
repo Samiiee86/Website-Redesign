@@ -211,28 +211,30 @@ const facts: [string, string][] = [
   ["Start", "Scan a URL or add accessibility checks to existing tests"],
 ];
 
+/* boxes as on the home page: edge to edge between the frame lines,
+   joined by 1px hairlines, no gaps */
+const JOIN = "tm-reveal -mx-8 grid gap-px border-y border-border bg-[var(--tm-border-default)]";
+
 /* the live page's small upper-case label */
 const LABEL = "text-b4 font-medium uppercase tracking-[1px] text-muted-foreground";
 
 function Glance() {
   return (
     <Section>
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-        <div className="flex flex-col items-start gap-6">
-          <h2 className="[text-wrap:balance]">Accessibility coverage on web and native apps</h2>
-          <p className="border border-border bg-surface px-5 py-3 text-b1 font-medium">
-            Free plan: 25 accessibility scans, valid for lifetime
-          </p>
-        </div>
-        <dl className="tm-reveal grid gap-px self-start border border-border bg-[var(--tm-border-default)] sm:grid-cols-2">
+      <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <h2 className="max-w-[640px] [text-wrap:balance]">Accessibility coverage on web and native apps</h2>
+        <p className="self-start border border-border bg-surface px-5 py-3 text-b1 font-medium lg:self-end">
+          Free plan: 25 accessibility scans, valid for lifetime
+        </p>
+      </div>
+      <dl className={`${JOIN} sm:grid-cols-2 lg:grid-cols-3`}>
           {facts.map(([k, v]) => (
-            <div key={k} className="flex flex-col gap-2 bg-surface p-6">
+            <div key={k} className="flex flex-col gap-2 bg-surface p-8">
               <dt className={LABEL}>{k}</dt>
               <dd className="text-b1">{v}</dd>
             </div>
           ))}
-        </dl>
-      </div>
+      </dl>
     </Section>
   );
 }
@@ -288,18 +290,16 @@ const caps = [
 function Caps() {
   return (
     <Section>
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-        <h2 className="[text-wrap:balance]">WCAG checks for web and native apps</h2>
-        <ul className="tm-reveal grid gap-px self-start border border-border bg-[var(--tm-border-default)] sm:grid-cols-2">
+      <h2 className="mb-12 max-w-[640px] [text-wrap:balance]">WCAG checks for web and native apps</h2>
+      <ul className={`${JOIN} sm:grid-cols-2 lg:grid-cols-3`}>
           {caps.map(({ icon: Icon, title, body }) => (
-            <li key={title} className="flex flex-col gap-2 bg-surface p-6">
+            <li key={title} className="flex flex-col gap-2 bg-surface p-8">
               <Icon size={20} strokeWidth={1.5} aria-hidden className="mb-3" />
               <h3 className={H5}>{title}</h3>
               <p className="text-b2 text-muted-foreground">{body}</p>
             </li>
           ))}
-        </ul>
-      </div>
+      </ul>
     </Section>
   );
 }
@@ -319,7 +319,7 @@ const cmp: MatrixGroup[] = [
 ];
 
 /* ---------- teams: as on the live page ----------
-   Three plan cards, as the live page shows them; Enterprise is the dark one. */
+   Three plan cells, joined edge to edge; Enterprise is the dark one. */
 
 const teams = [
   { name: "Startups and SMBs", for: "Start small", items: ["25 free scans, valid for lifetime", "Scheduled scans for WCAG, ADA and Section 508"] },
@@ -331,11 +331,11 @@ function Teams() {
   return (
     <Section>
       <h2 className="mb-12 [text-wrap:balance]">Accessibility for one site or a design system</h2>
-      <div className="tm-reveal grid gap-4 md:grid-cols-3">
+      <div className={`${JOIN} md:grid-cols-3`}>
         {teams.map((t) => (
           <div
             key={t.name}
-            className={`flex flex-col gap-5 border p-8 ${t.dark ? "border-[var(--tm-bg-inverse)] bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]" : "border-border bg-surface"}`}
+            className={`flex flex-col gap-5 p-8 ${t.dark ? "bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]" : "bg-surface"}`}
           >
             <div className="flex flex-col gap-1">
               <h3 className={H5}>{t.name}</h3>
@@ -376,9 +376,9 @@ function Related() {
   return (
     <Section>
       <h2 className="mb-12 [text-wrap:balance]">Test accessibility where you already test</h2>
-      <div className="tm-reveal grid gap-px border border-border bg-[var(--tm-border-default)] sm:grid-cols-2 lg:grid-cols-4">
+      <div className={`${JOIN} sm:grid-cols-2 lg:grid-cols-4`}>
         {related.map(({ icon: Icon, name, body, href }) => (
-          <a key={name} href={href} className="group flex flex-col gap-2 bg-surface p-6 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
+          <a key={name} href={href} className="group flex flex-col gap-2 bg-surface p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
             <Icon size={20} strokeWidth={1.5} aria-hidden className="mb-2" />
             <h3 className="!text-b2 !font-medium !tracking-normal">{name}</h3>
             <p className="text-b3 text-muted-foreground">{body}</p>
@@ -386,9 +386,10 @@ function Related() {
           </a>
         ))}
       </div>
-      <div className="mt-8 grid gap-8 border-t border-border pt-8 sm:grid-cols-2">
+      {/* the resource row joins the boxes above on one hairline */}
+      <div className={`${JOIN} !border-t-0 sm:grid-cols-2`}>
         {resources.map((r) => (
-          <div key={r.group} className="flex flex-col gap-3">
+          <div key={r.group} className="flex flex-col gap-3 bg-surface p-8">
             <h3 className={`!text-b4 !tracking-[1px] ${LABEL}`}>{r.group}</h3>
             <a href={r.href} className="group inline-flex items-center gap-2 self-start text-b2">
               {r.label}
@@ -405,8 +406,8 @@ function Related() {
 
 function Final() {
   return (
-    <Section>
-      <div className="tm-reveal flex flex-col gap-8 bg-[var(--tm-bg-inverse)] p-8 text-[var(--tm-fg-inverse)] md:p-12 lg:flex-row lg:items-center lg:justify-between">
+    <Section className="!py-0 md:!py-0">
+      <div className="tm-reveal -mx-8 flex flex-col gap-8 bg-[var(--tm-bg-inverse)] p-8 text-[var(--tm-fg-inverse)] md:p-12 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex max-w-[640px] flex-col gap-3">
           <h2 className="!text-[length:var(--tm-h3-size)] !leading-[var(--tm-h3-line)] !tracking-[var(--tm-h3-tracking)] [text-wrap:balance]">
             Find accessibility issues before an audit does
