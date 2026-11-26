@@ -4,14 +4,10 @@ import { MotionConfig } from "motion/react";
 import {
   Check,
   ClipboardList,
-  Code,
-  Ear,
   Globe,
-  ListChecks,
   ScanEye,
   ShieldCheck,
   Smartphone,
-  Wrench,
 } from "lucide-react";
 import "./index.css";
 import { Section } from "./lib/ui";
@@ -20,11 +16,7 @@ import Header from "./components/Header";
 import TrustedBy from "./sections/TrustedBy";
 import Reasons from "./sections/Reasons";
 import Faq from "./sections/Faq";
-import Enterprise from "./sections/Enterprise";
 import Footer from "./sections/Footer";
-import CompareDuel from "./pieces/CompareDuel";
-import { FoldHead } from "./pieces/compare/parts";
-import type { MatrixGroup } from "./pieces/compare/MatrixTable";
 
 /* Accessibility testing page (accessibility-testing.html).
 
@@ -52,13 +44,10 @@ const Arrow = () => (
   </svg>
 );
 
-/* the kit's sliding arrow, on its own */
-const Arw = () => (
-  <span className="tm-link !border-0 !pb-0" aria-hidden="true">
-    <span className="tm-arw">
-      <Arrow />
-      <Arrow />
-    </span>
+/* an arrow that shows on hover (the box or link around it is a "group") */
+const HoverArrow = () => (
+  <span aria-hidden className="inline-flex size-4 -translate-x-1 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100">
+    <Arrow />
   </span>
 );
 
@@ -203,7 +192,9 @@ function Hero() {
   );
 }
 
-/* ---------- at a glance: six facts, joined cells ---------- */
+/* ---------- at a glance: as on the live page ----------
+   Heading and the free plan note on the left; the six facts as a two
+   column table of joined white cells on the right. */
 
 const facts: [string, string][] = [
   ["What it is", "Automated and assisted accessibility testing for web and mobile"],
@@ -214,19 +205,23 @@ const facts: [string, string][] = [
   ["Start", "Scan a URL or add accessibility checks to existing tests"],
 ];
 
+/* the live page's small upper-case label */
+const LABEL = "text-b4 font-medium uppercase tracking-[1px] text-muted-foreground";
+
 function Glance() {
   return (
     <Section>
-      <FoldHead
-        lead="Accessibility coverage"
-        title="on web and native apps"
-        body="Free plan: 25 accessibility scans, valid for lifetime"
-      />
-      <div className="tm-reveal -mx-8">
-        <dl className="tm-grid tm-grid--3">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+        <div className="flex flex-col items-start gap-6">
+          <h2 className="[text-wrap:balance]">Accessibility coverage on web and native apps</h2>
+          <p className="border border-border bg-surface px-5 py-3 text-b1 font-medium">
+            Free plan: 25 accessibility scans, valid for lifetime
+          </p>
+        </div>
+        <dl className="tm-reveal grid gap-px self-start border border-border bg-[var(--tm-border-default)] sm:grid-cols-2">
           {facts.map(([k, v]) => (
-            <div key={k} className="tm-cell">
-              <dt className="tm-label">{k}</dt>
+            <div key={k} className="flex flex-col gap-2 bg-surface p-6">
+              <dt className={LABEL}>{k}</dt>
               <dd className="text-b1">{v}</dd>
             </div>
           ))}
@@ -271,30 +266,29 @@ function How() {
   );
 }
 
-/* ---------- capabilities: kit feature pointers ---------- */
+/* ---------- capabilities: as on the live page ----------
+   Heading on the left; the six checks in two columns on the right, each
+   under a hairline. */
 
 const caps = [
-  { icon: ShieldCheck, title: "WCAG 2.2, ADA, 508, EAA", body: "Checks mapped to the standards your legal team asks about." },
-  { icon: Smartphone, title: "Native mobile apps", body: "Scan iOS and Android apps, not only websites." },
-  { icon: Ear, title: "Real devices and screen readers", body: "Confirm issues the way assistive-technology users meet them." },
-  { icon: Wrench, title: "Rule-level fixes", body: "Every issue links to the rule it fails and the change that fixes it." },
-  { icon: ListChecks, title: "In your test suite", body: "Add accessibility checks to Selenium, Playwright and Cypress tests." },
-  { icon: Code, title: "Accessibility DevTools", body: "A browser extension for developers to scan while they build." },
+  { title: "WCAG 2.2, ADA, 508, EAA", body: "Checks mapped to the standards your legal team asks about." },
+  { title: "Native mobile apps", body: "Scan iOS and Android apps, not only websites." },
+  { title: "Real devices and screen readers", body: "Confirm issues the way assistive-technology users meet them." },
+  { title: "Rule-level fixes", body: "Every issue links to the rule it fails and the change that fixes it." },
+  { title: "In your test suite", body: "Add accessibility checks to Selenium, Playwright and Cypress tests." },
+  { title: "Accessibility DevTools", body: "A browser extension for developers to scan while they build." },
 ];
 
 function Caps() {
   return (
     <Section>
-      <FoldHead lead="WCAG checks" title="for web and native apps" />
-      <div className="tm-reveal -mx-8">
-        <ul className="tm-grid tm-grid--3">
-          {caps.map(({ icon: Icon, title, body }) => (
-            <li key={title} className="tm-cell tm-pt">
-              <span className="tm-pt__ico">
-                <Icon aria-hidden />
-              </span>
-              <h3 className={H5}>{title}</h3>
-              <p>{body}</p>
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+        <h2 className="[text-wrap:balance]">WCAG checks for web and native apps</h2>
+        <ul className="tm-reveal grid gap-x-10 sm:grid-cols-2">
+          {caps.map((c) => (
+            <li key={c.title} className="flex flex-col gap-1 border-t border-border py-5">
+              <h3 className={H5}>{c.title}</h3>
+              <p className="text-b2 text-muted-foreground">{c.body}</p>
             </li>
           ))}
         </ul>
@@ -303,57 +297,93 @@ function Caps() {
   );
 }
 
-/* ---------- plug-ins vs scans: the pieces library's head to head ---------- */
+/* ---------- plug-ins vs scans: the live page's table ----------
+   Its columns in its order, on white with a muted head row; the TestMu
+   AI column framed in 2px black, as in the pieces library tables. */
 
-const cmp: MatrixGroup[] = [
-  {
-    label: "",
-    rows: [
-      { name: "Scope", values: ["Sites, flows and native apps", "One page at a time"] },
-      { name: "Mobile apps", values: ["iOS and Android on real devices", "Not covered"] },
-      { name: "Screen readers", values: ["Built into the workflow", "Manual"] },
-      { name: "Reporting", values: ["Issue, rule and fix per element", "A list of warnings"] },
-    ],
-  },
+const cmpRows: [string, string, string][] = [
+  ["Scope", "One page at a time", "Sites, flows and native apps"],
+  ["Mobile apps", "Not covered", "iOS and Android on real devices"],
+  ["Screen readers", "Manual", "Built into the workflow"],
+  ["Reporting", "A list of warnings", "Issue, rule and fix per element"],
 ];
 
-/* ---------- teams: the kit's plan cells, without prices ---------- */
+/* the framed column: 2px black sides, top on the head cell, bottom on the last row */
+const ours = (first: boolean, last: boolean) =>
+  `relative border-x-2 border-[var(--tm-border-emphasis)] ${first ? "border-t-2" : ""} ${last ? "border-b-2" : ""}`;
 
-const teams = [
-  { name: "Startups and SMBs", for: "Start small", items: ["25 free scans, valid for lifetime", "Scheduled scans for WCAG, ADA and Section 508"] },
-  { name: "Mid-market", for: "Scale across squads and CI", items: ["Native iOS and Android app scans on real devices", "Issues pushed to Jira with WCAG references"] },
-  { name: "Enterprise", for: "Security, control and support", items: ["Custom platform access controls for teams", "Certifications, ESG attestation and continuous monitoring (Trust Center)"] },
-];
-
-function Teams() {
+function Compare() {
   return (
     <Section>
-      <FoldHead lead="Accessibility for one site" title="or a design system" />
-      <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--3 tm-pcs">
-          {teams.map((t) => (
-            <div key={t.name} className="tm-cell tm-pc">
-              <div className="tm-pc__top">
-                <h3 className={H5}>{t.name}</h3>
-                <p className="tm-pc__desc">{t.for}</p>
-              </div>
-              <ul className="tm-pc__list">
-                {t.items.map((it) => (
-                  <li key={it}>
-                    <Check aria-hidden />
-                    {it}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+      <h2 className="mb-12 [text-wrap:balance]">Browser plug-ins vs automated accessibility scans</h2>
+      <div className="tm-reveal overflow-x-auto">
+        <table className="w-full min-w-[640px] border-collapse border border-border bg-surface text-left">
+          <caption className="sr-only">Accessibility Testing compared with free browser checkers</caption>
+          <thead>
+            <tr className="bg-background">
+              <th scope="col" className="w-1/3 px-6 py-4 text-b2 font-medium">What matters</th>
+              <th scope="col" className="w-1/3 px-6 py-4 text-b2 font-medium">Free browser checkers</th>
+              <th scope="col" className={`w-1/3 bg-surface px-6 py-4 text-b2 font-medium text-[var(--tm-fg-link)] ${ours(true, false)}`}>
+                TestMu AI Accessibility Testing
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {cmpRows.map(([k, them, us], i) => (
+              <tr key={k} className="border-t border-border">
+                <th scope="row" className="px-6 py-5 text-b1 font-medium">{k}</th>
+                <td className="px-6 py-5 text-b1 text-muted-foreground">{them}</td>
+                <td className={`px-6 py-5 text-b1 ${ours(false, i === cmpRows.length - 1)}`}>{us}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </Section>
   );
 }
 
-/* ---------- related: four products, then the two resource groups ---------- */
+/* ---------- teams: as on the live page ----------
+   Three plan cards, as the live page shows them; Enterprise is the dark one. */
+
+const teams = [
+  { name: "Startups and SMBs", for: "Start small", items: ["25 free scans, valid for lifetime", "Scheduled scans for WCAG, ADA and Section 508"] },
+  { name: "Mid-market", for: "Scale across squads and CI", items: ["Native iOS and Android app scans on real devices", "Issues pushed to Jira with WCAG references"] },
+  { name: "Enterprise", for: "Security, control and support", items: ["Custom platform access controls for teams", "Certifications, ESG attestation and continuous monitoring (Trust Center)"], dark: true },
+];
+
+function Teams() {
+  return (
+    <Section>
+      <h2 className="mb-12 [text-wrap:balance]">Accessibility for one site or a design system</h2>
+      <div className="tm-reveal grid gap-4 md:grid-cols-3">
+        {teams.map((t) => (
+          <div
+            key={t.name}
+            className={`flex flex-col gap-5 border p-8 ${t.dark ? "border-[var(--tm-bg-inverse)] bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]" : "border-border bg-surface"}`}
+          >
+            <div className="flex flex-col gap-1">
+              <h3 className={H5}>{t.name}</h3>
+              <p className={`text-b3 ${t.dark ? "text-[var(--tm-fg-inverse-muted)]" : "text-muted-foreground"}`}>{t.for}</p>
+            </div>
+            <ul className="flex flex-col gap-3">
+              {t.items.map((it) => (
+                <li key={it} className="flex items-start gap-3 text-b2">
+                  <Check size={16} strokeWidth={1.5} aria-hidden className={`mt-1 flex-none ${t.dark ? "text-[var(--tm-green-300)]" : "text-[var(--tm-fg-success)]"}`} />
+                  {it}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- related: as on the live page ----------
+   Four product boxes (icon, name, line), joined; then the two resource
+   groups as plain columns under a hairline. */
 
 const related = [
   { icon: ScanEye, name: "SmartUI", body: "Pixel and layout diffs on every build", href: `${SITE}/visual-testing-tool/` },
@@ -370,29 +400,57 @@ const resources = [
 function Related() {
   return (
     <Section>
-      <FoldHead lead="Test accessibility" title="where you already test" />
-      <div className="tm-reveal -mx-8">
-        <div className="tm-grid tm-grid--4">
-          {related.map(({ icon: Icon, name, body, href }) => (
-            <a key={name} href={href} className="tm-cell tm-pt">
-              <span className="tm-pt__ico">
-                <Icon aria-hidden />
-              </span>
-              <h3 className={H5}>{name}</h3>
-              <p>{body}</p>
-              <Arw />
+      <h2 className="mb-12 [text-wrap:balance]">Test accessibility where you already test</h2>
+      <div className="tm-reveal grid gap-px border border-border bg-[var(--tm-border-default)] sm:grid-cols-2 lg:grid-cols-4">
+        {related.map(({ icon: Icon, name, body, href }) => (
+          <a key={name} href={href} className="group flex flex-col gap-2 bg-surface p-6 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
+            <Icon size={20} strokeWidth={1.5} aria-hidden className="mb-2" />
+            <h3 className="!text-b2 !font-medium !tracking-normal">{name}</h3>
+            <p className="text-b3 text-muted-foreground">{body}</p>
+            <span className="mt-auto pt-2"><HoverArrow /></span>
+          </a>
+        ))}
+      </div>
+      <div className="mt-8 grid gap-8 border-t border-border pt-8 sm:grid-cols-2">
+        {resources.map((r) => (
+          <div key={r.group} className="flex flex-col gap-3">
+            <h3 className={`!text-b4 !tracking-[1px] ${LABEL}`}>{r.group}</h3>
+            <a href={r.href} className="group inline-flex items-center gap-2 self-start text-b2">
+              {r.label}
+              <HoverArrow />
             </a>
-          ))}
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- closing call: the live page's dark banner ---------- */
+
+function Final() {
+  return (
+    <Section>
+      <div className="tm-reveal flex flex-col gap-8 bg-[var(--tm-bg-inverse)] p-8 text-[var(--tm-fg-inverse)] md:p-12 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex max-w-[640px] flex-col gap-3">
+          <h2 className="!text-[length:var(--tm-h3-size)] !leading-[var(--tm-h3-line)] !tracking-[var(--tm-h3-tracking)] [text-wrap:balance]">
+            Find accessibility issues before an audit does
+          </h2>
+          <p className="text-b2 text-[var(--tm-fg-inverse-muted)]">Free plan: 25 accessibility scans, valid for lifetime.</p>
         </div>
-        {/* the second row meets the first on one hairline */}
-        <div className="tm-grid tm-grid--2 !border-t-0">
-          {resources.map((r) => (
-            <a key={r.group} href={r.href} className="tm-cell tm-report">
-              <span className="tm-label">{r.group}</span>
-              <p>{r.label}</p>
-              <Arw />
-            </a>
-          ))}
+        <div className="tm-actions flex-none">
+          <a className="tm-btn tm-btn--secondary tm-btn--arrow tm-btn--plain" href={SIGNUP}>
+            Start free
+            <span className="tm-chip" aria-hidden="true">
+              <span>
+                <Arrow />
+                <Arrow />
+              </span>
+            </span>
+          </a>
+          <a className="tm-btn tm-btn--outline-inverse" href={`${SITE}/demo/`}>
+            Book a demo
+          </a>
         </div>
       </div>
     </Section>
@@ -441,25 +499,12 @@ function Page() {
         <Glance />
         <How />
         <Caps />
-        <CompareDuel
-          lead="Browser plug-ins vs"
-          title="automated accessibility scans"
-          body="Accessibility Testing compared with free browser checkers"
-          cta="Start free"
-          rival={{ name: "Free browser checkers" }}
-          head="What matters"
-          groups={cmp}
-        />
+        <Compare />
         <Teams />
         <Related />
-        <Reasons integrations={false} />
         <Faq title="What teams ask before an accessibility audit" items={faq} />
-        <Enterprise
-          title="Find accessibility issues before an audit does"
-          body="Free plan: 25 accessibility scans, valid for lifetime."
-          primary="Start free"
-          secondary="Book a demo"
-        />
+        <Reasons integrations={false} />
+        <Final />
         <Footer />
       </main>
     </div>
