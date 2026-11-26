@@ -743,27 +743,51 @@ function Teams({ s }: { s: Extract<Sec, { type: "teams" }> }) {
 
 /* customer results: a big number (Manrope) on the left, the line and the
    case study link on the right */
+function StoryCard({ st, className = "" }: { st: Extract<Sec, { type: "stories" }>["items"][number]; className?: string }) {
+  return (
+    /* like the HyperExecute quote card: the number on the left, the line and
+       the link on the right */
+    <a href={st.href} className={`group grid items-start gap-6 !p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)] lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)] lg:gap-10 lg:!p-10 ${className}`}>
+      <span className="font-body text-[length:var(--tm-h1-size)] font-medium leading-none tracking-[var(--tm-h1-tracking)]">{st.num}</span>
+      <span className="flex flex-col gap-6">
+        <span className="block max-w-[640px] text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)] [text-wrap:balance]">
+          {st.text}
+        </span>
+        <span className="inline-flex items-center whitespace-nowrap text-b1 font-medium">
+          <span className="underline decoration-1 underline-offset-4">{st.cta.replace(/\s*→\s*$/, "")}</span>
+          <LinkArrow />
+        </span>
+      </span>
+    </a>
+  );
+}
+
+/* One story: the heading on the left, the story box on the right.
+   Two: the heading on top, the two boxes joined below it. */
 function Stories({ s }: { s: Extract<Sec, { type: "stories" }> }) {
+  if (s.items.length === 1)
+    return (
+      <Section>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center lg:gap-16">
+          <div className="flex flex-col gap-6">
+            <Heading text={s.head} className="" />
+            {s.body.map((l) => (
+              <p key={l} className="text-b1 text-muted-foreground">{l}</p>
+            ))}
+          </div>
+          <div className="tm-reveal -mx-8 border-y border-border bg-surface lg:mx-0 lg:-mr-8 lg:border-l">
+            <StoryCard st={s.items[0]} />
+          </div>
+        </div>
+      </Section>
+    );
   return (
     <Section>
       <Heading text={s.head} />
       <Body lines={s.body} />
       <div className={FIT}>
         {s.items.map((st) => (
-          /* like the HyperExecute quote card: the number on the left, the
-             line and the link on the right */
-          <a key={st.href} href={st.href} className="group grid items-start gap-6 !p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)] lg:grid-cols-[minmax(0,auto)_minmax(0,1fr)] lg:gap-10 lg:!p-10">
-            <span className="font-body text-[length:var(--tm-h1-size)] font-medium leading-none tracking-[var(--tm-h1-tracking)]">{st.num}</span>
-            <span className="flex flex-col gap-6">
-              <span className="block max-w-[640px] text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)] [text-wrap:balance]">
-                {st.text}
-              </span>
-              <span className="inline-flex items-center whitespace-nowrap text-b1 font-medium">
-                <span className="underline decoration-1 underline-offset-4">{st.cta.replace(/\s*→\s*$/, "")}</span>
-                <LinkArrow />
-              </span>
-            </span>
-          </a>
+          <StoryCard key={st.href} st={st} />
         ))}
       </div>
     </Section>
