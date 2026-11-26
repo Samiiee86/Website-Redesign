@@ -247,115 +247,47 @@ function Hero() {
   );
 }
 
-/* the coding agents, as a quiet row of marks over the agents fold's picture */
-function AgentStrip() {
-  return (
-    <div className="flex flex-col items-center gap-6 pb-12">
-      <p className={LABEL}>For every coding agent you build with</p>
-      <ul className="flex max-w-[1040px] flex-wrap justify-center gap-x-8 gap-y-4" aria-label="Coding agents">
-        {agents.map((a) => (
-          <li key={a.name} className="flex items-center gap-2 text-b2 text-muted-foreground transition-colors hover:text-foreground">
-            <svg viewBox={a.viewBox} className="size-5 flex-none" fill="currentColor" fillRule="evenodd" aria-hidden dangerouslySetInnerHTML={{ __html: a.body }} />
-            {a.name}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+/* ---------- the problem: HyperExecute's feature pointers ----------
 
-/* ---------- the problem: three numbers, then the two ways a change ships ---------- */
-
-const Dots = ({ n, on, label }: { n: number; on: number; label: string }) => (
-  <span className="flex flex-col gap-3">
-    <span className="flex flex-wrap gap-1.5">
-      {Array.from({ length: n }).map((_, i) => (
-        <span key={i} className={`size-3 ${i < on ? "bg-[var(--tm-fg-default)]" : "border border-[var(--tm-border-default)]"}`} />
-      ))}
-    </span>
-    <span className="font-mono text-b5 text-muted-foreground">{label}</span>
-  </span>
-);
-
-const Bars = () => (
-  <span className="flex flex-col gap-2">
-    {[
-      ["Hand-written PR", "1x", "w-[16%]"],
-      ["Agent-written PR", "5x", "w-[80%]"],
-    ].map(([k, v, w]) => (
-      <span key={k} className="flex flex-col gap-1">
-        <span className="flex justify-between font-mono text-b5 text-muted-foreground">
-          {k}
-          <span>{v}</span>
-        </span>
-        <span className="h-3 w-full bg-[var(--tm-bg-fill)]">
-          <span className={`block h-full bg-[var(--tm-fg-default)] ${w}`} />
-        </span>
-      </span>
-    ))}
-  </span>
-);
-
-const Builds = () => (
-  <span className="flex flex-col gap-3">
-    <span className="flex gap-1.5">
-      {Array.from({ length: 10 }).map((_, i) => (
-        <span key={i} className={`h-8 flex-1 ${[2, 5, 8].includes(i) ? "bg-[var(--tm-red-500)]" : "bg-[var(--tm-bg-muted)]"}`} />
-      ))}
-    </span>
-    <span className="font-mono text-b5 text-muted-foreground">10 builds on main · 3 failed</span>
-  </span>
-);
+   Four joined white cells, as on HyperExecute's "measure it": the three
+   numbers in Geist Pixel, then the same change shipped with and without
+   Kane CLI. No charts: one look per cell. */
 
 const problem = [
-  { k: "Rejected PRs", n: "~50%", t: "of agent-written PRs get rejected, even when every test is green.", viz: <Dots n={20} on={10} label="merged ▢ not merged · all 20 had green tests" /> },
-  { k: "Review queue", n: "5x", t: "longer wait before an agent-written PR gets a review.", viz: <Bars /> },
-  { k: "Main branch", n: "3 in 10", t: "builds on main fail.", viz: <Builds /> },
+  { k: "Rejected PRs", n: "~50%", t: "of agent-written PRs get rejected, even when every test is green." },
+  { k: "Review queue", n: "5x", t: "longer wait before an agent-written PR gets a review." },
+  { k: "Main branch", n: "3 in 10", t: "builds on main fail." },
 ];
-
-function Flow({ title, steps, end, ok, note }: { title: string; steps: string[]; end: string; ok: boolean; note?: string }) {
-  return (
-    <div className={`flex flex-col gap-4 px-8 py-6 lg:flex-row lg:items-center lg:gap-6 ${ok ? "bg-surface" : ""}`}>
-      <span className={`w-44 flex-none ${LABEL}`}>{title}</span>
-      <ol className="flex flex-1 flex-wrap items-center gap-x-3 gap-y-2 text-b2">
-        {steps.map((s) => (
-          <li key={s} className="flex items-center gap-3">
-            <span className={s.startsWith("kane-cli") ? "tag rounded-sm bg-[var(--tm-bg-inverse)] px-2 font-mono text-b3 text-[var(--tm-fg-inverse)]" : ""}>{s}</span>
-            <ArrowRight size={16} strokeWidth={1.5} className="text-[var(--tm-fg-subtle)]" aria-hidden />
-          </li>
-        ))}
-        <li className={`flex items-center gap-2 font-medium ${ok ? "text-[var(--tm-fg-success)]" : "text-[var(--tm-fg-error)]"}`}>
-          {ok ? <Check size={16} strokeWidth={1.5} aria-hidden /> : <X size={16} strokeWidth={1.5} aria-hidden />}
-          {end}
-          {note && <span className="font-mono text-b4 font-normal text-muted-foreground">{note}</span>}
-        </li>
-      </ol>
-    </div>
-  );
-}
 
 function Problem() {
   return (
     <Section>
       <FoldHead lead="Code ships faster" title="than you can prove it works" body="A quick click-through catches the obvious. It leaves nothing the next person can check." />
       <div className="tm-reveal -mx-8">
-        <div className="tm-join !mx-0">
+        <ul className="tm-grid tm-grid--4">
           {problem.map((p) => (
-            <div key={p.k} className="flex flex-col gap-8">
+            <li key={p.k} className="tm-cell tm-pt">
               <span className={LABEL}>{p.k}</span>
-              <span className="flex flex-col gap-3">
-                <span className="pixel text-[length:var(--tm-h1-size)] leading-none">{p.n}</span>
-                <span className="max-w-[320px] text-b2 text-muted-foreground">{p.t}</span>
-              </span>
-              <span className="mt-auto">{p.viz}</span>
-            </div>
+              <span className="pixel mt-auto pt-8 text-[length:var(--tm-h1-size)] leading-none">{p.n}</span>
+              <p>{p.t}</p>
+            </li>
           ))}
-        </div>
-        {/* the same change, shipped two ways */}
-        <div className="flex flex-col divide-y divide-border border-b border-border">
-          <Flow title="Without Kane CLI" steps={["A change is made", "A quick click-through"]} end="Nothing to hand over" ok={false} />
-          <Flow title="With Kane CLI" steps={["A change is made", "kane-cli run"]} end="A verdict with evidence" note="steps · screenshots · logs" ok />
-        </div>
+          {/* the same change, shipped two ways */}
+          <li className="tm-cell tm-pt">
+            <span className={LABEL}>A change is made</span>
+            <span className="mt-auto flex flex-col gap-3 pt-8 text-b2">
+              <span className="flex items-center gap-2 text-muted-foreground">
+                <X size={16} strokeWidth={1.5} className="flex-none text-[var(--tm-fg-error)]" aria-hidden />
+                <span>Without Kane CLI: a quick click-through, nothing to hand over</span>
+              </span>
+              <span className="flex items-center gap-2">
+                <Check size={16} strokeWidth={1.5} className="flex-none text-[var(--tm-fg-success)]" aria-hidden />
+                <span>With Kane CLI: a verdict with evidence</span>
+              </span>
+            </span>
+            <p>steps · screenshots · logs</p>
+          </li>
+        </ul>
       </div>
     </Section>
   );
@@ -473,9 +405,10 @@ function WhatYouGet() {
   );
 }
 
-/* ---------- made for agents and pipelines: one big picture, three steps ---------- */
+/* ---------- made for agents and pipelines: HyperExecute's bento ----------
 
-const STEP_MS = 6000;
+   The big card on a painted scene for coding agents, two cards stacked
+   beside it for CI and healing, each with its small picture. */
 
 const modes = [
   {
@@ -513,56 +446,63 @@ const modes = [
   },
 ];
 
-function Fill({ paused }: { paused: boolean }) {
-  const [full, setFull] = useState(false);
-  useEffect(() => {
-    const t = requestAnimationFrame(() => setFull(true));
-    return () => cancelAnimationFrame(t);
-  }, []);
-  return <span className="absolute inset-y-0 left-0 -top-px h-0.5 bg-foreground" style={{ width: full ? "100%" : "0%", transition: paused ? "none" : `width ${STEP_MS}ms linear` }} />;
+/* one bento card: copy, link, and its picture in a framed window */
+function ModeCopy({ m, big }: { m: (typeof modes)[number]; big?: boolean }) {
+  return (
+    <div className="flex flex-col gap-3">
+      <span className="flex items-center gap-3">
+        <code className="tag rounded-sm border border-border bg-surface px-2 font-mono text-b4">{m.code}</code>
+        <span className={LABEL}>{m.k}</span>
+      </span>
+      <h3 className={`[text-wrap:balance] ${big ? H4 : H5}`}>{m.title}</h3>
+      <p className="max-w-[520px] text-b2 text-muted-foreground">{m.body}</p>
+      <span className="mt-1">
+        <KitLink href={m.link[1]}>{m.link[0]}</KitLink>
+      </span>
+    </div>
+  );
 }
 
+const Window = ({ children, w, h }: { children: ReactNode; w: number; h: number }) => (
+  <div className="w-full overflow-hidden border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+    <Fit w={w} h={h}>{children}</Fit>
+  </div>
+);
+
 function AgentsPipelines() {
-  const [step, setStep] = useState(0);
-  const [paused, setPaused] = useState(false);
-  useEffect(() => {
-    if (paused) return;
-    const t = setTimeout(() => setStep((i) => (i + 1) % modes.length), STEP_MS);
-    return () => clearTimeout(t);
-  }, [step, paused]);
+  const [agent, ci, heal] = modes;
   return (
     <Section>
       <FoldHead lead="Made for agents" title="and pipelines" body="Structured output for coding agents, exit codes for CI, and healing that never touches the verdict." />
-      <div className="tm-reveal" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-        <AgentStrip />
-        <div className="-mx-8 relative grid place-items-center overflow-hidden border-y border-border bg-[var(--tm-bg-fill)] px-6 py-10 md:px-12 md:py-16">
-          <img src={`${ATP}/scene-pipe.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="relative w-full max-w-[800px] overflow-hidden bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
-            <Fit w={800} h={340}>{modes[step].screen}</Fit>
+      <div className="tm-reveal -mx-8 border-y border-border bg-surface">
+        <div className="grid lg:grid-cols-2">
+          {/* the big card: the painting fills it, the copy sits on a white wash */}
+          <div className="relative flex min-h-[560px] flex-col overflow-hidden border-border max-lg:border-b lg:border-r">
+            <img src={`${ATP}/scene-pipe.jpg`} alt="" className="absolute inset-0 size-full object-cover" loading="lazy" decoding="async" />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_52%,color-mix(in_srgb,var(--tm-bg-surface)_92%,transparent)_70%,var(--tm-bg-surface)_100%)]"
+            />
+            <div className="relative flex flex-1 items-center justify-center px-8 pb-6 pt-12">
+              <div className="w-full max-w-[480px]">
+                <Window w={800} h={340}>{agent.screen}</Window>
+              </div>
+            </div>
+            <div className="relative p-8">
+              <ModeCopy m={agent} big />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            {[ci, heal].map((m, i) => (
+              <div key={m.code} className={`flex flex-1 flex-col gap-8 p-8 ${i === 0 ? "border-b border-border" : ""}`}>
+                <div className="bg-[var(--tm-bg-fill)] p-6">
+                  <Window w={560} h={220}>{m.screen}</Window>
+                </div>
+                <ModeCopy m={m} />
+              </div>
+            ))}
           </div>
         </div>
-        <ol className="mt-8 grid gap-8 md:grid-cols-3">
-          {modes.map((m, i) => (
-            <li key={m.code} className="flex flex-col">
-              <button type="button" onClick={() => setStep(i)} className="flex w-full flex-col gap-3 text-left" aria-current={i === step}>
-                <span className="relative block h-px w-full bg-border">{i === step && <Fill key={step} paused={paused} />}</span>
-                <span className="flex items-center gap-3">
-                  <code className="tag rounded-sm bg-[var(--tm-bg-inverse)] px-2 font-mono text-b4 text-[var(--tm-fg-inverse)]">{m.code}</code>
-                  <span className={LABEL}>{m.k}</span>
-                </span>
-                <span className={`text-[length:var(--tm-h5-size)] font-medium leading-[var(--tm-h5-line)] tracking-[var(--tm-h5-tracking)] transition-colors ${i === step ? "text-foreground" : "text-muted-foreground"}`}>
-                  {m.title}
-                </span>
-                <span className="text-b3 text-muted-foreground">{m.body}</span>
-              </button>
-              {i === step && (
-                <span className="mt-4">
-                  <KitLink href={m.link[1]}>{m.link[0]}</KitLink>
-                </span>
-              )}
-            </li>
-          ))}
-        </ol>
       </div>
     </Section>
   );
@@ -578,43 +518,46 @@ const scores = [
 
 function Prism() {
   return (
-    <Section>
-      <FoldHead
-        lead="PRISM benchmark"
-        title="Ranked #1 for browser testing"
-        body="50 real browser scenarios, scored on whether a pass means the flow worked. Our nightly Verification Bench compares Kane CLI with coding agents driving Playwright MCP."
-      >
-        <div className="mt-8">
-          <KitLink href={SIGNUP}>See the leaderboard</KitLink>
-        </div>
-      </FoldHead>
-      <figure className="tm-reveal grid gap-10 border border-border bg-[var(--tm-bg-fill)] p-6 md:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-16 lg:p-12">
-        <div className="flex flex-col justify-between gap-10">
-          <p className={LABEL}>Overall score · 2026-Q4</p>
-          <div className="flex flex-col gap-4">
-            <span className="flex items-baseline gap-4">
-              <span className="pixel text-[length:var(--tm-h1-size)] leading-none">76.7%</span>
-              <span className="tag rounded-sm bg-[var(--tm-bg-inverse)] px-2 py-0.5 font-mono text-b4 text-[var(--tm-fg-inverse)]">#1 of 7</span>
-            </span>
-            <figcaption className={`font-medium ${H4.replaceAll("!", "")}`}>#1 of 7 tools on the PRISM benchmark</figcaption>
-          </div>
-        </div>
-        <div className="flex flex-col border border-border bg-surface">
-          {scores.map(([k, v, pct, t]) => (
-            <div key={k} className="flex flex-col gap-3 border-b border-border px-6 py-5 last:border-b-0">
-              <span className="flex items-baseline justify-between gap-4">
-                <span className="text-b2 font-medium">{k}</span>
-                <span className="pixel text-[24px] leading-none">{v}</span>
-              </span>
-              <span className="h-1.5 w-full bg-[var(--tm-bg-fill)]">
-                <span className="block h-full bg-[var(--tm-fg-default)]" style={{ width: `${pct}%` }} />
-              </span>
-              <span className="text-b3 text-muted-foreground">{t}</span>
+    <>
+      <Section className="!pb-0">
+        <FoldHead
+          lead="PRISM benchmark"
+          title="Ranked #1 for browser testing"
+          body="50 real browser scenarios, scored on whether a pass means the flow worked. Our nightly Verification Bench compares Kane CLI with coding agents driving Playwright MCP."
+        />
+      </Section>
+      {/* the BrowserStack alternative's Gartner banner: ink, warm glow, the
+          big pixel figure left, the three scores on glass right */}
+      <Section className="!py-0">
+        <figure className="relative -mx-8 overflow-hidden bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
+          <img src="/kit/cta/gartner-glow.svg" alt="" aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[402px] w-full lg:bottom-auto lg:top-10" />
+          <div className="relative flex flex-col gap-12 px-6 py-12 lg:flex-row lg:items-center lg:justify-between lg:p-12">
+            <div className="flex flex-col">
+              <p className="font-mono text-b4 uppercase tracking-[2px] text-[var(--tm-fg-inverse-muted)]">Overall score · 2026-Q4</p>
+              <p className="pixel mt-6 text-[length:calc(var(--tm-h1-size)*8/7)] leading-none lg:text-[length:calc(var(--tm-h1-size)*16/7)]">76.7%</p>
+              <figcaption className="mt-4 text-[length:var(--tm-h4-size)] font-medium leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)]">#1 of 7 tools on the PRISM benchmark</figcaption>
+              <a className="tm-btn tm-btn--secondary mt-10 self-start" href={SIGNUP}>
+                See the leaderboard
+              </a>
             </div>
-          ))}
-        </div>
-      </figure>
-    </Section>
+            <div className="flex w-full flex-col border border-[color-mix(in_srgb,var(--tm-fg-inverse)_40%,transparent)] bg-[color-mix(in_srgb,var(--tm-fg-inverse)_6%,transparent)] backdrop-blur-md lg:max-w-[480px]">
+              {scores.map(([k, v, pct, t]) => (
+                <div key={k} className="flex flex-col gap-3 border-b border-[color-mix(in_srgb,var(--tm-fg-inverse)_40%,transparent)] px-6 py-5 last:border-b-0">
+                  <span className="flex items-baseline justify-between gap-4">
+                    <span className="text-b2 font-medium">{k}</span>
+                    <span className="pixel text-[24px] leading-none">{v}</span>
+                  </span>
+                  <span className="h-1.5 w-full bg-[color-mix(in_srgb,var(--tm-fg-inverse)_16%,transparent)]">
+                    <span className="block h-full bg-[var(--tm-fg-inverse)]" style={{ width: `${pct}%` }} />
+                  </span>
+                  <span className="text-b3 text-[var(--tm-fg-inverse-muted)]">{t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </figure>
+      </Section>
+    </>
   );
 }
 
@@ -637,11 +580,11 @@ const T_CMD = "text-[var(--tm-blue-200)]";
 
 /* the three windows of one loop: the coding agent's prompt, the kane-cli
    commands it runs, the pull request they land on */
-function StackScreen() {
+function StackScreen({ agent }: { agent: string }) {
   return (
     <div className="grid h-full grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] gap-6 p-6">
       <div className="overflow-hidden rounded-lg">
-        <Term path="~/shop · claude code" tabs={["claude code"]} status={<>Ask your agent to do something</>}>
+        <Term path={`~/shop · ${agent.toLowerCase()}`} tabs={[agent.toLowerCase()]} status={<>Ask your agent to do something</>}>
           <p className="leading-7">
             <span className="text-[var(--tm-orange-200)]">›</span> Fix guest checkout and prove it works before you open the PR.
           </p>
@@ -666,7 +609,7 @@ function StackScreen() {
         <div className="flex flex-col gap-1 border-b border-border px-5 py-4">
           <span className="font-mono text-b5 text-[var(--tm-fg-subtle)]">GitHub · Pull request</span>
           <span className="text-b2 font-medium">Fix guest checkout email #482</span>
-          <span className="text-b5 text-[var(--tm-fg-subtle)]">claude-code wants to merge 3 commits into main</span>
+          <span className="text-b5 text-[var(--tm-fg-subtle)]">{agent.toLowerCase().replaceAll(" ", "-")} wants to merge 3 commits into main</span>
         </div>
         <div className="flex flex-1 flex-col gap-3 px-5 py-4">
           <span className="text-b5 text-[var(--tm-fg-subtle)]">Waiting for checks…</span>
@@ -704,7 +647,12 @@ function StackScreen() {
   );
 }
 
+/* the agents on the tab row: the six the design names first */
+const STACK_AGENTS = agents.slice(0, 6);
+
 function KeepStack() {
+  const [at, setAt] = useState(0);
+  const a = STACK_AGENTS[at];
   return (
     <Section>
       <FoldHead
@@ -712,16 +660,34 @@ function KeepStack() {
         title="Put proof at the center"
         body="The delivery loop your team already runs, with Kane CLI as the validation engine in the middle. Kane CLI adds proof. It doesn't replace a tool you run."
       />
-      <div className="tm-reveal -mx-8 relative overflow-hidden border-y border-border px-6 py-10 md:px-12 md:py-16">
-        <img src={`${ATP}/scene-he.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="relative mx-auto flex w-full max-w-[1040px] flex-col gap-4">
-          <div className="w-full bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+      <div className="tm-reveal flex flex-col gap-6">
+        {/* the coding agents as tabs, one card on the scene below follows the pick */}
+        <div className="-mx-4 flex gap-1 overflow-x-auto px-4 lg:mx-0 lg:px-0" role="tablist" aria-label="For every coding agent you build with">
+          {STACK_AGENTS.map((x, i) => (
+            <button
+              key={x.name}
+              type="button"
+              role="tab"
+              aria-selected={i === at}
+              onClick={() => setAt(i)}
+              className={`pill flex h-11 flex-none items-center gap-2 rounded-full px-4 text-b2 transition-colors ${
+                i === at ? "bg-surface text-foreground [box-shadow:var(--tm-shadow-resting-xs)]" : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <svg viewBox={x.viewBox} className="size-5 flex-none" fill="currentColor" fillRule="evenodd" aria-hidden dangerouslySetInnerHTML={{ __html: x.body }} />
+              {x.name}
+            </button>
+          ))}
+        </div>
+        <div className="-mx-8 relative overflow-hidden border-y border-border px-6 py-10 md:px-12 md:py-16" role="tabpanel">
+          <img src={`${ATP}/scene-he.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="relative mx-auto w-full max-w-[1040px] bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
             <Fit w={1120} h={500}>
-              <StackScreen />
+              <StackScreen agent={a.name} />
             </Fit>
           </div>
           {/* what stays as it is */}
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="relative mt-4 flex flex-wrap justify-center gap-2">
             {[
               ["Deploy", "your pipeline"],
               ["Operate", "your infrastructure"],
