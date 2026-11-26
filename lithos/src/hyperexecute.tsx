@@ -33,7 +33,6 @@ import { FoldHead } from "./pieces/compare/parts";
 import {
   CARD,
   CloudsScreen,
-  MeasureScreen,
   Fit,
   FlakyScreen,
   GovernanceScreen,
@@ -178,6 +177,8 @@ function Hero() {
    ticks and link beside a product screen drawn in the hero-fold look
    (pieces/Screens), on a hero fold's painted scene. */
 
+/* one tab bar for every tabbed fold on the page: 48px tall, B2 text */
+const TAB_BAR = "tm-tour__tabs [&>button]:!py-3 [&>button]:!text-b2 [&>button]:whitespace-nowrap";
 
 const features = [
   {
@@ -461,23 +462,9 @@ function Measured() {
   );
 }
 
-/* ---------- measure it on your own suite ----------
-
-   One wide picture of the comparison run, then the four steps in a row,
-   each under a thin line that fills while it is the one shown (they play
-   in turn, and a click picks one). The picture brings forward the part
-   of the run each step is about. */
-
-const STEP_MS = 6000;
+/* ---------- measure it on your own suite: the kit's feature steps ---------- */
 
 function MeasureIt() {
-  const [step, setStep] = useState(0);
-  const [paused, setPaused] = useState(false);
-  useEffect(() => {
-    if (paused) return;
-    const t = setTimeout(() => setStep((i) => (i + 1) % measure.length), STEP_MS);
-    return () => clearTimeout(t);
-  }, [step, paused]);
   return (
     <Section>
       <FoldHead
@@ -485,47 +472,18 @@ function MeasureIt() {
         title="on your own suite"
         body="The figure that counts is your own. Run one suite at the same commit and concurrency on your current setup and on HyperExecute, then compare."
       />
-      <div className="tm-reveal" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-        <div className="-mx-8 relative grid place-items-center overflow-hidden border-y border-border bg-[var(--tm-bg-fill)] px-6 py-10 md:px-12 md:py-16">
-          <img src={`${ATP}/scene-cloud.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="relative w-full max-w-[800px] bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
-            <Fit w={800} h={340}>
-              <MeasureScreen step={step} />
-            </Fit>
-          </div>
-        </div>
-        <ol className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="tm-reveal -mx-8">
+        <ol className="tm-grid tm-grid--4 tm-steps2">
           {measure.map((m, i) => (
-            <li key={m.title}>
-              <button type="button" onClick={() => setStep(i)} className="flex w-full flex-col gap-3 text-left" aria-current={i === step}>
-                <span className="relative block h-px w-full bg-border">
-                  {i === step && <Fill key={step} paused={paused} />}
-                </span>
-                <span className={`text-[length:var(--tm-h5-size)] font-medium leading-[var(--tm-h5-line)] tracking-[var(--tm-h5-tracking)] transition-colors ${i === step ? "text-foreground" : "text-muted-foreground"}`}>
-                  {m.title}
-                </span>
-                <span className="text-b3 text-muted-foreground">{m.body}</span>
-              </button>
+            <li key={m.title} className="tm-cell tm-step">
+              <span className="tm-step__n">{i + 1}</span>
+              <h3>{m.title}</h3>
+              <p>{m.body}</p>
             </li>
           ))}
         </ol>
       </div>
     </Section>
-  );
-}
-
-/* the line over the step on show, filling over its time */
-function Fill({ paused }: { paused: boolean }) {
-  const [full, setFull] = useState(false);
-  useEffect(() => {
-    const t = requestAnimationFrame(() => setFull(true));
-    return () => cancelAnimationFrame(t);
-  }, []);
-  return (
-    <span
-      className="absolute inset-y-0 left-0 -top-px h-0.5 bg-foreground"
-      style={{ width: full ? "100%" : "0%", transition: paused ? "none" : `width ${STEP_MS}ms linear` }}
-    />
   );
 }
 
@@ -917,9 +875,6 @@ const frameworks: Fw[] = [
 ];
 
 function Frameworks() {
-  const [at, setAt] = useState(0);
-  const f = frameworks[at];
-  const go = (dlt: number) => setAt((i) => (i + dlt + frameworks.length) % frameworks.length);
   return (
     <Section>
       <FoldHead
@@ -927,63 +882,47 @@ function Frameworks() {
         title="you already use"
         body="Deep support for Selenium, Playwright, Cypress, Puppeteer, Appium, Espresso, XCUITest, Maestro and Detox. The YAML runs any executable test command, so any other framework works too."
       />
-      <div className="tm-reveal grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-        {/* the frameworks, as a list; the one on show in ink */}
-        <div className="flex flex-col justify-between gap-8">
-          <ul className="flex flex-col gap-1" role="tablist" aria-label="Frameworks">
-            {frameworks.map((x, i) => (
-              <li key={x.name}>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={i === at}
-                  onClick={() => setAt(i)}
-                  className={`group flex w-full items-center gap-4 py-1.5 text-left transition-colors ${i === at ? "text-foreground" : "text-[var(--tm-fg-subtle)] hover:text-foreground"}`}
-                >
-                  <span className={`${TILE} ${i === at ? "" : "opacity-50 group-hover:opacity-100"}`}>
-                    <img src={x.logo} alt="" className="size-6 object-contain" />
-                  </span>
-                  <span className="text-[length:var(--tm-h5-size)] font-medium leading-[var(--tm-h5-line)] tracking-[var(--tm-h5-tracking)]">{x.name}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-          <span className="flex gap-2">
-            <button type="button" onClick={() => go(-1)} aria-label="Previous framework" className="tm-btn tm-btn--secondary !h-10 !w-10 !p-0">
-              <ArrowLeft size={16} strokeWidth={1.5} aria-hidden />
+      <div className="tm-reveal -mx-8" data-tm-step-root>
+        <div className={`${TAB_BAR} lg:[grid-auto-columns:minmax(0,1fr)]`} role="tablist">
+          {frameworks.map((f) => (
+            <button key={f.name} role="tab" data-step>
+              {f.name}
             </button>
-            <button type="button" onClick={() => go(1)} aria-label="Next framework" className="tm-btn tm-btn--secondary !h-10 !w-10 !p-0">
-              <ArrowRight size={16} strokeWidth={1.5} aria-hidden />
-            </button>
-          </span>
+          ))}
         </div>
-        {/* the framework on show: its languages and runners, then its name and docs */}
-        <div className="flex min-h-[520px] flex-col justify-between gap-10 border border-border bg-[var(--tm-bg-fill)] p-8 lg:p-10">
-          <div className="flex flex-col border border-border bg-surface">
-            {f.langs.map((l, li) => (
-              <div key={`${l.lang}-${li}`} className="flex flex-col gap-2 border-b border-border px-5 py-4 last:border-b-0 sm:flex-row sm:items-start sm:gap-6">
-                <span className="flex w-36 flex-none items-center gap-3 text-b2 font-medium">
-                  {l.icon ? <img src={`${LANG_ICON}/${l.icon}`} alt="" className="size-5 object-contain" loading="lazy" /> : <img src={f.logo} alt="" className="size-5 object-contain" />}
-                  {l.lang}
+        {frameworks.map((f, i) => (
+          <div key={f.name} className="tm-tour__panel" role="tabpanel" data-step-panel={i} data-hide hidden={i > 0}>
+            <div className="tm-tour__main">
+              <div className="tm-tour__copy !justify-start">
+                <span className="tm-pt__ico tm-pt__ico--brand">
+                  <img src={f.logo} alt="" loading="lazy" />
                 </span>
-                <span className="flex flex-wrap gap-x-5 gap-y-2 text-b3 text-muted-foreground">
-                  {l.fw.map(([n, href]) => (
-                    <a key={n} href={href} className="transition-colors duration-150 hover:text-foreground hover:underline hover:underline-offset-4 focus-visible:text-foreground">
-                      {n}
-                    </a>
-                  ))}
-                </span>
+                <h3 className="mt-4">{f.name}</h3>
+                <p>Run your {f.name} suite on HyperExecute as it is, with one YAML file and no grid to maintain.</p>
+                <div className="mt-6">
+                  <KitLink href={f.langs[0].fw[0][1]}>Read the docs</KitLink>
+                </div>
               </div>
-            ))}
-          </div>
-          <div className="flex flex-col gap-2">
-            <h3 className="!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !tracking-[var(--tm-h4-tracking)]">{f.name}</h3>
-            <p className="max-w-[480px] text-b2 text-muted-foreground">Run your {f.name} suite on HyperExecute as it is, with one YAML file and no grid to maintain.</p>
-            <div className="mt-4">
-              <KitLink href={f.langs[0].fw[0][1]}>Read the {f.name} docs</KitLink>
+              <div className="flex flex-col justify-center px-8 py-6 lg:px-12">
+                {f.langs.map((l, li) => (
+                  <div key={`${l.lang}-${li}`} className="flex flex-col gap-2 border-b border-border py-4 last:border-b-0 sm:flex-row sm:items-start sm:gap-6">
+                    <span className="flex w-40 flex-none items-center gap-3 text-b2 font-medium">
+                      {l.icon ? <img src={`${LANG_ICON}/${l.icon}`} alt="" className="size-5 object-contain" loading="lazy" /> : <span className="size-5" />}
+                      {l.lang}
+                    </span>
+                    <span className="flex flex-wrap gap-x-6 gap-y-2 text-b3 text-muted-foreground">
+                      {l.fw.map(([n, href]) => (
+                        <a key={n} href={href} className="transition-colors duration-150 hover:text-foreground hover:underline hover:underline-offset-4 focus-visible:text-foreground">
+                          {n}
+                        </a>
+                      ))}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </Section>
   );
@@ -1018,66 +957,51 @@ const ciSteps = [
 const TILE = "flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5";
 
 function CiCd() {
-  const [at, setAt] = useState(1);
-  const [name, slug, icon] = pipelines[at];
   return (
     <Section>
-      <FoldHead
-        lead="Run HyperExecute"
-        title="from any pipeline"
-        body="One binary and one config file, wired in with the same three steps on every platform. No plugin needed: any CI that can run a shell command works."
-      />
-      <div className="tm-reveal flex flex-col gap-6">
-        {/* the pipelines, one tab each */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 [scrollbar-width:none]" role="tablist" aria-label="CI/CD pipelines">
-          {pipelines.slice(0, 5).map(([n, , ic], i) => (
-            <button
-              key={n}
-              type="button"
-              role="tab"
-              aria-selected={i === at}
-              onClick={() => setAt(i)}
-              className={`button flex h-10 flex-none items-center gap-2 rounded-md border px-3 text-b2 transition-colors ${
-                i === at ? "border-border bg-surface text-foreground [box-shadow:var(--tm-shadow-resting-xs)]" : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {ic ? <img src={`/img/integrations/color/${ic}.svg`} alt="" className="size-5 object-contain" /> : <Workflow size={20} strokeWidth={1.5} aria-hidden />}
-              {n}
-            </button>
+      <div className="tm-reveal grid gap-12 lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-16">
+        <div>
+          <h2>
+            <span className="block text-muted-foreground">Run HyperExecute</span>
+            <span className="block">from any pipeline</span>
+          </h2>
+          <p className="mt-4 max-w-[380px] text-b2 leading-relaxed text-muted-foreground">
+            One binary and one config file, wired in with the same three steps on every platform. No plugin needed: any CI that can run a shell command works.
+          </p>
+          <a href={`${DOCS}/hyperexecute-integration-with-ci-cd-tools/`} className="btn btn-lg btn-secondary mt-8">
+            Read the CI/CD guide
+          </a>
+        </div>
+
+        <ul className="grid grid-cols-2 content-start gap-x-8 gap-y-4 sm:grid-cols-3">
+          {pipelines.map(([name, slug, icon]) => (
+            <li key={name}>
+              <a href={d(slug)} className="group flex items-center gap-3 py-1">
+                <span className={TILE}>
+                  {icon ? (
+                    <img src={`/img/integrations/color/${icon}.svg`} alt="" className="size-5 object-contain" />
+                  ) : (
+                    <Workflow size={20} strokeWidth={1.5} aria-hidden />
+                  )}
+                </span>
+                <span className="text-b2 text-foreground">{name}</span>
+              </a>
+            </li>
           ))}
-        </div>
-          {/* the other seven pipelines with a guide */}
-          <span title={pipelines.slice(5).map(([n]) => n).join(", ")}>
-            <KitLink href={`${DOCS}/hyperexecute-integration-with-ci-cd-tools/`}>+{pipelines.length - 5} more pipelines</KitLink>
-          </span>
-        </div>
-        {/* a painted scene with the one card for the picked pipeline */}
-        <div className="-mx-8 relative grid min-h-[480px] place-items-center overflow-hidden border-y border-border px-6 py-16 md:px-12">
-          <img src={`${ATP}/scene-pw.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="relative flex w-full max-w-[560px] flex-col gap-6 border border-border bg-surface p-8 [box-shadow:var(--tm-shadow-floating-md)]">
-            <span className="flex items-center gap-3">
-              <span className={TILE}>
-                {icon ? <img src={`/img/integrations/color/${icon}.svg`} alt="" className="size-5 object-contain" /> : <Workflow size={20} strokeWidth={1.5} aria-hidden />}
-              </span>
-              <h3 className="!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !tracking-[var(--tm-h4-tracking)]">Run HyperExecute in {name}</h3>
-            </span>
-            <ol className="flex flex-col gap-3">
-              {ciSteps.map((st) => (
-                <li key={st.n} className="flex items-start gap-3 text-b2">
-                  <span className="mt-0.5 font-mono text-b4 text-muted-foreground">{st.n}</span>
-                  <span className="flex min-w-0 flex-col gap-1">
-                    {st.title}
-                    <code className="tag self-start break-all rounded-sm bg-[var(--tm-bg-fill)] px-2 py-0.5 font-mono text-b4 text-muted-foreground">{st.line}</code>
-                  </span>
-                </li>
-              ))}
-            </ol>
-            <a href={d(slug)} className="btn btn-lg btn-primary self-start">
-              Read the {name} guide
-            </a>
-          </div>
-        </div>
+        </ul>
+      </div>
+      {/* the kit's feature steps: the same three steps on every pipeline */}
+      <div className="tm-reveal -mx-8 mt-16">
+        <ol className="tm-grid tm-grid--3 tm-steps2">
+          {ciSteps.map((st) => (
+            <li key={st.n} className="tm-cell tm-step !min-h-0">
+              <span className="tm-step__n">{st.n}</span>
+              <h3>{st.title}</h3>
+              <p>{st.body}</p>
+              <code className="tag mt-6 max-w-full self-start break-all rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2 py-1 font-mono text-b4">{st.line}</code>
+            </li>
+          ))}
+        </ol>
       </div>
     </Section>
   );
