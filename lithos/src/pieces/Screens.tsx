@@ -1220,3 +1220,64 @@ export function CloudsScreen() {
     </div>
   );
 }
+
+/* ---------- HyperExecute page: measure it on your own suite ----------
+
+   One suite, pinned to one commit, run five times on the current grid and
+   on HyperExecute at the same concurrency; the medians compared. `step`
+   brings forward the part each of the four steps is about. */
+
+const GRID_RUNS = ["41m 12s", "40m 58s", "42m 03s", "41m 30s", "41m 47s"];
+const HE_RUNS = ["12m 21s", "12m 05s", "12m 40s", "12m 18s", "12m 33s"];
+
+export function MeasureScreen({ step }: { step: number }) {
+  const on = (k: number) => `transition-opacity duration-500 ${step === k ? "" : "opacity-40"}`;
+  const Col = ({ name, runs, median, flaky, fast }: { name: string; runs: string[]; median: string; flaky: string; fast?: boolean }) => (
+    <div className="flex flex-col overflow-hidden rounded-lg border border-border">
+      <span className={`flex h-9 items-center justify-between bg-[var(--tm-bg-fill)] px-3 text-b4 font-medium ${on(1)}`}>
+        {name}
+        <span className={`tag rounded-sm border border-border bg-surface px-1.5 text-b5 ${MONO}`}>concurrency 24</span>
+      </span>
+      <div className={`flex flex-col gap-1.5 px-3 py-2 ${on(2)}`}>
+        {runs.map((r, i) => (
+          <span key={i} className="flex items-center gap-2 text-b5">
+            <span className={`w-10 ${SUB} ${MONO}`}>run {i + 1}</span>
+            <span className="h-1.5 flex-1 overflow-hidden rounded-full bg-[var(--tm-bg-fill)]">
+              <span className={`block h-full ${fast ? "w-[30%] bg-[var(--tm-green-400)]" : "w-full bg-[var(--tm-gray-400)]"}`} />
+            </span>
+            <span className={`w-14 text-right ${MONO}`}>{r}</span>
+          </span>
+        ))}
+      </div>
+      <span className={`flex items-center justify-between border-t border-[var(--tm-border-muted)] px-3 py-2 ${on(3)}`}>
+        <span className="flex flex-col">
+          <span className={`text-b5 ${SUB}`}>Median</span>
+          <span className="text-h5 font-medium">{median}</span>
+        </span>
+        <span className="flex flex-col items-end">
+          <span className={`text-b5 ${SUB}`}>Results changed</span>
+          <span className={`text-b4 font-medium ${fast ? "text-[var(--tm-fg-success)]" : "text-[var(--tm-red-500)]"}`}>{flaky}</span>
+        </span>
+      </span>
+    </div>
+  );
+  return (
+    <div className="flex h-full flex-col px-6 pt-5">
+      <div className="flex items-center gap-2">
+        <span className="text-b3 font-medium">checkout-regression</span>
+        <span className={`tag flex items-center gap-1 rounded-sm border border-foreground px-1.5 text-b5 ${MONO} ${on(0)}`}>
+          <Lock size={10} strokeWidth={1.5} aria-hidden /> commit 7be6f66
+        </span>
+        <span className={`ml-auto text-b5 ${SUB}`}>Same suite, same commit, 5 runs each</span>
+      </div>
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        <Col name="Current grid" runs={GRID_RUNS} median="41m 30s" flaky="4.2%" />
+        <Col name="HyperExecute" runs={HE_RUNS} median="12m 21s" flaky="0.3%" fast />
+      </div>
+      <div className={`mt-3 flex items-center justify-between rounded-lg border border-[var(--tm-green-200)] bg-[var(--tm-green-000)] px-4 py-2.5 ${on(3)}`}>
+        <span className="text-b4">Median wall-clock time</span>
+        <Pill tone="ok"><Check size={10} strokeWidth={2} aria-hidden /> 70% faster on this suite</Pill>
+      </div>
+    </div>
+  );
+}
