@@ -171,8 +171,9 @@ function Install() {
     });
   };
   return (
-    <div className="input flex h-12 w-full max-w-[440px] items-center gap-3 rounded-md border border-border bg-surface pl-1.5 pr-1.5 [box-shadow:var(--tm-shadow-resting-xs)]">
-      <span className="tm-seg flex flex-none" role="tablist" aria-label="Install with">
+    <div className="input flex h-11 w-full max-w-[480px] items-center gap-3 rounded-md border border-border bg-surface pl-4 pr-1">
+      {/* npm / brew as quiet text, the picked one in ink; a hairline before the command */}
+      <span className="flex flex-none items-center gap-3 border-r border-border pr-3" role="tablist" aria-label="Install with">
         {(Object.keys(INSTALL) as (keyof typeof INSTALL)[]).map((k) => (
           <button
             key={k}
@@ -180,17 +181,14 @@ function Install() {
             role="tab"
             aria-selected={k === pm}
             onClick={() => setPm(k)}
-            className={`button h-9 rounded-md px-3 font-mono text-b4 transition-colors ${k === pm ? "bg-[var(--tm-bg-muted)] text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            className={`button font-mono text-b4 transition-colors ${k === pm ? "text-foreground" : "text-[var(--tm-fg-subtle)] hover:text-foreground"}`}
           >
             {k}
           </button>
         ))}
       </span>
-      <code className="min-w-0 flex-1 truncate text-left font-mono text-b3">
-        <span className="font-medium">{pm}</span>
-        {INSTALL[pm].slice(pm.length)}
-      </code>
-      <button type="button" onClick={copy} aria-label="Copy the install command" className="tm-btn tm-btn--secondary !h-9 !w-9 flex-none !border-0 !p-0">
+      <code className="min-w-0 flex-1 truncate text-left font-mono text-b4">{INSTALL[pm]}</code>
+      <button type="button" onClick={copy} aria-label="Copy the install command" className="tm-btn tm-btn--secondary !h-9 !w-9 flex-none !border-0 !p-0 text-muted-foreground">
         {done ? <Check size={16} strokeWidth={1.5} aria-hidden /> : <Copy size={16} strokeWidth={1.5} aria-hidden />}
       </button>
     </div>
