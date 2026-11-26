@@ -187,7 +187,7 @@ export default function MatrixTable({
         }
       >
         {/* plain: one white sheet behind the whole table, under the flag */}
-        {plain && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-9 hidden bg-surface lg:block" />}
+        {plain && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-9 hidden border border-border bg-surface lg:block" />}
         {/* desktop: the white column, one sheet from the flag to the foot */}
         <div
           aria-hidden
