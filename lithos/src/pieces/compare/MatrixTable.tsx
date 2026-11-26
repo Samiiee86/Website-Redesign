@@ -51,6 +51,8 @@ type Props = {
   tally?: boolean;
   /* the button at the foot of the TestMu AI column */
   cta?: string;
+  /* the first column's name; pages can use their own word */
+  head?: string;
 };
 
 const BASE = "relative grid grid-cols-[repeat(var(--m),minmax(0,1fr))]";
@@ -87,6 +89,7 @@ export default function MatrixTable({
   oursAt = 0,
   tally = false,
   cta,
+  head = "Features",
 }: Props) {
   const [pick, setPick] = useState(0);
   const pickerId = useId();
@@ -178,7 +181,7 @@ export default function MatrixTable({
             role="columnheader"
             className={`hidden items-center border-y border-border bg-background px-8 py-6 text-foreground lg:flex ${H5}`}
           >
-            Features
+            {head}
           </div>
           {cols.map((c) =>
             c.ours ? (

@@ -210,7 +210,7 @@ export function FoldHead({
 }: {
   lead: string;
   title: string;
-  body: ReactNode;
+  body?: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -220,9 +220,11 @@ export function FoldHead({
           <span className="block text-muted-foreground">{lead}</span>
           <span className="block">{title}</span>
         </h2>
-        <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
-          {body}
-        </p>
+        {body && (
+          <p className="max-w-[430px] text-b1 leading-relaxed text-muted-foreground">
+            {body}
+          </p>
+        )}
       </div>
       {children}
     </Reveal>

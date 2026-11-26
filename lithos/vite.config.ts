@@ -24,6 +24,7 @@ export default defineConfig({
         automationTestingPlatform: resolve(__dirname, 'automation-testing-platform.html'),
         // the HyperExecute page, built from kit folds
         hyperexecute: resolve(__dirname, 'hyperexecute.html'),
+        accessibilityTesting: resolve(__dirname, 'accessibility-testing.html'),
         kaneCli: resolve(__dirname, 'kane-cli.html'),
         // the agent assurance page, built from kit folds
         agentAssurance: resolve(__dirname, 'agent-assurance.html'),

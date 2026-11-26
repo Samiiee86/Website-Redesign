@@ -6,9 +6,14 @@ import { Reveal, ArrowChip } from "../lib/ui";
 export default function Enterprise({
   title = "Built for the enterprise",
   body = enterprise.body,
+  primary = enterprise.primary,
+  secondary = enterprise.secondary,
 }: {
   title?: string;
   body?: string;
+  /* a page's own button words; the home page keeps the defaults */
+  primary?: string;
+  secondary?: string;
 } = {}) {
   return (
     <section className="relative z-[1] w-full overflow-hidden border-t border-border">
@@ -24,14 +29,14 @@ export default function Enterprise({
               data-cursor="Talk to sales"
               className="btn btn-lg btn-primary btn-arrow btn-arrow-plain"
             >
-              {enterprise.primary}
+              {primary}
               <ArrowChip />
             </button>
             <button
               data-cursor="Book a slot"
               className="btn btn-lg btn-secondary"
             >
-              {enterprise.secondary}
+              {secondary}
             </button>
           </div>
 

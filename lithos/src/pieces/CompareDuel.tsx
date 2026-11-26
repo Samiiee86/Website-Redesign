@@ -21,6 +21,8 @@ type Props = {
   cta?: string;
   rival: MatrixRival;
   groups: MatrixGroup[];
+  /* the table's first column name */
+  head?: string;
 };
 
 export default function CompareDuel({
@@ -30,6 +32,7 @@ export default function CompareDuel({
   cta = "Get started free",
   rival,
   groups,
+  head,
 }: Props) {
   return (
     <Section>
@@ -40,6 +43,7 @@ export default function CompareDuel({
           rivals={[rival]}
           groups={groups}
           cta={cta}
+          head={head}
         />
       </Reveal>
     </Section>
