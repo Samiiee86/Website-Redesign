@@ -1183,3 +1183,37 @@ export function LoadScreen() {
     </div>
   );
 }
+
+/* ---------- HyperExecute page: where the private cloud runs ---------- */
+
+const CLOUD_IMG = "https://assets.testmuai.com/resources/images";
+
+export function CloudsScreen() {
+  const clouds = [
+    ["amazon-web-services.webp", "AWS", "6 regions documented", "ok"],
+    ["microsoft-azure.webp", "Microsoft Azure", "Azure Native Integration", "ok"],
+    ["google-cloud.webp", "Google Cloud", "On request", "plain"],
+  ] as const;
+  return (
+    <div className="flex h-full flex-col px-5 pt-4">
+      <div className="flex items-center gap-2">
+        <Cloud size={16} strokeWidth={1.5} aria-hidden />
+        <span className="text-b3 font-medium">Deploy HyperExecute to</span>
+        <span className="ml-auto"><Pill tone="plain">Your account</Pill></span>
+      </div>
+      <span className={`mt-1 text-b5 ${SUB}`}>Your cloud account, or on-premise behind your firewall</span>
+      <div className="mt-3 flex flex-col overflow-hidden rounded-lg border border-border">
+        {clouds.map(([img, n, note, tone], i) => (
+          <span key={n} className={`flex h-10 items-center gap-3 border-b border-[var(--tm-border-muted)] px-3 text-b4 last:border-b-0 ${i === 0 ? "bg-[var(--tm-bg-fill)]" : ""}`}>
+            <img src={`${CLOUD_IMG}/${img}`} alt="" className="!static size-6 flex-none rounded-sm object-cover !shadow-none ![animation:none]" />
+            <span className="flex-1 font-medium">{n}</span>
+            <Pill tone={tone}>{tone === "ok" && <Check size={10} strokeWidth={2} aria-hidden />} {note}</Pill>
+          </span>
+        ))}
+      </div>
+      <div className={`mt-auto mb-4 flex items-center gap-2 text-b5 ${SUB}`}>
+        <Info size={12} strokeWidth={1.5} aria-hidden /> The shared cloud stays the default and the fallback
+      </div>
+    </div>
+  );
+}

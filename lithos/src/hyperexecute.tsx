@@ -3,12 +3,20 @@ import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import {
   Archive,
+  Bot,
   BellOff,
   CalendarClock,
   Check,
   FileArchive,
+  Layers,
   RotateCcw,
+  Sparkles,
+  Activity,
+  Wand2,
+  Workflow,
+  Zap,
 } from "lucide-react";
+import { Reveal, SlideArrow } from "./lib/ui";
 import "./index.css";
 import { ArrowChip, Section } from "./lib/ui";
 import GuideLines from "./components/GuideLines";
@@ -22,7 +30,7 @@ import Footer from "./sections/Footer";
 import { FoldHead } from "./pieces/compare/parts";
 import {
   CARD,
-  Fit,
+  CloudsScreen,
   FlakyScreen,
   GovernanceScreen,
   GridScreen,
@@ -34,7 +42,6 @@ import {
   Scene,
   SkillScreen,
   SplitScreen,
-  TAB,
 } from "./pieces/Screens";
 
 /* HyperExecute page (hyperexecute.html).
@@ -45,9 +52,11 @@ import {
      call and the footer.
    - The hero is the page's own hero fold (Web redesign/hero-folds/
      hyperexecute): its copy, video and scene.
-   - Kit folds for the rest, in the live page's order: feature tour (how
-     it works, one tab per feature, each with a product screen drawn in
-     the hero-fold look), joined result cards and steps (where "up to 70%
+   - The rest reads as a user's path, from what it is to how it runs to
+     proof: the home page's zig-zag rows (how it works, one row per
+     feature with a product screen drawn in the hero-fold look; the red
+     build triage merged into the root cause row), the kit's stat fold
+     and steps (where "up to 70%
      faster" comes from), feature cards (red build triage), feature
      pointers (8 orchestration controls, performance testing), reviews,
      the frameworks tabs, steps (CI/CD), image cards (private cloud),
@@ -171,6 +180,7 @@ const TAB_BAR = "tm-tour__tabs [&>button]:!py-3 [&>button]:!text-b2 [&>button]:w
 const features = [
   {
     tab: "Why HyperExecute",
+    icon: Zap,
     title: "No hub-to-node hops",
     body: "A Selenium Grid routes every command through a hub to a remote node. HyperExecute runs your test script and browser on one machine, so nothing waits on the network. Lereta cut network traffic this way and ran its tests 70% faster, nearly flake-free.",
     checks: ["No hub or node hops between a test and its result.", "Fewer infrastructure flakes, so fewer reruns.", "Your existing tests run as-is with one YAML file."],
@@ -180,6 +190,7 @@ const features = [
   },
   {
     tab: "Parallel at scale",
+    icon: Layers,
     title: "Parallel testing without CI shards to maintain",
     body: "Sharding on your own CI runners means maintaining the runners and the split. HyperExecute splits the suite across fresh VMs from one YAML value.",
     checks: ["Set concurrency in YAML, with no runners to patch.", "Dynamic allocation hands tests to VMs as they free up.", "10 VMs or 10,000, it's the same job to the platform."],
@@ -189,8 +200,9 @@ const features = [
   },
   {
     tab: "AI root cause analysis",
-    title: "AI root cause analysis on failed tests",
-    body: "The analysis reads the test's logs and the job's git diff, then names the root cause in 20 to 30 seconds with numbered steps to fix it.",
+    icon: Sparkles,
+    title: "Know whether a red build is your runner, your test or your code",
+    body: "When the build goes red, the analysis reads the test's logs and the job's git diff, then names the root cause in 20 to 30 seconds with numbered steps to fix it, so you fix the cause instead of rerunning the build.",
     checks: ["Separates the root cause from its cascading effects.", "Sorts failures: product, script, environment or no action.", "Runs automatically on failures that match your policy."],
     link: { label: "Run your first job free", href: HE_SIGNUP },
     screen: <RcaScreen />,
@@ -198,6 +210,7 @@ const features = [
   },
   {
     tab: "Flaky test detection",
+    icon: Activity,
     title: "Flaky test detection and auto-mute",
     body: "Your tests are grouped by name, browser, OS and resolution, then scored on how often the result flips between runs. Tests that fail five times in a row are muted automatically.",
     checks: ["Sliding window defaults to the last 10 runs.", "Flake rate threshold defaults to 20% and is tunable.", "Severity: high above 75%, medium 50-75%, low below 50%."],
@@ -207,6 +220,7 @@ const features = [
   },
   {
     tab: "Auto-healing",
+    icon: Wand2,
     title: "Auto-healing broken locators",
     body: "Set the autoHeal capability and a locator that breaks is rebuilt at runtime from the recorded DOM, so the run carries on.",
     checks: ["Records, detects, heals, then continues the run.", "Every heal is inspectable, so nothing changes silently.", "It absorbs locator drift, not a genuinely missing element."],
@@ -216,6 +230,7 @@ const features = [
   },
   {
     tab: "Agent skills",
+    icon: Bot,
     title: "Run HyperExecute jobs from your AI agent",
     body: "Add the open-source hyperexecute-skill to Claude Code, Cursor, Copilot or Gemini CLI, describe the job, and your agent writes the YAML and runs it.",
     checks: ["Analyzes your project, then writes and validates the YAML.", "Asks before it spends cloud concurrency on a job.", "Pulls logs and artifacts back to debug failures."],
@@ -224,6 +239,9 @@ const features = [
     scene: "cli",
   },
 ];
+
+/* the tab screens' canvas, a little narrower for the row stages */
+const ROWSHOT = { w: 720, h: 440 };
 
 function HowItWorks() {
   return (
@@ -235,36 +253,43 @@ function HowItWorks() {
       >
         <PrimaryBtn href={HE_SIGNUP}>Start free with Google</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal -mx-8" data-tm-step-root>
-        <div className={`${TAB_BAR} lg:[grid-auto-columns:auto] lg:[&>button]:!px-4`} role="tablist">
-          {features.map((f) => (
-            <button key={f.tab} role="tab" data-step>
-              {f.tab}
-            </button>
-          ))}
-        </div>
-        {features.map((f, i) => (
-          <div key={f.tab} className="tm-tour__panel" role="tabpanel" data-step-panel={i} data-hide hidden={i > 0}>
-            <div className="tm-tour__main">
-              <div className="tm-tour__copy !justify-start">
-                <h3 className="[text-wrap:balance]">{f.title}</h3>
-                <p>{f.body}</p>
+      {/* the home page's zig-zag product rows: copy beside a product screen
+          on its painted scene, sides swapping row by row */}
+      <div className="-mx-8">
+        {features.map((f, i) => {
+          const Icon = f.icon;
+          const flip = i % 2 === 1;
+          return (
+            <div
+              key={f.tab}
+              className={`grid grid-cols-[minmax(0,1fr)] gap-10 px-8 py-12 last:pb-0 md:py-14 md:last:pb-0 lg:gap-14 ${
+                flip ? "lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]" : "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)]"
+              }`}
+            >
+              <Reveal className={`flex flex-col justify-center ${flip ? "lg:order-2" : ""}`}>
+                <p className="mono flex items-center gap-2.5 text-b4 uppercase tracking-[0.18em] text-muted-foreground">
+                  <Icon size={16} strokeWidth={1.5} className="text-foreground" aria-hidden />
+                  {f.tab}
+                </p>
+                <h3 className="mt-5 [text-wrap:balance]">{f.title}</h3>
+                <p className="mt-4 max-w-[480px] text-b1 text-muted-foreground">{f.body}</p>
                 <Checks items={f.checks} />
-                <div className="mt-6">
-                  <KitLink href={f.link.href}>{f.link.label}</KitLink>
-                </div>
-              </div>
-              <div className="tm-tour__media">
-                <img className="tm-fit" src={`${ATP}/scene-${f.scene}.jpg`} alt="" decoding="async" />
-                <div className="absolute inset-0 flex items-center justify-center p-8 lg:p-10">
-                  <div className="w-full border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
-                    <Fit {...TAB}>{f.screen}</Fit>
-                  </div>
-                </div>
-              </div>
+                <a
+                  href={f.link.href}
+                  className="group/btn mt-6 inline-flex items-center gap-2 self-start border-b border-foreground pb-1 text-b3 font-medium text-foreground"
+                >
+                  {f.link.label}
+                  <SlideArrow />
+                </a>
+              </Reveal>
+              <Reveal delay={0.08} className={flip ? "lg:order-1" : ""}>
+                <Scene scene={`${ATP}/scene-${f.scene}.jpg`} {...ROWSHOT}>
+                  {f.screen}
+                </Scene>
+              </Reveal>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );
@@ -335,64 +360,6 @@ function Measured() {
             </li>
           ))}
         </ol>
-      </div>
-    </Section>
-  );
-}
-
-/* ---------- red build triage: one failure, three causes ----------
-
-   The retro glitch look of the home page and the hero folds: white cards
-   on a painted scene, joined by black lines with orange dots. The red
-   build on top, the three places it can come from below. */
-
-const triage = [
-  { kind: "Environment", title: "Your runner", body: "Every task gets a fresh VM that is torn down after the run, and the analysis labels environment failures, so infrastructure noise isn't mistaken for a bug." },
-  { kind: "Script", title: "Your test", body: "Flaky test detection scores how often a result flips between runs, so an unstable test gets fixed, not rerun until it passes." },
-  { kind: "Product", title: "Your code", body: "When the cause is in your code, the analysis reads the logs and the job's git diff, names the root cause and lists the steps to fix it." },
-];
-
-const Dot = () => <span className="size-1.5 flex-none rounded-full bg-[var(--tm-orange-400)]" />;
-
-function Triage() {
-  return (
-    <Section>
-      <FoldHead
-        lead="Know whether a red build is"
-        title="your runner, your test or your code"
-        body="HyperExecute complements your CI. Your pipeline still triggers the run. When it goes red, HyperExecute shows where the failure came from, so you fix the cause instead of rerunning the build."
-      />
-      <div className="tm-reveal relative -mx-8 overflow-hidden border-y border-border px-6 py-12 md:px-12 md:py-16">
-        <img src={`${ATP}/scene-hx.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-        <div className="relative mx-auto flex max-w-[1000px] flex-col items-center">
-          {/* the red build */}
-          <div className="flex items-center gap-3 border border-border bg-surface px-5 py-3 [box-shadow:var(--tm-shadow-floating-md)]">
-            <span className="size-2 rounded-full bg-[var(--tm-red-500)]" />
-            <span className="text-b2 font-medium">Build #482 failed</span>
-            <span className="tag rounded-sm bg-[var(--tm-red-000)] px-2 py-0.5 font-mono text-b5 text-[var(--tm-red-500)]">12 of 1,204</span>
-          </div>
-          {/* the line down, then across to the three causes (desktop) */}
-          <span className="flex h-10 flex-col items-center">
-            <Dot />
-            <span className="w-px flex-1 bg-foreground" />
-          </span>
-          <span className="hidden h-px w-2/3 bg-foreground md:block" />
-          <div className="grid w-full gap-6 md:grid-cols-3 md:gap-8">
-            {triage.map((t) => (
-              <div key={t.kind} className="flex flex-col items-center">
-                <span className="hidden h-8 flex-col items-center md:flex">
-                  <span className="w-px flex-1 bg-foreground" />
-                  <Dot />
-                </span>
-                <div className="flex w-full flex-col gap-3 border border-border bg-surface p-6 [box-shadow:var(--tm-shadow-floating-md)]">
-                  <span className="tag self-start rounded-sm border border-border px-2 py-0.5 font-mono text-b5 uppercase tracking-[1px] text-muted-foreground">{t.kind}</span>
-                  <h3 className="!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !tracking-[var(--tm-h4-tracking)]">{t.title}</h3>
-                  <p className="text-b3 text-muted-foreground">{t.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </Section>
   );
@@ -824,86 +791,10 @@ function Frameworks() {
   );
 }
 
-/* ---------- CI/CD: the kit's code setup ----------
+/* ---------- CI/CD: the integrations fold, as on the automation page ----------
 
-   Steps on the left, the pipeline config in tabs on the right (the kit's
-   boxed code block: copy button, line numbers and status bar come from
-   kit/js/testmu.js), then every pipeline with a guide as a tag. */
-
-const ciSteps = [
-  { title: "Download the CLI", body: "Pull the binary into your job on Linux, macOS or Windows." },
-  { title: "Set two secrets", body: "Expose LT_USERNAME and LT_ACCESS_KEY from your CI secret store." },
-  { title: "Point it at your YAML", body: "Run ./hyperexecute --config hyperexecute.yaml." },
-];
-
-const CLI = "curl -O https://downloads.lambdatest.com/hyperexecute/linux/hyperexecute";
-const ciFiles = [
-  {
-    id: "github",
-    tab: "GitHub Actions",
-    label: ".github/workflows/e2e.yml",
-    code: [
-      "name: e2e",
-      "on: [push]",
-      "jobs:",
-      "  hyperexecute:",
-      "    runs-on: ubuntu-latest",
-      "    steps:",
-      "      - uses: actions/checkout@v4",
-      `      - run: ${CLI} && chmod +x hyperexecute`,
-      "      - run: ./hyperexecute --config hyperexecute.yaml",
-      "        env:",
-      "          LT_USERNAME: ${{ secrets.LT_USERNAME }}",
-      "          LT_ACCESS_KEY: ${{ secrets.LT_ACCESS_KEY }}",
-    ],
-  },
-  {
-    id: "jenkins",
-    tab: "Jenkins",
-    label: "Jenkinsfile",
-    code: [
-      "pipeline {",
-      "  agent any",
-      "  environment {",
-      "    LT_USERNAME = credentials('lt-username')",
-      "    LT_ACCESS_KEY = credentials('lt-access-key')",
-      "  }",
-      "  stages {",
-      "    stage('HyperExecute') {",
-      "      steps {",
-      `        sh '${CLI} && chmod +x hyperexecute'`,
-      "        sh './hyperexecute --config hyperexecute.yaml'",
-      "      }",
-      "    }",
-      "  }",
-      "}",
-    ],
-  },
-  {
-    id: "gitlab",
-    tab: "GitLab CI",
-    label: ".gitlab-ci.yml",
-    code: [
-      "hyperexecute:",
-      "  stage: test",
-      "  image: ubuntu:latest",
-      "  script:",
-      `    - ${CLI}`,
-      "    - chmod +x hyperexecute",
-      "    - ./hyperexecute --config hyperexecute.yaml",
-      "  variables:",
-      "    LT_USERNAME: $LT_USERNAME",
-      "    LT_ACCESS_KEY: $LT_ACCESS_KEY",
-    ],
-  },
-];
-
-/* the kit's code colours: keys in the accent, quoted strings in green */
-const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const paint = (line: string) =>
-  esc(line)
-    .replace(/^(\s*-?\s*)([A-Za-z_]+)(:)/, '$1<span class="f">$2</span>$3')
-    .replace(/('[^']*')/g, '<span class="s">$1</span>');
+   The heading and line on the left; every pipeline with a guide as an icon
+   tile on the right, then the three steps that are the same on all of them. */
 
 const pipelines: [string, string, string?][] = [
   ["Jenkins", "jenkins-with-hyperexecute", "jenkins"],
@@ -920,91 +811,73 @@ const pipelines: [string, string, string?][] = [
   ["Semaphore", "semaphore-integration-with-hyperexecute"],
 ];
 
+const ciSteps = [
+  { n: "01", title: "Download the CLI", line: "Linux, macOS or Windows" },
+  { n: "02", title: "Set two secrets", line: "LT_USERNAME · LT_ACCESS_KEY" },
+  { n: "03", title: "Point it at your YAML", line: "./hyperexecute --config hyperexecute.yaml" },
+];
+
+const TILE = "flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5";
+
 function CiCd() {
   return (
     <Section>
-      <FoldHead
-        lead="Run HyperExecute from"
-        title="any CI/CD pipeline"
-        body="One binary and one config file, wired in with the same three steps on every platform."
-      />
-      <div className="tm-setup">
-        <div className="tm-reveal">
-          <ol className="tm-steps !mt-0">
-            {ciSteps.map((s, i) => (
-              <li key={s.title}>
-                <span className="tm-label">{String(i + 1).padStart(2, "0")}</span>
-                <div>
-                  <b>{s.title}</b>
-                  <p>{s.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-7">
-            <KitLink href={`${DOCS}/hyperexecute-integration-with-ci-cd-tools/`}>Read the CI/CD guide</KitLink>
-          </div>
+      <div className="tm-reveal grid gap-12 lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-16">
+        <div>
+          <h2>
+            <span className="block text-muted-foreground">Run HyperExecute</span>
+            <span className="block">from any pipeline</span>
+          </h2>
+          <p className="mt-4 max-w-[380px] text-b2 leading-relaxed text-muted-foreground">
+            One binary and one config file, wired in with the same three steps on every platform. No plugin needed: any CI that can run a shell command works.
+          </p>
+          <a href={`${DOCS}/hyperexecute-integration-with-ci-cd-tools/`} className="btn btn-lg btn-secondary mt-8">
+            Read the CI/CD guide
+          </a>
         </div>
-        <div className="tm-reveal flex flex-col gap-6">
-          <div className="tm-code tm-code--boxed" data-tm-code data-tm-tabs>
-            <div className="tm-code__bar">
-              <div className="tm-code__tabs" role="tablist">
-                {ciFiles.map((f, i) => (
-                  <button key={f.id} role="tab" data-tab={f.id} aria-selected={i === 0}>
-                    {f.tab}
-                  </button>
-                ))}
-              </div>
-              <div className="tm-code__tools">
-                <button className="tm-btn tm-btn--secondary" data-tm-copy>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="9" y="9" width="12" height="12" rx="2" />
-                    <path d="M5 15V5a2 2 0 0 1 2-2h8" />
-                  </svg>
-                  Copy
-                </button>
-              </div>
-            </div>
-            {ciFiles.map((f, i) => (
-              <div key={f.id} data-panel={f.id} data-label={f.label} hidden={i > 0}>
-                <pre dangerouslySetInnerHTML={{ __html: f.code.map(paint).join("\n") }} />
-              </div>
-            ))}
-            <div className="tm-code__status">
-              <span data-lang />
-              <span data-lines />
-            </div>
-          </div>
-          {/* every pipeline with a guide */}
-          <div className="flex flex-wrap gap-2">
-            {pipelines.map(([name, slug, icon]) => (
-              <a
-                key={name}
-                href={d(slug)}
-                className="tag flex items-center gap-2 rounded-sm border border-border bg-surface px-3 py-1.5 text-b3 transition-colors duration-150 hover:border-foreground"
-              >
-                {icon && <img src={`/img/integrations/color/${icon}.svg`} alt="" className="size-4 object-contain" />}
-                {name}
+
+        <ul className="grid grid-cols-2 content-start gap-x-8 gap-y-4 sm:grid-cols-3">
+          {pipelines.map(([name, slug, icon]) => (
+            <li key={name}>
+              <a href={d(slug)} className="group flex items-center gap-3 py-1">
+                <span className={TILE}>
+                  {icon ? (
+                    <img src={`/img/integrations/color/${icon}.svg`} alt="" className="size-5 object-contain" />
+                  ) : (
+                    <Workflow size={20} strokeWidth={1.5} aria-hidden />
+                  )}
+                </span>
+                <span className="text-b2 text-foreground">{name}</span>
               </a>
+            </li>
+          ))}
+          {/* the three steps, the same on every pipeline */}
+          <li className="col-span-full mt-4 border-t border-border pt-6">
+            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Three steps on every pipeline</span>
+          </li>
+          <li className="col-span-full flex flex-col gap-3">
+            {ciSteps.map((st) => (
+              <span key={st.n} className="flex items-center gap-3 py-1">
+                <span className={`${TILE} font-mono text-b4`}>{st.n}</span>
+                <span className="flex min-w-0 flex-1 flex-col gap-x-6 sm:flex-row sm:items-center">
+                  <span className="text-b2 text-foreground sm:w-48 sm:flex-none">{st.title}</span>
+                  <span className="min-w-0 truncate font-mono text-b4 text-muted-foreground">{st.line}</span>
+                </span>
+              </span>
             ))}
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </Section>
   );
 }
 
-/* ---------- your own cloud: the kit's image cards ---------- */
+/* ---------- your own cloud: the kit's image cards, as on the automation page ---------- */
 
-const clouds = [
-  { name: "AWS Cloud", logo: `${IMG}/amazon-web-services.webp`, href: "https://aws.amazon.com/marketplace/pp/prodview-7k2ipipotz3tk", body: "Private cloud setup is documented for six AWS regions, including Frankfurt, Mumbai and Sydney." },
-  { name: "Microsoft Azure", logo: `${IMG}/microsoft-azure.webp`, href: "https://azuremarketplace.microsoft.com/en-us/marketplace/apps/lambdatestinc1584019832435.hyperexeonprem?tab=overview", body: "An Azure Native Integration: tests run in your own Azure tenant and spend goes through Azure billing." },
-  { name: "Google Cloud", logo: `${IMG}/google-cloud.webp`, href: "https://console.cloud.google.com/marketplace/product/hyperexecute-privatecloud/lambdatest", body: "Google Cloud deployment is available on request for teams that run on GCP." },
-];
-
-const enterprise = [
+const ownCloud = [
   { title: "HyperExecute for private cloud", body: "Run inside your own cloud with whitelabeled dashboards, advanced data retention rules and fallback to the shared cloud for redundancy.", screen: <PrivateCloudScreen />, scene: "cloud" },
-  { title: "Enterprise access and governance", body: "SSO, SCIM provisioning, role-based access and audit logs, plus concurrency groups that give each team its own parallel budget from your identity provider.", screen: <GovernanceScreen />, scene: "gov" },
+  { title: "Enterprise access and governance", body: "SSO, SCIM provisioning, role-based access and audit logs, plus concurrency groups that give each team its own parallel budget.", screen: <GovernanceScreen />, scene: "gov" },
+  { title: "AWS, Azure or Google Cloud", body: "Private cloud setup is documented for six AWS regions, runs as an Azure Native Integration in your tenant, and is available on Google Cloud on request.", screen: <CloudsScreen />, scene: "pipe" },
 ];
 
 function OwnCloud() {
@@ -1013,30 +886,21 @@ function OwnCloud() {
       <FoldHead
         lead="Deploy HyperExecute in your own cloud"
         title="or on-premise"
-        body="The shared cloud is the default. Teams with data residency rules can run HyperExecute in their own cloud account or behind their firewall, with private cloud and access controls for enterprises."
+        body="The shared cloud is the default. Teams with data residency rules can run HyperExecute in their own cloud account or behind their firewall."
       >
         <PrimaryBtn href={`${SITE}/request-demo/`}>Book a demo</PrimaryBtn>
       </FoldHead>
-      <div className="tm-reveal -mx-8 flex flex-col">
-        <div className="tm-join !mx-0">
-          {clouds.map((c) => (
-            <a key={c.name} href={c.href} target="_blank" rel="noreferrer" className="group flex flex-col gap-4 !p-8 transition-colors duration-200 hover:bg-[var(--tm-bg-fill)]">
-              <img src={c.logo} alt="" loading="lazy" className="h-10 w-auto self-start object-contain" />
-              <h3 className="mt-4 !text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]">{c.name}</h3>
-              <p className="text-b3 text-muted-foreground">{c.body}</p>
-            </a>
-          ))}
-        </div>
-        <div className="tm-grid tm-grid--2 !border-t-0">
-          {enterprise.map((e) => (
-            <div key={e.title} className="tm-cell tm-fcard2">
+      <div className="tm-reveal -mx-8">
+        <div className="tm-grid tm-grid--3">
+          {ownCloud.map((c) => (
+            <div key={c.title} className="tm-cell tm-fcard2">
               <div className="tm-well">
-                <Scene scene={`${ATP}/scene-${e.scene}.jpg`} card {...CARD}>
-                  {e.screen}
+                <Scene scene={`${ATP}/scene-${c.scene}.jpg`} card {...CARD}>
+                  {c.screen}
                 </Scene>
               </div>
-              <h3>{e.title}</h3>
-              <p>{e.body}</p>
+              <h3>{c.title}</h3>
+              <p>{c.body}</p>
             </div>
           ))}
         </div>
@@ -1157,15 +1021,14 @@ function Page() {
         <TrustedBy />
         <HowItWorks />
         <Measured />
-        <Triage />
         <Controls />
-        <Performance />
-        <Stories content={stories} />
         <Frameworks />
         <CiCd />
+        <Performance />
         <OwnCloud />
-        <OpenSource />
+        <Stories content={stories} />
         <Reasons integrations={false} />
+        <OpenSource />
         <Related />
         <Faq items={faq} />
         <Enterprise />
