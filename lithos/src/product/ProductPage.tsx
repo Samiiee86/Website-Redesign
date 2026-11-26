@@ -741,7 +741,8 @@ function Teams({ s }: { s: Extract<Sec, { type: "teams" }> }) {
   );
 }
 
-/* customer results: a big number (Manrope), the line, the case study link */
+/* customer results: a big number (Manrope) on the left, the line and the
+   case study link on the right */
 function Stories({ s }: { s: Extract<Sec, { type: "stories" }> }) {
   return (
     <Section>
@@ -749,12 +750,18 @@ function Stories({ s }: { s: Extract<Sec, { type: "stories" }> }) {
       <Body lines={s.body} />
       <div className={FIT}>
         {s.items.map((st) => (
-          <a key={st.href} href={st.href} className="group flex flex-col gap-4 !p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
+          /* like the HyperExecute quote card: the number on the left, the
+             line and the link on the right */
+          <a key={st.href} href={st.href} className="group grid items-start gap-6 !p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)] sm:grid-cols-[minmax(0,auto)_minmax(0,1fr)] sm:gap-10 lg:!p-10">
             <span className="font-body text-[length:var(--tm-h1-size)] font-medium leading-none tracking-[var(--tm-h1-tracking)]">{st.num}</span>
-            <p className="max-w-[560px] text-b1">{st.text}</p>
-            <span className="mt-auto inline-flex items-center text-b1 font-medium">
-              <span className="underline decoration-1 underline-offset-4">{st.cta.replace(/\s*→\s*$/, "")}</span>
-              <LinkArrow />
+            <span className="flex flex-col gap-6">
+              <span className="block max-w-[640px] text-[length:var(--tm-h4-size)] leading-[var(--tm-h4-line)] tracking-[var(--tm-h4-tracking)] [text-wrap:balance]">
+                {st.text}
+              </span>
+              <span className="inline-flex items-center text-b1 font-medium">
+                <span className="underline decoration-1 underline-offset-4">{st.cta.replace(/\s*→\s*$/, "")}</span>
+                <LinkArrow />
+              </span>
             </span>
           </a>
         ))}
