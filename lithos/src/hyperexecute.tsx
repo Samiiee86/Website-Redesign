@@ -1,8 +1,10 @@
-import { StrictMode, useEffect, useRef, type ReactNode } from "react";
+import { StrictMode, useEffect, useRef, useState, type ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import {
   Archive,
+  ArrowLeft,
+  ArrowRight,
   Bot,
   BellOff,
   CalendarClock,
@@ -31,6 +33,7 @@ import { FoldHead } from "./pieces/compare/parts";
 import {
   CARD,
   CloudsScreen,
+  Fit,
   FlakyScreen,
   GovernanceScreen,
   GridScreen,
@@ -301,11 +304,6 @@ function HowItWorks() {
    published results as pointers; then feature-steps, each step led by a
    big number, for measuring it on your own suite. */
 
-const results = [
-  { name: "Lereta", href: `${SITE}/customers/lereta/`, stat: "70%", line: "Runner and browser on one machine: tests that ran for hours now finish in minutes, nearly flake-free." },
-  { name: "Boomi", href: `${SITE}/customers/boomi/`, stat: "78%", line: "From 9.5 hours to under 4 on the first runs, then about 2 hours once its tests were modularized." },
-  { name: "Dashlane", href: `${SITE}/customers/dashlane/`, stat: "~50%", line: "About 80 seconds down to about 40 for the same 70 tests, with flaky tests cut by 99.9%." },
-];
 
 const measure = [
   { title: "Pin one suite", body: "Pick one suite and pin it to one commit, so both runs test the same code." },
@@ -314,89 +312,171 @@ const measure = [
   { title: "Compare the medians", body: "The median wall-clock time, and the share of tests whose result changed between runs." },
 ];
 
-/* the Agent Assurance quote card: Bajaj Finserv's line, from the live page */
-const QUOTE = {
-  tags: [
-    ["70%", "faster automation runtime"],
-    ["<3%", "escaped defects"],
-  ],
-  before: "The execution time we got using HyperExecute, ",
-  mark: "that's the major differentiator.",
-  name: "Abhijeet Teware",
-  role: "Head of QA, Bajaj Finserv",
-  logo: `${IMG}/customer/bajaj-finserv-main.svg`,
-  link: `${SITE}/customers/bajaj-finserv/`,
+/* the Agent Assurance quote card, one per customer: each team's own
+   words and its published numbers (live page and case studies) */
+type Review = {
+  brand: string;
+  stats: [string, string][];
+  before: string;
+  mark: string;
+  after?: string;
+  name: string;
+  role: string;
+  logo: string;
+  link: string;
 };
 
+const reviews: Review[] = [
+  {
+    brand: "Bajaj Finserv",
+    stats: [
+      ["70%", "faster automation runtime"],
+      ["<3%", "escaped defects"],
+    ],
+    before: "The execution time we got using HyperExecute, ",
+    mark: "that's the major differentiator.",
+    name: "Abhijeet Teware",
+    role: "Head of QA, Bajaj Finserv",
+    logo: `${IMG}/customer/bajaj-finserv-main.svg`,
+    link: `${SITE}/customers/bajaj-finserv/`,
+  },
+  {
+    brand: "Boomi",
+    stats: [
+      ["78%", "faster test execution"],
+      ["3x", "automated tests"],
+    ],
+    before: "We have tripled our tests and are now ",
+    mark: "executing tests in less than 2 hours.",
+    name: "Hrishi Potdar",
+    role: "Quality Engineering Architect, Boomi",
+    logo: `${IMG}/customer/BoomiNew.svg`,
+    link: `${SITE}/customers/boomi/`,
+  },
+  {
+    brand: "Dashlane",
+    stats: [
+      ["~50%", "faster test runs"],
+      ["99.9%", "fewer flaky tests"],
+    ],
+    before: "HyperExecute is a ",
+    mark: "highly reliable test execution platform",
+    after: " and has excellent customer support.",
+    name: "Sagar Uday Kumar",
+    role: "Sr. Engineering Manager, Dashlane",
+    logo: "/img/logo-dashlane.svg",
+    link: `${SITE}/customers/dashlane/`,
+  },
+];
+
+function ReviewCard({ r }: { r: Review }) {
+  return (
+    <figure className="grid h-full gap-10 border border-border bg-[var(--tm-bg-fill)] p-6 md:p-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 lg:p-12">
+      <div className="flex flex-col gap-10 lg:gap-16">
+        <p className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
+          <span className="flex items-center gap-2 text-foreground">
+            <span className="size-1.5 flex-none rounded-full bg-[var(--tm-hero-arrow)]" aria-hidden />
+            {r.brand}
+          </span>
+          {r.stats.map(([n, k]) => (
+            <span key={k} className="flex items-baseline gap-2">
+              <span className="pixel text-[24px] leading-none tracking-normal text-foreground">{n}</span>
+              {k}
+            </span>
+          ))}
+        </p>
+        <div className="flex flex-1 flex-col justify-between gap-10 lg:pl-[16%]">
+          <blockquote className="relative text-[24px] leading-[32px] tracking-[-1px] md:text-[32px] md:leading-[40px]">
+            <span className="absolute right-full pr-1.5" aria-hidden>
+              “
+            </span>
+            {r.before}
+            <mark className="bg-[var(--tm-bg-inverse)] px-1 text-[var(--tm-fg-inverse)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+              {r.mark}
+            </mark>
+            {r.after}”
+          </blockquote>
+          <figcaption className="flex flex-col gap-4">
+            <span className="flex flex-col">
+              <span className="text-b2 font-medium">{r.name}</span>
+              <span className="text-b3 text-muted-foreground">{r.role}</span>
+            </span>
+            <KitLink href={r.link}>Read the case study</KitLink>
+          </figcaption>
+        </div>
+      </div>
+      {/* the customer's mark, in the portrait's thin white frame */}
+      <span className="flex size-40 items-center justify-center self-start border border-border bg-surface p-6 md:size-48 lg:self-center">
+        <img src={r.logo} alt={r.brand} loading="lazy" className="max-h-16 w-full object-contain" />
+      </span>
+    </figure>
+  );
+}
+
 function Measured() {
+  const [at, setAt] = useState(0);
+  const go = (d: number) => setAt((i) => (i + d + reviews.length) % reviews.length);
   return (
     <Section>
       <FoldHead
         lead="Where “up to 70% faster”"
         title="comes from"
-        body="Each figure is that team's own measurement against the setup it replaced, not a controlled benchmark, so your result depends on your suite."
+        body="Published results from teams that moved their suites to HyperExecute, in their own words. Each figure is that team's own measurement against the setup it replaced."
       >
         <PrimaryBtn href={HE_SIGNUP}>Run your first job free</PrimaryBtn>
       </FoldHead>
 
-      {/* the quote card, as on the Agent Assurance page */}
-      <figure className="tm-reveal relative border border-border bg-[var(--tm-bg-fill)] p-6 md:p-10 lg:p-12">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
-          <div className="flex flex-col gap-10 lg:gap-16">
-            <p className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
-              <span className="flex items-center gap-2 text-foreground">
-                <span className="size-1.5 flex-none rounded-full bg-[var(--tm-hero-arrow)]" aria-hidden />
-                Bajaj Finserv
-              </span>
-              {QUOTE.tags.map(([n, k]) => (
-                <span key={k} className="flex items-baseline gap-2">
-                  <span className="pixel text-[24px] leading-none tracking-normal text-foreground">{n}</span>
-                  {k}
-                </span>
-              ))}
-            </p>
-            <div className="flex flex-1 flex-col justify-between gap-10 lg:pl-[16%]">
-              <blockquote className="relative text-[24px] leading-[32px] tracking-[-1px] md:text-[32px] md:leading-[40px]">
-                <span className="absolute right-full pr-1.5" aria-hidden>
-                  “
-                </span>
-                {QUOTE.before}
-                <mark className="bg-[var(--tm-bg-inverse)] px-1 text-[var(--tm-fg-inverse)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
-                  {QUOTE.mark}
-                </mark>”
-              </blockquote>
-              <figcaption className="flex flex-col gap-4">
-                <span className="flex flex-col">
-                  <span className="text-b2 font-medium">{QUOTE.name}</span>
-                  <span className="text-b3 text-muted-foreground">{QUOTE.role}</span>
-                </span>
-                <KitLink href={QUOTE.link}>Read the case study</KitLink>
-              </figcaption>
-            </div>
+      {/* the quote cards, one at a time */}
+      <div className="tm-reveal flex flex-col gap-6" aria-roledescription="carousel" aria-label="Customer results">
+        <div className="overflow-hidden">
+          <div className="flex transition-transform duration-500 ease-out motion-reduce:transition-none" style={{ transform: `translateX(-${at * 100}%)` }}>
+            {reviews.map((r, i) => (
+              <div key={r.brand} className="w-full flex-none" aria-hidden={i !== at} role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${reviews.length}`}>
+                <ReviewCard r={r} />
+              </div>
+            ))}
           </div>
-          {/* the customer's mark, in the portrait's thin white frame */}
-          <span className="flex size-40 items-center justify-center self-start border border-border bg-surface p-6 md:size-48 lg:self-center">
-            <img src={QUOTE.logo} alt="Bajaj Finserv" loading="lazy" className="max-h-16 w-full object-contain" />
+        </div>
+        <div className="flex items-center justify-between gap-4">
+          <span className="flex items-center gap-2">
+            {reviews.map((r, i) => (
+              <button
+                key={r.brand}
+                type="button"
+                onClick={() => setAt(i)}
+                aria-label={`Show ${r.brand}`}
+                className={`pill h-1.5 rounded-full transition-all duration-300 ${i === at ? "w-6 bg-[var(--tm-fg-default)]" : "w-1.5 bg-[var(--tm-border-default)]"}`}
+              />
+            ))}
+            <span className="ml-3 font-mono text-b4 text-muted-foreground">
+              {String(at + 1).padStart(2, "0")} / {String(reviews.length).padStart(2, "0")}
+            </span>
+          </span>
+          <span className="flex gap-2">
+            <button type="button" onClick={() => go(-1)} aria-label="Previous customer" className="tm-btn tm-btn--secondary !h-10 !w-10 !p-0">
+              <ArrowLeft size={16} strokeWidth={1.5} aria-hidden />
+            </button>
+            <button type="button" onClick={() => go(1)} aria-label="Next customer" className="tm-btn tm-btn--secondary !h-10 !w-10 !p-0">
+              <ArrowRight size={16} strokeWidth={1.5} aria-hidden />
+            </button>
           </span>
         </div>
-      </figure>
+      </div>
+    </Section>
+  );
+}
 
-      {/* the three published results, then how to measure it yourself */}
-      <div className="tm-reveal -mx-8 mt-12 flex flex-col">
-        <div className="tm-grid tm-grid--3 !border-b-0">
-          {results.map((r) => (
-            <a key={r.name} href={r.href} className="tm-cell group flex flex-col justify-between gap-6 !p-8 transition-colors duration-200 hover:bg-[var(--tm-bg-fill)]">
-              <span className="flex items-center justify-between">
-                <span className="text-b1 font-medium">{r.name}</span>
-                <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Faster by</span>
-              </span>
-              <span className="flex flex-col gap-3">
-                <span className="pixel text-[48px] leading-none">{r.stat}</span>
-                <span className="text-b3 text-muted-foreground">{r.line}</span>
-              </span>
-            </a>
-          ))}
-        </div>
+/* ---------- measure it on your own suite: the kit's feature steps ---------- */
+
+function MeasureIt() {
+  return (
+    <Section>
+      <FoldHead
+        lead="Measure it"
+        title="on your own suite"
+        body="The figure that counts is your own. Run one suite at the same commit and concurrency on your current setup and on HyperExecute, then compare."
+      />
+      <div className="tm-reveal -mx-8">
         <ol className="tm-grid tm-grid--4 tm-steps2">
           {measure.map((m, i) => (
             <li key={m.title} className="tm-cell tm-step">
@@ -653,21 +733,36 @@ function Performance() {
       >
         <PrimaryBtn href={`${SITE}/performance-testing/`}>Explore performance testing</PrimaryBtn>
       </FoldHead>
-      <div className="tm-setup tm-reveal lg:!items-center">
-        <ol className="tm-steps !mt-0">
-          {perf.map((p, i) => (
-            <li key={p.title}>
-              <span className="tm-label !pt-1">{String(i + 1).padStart(2, "0")}</span>
-              <div>
-                <b className={H5}>{p.title}</b>
-                <p className="!mt-1 !text-b2">{p.body}</p>
+      {/* the kit's feature tour panel, as on the automation page's tabs:
+          copy and link beside the product screen, three points below */}
+      <div className="tm-reveal -mx-8 border-t border-border">
+        <div className="tm-tour__panel">
+          <div className="tm-tour__main">
+            <div className="tm-tour__copy">
+              <h3 className="[text-wrap:balance]">Test for every kind of traffic</h3>
+              <p>Run load, stress and soak tests to see how your app behaves on an ordinary day and on its busiest one.</p>
+              <KitLink href={HE_SIGNUP}>Run your first performance test</KitLink>
+            </div>
+            <div className="tm-tour__media">
+              <img className="tm-fit" src={`${ATP}/scene-rep.jpg`} alt="" decoding="async" />
+              <div className="absolute inset-0 flex items-center justify-center p-8 lg:p-10">
+                <div className="w-full border border-border bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+                  <Fit {...ROW}>
+                    <LoadScreen />
+                  </Fit>
+                </div>
               </div>
-            </li>
-          ))}
-        </ol>
-        <Scene scene={`${ATP}/scene-rep.jpg`} {...ROW}>
-          <LoadScreen />
-        </Scene>
+            </div>
+          </div>
+          <div className="tm-tour__perks">
+            {perf.map((k) => (
+              <div key={k.title}>
+                <b>{k.title}</b>
+                <p>{k.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </Section>
   );
@@ -711,7 +806,7 @@ const stories: StoriesContent = {
     href: `${SITE}/customers/boomi/`,
     stat: "78%",
     statLabel: "Faster test execution",
-    quote: "We have tripled our tests and are now executing tests in less than 2 hours.",
+    quote: "How Boomi tripled automated test coverage and unblocked its CI/CD pipeline.",
     name: "Hrishi Potdar",
     role: "Quality Engineering Architect",
     action: "Read case study",
@@ -1070,6 +1165,7 @@ function Page() {
         <Controls />
         <Frameworks />
         <CiCd />
+        <MeasureIt />
         <Performance />
         <OwnCloud />
         <Stories content={stories} />
