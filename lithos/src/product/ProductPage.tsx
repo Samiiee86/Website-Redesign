@@ -861,7 +861,7 @@ function Related({ s }: { s: Extract<Sec, { type: "rel" }> }) {
                 {g.links.length > 0 && (
                   <dd className="flex flex-wrap gap-x-4 gap-y-2 text-b2 text-muted-foreground">
                     {g.links.map((l) => (
-                      <a key={l.label} href={l.href} className="hover:text-foreground hover:underline hover:underline-offset-4">{l.label}</a>
+                      <a key={l.label} href={l.href} className="underline decoration-1 underline-offset-4 transition-colors duration-200 hover:text-foreground">{l.label}</a>
                     ))}
                   </dd>
                 )}
