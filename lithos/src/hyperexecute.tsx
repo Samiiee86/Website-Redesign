@@ -949,9 +949,9 @@ const pipelines: [string, string, string?][] = [
 ];
 
 const ciSteps = [
-  { n: "01", title: "Download the CLI", line: "Linux, macOS or Windows" },
-  { n: "02", title: "Set two secrets", line: "LT_USERNAME · LT_ACCESS_KEY" },
-  { n: "03", title: "Point it at your YAML", line: "./hyperexecute --config hyperexecute.yaml" },
+  { n: "01", title: "Download the CLI", body: "Pull the binary into your CI job. One file, no plugin.", line: "Linux · macOS · Windows" },
+  { n: "02", title: "Set two secrets", body: "Expose them from your CI secret store.", line: "LT_USERNAME · LT_ACCESS_KEY" },
+  { n: "03", title: "Point it at your YAML", body: "Run the CLI against your config, and the suite runs on HyperExecute.", line: "./hyperexecute --config hyperexecute.yaml" },
 ];
 
 const TILE = "flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5";
@@ -988,26 +988,20 @@ function CiCd() {
               </a>
             </li>
           ))}
-          {/* the three steps, the same on every pipeline */}
-          <li className="col-span-full mt-4 border-t border-border pt-6">
-            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Three steps on every pipeline</span>
-          </li>
-          {/* the three steps as one joined frame, a row each: the big
-              number, the step, and what you type or set as a code chip */}
-          <li className="col-span-full">
-            <ol className="flex flex-col border border-border bg-surface">
-              {ciSteps.map((st) => (
-                <li key={st.n} className="flex items-center gap-6 border-b border-border px-6 py-5 last:border-b-0">
-                  <span className="pixel w-10 flex-none text-[32px] leading-none">{st.n}</span>
-                  <span className="flex min-w-0 flex-1 flex-col items-start gap-2">
-                    <span className="text-[length:var(--tm-h5-size)] font-medium leading-[var(--tm-h5-line)] tracking-[var(--tm-h5-tracking)]">{st.title}</span>
-                    <code className="tag max-w-full break-all rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2 py-1 font-mono text-b4">{st.line}</code>
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </li>
         </ul>
+      </div>
+      {/* the kit's feature steps: the same three steps on every pipeline */}
+      <div className="tm-reveal -mx-8 mt-16">
+        <ol className="tm-grid tm-grid--3 tm-steps2">
+          {ciSteps.map((st) => (
+            <li key={st.n} className="tm-cell tm-step !min-h-0">
+              <span className="tm-step__n">{st.n}</span>
+              <h3>{st.title}</h3>
+              <p>{st.body}</p>
+              <code className="tag mt-6 max-w-full self-start break-all rounded-sm border border-border bg-[var(--tm-bg-fill)] px-2 py-1 font-mono text-b4">{st.line}</code>
+            </li>
+          ))}
+        </ol>
       </div>
     </Section>
   );
