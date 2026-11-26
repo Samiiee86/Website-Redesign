@@ -741,9 +741,9 @@ function Frameworks() {
   return (
     <Section>
       <FoldHead
-        lead="Works with the framework"
-        title="you already use"
-        body="Deep support for Selenium, Playwright, Cypress, Puppeteer, Appium, Espresso, XCUITest, Maestro and Detox. The YAML runs any executable test command, so any other framework works too."
+        lead="Works with your framework"
+        title="and any CI/CD pipeline"
+        body="Deep support for Selenium, Playwright, Cypress, Puppeteer, Appium, Espresso, XCUITest, Maestro and Detox, and any other framework the YAML can run. One binary and one config file wire it into any pipeline in three steps."
       />
       <div className="tm-reveal -mx-8" data-tm-step-root>
         <div className={`${TAB_BAR} lg:[grid-auto-columns:minmax(0,1fr)]`} role="tablist">
@@ -786,12 +786,50 @@ function Frameworks() {
             </div>
           </div>
         ))}
+        {/* setup and pipelines: the same three steps on every CI, then
+            every pipeline with a guide, as the automation page's tiles */}
+        <div className="grid border-t border-border bg-surface lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+          <div className="flex flex-col gap-4 border-border px-8 py-8 max-lg:border-b lg:border-r lg:px-12">
+            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Three steps on every pipeline</span>
+            {ciSteps.map((st) => (
+              <span key={st.n} className="flex items-center gap-3">
+                <span className={`${TILE} font-mono text-b4`}>{st.n}</span>
+                <span className="flex min-w-0 flex-col">
+                  <span className="text-b2 text-foreground">{st.title}</span>
+                  <span className="truncate font-mono text-b4 text-muted-foreground">{st.line}</span>
+                </span>
+              </span>
+            ))}
+            <div className="mt-2">
+              <KitLink href={`${DOCS}/hyperexecute-integration-with-ci-cd-tools/`}>Read the CI/CD guide</KitLink>
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 px-8 py-8 lg:px-12">
+            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Works with every CI/CD pipeline</span>
+            <ul className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3">
+              {pipelines.map(([name, slug, icon]) => (
+                <li key={name}>
+                  <a href={d(slug)} className="group flex items-center gap-3 py-1">
+                    <span className={TILE}>
+                      {icon ? (
+                        <img src={`/img/integrations/color/${icon}.svg`} alt="" className="size-5 object-contain" />
+                      ) : (
+                        <Workflow size={20} strokeWidth={1.5} aria-hidden />
+                      )}
+                    </span>
+                    <span className="text-b2 text-foreground">{name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </Section>
   );
 }
 
-/* ---------- CI/CD: the integrations fold, as on the automation page ----------
+/* ---------- CI/CD: the steps and pipelines shown under the framework tabs ----------
 
    The heading and line on the left; every pipeline with a guide as an icon
    tile on the right, then the three steps that are the same on all of them. */
@@ -818,59 +856,6 @@ const ciSteps = [
 ];
 
 const TILE = "flex size-10 flex-none items-center justify-center rounded-md border border-border bg-surface [box-shadow:var(--tm-shadow-resting-xs)] transition-transform duration-300 group-hover:-translate-y-0.5";
-
-function CiCd() {
-  return (
-    <Section>
-      <div className="tm-reveal grid gap-12 lg:grid-cols-[minmax(0,400px)_1fr] lg:gap-16">
-        <div>
-          <h2>
-            <span className="block text-muted-foreground">Run HyperExecute</span>
-            <span className="block">from any pipeline</span>
-          </h2>
-          <p className="mt-4 max-w-[380px] text-b2 leading-relaxed text-muted-foreground">
-            One binary and one config file, wired in with the same three steps on every platform. No plugin needed: any CI that can run a shell command works.
-          </p>
-          <a href={`${DOCS}/hyperexecute-integration-with-ci-cd-tools/`} className="btn btn-lg btn-secondary mt-8">
-            Read the CI/CD guide
-          </a>
-        </div>
-
-        <ul className="grid grid-cols-2 content-start gap-x-8 gap-y-4 sm:grid-cols-3">
-          {pipelines.map(([name, slug, icon]) => (
-            <li key={name}>
-              <a href={d(slug)} className="group flex items-center gap-3 py-1">
-                <span className={TILE}>
-                  {icon ? (
-                    <img src={`/img/integrations/color/${icon}.svg`} alt="" className="size-5 object-contain" />
-                  ) : (
-                    <Workflow size={20} strokeWidth={1.5} aria-hidden />
-                  )}
-                </span>
-                <span className="text-b2 text-foreground">{name}</span>
-              </a>
-            </li>
-          ))}
-          {/* the three steps, the same on every pipeline */}
-          <li className="col-span-full mt-4 border-t border-border pt-6">
-            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Three steps on every pipeline</span>
-          </li>
-          <li className="col-span-full flex flex-col gap-3">
-            {ciSteps.map((st) => (
-              <span key={st.n} className="flex items-center gap-3 py-1">
-                <span className={`${TILE} font-mono text-b4`}>{st.n}</span>
-                <span className="flex min-w-0 flex-1 flex-col gap-x-6 sm:flex-row sm:items-center">
-                  <span className="text-b2 text-foreground sm:w-48 sm:flex-none">{st.title}</span>
-                  <span className="min-w-0 truncate font-mono text-b4 text-muted-foreground">{st.line}</span>
-                </span>
-              </span>
-            ))}
-          </li>
-        </ul>
-      </div>
-    </Section>
-  );
-}
 
 /* ---------- your own cloud: the kit's image cards, as on the automation page ---------- */
 
@@ -1023,11 +1008,10 @@ function Page() {
         <Measured />
         <Controls />
         <Frameworks />
-        <CiCd />
         <Performance />
         <OwnCloud />
-        <Stories content={stories} />
         <Reasons integrations={false} />
+        <Stories content={stories} />
         <OpenSource />
         <Related />
         <Faq items={faq} />
