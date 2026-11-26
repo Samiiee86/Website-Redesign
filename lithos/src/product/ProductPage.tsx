@@ -311,23 +311,26 @@ function Hero({ d }: { d: PageData }) {
 
 /* ---------- sections ---------- */
 
+/* at a glance, in the live page's order: the heading and the plan note on
+   the left, the six facts as a two-column table of joined white cells on
+   the right, running out to the right frame line */
 function Glance({ s }: { s: Extract<Sec, { type: "glance" }> }) {
   return (
     <Section>
-      <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <Heading text={s.head} className="" />
-        {s.price && (
-          <p className="self-start border border-border bg-surface px-5 py-3 text-b1 font-medium lg:max-w-[440px] lg:self-end">{s.price}</p>
-        )}
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+        <div className="flex flex-col items-start gap-6">
+          <Heading text={s.head} className="" />
+          {s.price && <p className="border border-border bg-surface px-5 py-3 text-b1 font-medium">{s.price}</p>}
+        </div>
+        <dl className="tm-reveal -mx-8 grid gap-px self-start border-y border-border bg-[var(--tm-border-default)] sm:grid-cols-2 lg:mx-0 lg:-mr-8 lg:border-l">
+          {s.facts.map(([k, v]) => (
+            <div key={k} className="flex flex-col gap-2 bg-surface p-8">
+              <dt className={LABEL}>{k}</dt>
+              <dd className="text-b1">{v}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
-      <dl className={`${JOIN} sm:grid-cols-2 lg:grid-cols-3`}>
-        {s.facts.map(([k, v]) => (
-          <div key={k} className="flex flex-col gap-2 bg-surface p-8">
-            <dt className={LABEL}>{k}</dt>
-            <dd className="text-b1">{v}</dd>
-          </div>
-        ))}
-      </dl>
     </Section>
   );
 }
