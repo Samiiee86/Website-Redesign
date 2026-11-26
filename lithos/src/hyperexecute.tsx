@@ -314,6 +314,20 @@ const measure = [
   { title: "Compare the medians", body: "The median wall-clock time, and the share of tests whose result changed between runs." },
 ];
 
+/* the Agent Assurance quote card: Bajaj Finserv's line, from the live page */
+const QUOTE = {
+  tags: [
+    ["70%", "faster automation runtime"],
+    ["<3%", "escaped defects"],
+  ],
+  before: "The execution time we got using HyperExecute, ",
+  mark: "that's the major differentiator.",
+  name: "Abhijeet Teware",
+  role: "Head of QA, Bajaj Finserv",
+  logo: `${IMG}/customer/bajaj-finserv-main.svg`,
+  link: `${SITE}/customers/bajaj-finserv/`,
+};
+
 function Measured() {
   return (
     <Section>
@@ -321,19 +335,55 @@ function Measured() {
         lead="Where “up to 70% faster”"
         title="comes from"
         body="Each figure is that team's own measurement against the setup it replaced, not a controlled benchmark, so your result depends on your suite."
-      />
-      <div className="tm-reveal -mx-8 flex flex-col">
-        <div className="tm-grid tm-grid--4 !border-b-0">
-          <div className="tm-stat-tile">
-            <span className="tm-label">Up to</span>
-            <div>
-              <p className="tm-pixel">70%</p>
-              <p>Faster than a traditional test grid, as measured by the three teams beside it on their own suites.</p>
+      >
+        <PrimaryBtn href={HE_SIGNUP}>Run your first job free</PrimaryBtn>
+      </FoldHead>
+
+      {/* the quote card, as on the Agent Assurance page */}
+      <figure className="tm-reveal relative border border-border bg-[var(--tm-bg-fill)] p-6 md:p-10 lg:p-12">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16">
+          <div className="flex flex-col gap-10 lg:gap-16">
+            <p className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
+              <span className="flex items-center gap-2 text-foreground">
+                <span className="size-1.5 flex-none rounded-full bg-[var(--tm-hero-arrow)]" aria-hidden />
+                Bajaj Finserv
+              </span>
+              {QUOTE.tags.map(([n, k]) => (
+                <span key={k} className="flex items-baseline gap-2">
+                  <span className="pixel text-[24px] leading-none tracking-normal text-foreground">{n}</span>
+                  {k}
+                </span>
+              ))}
+            </p>
+            <div className="flex flex-1 flex-col justify-between gap-10 lg:pl-[16%]">
+              <blockquote className="relative text-[24px] leading-[32px] tracking-[-1px] md:text-[32px] md:leading-[40px]">
+                <span className="absolute right-full pr-1.5" aria-hidden>
+                  “
+                </span>
+                {QUOTE.before}
+                <mark className="bg-[var(--tm-bg-inverse)] px-1 text-[var(--tm-fg-inverse)] [box-decoration-break:clone] [-webkit-box-decoration-break:clone]">
+                  {QUOTE.mark}
+                </mark>”
+              </blockquote>
+              <figcaption className="flex flex-col gap-4">
+                <span className="flex flex-col">
+                  <span className="text-b2 font-medium">{QUOTE.name}</span>
+                  <span className="text-b3 text-muted-foreground">{QUOTE.role}</span>
+                </span>
+                <KitLink href={QUOTE.link}>Read the case study</KitLink>
+              </figcaption>
             </div>
-            <a className="tm-btn tm-btn--secondary" href={HE_SIGNUP}>
-              Run your first job free
-            </a>
           </div>
+          {/* the customer's mark, in the portrait's thin white frame */}
+          <span className="flex size-40 items-center justify-center self-start border border-border bg-surface p-6 md:size-48 lg:self-center">
+            <img src={QUOTE.logo} alt="Bajaj Finserv" loading="lazy" className="max-h-16 w-full object-contain" />
+          </span>
+        </div>
+      </figure>
+
+      {/* the three published results, then how to measure it yourself */}
+      <div className="tm-reveal -mx-8 mt-12 flex flex-col">
+        <div className="tm-grid tm-grid--3 !border-b-0">
           {results.map((r) => (
             <a key={r.name} href={r.href} className="tm-cell group flex flex-col justify-between gap-6 !p-8 transition-colors duration-200 hover:bg-[var(--tm-bg-fill)]">
               <span className="flex items-center justify-between">
@@ -346,10 +396,6 @@ function Measured() {
               </span>
             </a>
           ))}
-          <div className="tm-cell flex flex-col justify-between gap-6 !p-8">
-            <span className="font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">Your suite</span>
-            <span className="text-b2">Measure it the same way on your own suite, in four steps below.</span>
-          </div>
         </div>
         <ol className="tm-grid tm-grid--4 tm-steps2">
           {measure.map((m, i) => (
