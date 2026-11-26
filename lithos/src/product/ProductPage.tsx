@@ -755,11 +755,11 @@ function Related({ s }: { s: Extract<Sec, { type: "rel" }> }) {
           return (
             <a key={name} href={href} className="group flex flex-col gap-2 !p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
               <Icon size={40} strokeWidth={1.25} aria-hidden className="mb-4" />
-              <h3 className={H4}>{name}</h3>
-              <p className="text-b1 text-muted-foreground">{body}</p>
-              <span className="mt-auto pt-2">
+              <h3 className={`flex items-center gap-2 ${H4}`}>
+                {name}
                 <HoverArrow />
-              </span>
+              </h3>
+              <p className="text-b1 text-muted-foreground">{body}</p>
             </a>
           );
         })}
