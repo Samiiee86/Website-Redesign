@@ -1186,13 +1186,14 @@ export function LoadScreen() {
 
 /* ---------- HyperExecute page: where the private cloud runs ---------- */
 
-const CLOUD_IMG = "https://assets.testmuai.com/resources/images";
+/* the clouds' own coloured logos (devicon, MIT) */
+const CLOUD_LOGO = "/img/integrations/color";
 
 export function CloudsScreen() {
   const clouds = [
-    ["amazon-web-services.webp", "AWS", "6 regions documented", "ok"],
-    ["microsoft-azure.webp", "Microsoft Azure", "Azure Native Integration", "ok"],
-    ["google-cloud.webp", "Google Cloud", "On request", "plain"],
+    ["aws.svg", "AWS", "6 regions documented", "ok"],
+    ["azure.svg", "Microsoft Azure", "Azure Native Integration", "ok"],
+    ["googlecloud.svg", "Google Cloud", "On request", "plain"],
   ] as const;
   return (
     <div className="flex h-full flex-col px-5 pt-4">
@@ -1205,7 +1206,9 @@ export function CloudsScreen() {
       <div className="mt-3 flex flex-col overflow-hidden rounded-lg border border-border">
         {clouds.map(([img, n, note, tone], i) => (
           <span key={n} className={`flex h-10 items-center gap-3 border-b border-[var(--tm-border-muted)] px-3 text-b4 last:border-b-0 ${i === 0 ? "bg-[var(--tm-bg-fill)]" : ""}`}>
-            <img src={`${CLOUD_IMG}/${img}`} alt="" className="!static size-6 flex-none rounded-sm object-cover !shadow-none ![animation:none]" />
+            <span className="button flex size-7 flex-none items-center justify-center rounded-md border border-border bg-surface">
+              <img src={`${CLOUD_LOGO}/${img}`} alt="" className="!static size-5 object-contain !shadow-none ![animation:none]" />
+            </span>
             <span className="flex-1 font-medium">{n}</span>
             <Pill tone={tone}>{tone === "ok" && <Check size={10} strokeWidth={2} aria-hidden />} {note}</Pill>
           </span>
