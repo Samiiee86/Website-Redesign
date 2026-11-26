@@ -485,6 +485,8 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
             groups={[{ label: "", rows: s.rows.map(([name, them, us]) => ({ name, values: [us, them] })) }]}
             cta={s.cta}
             head={s.cols[0]}
+            plain
+            oursWeight={1.4}
           />
         </div>
       ) : (
@@ -495,6 +497,8 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
             groups={[{ label: "", rows: s.rows.map(([name, them, us]) => ({ name, values: [us, them] })) }]}
             cta={s.cta}
             head={s.cols[0]}
+            plain
+            oursWeight={1.4}
           />
         </Reveal>
       )}

@@ -53,6 +53,11 @@ type Props = {
   cta?: string;
   /* the first column's name; pages can use their own word */
   head?: string;
+  /* white behind the whole table, with straight full-width row lines in
+     place of the dotted ones (the product pages) */
+  plain?: boolean;
+  /* how much wider the TestMu AI column is than the others (1 = same) */
+  oursWeight?: number;
 };
 
 const BASE = "relative grid grid-cols-[repeat(var(--m),minmax(0,1fr))]";
@@ -90,6 +95,8 @@ export default function MatrixTable({
   tally = false,
   cta,
   head = "Features",
+  plain = false,
+  oursWeight = 1,
 }: Props) {
   const [pick, setPick] = useState(0);
   const pickerId = useId();
@@ -98,8 +105,10 @@ export default function MatrixTable({
   const picker = rivals.length > 2;
   const n = rivals.length + 1;
   const roomy = n <= 3;
-  const GRID = roomy ? ROOMY : TIGHT;
   const LABEL_FR = roomy ? 1.5 : 1.7;
+  /* a wider TestMu AI column: the desktop columns come from --cols */
+  const weighted = oursWeight !== 1;
+  const GRID = weighted ? `${BASE} lg:grid-cols-[var(--cols)]` : roomy ? ROOMY : TIGHT;
 
   /* the columns in the order they stand */
   const at = Math.min(Math.max(oursAt, 0), rivals.length);
@@ -117,6 +126,7 @@ export default function MatrixTable({
   /* the dotted line under a row: every row has one, except the last row
      before a category band or before the foot */
   const dotted = (gi: number, ri: number) => {
+    if (plain) return "";
     if (ri < groups[gi].rows.length - 1) return DOTS;
     const next = groups[gi + 1];
     if (next) return next.label ? "" : DOTS;
@@ -163,15 +173,23 @@ export default function MatrixTable({
         role="table"
         aria-label={label}
         className="relative pt-9"
-        style={{ "--n": n, "--m": picker ? 2 : n } as CSSProperties}
+        style={
+          {
+            "--n": n,
+            "--m": picker ? 2 : n,
+            "--cols": [`minmax(0,${LABEL_FR}fr)`, ...cols.map((c) => `minmax(0,${c.ours ? oursWeight : 1}fr)`)].join(" "),
+          } as CSSProperties
+        }
       >
+        {/* plain: one white sheet behind the whole table, under the flag */}
+        {plain && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-9 hidden bg-surface lg:block" />}
         {/* desktop: the white column, one sheet from the flag to the foot */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-y-0 hidden border-2 border-foreground bg-surface lg:block"
           style={{
-            left: `${((LABEL_FR + at) / (LABEL_FR + n)) * 100}%`,
-            width: `${100 / (LABEL_FR + n)}%`,
+            left: `${((LABEL_FR + at) / (LABEL_FR + n - 1 + oursWeight)) * 100}%`,
+            width: `${(oursWeight * 100) / (LABEL_FR + n - 1 + oursWeight)}%`,
           }}
         />
 
@@ -179,7 +197,7 @@ export default function MatrixTable({
         <div role="row" className={`${GRID} sticky top-14 z-10`}>
           <div
             role="columnheader"
-            className={`hidden items-center border-y border-border bg-background px-8 py-6 text-foreground lg:flex ${H5}`}
+            className={`hidden items-center border-y border-border ${plain ? "bg-surface" : "bg-background"} px-8 py-6 text-foreground lg:flex ${H5}`}
           >
             {head}
           </div>
@@ -233,10 +251,13 @@ export default function MatrixTable({
             )}
 
             {g.rows.map((r, ri) => {
+              const last = gi === groups.length - 1 && ri === g.rows.length - 1;
               const end =
-                !tally && gi === groups.length - 1 && ri === g.rows.length - 1
+                !tally && last
                   ? END
-                  : "";
+                  : plain && !last
+                    ? "lg:border-b lg:border-border"
+                    : "";
               return (
                 <div key={r.name} role="row" className={GRID}>
                   <div role="rowheader" className={`${LABEL} ${end}`}>
