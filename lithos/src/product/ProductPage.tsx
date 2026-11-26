@@ -737,21 +737,21 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
           {s.promos.map((p, i) => (
             <div
               key={p.title}
-              className={`flex flex-col items-start gap-2 overflow-hidden px-6 pt-8 text-[var(--tm-fg-inverse)] ${i === 0 ? "bg-[linear-gradient(to_bottom,var(--tm-bg-inverse),var(--tm-blue-700))]" : "bg-[var(--tm-bg-accent)]"}`}
+              className={`relative flex flex-col items-start gap-2 overflow-hidden p-6 text-[var(--tm-fg-inverse)] ${i === 0 ? "bg-[linear-gradient(to_bottom,var(--tm-bg-inverse),var(--tm-blue-700))]" : "bg-[var(--tm-bg-accent)]"}`}
             >
               <h3 className="!text-[18px] !leading-[26px] !tracking-[-0.5px] !font-medium [text-wrap:balance]">{p.title}</h3>
               <p className="text-b3 text-[var(--tm-fg-inverse)]">{p.body}</p>
-              <a className="tm-btn tm-btn--secondary tm-btn--sm mt-2" href={p.href ?? `${SITE}/contact-us/`}>
+              <a className="tm-btn tm-btn--secondary tm-btn--sm relative z-[1] mt-2" href={p.href ?? `${SITE}/contact-us/`}>
                 {p.cta}
               </a>
-              {/* live: the picture sits under the button and runs to the
-                  card's bottom edge (phones wide, logo small and right) */}
+              {/* the picture sits beside the button, on the card's bottom
+                  edge, so the card stays short */}
               {p.img && (
                 <img
                   src={p.img}
                   alt=""
                   aria-hidden
-                  className={`pointer-events-none -mr-2 self-end ${i === 0 ? "mt-6 w-4/5 max-w-[272px]" : "mt-12 w-2/5 max-w-[128px]"}`}
+                  className={`pointer-events-none absolute bottom-0 right-2 ${i === 0 ? "w-2/5" : "w-1/4"}`}
                   loading="lazy"
                 />
               )}
