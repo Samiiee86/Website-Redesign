@@ -48,6 +48,13 @@ const HoverArrow = () => (
   </span>
 );
 
+/* the arrow after an underlined link: always shown, nudging right on hover */
+const LinkArrow = () => (
+  <span aria-hidden className="ml-2 inline-flex size-4 flex-none align-[-2px] transition-transform duration-300 group-hover:translate-x-1 group-focus-visible:translate-x-1">
+    <Arrow />
+  </span>
+);
+
 /* card titles 20/28 (the kit's own card title size, as Sameer asked), card text B1 (18/28) */
 const H4 = "!text-[20px] !leading-[28px] !tracking-[-0.5px] !font-medium";
 /* boxes as on the home page: edge to edge between the frame lines,
@@ -598,9 +605,9 @@ function Mcp({ s }: { s: Extract<Sec, { type: "mcp" }> }) {
             {c.logo && <img src={c.logo} alt={`${c.name} logo`} width={40} height={40} className="mb-4 size-10 object-contain" loading="lazy" />}
             <h3 className={H4}>{c.name}</h3>
             <p className="text-b1 text-muted-foreground">{c.body}</p>
-            <span className="mt-auto inline-flex items-center gap-2 pt-2 text-b1 font-medium">
+            <span className="mt-auto inline-flex items-center pt-2 text-b1 font-medium">
               <span className="underline decoration-1 underline-offset-4">{c.cta}</span>
-              <HoverArrow />
+              <LinkArrow />
             </span>
           </a>
         ))}
@@ -745,9 +752,9 @@ function Stories({ s }: { s: Extract<Sec, { type: "stories" }> }) {
           <a key={st.href} href={st.href} className="group flex flex-col gap-4 !p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
             <span className="font-body text-[length:var(--tm-h1-size)] font-medium leading-none tracking-[var(--tm-h1-tracking)]">{st.num}</span>
             <p className="max-w-[560px] text-b1">{st.text}</p>
-            <span className="mt-auto inline-flex items-center gap-2 text-b1 font-medium">
+            <span className="mt-auto inline-flex items-center text-b1 font-medium">
               <span className="underline decoration-1 underline-offset-4">{st.cta.replace(/\s*→\s*$/, "")}</span>
-              <HoverArrow />
+              <LinkArrow />
             </span>
           </a>
         ))}
@@ -785,9 +792,9 @@ function Related({ s }: { s: Extract<Sec, { type: "rel" }> }) {
               <ul className="flex flex-col gap-2">
                 {r.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className="group inline-flex items-center gap-2 text-b1 font-medium">
+                    <a href={l.href} className="group inline text-b1 font-medium">
                       <span className="underline decoration-1 underline-offset-4">{l.label}</span>
-                      <HoverArrow />
+                      <LinkArrow />
                     </a>
                   </li>
                 ))}
@@ -807,7 +814,10 @@ function Related({ s }: { s: Extract<Sec, { type: "rel" }> }) {
               <div key={g.title} className="flex flex-col gap-3 bg-surface p-8">
                 <dt className="text-b1 font-medium">
                   {g.href ? (
-                    <a href={g.href} className="underline decoration-1 underline-offset-4">{g.title}</a>
+                    <a href={g.href} className="group inline">
+                      <span className="underline decoration-1 underline-offset-4">{g.title}</span>
+                      <LinkArrow />
+                    </a>
                   ) : (
                     g.title
                   )}
