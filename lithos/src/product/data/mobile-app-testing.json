@@ -1,0 +1,317 @@
+{
+ "slug": "mobile-app-testing",
+ "title": "Mobile App Testing Platform: Real iOS & Android Devices | TestMu AI",
+ "description": "Mobile app testing on 50,000+ real iOS and Android devices. Test live or run Appium, Espresso and XCUITest; check biometrics, networks and location.",
+ "crumb": [
+  "TestMu AI",
+  "Mobile App Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Mobile App Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Mobile app testing",
+  "h1b": "on real iOS and Android devices.",
+  "lede": "Mobile app testing on TestMu AI runs on 50,000+ real iPhones, Galaxy, Pixel and other devices in the cloud. Test by hand, run Appium, Espresso or XCUITest suites, or write tests in plain English with KaneAI, and check biometrics, network conditions and location on real hardware.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 5 real device sessions a month, up to 2 minutes each.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Mobile QA",
+   "Mobile developers",
+   "SDETs",
+   "Release managers"
+  ],
+  "image": {
+   "src": "/kit/hero/mobile-app-testing/hero-bg.png",
+   "alt": "Live mobile app testing session on real device hardware"
+  },
+  "run": {
+   "title": "app · v3.8 smoke",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "Galaxy S26",
+     "text": "Android 16 · login with fingerprint",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "iPhone 18 Pro",
+     "text": "iOS 27 · Face ID",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Pixel 10",
+     "text": "3G throttled · checkout",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "iPad Air",
+     "text": "rotate · layout",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · 3/4 devices",
+   "evid": "device video · logs · network"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Manual and automated mobile app testing on real devices"
+    ],
+    [
+     "Devices",
+     "50,000+ real iOS and Android devices"
+    ],
+    [
+     "Frameworks",
+     "Appium, Espresso, XCUITest, plus KaneAI plain-English tests"
+    ],
+    [
+     "Hardware checks",
+     "Biometrics, camera, network throttling, GPS location"
+    ],
+    [
+     "Pricing",
+     "Free: 5 real device sessions a month; Real Device Plus Live from $39/month"
+    ],
+    [
+     "Start",
+     "Upload your .apk or .ipa and open a device"
+    ]
+   ],
+   "id": "glance",
+   "head": "Mobile app testing: devices, apps and plans",
+   "body": [
+    "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Upload the build",
+     "Send an .apk, .aab or .ipa, or install from TestFlight and the Play Store."
+    ],
+    [
+     "Test live or automate",
+     "Open a real device in the browser, or run your framework suite in parallel."
+    ],
+    [
+     "Check real conditions",
+     "Simulate network, location and biometrics; read device logs."
+    ]
+   ],
+   "id": "how",
+   "head": "Manual and automated app testing on real phones",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "50,000+ real devices",
+     "Latest and older iPhones, Galaxy, Pixel and OnePlus models."
+    ],
+    [
+     "Live and automated",
+     "Manual sessions and framework runs on the same fleet."
+    ],
+    [
+     "Biometrics and camera",
+     "Face ID, fingerprint and image injection on real hardware."
+    ],
+    [
+     "Network and location",
+     "Throttle bandwidth and set GPS location per session."
+    ],
+    [
+     "Plain-English tests",
+     "KaneAI writes and maintains mobile tests from sentences."
+    ],
+    [
+     "Device logs",
+     "Crash, system and network logs saved per session."
+    ]
+   ],
+   "id": "caps",
+   "head": "What you can test on a real device",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Mobile App Testing compared with emulators and an in-house lab",
+   "cols": [
+    "What matters",
+    "Emulators and an in-house lab",
+    "Mobile app testing on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Device coverage",
+     "A shelf of phones",
+     "50,000+ real devices"
+    ],
+    [
+     "Biometrics and camera",
+     "Stubbed on emulators",
+     "Real sensors"
+    ],
+    [
+     "Running a suite on 20 devices",
+     "Sequential, by hand",
+     "Parallel sessions"
+    ],
+    [
+     "Device upkeep",
+     "Charging, updates, repairs",
+     "Hosted"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Emulators only vs real iOS and Android devices",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "9x",
+     "text": "Boohoo scaled test coverage 9x after retiring its in-house device farm.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/boohoo/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Mobile teams' results",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Real Device Cloud",
+     "body": "Open 50,000+ real phones and tablets",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "Native App Automation",
+     "body": "Run Appium, Espresso and XCUITest suites",
+     "href": "https://www.testmuai.com/app-automation/"
+    },
+    {
+     "name": "Appium Testing",
+     "body": "Run Appium on 50,000+ real devices",
+     "href": "https://www.testmuai.com/appium-mobile-testing/"
+    },
+    {
+     "name": "AI App Testing",
+     "body": "Test mobile and gen AI apps without scripts",
+     "href": "https://www.testmuai.com/ai-app-testing/"
+    },
+    {
+     "name": "XCUITest",
+     "body": "Parallel iOS UI tests on real devices",
+     "href": "https://www.testmuai.com/xcuitest-app-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Detox Testing",
+       "href": "https://www.testmuai.com/support/docs/hyperexecute-detox-testing/"
+      },
+      {
+       "label": "Maestro Testing",
+       "href": "https://www.testmuai.com/support/docs/hyperexecute-maestro-testing/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Go further with mobile automation",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is mobile app testing?",
+     "a": "Mobile app testing checks that an iOS or Android app works, looks right and performs well on real devices and conditions before release."
+    },
+    {
+     "q": "Can I test on real devices instead of emulators?",
+     "a": "Yes. TestMu AI hosts 50,000+ real iOS and Android devices for live and automated testing."
+    },
+    {
+     "q": "Which frameworks are supported?",
+     "a": "Appium, Espresso and XCUITest, plus KaneAI plain-English tests."
+    },
+    {
+     "q": "Is there a free plan?",
+     "a": "Yes. The real device free plan gives 5 sessions a month, up to 2 minutes each."
+    },
+    {
+     "q": "How is mobile app testing different from the real device cloud?",
+     "a": "Mobile app testing covers testing apps end to end. The real device cloud is the device fleet itself."
+    }
+   ],
+   "id": "faq",
+   "head": "Real devices or emulators? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 5 real device sessions a month, up to 2 minutes each.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test your app on real phones"
+  }
+ ]
+}

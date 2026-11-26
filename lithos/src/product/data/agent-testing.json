@@ -1,0 +1,363 @@
+{
+ "slug": "agent-testing",
+ "title": "AI Agent Testing Platform: Chat, Voice, Phone, Video, Image",
+ "description": "AI agent testing for chat, voice, phone, video and image agents: simulated users, 9 quality metrics, hallucination checks and a go-live verdict.",
+ "crumb": [
+  "TestMu AI",
+  "Agent Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Agent Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "AI agent testing for chat, voice,",
+  "h1b": "phone, video and image agents.",
+  "lede": "Agent Testing is TestMu AI's platform for AI agent testing. Simulated users hold real conversations and phone calls with your chat, voice, video or image agent, score every run on quality metrics such as hallucination and task completion, and return a Green, Yellow or Red go-live verdict.",
+  "ctas": [
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": true
+   },
+   {
+    "label": "See pricing",
+    "href": "https://www.testmuai.com/pricing/",
+    "primary": false
+   }
+  ],
+  "note": "No SDK. Pricing on request.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "AI engineers",
+   "QA leads",
+   "Contact-center teams",
+   "CIOs"
+  ],
+  "image": {
+   "src": "/kit/hero/agent-testing/hero-bg.webp",
+   "alt": "Agent Assurance run report showing the pass rate beside the assurance score"
+  },
+  "run": {
+   "title": "agent-testing · refund-bot v3",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "persona",
+     "text": "upset customer, broken order",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "voice",
+     "text": "50+ accents · café noise preset",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "metric",
+     "text": "hallucination check · 0 found",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "metric",
+     "text": "task completed · refund issued",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "GREEN · ready for go-live",
+   "evid": "refund-bot.evidence · transcript, audio, 9 metric scores"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Pricing on request (Contact Sales on the pricing page).",
+   "facts": [
+    [
+     "What it is",
+     "A platform that tests customer-facing AI agents with simulated users"
+    ],
+    [
+     "Who it's for",
+     "Teams shipping chatbots, voice agents, IVR, video agents and multimodal agents"
+    ],
+    [
+     "Channels",
+     "Chat, voice, phone, video and image"
+    ],
+    [
+     "Scoring",
+     "9 metrics per chat and voice run; 30+ metrics per phone call"
+    ],
+    [
+     "Setup",
+     "About 30 minutes, no SDK"
+    ],
+    [
+     "Start",
+     "Connect an agent endpoint or phone number and run a suite"
+    ]
+   ],
+   "id": "glance",
+   "head": "AI agent testing in one table",
+   "body": [
+    "Pricing on request (Contact Sales on the pricing page)."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Connect",
+     "Point Agent Testing at your chat endpoint, phone number or video URL. No SDK."
+    ],
+    [
+     "Simulate",
+     "AI evaluators play real customers: personas, accents, noise and edge cases from your docs."
+    ],
+    [
+     "Score",
+     "Each run is graded on quality metrics and rolled into a Green, Yellow or Red verdict."
+    ]
+   ],
+   "id": "how",
+   "head": "From scenario to go-live verdict",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Five channels, one suite",
+     "Test chat, voice, phone, video and image agents from the same project."
+    ],
+    [
+     "Hallucination checks",
+     "Answers are compared with your knowledge base to flag invented facts."
+    ],
+    [
+     "Realistic callers",
+     "200+ voices, 50+ accents and 15 background-noise presets."
+    ],
+    [
+     "9 metrics per run",
+     "Hallucination, bias, task completion and more on every chat and voice run."
+    ],
+    [
+     "Go-live verdict",
+     "Green, Yellow or Red per suite, with the failing turns linked."
+    ],
+    [
+     "Load tests",
+     "Run many conversations at once to find where quality drops."
+    ]
+   ],
+   "id": "caps",
+   "head": "What gets scored in every conversation",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Agent Testing compared with manual QA calls",
+   "cols": [
+    "What matters",
+    "Manual QA calls",
+    "Agent Testing"
+   ],
+   "rows": [
+    [
+     "Coverage",
+     "A few scripted calls before release",
+     "Large generated suites rerun on every release"
+    ],
+    [
+     "Accents and noise",
+     "Whoever is on the team",
+     "50+ accents, 15 noise presets"
+    ],
+    [
+     "Hallucinations",
+     "Found when a user reports a wrong answer",
+     "Answers checked against your source documents on every run"
+    ],
+    [
+     "Result",
+     "Notes in a spreadsheet",
+     "Metric scores and a Green, Yellow or Red verdict"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Manual QA of a bot vs simulated users at scale",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "Pricing on request; start with a guided demo",
+      "Chat, voice, phone and video agents on one account"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "Load tests with concurrent simulated callers",
+      "Go-live verdict per release"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Custom platform access controls for teams",
+      "Certifications, ESG attestation and continuous monitoring (Trust Center)"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "Agent testing for a pilot, a portfolio or a regulated rollout",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Chatbot Testing",
+     "body": "Score chatbot answers for grounding",
+     "href": "https://www.testmuai.com/chatbot-testing/"
+    },
+    {
+     "name": "Voice Agent Testing",
+     "body": "Test voice agents with 200+ voices and accents",
+     "href": "https://www.testmuai.com/voice-agent-testing/"
+    },
+    {
+     "name": "IVR Testing",
+     "body": "Test IVR menus with real phone calls",
+     "href": "https://www.testmuai.com/ivr-testing/"
+    },
+    {
+     "name": "Agent Assurance",
+     "body": "Test agent-to-agent workflows before release",
+     "href": "https://www.testmuai.com/agent-assurance/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Related pages",
+     "links": [
+      {
+       "label": "Agents",
+       "href": "https://www.testmuai.com/agent-testing/agents.md"
+      },
+      {
+       "label": "Agent Platforms",
+       "href": "https://www.testmuai.com/agent-testing/platforms/"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Agent Testing CLI",
+       "href": "https://www.testmuai.com/support/docs/agent-testing-cli/"
+      },
+      {
+       "label": "Agent testing documentation",
+       "href": "https://www.testmuai.com/support/docs/ai-agent-testing-platform-overview/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Customer Engagement Platform case study",
+       "href": "https://www.testmuai.com/customers/customer-engagement-platform/"
+      },
+      {
+       "label": "Raiffeisen Bank International case study",
+       "href": "https://www.testmuai.com/customers/raiffeisen-bank-international/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Test the rest of your AI stack",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is AI agent testing?",
+     "a": "AI agent testing checks how a chat, voice, phone, video or image agent behaves before and after release. Simulated users hold real conversations with the agent and every run is scored on quality metrics."
+    },
+    {
+     "q": "Which agents can TestMu AI test?",
+     "a": "Agent Testing covers chatbots, voice agents, IVR systems, outbound calling agents, video agents and image-capable agents, on any vendor or in-house stack."
+    },
+    {
+     "q": "How are AI agents scored?",
+     "a": "Chat and voice runs are scored on 9 metrics, including hallucination detection, bias and task completion. Phone calls are scored on 30+ metrics."
+    },
+    {
+     "q": "Do I need an SDK?",
+     "a": "No. You connect an endpoint, phone number or web URL. Teams typically run a first suite in about 30 minutes."
+    },
+    {
+     "q": "Is Agent Testing the same as Agent Assurance?",
+     "a": "No. Agent Testing covers agents that talk to people. Agent Assurance, delivered by Rook, tests agents that work with other agents, tools and APIs."
+    }
+   ],
+   "id": "faq",
+   "head": "Before you test your first agent",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "No SDK. Pricing on request.",
+   "ctas": [
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    },
+    {
+     "label": "See pricing",
+     "href": "https://www.testmuai.com/pricing/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Score your agent before customers talk to it"
+  }
+ ]
+}

@@ -1,0 +1,484 @@
+{
+ "slug": "ai-testing",
+ "title": "AI Testing: What It Is, Types, Strategy and Platform",
+ "description": "AI testing means using AI to plan, write, run and maintain software tests, and testing AI systems themselves. Types, strategy and how to start.",
+ "crumb": [
+  "TestMu AI",
+  "AI Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "AI Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "AI testing:",
+  "h1b": "what it is, how it works and how to start.",
+  "lede": "AI testing has two meanings. It is using AI to plan, write, run and maintain software tests, and it is testing AI systems such as chatbots and voice agents. TestMu AI covers both: KaneAI tests apps from plain English, and Agent Testing scores AI agents before release.",
+  "ctas": [
+   {
+    "label": "See KaneAI",
+    "href": "https://www.testmuai.com/kane-ai/",
+    "primary": true
+   },
+   {
+    "label": "See Agent Testing",
+    "href": "https://www.testmuai.com/agent-testing/",
+    "primary": false
+   }
+  ],
+  "note": "KaneAI plans from $17/month, billed annually. Agent testing pricing on request.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA leads",
+   "SDETs",
+   "Engineering managers",
+   "AI product teams"
+  ],
+  "image": null,
+  "run": {
+   "title": "ai testing · two lanes",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "App",
+     "text": "KaneAI: guest checkout on 3 browsers",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "App",
+     "text": "Kane CLI: PR #482 verified",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Agent",
+     "text": "refund bot: 40 simulated chats",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "Agent",
+     "text": "hallucination check: 0 ungrounded",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · both lanes",
+   "evid": "evidence per run · screenshots, transcripts, scores"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "",
+   "facts": [
+    [
+     "Meaning 1",
+     "AI that writes, runs and maintains tests for web and mobile apps"
+    ],
+    [
+     "Meaning 2",
+     "Testing AI systems: chatbots, voice agents, agent workflows"
+    ],
+    [
+     "For apps",
+     "KaneAI and Kane CLI"
+    ],
+    [
+     "For AI agents",
+     "Agent Testing (chat, voice, phone, video) and Agent Assurance (agent-to-agent)"
+    ],
+    [
+     "Infrastructure",
+     "3,000+ browsers, 50,000+ real devices"
+    ],
+    [
+     "Start",
+     "KaneAI plans from $17/month; agent testing on demo"
+    ]
+   ],
+   "id": "glance",
+   "head": "AI testing: definition, scope and lanes",
+   "body": []
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Pick the lane",
+     "Use AI to test your app, or test the AI you built. Many teams do both."
+    ],
+    [
+     "Describe the behaviour",
+     "Write the flow or the conversation you expect in plain English, or import it from a ticket."
+    ],
+    [
+     "Run and read the evidence",
+     "Tests run on real browsers, devices or simulated users and return a pass, fail or verdict with proof."
+    ]
+   ],
+   "id": "how",
+   "head": "How to start with AI testing",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Plain-English test authoring",
+     "KaneAI turns sentences into tests for web, mobile and API."
+    ],
+    [
+     "Self-healing on the path",
+     "Moved elements are re-found; wrong results still fail."
+    ],
+    [
+     "Agent conversation testing",
+     "Simulated users run chat, voice and phone conversations against your agent."
+    ],
+    [
+     "Hallucination and safety checks",
+     "Answers are scored for grounding, tone and policy."
+    ],
+    [
+     "Real devices and browsers",
+     "App tests run on 3,000+ browsers and 50,000+ devices."
+    ],
+    [
+     "One results view",
+     "App and agent runs land in the same account and reports."
+    ]
+   ],
+   "id": "caps",
+   "head": "What AI testing covers today",
+   "body": []
+  },
+  {
+   "type": "strat",
+   "items": [
+    [
+     "Pick the risk",
+     "Start with the flows or AI features where a failure costs the most: checkout, sign-in, a support bot."
+    ],
+    [
+     "Write acceptance criteria",
+     "State what must be true in plain English. These criteria decide pass or fail, not the AI."
+    ],
+    [
+     "Generate and review tests",
+     "Let an agent such as KaneAI draft the tests; an engineer reviews them before they gate a release."
+    ],
+    [
+     "Run on real conditions",
+     "Run app tests on real browsers and devices, and agent tests with simulated users at volume."
+    ],
+    [
+     "Track and tighten",
+     "Watch flaky tests and failure clusters; add criteria where bugs escaped."
+    ]
+   ],
+   "id": "strat",
+   "head": "AI testing strategy in five steps",
+   "body": []
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Type",
+    "What it checks",
+    "TestMu AI tool"
+   ],
+   "rows": [
+    [
+     "AI test authoring",
+     "Tests written from plain English, tickets or recordings",
+     "KaneAI"
+    ],
+    [
+     "Self-healing maintenance",
+     "Moved or renamed elements re-found without changing the assertion",
+     "KaneAI, Auto Healing"
+    ],
+    [
+     "Visual AI comparison",
+     "Layout and visual changes, ignoring pixel noise",
+     "SmartUI"
+    ],
+    [
+     "Test analytics and RCA",
+     "Flaky tests, failure clusters and likely causes",
+     "Test Insights"
+    ],
+    [
+     "AI agent evaluation",
+     "Chat, voice, phone and video agents: accuracy, grounding, policy",
+     "Agent Testing"
+    ],
+    [
+     "Agent-to-agent assurance",
+     "What autonomous agents did across tools and workflows",
+     "Agent Assurance (Rook)"
+    ]
+   ],
+   "src": "Products as named on testmuai.com, 2026-11-21. For the platform that runs all of these, see the AI testing platform.",
+   "id": "data0",
+   "head": "Types of AI testing",
+   "body": []
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Measure",
+    "What it catches",
+    "How it is scored"
+   ],
+   "rows": [
+    [
+     "Hallucination",
+     "Answers that state facts not found in your sources",
+     "Share of answers with an unsupported claim"
+    ],
+    [
+     "Grounding",
+     "Answers that ignore or misquote the documents the agent was given",
+     "Answer checked against the retrieved source text"
+    ],
+    [
+     "Bias",
+     "Different quality or tone for different user groups",
+     "Same scenario run with varied personas, results compared"
+    ],
+    [
+     "Task completion",
+     "Conversations that end without doing the job: refund, booking, reset",
+     "Share of scenarios that reach the expected end state"
+    ]
+   ],
+   "src": "Agent Testing runs these scenarios with simulated users and scores every conversation: see Agent Testing. The four measures map to the Measure function of the NIST AI Risk Management Framework (AI RMF 1.0), which asks teams to test AI systems for validity, reliability, fairness and safety before deployment.",
+   "id": "data1",
+   "head": "How to test an AI system",
+   "body": [
+    "Inputs, then scenarios, then scoring, then a verdict. Score each answer on the four measures below; a release passes only when every measure meets the bar you set."
+   ]
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Mistake",
+    "Why it hurts",
+    "Do this instead"
+   ],
+   "rows": [
+    [
+     "Letting the AI decide pass or fail",
+     "A model grading its own work hides regressions",
+     "Write acceptance criteria first and check runs against them"
+    ],
+    [
+     "Testing a handful of happy-path prompts",
+     "Real users phrase things in ways a short list never covers",
+     "Run hundreds of varied scenarios, including hostile and off-topic ones"
+    ],
+    [
+     "Testing once before launch",
+     "Model, prompt and data changes shift behaviour after release",
+     "Re-run the same scenario set on every model or prompt change"
+    ]
+   ],
+   "src": "",
+   "id": "data2",
+   "head": "Common mistakes in AI testing",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "AI Testing compared with test automation",
+   "cols": [
+    "What matters",
+    "Test automation",
+    "AI testing"
+   ],
+   "rows": [
+    [
+     "Who writes the test",
+     "An engineer writes code against selectors",
+     "An AI agent writes steps from plain English or a ticket"
+    ],
+    [
+     "When the UI changes",
+     "The script breaks until someone edits it",
+     "The element is re-found; the assertion stays the same"
+    ],
+    [
+     "What it can test",
+     "Deterministic app behaviour",
+     "App behaviour, plus AI systems such as chatbots and voice agents"
+    ],
+    [
+     "Pass or fail",
+     "Assertions in code",
+     "Checked against acceptance criteria you write"
+    ],
+    [
+     "Where it fits",
+     "Stable, high-volume regression",
+     "New coverage, fast-changing UIs and AI features"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Test automation vs AI testing",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Agentic Testing",
+     "body": "How autonomous agents plan and run tests",
+     "href": "https://www.testmuai.com/agentic-testing/"
+    },
+    {
+     "name": "Agent Testing",
+     "body": "Test chat, voice and video AI agents",
+     "href": "https://www.testmuai.com/agent-testing/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Write web, mobile and API tests in plain English",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "TestMu AI Agents",
+     "body": "Every TestMu AI testing agent",
+     "href": "https://www.testmuai.com/agents/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "BrowserStack to KaneAI",
+       "href": "https://www.testmuai.com/support/docs/browserstack-to-kaneai-migration-guide/"
+      },
+      {
+       "label": "Sauce Labs to KaneAI",
+       "href": "https://www.testmuai.com/support/docs/saucelabs-to-kaneai-migration-guide/"
+      },
+      {
+       "label": "Testim to KaneAI",
+       "href": "https://www.testmuai.com/support/docs/testim-to-kaneai-migration-guide/"
+      },
+      {
+       "label": "Mabl to KaneAI",
+       "href": "https://www.testmuai.com/support/docs/mabl-to-kaneai-migration-guide/"
+      },
+      {
+       "label": "ACCELQ to KaneAI",
+       "href": "https://www.testmuai.com/support/docs/accelq-to-kaneai-migration-guide/"
+      },
+      {
+       "label": "TestRigor to KaneAI",
+       "href": "https://www.testmuai.com/support/docs/testrigor-to-kaneai-migration-guide/"
+      },
+      {
+       "label": "Momentic to KaneAI",
+       "href": "https://www.testmuai.com/support/docs/momentic-to-kaneai-migration-guide/"
+      },
+      {
+       "label": "Healing and dynamic test",
+       "href": "https://www.testmuai.com/support/docs/kaneai-healing-and-dynamic-test/"
+      },
+      {
+       "label": "KaneAI getting started guide",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-kane-ai/"
+      },
+      {
+       "label": "HyperExecute supported frameworks docs",
+       "href": "https://www.testmuai.com/support/docs/hyperexecute-supported-languages-and-frameworks/"
+      },
+      {
+       "label": "KaneAI code generation docs",
+       "href": "https://www.testmuai.com/support/docs/kane-ai-automation-code-generation/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "Dashlane case study",
+       "href": "https://www.testmuai.com/customers/dashlane/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Where AI testing happens on TestMu AI",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "Which metrics show whether an AI agent is ready to ship?",
+     "a": "Track four: hallucination rate (answers with unsupported claims), grounding (answers that match your source documents), bias (quality differences across user personas) and task completion (conversations that reach the expected end state). Set a bar for each before testing, and block the release if any measure misses it."
+    },
+    {
+     "q": "What is AI testing?",
+     "a": "AI testing is using artificial intelligence to plan, write, run and maintain software tests. The term also covers testing AI systems, such as chatbots and voice agents, for correctness and safety."
+    },
+    {
+     "q": "How do you test an AI system?",
+     "a": "Define the behaviour you expect, run many realistic conversations or inputs against it, and score the answers for accuracy, grounding and policy. Agent Testing on TestMu AI automates this."
+    },
+    {
+     "q": "What are the types of AI testing?",
+     "a": "Common types are AI-driven test authoring, self-healing maintenance, visual AI comparison, test analytics, and evaluation of AI agents and models."
+    },
+    {
+     "q": "Which AI testing tool should I start with?",
+     "a": "For web and mobile apps start with KaneAI or Kane CLI. For chat, voice or phone agents start with Agent Testing. The AI testing platform brings both together."
+    },
+    {
+     "q": "Does AI testing replace test automation frameworks?",
+     "a": "No. Teams keep Selenium, Playwright and Appium suites and run them on TestMu AI, and use AI agents for new coverage and maintenance."
+    }
+   ],
+   "id": "faq",
+   "head": "The questions people ask about AI testing",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI plans from $17/month, billed annually. Agent testing pricing on request.",
+   "ctas": [
+    {
+     "label": "See KaneAI",
+     "href": "https://www.testmuai.com/kane-ai/",
+     "primary": false
+    },
+    {
+     "label": "See Agent Testing",
+     "href": "https://www.testmuai.com/agent-testing/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Pick your first AI testing lane"
+  }
+ ]
+}

@@ -1,0 +1,322 @@
+{
+ "slug": "ai-app-testing",
+ "title": "AI App Testing for Mobile & Gen AI Apps | TestMu AI (Formerly LambdaTest)",
+ "description": "AI app testing with KaneAI: mobile app tests in natural language on 50,000+ real devices, plus gen AI app testing that authors, runs and self-heals tests.",
+ "crumb": [
+  "TestMu AI",
+  "AI App Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "AI App Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "AI app testing",
+  "h1b": "for mobile and gen AI apps.",
+  "lede": "TestMu AI handles AI app testing end to end with KaneAI. Write mobile app tests in natural language, run them on 50,000+ real devices and 3,000+ browsers, and let tests heal when screens change. Gen AI features inside your app get checked for grounded, consistent answers too.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "KaneAI Starter from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Mobile QA",
+   "App developers",
+   "Product managers",
+   "QA leads"
+  ],
+  "image": {
+   "src": "/kit/hero/ai-app-testing/hero-bg.svg",
+   "alt": "KaneAI test authoring for mobile and AI apps"
+  },
+  "run": {
+   "title": "kaneai · mobile onboarding",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "author",
+     "text": "\"sign up with email, skip tour\"",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "android",
+     "text": "Galaxy S26 · Android 16",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "ios",
+     "text": "iPhone 17 · iOS 26",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "ai feature",
+     "text": "assistant answer grounded",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · 2 devices",
+   "evid": "video, device logs, AI answer check"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually.",
+   "facts": [
+    [
+     "What it is",
+     "AI-authored, self-healing tests for mobile and gen AI apps"
+    ],
+    [
+     "Agent",
+     "KaneAI"
+    ],
+    [
+     "Devices",
+     "50,000+ real iOS and Android devices; 3,000+ browsers"
+    ],
+    [
+     "Gen AI checks",
+     "In-app assistants and AI features"
+    ],
+    [
+     "Pricing",
+     "KaneAI Starter from $17/month, billed annually; no free plan"
+    ],
+    [
+     "Start",
+     "Upload an app build and describe the first flow"
+    ]
+   ],
+   "id": "glance",
+   "head": "AI app testing: the essentials",
+   "body": [
+    "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Upload",
+     "Upload your .apk or .ipa, or test a mobile website."
+    ],
+    [
+     "Describe",
+     "Write the flow in natural language. KaneAI builds the test."
+    ],
+    [
+     "Run on real devices",
+     "Tests run across real iOS and Android devices and heal when screens change."
+    ]
+   ],
+   "id": "how",
+   "head": "Test the app and the AI features inside it",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Natural-language mobile tests",
+     "No Appium code to write."
+    ],
+    [
+     "Real devices",
+     "50,000+ physical iOS and Android devices."
+    ],
+    [
+     "Self-healing",
+     "Tests adapt when buttons move; wrong results still fail."
+    ],
+    [
+     "Gen AI feature checks",
+     "Test in-app assistants for grounded, consistent answers."
+    ],
+    [
+     "Web and app in one flow",
+     "Cover a journey that moves from app to browser."
+    ],
+    [
+     "Export to Appium",
+     "Hand tests to SDETs as code when needed."
+    ]
+   ],
+   "id": "caps",
+   "head": "Checks for mobile apps with AI features",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "AI App Testing compared with scripted mobile automation",
+   "cols": [
+    "What matters",
+    "Scripted mobile automation",
+    "AI app testing with KaneAI"
+   ],
+   "rows": [
+    [
+     "Authoring",
+     "Appium code",
+     "Natural language"
+    ],
+    [
+     "Screen changes",
+     "Scripts break",
+     "Tests heal on the path"
+    ],
+    [
+     "AI features",
+     "Not covered",
+     "Checked for grounding"
+    ],
+    [
+     "Who can write tests",
+     "SDETs",
+     "QA, product and engineering"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Scripted UI tests vs AI-authored tests for AI apps",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "KaneAI",
+     "body": "Turn tickets and specs into tests",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Native App Automation",
+     "body": "App automation with your frameworks",
+     "href": "https://www.testmuai.com/app-automation/"
+    },
+    {
+     "name": "Real Device Cloud",
+     "body": "Open 50,000+ real phones and tablets",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "Chatbot Testing",
+     "body": "Score chatbot answers for grounding",
+     "href": "https://www.testmuai.com/chatbot-testing/"
+    },
+    {
+     "name": "AI Testing",
+     "body": "What AI testing means, with types and strategy",
+     "href": "https://www.testmuai.com/ai-testing/"
+    },
+    {
+     "name": "Mobile App Testing",
+     "body": "Manual and automated app tests on real phones",
+     "href": "https://www.testmuai.com/mobile-app-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "Agent skills (GitHub)",
+       "href": "https://github.com/LambdaTest/agent-skills"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Appium languages and frameworks",
+       "href": "https://www.testmuai.com/support/docs/appium-languages-and-frameworks/#using-the-appium-agent-skill-with-testmu-ai/"
+      }
+     ]
+    },
+    {
+     "group": "Pricing",
+     "links": [
+      {
+       "label": "KaneAI per-agent pricing page",
+       "href": "https://www.testmuai.com/pricing/?product=kane-ai-group"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Go deeper on the AI you ship",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is AI app testing?",
+     "a": "AI app testing uses AI to author, run and maintain tests for mobile and web apps, and to test AI features inside those apps."
+    },
+    {
+     "q": "Can I test a mobile app without writing code?",
+     "a": "Yes. KaneAI turns natural-language steps into mobile tests that run on real devices."
+    },
+    {
+     "q": "How do you test gen AI features in an app?",
+     "a": "KaneAI checks that in-app assistants give grounded, consistent answers as part of the same end-to-end test."
+    },
+    {
+     "q": "Which devices are available?",
+     "a": "50,000+ real iOS and Android devices and 3,000+ browsers on TestMu AI."
+    },
+    {
+     "q": "Can SDETs get the code?",
+     "a": "Yes. Tests can be exported to Appium code."
+    }
+   ],
+   "id": "faq",
+   "head": "How is an AI app tested differently?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI Starter from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test the AI inside your app"
+  }
+ ]
+}

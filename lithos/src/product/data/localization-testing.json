@@ -1,0 +1,304 @@
+{
+ "slug": "localization-testing",
+ "title": "What is Localization Testing & How to Perform It. | TestMu AI (Formerly LambdaTest)",
+ "description": "Localization testing on TestMu AI: check translations, dates, currency, number formats, text expansion and right-to-left layouts on real browsers.",
+ "crumb": [
+  "TestMu AI",
+  "Localization Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Localization Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Localization testing",
+  "h1b": "for every language and market.",
+  "lede": "Localization testing on TestMu AI checks that each language version of your site or app reads and works correctly: translations, date, currency and number formats, text expansion and right-to-left layouts, on 3,000+ real browsers and real devices with local IPs.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Localization managers",
+   "QA testers",
+   "Front-end developers",
+   "Global product teams"
+  ],
+  "image": {
+   "src": "/kit/hero/localization-testing/hero-bg.png",
+   "alt": "Localization testing across languages and regions on TestMu AI"
+  },
+  "run": {
+   "title": "l10n · release 9",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "de-DE",
+     "text": "button text fits",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "ar-SA",
+     "text": "RTL layout mirrored",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "ja-JP",
+     "text": "date format 2026/11/21",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "fr-FR",
+     "text": "label truncated at 1024px",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · fr-FR",
+   "evid": "screenshots per locale"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Checking each language and market version of a product"
+    ],
+    [
+     "Checks",
+     "Translations, formats, text expansion, RTL, fonts"
+    ],
+    [
+     "Where",
+     "3,000+ browsers and real devices"
+    ],
+    [
+     "Regional context",
+     "Local IPs from 170+ countries"
+    ],
+    [
+     "Pricing",
+     "Free plan: 1 parallel test, monthly live sessions; Virtual Live from $15/month"
+    ],
+    [
+     "Automation",
+     "Locale capabilities in Selenium and Appium"
+    ]
+   ],
+   "id": "glance",
+   "head": "Languages, regions and layouts covered",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Choose locales",
+     "Select languages, regions and devices."
+    ],
+    [
+     "Review each version",
+     "Check copy, formats and layout in real browsers."
+    ],
+    [
+     "Automate regressions",
+     "Run locale suites on every release."
+    ]
+   ],
+   "id": "how",
+   "head": "Switch language, region and layout direction",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Text expansion",
+     "Spot German and French strings that overflow."
+    ],
+    [
+     "Right-to-left layouts",
+     "Check Arabic and Hebrew mirroring."
+    ],
+    [
+     "Formats",
+     "Dates, currency, numbers and addresses per locale."
+    ],
+    [
+     "Fonts and scripts",
+     "CJK, Devanagari and other scripts on real devices."
+    ],
+    [
+     "Local IPs",
+     "See region-specific content as served."
+    ],
+    [
+     "Visual comparison",
+     "Diff locales against a baseline with SmartUI."
+    ]
+   ],
+   "id": "caps",
+   "head": "Localization bugs these tests catch",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Localization Testing compared with reviewing translations in a spreadsheet",
+   "cols": [
+    "What matters",
+    "Reviewing translations in a spreadsheet",
+    "Localization testing on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Layout overflow",
+     "Not visible",
+     "Seen in the real UI"
+    ],
+    [
+     "RTL mirroring",
+     "Not visible",
+     "Checked on real browsers"
+    ],
+    [
+     "Regional content",
+     "Assumed",
+     "Loaded through local IPs"
+    ],
+    [
+     "Regression on each release",
+     "Repeat by hand",
+     "Automated suites"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Reviewing translations in staging vs on real browsers",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams shipping in many languages",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Geolocation Testing",
+     "body": "See your site from 170+ countries",
+     "href": "https://www.testmuai.com/geolocation-testing/"
+    },
+    {
+     "name": "SmartUI",
+     "body": "Visual regression testing",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Run live sessions on real browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Responsive Testing",
+     "body": "Check layouts at every breakpoint",
+     "href": "https://www.testmuai.com/responsive-test-online/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Geolocation and visual testing",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is localization testing?",
+     "a": "Localization testing checks that each language and regional version of a product shows correct translations, formats and layouts."
+    },
+    {
+     "q": "What should localization testing cover?",
+     "a": "Translations, text expansion, right-to-left layout, date, number and currency formats, fonts and regional content."
+    },
+    {
+     "q": "Can I automate localization testing?",
+     "a": "Yes. Set locale and geolocation capabilities in Selenium or Appium and run per-locale suites."
+    },
+    {
+     "q": "Is localization testing the same as geolocation testing?",
+     "a": "No. Localization covers language and formats; geolocation covers behaviour based on where the user is."
+    },
+    {
+     "q": "Is there a free plan?",
+     "a": "The free plan gives 1 parallel test with limited sessions each month."
+    }
+   ],
+   "id": "faq",
+   "head": "What breaks when a site changes language?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Check every language before launch"
+  }
+ ]
+}

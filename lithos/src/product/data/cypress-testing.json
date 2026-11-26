@@ -1,0 +1,396 @@
+{
+ "slug": "cypress-testing",
+ "title": "Cypress Testing Platform: Run on Every Browser Free | TestMu AI (Formerly LambdaTest)",
+ "description": "Run Cypress testing at scale on TestMu AI: Chrome, Edge, Firefox and Electron in parallel, with videos, logs and the same cypress.config you use today.",
+ "crumb": [
+  "TestMu AI",
+  "Cypress Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Cypress Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Cypress testing",
+  "h1b": "on every browser, in parallel.",
+  "lede": "Cypress testing on TestMu AI runs your existing Cypress specs on Chrome, Edge, Firefox and Electron in parallel. You install the TestMu AI Cypress CLI, keep your cypress.config, and every spec returns a video, command log and network data.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Front-end developers",
+   "SDETs",
+   "QA engineers",
+   "DevOps"
+  ],
+  "image": {
+   "src": "/kit/hero/cypress-testing/hero-bg.webp",
+   "alt": "Author Cypress tests with AI agents on TestMu AI"
+  },
+  "run": {
+   "title": "$ lambdatest-cypress run --parallels 10",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "cli",
+     "text": "42 specs split over 10 sessions",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "chrome",
+     "text": "checkout.cy.ts",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "firefox",
+     "text": "search.cy.ts",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "edge",
+     "text": "login.cy.ts",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · 42/42 specs",
+   "evid": "spec videos · command logs"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Cypress specs run on TestMu AI cloud browsers"
+    ],
+    [
+     "Browsers",
+     "Chrome, Edge, Firefox, Electron"
+    ],
+    [
+     "Setup",
+     "TestMu AI Cypress CLI plus your existing config"
+    ],
+    [
+     "Per spec",
+     "Video, command log, console and network"
+    ],
+    [
+     "Pricing",
+     "Free: 100 lifetime minutes, 2 parallel; Web Automation from $79/month"
+    ],
+    [
+     "Faster runs",
+     "HyperExecute runs Cypress suites up to 70% faster than a traditional grid"
+    ]
+   ],
+   "id": "glance",
+   "head": "Cypress versions, parallels and plans",
+   "body": [
+    "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Install the CLI",
+     "Add the TestMu AI Cypress CLI and generate the run config."
+    ],
+    [
+     "Run in parallel",
+     "Specs are spread across browsers and sessions."
+    ],
+    [
+     "Review each spec",
+     "Watch the video and command log for any failure."
+    ]
+   ],
+   "id": "how",
+   "head": "Install the CLI, add a config, run in parallel",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Keep your Cypress code",
+     "No rewrite; your specs and config run as they are."
+    ],
+    [
+     "Cross-browser Cypress",
+     "Chrome, Edge, Firefox and Electron versions."
+    ],
+    [
+     "Parallel specs",
+     "Split specs across sessions to cut run time."
+    ],
+    [
+     "Local apps",
+     "UnderPass tunnel tests localhost and staging."
+    ],
+    [
+     "CI pipelines",
+     "GitHub Actions, Jenkins, GitLab and CircleCI."
+    ],
+    [
+     "HyperExecute option",
+     "Move to HyperExecute for faster split execution."
+    ]
+   ],
+   "id": "caps",
+   "head": "What each Cypress run gives you",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Cypress Testing compared with local Cypress runs",
+   "cols": [
+    "What matters",
+    "Local Cypress runs",
+    "Cypress on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Browsers covered",
+     "Those installed on the machine",
+     "Chrome, Edge, Firefox, Electron versions"
+    ],
+    [
+     "42 specs in CI",
+     "Run one after another",
+     "Split across parallel sessions"
+    ],
+    [
+     "Failure evidence",
+     "Local video if enabled",
+     "Video and command log per spec"
+    ],
+    [
+     "Machine upkeep",
+     "CI runners you maintain",
+     "Hosted"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Cypress CLI",
+    "lang": "bash",
+    "code": "npm install -g lambdatest-cypress-cli\nlambdatest-cypress init\nlambdatest-cypress run --parallels 10",
+    "note": "Commands from the TestMu AI Cypress docs (CLI package keeps its LambdaTest name)."
+   },
+   "id": "cmp",
+   "head": "Cypress on one CI runner vs in parallel in the cloud",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Cypress teams that run in parallel",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Playwright Testing",
+     "body": "Playwright cloud",
+     "href": "https://www.testmuai.com/playwright-testing/"
+    },
+    {
+     "name": "Automation Cloud",
+     "body": "Scale automated suites without a grid",
+     "href": "https://www.testmuai.com/automation-cloud/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Orchestrate CI runs in parallel",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Run live sessions on real browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Local Page Testing",
+     "body": "Run Cypress against localhost",
+     "href": "https://www.testmuai.com/local-page-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "Agent skills (GitHub)",
+       "href": "https://github.com/LambdaTest/agent-skills"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Getting started with KaneAI",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-kane-ai/"
+      },
+      {
+       "label": "Getting started with HyperExecute",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/"
+      },
+      {
+       "label": "Running your first Selenium test",
+       "href": "https://www.testmuai.com/support/docs/testmu-running-your-first-selenium-test/"
+      },
+      {
+       "label": "Playwright testing",
+       "href": "https://www.testmuai.com/support/docs/playwright-testing/"
+      },
+      {
+       "label": "Puppeteer testing",
+       "href": "https://www.testmuai.com/support/docs/puppeteer-testing/"
+      },
+      {
+       "label": "Getting started with Cypress testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-cypress-testing/"
+      },
+      {
+       "label": "Getting started with Appium testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-appium-testing/"
+      },
+      {
+       "label": "Getting started with Espresso testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-espresso-testing/"
+      },
+      {
+       "label": "Getting started with XCUITest",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-xcuitest/"
+      },
+      {
+       "label": "Selenium with JavaScript: Jest",
+       "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=jest"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "City Furniture case study",
+       "href": "https://www.testmuai.com/customers/city-furniture/"
+      }
+     ]
+    },
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    },
+    {
+     "group": "Pricing",
+     "links": [
+      {
+       "label": "Web automation pricing plans",
+       "href": "https://www.testmuai.com/pricing/?product=web-automation-group"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Playwright, Selenium and Puppeteer on the same cloud",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "How do I run Cypress tests on TestMu AI?",
+     "a": "Install the TestMu AI Cypress CLI, run init to create the config, add your credentials and run with the parallels you need."
+    },
+    {
+     "q": "Which browsers support Cypress testing on TestMu AI?",
+     "a": "Chrome, Edge, Firefox and Electron, in multiple versions."
+    },
+    {
+     "q": "Can I run Cypress tests in parallel?",
+     "a": "Yes. Specs are split across parallel sessions; the number depends on your plan."
+    },
+    {
+     "q": "Is there a free plan?",
+     "a": "Yes. The automation free plan gives 100 lifetime minutes with 2 parallel sessions."
+    },
+    {
+     "q": "Is this the same as Cypress Cloud?",
+     "a": "No. Cypress Cloud is Cypress's own dashboard service. TestMu AI runs your specs on its browser grid and records the results."
+    }
+   ],
+   "id": "faq",
+   "head": "Running Cypress at scale: your questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Run your Cypress specs in parallel"
+  }
+ ]
+}

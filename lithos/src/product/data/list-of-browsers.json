@@ -1,0 +1,1013 @@
+{
+ "slug": "list-of-browsers",
+ "title": "List of Browsers Supported by TestMu AI (Formerly LambdaTest) for Cross Browser Testing",
+ "description": "The full list of browsers to test on TestMu AI: Chrome, Firefox, Edge, Safari, Opera and Internet Explorer versions on every Windows and macOS release.",
+ "crumb": [
+  "TestMu AI",
+  "List of Browsers"
+ ],
+ "hero": {
+  "eyebrow": [
+   "List of Browsers",
+   "Updated November 2026"
+  ],
+  "h1a": "List of browsers",
+  "h1b": "for live and automated testing.",
+  "lede": "This is the list of browsers available on TestMu AI for live and automated testing: Chrome, Firefox, Edge, Safari, Opera and Internet Explorer, by version, on Windows 11 back to XP and macOS Sequoia back to Lion. Every entry is a real browser on a real machine.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA testers",
+   "Web developers",
+   "SDETs",
+   "Compliance teams"
+  ],
+  "image": null,
+  "run": {
+   "title": "browser list · filter",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "Windows 11",
+     "text": "Chrome 37–159",
+     "st": null
+    },
+    {
+     "who": "Windows 11",
+     "text": "Firefox 32–161",
+     "st": null
+    },
+    {
+     "who": "macOS Sequoia",
+     "text": "Safari 18",
+     "st": null
+    },
+    {
+     "who": "Windows XP",
+     "text": "IE 7–8",
+     "st": null
+    }
+   ],
+   "diff": [],
+   "verdict": "97 OS × BROWSER ROWS",
+   "evid": "live list · updated with each release"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "Browsers",
+     "Chrome, Firefox, Edge, Safari, Opera, Internet Explorer"
+    ],
+    [
+     "Windows",
+     "Windows 11, 10, 8.1, 8, 7, XP"
+    ],
+    [
+     "macOS",
+     "Sequoia back to Lion"
+    ],
+    [
+     "Newest",
+     "Chrome 159, Firefox 161, Edge 159 on Windows 11"
+    ],
+    [
+     "Oldest",
+     "IE 7 and Chrome 15 on Windows XP"
+    ],
+    [
+     "Pricing",
+     "Free plan: 1 parallel test, monthly live sessions; Virtual Live from $15/month"
+    ]
+   ],
+   "id": "glance",
+   "head": "The browser list in numbers",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Find your browser",
+     "Scan the table by operating system and browser."
+    ],
+    [
+     "Open it live",
+     "Start a live session on that exact version."
+    ],
+    [
+     "Or automate",
+     "Use the same names in Selenium, Playwright or Cypress capabilities."
+    ]
+   ],
+   "id": "how",
+   "head": "Find a browser, then open it",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real browsers only",
+     "No emulated rendering in this list."
+    ],
+    [
+     "Legacy coverage",
+     "Old versions for long-tail and enterprise users."
+    ],
+    [
+     "Same list for automation",
+     "Capabilities use these browser and OS names."
+    ],
+    [
+     "Mobile browsers too",
+     "Chrome and Safari on 50,000+ real devices; see the device list."
+    ],
+    [
+     "Bug logging",
+     "Annotated screenshots to Jira, Slack and GitHub from any session."
+    ],
+    [
+     "Updated on release",
+     "New stable versions are added as they ship."
+    ]
+   ],
+   "id": "caps",
+   "head": "What you can do with any browser on the list",
+   "body": []
+  },
+  {
+   "type": "groups",
+   "groups": [
+    {
+     "name": "Windows 11",
+     "count": "(4 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "Windows 11",
+       "Chrome",
+       "159–83, 81–37"
+      ],
+      [
+       "Windows 11",
+       "Firefox",
+       "161–32"
+      ],
+      [
+       "Windows 11",
+       "Edge",
+       "159–83, 81–79"
+      ],
+      [
+       "Windows 11",
+       "Opera",
+       "110–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "Windows 10",
+     "count": "(6 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "Windows 10",
+       "Chrome",
+       "159–83, 81–37"
+      ],
+      [
+       "Windows 10",
+       "Firefox",
+       "161–32"
+      ],
+      [
+       "Windows 10",
+       "Edge",
+       "159–83, 81–79, 18–15"
+      ],
+      [
+       "Windows 10",
+       "Safari",
+       "5.1"
+      ],
+      [
+       "Windows 10",
+       "Internet Explorer",
+       "11"
+      ],
+      [
+       "Windows 10",
+       "Opera",
+       "110–62, 60, 58–23"
+      ]
+     ]
+    },
+    {
+     "name": "Windows 8.1",
+     "count": "(6 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "Windows 8.1",
+       "Chrome",
+       "109–83, 81–22"
+      ],
+      [
+       "Windows 8.1",
+       "Firefox",
+       "115–16"
+      ],
+      [
+       "Windows 8.1",
+       "Edge",
+       "109–83, 81–79"
+      ],
+      [
+       "Windows 8.1",
+       "Safari",
+       "5.1"
+      ],
+      [
+       "Windows 8.1",
+       "Internet Explorer",
+       "11"
+      ],
+      [
+       "Windows 8.1",
+       "Opera",
+       "95–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "Windows 8",
+     "count": "(6 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "Windows 8",
+       "Chrome",
+       "109–83, 81–22"
+      ],
+      [
+       "Windows 8",
+       "Firefox",
+       "115–16"
+      ],
+      [
+       "Windows 8",
+       "Edge",
+       "109–83, 81–79"
+      ],
+      [
+       "Windows 8",
+       "Safari",
+       "5.1"
+      ],
+      [
+       "Windows 8",
+       "Internet Explorer",
+       "10"
+      ],
+      [
+       "Windows 8",
+       "Opera",
+       "95–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "Windows 7",
+     "count": "(6 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "Windows 7",
+       "Chrome",
+       "109–83, 81–15"
+      ],
+      [
+       "Windows 7",
+       "Firefox",
+       "115–10"
+      ],
+      [
+       "Windows 7",
+       "Edge",
+       "109–83, 81–79"
+      ],
+      [
+       "Windows 7",
+       "Safari",
+       "5.1"
+      ],
+      [
+       "Windows 7",
+       "Internet Explorer",
+       "11–8"
+      ],
+      [
+       "Windows 7",
+       "Opera",
+       "95–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "Windows XP",
+     "count": "(4 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "Windows XP",
+       "Chrome",
+       "49–15"
+      ],
+      [
+       "Windows XP",
+       "Firefox",
+       "52–10"
+      ],
+      [
+       "Windows XP",
+       "Internet Explorer",
+       "8–7"
+      ],
+      [
+       "Windows XP",
+       "Opera",
+       "36–20"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Sequoia",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Sequoia",
+       "Chrome",
+       "159–86"
+      ],
+      [
+       "macOS Sequoia",
+       "Firefox",
+       "161–86"
+      ],
+      [
+       "macOS Sequoia",
+       "Edge",
+       "159–86"
+      ],
+      [
+       "macOS Sequoia",
+       "Safari",
+       "18"
+      ],
+      [
+       "macOS Sequoia",
+       "Opera",
+       "110–70"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Sonoma",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Sonoma",
+       "Chrome",
+       "159–87"
+      ],
+      [
+       "macOS Sonoma",
+       "Firefox",
+       "161–86"
+      ],
+      [
+       "macOS Sonoma",
+       "Edge",
+       "159–86"
+      ],
+      [
+       "macOS Sonoma",
+       "Safari",
+       "17"
+      ],
+      [
+       "macOS Sonoma",
+       "Opera",
+       "110–70"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Ventura",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Ventura",
+       "Chrome",
+       "159–83, 81–61"
+      ],
+      [
+       "macOS Ventura",
+       "Firefox",
+       "161–71"
+      ],
+      [
+       "macOS Ventura",
+       "Edge",
+       "159–83, 81–79"
+      ],
+      [
+       "macOS Ventura",
+       "Safari",
+       "16"
+      ],
+      [
+       "macOS Ventura",
+       "Opera",
+       "110–62, 60, 58–26"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Monterey",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Monterey",
+       "Chrome",
+       "159–83, 81–39"
+      ],
+      [
+       "macOS Monterey",
+       "Firefox",
+       "161–71"
+      ],
+      [
+       "macOS Monterey",
+       "Edge",
+       "159–83, 81–79"
+      ],
+      [
+       "macOS Monterey",
+       "Safari",
+       "15"
+      ],
+      [
+       "macOS Monterey",
+       "Opera",
+       "110–62, 60, 58–26"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Big Sur",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Big Sur",
+       "Chrome",
+       "138–83, 81–39"
+      ],
+      [
+       "macOS Big Sur",
+       "Firefox",
+       "161–71"
+      ],
+      [
+       "macOS Big Sur",
+       "Edge",
+       "138–83, 81–79"
+      ],
+      [
+       "macOS Big Sur",
+       "Safari",
+       "14"
+      ],
+      [
+       "macOS Big Sur",
+       "Opera",
+       "110–62, 60, 58–26"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Catalina",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Catalina",
+       "Chrome",
+       "128–83, 81–39"
+      ],
+      [
+       "macOS Catalina",
+       "Firefox",
+       "161–11"
+      ],
+      [
+       "macOS Catalina",
+       "Edge",
+       "128–83, 81–79"
+      ],
+      [
+       "macOS Catalina",
+       "Safari",
+       "13"
+      ],
+      [
+       "macOS Catalina",
+       "Opera",
+       "110–62, 60, 58–26"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Mojave",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Mojave",
+       "Chrome",
+       "116–83, 81–27"
+      ],
+      [
+       "macOS Mojave",
+       "Firefox",
+       "115–11"
+      ],
+      [
+       "macOS Mojave",
+       "Edge",
+       "116–83, 81–79"
+      ],
+      [
+       "macOS Mojave",
+       "Safari",
+       "12"
+      ],
+      [
+       "macOS Mojave",
+       "Opera",
+       "102–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "macOS High Sierra",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS High Sierra",
+       "Chrome",
+       "116–83, 81–27"
+      ],
+      [
+       "macOS High Sierra",
+       "Firefox",
+       "115–11"
+      ],
+      [
+       "macOS High Sierra",
+       "Edge",
+       "116–83, 81–79"
+      ],
+      [
+       "macOS High Sierra",
+       "Safari",
+       "11"
+      ],
+      [
+       "macOS High Sierra",
+       "Opera",
+       "102–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Sierra",
+     "count": "(5 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Sierra",
+       "Chrome",
+       "103–83, 81–27"
+      ],
+      [
+       "macOS Sierra",
+       "Firefox",
+       "115–11"
+      ],
+      [
+       "macOS Sierra",
+       "Edge",
+       "103–83, 81–79"
+      ],
+      [
+       "macOS Sierra",
+       "Safari",
+       "10.1"
+      ],
+      [
+       "macOS Sierra",
+       "Opera",
+       "89–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "macOS El Capitan",
+     "count": "(4 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS El Capitan",
+       "Chrome",
+       "103–83, 81–16"
+      ],
+      [
+       "macOS El Capitan",
+       "Firefox",
+       "78–10"
+      ],
+      [
+       "macOS El Capitan",
+       "Safari",
+       "11, 10.1, 10, 9.1, 9"
+      ],
+      [
+       "macOS El Capitan",
+       "Opera",
+       "85–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Yosemite",
+     "count": "(4 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Yosemite",
+       "Chrome",
+       "88–83, 81–16"
+      ],
+      [
+       "macOS Yosemite",
+       "Firefox",
+       "78–10"
+      ],
+      [
+       "macOS Yosemite",
+       "Safari",
+       "8"
+      ],
+      [
+       "macOS Yosemite",
+       "Opera",
+       "63–62, 60, 58–20"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Mavericks",
+     "count": "(4 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Mavericks",
+       "Chrome",
+       "64–16"
+      ],
+      [
+       "macOS Mavericks",
+       "Firefox",
+       "58–10"
+      ],
+      [
+       "macOS Mavericks",
+       "Safari",
+       "7"
+      ],
+      [
+       "macOS Mavericks",
+       "Opera",
+       "49–20"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Mountain Lion",
+     "count": "(4 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Mountain Lion",
+       "Chrome",
+       "48–16"
+      ],
+      [
+       "macOS Mountain Lion",
+       "Firefox",
+       "48–10"
+      ],
+      [
+       "macOS Mountain Lion",
+       "Safari",
+       "6"
+      ],
+      [
+       "macOS Mountain Lion",
+       "Opera",
+       "37–20"
+      ]
+     ]
+    },
+    {
+     "name": "macOS Lion",
+     "count": "(4 browsers)",
+     "cols": [
+      "Operating system",
+      "Browser",
+      "Versions"
+     ],
+     "rows": [
+      [
+       "macOS Lion",
+       "Chrome",
+       "48–16"
+      ],
+      [
+       "macOS Lion",
+       "Firefox",
+       "48–10"
+      ],
+      [
+       "macOS Lion",
+       "Safari",
+       "5.1"
+      ],
+      [
+       "macOS Lion",
+       "Opera",
+       "37–20"
+      ]
+     ]
+    }
+   ],
+   "src": "Copied from the live list of browsers on 2026-11-26. Ranges are inclusive; Chrome 82 and Opera 61 do not exist.",
+   "id": "data0",
+   "head": "Every browser and version by operating system",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "List of Browsers compared with local browser installs",
+   "cols": [
+    "What matters",
+    "Local browser installs",
+    "TestMu AI browser list"
+   ],
+   "rows": [
+    [
+     "Versions available",
+     "One per install",
+     "Every version in the table"
+    ],
+    [
+     "Windows XP and 7",
+     "Old hardware",
+     "Available"
+    ],
+    [
+     "Safari on Windows",
+     "Safari 5.1 only",
+     "Real Safari on Macs"
+    ],
+    [
+     "Upkeep",
+     "Manual updates",
+     "Hosted"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Testing on the browsers you own vs the full list",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams covering every browser",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Cross Browser Testing",
+     "body": "Test on 3,000+ real desktop and mobile browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "List of Real Devices",
+     "body": "Every phone and tablet you can test on",
+     "href": "https://www.testmuai.com/list-of-real-devices/"
+    },
+    {
+     "name": "Chrome Browser Testing",
+     "body": "Real Chrome online",
+     "href": "https://www.testmuai.com/test-on-chrome-browsers/"
+    },
+    {
+     "name": "Selenium Automation",
+     "body": "Automate on these browsers",
+     "href": "https://www.testmuai.com/selenium-automation/"
+    },
+    {
+     "name": "Internet Explorer Testing",
+     "body": "Internet Explorer versions online",
+     "href": "https://www.testmuai.com/test-on-internet-explorer-browsers/"
+    },
+    {
+     "name": "macOS Browser Testing",
+     "body": "MacOS browsers online",
+     "href": "https://www.testmuai.com/test-on-macos-browsers/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Devices and operating systems to add",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "Which browsers can I test on TestMu AI?",
+     "a": "Chrome, Firefox, Edge, Safari, Opera and Internet Explorer, in the versions listed for each Windows and macOS release."
+    },
+    {
+     "q": "What is the newest Chrome version available?",
+     "a": "Chrome 159 on Windows 11, Windows 10, macOS Sequoia, macOS Sonoma, macOS Ventura and macOS Monterey."
+    },
+    {
+     "q": "Can I test Internet Explorer?",
+     "a": "Yes: IE 11 on Windows 10, 8.1 and 7, IE 10 on Windows 8, and IE 7 and 8 on XP."
+    },
+    {
+     "q": "Are these real browsers?",
+     "a": "Yes. Each entry is the real browser running on a real machine."
+    },
+    {
+     "q": "Do the same browsers work for automation?",
+     "a": "Yes. Selenium, Playwright and Cypress capabilities use the same browser and OS names."
+    }
+   ],
+   "id": "faq",
+   "head": "Is my browser on the list? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Pick a browser and start testing"
+  }
+ ]
+}

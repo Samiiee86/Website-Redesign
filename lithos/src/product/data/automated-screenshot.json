@@ -1,0 +1,304 @@
+{
+ "slug": "automated-screenshot",
+ "title": "Automated Browser Screenshot Testing | TestMu AI",
+ "description": "Screenshot testing on TestMu AI: capture full-page screenshots of any URL across desktop browsers and real devices at once, on a schedule or via API.",
+ "crumb": [
+  "TestMu AI",
+  "Automated Screenshots"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Automated Screenshots",
+   "Updated November 2026"
+  ],
+  "h1a": "Screenshot testing",
+  "h1b": "across browsers and devices, at once.",
+  "lede": "Screenshot testing on TestMu AI captures full-page screenshots of a URL across many desktop browsers and real devices in one run. Schedule captures, call them from an API, and compare the results to spot layout differences before release.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA testers",
+   "Front-end developers",
+   "Designers",
+   "Marketing teams"
+  ],
+  "image": {
+   "src": "/kit/hero/automated-screenshot/hero-bg.png",
+   "alt": "Automated screenshots across browsers on TestMu AI"
+  },
+  "run": {
+   "title": "screenshots · /landing",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "Chrome 159",
+     "text": "Windows 11 · full page",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Safari 18",
+     "text": "macOS Sequoia",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "iPhone 18 Pro",
+     "text": "Safari · iOS 27",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Edge 109",
+     "text": "Windows 7 · banner clipped",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "24 SCREENSHOTS · 1 ISSUE",
+   "evid": "full-page PNGs · zip download"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Bulk full-page screenshots across browsers and devices"
+    ],
+    [
+     "One run",
+     "Many browser, OS and device combinations together"
+    ],
+    [
+     "Scheduling",
+     "Automated screenshot scheduler"
+    ],
+    [
+     "API",
+     "Screenshot API for CI and scripts"
+    ],
+    [
+     "Pricing",
+     "Free plan: 1 parallel test, monthly live sessions; Virtual Live from $15/month"
+    ],
+    [
+     "Visual regression",
+     "Compare runs automatically with SmartUI"
+    ]
+   ],
+   "id": "glance",
+   "head": "Screenshot runs: browsers, formats and limits",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Enter a URL",
+     "Add one or more pages to capture."
+    ],
+    [
+     "Pick combinations",
+     "Select browsers, OS versions and devices."
+    ],
+    [
+     "Review or schedule",
+     "Compare screenshots now, or schedule them daily or via API."
+    ]
+   ],
+   "id": "how",
+   "head": "One URL, many browsers, one screenshot set",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Full-page captures",
+     "Whole page, not just the viewport."
+    ],
+    [
+     "Desktop and mobile",
+     "Browsers on Windows and macOS plus real devices."
+    ],
+    [
+     "Scheduler",
+     "Capture on a schedule to watch live pages."
+    ],
+    [
+     "Screenshot API",
+     "Trigger captures from CI or scripts."
+    ],
+    [
+     "Local pages",
+     "UnderPass tunnel for staging and localhost."
+    ],
+    [
+     "Diffing with SmartUI",
+     "Turn screenshots into visual regression tests."
+    ]
+   ],
+   "id": "caps",
+   "head": "What a screenshot run gives you",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Automated Screenshots compared with manual screenshots",
+   "cols": [
+    "What matters",
+    "Manual screenshots",
+    "Screenshot testing on TestMu AI"
+   ],
+   "rows": [
+    [
+     "24 browser and device captures",
+     "One at a time",
+     "One run"
+    ],
+    [
+     "Full-page capture",
+     "Stitch by hand",
+     "Built in"
+    ],
+    [
+     "Repeat daily",
+     "Set a reminder",
+     "Scheduler or API"
+    ],
+    [
+     "Spotting differences",
+     "Eyeballing",
+     "SmartUI diff"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Taking screenshots by hand vs an automated run",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams reviewing layouts at scale",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "SmartUI",
+     "body": "Visual regression testing",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "Responsive Testing",
+     "body": "Check layouts at every breakpoint",
+     "href": "https://www.testmuai.com/responsive-test-online/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Test on 3,000+ real desktop and mobile browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Visual AI Testing",
+     "body": "AI visual testing",
+     "href": "https://www.testmuai.com/visual-ai-testing/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Turn screenshots into visual tests",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is screenshot testing?",
+     "a": "Screenshot testing captures how a page renders across browsers and devices so you can compare them for visual and layout problems."
+    },
+    {
+     "q": "Can I capture full-page screenshots?",
+     "a": "Yes. Captures cover the whole page, not only the visible viewport."
+    },
+    {
+     "q": "Can I automate screenshots?",
+     "a": "Yes, with the scheduler or the screenshot API from CI."
+    },
+    {
+     "q": "How do I compare screenshots over time?",
+     "a": "Use SmartUI to diff each run against a baseline and flag changes."
+    },
+    {
+     "q": "Is there a free option?",
+     "a": "The free plan gives 1 parallel test with limited sessions each month; SmartUI's free plan gives 2,000 screenshots for lifetime."
+    }
+   ],
+   "id": "faq",
+   "head": "What a screenshot test can and cannot tell you",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Capture your site across browsers"
+  }
+ ]
+}

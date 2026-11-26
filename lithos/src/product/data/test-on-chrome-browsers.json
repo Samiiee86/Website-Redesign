@@ -1,0 +1,445 @@
+{
+ "slug": "test-on-chrome-browsers",
+ "title": "Test on Chrome Browser Online (v15-150+) | TestMu AI",
+ "description": "Looking for a Chrome emulator? Test websites on real Chrome browsers online instead: versions 15 to 159 on real Windows and macOS machines, with DevTools.",
+ "crumb": [
+  "TestMu AI",
+  "Chrome Browser Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Chrome Browser Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "A Chrome emulator, but real:",
+  "h1b": "test on Chrome browsers online.",
+  "lede": "A Chrome emulator imitates Chrome; TestMu AI gives you real Chrome browsers online instead. Open any Chrome version from 15 to 159 on real Windows and macOS machines, with full DevTools and extensions, and test your site live or with automation.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Web developers",
+   "QA testers",
+   "Designers",
+   "Support engineers"
+  ],
+  "image": {
+   "src": "/kit/hero/test-on-chrome-browsers/hero-bg.webp",
+   "alt": "Test on Chrome Browser Online"
+  },
+  "run": {
+   "title": "live · chrome versions",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "Chrome 159",
+     "text": "Windows 11 · layout OK",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Chrome 120",
+     "text": "Windows 10 · layout OK",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Chrome 109",
+     "text": "Windows 7 · grid gap missing",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "Chrome 159",
+     "text": "macOS Sequoia · OK",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · old Chrome",
+   "evid": "screenshots · DevTools console"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Real Chrome browsers online, not an emulator"
+    ],
+    [
+     "Versions",
+     "Chrome 15 to 159 (Windows 10 and 11: 37 to 159)"
+    ],
+    [
+     "Operating systems",
+     "Windows 11 to XP; macOS Sequoia to Lion"
+    ],
+    [
+     "Tools",
+     "Native Chrome DevTools and extensions"
+    ],
+    [
+     "Pricing",
+     "Free plan: 1 parallel test, monthly live sessions; Virtual Live from $15/month"
+    ],
+    [
+     "Start",
+     "Pick a version, enter your URL"
+    ]
+   ],
+   "id": "glance",
+   "head": "Chrome versions you can open",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Pick a Chrome version",
+     "Choose the version and operating system."
+    ],
+    [
+     "Open your URL",
+     "The real browser loads your site in seconds; use DevTools as normal."
+    ],
+    [
+     "Log and share bugs",
+     "Capture screenshots and file to Jira, Slack or GitHub from the session."
+    ]
+   ],
+   "id": "how",
+   "head": "Pick a Chrome version and start testing",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real Chromium and Blink",
+     "Rendering matches what users see in that version."
+    ],
+    [
+     "Old and new versions",
+     "Check Chrome 109 on Windows 7 next to Chrome 159."
+    ],
+    [
+     "Full DevTools",
+     "Inspect, debug and profile as on your own machine."
+    ],
+    [
+     "Local and staging",
+     "UnderPass tunnel opens localhost in real Chrome."
+    ],
+    [
+     "Automate the same browsers",
+     "Run Selenium, Playwright or Puppeteer on Chrome versions."
+    ],
+    [
+     "Bug logging",
+     "Annotated screenshots to Jira, Slack and GitHub."
+    ]
+   ],
+   "id": "caps",
+   "head": "Chrome testing you can do from here",
+   "body": []
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Operating system",
+    "Browser",
+    "Versions"
+   ],
+   "rows": [
+    [
+     "Windows 11",
+     "Chrome",
+     "159–83, 81–37"
+    ],
+    [
+     "Windows 10",
+     "Chrome",
+     "159–83, 81–37"
+    ],
+    [
+     "Windows 8.1",
+     "Chrome",
+     "109–83, 81–22"
+    ],
+    [
+     "Windows 8",
+     "Chrome",
+     "109–83, 81–22"
+    ],
+    [
+     "Windows 7",
+     "Chrome",
+     "109–83, 81–15"
+    ],
+    [
+     "Windows XP",
+     "Chrome",
+     "49–15"
+    ],
+    [
+     "macOS Sequoia",
+     "Chrome",
+     "159–86"
+    ],
+    [
+     "macOS Sonoma",
+     "Chrome",
+     "159–87"
+    ],
+    [
+     "macOS Ventura",
+     "Chrome",
+     "159–83, 81–61"
+    ],
+    [
+     "macOS Monterey",
+     "Chrome",
+     "159–83, 81–39"
+    ],
+    [
+     "macOS Big Sur",
+     "Chrome",
+     "138–83, 81–39"
+    ],
+    [
+     "macOS Catalina",
+     "Chrome",
+     "128–83, 81–39"
+    ],
+    [
+     "macOS Mojave",
+     "Chrome",
+     "116–83, 81–27"
+    ],
+    [
+     "macOS High Sierra",
+     "Chrome",
+     "116–83, 81–27"
+    ],
+    [
+     "macOS Sierra",
+     "Chrome",
+     "103–83, 81–27"
+    ],
+    [
+     "macOS El Capitan",
+     "Chrome",
+     "103–83, 81–16"
+    ],
+    [
+     "macOS Yosemite",
+     "Chrome",
+     "88–83, 81–16"
+    ],
+    [
+     "macOS Mavericks",
+     "Chrome",
+     "64–16"
+    ],
+    [
+     "macOS Mountain Lion",
+     "Chrome",
+     "48–16"
+    ],
+    [
+     "macOS Lion",
+     "Chrome",
+     "48–16"
+    ]
+   ],
+   "src": "From the live browser list, 2026-11-21.",
+   "id": "data0",
+   "head": "Chrome versions by operating system",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Chrome Browser Testing compared with emulators, simulators or a local install",
+   "cols": [
+    "What matters",
+    "Emulators, simulators or a local install",
+    "Real Chrome on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Rendering engine",
+     "Imitated or approximated",
+     "Real Chromium/Blink"
+    ],
+    [
+     "Version accuracy",
+     "Partial to low",
+     "Exact (v15–latest)"
+    ],
+    [
+     "Extensions and DevTools",
+     "Limited or none",
+     "Full, native"
+    ],
+    [
+     "Chrome 109 and 159 together",
+     "Separate machines or VMs",
+     "Two tabs"
+    ],
+    [
+     "Chrome on Windows 7",
+     "Keep an old PC",
+     "Pick it from the list"
+    ],
+    [
+     "Sharing a bug",
+     "Screenshot by hand",
+     "Logged to Jira or Slack from the session"
+    ]
+   ],
+   "notes": [
+    "The emulator rows summarise the emulator vs real Chrome comparison on the live page (2026-11-21)."
+   ],
+   "code": null,
+   "id": "cmp",
+   "head": "Emulators and local installs vs real Chrome",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams testing on real Chrome",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Cross Browser Testing",
+     "body": "Test on 3,000+ real desktop and mobile browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "List of Browsers",
+     "body": "Every browser version",
+     "href": "https://www.testmuai.com/list-of-browsers/"
+    },
+    {
+     "name": "Browser Emulator Online",
+     "body": "Open real browsers from your browser",
+     "href": "https://www.testmuai.com/browser-emulator-online/"
+    },
+    {
+     "name": "macOS Browser Testing",
+     "body": "MacOS browsers",
+     "href": "https://www.testmuai.com/test-on-macos-browsers/"
+    },
+    {
+     "name": "Puppeteer Testing",
+     "body": "Automate Chrome with Puppeteer",
+     "href": "https://www.testmuai.com/puppeteer-testing/"
+    },
+    {
+     "name": "Internet Explorer Testing",
+     "body": "Internet Explorer online",
+     "href": "https://www.testmuai.com/test-on-internet-explorer-browsers/"
+    },
+    {
+     "name": "LT Debug",
+     "body": "Debug web pages from a browser extension",
+     "href": "https://www.testmuai.com/lt-debug/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Other browsers to test on",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "Is there a real Chrome emulator online?",
+     "a": "Emulators imitate Chrome. TestMu AI runs real Chrome browsers online, so rendering, DevTools and extensions match the real version."
+    },
+    {
+     "q": "Which Chrome versions can I test?",
+     "a": "Chrome 15 to 159 depending on the operating system; Windows 10 and 11 cover 37 to 159."
+    },
+    {
+     "q": "Can I test old Chrome on Windows 7?",
+     "a": "Yes. Windows 7 offers Chrome 15 to 109."
+    },
+    {
+     "q": "Is it free?",
+     "a": "The free plan gives 1 parallel test with limited live sessions renewed every month."
+    },
+    {
+     "q": "Can I automate Chrome tests too?",
+     "a": "Yes. Selenium, Playwright and Puppeteer run on the same Chrome versions."
+    }
+   ],
+   "id": "faq",
+   "head": "Is a Chrome emulator enough? Your questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Open any Chrome version now"
+  }
+ ]
+}

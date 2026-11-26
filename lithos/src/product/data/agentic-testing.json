@@ -1,0 +1,309 @@
+{
+ "slug": "agentic-testing",
+ "title": "What Is Agentic Testing? Definition and Platform | TestMu AI",
+ "description": "Agentic testing is when an AI agent plans, writes, runs and repairs tests toward a goal you set. See how it differs from scripted and AI-assisted testing.",
+ "crumb": [
+  "TestMu AI",
+  "Agentic Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Agentic Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "What is agentic testing?",
+  "h1b": "AI agents that plan, run and repair tests.",
+  "lede": "Agentic testing is software testing where an AI agent works toward a goal you set: it plans the checks, writes the steps, runs them and repairs them when the app changes. On TestMu AI, KaneAI is the agent and every run ends in a pass or fail with screenshots and logs.",
+  "ctas": [
+   {
+    "label": "See KaneAI",
+    "href": "https://www.testmuai.com/kane-ai/",
+    "primary": true
+   },
+   {
+    "label": "Try Kane CLI",
+    "href": "https://www.testmuai.com/kane-cli/",
+    "primary": false
+   }
+  ],
+  "note": "KaneAI plans from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA leads",
+   "SDETs",
+   "Engineering managers",
+   "Product managers"
+  ],
+  "image": {
+   "src": "/kit/hero/agentic-testing/hero-bg.svg",
+   "alt": "KaneAI agentic test authoring"
+  },
+  "run": {
+   "title": "goal · ship checkout v2",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "Plan",
+     "text": "4 checks derived from ticket QA-901",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "Author",
+     "text": "steps written in plain English",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "Run",
+     "text": "Chrome · Safari · Galaxy S26",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Repair",
+     "text": "1 moved button re-found",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · 4/4 checks",
+   "evid": "run evidence · screenshots, network, console"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "",
+   "facts": [
+    [
+     "Definition",
+     "Testing driven by an AI agent that plans, authors, runs and maintains tests from a goal"
+    ],
+    [
+     "How it differs",
+     "Scripted testing follows fixed code; AI-assisted testing suggests steps; agentic testing completes the loop"
+    ],
+    [
+     "Agent on TestMu AI",
+     "KaneAI (web and mobile), Kane CLI (terminal and coding agents)"
+    ],
+    [
+     "Where tests run",
+     "3,000+ browsers and 50,000+ real devices on TestMu AI"
+    ],
+    [
+     "Verdict",
+     "Pass or fail is checked against the acceptance criteria you write"
+    ],
+    [
+     "Start",
+     "Book a demo or try Kane CLI with 10,000 free credits"
+    ]
+   ],
+   "id": "glance",
+   "head": "Agentic testing, defined",
+   "body": []
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Set the goal",
+     "Describe what must be true for a release, or point the agent at a Jira ticket."
+    ],
+    [
+     "The agent plans and runs",
+     "The agent breaks the goal into checks, writes the steps and runs them on real browsers and devices."
+    ],
+    [
+     "Repair, then report",
+     "When the UI moves, the agent re-finds the element. A wrong value is reported as a bug for you to review."
+    ]
+   ],
+   "id": "how",
+   "head": "Where to start with agentic testing",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Goal in, checks out",
+     "One instruction becomes a set of test cases with steps and assertions you can read."
+    ],
+    [
+     "Healing on the path only",
+     "The agent fixes how it reaches an element. Your acceptance criteria stay as you wrote them."
+    ],
+    [
+     "Web, mobile and API",
+     "One agent covers browser flows, native apps and API calls."
+    ],
+    [
+     "Runs on real infrastructure",
+     "Tests execute on TestMu AI browsers and real devices in parallel."
+    ],
+    [
+     "Evidence per run",
+     "Every run keeps screenshots, network and console logs for review."
+    ],
+    [
+     "Fits your stack",
+     "Triggers from Jira, GitHub Actions and Jenkins; bugs file back automatically."
+    ]
+   ],
+   "id": "caps",
+   "head": "What agentic testing covers",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Agentic Testing compared with scripted automation",
+   "cols": [
+    "What matters",
+    "Scripted automation",
+    "Agentic testing"
+   ],
+   "rows": [
+    [
+     "Who writes the steps",
+     "An engineer, in code",
+     "The agent, from your goal; you review"
+    ],
+    [
+     "After a UI change",
+     "Locator fails and the build turns red",
+     "The agent re-finds the element and reruns"
+    ],
+    [
+     "Who decides pass or fail",
+     "Assertions in code",
+     "Your acceptance criteria"
+    ],
+    [
+     "Test data and specs",
+     "Copied into code",
+     "Read from tickets, PDFs and recordings"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Scripted automation vs agentic testing",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "TestMu AI Agents",
+     "body": "An agent for each stage of QA",
+     "href": "https://www.testmuai.com/agents/"
+    },
+    {
+     "name": "AI Testing",
+     "body": "How to test software with AI and test AI itself",
+     "href": "https://www.testmuai.com/ai-testing/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Plain-English test authoring for every flow",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Kane CLI for coding agents",
+     "body": "Agentic testing inside coding agents",
+     "href": "https://www.testmuai.com/kane-cli/agents/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "GitHub pull-request comment",
+       "href": "https://www.testmuai.com/support/docs/github-app-integration/"
+      },
+      {
+       "label": "Auto-Heal",
+       "href": "https://www.testmuai.com/support/docs/kaneai-auto-heal/"
+      },
+      {
+       "label": "KaneAI CI/CD guide",
+       "href": "https://www.testmuai.com/support/docs/kaneai-ci-cd-automation/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "Fintech KaneAI case study",
+       "href": "https://www.testmuai.com/customers/fintech-kaneai/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Agents for each part of QA",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is agentic testing?",
+     "a": "Agentic testing is testing driven by an AI agent that plans, writes, runs and repairs tests toward a goal you set, then reports a pass or fail with evidence."
+    },
+    {
+     "q": "How is agentic testing different from AI-assisted testing?",
+     "a": "AI-assisted tools suggest steps or locators while a person drives. In agentic testing the agent completes the loop: plan, author, run and repair."
+    },
+    {
+     "q": "Is the verdict repeatable?",
+     "a": "Yes: pass or fail is checked against the acceptance criteria you wrote."
+    },
+    {
+     "q": "Which TestMu AI product does agentic testing?",
+     "a": "KaneAI is the agent for web and mobile apps. Kane CLI runs the same agent from a terminal and inside coding agents."
+    },
+    {
+     "q": "Does agentic testing replace QA engineers?",
+     "a": "No. Engineers set goals, review generated tests and own the release decision. The agent removes the script writing and maintenance work."
+    }
+   ],
+   "id": "faq",
+   "head": "Agentic testing, in plain answers",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI plans from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "See KaneAI",
+     "href": "https://www.testmuai.com/kane-ai/",
+     "primary": false
+    },
+    {
+     "label": "Try Kane CLI",
+     "href": "https://www.testmuai.com/kane-cli/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Try an agentic test on your own app"
+  }
+ ]
+}

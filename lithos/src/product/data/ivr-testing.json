@@ -1,0 +1,298 @@
+{
+ "slug": "ivr-testing",
+ "title": "IVR Testing Software With Real Phone Calls | TestMu AI",
+ "description": "IVR testing software with real phone calls: DTMF menus, speech input, routing and transfers, scored on 30+ metrics per call, plus inbound load tests.",
+ "crumb": [
+  "TestMu AI",
+  "IVR Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "IVR Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "IVR testing with real phone calls,",
+  "h1b": "scored on 30+ metrics.",
+  "lede": "TestMu AI IVR testing places real phone calls to your IVR. AI callers press DTMF keys, speak naturally, follow menus, routing and transfers, and score every call on 30+ metrics for accuracy, compliance and caller experience. Inbound load tests find the point where the system breaks.",
+  "ctas": [
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": true
+   },
+   {
+    "label": "See pricing",
+    "href": "https://www.testmuai.com/pricing/",
+    "primary": false
+   }
+  ],
+  "note": "No SDK. Pricing on request.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Contact-center engineers",
+   "QA teams",
+   "Telecom teams",
+   "CX leaders"
+  ],
+  "image": {
+   "src": "/kit/hero/ivr-testing/hero-bg.webp",
+   "alt": "Inbound IVR Agent"
+  },
+  "run": {
+   "title": "ivr · billing line",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "dial",
+     "text": "+1 call from US number",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "dtmf",
+     "text": "press 2 → billing menu",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "speech",
+     "text": "\"I want to dispute a charge\"",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "transfer",
+     "text": "routed to agent queue in 41s",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · 30+ metrics scored",
+   "evid": "call audio, transcript, path, timings"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Pricing on request (Contact Sales on the pricing page).",
+   "facts": [
+    [
+     "What it is",
+     "Automated IVR testing over real phone calls"
+    ],
+    [
+     "Inputs",
+     "DTMF key presses and spoken responses"
+    ],
+    [
+     "Checks",
+     "Menus, routing, transfers, prompts, hold behaviour"
+    ],
+    [
+     "Scoring",
+     "30+ metrics per call"
+    ],
+    [
+     "Callers",
+     "200+ voices, 15 background-noise presets, numbers in 20+ countries"
+    ],
+    [
+     "Start",
+     "Enter your IVR number and pick a scenario"
+    ]
+   ],
+   "id": "glance",
+   "head": "IVR testing: call types and checks",
+   "body": [
+    "Pricing on request (Contact Sales on the pricing page)."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Dial",
+     "AI callers phone your IVR from real numbers."
+    ],
+    [
+     "Navigate",
+     "They press keys and speak, following the scenario or exploring."
+    ],
+    [
+     "Score",
+     "Each call is scored on 30+ metrics, with audio and transcript."
+    ]
+   ],
+   "id": "how",
+   "head": "Dial in, press keys, speak, check the route",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real phone calls",
+     "Tests reach your IVR over the phone network, as customers do."
+    ],
+    [
+     "DTMF and speech",
+     "Mix key presses and spoken answers in one call."
+    ],
+    [
+     "Routing and transfers",
+     "Verify each path lands in the right queue."
+    ],
+    [
+     "30+ metrics",
+     "Intent recognition, prompt accuracy, wait times and more."
+    ],
+    [
+     "Realistic callers",
+     "200+ voices and 15 background-noise presets."
+    ],
+    [
+     "Inbound load tests",
+     "Run sustained call volume and report the breaking point."
+    ]
+   ],
+   "id": "caps",
+   "head": "What each test call verifies",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "IVR Testing compared with manual test calls",
+   "cols": [
+    "What matters",
+    "Manual test calls",
+    "TestMu AI IVR testing"
+   ],
+   "rows": [
+    [
+     "Calls per release",
+     "A handful",
+     "Hundreds, on schedule"
+    ],
+    [
+     "Paths covered",
+     "Main menu only",
+     "Every branch and transfer"
+    ],
+    [
+     "Evidence",
+     "Notes",
+     "Audio, transcript and timings"
+    ],
+    [
+     "Load",
+     "Not tested",
+     "Inbound load with breaking point"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Calling the IVR by hand vs automated test calls",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Voice Agent Testing",
+     "body": "Run real calls against voice agents",
+     "href": "https://www.testmuai.com/voice-agent-testing/"
+    },
+    {
+     "name": "Phone Calling Agent Testing",
+     "body": "AI calling agent testing for outbound",
+     "href": "https://www.testmuai.com/phone-calling-agent/"
+    },
+    {
+     "name": "Agent Testing",
+     "body": "Score chat, voice and phone agents before release",
+     "href": "https://www.testmuai.com/agent-testing/"
+    },
+    {
+     "name": "Agentforce Testing",
+     "body": "Agentforce voice testing",
+     "href": "https://www.testmuai.com/agentforce-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Customer Engagement Platform case study",
+       "href": "https://www.testmuai.com/customers/customer-engagement-platform/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Test the voice agents behind your IVR",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is IVR testing?",
+     "a": "IVR testing checks that an interactive voice response system answers calls, understands key presses and speech, plays the right prompts and routes callers correctly."
+    },
+    {
+     "q": "How do you automate IVR testing?",
+     "a": "TestMu AI places real calls with AI callers that press DTMF keys and speak, then scores each call and records audio and transcripts."
+    },
+    {
+     "q": "Can TestMu AI load test an IVR?",
+     "a": "Yes. Inbound load tests run sustained call volume and report where quality or capacity breaks."
+    },
+    {
+     "q": "Which metrics are scored?",
+     "a": "Over 30 metrics per call, including intent recognition, prompt accuracy, routing, transfer success and wait time."
+    },
+    {
+     "q": "Does it work with any IVR vendor?",
+     "a": "Yes. Tests run over the phone network, so they work with any IVR you can call."
+    }
+   ],
+   "id": "faq",
+   "head": "What contact-centre teams ask about IVR tests",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "No SDK. Pricing on request.",
+   "ctas": [
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    },
+    {
+     "label": "See pricing",
+     "href": "https://www.testmuai.com/pricing/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test every menu path before a release"
+  }
+ ]
+}

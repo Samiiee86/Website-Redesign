@@ -1,0 +1,314 @@
+{
+ "slug": "geolocation-testing",
+ "title": "Geolocation Testing From 170+ Countries | TestMu AI",
+ "description": "Geolocation testing from 170+ countries with real local IPs. Check localized pricing, language, and geo-blocking on real devices and browsers.",
+ "crumb": [
+  "TestMu AI",
+  "Geolocation Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Geolocation Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Geolocation testing",
+  "h1b": "from 170+ countries, on real devices.",
+  "lede": "Geolocation testing on TestMu AI shows your site and app the way users in 170+ countries see them. Sessions use real local IP addresses and GPS settings, so you can check localized prices, language, consent banners and geo-blocking on real browsers and devices.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "E-commerce teams",
+   "QA testers",
+   "Compliance teams",
+   "Marketing teams"
+  ],
+  "image": {
+   "src": "/kit/hero/geolocation-testing/hero-bg.webp",
+   "alt": "Geolocation Testing for Websites and Mobile Apps"
+  },
+  "run": {
+   "title": "geo · /checkout",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "Germany",
+     "text": "€ prices · GDPR banner",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Japan",
+     "text": "¥ prices · ja copy",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Brazil",
+     "text": "R$ prices · Portuguese",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "India",
+     "text": "redirect loop on /in",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · India redirect",
+   "evid": "screenshots per country"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Testing from other countries with local IPs and GPS"
+    ],
+    [
+     "Locations",
+     "170+ countries"
+    ],
+    [
+     "Checks",
+     "Prices, currency, language, consent, geo-blocking, redirects"
+    ],
+    [
+     "Where",
+     "Real desktop browsers and real mobile devices"
+    ],
+    [
+     "Pricing",
+     "Free plan: 1 parallel test, monthly live sessions; Virtual Live from $15/month"
+    ],
+    [
+     "Automation",
+     "Geolocation capability in Selenium and Appium"
+    ]
+   ],
+   "id": "glance",
+   "head": "Countries, browsers and devices for geo tests",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Pick a country",
+     "Choose from 170+ locations for the session."
+    ],
+    [
+     "Load your page or app",
+     "See local IP-based content, GPS-based features and redirects."
+    ],
+    [
+     "Automate across countries",
+     "Set the geolocation capability in your test suite."
+    ]
+   ],
+   "id": "how",
+   "head": "Pick a country and browse as a local user",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real local IPs",
+     "Content served as it is to local users."
+    ],
+    [
+     "GPS location on devices",
+     "Test maps and location features on phones."
+    ],
+    [
+     "Localized pricing",
+     "Check currency, tax and price display."
+    ],
+    [
+     "Consent and compliance",
+     "Verify GDPR and regional banners."
+    ],
+    [
+     "Geo-blocking",
+     "Confirm what is blocked or redirected by country."
+    ],
+    [
+     "Automation",
+     "Run regional suites with Selenium and Appium."
+    ]
+   ],
+   "id": "caps",
+   "head": "What changes by location and how you check it",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Geolocation Testing compared with A VPN on your laptop",
+   "cols": [
+    "What matters",
+    "A VPN on your laptop",
+    "Geolocation testing on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Countries",
+     "VPN provider's list",
+     "170+ countries"
+    ],
+    [
+     "Mobile GPS",
+     "Not covered",
+     "Set per device session"
+    ],
+    [
+     "Browsers and devices",
+     "Your own machine",
+     "Real browsers and devices"
+    ],
+    [
+     "Automation",
+     "Manual",
+     "Geolocation capability in tests"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "VPNs and proxies vs built-in geolocation",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams testing for every market",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Localization Testing",
+     "body": "Check translations and right-to-left layouts",
+     "href": "https://www.testmuai.com/localization-testing/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Check every browser and OS version",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Real Device Cloud",
+     "body": "Open 50,000+ real phones and tablets",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "Mobile Browser Testing",
+     "body": "Test on mobile browsers",
+     "href": "https://www.testmuai.com/test-on-mobile-devices/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Localization and real-device testing",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is geolocation testing?",
+     "a": "Geolocation testing checks how a website or app behaves for users in different countries or GPS locations."
+    },
+    {
+     "q": "How many countries can I test from?",
+     "a": "170+ countries."
+    },
+    {
+     "q": "Can I test GPS location in a mobile app?",
+     "a": "Yes. Set the GPS location on a real device session."
+    },
+    {
+     "q": "Can I automate geolocation tests?",
+     "a": "Yes. Use the geolocation capability in Selenium or Appium tests."
+    },
+    {
+     "q": "How is this different from localization testing?",
+     "a": "Geolocation testing checks location-driven behaviour. Localization testing checks translated content and formats."
+    }
+   ],
+   "id": "faq",
+   "head": "How do you test from another country?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "See your site from another country"
+  }
+ ]
+}

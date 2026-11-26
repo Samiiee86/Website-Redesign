@@ -1,0 +1,367 @@
+{
+ "slug": "visual-testing-tool",
+ "title": "Visual Testing Tool for Web & Mobile | SmartUI by TestMu AI",
+ "description": "SmartUI runs visual regression testing for web and mobile apps. Catch UI bugs across browsers, 50,000+ real devices, Figma and PDFs, fewer false alarms.",
+ "crumb": [
+  "TestMu AI",
+  "SmartUI"
+ ],
+ "hero": {
+  "eyebrow": [
+   "SmartUI",
+   "Updated November 2026"
+  ],
+  "h1a": "Visual regression testing",
+  "h1b": "for web, mobile, Figma and PDFs.",
+  "lede": "Visual regression testing with SmartUI, TestMu AI's visual testing tool, catches UI changes before release. It captures screenshots of your web pages, mobile screens, Figma frames and PDFs, compares each against an approved baseline, and flags layout, color and font changes that functional tests miss.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 2,000 screenshots, valid for lifetime.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Front-end developers",
+   "QA engineers",
+   "Designers",
+   "SDETs"
+  ],
+  "image": {
+   "src": "/kit/hero/visual-testing-tool/hero-bg.webp",
+   "alt": "SmartUI Visual AI highlighting a meaningful UI change and ignoring rendering noise"
+  },
+  "run": {
+   "title": "smartui · pricing-page",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "capture",
+     "text": "12 screenshots · 4 browsers",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "compare",
+     "text": "baseline v38",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "diff",
+     "text": "CTA moved 14px on Safari",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "review",
+     "text": "approve or reject in dashboard",
+     "st": {
+      "label": "RUN",
+      "kind": "run"
+     }
+    }
+   ],
+   "diff": [
+    "Baseline",
+    "Current"
+   ],
+   "verdict": "1 visual change to review",
+   "evid": "side-by-side diff, highlighted regions"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 2,000 screenshots, valid for lifetime · SmartUI Visual Regression from $199/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Screenshot-based visual regression testing with approved baselines"
+    ],
+    [
+     "Targets",
+     "Web pages, native mobile screens, Figma designs and PDFs"
+    ],
+    [
+     "Coverage",
+     "3,000+ browsers and 50,000+ real devices"
+    ],
+    [
+     "Frameworks",
+     "Selenium, Playwright, Cypress, Puppeteer, Storybook and more"
+    ],
+    [
+     "Pricing",
+     "Free: 2,000 screenshots, valid for lifetime; SmartUI from $199/month"
+    ],
+    [
+     "Start",
+     "Add the SmartUI SDK call to an existing test"
+    ]
+   ],
+   "id": "glance",
+   "head": "SmartUI, summarised",
+   "body": [
+    "Free plan: 2,000 screenshots, valid for lifetime · SmartUI Visual Regression from $199/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Capture",
+     "Add a snapshot call to an existing test or upload screenshots."
+    ],
+    [
+     "Compare",
+     "SmartUI compares each screenshot with its approved baseline."
+    ],
+    [
+     "Review",
+     "Approve intended changes, reject regressions, update the baseline."
+    ]
+   ],
+   "id": "how",
+   "head": "Baseline, compare, approve",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Web, mobile, Figma, PDF",
+     "One visual testing tool for every surface your users see."
+    ],
+    [
+     "Real browsers and devices",
+     "Render on 3,000+ browsers and 50,000+ real devices."
+    ],
+    [
+     "Fewer false positives",
+     "Ignore anti-aliasing, dynamic content and chosen regions."
+    ],
+    [
+     "Figma to build",
+     "Compare the built UI with the approved Figma frame."
+    ],
+    [
+     "Baseline workflow",
+     "Branch-aware baselines with approve and reject in the dashboard."
+    ],
+    [
+     "CI status checks",
+     "Post visual results to pull requests."
+    ]
+   ],
+   "id": "caps",
+   "head": "What the visual diff catches and ignores",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "SmartUI compared with manual UI review",
+   "cols": [
+    "What matters",
+    "Manual UI review",
+    "SmartUI"
+   ],
+   "rows": [
+    [
+     "Coverage",
+     "A few browsers by eye",
+     "Every page, browser and device in the suite"
+    ],
+    [
+     "Small shifts",
+     "Missed",
+     "Highlighted in the diff"
+    ],
+    [
+     "Design drift",
+     "Found after release",
+     "Caught against Figma"
+    ],
+    [
+     "Noise",
+     "—",
+     "Anti-aliasing and dynamic regions ignored"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Pixel-by-pixel diffs vs Visual AI comparison",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "2,000 free screenshots, valid for lifetime",
+      "SmartUI from $199/month, billed annually"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "Volume tiers priced by screenshot count",
+      "Figma, PDF, web and mobile baselines in one project"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Custom platform access controls for teams",
+      "Dedicated account manager"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "Visual testing by screenshot volume",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Visual AI Testing",
+     "body": "How visual AI filters pixel noise",
+     "href": "https://www.testmuai.com/visual-ai-testing/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Test on 3,000+ real desktop and mobile browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Accessibility Testing",
+     "body": "Scan for WCAG, ADA and Section 508 issues",
+     "href": "https://www.testmuai.com/accessibility-testing/"
+    },
+    {
+     "name": "Test Manager",
+     "body": "AI test management",
+     "href": "https://www.testmuai.com/test-management/"
+    },
+    {
+     "name": "Automated Screenshots",
+     "body": "Bulk cross-browser screenshots",
+     "href": "https://www.testmuai.com/automated-screenshot/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "SmartUI skill (GitHub)",
+       "href": "https://github.com/LambdaTest/agent-skills/tree/main/smartui-skill"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "SmartUI Playwright SDK",
+       "href": "https://www.testmuai.com/support/docs/smartui-playwright-sdk/"
+      },
+      {
+       "label": "Smart Ignore docs",
+       "href": "https://www.testmuai.com/support/docs/smartui-smartignore/"
+      },
+      {
+       "label": "SmartUI docs",
+       "href": "https://www.testmuai.com/support/docs/smart-visual-regression-testing/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "Lereta case study",
+       "href": "https://www.testmuai.com/customers/lereta/"
+      },
+      {
+       "label": "Atypon case study",
+       "href": "https://www.testmuai.com/customers/atypon/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Run visual checks inside functional tests",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is a visual testing tool?",
+     "a": "A visual testing tool captures screenshots of your UI and compares them against approved baselines to catch layout, color and font bugs that functional tests miss."
+    },
+    {
+     "q": "What is visual regression testing?",
+     "a": "Visual regression testing checks that a code change did not alter how a page or screen looks, by comparing new screenshots with earlier approved ones."
+    },
+    {
+     "q": "Can SmartUI compare against Figma designs?",
+     "a": "Yes. SmartUI compares the built UI with Figma frames to catch design drift."
+    },
+    {
+     "q": "How does SmartUI reduce false positives?",
+     "a": "SmartUI ignores anti-aliasing, dynamic content and regions you exclude, and its Visual AI mode judges which changes matter."
+    },
+    {
+     "q": "Which frameworks does SmartUI work with?",
+     "a": "Selenium, Playwright, Cypress, Puppeteer, Storybook and mobile frameworks, through SDKs and a CLI."
+    }
+   ],
+   "id": "faq",
+   "head": "Common questions about visual regression",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 2,000 screenshots, valid for lifetime.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Catch the UI change before your users do"
+  }
+ ]
+}

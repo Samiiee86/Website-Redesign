@@ -1,0 +1,338 @@
+{
+ "slug": "performance-testing",
+ "title": "Performance and Load Testing on Cloud | TestMu AI",
+ "description": "Performance testing tool for JMeter and Gatling plans on managed cloud load generators. Protocol-level load tests, no rigs to maintain. From $79/mo.",
+ "crumb": [
+  "TestMu AI",
+  "Performance Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Performance Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Performance testing tool",
+  "h1b": "for the JMeter and Gatling plans you have.",
+  "lede": "TestMu AI Performance Testing is a cloud performance testing tool. It runs the JMeter and Gatling plans your team already maintains on managed cloud load generators. Upload a plan, choose virtual users and regions, and get protocol-level response times, throughput and errors, with nothing to maintain between runs.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free tier for API and browser load tests.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Performance engineers",
+   "SDETs",
+   "SRE teams",
+   "Engineering managers"
+  ],
+  "image": {
+   "src": "/kit/hero/performance-testing/hero-bg.webp",
+   "alt": "Choosing between a JMeter .jmx plan and a Gatling Java DSL simulation"
+  },
+  "run": {
+   "title": "perf · checkout-api soak",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "upload",
+     "text": "checkout.jmx · 14 samplers",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "ramp",
+     "text": "0 → 2,000 virtual users",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "measure",
+     "text": "p95 412 ms · 0.2% errors",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "threshold",
+     "text": "p99 under 900 ms",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · thresholds met",
+   "evid": "run-311 · percentiles, throughput, error log"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free tier for API and browser load tests · Performance Testing from $79/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Managed cloud load generators for JMeter and Gatling"
+    ],
+    [
+     "Test types",
+     "Load, stress, spike and soak tests at the protocol level"
+    ],
+    [
+     "Inputs",
+     "Existing .jmx plans and Gatling simulations"
+    ],
+    [
+     "Results",
+     "Response times, throughput, error rates and percentiles"
+    ],
+    [
+     "Pricing",
+     "Free tier for API and browser load tests; paid plans from $79/month"
+    ],
+    [
+     "Start",
+     "Upload a JMeter plan and pick load and duration"
+    ]
+   ],
+   "id": "glance",
+   "head": "Load testing limits and plans",
+   "body": [
+    "Free tier for API and browser load tests · Performance Testing from $79/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Upload",
+     "Bring the JMeter or Gatling plan you already run locally."
+    ],
+    [
+     "Configure load",
+     "Set virtual users, ramp-up, duration and regions."
+    ],
+    [
+     "Compare runs",
+     "Read percentiles and errors, and compare against earlier runs."
+    ]
+   ],
+   "id": "how",
+   "head": "Run your JMeter or Gatling plan in the cloud",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "JMeter and Gatling",
+     "Run existing plans without converting them to a new format."
+    ],
+    [
+     "Managed load generators",
+     "No load machines to provision, patch or tear down."
+    ],
+    [
+     "Protocol-level metrics",
+     "Response time percentiles, throughput and error rates per sampler."
+    ],
+    [
+     "Pass and fail thresholds",
+     "Fail a run when p95, p99 or error rate crosses your limit."
+    ],
+    [
+     "Run from CI",
+     "Trigger load tests from your pipeline before a release."
+    ],
+    [
+     "Same platform as functional tests",
+     "Keep load, functional and visual results in one place."
+    ]
+   ],
+   "id": "caps",
+   "head": "What you see while the load runs",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Performance Testing compared with self-managed load rigs",
+   "cols": [
+    "What matters",
+    "Self-managed load rigs",
+    "TestMu AI Performance Testing"
+   ],
+   "rows": [
+    [
+     "Load generators",
+     "VMs you size and maintain",
+     "Managed in the cloud"
+    ],
+    [
+     "Test plans",
+     "Locked to your rig",
+     "Existing JMeter and Gatling plans"
+    ],
+    [
+     "Between runs",
+     "Idle machines you pay for",
+     "Nothing to maintain"
+    ],
+    [
+     "Results",
+     "Raw logs to parse",
+     "Percentiles, throughput, errors and thresholds"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Self-hosted load rigs vs managed load generation",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "Free tier for API and browser load tests",
+      "Paid plans from $79/month"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "Run existing JMeter and Gatling plans",
+      "Pro: 8,000 virtual users, 6-hour tests ($349/month)"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Enterprise tier with custom load",
+      "Dedicated support"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "Load testing for a launch, a quarter or a platform team",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "API Testing",
+     "body": "Generate API tests from cURL or plain English",
+     "href": "https://www.testmuai.com/api-testing/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Parallel runs with AI root cause per failure",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "Test Automation Platform",
+     "body": "One platform for coded and AI-authored tests",
+     "href": "https://www.testmuai.com/automation-testing-platform/"
+    },
+    {
+     "name": "Test Insights",
+     "body": "Test intelligence and trends",
+     "href": "https://www.testmuai.com/test-intelligence/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "HyperExecute performance setup guide",
+       "href": "https://www.testmuai.com/support/docs/hyperexecute-performance-testing/"
+      }
+     ]
+    },
+    {
+     "group": "Pricing",
+     "links": [
+      {
+       "label": "Pricing page",
+       "href": "https://www.testmuai.com/pricing/?product=performance-testing"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Pair load tests with functional runs",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is performance testing?",
+     "a": "Performance testing measures how fast and stable an application stays under expected and peak traffic. Load, stress, spike and soak tests are common types."
+    },
+    {
+     "q": "Can I use my existing JMeter scripts?",
+     "a": "Yes. TestMu AI runs existing JMeter .jmx plans and Gatling simulations on managed cloud load generators."
+    },
+    {
+     "q": "What is the difference between load testing and performance testing?",
+     "a": "Load testing is one type of performance testing. It checks behaviour at a set number of users. Performance testing also covers stress, spike and soak tests."
+    },
+    {
+     "q": "Which metrics do I get?",
+     "a": "Response time percentiles, throughput, error rates and per-sampler results, with pass or fail thresholds you define."
+    },
+    {
+     "q": "How much does cloud load testing cost on TestMu AI?",
+     "a": "There is a free tier for API and browser load tests. Paid performance testing starts at $79 per month; Pro is $349 per month."
+    }
+   ],
+   "id": "faq",
+   "head": "What engineers ask before a load test",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free tier for API and browser load tests.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Load-test your next release"
+  }
+ ]
+}

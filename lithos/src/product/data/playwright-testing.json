@@ -1,0 +1,363 @@
+{
+ "slug": "playwright-testing",
+ "title": "Playwright Cloud: Run Tests in Parallel | TestMu AI",
+ "description": "Playwright testing on TestMu AI: run tests in parallel on Chromium, Firefox and WebKit across 3,000+ browser and OS combinations. No grid to maintain.",
+ "crumb": [
+  "TestMu AI",
+  "Playwright Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Playwright Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Playwright testing",
+  "h1b": "in the cloud, in parallel.",
+  "lede": "Playwright testing on TestMu AI runs your Playwright tests in parallel on Chromium, Chrome, Edge, Firefox and WebKit across Windows and macOS. You connect with a WebSocket endpoint in playwright.config, keep your tests, and get traces, videos and logs for every run.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Developers",
+   "SDETs",
+   "Front-end teams",
+   "DevOps"
+  ],
+  "image": {
+   "src": "/kit/hero/playwright-testing/hero-bg.webp",
+   "alt": "Kane CLI exporting a natural language flow as Playwright code in the terminal"
+  },
+  "run": {
+   "title": "playwright · checkout suite",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "connect",
+     "text": "wss endpoint · 20 workers",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "chromium",
+     "text": "cart.spec.ts · Windows 11",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "webkit",
+     "text": "cart.spec.ts · macOS Sequoia",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "firefox",
+     "text": "auth.spec.ts · timeout",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · trace attached",
+   "evid": "trace.zip · video · network"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Playwright tests run on TestMu AI cloud browsers"
+    ],
+    [
+     "Browsers",
+     "Chromium, Chrome, Edge, Firefox, WebKit"
+    ],
+    [
+     "Languages",
+     "JavaScript, TypeScript, Python, Java, C#"
+    ],
+    [
+     "Connect",
+     "connectOptions WebSocket endpoint in playwright.config"
+    ],
+    [
+     "Pricing",
+     "Free: 100 lifetime minutes, 2 parallel; Web Automation from $79/month"
+    ],
+    [
+     "Per test",
+     "Trace, video, console and network"
+    ]
+   ],
+   "id": "glance",
+   "head": "Playwright browsers, parallels and plans",
+   "body": [
+    "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Add the endpoint",
+     "Set connectOptions to the TestMu AI WebSocket URL with capabilities."
+    ],
+    [
+     "Run with more workers",
+     "Workers map to parallel cloud sessions across browsers and OS."
+    ],
+    [
+     "Open the trace",
+     "Each test keeps the Playwright trace, video and logs."
+    ]
+   ],
+   "id": "how",
+   "head": "Connect your Playwright config and run on real browsers",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real browsers on real OS",
+     "WebKit on macOS and Chrome on Windows, not only Linux containers."
+    ],
+    [
+     "All Playwright languages",
+     "JavaScript, TypeScript, Python, Java and C#."
+    ],
+    [
+     "Parallel workers",
+     "Scale workers without adding CI runners."
+    ],
+    [
+     "Traces kept",
+     "Playwright traces and videos stored per test."
+    ],
+    [
+     "Local apps",
+     "UnderPass tunnel reaches localhost and staging."
+    ],
+    [
+     "Plain-English option",
+     "Kane CLI runs checks without writing Playwright code."
+    ]
+   ],
+   "id": "caps",
+   "head": "Traces, videos and logs from every Playwright run",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Playwright Testing compared with Playwright on CI runners",
+   "cols": [
+    "What matters",
+    "Playwright on CI runners",
+    "Playwright on TestMu AI"
+   ],
+   "rows": [
+    [
+     "WebKit coverage",
+     "Linux WebKit build",
+     "WebKit on macOS"
+    ],
+    [
+     "Raising parallel workers",
+     "Bigger runners",
+     "More cloud sessions"
+    ],
+    [
+     "Browser and OS matrix",
+     "Whatever the image has",
+     "Windows and macOS versions"
+    ],
+    [
+     "Trace storage",
+     "Upload artifacts yourself",
+     "Kept per test"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Playwright · connect",
+    "lang": "javascript",
+    "code": "const browser = await chromium.connect({\n  wsEndpoint: `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`\n});",
+    "note": "Connection lines from the TestMu AI Playwright docs (/support/docs/playwright-testing/); the endpoint keeps its LambdaTest hostname."
+   },
+   "id": "cmp",
+   "head": "Bundled browsers in CI vs real Windows and macOS browsers",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "What Playwright teams report",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Cypress Testing",
+     "body": "Run Cypress specs in parallel",
+     "href": "https://www.testmuai.com/cypress-testing/"
+    },
+    {
+     "name": "Automation Cloud",
+     "body": "Run Selenium, Playwright and Cypress in one cloud",
+     "href": "https://www.testmuai.com/automation-cloud/"
+    },
+    {
+     "name": "Kane CLI",
+     "body": "A test gate inside coding agents",
+     "href": "https://www.testmuai.com/kane-cli/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Split suites across just-in-time VMs",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "Puppeteer Testing",
+     "body": "Puppeteer on cloud Chrome",
+     "href": "https://www.testmuai.com/puppeteer-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "Agent skills (GitHub)",
+       "href": "https://github.com/LambdaTest/agent-skills"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Getting started with KaneAI",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-kane-ai/"
+      },
+      {
+       "label": "Playwright integration with HyperExecute",
+       "href": "https://www.testmuai.com/support/docs/playwright-integration-with-hyperexecute/"
+      },
+      {
+       "label": "Playwright tests in parallel",
+       "href": "https://www.testmuai.com/support/docs/playwright-testing/#run-tests-in-parallel"
+      },
+      {
+       "label": "Playwright Testing on Android Real Devices documentation",
+       "href": "https://www.testmuai.com/support/docs/playwright-android/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "City Furniture case study",
+       "href": "https://www.testmuai.com/customers/city-furniture/"
+      }
+     ]
+    },
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Selenium, Cypress and Puppeteer on the same cloud",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "How do I run Playwright tests in the cloud?",
+     "a": "Add the TestMu AI WebSocket endpoint to connectOptions in playwright.config with your credentials and capabilities, then run as usual."
+    },
+    {
+     "q": "Which browsers can I run Playwright tests on?",
+     "a": "Chromium, Chrome, Edge, Firefox and WebKit on Windows and macOS versions."
+    },
+    {
+     "q": "Can I run Playwright tests in parallel?",
+     "a": "Yes. Raise workers; each worker uses a parallel session on your plan."
+    },
+    {
+     "q": "Is there a free plan for Playwright testing?",
+     "a": "Yes. The automation free plan gives 100 lifetime minutes with 2 parallel sessions."
+    },
+    {
+     "q": "Kane CLI or Playwright?",
+     "a": "Keep Playwright for coded suites. Use Kane CLI when you want plain-English checks with evidence; see the Kane CLI vs Playwright comparison."
+    }
+   ],
+   "id": "faq",
+   "head": "Playwright on real browsers: your questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Run Playwright on real browsers"
+  }
+ ]
+}

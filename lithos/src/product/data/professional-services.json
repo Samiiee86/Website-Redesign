@@ -1,0 +1,294 @@
+{
+ "slug": "professional-services",
+ "title": "TestMu AI (Formerly LambdaTest) Professional Services - Transform Your Quality Engineering",
+ "description": "Test automation services from TestMu AI engineers: framework setup, cloud migration, CI integration and AI test adoption, scoped to your team and timeline.",
+ "crumb": [
+  "TestMu AI",
+  "Professional Services"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Professional Services",
+   "Updated November 2026"
+  ],
+  "h1a": "Test automation services",
+  "h1b": "from the engineers who build TestMu AI.",
+  "lede": "TestMu AI Professional Services provides test automation services from the engineers who build the platform. They set up frameworks, migrate suites to the cloud, connect CI, and introduce KaneAI and HyperExecute, scoped to your goals and timeline.",
+  "ctas": [
+   {
+    "label": "Talk to an expert",
+    "href": "https://www.testmuai.com/contact-us/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Scoped per engagement. Talk to an expert.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA leaders",
+   "CIOs",
+   "Engineering managers",
+   "Founders"
+  ],
+  "image": {
+   "src": "/kit/hero/professional-services/hero-bg.png",
+   "alt": "TestMu AI professional services for test automation"
+  },
+  "run": {
+   "title": "engagement · example flow",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "Assess",
+     "text": "current suite and pipeline reviewed",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "Migrate",
+     "text": "suite moved to the cloud grid",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "Integrate",
+     "text": "runs wired into your CI",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "Extend",
+     "text": "KaneAI coverage for priority flows",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "HANDOVER · TEAM TRAINED",
+   "evid": "runbook · dashboards"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Scoped per engagement.",
+   "facts": [
+    [
+     "What it is",
+     "Expert-led test automation services from TestMu AI"
+    ],
+    [
+     "Services",
+     "Framework setup, cloud migration, CI integration, AI test adoption"
+    ],
+    [
+     "Platforms",
+     "Selenium, Playwright, Cypress, Appium, KaneAI, HyperExecute"
+    ],
+    [
+     "Example",
+     "FyscalTech automated 70+ API tests with TestMu AI services"
+    ],
+    [
+     "Engagement",
+     "Scoped per project"
+    ],
+    [
+     "Start",
+     "Talk to an expert"
+    ]
+   ],
+   "id": "glance",
+   "head": "How an engagement is scoped",
+   "body": [
+    "Scoped per engagement."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Assess",
+     "Experts review your suites, pipelines and goals."
+    ],
+    [
+     "Build and migrate",
+     "They set up frameworks, move tests to the cloud and connect CI."
+    ],
+    [
+     "Hand over",
+     "Your team gets runbooks, training and dashboards."
+    ]
+   ],
+   "id": "how",
+   "head": "Assess, migrate, integrate, hand over",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Framework setup",
+     "Selenium, Playwright, Cypress and Appium from scratch or refactored."
+    ],
+    [
+     "Cloud migration",
+     "Move suites from in-house grids or other clouds."
+    ],
+    [
+     "CI integration",
+     "GitHub Actions, Jenkins, GitLab and Azure DevOps."
+    ],
+    [
+     "AI test adoption",
+     "Introduce KaneAI and Kane CLI on real flows."
+    ],
+    [
+     "Speed up runs",
+     "Move suites to HyperExecute."
+    ],
+    [
+     "Training",
+     "Hands-on sessions for your engineers."
+    ]
+   ],
+   "id": "caps",
+   "head": "Work our engineers take on",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Professional Services compared with your team alone",
+   "cols": [
+    "What matters",
+    "Your team alone",
+    "Your team with TestMu AI engineers"
+   ],
+   "rows": [
+    [
+     "Migration plan",
+     "Built from docs",
+     "Built by platform engineers"
+    ],
+    [
+     "Platform-specific tuning",
+     "Trial and error",
+     "Known settings for your stack"
+    ],
+    [
+     "Team ramp-up",
+     "Self-taught",
+     "Hands-on training"
+    ],
+    [
+     "Timeline",
+     "Open-ended",
+     "Scoped per engagement"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "With and without TestMu AI engineers",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Test Automation Platform",
+     "body": "One platform for coded and AI-authored tests",
+     "href": "https://www.testmuai.com/automation-testing-platform/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Orchestrate CI runs in parallel",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Plain-English test authoring for every flow",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Test Manager",
+     "body": "AI test management",
+     "href": "https://www.testmuai.com/test-management/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "Fyscaltech case study",
+       "href": "https://assets.testmuai.com/resources/images/customer/fyscaltech-professional-services-case-study.pdf"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Platforms we migrate teams onto",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What test automation services does TestMu AI offer?",
+     "a": "Framework setup, suite migration to the TestMu AI cloud, CI integration, AI test adoption with KaneAI, and team training."
+    },
+    {
+     "q": "Who delivers the services?",
+     "a": "TestMu AI engineers who work on the platform."
+    },
+    {
+     "q": "Can you migrate tests from another cloud?",
+     "a": "Yes. Teams move Selenium, Playwright, Cypress and Appium suites from in-house grids and other providers."
+    },
+    {
+     "q": "How is an engagement priced?",
+     "a": "Each engagement is scoped to your goals and timeline. Talk to an expert for a quote."
+    },
+    {
+     "q": "Is there a customer example?",
+     "a": "FyscalTech automated 70+ API tests with TestMu AI Professional Services; the case study is on the services page."
+    }
+   ],
+   "id": "faq",
+   "head": "How an engagement works: your questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Scoped per engagement. Talk to an expert.",
+   "ctas": [
+    {
+     "label": "Talk to an expert",
+     "href": "https://www.testmuai.com/contact-us/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Talk to an engineer about your suite"
+  }
+ ]
+}

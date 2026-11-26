@@ -1,0 +1,403 @@
+{
+ "slug": "app-automation",
+ "title": "App Automation Testing on 50,000+ Real Devices | TestMu AI",
+ "description": "Run Appium, Espresso, XCUITest and Maestro suites in parallel on 50,000+ real iOS and Android devices. No device lab, no code changes.",
+ "crumb": [
+  "TestMu AI",
+  "Native App Automation"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Native App Automation",
+   "Updated November 2026"
+  ],
+  "h1a": "App automation testing",
+  "h1b": "with Appium, Espresso and XCUITest.",
+  "lede": "TestMu AI App Automation runs your existing Appium, Espresso, XCUITest and Maestro suites in parallel on 50,000+ real iOS and Android devices. Upload a build, point your capabilities at the cloud, and every test returns video, device logs and network data.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Real device free plan: 5 sessions a month. No device lab.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Mobile SDETs",
+   "App developers",
+   "QA leads",
+   "Release managers"
+  ],
+  "image": {
+   "src": "/kit/hero/app-automation/hero-bg.webp",
+   "alt": "KaneAI authoring and self-healing tests on real devices"
+  },
+  "run": {
+   "title": "app-automation · release 5.12",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "upload",
+     "text": "app-release.apk · 48 MB",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "espresso",
+     "text": "212 tests · 30 devices",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "xcuitest",
+     "text": "164 tests · 22 devices",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "report",
+     "text": "1 crash on Android 12 · log attached",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "375 / 376 passed",
+   "evid": "per-test video, logcat, network"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Parallel mobile test automation on real devices"
+    ],
+    [
+     "Frameworks",
+     "Appium, Espresso, XCUITest, Maestro"
+    ],
+    [
+     "Devices",
+     "50,000+ real iOS and Android devices"
+    ],
+    [
+     "Network",
+     "Geolocation in 170+ countries, throttling, secure tunnel"
+    ],
+    [
+     "Pricing",
+     "Free: 5 real device sessions a month; app automation from $139/month (virtual) or $199/month (real devices)"
+    ],
+    [
+     "Start",
+     "Upload your .apk or .ipa and set the app capability"
+    ]
+   ],
+   "id": "glance",
+   "head": "Native app automation: the essentials",
+   "body": [
+    "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Upload the build",
+     "Upload an .apk, .aab or .ipa by API or from CI."
+    ],
+    [
+     "Point your suite",
+     "Set the app ID and device capabilities. No code changes."
+    ],
+    [
+     "Run in parallel",
+     "Tests run across devices at once, with artifacts per test."
+    ]
+   ],
+   "id": "how",
+   "head": "Upload a build, run your suite, read the video",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Your frameworks",
+     "Appium, Espresso, XCUITest and Maestro, plus more in the docs."
+    ],
+    [
+     "Real or virtual devices",
+     "50,000+ physical iOS and Android devices, or virtual devices."
+    ],
+    [
+     "Parallel runs",
+     "Run a suite across many devices at once to shorten release cycles."
+    ],
+    [
+     "Debug artifacts",
+     "Video, device logs, network logs and crash reports per test."
+    ],
+    [
+     "170+ geolocations",
+     "Test location-based features and localized content."
+    ],
+    [
+     "CI integration",
+     "Trigger runs from GitHub Actions, Jenkins, Bitrise and others."
+    ]
+   ],
+   "id": "caps",
+   "head": "What runs alongside every Appium, Espresso and XCUITest job",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Native App Automation compared with device lab or emulators",
+   "cols": [
+    "What matters",
+    "Device lab or emulators",
+    "TestMu AI App Automation"
+   ],
+   "rows": [
+    [
+     "Device count",
+     "Dozens at best",
+     "50,000+ real devices"
+    ],
+    [
+     "Parallelism",
+     "Limited by hardware",
+     "Many devices at once"
+    ],
+    [
+     "Crash evidence",
+     "Reproduce by hand",
+     "Video and logs per test"
+    ],
+    [
+     "Code changes",
+     "—",
+     "None; capabilities only"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Appium capabilities (JSON)",
+    "lang": "json",
+    "code": "{\n  \"lt:options\": {\n    \"platformName\": \"Android\",\n    \"deviceName\": \"Samsung Galaxy S24\",\n    \"platformVersion\": \"14\",\n    \"app\": \"lt://APP_ID\",\n    \"isRealMobile\": true\n  }\n}",
+    "note": "Capabilities format used by TestMu AI App Automation; hub: https://mobile-hub.lambdatest.com/wd/hub."
+   },
+   "id": "cmp",
+   "head": "Local emulators vs cloud real devices in CI",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "5 free real device sessions a month",
+      "Real Device Plus Live from $39/month, billed annually"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "App automation on real devices from $199/month",
+      "Appium, Espresso and XCUITest in parallel"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Private devices and IP whitelisting",
+      "Certifications, ESG attestation and continuous monitoring (Trust Center)"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "App automation for a first app or many",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "9x",
+     "text": "Boohoo scaled test coverage 9x after retiring its in-house device farm.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/boohoo/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Results from mobile automation teams",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Real Device Cloud",
+     "body": "Open 50,000+ real phones and tablets",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "AI App Testing",
+     "body": "Test mobile and gen AI apps without scripts",
+     "href": "https://www.testmuai.com/ai-app-testing/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Orchestrate CI runs in parallel",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "SmartUI",
+     "body": "Visual testing for mobile screens",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "XCUITest",
+     "body": "Run native iOS tests on real iPhones",
+     "href": "https://www.testmuai.com/xcuitest-app-testing/"
+    },
+    {
+     "name": "Mobile App Testing",
+     "body": "Test apps on real iOS and Android devices",
+     "href": "https://www.testmuai.com/mobile-app-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Live debug in app automation",
+       "href": "https://www.testmuai.com/support/docs/live-debug-in-app-automation/"
+      },
+      {
+       "label": "Appium",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-appium-testing/"
+      },
+      {
+       "label": "Espresso",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-espresso-testing/"
+      },
+      {
+       "label": "XCUITest",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-xcuitest/"
+      },
+      {
+       "label": "Maestro",
+       "href": "https://www.testmuai.com/support/docs/hyperexecute-maestro-testing/"
+      },
+      {
+       "label": "Mobilewright",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-mobilewright-testing/"
+      },
+      {
+       "label": "View setup docs",
+       "href": "https://www.testmuai.com/support/docs/"
+      },
+      {
+       "label": "Playwright Testing",
+       "href": "https://www.testmuai.com/support/docs/playwright-ios-device/"
+      },
+      {
+       "label": "Detox Testing",
+       "href": "https://www.testmuai.com/support/docs/hyperexecute-detox-testing/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Atypon case study",
+       "href": "https://www.testmuai.com/customers/atypon/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Where mobile teams go next",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is app automation testing?",
+     "a": "App automation testing runs scripted tests against native and hybrid mobile apps on every build, without manual tapping."
+    },
+    {
+     "q": "Which mobile frameworks does TestMu AI support?",
+     "a": "Appium, Espresso, XCUITest and Maestro, on real iOS and Android devices."
+    },
+    {
+     "q": "Do I need to change my Appium tests?",
+     "a": "No. You change the remote URL and capabilities, then upload your app build."
+    },
+    {
+     "q": "Can I run mobile tests in parallel?",
+     "a": "Yes. Suites run across many real devices at once, with video and logs per test."
+    },
+    {
+     "q": "How is this different from the Real Device Cloud?",
+     "a": "The Real Device Cloud is the device fleet, used live or automated. App Automation is the automated-testing workflow that runs your framework suites on that fleet."
+    }
+   ],
+   "id": "faq",
+   "head": "Before you move a mobile suite to the cloud",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Real device free plan: 5 sessions a month. No device lab.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Run your mobile suite on real devices"
+  }
+ ]
+}

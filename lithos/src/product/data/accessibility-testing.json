@@ -1,0 +1,338 @@
+{
+ "slug": "accessibility-testing",
+ "title": "Accessibility Testing Tool for WCAG, ADA & 508 | TestMu AI",
+ "description": "Accessibility testing tool that scans websites and native iOS and Android apps for WCAG 2.2, ADA, Section 508 and EAA issues on real devices.",
+ "crumb": [
+  "TestMu AI",
+  "Accessibility Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Accessibility Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Accessibility testing tool",
+  "h1b": "for websites and native mobile apps.",
+  "lede": "TestMu AI's accessibility testing tool scans websites and native iOS and Android apps for WCAG 2.2, ADA, Section 508 and European Accessibility Act issues. It runs automated checks on real devices and with screen readers, then ties each issue to the exact rule it fails and the fix.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 25 accessibility scans, valid for lifetime.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Accessibility leads",
+   "Front-end developers",
+   "QA engineers",
+   "Compliance teams"
+  ],
+  "image": {
+   "src": "/kit/hero/accessibility-testing/hero-bg.png",
+   "alt": "Accessibility testing on TestMu AI"
+  },
+  "run": {
+   "title": "a11y · signup-flow",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "scan",
+     "text": "WCAG 2.2 AA · 3 pages",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "contrast",
+     "text": "button text 3.1:1 · needs 4.5:1",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "screen reader",
+     "text": "VoiceOver reads form labels",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "keyboard",
+     "text": "focus order matches visual order",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 issue · rule 1.4.3",
+   "evid": "issue list with element, rule and fix"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 25 accessibility scans, valid for lifetime",
+   "facts": [
+    [
+     "What it is",
+     "Automated and assisted accessibility testing for web and mobile"
+    ],
+    [
+     "Standards",
+     "WCAG 2.2, ADA, Section 508, European Accessibility Act"
+    ],
+    [
+     "Surfaces",
+     "Websites, web apps, native iOS and Android apps"
+    ],
+    [
+     "Methods",
+     "Automated scans, real devices, screen readers"
+    ],
+    [
+     "Pricing",
+     "Free: 25 scans, valid for lifetime; paid plans on the pricing page"
+    ],
+    [
+     "Start",
+     "Scan a URL or add accessibility checks to existing tests"
+    ]
+   ],
+   "id": "glance",
+   "head": "Accessibility coverage on web and native apps",
+   "body": [
+    "Free plan: 25 accessibility scans, valid for lifetime"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Scan",
+     "Scan a URL, a sitemap or a mobile app build."
+    ],
+    [
+     "Verify",
+     "Confirm issues on real devices and with screen readers."
+    ],
+    [
+     "Fix",
+     "Each issue names the element, the WCAG rule and how to fix it."
+    ]
+   ],
+   "id": "how",
+   "head": "Scan, review, fix, re-scan",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "WCAG 2.2, ADA, 508, EAA",
+     "Checks mapped to the standards your legal team asks about."
+    ],
+    [
+     "Native mobile apps",
+     "Scan iOS and Android apps, not only websites."
+    ],
+    [
+     "Real devices and screen readers",
+     "Confirm issues the way assistive-technology users meet them."
+    ],
+    [
+     "Rule-level fixes",
+     "Every issue links to the rule it fails and the change that fixes it."
+    ],
+    [
+     "In your test suite",
+     "Add accessibility checks to Selenium, Playwright and Cypress tests."
+    ],
+    [
+     "Accessibility DevTools",
+     "A browser extension for developers to scan while they build."
+    ]
+   ],
+   "id": "caps",
+   "head": "WCAG checks for web and native apps",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Accessibility Testing compared with free browser checkers",
+   "cols": [
+    "What matters",
+    "Free browser checkers",
+    "TestMu AI Accessibility Testing"
+   ],
+   "rows": [
+    [
+     "Scope",
+     "One page at a time",
+     "Sites, flows and native apps"
+    ],
+    [
+     "Mobile apps",
+     "Not covered",
+     "iOS and Android on real devices"
+    ],
+    [
+     "Screen readers",
+     "Manual",
+     "Built into the workflow"
+    ],
+    [
+     "Reporting",
+     "A list of warnings",
+     "Issue, rule and fix per element"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Browser plug-ins vs automated accessibility scans",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "25 free scans, valid for lifetime",
+      "Scheduled scans for WCAG, ADA and Section 508"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "Native iOS and Android app scans on real devices",
+      "Issues pushed to Jira with WCAG references"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Custom platform access controls for teams",
+      "Certifications, ESG attestation and continuous monitoring (Trust Center)"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "Accessibility for one site or a design system",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "SmartUI",
+     "body": "Pixel and layout diffs on every build",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "Real Device Cloud",
+     "body": "Real devices for assistive tech checks",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Check every browser and OS version",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Test Manager",
+     "body": "Track fixes in test management",
+     "href": "https://www.testmuai.com/test-management/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "Accessibility skill (GitHub)",
+       "href": "https://github.com/LambdaTest/agent-skills/tree/main/accessibility-skill"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "Higher Education Accessibility case study",
+       "href": "https://www.testmuai.com/customers/higher-education-accessibility/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Test accessibility where you already test",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is accessibility testing?",
+     "a": "Accessibility testing checks that people with disabilities can use a website or app, including people who use screen readers, keyboards or magnification."
+    },
+    {
+     "q": "Which standards does TestMu AI check?",
+     "a": "WCAG 2.2, ADA, Section 508 and the European Accessibility Act."
+    },
+    {
+     "q": "Can automated tools find every accessibility issue?",
+     "a": "No. Automated scans catch a large share of issues, but some need a human with assistive technology. TestMu AI combines scans with real devices and screen readers."
+    },
+    {
+     "q": "Does it test native mobile apps?",
+     "a": "Yes. TestMu AI scans native iOS and Android apps on real devices, as well as websites."
+    },
+    {
+     "q": "Can I add accessibility checks to my existing tests?",
+     "a": "Yes. Add checks to Selenium, Playwright and Cypress tests, or use Accessibility DevTools in the browser."
+    }
+   ],
+   "id": "faq",
+   "head": "What teams ask before an accessibility audit",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 25 accessibility scans, valid for lifetime.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Find accessibility issues before an audit does"
+  }
+ ]
+}

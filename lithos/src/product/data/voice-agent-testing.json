@@ -1,0 +1,307 @@
+{
+ "slug": "voice-agent-testing",
+ "title": "Voice Agent Testing for AI Voice & Phone Agents | TestMu AI",
+ "description": "Test AI voice and phone agents on real calls: 200+ voices, 50+ accents, noise presets, latency and STT metrics, load tests and a go-live verdict.",
+ "crumb": [
+  "TestMu AI",
+  "Voice Agent Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Voice Agent Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Voice agent testing",
+  "h1b": "with a go-live verdict.",
+  "lede": "Voice agent testing checks that an AI voice agent understands callers and completes the task. TestMu AI tests voice agents over audio and real phone calls with 200+ voices, 50+ accents and noise presets, scores latency, transcription and task completion, and returns a go-live verdict.",
+  "ctas": [
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": true
+   },
+   {
+    "label": "See pricing",
+    "href": "https://www.testmuai.com/pricing/",
+    "primary": false
+   }
+  ],
+  "note": "No SDK. Pricing on request.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Voice AI engineers",
+   "Contact-center teams",
+   "QA leads",
+   "CX leaders"
+  ],
+  "image": {
+   "src": "/kit/hero/voice-agent-testing/hero-bg.webp",
+   "alt": "Voice Agent"
+  },
+  "run": {
+   "title": "voice · booking-agent",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "caller",
+     "text": "Scottish accent · street noise",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "stt",
+     "text": "\"Tuesday at half two\" → 14:30",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "latency",
+     "text": "p50 820 ms · excellent",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "task",
+     "text": "appointment booked",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "GO · 9/9 metrics",
+   "evid": "audio, transcript, latency per turn"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Pricing on request (Contact Sales on the pricing page).",
+   "facts": [
+    [
+     "What it is",
+     "Simulated callers that test AI voice agents end to end"
+    ],
+    [
+     "Channels",
+     "Web audio and real phone calls"
+    ],
+    [
+     "Callers",
+     "200+ voices, 50+ accents and dialects, noise presets"
+    ],
+    [
+     "Metrics",
+     "9 quality metrics for audio; latency, STT and task completion"
+    ],
+    [
+     "Latency bands",
+     "Excellent at 1,000 ms or less; poor above 2,500 ms"
+    ],
+    [
+     "Start",
+     "Connect the agent's number or audio endpoint"
+    ]
+   ],
+   "id": "glance",
+   "head": "Voice agent testing, summarised",
+   "body": [
+    "Pricing on request (Contact Sales on the pricing page)."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Connect",
+     "Give TestMu AI the agent's phone number or audio endpoint."
+    ],
+    [
+     "Call",
+     "Simulated callers speak with chosen voices, accents and noise."
+    ],
+    [
+     "Decide",
+     "Scores roll into a go-live verdict with the failing turns linked."
+    ]
+   ],
+   "id": "how",
+   "head": "Simulated callers, real calls, scored transcripts",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "200+ voices, 50+ accents",
+     "Test the callers you actually get, not one studio voice."
+    ],
+    [
+     "Background noise",
+     "Presets such as street, café and car noise."
+    ],
+    [
+     "Latency per turn",
+     "Excellent at 1,000 ms or less, good up to 2,500 ms, poor above."
+    ],
+    [
+     "Transcription accuracy",
+     "Checks what the agent heard against what was said."
+    ],
+    [
+     "Task completion",
+     "Did the caller get the booking, refund or answer?"
+    ],
+    [
+     "Load tests",
+     "Many concurrent calls to find where quality drops."
+    ]
+   ],
+   "id": "caps",
+   "head": "What a voice test call measures",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Voice Agent Testing compared with team test calls",
+   "cols": [
+    "What matters",
+    "Team test calls",
+    "TestMu AI voice agent testing"
+   ],
+   "rows": [
+    [
+     "Accents",
+     "Whoever is in the office",
+     "50+ accents and dialects"
+    ],
+    [
+     "Noise",
+     "Quiet room",
+     "Noise presets"
+    ],
+    [
+     "Latency",
+     "Felt, not measured",
+     "Measured per turn"
+    ],
+    [
+     "Decision",
+     "Gut feel",
+     "Go-live verdict from scores"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Listening to recordings vs scored test calls",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "IVR Testing",
+     "body": "Check DTMF and speech menus end to end",
+     "href": "https://www.testmuai.com/ivr-testing/"
+    },
+    {
+     "name": "Phone Calling Agent Testing",
+     "body": "AI calling agent testing",
+     "href": "https://www.testmuai.com/phone-calling-agent/"
+    },
+    {
+     "name": "Chatbot Testing",
+     "body": "Test bots with hundreds of simulated chats",
+     "href": "https://www.testmuai.com/chatbot-testing/"
+    },
+    {
+     "name": "Agent Testing",
+     "body": "Simulated users for AI agents",
+     "href": "https://www.testmuai.com/agent-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Agent Testing CLI",
+       "href": "https://www.testmuai.com/support/docs/agent-testing-cli/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Customer Engagement Platform case study",
+       "href": "https://www.testmuai.com/customers/customer-engagement-platform/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Cover chat, phone and IVR too",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is voice agent testing?",
+     "a": "Voice agent testing checks that an AI voice agent understands callers, responds quickly and completes the task, across voices, accents and noisy conditions."
+    },
+    {
+     "q": "How do you test an AI voice agent?",
+     "a": "TestMu AI sends simulated callers to the agent over audio or real phone calls, then scores latency, transcription accuracy and task completion."
+    },
+    {
+     "q": "What latency is good for a voice agent?",
+     "a": "TestMu AI rates response latency of 1,000 ms or less as excellent, up to 2,500 ms as good and above 2,500 ms as poor."
+    },
+    {
+     "q": "Can I test accents and background noise?",
+     "a": "Yes. Choose from 200+ voices, 50+ accents and dialects, and background-noise presets."
+    },
+    {
+     "q": "Does it work with any voice AI vendor?",
+     "a": "Yes. Tests run over a phone number or audio endpoint, so the agent can be built on any stack."
+    }
+   ],
+   "id": "faq",
+   "head": "Can a voice agent be tested like code?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "No SDK. Pricing on request.",
+   "ctas": [
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    },
+    {
+     "label": "See pricing",
+     "href": "https://www.testmuai.com/pricing/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Hear what your voice agent really says"
+  }
+ ]
+}

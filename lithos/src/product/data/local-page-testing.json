@@ -1,0 +1,302 @@
+{
+ "slug": "local-page-testing",
+ "title": "Local Page Testing",
+ "description": "Localhost testing with UnderPass: open localhost, staging and private sites on 3,000+ real browsers and devices from a one-click desktop app.",
+ "crumb": [
+  "TestMu AI",
+  "Local Page Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Local Page Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Localhost testing",
+  "h1b": "on real browsers, behind your firewall.",
+  "lede": "Localhost testing on TestMu AI uses UnderPass, a secure tunnel that opens localhost, staging and privately hosted sites on 3,000+ real browsers and real devices. Start it from the UnderPass desktop app for macOS, Windows or Linux with one click and no CLI, and your firewall stays closed.",
+  "ctas": [
+   {
+    "label": "Download for macOS",
+    "href": "https://downloads.lambdatest.com/underpass/master/UnderPass.dmg",
+    "primary": true
+   },
+   {
+    "label": "Download for Windows",
+    "href": "https://downloads.lambdatest.com/underpass/master/UnderPass-Setup.exe",
+    "primary": false
+   },
+   {
+    "label": "Download for Linux",
+    "href": "https://downloads.lambdatest.com/underpass/master/UnderPass.AppImage",
+    "primary": false
+   }
+  ],
+  "note": "UnderPass desktop app for macOS, Windows and Linux. No account yet? Start free with Google or email",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Front-end developers",
+   "QA testers",
+   "DevOps",
+   "Security teams"
+  ],
+  "image": {
+   "src": "/kit/hero/local-page-testing/hero-bg.webp",
+   "alt": "Local Page Testing on 3,000+ Real Browsers"
+  },
+  "run": {
+   "title": "UnderPass · tunnel connected",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "tunnel",
+     "text": "connected · us-east",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "chrome",
+     "text": "http://localhost:3000 loads",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "safari",
+     "text": "staging.internal loads",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "iphone",
+     "text": "localhost:3000 on device",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "TUNNEL UP · 3 TARGETS",
+   "evid": "tunnel log · session screenshots"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "",
+   "facts": [
+    [
+     "What it is",
+     "Secure tunnel from TestMu AI browsers to your local and private sites"
+    ],
+    [
+     "Tunnel",
+     "UnderPass desktop app for macOS, Windows and Linux"
+    ],
+    [
+     "Reaches",
+     "localhost, staging, VPN-only and intranet hosts"
+    ],
+    [
+     "Browsers",
+     "3,000+ browsers and real devices"
+    ],
+    [
+     "Get it",
+     "Desktop app for macOS, Windows and Linux"
+    ],
+    [
+     "Firewall",
+     "Outbound connection only; no inbound ports opened"
+    ]
+   ],
+   "id": "glance",
+   "head": "Tunnels, browsers and plans for localhost tests",
+   "body": []
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Start UnderPass",
+     "Download the desktop app and activate the tunnel in one click."
+    ],
+    [
+     "Open your local URL",
+     "Use localhost or a private hostname in a cloud browser or device."
+    ],
+    [
+     "Test as usual",
+     "Live sessions and automated suites both route through the tunnel."
+    ]
+   ],
+   "id": "how",
+   "head": "Open a tunnel and test your local site",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "No CLI needed",
+     "UnderPass desktop app starts the tunnel in one click."
+    ],
+    [
+     "Your CI pipeline",
+     "Test local and staging builds from your CI pipeline."
+    ],
+    [
+     "Firewall safe",
+     "Outbound-only connection; nothing exposed publicly."
+    ],
+    [
+     "Real devices too",
+     "Open localhost on real phones and tablets."
+    ],
+    [
+     "Private hostnames",
+     "Reach staging, VPN and intranet hosts."
+    ],
+    [
+     "Shareable tunnel logs",
+     "Share tunnel logs instantly for faster debugging."
+    ]
+   ],
+   "id": "caps",
+   "head": "What you can test before you deploy",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Local Page Testing compared with deploying to a public staging URL",
+   "cols": [
+    "What matters",
+    "Deploying to a public staging URL",
+    "Localhost testing with UnderPass"
+   ],
+   "rows": [
+    [
+     "Time to first test",
+     "Wait for a deploy",
+     "Start the tunnel"
+    ],
+    [
+     "Exposure",
+     "Public URL",
+     "Private tunnel"
+    ],
+    [
+     "Mobile check of localhost",
+     "Same Wi-Fi tricks",
+     "Real device through the tunnel"
+    ],
+    [
+     "Setup",
+     "Deploy pipeline per branch",
+     "One-click desktop app"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Deploying to staging first vs testing localhost directly",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Cross Browser Testing",
+     "body": "Test on 3,000+ real desktop and mobile browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Automation Cloud",
+     "body": "Run Selenium, Playwright and Cypress in one cloud",
+     "href": "https://www.testmuai.com/automation-cloud/"
+    },
+    {
+     "name": "Mobile Browser Testing",
+     "body": "Test on mobile browsers",
+     "href": "https://www.testmuai.com/test-on-mobile-devices/"
+    },
+    {
+     "name": "LT Debug",
+     "body": "Debug web pages from a browser extension",
+     "href": "https://www.testmuai.com/lt-debug/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Test the same pages in the cloud",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "How do I test localhost on cloud browsers?",
+     "a": "Start UnderPass from the desktop app, then open your localhost URL in a TestMu AI browser or device."
+    },
+    {
+     "q": "Do I need the command line?",
+     "a": "No. The UnderPass desktop app starts the tunnel with one click, no CLI."
+    },
+    {
+     "q": "Is the tunnel secure?",
+     "a": "Yes. It opens an outbound connection only, so no inbound firewall ports are needed."
+    },
+    {
+     "q": "Can I test localhost on a real iPhone?",
+     "a": "Yes. Real devices route through the tunnel too."
+    },
+    {
+     "q": "Does it work with automation?",
+     "a": "Yes. Selenium, Playwright, Cypress and Appium runs can use the tunnel."
+    }
+   ],
+   "id": "faq",
+   "head": "Can you test a site that is not deployed yet?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "UnderPass desktop app for macOS, Windows and Linux.",
+   "ctas": [
+    {
+     "label": "Download for macOS",
+     "href": "https://downloads.lambdatest.com/underpass/master/UnderPass.dmg",
+     "primary": false
+    },
+    {
+     "label": "Download for Windows",
+     "href": "https://downloads.lambdatest.com/underpass/master/UnderPass-Setup.exe",
+     "primary": false
+    },
+    {
+     "label": "Download for Linux",
+     "href": "https://downloads.lambdatest.com/underpass/master/UnderPass.AppImage",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test your localhost on real browsers"
+  }
+ ]
+}

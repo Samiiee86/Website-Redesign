@@ -1,0 +1,304 @@
+{
+ "slug": "sap-testing",
+ "title": "SAP Testing Automation for Fiori & S/4HANA | TestMu AI",
+ "description": "SAP testing for Fiori, S/4HANA and every quarterly update. Describe the workflow in plain English; KaneAI authors, runs and repairs the test.",
+ "crumb": [
+  "TestMu AI",
+  "SAP Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "SAP Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "SAP testing for",
+  "h1b": "Fiori and S/4HANA.",
+  "lede": "TestMu AI automates SAP testing in natural language. Describe an SAP workflow and KaneAI authors, runs and repairs the test through Fiori's dynamic IDs, cross-module flows and every quarterly update. Kane CLI runs the same tests from CI, on 3,000+ browsers.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "KaneAI Starter from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "SAP QA leads",
+   "SAP functional consultants",
+   "Release managers",
+   "CIOs"
+  ],
+  "image": {
+   "src": "/kit/hero/sap-testing/hero-bg.webp",
+   "alt": "SAP Testing and Test Automation for Fiori and S/4HANA"
+  },
+  "run": {
+   "title": "kaneai · order-to-cash",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "fiori",
+     "text": "create sales order VA01 app",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "delivery",
+     "text": "outbound delivery posted",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "billing",
+     "text": "invoice created",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "verify",
+     "text": "amount matches order",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · cross-module",
+   "evid": "steps, screenshots, document numbers"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually.",
+   "facts": [
+    [
+     "What it is",
+     "Plain-English test automation for SAP Fiori and S/4HANA"
+    ],
+    [
+     "Handles",
+     "Dynamic Fiori IDs, cross-module flows, quarterly updates"
+    ],
+    [
+     "Modules",
+     "Order-to-cash, procure-to-pay and custom Fiori apps"
+    ],
+    [
+     "Browsers",
+     "3,000+ browsers, no code"
+    ],
+    [
+     "Migration",
+     "Regression coverage for ECC to S/4HANA moves"
+    ],
+    [
+     "Start",
+     "Describe an order-to-cash flow in KaneAI"
+    ]
+   ],
+   "id": "glance",
+   "head": "SAP coverage at a glance",
+   "body": [
+    "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Describe",
+     "Write the business process in plain English."
+    ],
+    [
+     "Run",
+     "KaneAI drives Fiori across modules and records each document."
+    ],
+    [
+     "Heal",
+     "Tests survive quarterly updates; wrong values still fail."
+    ]
+   ],
+   "id": "how",
+   "head": "Fiori and S/4HANA flows, tested end to end",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Fiori dynamic IDs",
+     "Elements found by meaning, not generated IDs."
+    ],
+    [
+     "Cross-module flows",
+     "Order-to-cash and procure-to-pay in one test."
+    ],
+    [
+     "Quarterly update packs",
+     "Re-run regression on every update."
+    ],
+    [
+     "S/4HANA migration",
+     "Compare process results before and after migration."
+    ],
+    [
+     "Business-readable tests",
+     "Consultants and QA read the same steps."
+    ],
+    [
+     "Evidence",
+     "Document numbers and screenshots per step."
+    ]
+   ],
+   "id": "caps",
+   "head": "SAP processes teams automate first",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "SAP Testing compared with recorded SAP scripts",
+   "cols": [
+    "What matters",
+    "Recorded SAP scripts",
+    "TestMu AI"
+   ],
+   "rows": [
+    [
+     "Fiori ID changes",
+     "Scripts break",
+     "Tests heal"
+    ],
+    [
+     "Quarterly updates",
+     "Maintenance sprint",
+     "Re-run the pack"
+    ],
+    [
+     "Authoring",
+     "Specialist tooling",
+     "Plain English"
+    ],
+    [
+     "Cross-module",
+     "Separate scripts",
+     "One test"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Manual SAP regression vs automated test packs",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Oracle Testing",
+     "body": "Test Fusion Cloud and EBS through quarterly updates",
+     "href": "https://www.testmuai.com/oracle-testing/"
+    },
+    {
+     "name": "Salesforce Testing",
+     "body": "Test Lightning and Flows after each release",
+     "href": "https://www.testmuai.com/salesforce-testing/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Turn tickets and specs into tests",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Test Manager",
+     "body": "AI test management",
+     "href": "https://www.testmuai.com/test-management/"
+    },
+    {
+     "name": "Snowflake Testing",
+     "body": "Snowflake warehouse testing",
+     "href": "https://www.testmuai.com/snowflake-testing/"
+    },
+    {
+     "name": "Workday Testing",
+     "body": "Workday HCM and payroll testing",
+     "href": "https://www.testmuai.com/workday-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Salesforce, ServiceNow and more enterprise apps",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is SAP testing?",
+     "a": "SAP testing checks that SAP business processes, configurations and custom apps work correctly after changes, updates and migrations."
+    },
+    {
+     "q": "Can SAP Fiori be automated?",
+     "a": "Yes. KaneAI automates Fiori apps in plain English and handles dynamic element IDs."
+    },
+    {
+     "q": "How do you test SAP quarterly updates?",
+     "a": "Run your regression pack against the updated system. Tests heal through UI changes and fail on real process breaks."
+    },
+    {
+     "q": "Does TestMu AI help with S/4HANA migration?",
+     "a": "Yes. Run the same process tests before and after migration and compare results."
+    },
+    {
+     "q": "Who can write SAP tests?",
+     "a": "Functional consultants and QA, in plain English."
+    }
+   ],
+   "id": "faq",
+   "head": "What SAP teams ask before automating regression",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI Starter from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Automate SAP regression before the next transport"
+  }
+ ]
+}

@@ -1,0 +1,294 @@
+{
+ "slug": "snowflake-testing",
+ "title": "Snowflake Testing with AI Agents | TestMu AI",
+ "description": "Test what users see on Snowflake: dashboards, Streamlit apps, APIs and Cortex agents, verified against the warehouse in one AI-authored run.",
+ "crumb": [
+  "TestMu AI",
+  "Snowflake Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Snowflake Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Snowflake testing,",
+  "h1b": "from warehouse to screen.",
+  "lede": "Snowflake testing on TestMu AI checks that the numbers in your warehouse match what users see. KaneAI and Kane CLI drive your dashboard, call your API and query Snowflake in a single run, so a wrong number on a Streamlit app, BI dashboard or Cortex agent answer fails the test.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "KaneAI Starter from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Data engineers",
+   "Analytics engineers",
+   "BI teams",
+   "QA engineers"
+  ],
+  "image": {
+   "src": "/kit/hero/snowflake-testing/hero-bg.webp",
+   "alt": "Snowflake Testing, From Warehouse to Screen"
+  },
+  "run": {
+   "title": "kane-cli · revenue dashboard",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "sql",
+     "text": "SUM(revenue) Oct = 4.21M",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "ui",
+     "text": "dashboard tile shows 4.21M",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "api",
+     "text": "/metrics/revenue = 4.21M",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "cortex",
+     "text": "agent answer cites 4.21M",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · numbers match",
+   "evid": "query, screenshot, API response"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually.",
+   "facts": [
+    [
+     "What it is",
+     "End-to-end tests that compare Snowflake data with what apps show"
+    ],
+    [
+     "Surfaces",
+     "Dashboards, Streamlit apps, APIs, Cortex agents"
+    ],
+    [
+     "Method",
+     "UI, API and SQL steps in one test"
+    ],
+    [
+     "Authoring",
+     "Plain English with KaneAI or Kane CLI"
+    ],
+    [
+     "Evidence",
+     "Query results, screenshots and values side by side"
+    ],
+    [
+     "Start",
+     "Describe a dashboard check and the query it should match"
+    ]
+   ],
+   "id": "glance",
+   "head": "Snowflake testing: scope and setup",
+   "body": [
+    "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Query",
+     "Define the Snowflake query that holds the truth."
+    ],
+    [
+     "Drive the app",
+     "KaneAI opens the dashboard or app and reads the displayed value."
+    ],
+    [
+     "Compare",
+     "The test fails if any surface disagrees with the warehouse."
+    ]
+   ],
+   "id": "how",
+   "head": "From warehouse table to dashboard tile",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Warehouse to screen",
+     "One test spans SQL, API and UI."
+    ],
+    [
+     "Streamlit apps",
+     "Test Streamlit in Snowflake apps like any web app."
+    ],
+    [
+     "BI dashboards",
+     "Verify tiles and charts against queries."
+    ],
+    [
+     "Cortex agents",
+     "Check AI answers against warehouse data."
+    ],
+    [
+     "Plain-English steps",
+     "Data and QA teams write the same tests."
+    ],
+    [
+     "Scheduled runs",
+     "Run after each pipeline load."
+    ]
+   ],
+   "id": "caps",
+   "head": "Data checks that catch a broken pipeline",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Snowflake Testing compared with data tests only",
+   "cols": [
+    "What matters",
+    "Data tests only",
+    "TestMu AI Snowflake testing"
+   ],
+   "rows": [
+    [
+     "Scope",
+     "Tables and models",
+     "Tables through to the screen"
+    ],
+    [
+     "Dashboard bugs",
+     "Missed",
+     "Caught"
+    ],
+    [
+     "AI answers",
+     "Not checked",
+     "Checked against data"
+    ],
+    [
+     "Evidence",
+     "Query output",
+     "Query, API and screenshot together"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Spot-checking dashboards vs testing the data path",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "API Testing",
+     "body": "Generate API tests from cURL or plain English",
+     "href": "https://www.testmuai.com/api-testing/"
+    },
+    {
+     "name": "Kane CLI",
+     "body": "Run plain-English checks from the terminal",
+     "href": "https://www.testmuai.com/kane-cli/"
+    },
+    {
+     "name": "Chatbot Testing",
+     "body": "Test bots with hundreds of simulated chats",
+     "href": "https://www.testmuai.com/chatbot-testing/"
+    },
+    {
+     "name": "Oracle Testing",
+     "body": "Test Fusion Cloud and EBS through quarterly updates",
+     "href": "https://www.testmuai.com/oracle-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Test the apps that read from Snowflake",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is Snowflake testing?",
+     "a": "Snowflake testing checks that data in Snowflake is correct and that the apps, dashboards and agents built on it show the right values."
+    },
+    {
+     "q": "How is this different from dbt tests?",
+     "a": "dbt tests check tables and models. TestMu AI checks that the numbers users see in dashboards, apps and AI answers match the warehouse."
+    },
+    {
+     "q": "Can it test Streamlit apps?",
+     "a": "Yes. Streamlit in Snowflake apps are tested like any web app, with values compared to queries."
+    },
+    {
+     "q": "Can it test Cortex agents?",
+     "a": "Yes. Agent answers are compared with warehouse data in the same run."
+    },
+    {
+     "q": "Do I need to write code?",
+     "a": "No. Tests are written in plain English with KaneAI or Kane CLI."
+    }
+   ],
+   "id": "faq",
+   "head": "How do you test data, not just dashboards?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI Starter from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test your data before the dashboard shows it"
+  }
+ ]
+}

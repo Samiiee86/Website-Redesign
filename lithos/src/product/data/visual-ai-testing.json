@@ -1,0 +1,319 @@
+{
+ "slug": "visual-ai-testing",
+ "title": "AI Visual Testing That Filters Pixel Noise | TestMu AI",
+ "description": "Visual AI testing understands UI layout and context, not just pixels, to catch real regressions and filter anti-aliasing noise. Powered by SmartUI.",
+ "crumb": [
+  "TestMu AI",
+  "Visual AI Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Visual AI Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "AI visual testing",
+  "h1b": "that ignores pixel noise.",
+  "lede": "AI visual testing is visual testing where AI, not a raw pixel diff, decides which UI changes matter. SmartUI Visual AI compares each screenshot with its baseline, understands layout and context, flags real regressions such as moved buttons or broken text, and ignores anti-aliasing and rendering noise.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "SmartUI free plan: 2,000 screenshots, valid for lifetime.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Front-end developers",
+   "QA engineers",
+   "Design systems teams",
+   "SDETs"
+  ],
+  "image": {
+   "src": "/kit/hero/visual-ai-testing/hero-bg.webp",
+   "alt": "A visual comparison test step beside the SmartUI view of baseline and current"
+  },
+  "run": {
+   "title": "visual-ai · checkout",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "pixel diff",
+     "text": "1,204 pixels changed",
+     "st": {
+      "label": "RUN",
+      "kind": "run"
+     }
+    },
+    {
+     "who": "visual ai",
+     "text": "1,198 are font smoothing",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "layout",
+     "text": "Pay button moved below fold",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "text",
+     "text": "price label intact",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [
+    "Baseline",
+    "Current"
+   ],
+   "verdict": "1 real regression",
+   "evid": "highlighted region, baseline, new"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 2,000 screenshots, valid for lifetime · SmartUI Visual Regression from $199/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "AI-judged visual comparison instead of raw pixel diffs"
+    ],
+    [
+     "Product",
+     "SmartUI Visual AI"
+    ],
+    [
+     "Ignores",
+     "Anti-aliasing, sub-pixel rendering, chosen dynamic regions"
+    ],
+    [
+     "Flags",
+     "Layout shifts, missing elements, broken text, color changes"
+    ],
+    [
+     "Coverage",
+     "3,000+ browsers and 50,000+ real devices"
+    ],
+    [
+     "Start",
+     "Turn on Visual AI in a SmartUI project"
+    ]
+   ],
+   "id": "glance",
+   "head": "AI visual testing: what it compares",
+   "body": [
+    "Free plan: 2,000 screenshots, valid for lifetime · SmartUI Visual Regression from $199/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Capture",
+     "Take screenshots from your existing tests."
+    ],
+    [
+     "Judge",
+     "Visual AI separates real UI changes from rendering noise."
+    ],
+    [
+     "Review",
+     "Only meaningful changes reach your review queue."
+    ]
+   ],
+   "id": "how",
+   "head": "Add a visual check to any test step",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Layout-aware comparison",
+     "Understands elements and structure, not only pixels."
+    ],
+    [
+     "Noise filtering",
+     "Ignores anti-aliasing and sub-pixel rendering differences."
+    ],
+    [
+     "Dynamic content",
+     "Handle dates, ads and personalised regions."
+    ],
+    [
+     "Cross-browser baselines",
+     "Judge changes per browser and device."
+    ],
+    [
+     "Smaller review queue",
+     "Reviewers see changes that matter."
+    ],
+    [
+     "Same SmartUI workflow",
+     "Baselines, approvals and CI checks stay the same."
+    ]
+   ],
+   "id": "caps",
+   "head": "What Visual AI looks at",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Visual AI Testing compared with pixel-diff visual testing",
+   "cols": [
+    "What matters",
+    "Pixel-diff visual testing",
+    "AI visual testing"
+   ],
+   "rows": [
+    [
+     "What counts as a change",
+     "Any pixel",
+     "A change a user would notice"
+    ],
+    [
+     "Font smoothing",
+     "False positive",
+     "Ignored"
+    ],
+    [
+     "Moved button",
+     "Lost among noise",
+     "Flagged"
+    ],
+    [
+     "Anti-aliasing and font smoothing",
+     "Flagged as changes",
+     "Ignored by Visual AI"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Pixel diffs vs AI that ignores rendering noise",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "SmartUI",
+     "body": "Catch visual regressions screenshot by screenshot",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Test on 3,000+ real desktop and mobile browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "AI App Testing",
+     "body": "Check AI features inside your app",
+     "href": "https://www.testmuai.com/ai-app-testing/"
+    },
+    {
+     "name": "Accessibility Testing",
+     "body": "Scan for WCAG, ADA and Section 508 issues",
+     "href": "https://www.testmuai.com/accessibility-testing/"
+    },
+    {
+     "name": "Localization Testing",
+     "body": "Visual checks for each language",
+     "href": "https://www.testmuai.com/localization-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "SmartUI SmartIgnore",
+       "href": "https://www.testmuai.com/support/docs/smartui-smartignore/"
+      },
+      {
+       "label": "View SmartUI docs",
+       "href": "https://www.testmuai.com/support/docs/selenium-visual-regression/"
+      },
+      {
+       "label": "Visual AI agent docs",
+       "href": "https://www.testmuai.com/support/docs/smartui-visual-ai/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "Atypon case study",
+       "href": "https://www.testmuai.com/customers/atypon/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Run visual checks at scale",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is AI visual testing?",
+     "a": "AI visual testing uses AI to decide which visual differences between a screenshot and its baseline matter to users, instead of flagging every changed pixel."
+    },
+    {
+     "q": "How is visual AI different from pixel diffing?",
+     "a": "Pixel diffing flags any changed pixel. Visual AI understands layout and context, so it ignores rendering noise and flags real regressions."
+    },
+    {
+     "q": "Does visual AI replace baselines?",
+     "a": "No. Visual AI still compares against approved baselines; it changes how differences are judged."
+    },
+    {
+     "q": "Which product provides visual AI on TestMu AI?",
+     "a": "SmartUI, TestMu AI's visual testing tool, includes Visual AI."
+    },
+    {
+     "q": "Can I still use strict pixel comparison?",
+     "a": "Yes. Choose the comparison mode per project or per screenshot."
+    }
+   ],
+   "id": "faq",
+   "head": "How does Visual AI decide what changed?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "SmartUI free plan: 2,000 screenshots, valid for lifetime.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Add visual checks to your tests"
+  }
+ ]
+}

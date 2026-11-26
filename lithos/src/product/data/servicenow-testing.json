@@ -1,0 +1,289 @@
+{
+ "slug": "servicenow-testing",
+ "title": "ServiceNow Testing with AI Agents | TestMu AI",
+ "description": "Test ServiceNow ITSM, HRSD and CSM in plain English. KaneAI and Kane CLI keep tests working through every release, with evidence for each run.",
+ "crumb": [
+  "TestMu AI",
+  "ServiceNow Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "ServiceNow Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "ServiceNow testing",
+  "h1b": "in plain English.",
+  "lede": "TestMu AI automates ServiceNow testing end to end in plain English. Describe an ITSM, HRSD or CSM workflow and KaneAI runs it, heals what moved after a family release, and returns evidence for every run. Kane CLI runs the same tests from your CI pipeline.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "KaneAI Starter from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "ServiceNow admins",
+   "Platform owners",
+   "QA teams",
+   "IT leaders"
+  ],
+  "image": {
+   "src": "/kit/hero/servicenow-testing/hero-bg.webp",
+   "alt": "Automate ServiceNow Workflows with KaneAI Agent"
+  },
+  "run": {
+   "title": "kaneai · incident P1 flow",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "portal",
+     "text": "employee raises incident",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "assign",
+     "text": "routed to Network group",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "sla",
+     "text": "P1 SLA timer started",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "resolve",
+     "text": "state = Resolved, notes saved",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · family release preview",
+   "evid": "steps, screenshots, record values"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually.",
+   "facts": [
+    [
+     "What it is",
+     "Plain-English test automation for ServiceNow workflows"
+    ],
+    [
+     "Products",
+     "ITSM, HRSD, CSM and custom apps"
+    ],
+    [
+     "Releases",
+     "Regression through family releases and patches"
+    ],
+    [
+     "Alongside ATF",
+     "Covers end-to-end journeys outside ServiceNow's Automated Test Framework"
+    ],
+    [
+     "Evidence",
+     "Screenshots and record values per run"
+    ],
+    [
+     "Start",
+     "Describe an incident-to-resolution flow"
+    ]
+   ],
+   "id": "glance",
+   "head": "ServiceNow coverage and setup",
+   "body": [
+    "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Describe",
+     "Write the workflow as the requester and fulfiller see it."
+    ],
+    [
+     "Run",
+     "KaneAI runs it through the portal and the platform UI."
+    ],
+    [
+     "Repeat on upgrade",
+     "Re-run against the upgraded instance before go-live."
+    ]
+   ],
+   "id": "how",
+   "head": "ITSM, HRSD and CSM journeys in plain English",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "ITSM, HRSD, CSM",
+     "Incidents, requests, cases and HR journeys."
+    ],
+    [
+     "Portal and platform UI",
+     "Test what employees and agents both see."
+    ],
+    [
+     "Family release regression",
+     "Heal UI changes; fail on real behaviour changes."
+    ],
+    [
+     "End-to-end beyond the instance",
+     "Include email, Slack or external apps in one test."
+    ],
+    [
+     "Terminal and CI",
+     "Kane CLI runs the same tests in pipelines."
+    ],
+    [
+     "Evidence",
+     "Record values and screenshots for change approval."
+    ]
+   ],
+   "id": "caps",
+   "head": "ServiceNow workflows worth automating",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "ServiceNow Testing compared with ATF alone",
+   "cols": [
+    "What matters",
+    "ATF alone",
+    "ATF plus TestMu AI"
+   ],
+   "rows": [
+    [
+     "Scope",
+     "Inside the instance",
+     "End to end, including external systems"
+    ],
+    [
+     "Authoring",
+     "ATF steps",
+     "Plain English"
+    ],
+    [
+     "Evidence",
+     "ATF results",
+     "Screenshots and values per step"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "ATF on its own vs ATF with end-to-end tests",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Salesforce Testing",
+     "body": "Test Lightning and Flows after each release",
+     "href": "https://www.testmuai.com/salesforce-testing/"
+    },
+    {
+     "name": "Oracle Testing",
+     "body": "Test Fusion Cloud and EBS through quarterly updates",
+     "href": "https://www.testmuai.com/oracle-testing/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Plain-English test authoring for every flow",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Test Manager",
+     "body": "Test management",
+     "href": "https://www.testmuai.com/test-management/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "More enterprise suites we test",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is ServiceNow testing?",
+     "a": "ServiceNow testing checks that workflows, forms, portals and integrations on a ServiceNow instance work after configuration changes, patches and family releases."
+    },
+    {
+     "q": "What is ServiceNow ATF?",
+     "a": "ATF is ServiceNow's built-in Automated Test Framework for testing inside an instance. TestMu AI complements it with end-to-end tests that also cover external systems and browsers."
+    },
+    {
+     "q": "How do you test a ServiceNow upgrade?",
+     "a": "Run your regression tests against the upgraded instance before go-live. TestMu AI tests heal UI changes and fail on real behaviour changes."
+    },
+    {
+     "q": "Can non-developers write ServiceNow tests?",
+     "a": "Yes. Tests are written in plain English."
+    },
+    {
+     "q": "How does TestMu AI connect to ServiceNow?",
+     "a": "TestMu AI is independent of ServiceNow. It tests your instance through the UI and APIs you already use."
+    }
+   ],
+   "id": "faq",
+   "head": "Can ATF and end-to-end tests work together?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI Starter from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test the workflows ATF cannot reach"
+  }
+ ]
+}

@@ -1,0 +1,394 @@
+{
+ "slug": "cross-browser-testing",
+ "title": "Cross Browser Testing Tool: 3,000+ Real Browsers | TestMu AI",
+ "description": "Online cross browser testing on 3,000+ browser-OS combinations. Free plan: live sessions with built-in DevTools and a localhost tunnel.",
+ "crumb": [
+  "TestMu AI",
+  "Cross Browser Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Cross Browser Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Cross browser testing on",
+  "h1b": "3,000+ real desktop and mobile browsers.",
+  "lede": "TestMu AI is a cross browser testing tool with 3,000+ browser and OS combinations. Open a live Chrome, Firefox, Edge or Safari on macOS session in seconds, debug with built-in DevTools, reach localhost through a tunnel, or run automated suites across every browser in parallel.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Front-end developers",
+   "QA engineers",
+   "Web designers",
+   "SDETs"
+  ],
+  "image": {
+   "src": "/kit/hero/cross-browser-testing/hero-bg.webp",
+   "alt": "Browser picker with Chrome versions and screen resolutions for a live session"
+  },
+  "run": {
+   "title": "live · Safari 18 on macOS",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "open",
+     "text": "staging.example.com via tunnel",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "devtools",
+     "text": "console clean",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "layout",
+     "text": "sticky header overlaps on Safari",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "share",
+     "text": "bug sent to Jira with video",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 browser-specific bug",
+   "evid": "screenshot, video, console"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Live and automated testing on real desktop and mobile browsers"
+    ],
+    [
+     "Coverage",
+     "3,000+ browser-OS combinations, including legacy and beta versions"
+    ],
+    [
+     "Debugging",
+     "Built-in DevTools, screenshots, video, network logs"
+    ],
+    [
+     "Network",
+     "Localhost tunnel, 170+ geolocations, throttling"
+    ],
+    [
+     "Pricing",
+     "Free: 1 parallel test, monthly live sessions; Virtual Live from $15/month, billed annually"
+    ],
+    [
+     "Start",
+     "Enter a URL and pick a browser"
+    ]
+   ],
+   "id": "glance",
+   "head": "Browsers, devices and plans in one view",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Pick a browser",
+     "Choose browser, version and OS, desktop or mobile."
+    ],
+    [
+     "Test live or automate",
+     "Interact in real time or run your automated suite in parallel."
+    ],
+    [
+     "Report",
+     "Send bugs to Jira or Slack with screenshots and video."
+    ]
+   ],
+   "id": "how",
+   "head": "Choose a browser, open it, file the bug",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "3,000+ combinations",
+     "Chrome, Firefox, Edge, Safari, Opera and legacy versions on Windows and macOS."
+    ],
+    [
+     "Built-in DevTools",
+     "Inspect, debug and edit CSS in the remote browser."
+    ],
+    [
+     "Localhost tunnel",
+     "Test local and staging builds before deploy."
+    ],
+    [
+     "170+ geolocations",
+     "Check localized content and redirects."
+    ],
+    [
+     "Automated in parallel",
+     "Run Selenium, Playwright and Cypress across browsers at once."
+    ],
+    [
+     "One-click bug reports",
+     "Jira, Slack and more, with evidence attached."
+    ]
+   ],
+   "id": "caps",
+   "head": "Tools inside every live browser session",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Cross Browser Testing compared with browsers on your laptop",
+   "cols": [
+    "What matters",
+    "Browsers on your laptop",
+    "TestMu AI cross browser testing"
+   ],
+   "rows": [
+    [
+     "Coverage",
+     "2 or 3 browsers",
+     "3,000+ browser-OS combinations"
+    ],
+    [
+     "Safari on macOS",
+     "Need a Mac",
+     "In any browser"
+    ],
+    [
+     "Old versions",
+     "Hard to install",
+     "Available on demand"
+    ],
+    [
+     "Bug evidence",
+     "Manual screenshots",
+     "Video, console and network"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "A local browser zoo vs a cross browser testing cloud",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "Free plan: 1 parallel test, monthly live sessions",
+      "Virtual Live from $15/month, billed annually"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "Real Device Plus Live from $39/month for phones and tablets",
+      "Jira, Slack and GitHub bug logging from the session"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Custom platform access controls for teams",
+      "Custom platform access controls for teams"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "Live testing for freelancers, agencies and enterprises",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams that cover every browser",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Test Automation Platform",
+     "body": "One platform for coded and AI-authored tests",
+     "href": "https://www.testmuai.com/automation-testing-platform/"
+    },
+    {
+     "name": "SmartUI",
+     "body": "Visual regression testing",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "Real Device Cloud",
+     "body": "Real devices for mobile web",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "Accessibility Testing",
+     "body": "Check accessibility on real devices",
+     "href": "https://www.testmuai.com/accessibility-testing/"
+    },
+    {
+     "name": "Internet Explorer Testing",
+     "body": "Open real IE 11 to IE 7 online",
+     "href": "https://www.testmuai.com/test-on-internet-explorer-browsers/"
+    },
+    {
+     "name": "Automated Screenshots",
+     "body": "Screenshot testing across browsers",
+     "href": "https://www.testmuai.com/automated-screenshot/"
+    },
+    {
+     "name": "Geolocation Testing",
+     "body": "Test from 170+ countries",
+     "href": "https://www.testmuai.com/geolocation-testing/"
+    },
+    {
+     "name": "Local Page Testing",
+     "body": "Localhost testing",
+     "href": "https://www.testmuai.com/local-page-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Test on desktop browsers",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-desktop-browser-real-time-testing/"
+      },
+      {
+       "label": "Test on mobile browsers",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-mobile-browser-real-time-testing/"
+      },
+      {
+       "label": "Running your first Selenium test",
+       "href": "https://www.testmuai.com/support/docs/testmu-running-your-first-selenium-test/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Kinectify case study",
+       "href": "https://www.testmuai.com/customers/kinectify/"
+      },
+      {
+       "label": "Locusnine case study",
+       "href": "https://www.testmuai.com/customers/locusnine/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Automate the browsers you test by hand",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is cross browser testing?",
+     "a": "Cross browser testing checks that a website works and looks right in different browsers, browser versions, operating systems and devices."
+    },
+    {
+     "q": "How many browsers does TestMu AI support?",
+     "a": "TestMu AI offers 3,000+ browser and OS combinations, including Chrome, Firefox, Edge, Safari and Opera, with legacy and beta versions."
+    },
+    {
+     "q": "Can I test Safari without a Mac?",
+     "a": "Yes. Open Safari on macOS in your browser from any operating system."
+    },
+    {
+     "q": "Can I test a site on localhost?",
+     "a": "Yes. The tunnel lets cloud browsers reach localhost and staging builds."
+    },
+    {
+     "q": "Is there a free plan?",
+     "a": "Yes. The live testing free plan gives 1 parallel test with limited sessions renewed every month. Virtual Live starts at $15 per month, billed annually."
+    }
+   ],
+   "id": "faq",
+   "head": "Which browsers should you test? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Open your site in any browser now"
+  }
+ ]
+}

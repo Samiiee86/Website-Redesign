@@ -1,0 +1,298 @@
+{
+ "slug": "xcuitest-app-testing",
+ "title": "XCUITest Real Devices Testing - TestMu AI (Formerly LambdaTest) Automation",
+ "description": "Run XCUITest suites on real iPhones and iPads in the TestMu AI cloud. Upload your app and runner, run in parallel, get video and device logs per test.",
+ "crumb": [
+  "TestMu AI",
+  "XCUITest"
+ ],
+ "hero": {
+  "eyebrow": [
+   "XCUITest",
+   "Updated November 2026"
+  ],
+  "h1a": "XCUITest",
+  "h1b": "on real iPhones and iPads.",
+  "lede": "XCUITest on TestMu AI runs your native iOS UI tests on real iPhones and iPads in the cloud. You upload the app and the XCUITest runner, choose devices and iOS versions, and every test returns a video, device logs and a pass or fail.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Real device free plan: 5 sessions a month, up to 2 minutes each.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "iOS developers",
+   "Mobile SDETs",
+   "QA engineers",
+   "Release managers"
+  ],
+  "image": {
+   "src": "/kit/hero/xcuitest-app-testing/hero-bg.png",
+   "alt": "XCUITest Automation Testing"
+  },
+  "run": {
+   "title": "xcuitest · build 2.4.1",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "iPhone 18 Pro",
+     "text": "iOS 27 · LoginUITests",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "iPhone 16",
+     "text": "iOS 26 · CheckoutUITests",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "iPad Air 11",
+     "text": "iOS 26 · LayoutUITests",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "iPhone SE",
+     "text": "iOS 17 · LoginUITests",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · 3/4 devices",
+   "evid": "device video · syslog · network"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "XCUITest suites run on real iOS devices in the TestMu AI cloud"
+    ],
+    [
+     "Devices",
+     "iPhone 18 Pro Max to iPhone X, iPads; iOS 14 to iOS 27 (see device list)"
+    ],
+    [
+     "Upload",
+     "App (.ipa) and XCUITest runner via API or CLI"
+    ],
+    [
+     "Per test",
+     "Video, device logs, network logs"
+    ],
+    [
+     "Pricing",
+     "Free: 5 real device sessions a month; app automation on real devices from $199/month"
+    ],
+    [
+     "Start",
+     "Upload app and runner, then trigger a build"
+    ]
+   ],
+   "id": "glance",
+   "head": "XCUITest on real iPhones: the facts",
+   "body": [
+    "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Upload app and runner",
+     "Send the .ipa and the XCUITest runner to TestMu AI."
+    ],
+    [
+     "Pick devices",
+     "Choose iPhones, iPads and iOS versions; shard tests across them."
+    ],
+    [
+     "Read results",
+     "Each test keeps video, device logs and network logs."
+    ]
+   ],
+   "id": "how",
+   "head": "Upload the app and test runner, then run in parallel",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real iOS hardware",
+     "No simulator gaps for camera, biometrics or performance."
+    ],
+    [
+     "Parallel sharding",
+     "Split XCUITest classes across devices."
+    ],
+    [
+     "iOS 14 to iOS 27",
+     "Older and newest iOS versions side by side."
+    ],
+    [
+     "Device logs",
+     "Syslog and crash logs saved per test."
+    ],
+    [
+     "Private devices",
+     "Dedicated devices for enterprise teams."
+    ],
+    [
+     "CI pipelines",
+     "Trigger from Xcode Cloud, GitHub Actions or Jenkins via API."
+    ]
+   ],
+   "id": "caps",
+   "head": "What each XCUITest run records",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "XCUITest compared with simulator in Xcode",
+   "cols": [
+    "What matters",
+    "Simulator in Xcode",
+    "XCUITest on TestMu AI real devices"
+   ],
+   "rows": [
+    [
+     "Hardware features",
+     "Camera and Face ID stubbed",
+     "Real camera, biometrics, sensors"
+    ],
+    [
+     "Device coverage",
+     "Simulators on one Mac",
+     "Real iPhones and iPads, many iOS versions"
+    ],
+    [
+     "Parallel runs",
+     "Limited by the Mac",
+     "Sharded across devices"
+    ],
+    [
+     "Evidence",
+     "Local test report",
+     "Video and device logs per test"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "The iOS Simulator in Xcode vs real iPhones in the cloud",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "9x",
+     "text": "Boohoo scaled test coverage 9x after retiring its in-house device farm.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/boohoo/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Results from iOS teams",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Appium Testing",
+     "body": "Appium on real devices",
+     "href": "https://www.testmuai.com/appium-mobile-testing/"
+    },
+    {
+     "name": "Espresso Testing",
+     "body": "Espresso for Android",
+     "href": "https://www.testmuai.com/espresso-automation-testing/"
+    },
+    {
+     "name": "Real Device Cloud",
+     "body": "Open 50,000+ real phones and tablets",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "List of Real Devices",
+     "body": "Every real device available",
+     "href": "https://www.testmuai.com/list-of-real-devices/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "More iOS and mobile testing",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "How do I run XCUITest on real devices?",
+     "a": "Upload your app and XCUITest runner, choose devices and iOS versions, and trigger a build through the API or CLI."
+    },
+    {
+     "q": "Which iOS versions are available?",
+     "a": "iOS 14 through iOS 27 across iPhone and iPad models; the device list shows each combination."
+    },
+    {
+     "q": "Can XCUITest run in parallel?",
+     "a": "Yes. Tests shard across devices based on your plan's parallel limit."
+    },
+    {
+     "q": "Is there a free tier?",
+     "a": "The real device free plan gives 5 sessions a month, up to 2 minutes each. Automated XCUITest runs need an app automation plan."
+    },
+    {
+     "q": "XCUITest or Appium?",
+     "a": "XCUITest is Apple's native framework for iOS only. Appium covers iOS and Android with one API. TestMu AI runs both."
+    }
+   ],
+   "id": "faq",
+   "head": "Running XCUITest outside Xcode: common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Real device free plan: 5 sessions a month, up to 2 minutes each.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Run XCUITest on real iPhones"
+  }
+ ]
+}

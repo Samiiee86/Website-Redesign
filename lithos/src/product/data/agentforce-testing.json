@@ -1,0 +1,294 @@
+{
+ "slug": "agentforce-testing",
+ "title": "Agentforce Testing: Test Salesforce AI Agents | TestMu AI",
+ "description": "Agentforce testing that places real calls to your Salesforce Agentforce agent, grades each one and shows which actions ran, with arguments and results.",
+ "crumb": [
+  "TestMu AI",
+  "Agentforce Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Agentforce Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Agentforce testing",
+  "h1b": "before go-live.",
+  "lede": "Agentforce testing checks that Salesforce Agentforce agents pick the right topic and action, stay grounded in your org's data and follow your guardrails before go-live. TestMu AI places real calls and chats to your agent, grades each conversation, and shows which actions ran, with arguments and results.",
+  "ctas": [
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": true
+   },
+   {
+    "label": "See pricing",
+    "href": "https://www.testmuai.com/pricing/",
+    "primary": false
+   }
+  ],
+  "note": "No changes to your agent. Pricing on request.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Salesforce architects",
+   "Agentforce builders",
+   "Service Cloud teams",
+   "CIOs"
+  ],
+  "image": {
+   "src": "/kit/hero/agentforce-testing/hero-bg.webp",
+   "alt": "Real Phone Calls"
+  },
+  "run": {
+   "title": "agentforce · service agent",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "call",
+     "text": "customer asks to change delivery",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "topic",
+     "text": "Order Management selected",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "action",
+     "text": "UpdateDelivery(order=884, date=Dec 3)",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "guardrail",
+     "text": "no refund offered",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · graded call",
+   "evid": "transcript, actions, arguments, results"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Pricing on request (Contact Sales on the pricing page).",
+   "facts": [
+    [
+     "What it is",
+     "Pre-production testing for Salesforce Agentforce agents"
+    ],
+    [
+     "Channels",
+     "Voice calls and chat"
+    ],
+    [
+     "Checks",
+     "Topic selection, action choice, arguments, grounding, guardrails"
+    ],
+    [
+     "Evidence",
+     "Transcript, actions run, arguments and results"
+    ],
+    [
+     "Alongside",
+     "Complements Salesforce's Agentforce Testing Center"
+    ],
+    [
+     "Start",
+     "Point TestMu AI at your agent's number or chat endpoint"
+    ]
+   ],
+   "id": "glance",
+   "head": "Agentforce testing: the essentials",
+   "body": [
+    "Pricing on request (Contact Sales on the pricing page)."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Connect",
+     "Give TestMu AI the agent's phone number or chat channel."
+    ],
+    [
+     "Converse",
+     "AI customers call and chat with personas and edge cases."
+    ],
+    [
+     "Inspect",
+     "Each conversation shows the topic, actions, arguments and outcome."
+    ]
+   ],
+   "id": "how",
+   "head": "Simulated customers talk to your Agentforce agent",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real voice calls",
+     "Test Agentforce voice the way customers reach it."
+    ],
+    [
+     "Topic and action checks",
+     "Confirm the agent picked the right topic and action."
+    ],
+    [
+     "Argument verification",
+     "See the exact arguments each action received."
+    ],
+    [
+     "Grounding",
+     "Answers checked against your org's data."
+    ],
+    [
+     "Guardrails",
+     "Confirm the agent refuses what it should."
+    ],
+    [
+     "Graded calls",
+     "Each conversation is scored for go-live decisions."
+    ]
+   ],
+   "id": "caps",
+   "head": "What every Agentforce conversation is scored on",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Agentforce Testing compared with prompt-level tests",
+   "cols": [
+    "What matters",
+    "Prompt-level tests",
+    "TestMu AI Agentforce testing"
+   ],
+   "rows": [
+    [
+     "Channel",
+     "Text prompts",
+     "Real voice calls and chat"
+    ],
+    [
+     "Actions",
+     "Assumed",
+     "Shown with arguments and results"
+    ],
+    [
+     "Personas",
+     "One prompt at a time",
+     "Multi-turn customers"
+    ],
+    [
+     "Result",
+     "Pass or fail per utterance",
+     "Graded conversation with evidence"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Testing an agent in the builder vs at volume",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Salesforce Testing",
+     "body": "Test Lightning and Flows after each release",
+     "href": "https://www.testmuai.com/salesforce-testing/"
+    },
+    {
+     "name": "Agent Assurance",
+     "body": "Check what autonomous agents did across tools",
+     "href": "https://www.testmuai.com/agent-assurance/"
+    },
+    {
+     "name": "Voice Agent Testing",
+     "body": "Test voice agents with 200+ voices and accents",
+     "href": "https://www.testmuai.com/voice-agent-testing/"
+    },
+    {
+     "name": "Agent Testing",
+     "body": "Score chat, voice and phone agents before release",
+     "href": "https://www.testmuai.com/agent-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Test Salesforce Agentforce voice agents",
+       "href": "https://www.testmuai.com/support/docs/test-agentforce-agents/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Test the Salesforce org around the agent",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is Agentforce testing?",
+     "a": "Agentforce testing checks that Salesforce Agentforce agents choose the right topics and actions, use correct arguments, stay grounded in org data and respect guardrails."
+    },
+    {
+     "q": "How is this different from Agentforce Testing Center?",
+     "a": "Salesforce's Agentforce Testing Center tests utterances inside Salesforce. TestMu AI adds real voice calls, multi-turn personas and evidence of each action's arguments and results."
+    },
+    {
+     "q": "Can TestMu AI test Agentforce voice agents?",
+     "a": "Yes. TestMu AI places real calls to your Agentforce voice agent and grades each one."
+    },
+    {
+     "q": "What evidence do I get?",
+     "a": "A transcript, the topic chosen, each action run with its arguments and results, and a grade."
+    },
+    {
+     "q": "Do I need to change my agent?",
+     "a": "No. Tests reach the agent through its existing phone number or chat channel."
+    }
+   ],
+   "id": "faq",
+   "head": "How do you know an Agentforce agent is ready?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "No changes to your agent. Pricing on request.",
+   "ctas": [
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    },
+    {
+     "label": "See pricing",
+     "href": "https://www.testmuai.com/pricing/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test your Agentforce agent before go-live"
+  }
+ ]
+}

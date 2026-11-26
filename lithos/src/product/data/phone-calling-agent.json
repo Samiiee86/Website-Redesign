@@ -1,0 +1,284 @@
+{
+ "slug": "phone-calling-agent",
+ "title": "AI Phone Calling Agent Testing: IVR, Inbound & Outbound Call QA | TestMu AI (Formerly LambdaTest)",
+ "description": "Test AI calling agents across outbound dialers and inbound lines. Score every call on FCR, CSAT, STT accuracy, containment and 30+ metrics before go-live.",
+ "crumb": [
+  "TestMu AI",
+  "Phone Calling Agent Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Phone Calling Agent Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "AI calling agent testing",
+  "h1b": "for outbound and inbound calls.",
+  "lede": "TestMu AI handles AI calling agent testing on both sides of the phone. AI evaluators answer your outbound agent's calls and call your inbound agent, then score every call on first-call resolution, CSAT, transcription accuracy, containment rate and 30+ quality metrics before go-live.",
+  "ctas": [
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": true
+   },
+   {
+    "label": "See pricing",
+    "href": "https://www.testmuai.com/pricing/",
+    "primary": false
+   }
+  ],
+  "note": "No SDK. Pricing on request.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Voice AI teams",
+   "Sales and collections ops",
+   "Contact-center QA",
+   "CX leaders"
+  ],
+  "image": {
+   "src": "/kit/hero/phone-calling-agent/hero-bg.webp",
+   "alt": "Inbound Phone Agent Testing"
+  },
+  "run": {
+   "title": "calling-agent · renewals outbound",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "answer",
+     "text": "persona: busy, wants callback",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "disclose",
+     "text": "AI disclosure in first 10s",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "stt",
+     "text": "callback time captured",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "outcome",
+     "text": "callback scheduled · no escalation",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · FCR, CSAT scored",
+   "evid": "recording, transcript, 30+ metrics"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Pricing on request (Contact Sales on the pricing page).",
+   "facts": [
+    [
+     "What it is",
+     "Testing for AI agents that make and take phone calls"
+    ],
+    [
+     "Directions",
+     "Outbound dialers and inbound lines"
+    ],
+    [
+     "Metrics",
+     "FCR, CSAT, STT accuracy, containment rate and 30+ more"
+    ],
+    [
+     "Evaluators",
+     "AI callers and call recipients with personas"
+    ],
+    [
+     "Evidence",
+     "Recordings, transcripts and scores per call"
+    ],
+    [
+     "Start",
+     "Register the number your agent calls from or answers on"
+    ]
+   ],
+   "id": "glance",
+   "head": "Phone agent testing: call types and scoring",
+   "body": [
+    "Pricing on request (Contact Sales on the pricing page)."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Set the direction",
+     "Outbound: evaluators answer your agent. Inbound: evaluators call it."
+    ],
+    [
+     "Run personas",
+     "Busy, confused, angry or off-script callers, with accents and noise."
+    ],
+    [
+     "Score",
+     "Every call gets FCR, CSAT, STT accuracy, containment and 30+ metrics."
+    ]
+   ],
+   "id": "how",
+   "head": "Inbound and outbound calls, end to end",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Outbound and inbound",
+     "Test agents that dial out and agents that answer."
+    ],
+    [
+     "Business metrics",
+     "First-call resolution, CSAT and containment rate per call."
+    ],
+    [
+     "Transcription accuracy",
+     "What the agent heard versus what the caller said."
+    ],
+    [
+     "Compliance checks",
+     "Disclosures, consent and scripted statements."
+    ],
+    [
+     "Personas and edge cases",
+     "Off-script callers, interruptions and wrong numbers."
+    ],
+    [
+     "Evidence per call",
+     "Recording, transcript and every score."
+    ]
+   ],
+   "id": "caps",
+   "head": "What each test call checks",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Phone Calling Agent Testing compared with listening to call samples",
+   "cols": [
+    "What matters",
+    "Listening to call samples",
+    "TestMu AI"
+   ],
+   "rows": [
+    [
+     "Coverage",
+     "A few recorded calls",
+     "Every scenario, before go-live"
+    ],
+    [
+     "Metrics",
+     "Subjective",
+     "FCR, CSAT, STT, containment, 30+ more"
+    ],
+    [
+     "Compliance",
+     "Spot-checked",
+     "Checked on every call"
+    ],
+    [
+     "Timing",
+     "After customers hear it",
+     "Before release"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Test calls from the team vs simulated callers at volume",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "IVR Testing",
+     "body": "Test IVR menus with real phone calls",
+     "href": "https://www.testmuai.com/ivr-testing/"
+    },
+    {
+     "name": "Voice Agent Testing",
+     "body": "Test voice agents with 200+ voices and accents",
+     "href": "https://www.testmuai.com/voice-agent-testing/"
+    },
+    {
+     "name": "Agent Testing",
+     "body": "Score chat, voice and phone agents before release",
+     "href": "https://www.testmuai.com/agent-testing/"
+    },
+    {
+     "name": "Agentforce Testing",
+     "body": "Test Salesforce AI agents before go-live",
+     "href": "https://www.testmuai.com/agentforce-testing/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Related agent and voice testing",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is a phone calling agent?",
+     "a": "A phone calling agent is an AI agent that makes or answers phone calls, for example for sales, renewals, collections, scheduling or support."
+    },
+    {
+     "q": "How do you test an AI calling agent?",
+     "a": "TestMu AI uses AI evaluators that answer or place calls with your agent, follow personas and score every call on business and quality metrics."
+    },
+    {
+     "q": "Which metrics are measured?",
+     "a": "First-call resolution, CSAT, transcription accuracy, containment rate and 30+ other quality metrics."
+    },
+    {
+     "q": "Can it test compliance statements?",
+     "a": "Yes. Checks can confirm required disclosures and consent language on every call."
+    },
+    {
+     "q": "Is this different from IVR testing?",
+     "a": "Yes. IVR testing focuses on menu systems with key presses. Calling agent testing focuses on conversational AI agents, inbound and outbound."
+    }
+   ],
+   "id": "faq",
+   "head": "What to know before testing a calling agent",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "No SDK. Pricing on request.",
+   "ctas": [
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    },
+    {
+     "label": "See pricing",
+     "href": "https://www.testmuai.com/pricing/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test your calling agent before it dials a customer"
+  }
+ ]
+}

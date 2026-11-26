@@ -1,0 +1,699 @@
+{
+ "slug": "automation-cloud",
+ "title": "Agentic AI Test Automation Cloud | TestMu AI",
+ "description": "Run Selenium, Playwright, Cypress and Appium tests on a test automation cloud of 3,000+ browsers and real devices. No grid. 100 free lifetime minutes.",
+ "crumb": [
+  "TestMu AI",
+  "Automation Cloud"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Automation Cloud",
+   "Updated November 2026"
+  ],
+  "h1a": "Test automation cloud",
+  "h1b": "for the suites you already have.",
+  "lede": "TestMu AI Automation Cloud is a test automation cloud that runs your existing Selenium, Playwright, Cypress, Puppeteer and Appium tests on 3,000+ browsers and 50,000+ real devices in parallel. You change the remote URL, not your tests, and every session keeps video, logs and network data.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "SDETs",
+   "QA engineers",
+   "DevOps",
+   "Developers"
+  ],
+  "image": {
+   "src": "/kit/hero/automation-cloud/hero-bg.webp",
+   "alt": "Run an existing Selenium, Playwright, or Cypress suite on the TestMu AI cloud"
+  },
+  "run": {
+   "title": "playwright · regression suite",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "grid",
+     "text": "48 parallel sessions",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "chrome",
+     "text": "312 tests · Windows 11",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "safari",
+     "text": "312 tests · macOS Sequoia",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "report",
+     "text": "video + logs per test",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · 624/624",
+   "evid": "session videos · console · network"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "A cloud grid for existing test suites"
+    ],
+    [
+     "Frameworks",
+     "Selenium, Playwright, Cypress, Puppeteer, Appium"
+    ],
+    [
+     "Coverage",
+     "3,000+ browsers and OS, 50,000+ real devices"
+    ],
+    [
+     "Per session",
+     "Video, screenshots, console, network logs"
+    ],
+    [
+     "Pricing",
+     "Free: 100 lifetime minutes, 2 parallel; Web Automation from $79/month"
+    ],
+    [
+     "Start",
+     "Point your RemoteWebDriver or connect URL at the grid"
+    ]
+   ],
+   "id": "glance",
+   "head": "Automation Cloud: frameworks, parallels and plans",
+   "body": [
+    "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Point your tests at the grid",
+     "Swap your local driver for the TestMu AI remote endpoint and add capabilities."
+    ],
+    [
+     "Run in parallel",
+     "Sessions run across browsers, OS versions and devices at the same time."
+    ],
+    [
+     "Debug from the session",
+     "Each test keeps a video, logs and network trace."
+    ]
+   ],
+   "id": "how",
+   "head": "Point your suite at the cloud and run it in parallel",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Every major framework",
+     "Selenium, Playwright, Cypress, Puppeteer and Appium on one account."
+    ],
+    [
+     "3,000+ browser and OS combinations",
+     "Windows, macOS, and legacy versions on request."
+    ],
+    [
+     "Real devices",
+     "Run Appium and browser tests on 50,000+ phones and tablets."
+    ],
+    [
+     "Local and staging",
+     "UnderPass tunnel reaches localhost and private environments."
+    ],
+    [
+     "CI ready",
+     "GitHub Actions, Jenkins, GitLab and Azure DevOps examples."
+    ],
+    [
+     "Faster on HyperExecute",
+     "Move the same suite to HyperExecute for split, just-in-time execution."
+    ]
+   ],
+   "id": "caps",
+   "head": "What every automated run returns",
+   "body": []
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Framework",
+    "Browsers",
+    "Real devices",
+    "Parallel"
+   ],
+   "rows": [
+    [
+     "Selenium",
+     "Chrome, Firefox, Edge, Safari, Opera, IE",
+     "Mobile browsers",
+     "Yes"
+    ],
+    [
+     "Playwright",
+     "Chromium, Firefox, WebKit",
+     "Android Chrome",
+     "Yes"
+    ],
+    [
+     "Cypress",
+     "Chrome, Edge, Firefox, Electron",
+     "—",
+     "Yes"
+    ],
+    [
+     "Puppeteer",
+     "Chrome, Chromium",
+     "—",
+     "Yes"
+    ],
+    [
+     "Appium",
+     "Mobile browsers",
+     "Android and iOS apps",
+     "Yes"
+    ]
+   ],
+   "src": "Framework support as listed on the TestMu AI framework pages, checked 2026-11-21.",
+   "id": "data0",
+   "head": "Frameworks and what they get on Automation Cloud",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Automation Cloud compared with self-hosted grid",
+   "cols": [
+    "What matters",
+    "Self-hosted grid",
+    "Automation Cloud"
+   ],
+   "rows": [
+    [
+     "Adding a browser version",
+     "Build and patch a node image",
+     "Pick it in capabilities"
+    ],
+    [
+     "Scaling to 50 parallel",
+     "Provision and pay for VMs",
+     "Buy 50 parallel sessions"
+    ],
+    [
+     "Debugging a failure",
+     "Rerun locally",
+     "Watch the session video"
+    ],
+    [
+     "Real phones",
+     "Buy and maintain devices",
+     "50,000+ real devices"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "A self-hosted grid vs a test automation cloud",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "100 free lifetime minutes, 2 parallel sessions",
+      "Web Automation from $79/month, billed annually"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "Buy parallel sessions to match CI concurrency",
+      "Selenium, Playwright, Cypress, Puppeteer and Appium on one grid"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Custom platform access controls and IP whitelisting",
+      "Dedicated account manager"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "Parallel sessions for every stage of growth",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams that moved their grid to the cloud",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Test Automation Platform",
+     "body": "Run every framework at scale",
+     "href": "https://www.testmuai.com/automation-testing-platform/"
+    },
+    {
+     "name": "Selenium Automation",
+     "body": "Run Selenium tests online in parallel",
+     "href": "https://www.testmuai.com/selenium-automation/"
+    },
+    {
+     "name": "Playwright Testing",
+     "body": "Playwright cloud",
+     "href": "https://www.testmuai.com/playwright-testing/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Parallel runs with AI root cause per failure",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "Cypress Testing",
+     "body": "Cypress on the cloud",
+     "href": "https://www.testmuai.com/cypress-testing/"
+    },
+    {
+     "name": "Local Page Testing",
+     "body": "Test localhost through UnderPass",
+     "href": "https://www.testmuai.com/local-page-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Running your first Selenium test",
+       "href": "https://www.testmuai.com/support/docs/testmu-running-your-first-selenium-test/"
+      },
+      {
+       "label": "Kane CLI quickstart",
+       "href": "https://www.testmuai.com/docs/kane-cli-quickstart"
+      },
+      {
+       "label": "Getting started with HyperExecute",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/"
+      },
+      {
+       "label": "Playwright testing",
+       "href": "https://www.testmuai.com/support/docs/playwright-testing/"
+      },
+      {
+       "label": "Puppeteer testing",
+       "href": "https://www.testmuai.com/support/docs/puppeteer-testing/"
+      },
+      {
+       "label": "Getting started with Cypress testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-cypress-testing/"
+      },
+      {
+       "label": "Getting started with Appium testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-appium-testing/"
+      },
+      {
+       "label": "Getting started with Espresso testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-espresso-testing/"
+      },
+      {
+       "label": "Getting started with XCUITest",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-xcuitest/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Kinectify case study",
+       "href": "https://www.testmuai.com/customers/kinectify/"
+      },
+      {
+       "label": "Atypon case study",
+       "href": "https://www.testmuai.com/customers/atypon/"
+      }
+     ]
+    },
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    },
+    {
+     "group": "Pricing",
+     "links": [
+      {
+       "label": "Automation Cloud pricing",
+       "href": "https://www.testmuai.com/pricing/?product=web-automation-group"
+      }
+     ]
+    }
+   ],
+   "fw": {
+    "summary": "All framework guides (49)",
+    "groups": [
+     {
+      "title": "Selenium · JavaScript",
+      "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/",
+      "links": [
+       {
+        "label": "Jest",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=jest"
+       },
+       {
+        "label": "NightwatchJS",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=nightwatch"
+       },
+       {
+        "label": "WebdriverIO",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=webdriverio"
+       },
+       {
+        "label": "Mocha",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=mocha"
+       },
+       {
+        "label": "WD",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=wd"
+       },
+       {
+        "label": "AngularJS",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=angular"
+       },
+       {
+        "label": "CucumberJS",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=cucumberjs"
+       },
+       {
+        "label": "Jasmine",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=jasmine"
+       },
+       {
+        "label": "Karma",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=karma"
+       },
+       {
+        "label": "TestCafe",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=testcafe"
+       },
+       {
+        "label": "NemoJS",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=nemojs"
+       },
+       {
+        "label": "Protractor",
+        "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=protractor"
+       }
+      ]
+     },
+     {
+      "title": "Selenium · Java",
+      "href": "https://www.testmuai.com/support/docs/java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/",
+      "links": [
+       {
+        "label": "Selenide",
+        "href": "https://www.testmuai.com/support/docs/java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/?framework=selenide"
+       },
+       {
+        "label": "Gauge",
+        "href": "https://www.testmuai.com/support/docs/java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/?framework=gauge"
+       },
+       {
+        "label": "TestNG",
+        "href": "https://www.testmuai.com/support/docs/java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/?framework=testng"
+       },
+       {
+        "label": "Geb",
+        "href": "https://www.testmuai.com/support/docs/java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/?framework=geb"
+       },
+       {
+        "label": "JUnit",
+        "href": "https://www.testmuai.com/support/docs/java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/?framework=junit"
+       },
+       {
+        "label": "Cucumber",
+        "href": "https://www.testmuai.com/support/docs/java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/?framework=cucumber"
+       },
+       {
+        "label": "Serenity",
+        "href": "https://www.testmuai.com/support/docs/java-with-selenium-running-java-automation-scripts-on-testmu-selenium-grid/?framework=serenity"
+       }
+      ]
+     },
+     {
+      "title": "Selenium · Python",
+      "href": "https://www.testmuai.com/support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid/",
+      "links": [
+       {
+        "label": "pytest",
+        "href": "https://www.testmuai.com/support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid/?framework=pytest"
+       },
+       {
+        "label": "Behave",
+        "href": "https://www.testmuai.com/support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid/?framework=behave"
+       },
+       {
+        "label": "Robot",
+        "href": "https://www.testmuai.com/support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid/?framework=robot"
+       },
+       {
+        "label": "Unittest",
+        "href": "https://www.testmuai.com/support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid/?framework=unittest"
+       },
+       {
+        "label": "Lettuce",
+        "href": "https://www.testmuai.com/support/docs/python-with-selenium-running-python-automation-scripts-on-testmu-selenium-grid/?framework=lettuce"
+       }
+      ]
+     },
+     {
+      "title": "Selenium · PHP",
+      "href": "https://www.testmuai.com/support/docs/php-with-selenium-running-php-automation-scripts-on-testmu-selenium-grid/",
+      "links": [
+       {
+        "label": "Laravel",
+        "href": "https://www.testmuai.com/support/docs/php-with-selenium-running-php-automation-scripts-on-testmu-selenium-grid/?framework=laravel"
+       },
+       {
+        "label": "Codeception",
+        "href": "https://www.testmuai.com/support/docs/php-with-selenium-running-php-automation-scripts-on-testmu-selenium-grid/?framework=codeception"
+       },
+       {
+        "label": "PHPUnit",
+        "href": "https://www.testmuai.com/support/docs/php-with-selenium-running-php-automation-scripts-on-testmu-selenium-grid/?framework=phpunit"
+       },
+       {
+        "label": "Behat",
+        "href": "https://www.testmuai.com/support/docs/php-with-selenium-running-php-automation-scripts-on-testmu-selenium-grid/?framework=behat"
+       }
+      ]
+     },
+     {
+      "title": "Selenium · Ruby",
+      "href": "https://www.testmuai.com/support/docs/ruby-with-selenium-running-ruby-automation-scripts-on-testmu-selenium-grid/",
+      "links": [
+       {
+        "label": "RSpec",
+        "href": "https://www.testmuai.com/support/docs/ruby-with-selenium-running-ruby-automation-scripts-on-testmu-selenium-grid/?framework=rspec"
+       },
+       {
+        "label": "Test::Unit",
+        "href": "https://www.testmuai.com/support/docs/ruby-with-selenium-running-ruby-automation-scripts-on-testmu-selenium-grid/?framework=testunit"
+       },
+       {
+        "label": "Capybara",
+        "href": "https://www.testmuai.com/support/docs/ruby-with-selenium-running-ruby-automation-scripts-on-testmu-selenium-grid/?framework=capybara"
+       }
+      ]
+     },
+     {
+      "title": "Selenium · C#",
+      "href": "https://www.testmuai.com/support/docs/c-with-selenium-running-c-automation-scripts-on-testmu-selenium-grid/",
+      "links": [
+       {
+        "label": "SpecFlow",
+        "href": "https://www.testmuai.com/support/docs/c-with-selenium-running-c-automation-scripts-on-testmu-selenium-grid/?framework=specflow"
+       },
+       {
+        "label": "MSTest",
+        "href": "https://www.testmuai.com/support/docs/c-with-selenium-running-c-automation-scripts-on-testmu-selenium-grid/?framework=mstest"
+       },
+       {
+        "label": "NUnit",
+        "href": "https://www.testmuai.com/support/docs/c-with-selenium-running-c-automation-scripts-on-testmu-selenium-grid/?framework=nunit"
+       },
+       {
+        "label": "xUnit",
+        "href": "https://www.testmuai.com/support/docs/c-with-selenium-running-c-automation-scripts-on-testmu-selenium-grid/?framework=xunit"
+       }
+      ]
+     },
+     {
+      "title": "Playwright · Java",
+      "href": "https://www.testmuai.com/support/docs/java-with-playwright/",
+      "links": [
+       {
+        "label": "JUnit",
+        "href": "https://www.testmuai.com/support/docs/java-with-playwright/?framework=junit"
+       }
+      ]
+     },
+     {
+      "title": "Playwright",
+      "href": null,
+      "links": [
+       {
+        "label": "Playwright Test",
+        "href": "https://www.testmuai.com/support/docs/playwright-test-runner/"
+       }
+      ]
+     },
+     {
+      "title": "Playwright · Python",
+      "href": "https://www.testmuai.com/support/docs/python-with-playwright/",
+      "links": []
+     },
+     {
+      "title": "Playwright · C#",
+      "href": "https://www.testmuai.com/support/docs/csharp-with-playwright/",
+      "links": []
+     },
+     {
+      "title": "Puppeteer",
+      "href": null,
+      "links": [
+       {
+        "label": "Jest",
+        "href": "https://www.testmuai.com/support/docs/puppeteer-testing-with-jest/"
+       },
+       {
+        "label": "Mocha",
+        "href": "https://www.testmuai.com/support/docs/puppeteer-testing-with-mocha/"
+       },
+       {
+        "label": "Python",
+        "href": "https://www.testmuai.com/support/docs/puppeteer-testing-with-pytest-pyppeteer/"
+       }
+      ]
+     }
+    ]
+   },
+   "id": "rel",
+   "head": "Speed up and extend your suite",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is a test automation cloud?",
+     "a": "A test automation cloud runs your automated tests on hosted browsers and devices, so you do not maintain a grid."
+    },
+    {
+     "q": "Do I need to change my tests?",
+     "a": "No. You change the remote URL and capabilities; the test code stays the same."
+    },
+    {
+     "q": "Which frameworks are supported?",
+     "a": "Selenium, Playwright, Cypress, Puppeteer and Appium, plus others listed in the docs."
+    },
+    {
+     "q": "Is there a free plan?",
+     "a": "Yes. The free plan gives 100 lifetime minutes of web and mobile automation with 2 parallel sessions."
+    },
+    {
+     "q": "How is this different from the test automation platform?",
+     "a": "Automation Cloud runs your existing suites on the cloud grid. The test automation platform covers authoring tests with AI plus running them."
+    }
+   ],
+   "id": "faq",
+   "head": "Moving a suite to the cloud: common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Run your existing suite in the cloud today"
+  }
+ ]
+}

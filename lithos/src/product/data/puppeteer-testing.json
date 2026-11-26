@@ -1,0 +1,391 @@
+{
+ "slug": "puppeteer-testing",
+ "title": "Puppeteer Testing Platform: Headless Chrome at Scale | TestMu AI (Formerly LambdaTest)",
+ "description": "Puppeteer testing on TestMu AI: run Puppeteer scripts on cloud Chrome and Chromium in parallel, headless or headed, with video and logs per session.",
+ "crumb": [
+  "TestMu AI",
+  "Puppeteer Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Puppeteer Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Puppeteer testing",
+  "h1b": "on cloud Chrome, at scale.",
+  "lede": "Puppeteer testing on TestMu AI runs your Puppeteer scripts on cloud Chrome and Chromium in parallel. You swap puppeteer.launch for puppeteer.connect with the TestMu AI endpoint and keep your code, and each session records video and console logs.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "JavaScript developers",
+   "SDETs",
+   "Scraping and automation teams",
+   "DevOps"
+  ],
+  "image": {
+   "src": "/kit/hero/puppeteer-testing/hero-bg.webp",
+   "alt": "Author Puppeteer tests with AI agents on TestMu AI"
+  },
+  "run": {
+   "title": "puppeteer · checkout flow",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "connect",
+     "text": "browserWSEndpoint · Chrome 159",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "page",
+     "text": "goto /cart · 1.2s",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "assert",
+     "text": "cart total matches API",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "close",
+     "text": "video saved",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · 3/3",
+   "evid": "session video · console · network"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Puppeteer scripts run on TestMu AI cloud browsers"
+    ],
+    [
+     "Browsers",
+     "Chrome and Chromium versions on Windows and macOS"
+    ],
+    [
+     "Connect",
+     "puppeteer.connect with a browserWSEndpoint"
+    ],
+    [
+     "Modes",
+     "Headless and headed"
+    ],
+    [
+     "Pricing",
+     "Free: 100 lifetime minutes, 2 parallel; Web Automation from $79/month"
+    ],
+    [
+     "Per session",
+     "Video, console and network logs"
+    ]
+   ],
+   "id": "glance",
+   "head": "Puppeteer on TestMu AI: endpoints and plans",
+   "body": [
+    "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Connect, not launch",
+     "Replace puppeteer.launch with puppeteer.connect and the endpoint."
+    ],
+    [
+     "Run in parallel",
+     "Open many sessions at once across Chrome versions."
+    ],
+    [
+     "Review the session",
+     "Watch the video and read console and network logs."
+    ]
+   ],
+   "id": "how",
+   "head": "Swap launch() for connect() and run remotely",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "No browser installs",
+     "Chrome versions are hosted and patched."
+    ],
+    [
+     "Parallel sessions",
+     "Scale scripts without bigger machines."
+    ],
+    [
+     "Headed or headless",
+     "Debug visually, then run headless in CI."
+    ],
+    [
+     "Session video",
+     "See exactly what the script did."
+    ],
+    [
+     "Local apps",
+     "UnderPass tunnel for localhost and staging."
+    ],
+    [
+     "Move to Playwright later",
+     "Same account runs Playwright if you migrate."
+    ]
+   ],
+   "id": "caps",
+   "head": "What each Puppeteer session keeps",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Puppeteer Testing compared with Puppeteer on your machine",
+   "cols": [
+    "What matters",
+    "Puppeteer on your machine",
+    "Puppeteer on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Chrome versions",
+     "The one installed",
+     "Multiple Chrome and Chromium versions"
+    ],
+    [
+     "Parallel scripts",
+     "Limited by CPU and RAM",
+     "Parallel sessions on your plan"
+    ],
+    [
+     "Seeing a failure",
+     "Add screenshots by hand",
+     "Session video recorded"
+    ],
+    [
+     "Browser updates",
+     "You patch them",
+     "Hosted"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Node.js · puppeteer.connect",
+    "lang": "javascript",
+    "code": "const browser = await puppeteer.connect({\n  browserWSEndpoint: `wss://cdp.lambdatest.com/puppeteer?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`\n});",
+    "note": "Connection lines from the TestMu AI Puppeteer docs (/support/docs/puppeteer-testing/); the endpoint keeps its LambdaTest hostname."
+   },
+   "id": "cmp",
+   "head": "Headless Chrome on your box vs Puppeteer in the cloud",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Puppeteer users on the cloud",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Playwright Testing",
+     "body": "Run Playwright on real Windows and macOS browsers",
+     "href": "https://www.testmuai.com/playwright-testing/"
+    },
+    {
+     "name": "Automation Cloud",
+     "body": "Scale automated suites without a grid",
+     "href": "https://www.testmuai.com/automation-cloud/"
+    },
+    {
+     "name": "Chrome Browser Testing",
+     "body": "Real Chrome versions online",
+     "href": "https://www.testmuai.com/test-on-chrome-browsers/"
+    },
+    {
+     "name": "Browser Cloud",
+     "body": "Cloud browsers for AI agents",
+     "href": "https://www.testmuai.com/browser-cloud/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "Agent skills (GitHub)",
+       "href": "https://github.com/LambdaTest/agent-skills"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Getting started with KaneAI",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-kane-ai/"
+      },
+      {
+       "label": "Getting started with HyperExecute",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/"
+      },
+      {
+       "label": "Running your first Selenium test",
+       "href": "https://www.testmuai.com/support/docs/testmu-running-your-first-selenium-test/"
+      },
+      {
+       "label": "Playwright testing",
+       "href": "https://www.testmuai.com/support/docs/playwright-testing/"
+      },
+      {
+       "label": "Puppeteer testing",
+       "href": "https://www.testmuai.com/support/docs/puppeteer-testing/"
+      },
+      {
+       "label": "Getting started with Cypress testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-cypress-testing/"
+      },
+      {
+       "label": "Getting started with Appium testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-appium-testing/"
+      },
+      {
+       "label": "Getting started with Espresso testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-espresso-testing/"
+      },
+      {
+       "label": "Getting started with XCUITest",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-xcuitest/"
+      },
+      {
+       "label": "Selenium with JavaScript: Jest",
+       "href": "https://www.testmuai.com/support/docs/javascript-with-selenium-running-javascript-automation-scripts-on-testmu-selenium-grid/?framework=jest"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "City Furniture case study",
+       "href": "https://www.testmuai.com/customers/city-furniture/"
+      }
+     ]
+    },
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    },
+    {
+     "group": "Pricing",
+     "links": [
+      {
+       "label": "Paid plans",
+       "href": "https://www.testmuai.com/pricing/?product=web-automation-group"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Run your other frameworks here too",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "How do I run Puppeteer tests in the cloud?",
+     "a": "Use puppeteer.connect with the TestMu AI browserWSEndpoint and your capabilities instead of puppeteer.launch."
+    },
+    {
+     "q": "Which browsers does Puppeteer testing support?",
+     "a": "Chrome and Chromium versions on Windows and macOS."
+    },
+    {
+     "q": "Can Puppeteer run headed in the cloud?",
+     "a": "Yes. Run headed to watch a session, or headless for CI."
+    },
+    {
+     "q": "Is there a free plan?",
+     "a": "Yes. The automation free plan gives 100 lifetime minutes with 2 parallel sessions."
+    },
+    {
+     "q": "Should I use Puppeteer or Playwright?",
+     "a": "Puppeteer focuses on Chrome. Playwright adds Firefox and WebKit. TestMu AI runs both."
+    }
+   ],
+   "id": "faq",
+   "head": "Does Puppeteer work remotely? Your questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Connect your Puppeteer scripts to the cloud"
+  }
+ ]
+}

@@ -1,0 +1,296 @@
+{
+ "slug": "lt-debug",
+ "title": "LT Debug Chrome Extension - A Universal Debugging Tool to Debug Any Webpage",
+ "description": "LT Debug is a Chrome debugger extension with nine tools for any webpage: header changes, request blocking, throttling, user-agent switching and more.",
+ "crumb": [
+  "TestMu AI",
+  "LT Debug"
+ ],
+ "hero": {
+  "eyebrow": [
+   "LT Debug",
+   "Updated November 2026"
+  ],
+  "h1a": "LT Debug,",
+  "h1b": "the Chrome debugger extension for any webpage.",
+  "lede": "LT Debug is a Chrome debugger extension from TestMu AI that puts nine web debugging tools in one place. Modify headers, block or redirect requests, throttle the network, switch user agents and inject scripts on any webpage without leaving the tab.",
+  "ctas": [
+   {
+    "label": "Add to Chrome",
+    "href": "https://chromewebstore.google.com/detail/lt-debug/kofahhnmgobkidipanhejacffiigppcd",
+    "primary": true
+   },
+   {
+    "label": "Test on real browsers",
+    "href": "https://www.testmuai.com/register/",
+    "primary": false
+   }
+  ],
+  "note": "Free Chrome extension with nine tools.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Front-end developers",
+   "QA testers",
+   "Support engineers",
+   "Web performance teams"
+  ],
+  "image": {
+   "src": "/kit/hero/lt-debug/hero-bg.png",
+   "alt": "LT Debug extension panel open in Chrome"
+  },
+  "run": {
+   "title": "lt-debug · shop.example",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "headers",
+     "text": "x-feature-flag: on",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "block",
+     "text": "analytics.js blocked",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "throttle",
+     "text": "slow 3G · LCP 4.1s",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "user-agent",
+     "text": "iPhone UA · mobile menu",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 ISSUE · slow LCP",
+   "evid": "console · network panel"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free Chrome extension, added from the Chrome Web Store",
+   "facts": [
+    [
+     "What it is",
+     "A Chrome extension with nine web debugging tools"
+    ],
+    [
+     "Install",
+     "Add to Chrome from the Chrome Web Store"
+    ],
+    [
+     "Tools",
+     "Header modifier, request blocker, redirect, throttling, user-agent switch, script injection and more"
+    ],
+    [
+     "Works on",
+     "Any webpage open in Chrome"
+    ],
+    [
+     "Pairs with",
+     "Real browsers on TestMu AI for cross-browser checks"
+    ],
+    [
+     "Pricing",
+     "Free"
+    ]
+   ],
+   "id": "glance",
+   "head": "LT Debug: price, browsers and tools",
+   "body": [
+    "Free Chrome extension, added from the Chrome Web Store"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Install the extension",
+     "Add LT Debug from the Chrome Web Store."
+    ],
+    [
+     "Pick a tool",
+     "Open the panel and choose header, request, network or UA tools."
+    ],
+    [
+     "Debug in place",
+     "Changes apply to the current tab immediately."
+    ]
+   ],
+   "id": "how",
+   "head": "Install the extension and debug the open page",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Modify headers",
+     "Add, change or remove request and response headers."
+    ],
+    [
+     "Block requests",
+     "Block scripts or URLs to isolate problems."
+    ],
+    [
+     "Redirect requests",
+     "Point a resource at a different URL."
+    ],
+    [
+     "Throttle responses",
+     "Simulate slow connections."
+    ],
+    [
+     "Change user agent",
+     "See mobile or other browser responses."
+    ],
+    [
+     "Insert script",
+     "Run custom JavaScript on load."
+    ],
+    [
+     "Add or remove query params",
+     "Change URL query parameters on the fly."
+    ],
+    [
+     "Allow CORS",
+     "Lift cross-origin restrictions while you debug."
+    ],
+    [
+     "Content Security Policy",
+     "Adjust CSP headers to test script and frame rules."
+    ]
+   ],
+   "id": "caps",
+   "head": "The nine debugging tools in the extension",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "LT Debug compared with separate extensions for each task",
+   "cols": [
+    "What matters",
+    "Separate extensions for each task",
+    "LT Debug"
+   ],
+   "rows": [
+    [
+     "Headers, blocking, throttling",
+     "Three or more extensions",
+     "One panel"
+    ],
+    [
+     "Switching tasks",
+     "Different UIs",
+     "Same panel"
+    ],
+    [
+     "Cross-browser follow-up",
+     "Separate tool",
+     "Open the page on TestMu AI browsers"
+    ],
+    [
+     "Setup",
+     "Install each",
+     "One install"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Juggling separate extensions vs one debugger",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Cross Browser Testing",
+     "body": "Check every browser and OS version",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Local Page Testing",
+     "body": "Localhost testing",
+     "href": "https://www.testmuai.com/local-page-testing/"
+    },
+    {
+     "name": "Chrome Browser Testing",
+     "body": "Real Chrome versions",
+     "href": "https://www.testmuai.com/test-on-chrome-browsers/"
+    },
+    {
+     "name": "Browser Emulator Online",
+     "body": "Open real browsers from your browser",
+     "href": "https://www.testmuai.com/browser-emulator-online/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Debug on real browsers too",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is LT Debug?",
+     "a": "LT Debug is a Chrome extension from TestMu AI with nine tools for debugging any webpage."
+    },
+    {
+     "q": "Which tools does LT Debug include?",
+     "a": "Header modification, request blocking, redirects, network throttling, user-agent switching and script injection, among others."
+    },
+    {
+     "q": "Is LT Debug free?",
+     "a": "Yes. LT Debug is a free Chrome extension; add it from the Chrome Web Store."
+    },
+    {
+     "q": "Does LT Debug work on any website?",
+     "a": "Yes. It works on pages open in your Chrome browser."
+    },
+    {
+     "q": "How does LT Debug fit with cross-browser testing?",
+     "a": "Debug in Chrome with LT Debug, then verify the fix on real browsers and devices on TestMu AI."
+    }
+   ],
+   "id": "faq",
+   "head": "What the LT Debug extension does, answered",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free Chrome extension with nine tools.",
+   "ctas": [
+    {
+     "label": "Add to Chrome",
+     "href": "https://chromewebstore.google.com/detail/lt-debug/kofahhnmgobkidipanhejacffiigppcd",
+     "primary": false
+    },
+    {
+     "label": "Test on real browsers",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Install LT Debug for Chrome"
+  }
+ ]
+}

@@ -1,0 +1,504 @@
+{
+ "slug": "automation-testing-platform-v2",
+ "title": "Test Automation Platform & Software | TestMu AI",
+ "description": "Author tests with AI or run your Selenium, Playwright, Cypress and Appium suites across 3,000+ browsers and 50,000+ real devices, with no grid to maintain.",
+ "crumb": [
+  "TestMu AI",
+  "Test Automation Platform"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Test Automation Platform",
+   "Updated November 2026"
+  ],
+  "h1a": "Test automation platform",
+  "h1b": "for web and mobile, without a grid.",
+  "lede": "TestMu AI is a test automation platform for web and mobile apps. Run existing Selenium, Playwright, Cypress, Puppeteer and Appium suites, or author new tests with AI agents, across 3,000+ browsers and 50,000+ real devices. There is no grid to maintain.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "SDETs",
+   "Developers",
+   "QA leads",
+   "Engineering managers"
+  ],
+  "image": {
+   "src": "/kit/hero/automation-testing-platform-v2/hero-bg.webp",
+   "alt": "Author tests in natural language with KaneAI and run them on the TestMu AI cloud"
+  },
+  "run": {
+   "title": "automation · nightly-regression",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "selenium",
+     "text": "412 tests · Chrome, Firefox, Edge",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "playwright",
+     "text": "188 tests · WebKit, Chromium",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "appium",
+     "text": "96 tests · iPhone 17, Pixel 9",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "report",
+     "text": "2 failures with video + logs",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "694 / 696 passed",
+   "evid": "run-8821 · video, network, console per test"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "A cloud test automation platform for web and mobile"
+    ],
+    [
+     "Frameworks",
+     "Selenium, Playwright, Cypress, Puppeteer, Appium, Espresso, XCUITest"
+    ],
+    [
+     "Infrastructure",
+     "3,000+ browser-OS combinations, 50,000+ real devices, 170+ geolocations"
+    ],
+    [
+     "Integrations",
+     "120+, including GitHub Actions, Jenkins, Jira and Slack"
+    ],
+    [
+     "Pricing",
+     "Free: 100 lifetime minutes, 2 parallel; Web Automation from $79/month, billed annually"
+    ],
+    [
+     "Start",
+     "Point your existing capabilities at the TestMu AI grid URL"
+    ]
+   ],
+   "id": "glance",
+   "head": "The platform, by the numbers that matter",
+   "body": [
+    "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Connect",
+     "Change the hub URL and capabilities in your existing suite. No rewrite."
+    ],
+    [
+     "Run in parallel",
+     "Tests fan out across browsers, OS versions and real devices."
+    ],
+    [
+     "Debug",
+     "Each test has video, screenshots, network and console logs."
+    ]
+   ],
+   "id": "how",
+   "head": "Author once, run anywhere, read one report",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Bring any framework",
+     "Selenium, Playwright, Cypress, Puppeteer, Appium, Espresso and XCUITest run unchanged."
+    ],
+    [
+     "3,000+ browsers",
+     "Current, beta and legacy versions of Chrome, Firefox, Edge and Safari."
+    ],
+    [
+     "50,000+ real devices",
+     "Real iPhones, Galaxy and Pixel phones for app and mobile web tests."
+    ],
+    [
+     "AI-authored tests",
+     "Write new tests in plain English with KaneAI and run them on the same grid."
+    ],
+    [
+     "Geolocation and tunnels",
+     "Test from 170+ locations and reach staging behind a firewall."
+    ],
+    [
+     "Debugging artifacts",
+     "Video, network, console and command logs on every test."
+    ]
+   ],
+   "id": "caps",
+   "head": "What a team gets beyond a browser grid",
+   "body": []
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Framework",
+    "Desktop browsers",
+    "Real devices",
+    "Parallel runs",
+    "AI healing and RCA"
+   ],
+   "rows": [
+    [
+     "Selenium",
+     "Chrome, Firefox, Edge, Safari, Opera, IE",
+     "Mobile browsers",
+     "Yes",
+     "Yes"
+    ],
+    [
+     "Playwright",
+     "Chromium, Firefox, WebKit",
+     "Android Chrome",
+     "Yes",
+     "RCA"
+    ],
+    [
+     "Cypress",
+     "Chrome, Edge, Firefox, Electron",
+     "—",
+     "Yes",
+     "RCA"
+    ],
+    [
+     "Puppeteer",
+     "Chrome, Chromium",
+     "—",
+     "Yes",
+     "RCA"
+    ],
+    [
+     "Appium",
+     "Mobile browsers",
+     "Android and iOS apps",
+     "Yes",
+     "Yes"
+    ],
+    [
+     "KaneAI (plain English)",
+     "3,000+ browsers",
+     "50,000+ devices",
+     "Yes",
+     "Built in"
+    ]
+   ],
+   "src": "From the TestMu AI framework and product pages, checked 2026-11-21. New to automation? Read what automation testing is.",
+   "id": "data0",
+   "head": "Frameworks and capabilities on the test automation platform",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Test Automation Platform compared with self-hosted grid",
+   "cols": [
+    "What matters",
+    "Self-hosted grid",
+    "TestMu AI"
+   ],
+   "rows": [
+    [
+     "Setup",
+     "Provision VMs, browsers and devices",
+     "Change one URL"
+    ],
+    [
+     "Browser and device coverage",
+     "What you can buy and maintain",
+     "3,000+ browsers, 50,000+ devices"
+    ],
+    [
+     "Maintenance",
+     "Patching, flaky nodes, OS updates",
+     "Managed by TestMu AI"
+    ],
+    [
+     "Debugging",
+     "Logs you collect yourself",
+     "Video, network and console per test"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Selenium · Remote WebDriver (Python)",
+    "lang": "python",
+    "code": "options = webdriver.ChromeOptions()\noptions.set_capability(\"LT:Options\", lt_options)\ndriver = webdriver.Remote(\n    command_executor=f\"https://{username}:{access_key}@hub.lambdatest.com/wd/hub\",\n    options=options)",
+    "note": "Abridged from the TestMu AI Selenium docs (/support/docs/testmu-running-your-first-selenium-test/); build lt_options in the capability generator."
+   },
+   "id": "cmp",
+   "head": "Stitched-together tooling vs one platform",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "100 free lifetime minutes, 2 parallel sessions",
+      "Web Automation from $79/month, billed annually"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "Buy parallel sessions to match CI concurrency",
+      "Selenium, Playwright, Cypress, Puppeteer and Appium on one grid"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Custom platform access controls and IP whitelisting",
+      "Dedicated account manager"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "From one squad to every product line",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams that consolidated their testing",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Cross Browser Testing",
+     "body": "Test on 3,000+ real desktop and mobile browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Split suites across just-in-time VMs",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "Real Device Cloud",
+     "body": "Open 50,000+ real phones and tablets",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Write web, mobile and API tests in plain English",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Performance Testing",
+     "body": "Performance and load testing",
+     "href": "https://www.testmuai.com/performance-testing/"
+    },
+    {
+     "name": "Test Analytics",
+     "body": "Test reporting for every run",
+     "href": "https://www.testmuai.com/test-analytics/"
+    },
+    {
+     "name": "Professional Services",
+     "body": "Expert help migrating suites",
+     "href": "https://www.testmuai.com/professional-services/"
+    },
+    {
+     "name": "TestMu AI MCP Server",
+     "body": "Run tests from your IDE over MCP",
+     "href": "https://www.testmuai.com/mcp/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "Agent skills (GitHub)",
+       "href": "https://github.com/LambdaTest/agent-skills"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Getting started with KaneAI",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-kane-ai/"
+      },
+      {
+       "label": "Playwright testing",
+       "href": "https://www.testmuai.com/support/docs/playwright-testing/"
+      },
+      {
+       "label": "Getting started with HyperExecute",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/"
+      },
+      {
+       "label": "Running your first Selenium test",
+       "href": "https://www.testmuai.com/support/docs/testmu-running-your-first-selenium-test/"
+      },
+      {
+       "label": "Puppeteer testing",
+       "href": "https://www.testmuai.com/support/docs/puppeteer-testing/"
+      },
+      {
+       "label": "Getting started with Cypress testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-cypress-testing/"
+      },
+      {
+       "label": "Getting started with Appium testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-appium-testing/"
+      },
+      {
+       "label": "Getting started with Espresso testing",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-espresso-testing/"
+      },
+      {
+       "label": "Getting started with XCUITest",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-xcuitest/"
+      },
+      {
+       "label": "All framework guides, on Automation Cloud",
+       "href": "https://www.testmuai.com/automation-cloud/#framework-guides"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "City Furniture case study",
+       "href": "https://www.testmuai.com/customers/city-furniture/"
+      }
+     ]
+    },
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    },
+    {
+     "group": "Pricing",
+     "links": [
+      {
+       "label": "Automation Cloud pricing",
+       "href": "https://www.testmuai.com/pricing/?product=web-automation-group"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Products teams add next",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is a test automation platform?",
+     "a": "A test automation platform runs automated tests at scale and reports results. TestMu AI provides the browsers, real devices, parallelism and debugging artifacts so teams do not run their own grid."
+    },
+    {
+     "q": "Which frameworks does TestMu AI support?",
+     "a": "Selenium, Playwright, Cypress, Puppeteer, Appium, Espresso and XCUITest, in Java, Python, JavaScript, C#, Ruby and other languages."
+    },
+    {
+     "q": "Do I have to rewrite my tests?",
+     "a": "No. Existing suites run after you change the remote URL and capabilities."
+    },
+    {
+     "q": "Can I test applications behind a firewall?",
+     "a": "Yes. A secure tunnel lets cloud browsers and devices reach localhost, staging and internal apps."
+    },
+    {
+     "q": "How much does the test automation platform cost?",
+     "a": "The free plan gives 100 lifetime minutes with 2 parallel sessions. Web Automation on desktop starts at $79 per month, billed annually."
+    }
+   ],
+   "id": "faq",
+   "head": "Platform questions from QA and engineering leads",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Move your suites onto one platform"
+  }
+ ]
+}

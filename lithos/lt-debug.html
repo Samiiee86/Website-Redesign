@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon_black.svg" type="image/svg+xml" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="/favicon_white.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>LT Debug Chrome Extension - A Universal Debugging Tool to Debug Any Webpage</title>
+    <meta
+      name="description"
+      content="LT Debug is a Chrome debugger extension with nine tools for any webpage: header changes, request blocking, throttling, user-agent switching and more."
+    />
+  </head>
+  <!-- "tm" turns on the kit styles used by the hero and the steps fold -->
+  <body class="tm" data-page="lt-debug">
+    <div id="root"></div>
+    <!-- kit script: tabs, copy and reveal for the kit folds; the page calls
+         TestMu.init on them once React has drawn them -->
+    <script src="/kit/testmu.js"></script>
+    <script type="module" src="/src/product/main.tsx"></script>
+  </body>
+</html>

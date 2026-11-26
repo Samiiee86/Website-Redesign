@@ -1,0 +1,310 @@
+{
+ "slug": "agents",
+ "title": "TestMu AI Agents: Plan, Write, Run, Heal and Debug Tests",
+ "description": "Testing agents for each QA stage: KaneAI writes tests in plain English, HyperExecute runs them, Auto Healing fixes locators and RCA finds the cause.",
+ "crumb": [
+  "TestMu AI",
+  "TestMu AI Agents"
+ ],
+ "hero": {
+  "eyebrow": [
+   "TestMu AI Agents",
+   "Updated November 2026"
+  ],
+  "h1a": "Testing agents",
+  "h1b": "for every stage of QA.",
+  "lede": "TestMu AI testing agents each own one QA stage. KaneAI writes tests in plain English, HyperExecute runs them in parallel, Auto Healing repairs broken locators, and root cause analysis explains each failure. Agent Testing and Agent Assurance test the AI agents you build.",
+  "ctas": [
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": true
+   },
+   {
+    "label": "See KaneAI",
+    "href": "https://www.testmuai.com/kane-ai/",
+    "primary": false
+   }
+  ],
+  "note": "KaneAI plans from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA leads",
+   "SDETs",
+   "Developers",
+   "Engineering managers"
+  ],
+  "image": {
+   "src": "/kit/hero/agents/hero-bg.png",
+   "alt": "Auto Healing showing a healed CSS selector beside the original XPath selector"
+  },
+  "run": {
+   "title": "agents · release 4.12",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "KaneAI",
+     "text": "12 tests written from sprint tickets",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "HyperExecute",
+     "text": "640 tests across 40 VMs",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "Auto Healing",
+     "text": "3 locators repaired",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "RCA",
+     "text": "2 failures traced to API timeout",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "2 BUGS FILED · 638/640",
+   "evid": "release-4.12 · evidence, RCA report"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "",
+   "facts": [
+    [
+     "Plan and write",
+     "KaneAI and Test Planner"
+    ],
+    [
+     "Run",
+     "HyperExecute splits suites across parallel VMs"
+    ],
+    [
+     "Heal",
+     "Auto Healing re-finds moved elements"
+    ],
+    [
+     "Debug",
+     "AI root cause analysis groups failures"
+    ],
+    [
+     "Test AI you build",
+     "Agent Testing and Agent Assurance"
+    ],
+    [
+     "Start",
+     "Book a demo, or try Kane CLI with 10,000 free credits"
+    ]
+   ],
+   "id": "glance",
+   "head": "The TestMu AI agents in one table",
+   "body": []
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Plan",
+     "Agents draft test cases from tickets, specs and recordings."
+    ],
+    [
+     "Run and heal",
+     "Suites run in parallel; moved elements are re-found without editing the assertion."
+    ],
+    [
+     "Debug and report",
+     "Failures are clustered and traced to a likely cause, then filed to Jira."
+    ]
+   ],
+   "id": "how",
+   "head": "How the agents hand work to each other",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "KaneAI writes tests",
+     "Plain-English tests for web, mobile and API."
+    ],
+    [
+     "HyperExecute runs them",
+     "Suites run up to 70% faster than a traditional grid, per the HyperExecute page."
+    ],
+    [
+     "Auto Healing fixes locators",
+     "Element changes stop breaking builds; criteria stay fixed."
+    ],
+    [
+     "RCA explains failures",
+     "Failures are grouped and linked to logs, network and screenshots."
+    ],
+    [
+     "Agent Testing",
+     "Simulated users test chat, voice, phone and video agents."
+    ],
+    [
+     "Agent Assurance",
+     "Tests agent-to-agent workflows before release; Rook delivers it."
+    ]
+   ],
+   "id": "caps",
+   "head": "What each agent does",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "TestMu AI Agents compared with scripts and a grid",
+   "cols": [
+    "What matters",
+    "Scripts and a grid",
+    "TestMu AI agents"
+   ],
+   "rows": [
+    [
+     "Writing new coverage",
+     "Engineer writes code",
+     "KaneAI drafts from tickets"
+    ],
+    [
+     "A locator changes",
+     "Test fails until edited",
+     "Auto Healing re-finds the element"
+    ],
+    [
+     "A run fails",
+     "Read logs by hand",
+     "RCA groups failures and names a likely cause"
+    ],
+    [
+     "Testing your own AI agent",
+     "Manual chats",
+     "Agent Testing runs simulated users"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "One general assistant vs agents per QA stage",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "KaneAI",
+     "body": "Turn tickets and specs into tests",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Orchestrate CI runs in parallel",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "Test Insights",
+     "body": "Flaky test detection and RCA",
+     "href": "https://www.testmuai.com/test-intelligence/"
+    },
+    {
+     "name": "Agent Testing",
+     "body": "Test the AI agents you build",
+     "href": "https://www.testmuai.com/agent-testing/"
+    },
+    {
+     "name": "AI Test Planner",
+     "body": "The test planning agent",
+     "href": "https://www.testmuai.com/test-planner/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Read the CI setup guide",
+       "href": "https://www.testmuai.com/support/docs/hyperexecute-integration-with-ci-cd-tools/"
+      },
+      {
+       "label": "Read the Jira setup guide",
+       "href": "https://www.testmuai.com/support/docs/kane-ai-jira-integration/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "Dashlane case study",
+       "href": "https://www.testmuai.com/customers/dashlane/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Tools each agent runs on",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What are testing agents?",
+     "a": "Testing agents are AI agents that do QA work: writing test cases, running suites, repairing broken steps and explaining failures."
+    },
+    {
+     "q": "Which testing agents does TestMu AI offer?",
+     "a": "KaneAI for authoring, HyperExecute for execution, Auto Healing for locator repair, root cause analysis for debugging, plus Agent Testing and Agent Assurance for AI agents."
+    },
+    {
+     "q": "Do the agents change what counts as a pass?",
+     "a": "No. Healing changes how an element is reached. Pass or fail is checked against the criteria you wrote."
+    },
+    {
+     "q": "Can the agents work with my existing Selenium or Playwright tests?",
+     "a": "Yes. HyperExecute runs existing suites, and Auto Healing and RCA work on those runs."
+    },
+    {
+     "q": "How do I start?",
+     "a": "Book a demo for the full agent set, or install Kane CLI and claim 10,000 free credits valid for 30 days."
+    }
+   ],
+   "id": "faq",
+   "head": "Which agent does what? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI plans from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    },
+    {
+     "label": "See KaneAI",
+     "href": "https://www.testmuai.com/kane-ai/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Put an agent on your next test cycle"
+  }
+ ]
+}

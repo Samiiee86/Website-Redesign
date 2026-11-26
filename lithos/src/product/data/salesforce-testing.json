@@ -1,0 +1,322 @@
+{
+ "slug": "salesforce-testing",
+ "title": "Salesforce Testing Tools: AI-Native Agentic Testing Platform",
+ "description": "Salesforce testing that survives every release. KaneAI handles Lightning's dynamic DOM, custom Flows and sandboxes; Kane CLI runs the same tests in CI.",
+ "crumb": [
+  "TestMu AI",
+  "Salesforce Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Salesforce Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Salesforce testing",
+  "h1b": "that survives every release.",
+  "lede": "TestMu AI automates Salesforce testing in plain English. Describe a Salesforce workflow and KaneAI authors, runs and repairs the test through Lightning's changing DOM, custom Flows, sandbox logins and the three Salesforce releases each year. Kane CLI runs the same tests from the terminal and CI.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "KaneAI Starter from $17/month, billed annually. Test in your sandbox.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Salesforce admins",
+   "Salesforce QA",
+   "Release managers",
+   "CIOs"
+  ],
+  "image": {
+   "src": "/kit/hero/salesforce-testing/hero-bg.webp",
+   "alt": "End-to-end Salesforce coverage in one workflow"
+  },
+  "run": {
+   "title": "kaneai · lead-to-opportunity",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "login",
+     "text": "sandbox login",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "flow",
+     "text": "Lead convert Flow ran",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "lightning",
+     "text": "Opportunity record page loaded",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "verify",
+     "text": "stage = Qualification",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · Winter '27 sandbox",
+   "evid": "steps, screenshots, field values"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually.",
+   "facts": [
+    [
+     "What it is",
+     "Plain-English test automation for Salesforce orgs"
+    ],
+    [
+     "Clouds",
+     "Sales Cloud, Service Cloud and custom Lightning apps"
+    ],
+    [
+     "Handles",
+     "Dynamic Lightning DOM, custom Flows, sandboxes"
+    ],
+    [
+     "Releases",
+     "Regression packs for Spring, Summer and Winter releases"
+    ],
+    [
+     "Agentforce",
+     "Agents tested before go-live"
+    ],
+    [
+     "Start",
+     "Connect a sandbox and describe a workflow"
+    ]
+   ],
+   "id": "glance",
+   "head": "Salesforce testing: the essentials",
+   "body": [
+    "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Describe",
+     "Write the workflow in plain English: create a lead, convert it, check the opportunity."
+    ],
+    [
+     "Run in a sandbox",
+     "KaneAI logs in to your sandbox and runs the flow in Lightning."
+    ],
+    [
+     "Repeat every release",
+     "Tests heal through Lightning changes; real breaks fail with evidence."
+    ]
+   ],
+   "id": "how",
+   "head": "How a Salesforce test survives each release",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Lightning DOM changes",
+     "Tests find elements by meaning, not generated IDs."
+    ],
+    [
+     "Custom Flows",
+     "Exercise screen Flows and record-triggered automation."
+    ],
+    [
+     "Sandbox logins",
+     "Log in the way users do, in sandboxes."
+    ],
+    [
+     "Release regression",
+     "Run the pack against each preview sandbox."
+    ],
+    [
+     "Terminal and CI",
+     "Kane CLI runs the same tests in your pipeline."
+    ],
+    [
+     "Evidence per run",
+     "Screenshots and field values for audits."
+    ]
+   ],
+   "id": "caps",
+   "head": "Lightning, Flows and integrations covered",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Salesforce Testing compared with script-based Salesforce automation",
+   "cols": [
+    "What matters",
+    "Script-based Salesforce automation",
+    "TestMu AI"
+   ],
+   "rows": [
+    [
+     "Dynamic IDs",
+     "Constant locator fixes",
+     "Elements found by meaning"
+    ],
+    [
+     "Three releases a year",
+     "Regression rewrite",
+     "Same tests, healed paths"
+    ],
+    [
+     "Who writes tests",
+     "Automation specialists",
+     "Admins and QA in plain English"
+    ],
+    [
+     "Evidence",
+     "Pass or fail",
+     "Screenshots and field values"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Brittle Selenium scripts vs plain-English Salesforce tests",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Agentforce Testing",
+     "body": "Test Salesforce AI agents before go-live",
+     "href": "https://www.testmuai.com/agentforce-testing/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Write web, mobile and API tests in plain English",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "ServiceNow Testing",
+     "body": "Test ITSM, HRSD and CSM workflows in plain English",
+     "href": "https://www.testmuai.com/servicenow-testing/"
+    },
+    {
+     "name": "Kane CLI",
+     "body": "Plain-English checks as a CI step",
+     "href": "https://www.testmuai.com/kane-cli/"
+    },
+    {
+     "name": "Snowflake Testing",
+     "body": "Snowflake data testing",
+     "href": "https://www.testmuai.com/snowflake-testing/"
+    },
+    {
+     "name": "Professional Services",
+     "body": "Test automation services for enterprise apps",
+     "href": "https://www.testmuai.com/professional-services/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "KaneAI auto-heal documentation",
+       "href": "https://www.testmuai.com/support/docs/kaneai-auto-heal/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "Customer Engagement Platform case study",
+       "href": "https://www.testmuai.com/customers/customer-engagement-platform/"
+      }
+     ]
+    },
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Agentforce and other enterprise apps",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is Salesforce testing?",
+     "a": "Salesforce testing checks that Salesforce configurations, Flows, Apex logic and Lightning pages work as expected after changes and Salesforce releases."
+    },
+    {
+     "q": "Why is Salesforce test automation hard?",
+     "a": "Lightning generates dynamic element IDs, pages change with each release and logins use MFA, so locator-based scripts break often."
+    },
+    {
+     "q": "How does TestMu AI handle Salesforce releases?",
+     "a": "Run the regression pack against preview sandboxes before each release. Tests heal through UI changes and fail on real breaks."
+    },
+    {
+     "q": "Can non-developers write Salesforce tests?",
+     "a": "Yes. KaneAI tests are written in plain English, so admins and QA can author them."
+    },
+    {
+     "q": "Does TestMu AI test Agentforce?",
+     "a": "Yes. Agentforce agents are covered on the Agentforce testing page."
+    }
+   ],
+   "id": "faq",
+   "head": "What Salesforce admins ask before automating",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI Starter from $17/month, billed annually. Test in your sandbox.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Test your org before the next seasonal release"
+  }
+ ]
+}

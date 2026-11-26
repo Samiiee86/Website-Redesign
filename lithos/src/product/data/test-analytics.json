@@ -1,0 +1,298 @@
+{
+ "slug": "test-analytics",
+ "title": "Agentic Test Analytics Platform by TestMu AI",
+ "description": "Test reporting for CI/CD: pass and fail rates, run time, browser and device coverage and flaky trends in dashboards, with AI root cause analysis.",
+ "crumb": [
+  "TestMu AI",
+  "Test Analytics"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Test Analytics",
+   "Updated November 2026"
+  ],
+  "h1a": "Test reporting and analytics",
+  "h1b": "for every CI pipeline.",
+  "lede": "Test reporting on TestMu AI turns every CI run into dashboards: pass and fail rates, run time, browser and device coverage, and flaky test trends. AI root cause analysis groups failures so the team knows what broke and whether a release is ready.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Pricing on request. Analytics come with TestMu AI automation runs.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA leads",
+   "Engineering managers",
+   "SDETs",
+   "Release managers"
+  ],
+  "image": {
+   "src": "/kit/hero/test-analytics/hero-bg.webp",
+   "alt": "Insights Add Widget menu with pre-built templates and custom widgets"
+  },
+  "run": {
+   "title": "analytics · last 30 days",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "pass rate",
+     "text": "96.4% · up 2.1 pts",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "run time",
+     "text": "18m median · down 31%",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "flaky",
+     "text": "7 tests flagged",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "coverage",
+     "text": "24 browsers · 18 devices",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "RELEASE 7.2 · READY",
+   "evid": "dashboard · RCA report"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Pricing on request.",
+   "facts": [
+    [
+     "What it is",
+     "Dashboards and reports for automated test runs"
+    ],
+    [
+     "Metrics",
+     "Pass and fail rates, run time, coverage, flaky trends"
+    ],
+    [
+     "Failure analysis",
+     "AI root cause analysis and error clustering"
+    ],
+    [
+     "Sources",
+     "Runs on TestMu AI Automation Cloud, HyperExecute and real devices"
+    ],
+    [
+     "Release view",
+     "Release readiness by build"
+    ],
+    [
+     "Pricing",
+     "Pricing on request"
+    ]
+   ],
+   "id": "glance",
+   "head": "Test reporting: sources, widgets and plans",
+   "body": [
+    "Pricing on request."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Run tests on TestMu AI",
+     "Results from every session flow into analytics automatically."
+    ],
+    [
+     "Read the dashboards",
+     "Track trends by build, branch, browser and device."
+    ],
+    [
+     "Act on failures",
+     "RCA groups errors and links logs, screenshots and video."
+    ]
+   ],
+   "id": "how",
+   "head": "Every run flows into one dashboard",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Dashboards",
+     "Pass and fail rates, run time and coverage at a glance."
+    ],
+    [
+     "Error reporting",
+     "Failures grouped by message and cause."
+    ],
+    [
+     "Flaky test trends",
+     "Tests that flip between pass and fail are flagged."
+    ],
+    [
+     "Release readiness",
+     "One view per build for go or no-go."
+    ],
+    [
+     "Custom widgets",
+     "Build views per team or project."
+    ],
+    [
+     "Exports and sharing",
+     "Share dashboards and export data."
+    ]
+   ],
+   "id": "caps",
+   "head": "What the dashboards show",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Test Analytics compared with CI console output",
+   "cols": [
+    "What matters",
+    "CI console output",
+    "Test reporting on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Seeing a 30-day trend",
+     "Not available",
+     "Dashboard"
+    ],
+    [
+     "Grouping 50 failures",
+     "Read each log",
+     "Clustered by cause"
+    ],
+    [
+     "Finding flaky tests",
+     "Rerun and guess",
+     "Flagged from history"
+    ],
+    [
+     "Release decision",
+     "Ask in chat",
+     "Readiness view per build"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Reading CI logs vs reporting across every run",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Test Insights",
+     "body": "Find flaky tests and failure clusters",
+     "href": "https://www.testmuai.com/test-intelligence/"
+    },
+    {
+     "name": "HyperExecute",
+     "body": "Parallel runs with AI root cause per failure",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "Automation Cloud",
+     "body": "Scale automated suites without a grid",
+     "href": "https://www.testmuai.com/automation-cloud/"
+    },
+    {
+     "name": "Test Manager",
+     "body": "AI test management",
+     "href": "https://www.testmuai.com/test-management/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "AI RCA report",
+       "href": "https://www.testmuai.com/support/docs/analytics-ai-root-cause-analysis/"
+      },
+      {
+       "label": "Pre-built template",
+       "href": "https://www.testmuai.com/support/docs/analytics-dashboard-templates/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Act on what the reports show",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is test reporting?",
+     "a": "Test reporting summarises automated test results, such as pass and fail rates, run time and failures, so teams can judge quality and release readiness."
+    },
+    {
+     "q": "Which metrics does TestMu AI track?",
+     "a": "Pass and fail rates, run time, browser and device coverage, error groups and flaky test trends."
+    },
+    {
+     "q": "Does it explain failures?",
+     "a": "Yes. AI root cause analysis groups failures and links them to logs, screenshots and video."
+    },
+    {
+     "q": "Where do the results come from?",
+     "a": "Tests run on TestMu AI Automation Cloud, HyperExecute and real devices."
+    },
+    {
+     "q": "How is this different from Test Insights?",
+     "a": "Test analytics covers reporting and dashboards. Test Insights focuses on flaky test detection and failure intelligence."
+    }
+   ],
+   "id": "faq",
+   "head": "What should a test report show? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Pricing on request. Analytics come with TestMu AI automation runs.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "See all your test results in one place"
+  }
+ ]
+}

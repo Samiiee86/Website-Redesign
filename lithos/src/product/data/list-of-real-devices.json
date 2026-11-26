@@ -1,0 +1,1589 @@
+{
+ "slug": "list-of-real-devices",
+ "title": "Check Out The List of Real Devices Available on TestMu AI",
+ "description": "The list of real devices on TestMu AI: iPhone 18 Pro Max to iPhone X, Galaxy S26 to S8, Pixel 11 to Pixel 3, OnePlus and iPads, with every OS version.",
+ "crumb": [
+  "TestMu AI",
+  "List of Real Devices"
+ ],
+ "hero": {
+  "eyebrow": [
+   "List of Real Devices",
+   "Updated November 2026"
+  ],
+  "h1a": "List of real devices",
+  "h1b": "for browser and app testing.",
+  "lede": "This real device list is the list of real devices you can test on TestMu AI, with each OS version: iPhone 18 Pro Max back to iPhone X, Samsung Galaxy S26 back to S8, Google Pixel 11 back to Pixel 3, OnePlus, and iPads. Every entry is physical hardware in a TestMu AI data center.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 5 real device sessions a month, up to 2 minutes each.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Mobile QA",
+   "Mobile developers",
+   "Web testers",
+   "Release managers"
+  ],
+  "image": {
+   "src": "https://assets.testmuai.com/resources/images/real_device_banner.png",
+   "alt": "Next-Gen App & Browser Testing Cloud"
+  },
+  "run": {
+   "title": "device list · filter",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "iPhone 18 Pro Max",
+     "text": "iOS 27",
+     "st": null
+    },
+    {
+     "who": "Galaxy S26 Ultra",
+     "text": "Android 16",
+     "st": null
+    },
+    {
+     "who": "Pixel 11 Pro XL",
+     "text": "Android 17",
+     "st": null
+    },
+    {
+     "who": "iPad Pro 13",
+     "text": "iOS 27",
+     "st": null
+    }
+   ],
+   "diff": [],
+   "verdict": "REAL HARDWARE · ALL OS VERSIONS",
+   "evid": "live list · 50,000+ devices"
+  }
+ },
+ "sections": [
+  {
+   "type": "devices",
+   "id": "devices",
+   "head": "",
+   "body": [],
+   "tabs": [
+    "Live",
+    "Automation"
+   ],
+   "groups": [
+    {
+     "name": "Samsung",
+     "devices": [
+      [
+       "Galaxy Z Fold8",
+       "17"
+      ],
+      [
+       "Galaxy Z Fold4",
+       "13"
+      ],
+      [
+       "Galaxy Tab S12+",
+       "17"
+      ],
+      [
+       "Galaxy Tab S10 Ultra",
+       "14"
+      ],
+      [
+       "Galaxy Tab S9 Ultra",
+       "14"
+      ],
+      [
+       "Galaxy Tab S9",
+       "16"
+      ],
+      [
+       "Galaxy Tab S9",
+       "15"
+      ],
+      [
+       "Galaxy Tab S9",
+       "14"
+      ],
+      [
+       "Galaxy Tab S8+",
+       "13"
+      ],
+      [
+       "Galaxy Tab S8",
+       "12"
+      ],
+      [
+       "Galaxy Tab S4",
+       "10"
+      ],
+      [
+       "Galaxy Tab S3",
+       "9"
+      ],
+      [
+       "Galaxy Tab A11+ 5G",
+       "16"
+      ],
+      [
+       "Galaxy Tab A9+",
+       "15"
+      ],
+      [
+       "Galaxy Tab A7 Lite",
+       "11"
+      ],
+      [
+       "Galaxy S26+",
+       "16"
+      ],
+      [
+       "Galaxy S26 Ultra",
+       "16"
+      ],
+      [
+       "Galaxy S26",
+       "16"
+      ],
+      [
+       "Galaxy S25+",
+       "15"
+      ],
+      [
+       "Galaxy S25 Ultra",
+       "16"
+      ],
+      [
+       "Galaxy S25 Ultra",
+       "15"
+      ],
+      [
+       "Galaxy S25",
+       "15"
+      ],
+      [
+       "Galaxy S24+",
+       "14"
+      ],
+      [
+       "Galaxy S24 Ultra",
+       "16"
+      ],
+      [
+       "Galaxy S24 Ultra",
+       "14"
+      ],
+      [
+       "Galaxy S24",
+       "16"
+      ],
+      [
+       "Galaxy S24",
+       "15"
+      ],
+      [
+       "Galaxy S24",
+       "14"
+      ],
+      [
+       "Galaxy S23+",
+       "13"
+      ],
+      [
+       "Galaxy S23 Ultra",
+       "14"
+      ],
+      [
+       "Galaxy S23 Ultra",
+       "13"
+      ],
+      [
+       "Galaxy S23",
+       "16"
+      ],
+      [
+       "Galaxy S23",
+       "15"
+      ],
+      [
+       "Galaxy S23",
+       "14"
+      ],
+      [
+       "Galaxy S23",
+       "13"
+      ],
+      [
+       "Galaxy S22 Ultra 5G",
+       "15"
+      ],
+      [
+       "Galaxy S22 Ultra 5G",
+       "14"
+      ],
+      [
+       "Galaxy S22 Ultra 5G",
+       "12"
+      ],
+      [
+       "Galaxy S22 5G",
+       "14"
+      ],
+      [
+       "Galaxy S22 5G",
+       "13"
+      ],
+      [
+       "Galaxy S22 5G",
+       "12"
+      ],
+      [
+       "Galaxy S21 Ultra 5G",
+       "13"
+      ],
+      [
+       "Galaxy S21 Ultra 5G",
+       "12"
+      ],
+      [
+       "Galaxy S21 Ultra 5G",
+       "11"
+      ],
+      [
+       "Galaxy S21 5G",
+       "13"
+      ],
+      [
+       "Galaxy S21 5G",
+       "12"
+      ],
+      [
+       "Galaxy S21 5G",
+       "11"
+      ],
+      [
+       "Galaxy S20+",
+       "11"
+      ],
+      [
+       "Galaxy S20 FE",
+       "11"
+      ],
+      [
+       "Galaxy S20",
+       "11"
+      ],
+      [
+       "Galaxy S20",
+       "10"
+      ],
+      [
+       "Galaxy S10e",
+       "11"
+      ],
+      [
+       "Galaxy S10",
+       "11"
+      ],
+      [
+       "Galaxy S9+",
+       "10"
+      ],
+      [
+       "Galaxy S9+",
+       "9"
+      ],
+      [
+       "Galaxy S9",
+       "10"
+      ],
+      [
+       "Galaxy S8+",
+       "9"
+      ],
+      [
+       "Galaxy S8+",
+       "8"
+      ],
+      [
+       "Galaxy S8",
+       "9"
+      ],
+      [
+       "Galaxy Note20 Ultra 5G",
+       "11"
+      ],
+      [
+       "Galaxy Note10",
+       "12"
+      ],
+      [
+       "Galaxy A70",
+       "10"
+      ],
+      [
+       "Galaxy A32",
+       "13"
+      ],
+      [
+       "Galaxy A32",
+       "11"
+      ],
+      [
+       "Galaxy A8+",
+       "9"
+      ]
+     ]
+    },
+    {
+     "name": "Android Google",
+     "devices": [
+      [
+       "Pixel 11 Pro XL",
+       "Android 17"
+      ],
+      [
+       "Pixel 11 Pro",
+       "Android 17"
+      ],
+      [
+       "Pixel 11",
+       "Android 17"
+      ],
+      [
+       "Pixel 10 Pro XL",
+       "Android 16"
+      ],
+      [
+       "Pixel 10 Pro",
+       "Android 17"
+      ],
+      [
+       "Pixel 10 Pro",
+       "Android 16"
+      ],
+      [
+       "Pixel 10",
+       "Android 16"
+      ],
+      [
+       "Pixel 9 Pro XL",
+       "Android 16"
+      ],
+      [
+       "Pixel 9 Pro XL",
+       "Android 15"
+      ],
+      [
+       "Pixel 9 Pro Fold",
+       "Android 14"
+      ],
+      [
+       "Pixel 9 Pro",
+       "Android 15"
+      ],
+      [
+       "Pixel 9",
+       "Android 17"
+      ],
+      [
+       "Pixel 9",
+       "Android 16"
+      ],
+      [
+       "Pixel 9",
+       "Android 15"
+      ],
+      [
+       "Pixel 9",
+       "Android 14"
+      ],
+      [
+       "Pixel 8 Pro",
+       "Android 16"
+      ],
+      [
+       "Pixel 8 Pro",
+       "Android 15"
+      ],
+      [
+       "Pixel 8 Pro",
+       "Android 14"
+      ],
+      [
+       "Pixel 8",
+       "Android 17"
+      ],
+      [
+       "Pixel 8",
+       "Android 16"
+      ],
+      [
+       "Pixel 8",
+       "Android 14"
+      ],
+      [
+       "Pixel 7 Pro",
+       "Android 16"
+      ],
+      [
+       "Pixel 7 Pro",
+       "Android 14"
+      ],
+      [
+       "Pixel 7 Pro",
+       "Android 13"
+      ],
+      [
+       "Pixel 7",
+       "Android 17"
+      ],
+      [
+       "Pixel 7",
+       "Android 13"
+      ],
+      [
+       "Pixel 6 Pro",
+       "Android 15"
+      ],
+      [
+       "Pixel 6 Pro",
+       "Android 12"
+      ],
+      [
+       "Pixel 6",
+       "Android 16"
+      ],
+      [
+       "Pixel 6",
+       "Android 15"
+      ],
+      [
+       "Pixel 6",
+       "Android 14"
+      ],
+      [
+       "Pixel 6",
+       "Android 13"
+      ],
+      [
+       "Pixel 6",
+       "Android 12"
+      ],
+      [
+       "Pixel 5",
+       "Android 14"
+      ],
+      [
+       "Pixel 5",
+       "Android 12"
+      ],
+      [
+       "Pixel 5",
+       "Android 11"
+      ],
+      [
+       "Pixel 4a",
+       "Android 13"
+      ],
+      [
+       "Pixel 4a",
+       "Android 12"
+      ],
+      [
+       "Pixel 4 XL",
+       "Android 11"
+      ],
+      [
+       "Pixel 4",
+       "Android 12"
+      ],
+      [
+       "Pixel 3a",
+       "Android 11"
+      ],
+      [
+       "Pixel 3",
+       "Android 9"
+      ],
+      [
+       "Pixel Tablet",
+       "Android 13"
+      ]
+     ]
+    },
+    {
+     "name": "Android OnePlus",
+     "devices": [
+      [
+       "OnePlus Nord CE 3 Lite",
+       "Android 13"
+      ],
+      [
+       "OnePlus Nord CE 3",
+       "Android 14"
+      ],
+      [
+       "OnePlus Nord 2",
+       "Android 13"
+      ],
+      [
+       "OnePlus Nord 2",
+       "Android 12"
+      ],
+      [
+       "OnePlus 11",
+       "Android 15"
+      ],
+      [
+       "OnePlus 11",
+       "Android 14"
+      ],
+      [
+       "OnePlus 11",
+       "Android 13"
+      ],
+      [
+       "OnePlus 9",
+       "Android 11"
+      ],
+      [
+       "OnePlus 6T",
+       "Android 9"
+      ],
+      [
+       "OnePlus Nord",
+       "Android 12"
+      ]
+     ]
+    },
+    {
+     "name": "Android Xiaomi",
+     "devices": [
+      [
+       "Xiaomi Mi 11 Lite",
+       "Android 12"
+      ],
+      [
+       "Xiaomi 12 Pro",
+       "Android 13"
+      ],
+      [
+       "Redmi Note 13 Pro",
+       "Android 14"
+      ],
+      [
+       "Redmi Note 13 Pro",
+       "Android 13"
+      ],
+      [
+       "Redmi Note 12 Pro",
+       "Android 14"
+      ],
+      [
+       "Redmi Note 10 Pro",
+       "Android 11"
+      ]
+     ]
+    },
+    {
+     "name": "Android Vivo",
+     "devices": [
+      [
+       "Vivo Y22",
+       "Android 14"
+      ],
+      [
+       "Vivo Y22",
+       "Android 12"
+      ],
+      [
+       "Vivo Y20g",
+       "Android 11"
+      ],
+      [
+       "vivo V20",
+       "Android 11"
+      ],
+      [
+       "Vivo T1 5G",
+       "Android 14"
+      ],
+      [
+       "Vivo T1 5G",
+       "Android 13"
+      ],
+      [
+       "Vivo T1 5G",
+       "Android 12"
+      ]
+     ]
+    },
+    {
+     "name": "Android OPPO",
+     "devices": [
+      [
+       "Oppo Reno8",
+       "Android 14"
+      ],
+      [
+       "Oppo Reno8",
+       "Android 13"
+      ],
+      [
+       "Oppo K10",
+       "Android 11"
+      ],
+      [
+       "Oppo A96",
+       "Android 13"
+      ],
+      [
+       "Oppo A96",
+       "Android 12"
+      ],
+      [
+       "Oppo A96",
+       "Android 11"
+      ],
+      [
+       "Oppo A54",
+       "Android 11"
+      ]
+     ]
+    },
+    {
+     "name": "Android Motorola",
+     "devices": [
+      [
+       "Moto G54 5G",
+       "Android 15"
+      ],
+      [
+       "Moto G54 5G",
+       "Android 14"
+      ],
+      [
+       "Moto G30",
+       "Android 12"
+      ],
+      [
+       "Moto G22",
+       "Android 12"
+      ]
+     ]
+    },
+    {
+     "name": "Android Huawei",
+     "devices": [
+      [
+       "Huawei P50 Pro",
+       "Android 12"
+      ],
+      [
+       "Huawei P50 Pro",
+       "Android 11"
+      ],
+      [
+       "Huawei P30",
+       "Android 10"
+      ]
+     ]
+    },
+    {
+     "name": "Android realme",
+     "devices": [
+      [
+       "realme P3 5G",
+       "Android 15"
+      ],
+      [
+       "realme GT2 Pro",
+       "Android 14"
+      ]
+     ]
+    },
+    {
+     "name": "Android Microsoft",
+     "devices": [
+      [
+       "Microsoft Surface Duo",
+       "Android 12"
+      ]
+     ]
+    },
+    {
+     "name": "Android Honor",
+     "devices": [
+      [
+       "HONOR X9a 5G",
+       "Android 13"
+      ]
+     ]
+    },
+    {
+     "name": "iOS iPhone",
+     "devices": [
+      [
+       "iPhone 18 Pro Max",
+       "iOS 27"
+      ],
+      [
+       "iPhone 18 Pro",
+       "iOS 27"
+      ],
+      [
+       "iPhone 17 Pro Max",
+       "iOS 27"
+      ],
+      [
+       "iPhone 17 Pro Max",
+       "iOS 26"
+      ],
+      [
+       "iPhone 17 Pro",
+       "iOS 27"
+      ],
+      [
+       "iPhone 17 Pro",
+       "iOS 26"
+      ],
+      [
+       "iPhone 17",
+       "iOS 27"
+      ],
+      [
+       "iPhone 17",
+       "iOS 26"
+      ],
+      [
+       "iPhone 16 Pro Max",
+       "iOS 26"
+      ],
+      [
+       "iPhone 16 Pro Max",
+       "iOS 18"
+      ],
+      [
+       "iPhone 16 Pro",
+       "iOS 27"
+      ],
+      [
+       "iPhone 16 Pro",
+       "iOS 26"
+      ],
+      [
+       "iPhone 16 Pro",
+       "iOS 18"
+      ],
+      [
+       "iPhone 16 Plus",
+       "iOS 18"
+      ],
+      [
+       "iPhone 16",
+       "iOS 26"
+      ],
+      [
+       "iPhone 16",
+       "iOS 18"
+      ],
+      [
+       "iPhone 15 Pro Max",
+       "iOS 27"
+      ],
+      [
+       "iPhone 15 Pro Max",
+       "iOS 18"
+      ],
+      [
+       "iPhone 15 Pro Max",
+       "iOS 17"
+      ],
+      [
+       "iPhone 15 Pro",
+       "iOS 27"
+      ],
+      [
+       "iPhone 15 Pro",
+       "iOS 26"
+      ],
+      [
+       "iPhone 15 Pro",
+       "iOS 18"
+      ],
+      [
+       "iPhone 15 Pro",
+       "iOS 17"
+      ],
+      [
+       "iPhone 15 Plus",
+       "iOS 26"
+      ],
+      [
+       "iPhone 15 Plus",
+       "iOS 17"
+      ],
+      [
+       "iPhone 15",
+       "iOS 26"
+      ],
+      [
+       "iPhone 15",
+       "iOS 18"
+      ],
+      [
+       "iPhone 15",
+       "iOS 17"
+      ],
+      [
+       "iPhone 14 Pro Max",
+       "iOS 27"
+      ],
+      [
+       "iPhone 14 Pro Max",
+       "iOS 26"
+      ],
+      [
+       "iPhone 14 Pro Max",
+       "iOS 18"
+      ],
+      [
+       "iPhone 14 Pro Max",
+       "iOS 16"
+      ],
+      [
+       "iPhone 14 Pro",
+       "iOS 26"
+      ],
+      [
+       "iPhone 14 Pro",
+       "iOS 16"
+      ],
+      [
+       "iPhone 14 Plus",
+       "iOS 26"
+      ],
+      [
+       "iPhone 14 Plus",
+       "iOS 16"
+      ],
+      [
+       "iPhone 14",
+       "iOS 26"
+      ],
+      [
+       "iPhone 14",
+       "iOS 18"
+      ],
+      [
+       "iPhone 14",
+       "iOS 17"
+      ],
+      [
+       "iPhone 14",
+       "iOS 16"
+      ],
+      [
+       "iPhone 13 Pro Max",
+       "iOS 27"
+      ],
+      [
+       "iPhone 13 Pro Max",
+       "iOS 17"
+      ],
+      [
+       "iPhone 13 Pro Max",
+       "iOS 15"
+      ],
+      [
+       "iPhone 13 Pro",
+       "iOS 26"
+      ],
+      [
+       "iPhone 13 Pro",
+       "iOS 18"
+      ],
+      [
+       "iPhone 13 Pro",
+       "iOS 17"
+      ],
+      [
+       "iPhone 13 Pro",
+       "iOS 15"
+      ],
+      [
+       "iPhone 13 Mini",
+       "iOS 27"
+      ],
+      [
+       "iPhone 13 Mini",
+       "iOS 26"
+      ],
+      [
+       "iPhone 13 Mini",
+       "iOS 15"
+      ],
+      [
+       "iPhone 13",
+       "iOS 27"
+      ],
+      [
+       "iPhone 13",
+       "iOS 26"
+      ],
+      [
+       "iPhone 13",
+       "iOS 18"
+      ],
+      [
+       "iPhone 13",
+       "iOS 17"
+      ],
+      [
+       "iPhone 13",
+       "iOS 16"
+      ],
+      [
+       "iPhone 13",
+       "iOS 15"
+      ],
+      [
+       "iPhone 12 Pro Max",
+       "iOS 18"
+      ],
+      [
+       "iPhone 12 Pro Max",
+       "iOS 14"
+      ],
+      [
+       "iPhone 12 Pro",
+       "iOS 27"
+      ],
+      [
+       "iPhone 12 Pro",
+       "iOS 26"
+      ],
+      [
+       "iPhone 12 Pro",
+       "iOS 18"
+      ],
+      [
+       "iPhone 12 Pro",
+       "iOS 16"
+      ],
+      [
+       "iPhone 12 Pro",
+       "iOS 15"
+      ],
+      [
+       "iPhone 12 Pro",
+       "iOS 14"
+      ],
+      [
+       "iPhone 12 Mini",
+       "iOS 17"
+      ],
+      [
+       "iPhone 12 Mini",
+       "iOS 16"
+      ],
+      [
+       "iPhone 12 Mini",
+       "iOS 15"
+      ],
+      [
+       "iPhone 12 Mini",
+       "iOS 14"
+      ],
+      [
+       "iPhone 12",
+       "iOS 17"
+      ],
+      [
+       "iPhone 12",
+       "iOS 16"
+      ],
+      [
+       "iPhone 12",
+       "iOS 15"
+      ],
+      [
+       "iPhone 12",
+       "iOS 14"
+      ],
+      [
+       "iPhone SE (2022)",
+       "iOS 17"
+      ],
+      [
+       "iPhone SE (2022)",
+       "iOS 15"
+      ],
+      [
+       "iPhone 11 Pro Max",
+       "iOS 16"
+      ],
+      [
+       "iPhone 11 Pro Max",
+       "iOS 15"
+      ],
+      [
+       "iPhone 11 Pro",
+       "iOS 14"
+      ],
+      [
+       "iPhone 11",
+       "iOS 18"
+      ],
+      [
+       "iPhone 11",
+       "iOS 15"
+      ],
+      [
+       "iPhone 11",
+       "iOS 14"
+      ],
+      [
+       "iPhone 8 Plus",
+       "iOS 14"
+      ],
+      [
+       "iPhone 8",
+       "iOS 16"
+      ],
+      [
+       "iPhone 8",
+       "iOS 15"
+      ],
+      [
+       "iPhone SE (2020)",
+       "iOS 17"
+      ],
+      [
+       "iPhone SE (2020)",
+       "iOS 14"
+      ],
+      [
+       "iPhone 7",
+       "iOS 15"
+      ],
+      [
+       "iPhone XS Max",
+       "iOS 14"
+      ],
+      [
+       "iPhone XS",
+       "iOS 17"
+      ],
+      [
+       "iPhone XS",
+       "iOS 16"
+      ],
+      [
+       "iPhone XS",
+       "iOS 15"
+      ],
+      [
+       "iPhone XS",
+       "iOS 14"
+      ],
+      [
+       "iPhone XR",
+       "iOS 14"
+      ],
+      [
+       "iPhone X",
+       "iOS 16"
+      ],
+      [
+       "iPhone X",
+       "iOS 15"
+      ],
+      [
+       "iPhone Duo",
+       "iOS 27"
+      ],
+      [
+       "iPhone Air",
+       "iOS 27"
+      ],
+      [
+       "iPhone Air",
+       "iOS 26"
+      ]
+     ]
+    },
+    {
+     "name": "iOS iPad",
+     "devices": [
+      [
+       "iPad Pro 13 (2025)",
+       "iOS 26"
+      ],
+      [
+       "iPad 11 (2025)",
+       "iOS 18"
+      ],
+      [
+       "iPad Pro 13 (2024)",
+       "iOS 27"
+      ],
+      [
+       "iPad Pro 13 (2024)",
+       "iOS 26"
+      ],
+      [
+       "iPad Pro 13 (2024)",
+       "iOS 17"
+      ],
+      [
+       "iPad Pro 11 (2024)",
+       "iOS 26"
+      ],
+      [
+       "iPad Pro 11 (2024)",
+       "iOS 17"
+      ],
+      [
+       "iPad Air 13 (2024)",
+       "iOS 17"
+      ],
+      [
+       "iPad Air 11 (2024)",
+       "iOS 26"
+      ],
+      [
+       "iPad Air 11 (2024)",
+       "iOS 18"
+      ],
+      [
+       "iPad Pro 12.9 (2022)",
+       "iOS 17"
+      ],
+      [
+       "iPad Pro 12.9 (2022)",
+       "iOS 16"
+      ],
+      [
+       "iPad Pro 11 (2022)",
+       "iOS 17"
+      ],
+      [
+       "iPad Pro 11 (2022)",
+       "iOS 16"
+      ],
+      [
+       "iPad Air (2022)",
+       "iOS 26"
+      ],
+      [
+       "iPad Air (2022)",
+       "iOS 15"
+      ],
+      [
+       "iPad 10.9 (2022)",
+       "iOS 27"
+      ],
+      [
+       "iPad 10.9 (2022)",
+       "iOS 26"
+      ],
+      [
+       "iPad 10.9 (2022)",
+       "iOS 18"
+      ],
+      [
+       "iPad 10.9 (2022)",
+       "iOS 17"
+      ],
+      [
+       "iPad 10.9 (2022)",
+       "iOS 16"
+      ],
+      [
+       "iPad Pro 12.9 (2021)",
+       "iOS 17"
+      ],
+      [
+       "iPad Mini (2021)",
+       "iOS 26"
+      ],
+      [
+       "iPad Mini (2021)",
+       "iOS 15"
+      ],
+      [
+       "iPad 10.2 (2021)",
+       "iOS 26"
+      ],
+      [
+       "iPad 10.2 (2021)",
+       "iOS 15"
+      ],
+      [
+       "iPad Air (2020)",
+       "iOS 14"
+      ],
+      [
+       "iPad 10.2 (2020)",
+       "iOS 26"
+      ],
+      [
+       "iPad 10.2 (2020)",
+       "iOS 16"
+      ],
+      [
+       "iPad 10.2 (2020)",
+       "iOS 14"
+      ],
+      [
+       "iPad Mini (2019)",
+       "iOS 16"
+      ],
+      [
+       "iPad Mini (2019)",
+       "iOS 15"
+      ],
+      [
+       "iPad Air (2019)",
+       "iOS 16"
+      ],
+      [
+       "iPad 10.2 (2019)",
+       "iOS 17"
+      ],
+      [
+       "iPad 10.2 (2019)",
+       "iOS 15"
+      ]
+     ]
+    }
+   ],
+   "promos": [
+    {
+     "title": "Test on Private Real Device Cloud",
+     "body": "Dedicated iOS and Android devices with unmatched security & control",
+     "cta": "Contact Us",
+     "href": null,
+     "img": "https://assets.testmuai.com/resources/images/RealDeviceLogo.png"
+    },
+    {
+     "title": "Test your website on 50,000+ devices",
+     "body": "Deliver immersive digital experiences with our Next-Generation Testing Cloud",
+     "cta": "Test Now",
+     "href": "https://www.testmuai.com/register/",
+     "img": "https://assets.testmuai.com/resources/images/CTBlogo.svg"
+    }
+   ],
+   "href": "https://www.testmuai.com/login/?redirectTo=https://applive.lambdatest.com/app"
+  },
+  {
+   "type": "glance",
+   "price": "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually",
+   "facts": [
+    [
+     "iPhones",
+     "iPhone 18 Pro Max back to iPhone X; iOS 14 to iOS 27"
+    ],
+    [
+     "iPads",
+     "iPad Pro 13 (2025) back to iPad 10.2 (2019)"
+    ],
+    [
+     "Samsung",
+     "Galaxy S26 Ultra back to S8, Z Fold8, Tab S12+"
+    ],
+    [
+     "Google",
+     "Pixel 11 Pro XL back to Pixel 3, Pixel Tablet"
+    ],
+    [
+     "OnePlus",
+     "OnePlus 11 back to 6T, Nord series"
+    ],
+    [
+     "Pricing",
+     "Free: 5 real device sessions a month; Real Device Plus Live from $39/month"
+    ]
+   ],
+   "id": "glance",
+   "head": "The device catalogue in numbers",
+   "body": [
+    "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Find your device",
+     "Scan by brand, model and OS version."
+    ],
+    [
+     "Open it live",
+     "Start a manual session on that device."
+    ],
+    [
+     "Or automate",
+     "Use the device and OS names in Appium, Espresso or XCUITest capabilities."
+    ]
+   ],
+   "id": "how",
+   "head": "Find a device, then open it",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Newest flagships",
+     "iPhone 18 Pro Max, Galaxy S26 Ultra and Pixel 11 Pro XL."
+    ],
+    [
+     "Older models",
+     "iPhone X and Galaxy S8 for long-tail users."
+    ],
+    [
+     "Many OS versions per model",
+     "Same phone on several iOS or Android releases."
+    ],
+    [
+     "Tablets and foldables",
+     "iPads, Galaxy Tab and Z Fold devices."
+    ],
+    [
+     "Public and private devices",
+     "Dedicated devices for enterprise teams."
+    ],
+    [
+     "Same names for automation",
+     "Capabilities use these device names."
+    ]
+   ],
+   "id": "caps",
+   "head": "What you can do on any listed device",
+   "body": []
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Brand",
+    "Models",
+    "OS versions"
+   ],
+   "rows": [
+    [
+     "Apple iPhone",
+     "iPhone 18 Pro Max, iPhone 18 Pro, iPhone 17 Pro Max, iPhone 17 Pro, iPhone 17, iPhone 16 Pro Max, iPhone 16 Pro, iPhone 16 Plus, iPhone 16, iPhone 15 Pro Max, iPhone 15 Pro, iPhone 15 Plus, iPhone 15, iPhone 14 Pro Max, iPhone 14 Pro, iPhone 14 Plus, iPhone 14, iPhone 13 Pro Max, iPhone 13 Pro, iPhone 13 Mini, iPhone 13, iPhone 12 Pro Max, iPhone 12 Pro, iPhone 12 Mini, iPhone 12, iPhone SE (2022), iPhone 11 Pro Max, iPhone 11 Pro, iPhone 11, iPhone 8 Plus, iPhone 8, iPhone SE (2020), iPhone 7, iPhone XS Max, iPhone XS, iPhone XR, iPhone X, iPhone Duo, iPhone Air",
+     "iOS 14 to iOS 27"
+    ],
+    [
+     "Apple iPad",
+     "iPad Pro 13 (2025), iPad 11 (2025), iPad Pro 13 (2024), iPad Pro 11 (2024), iPad Air 13 (2024), iPad Air 11 (2024), iPad Pro 12.9 (2022), iPad Pro 11 (2022), iPad Air (2022), iPad 10.9 (2022), iPad Pro 12.9 (2021), iPad Mini (2021), iPad 10.2 (2021), iPad Air (2020), iPad 10.2 (2020), iPad Mini (2019), iPad Air (2019), iPad 10.2 (2019)",
+     "iOS 14 to iOS 27"
+    ],
+    [
+     "Samsung Galaxy",
+     "Galaxy Z Fold8, Galaxy Z Fold4, Galaxy S26+, Galaxy S26 Ultra, Galaxy S26, Galaxy S25+, Galaxy S25 Ultra, Galaxy S25, Galaxy S24+, Galaxy S24 Ultra, Galaxy S24, Galaxy S23+, Galaxy S23 Ultra, Galaxy S23, Galaxy S22 Ultra 5G, Galaxy S22 5G, Galaxy S21 Ultra 5G, Galaxy S21 5G, Galaxy S20+, Galaxy S20 FE, Galaxy S20, Galaxy S10e, Galaxy S10, Galaxy S9+, Galaxy S9, Galaxy S8+, Galaxy S8, Galaxy Note20 Ultra 5G, Galaxy Note10, Galaxy A70, Galaxy A32, Galaxy A8+",
+     "Android 8 to Android 17"
+    ],
+    [
+     "Samsung Galaxy Tab",
+     "Galaxy Tab S12+, Galaxy Tab S10 Ultra, Galaxy Tab S9 Ultra, Galaxy Tab S9, Galaxy Tab S8+, Galaxy Tab S8, Galaxy Tab S4, Galaxy Tab S3, Galaxy Tab A11+ 5G, Galaxy Tab A9+, Galaxy Tab A7 Lite",
+     "Android 9 to Android 17"
+    ],
+    [
+     "Google Pixel",
+     "Pixel 11 Pro XL, Pixel 11 Pro, Pixel 11, Pixel 10 Pro XL, Pixel 10 Pro, Pixel 10, Pixel 9 Pro XL, Pixel 9 Pro Fold, Pixel 9 Pro, Pixel 9, Pixel 8 Pro, Pixel 8, Pixel 7 Pro, Pixel 7, Pixel 6 Pro, Pixel 6, Pixel 5, Pixel 4a, Pixel 4 XL, Pixel 4, Pixel 3a, Pixel 3, Pixel Tablet",
+     "Android 9 to Android 17"
+    ],
+    [
+     "OnePlus",
+     "OnePlus Nord CE 3 Lite, OnePlus Nord CE 3, OnePlus Nord 2, OnePlus 11, OnePlus 9, OnePlus 6T, OnePlus Nord",
+     "Android 9 to Android 15"
+    ],
+    [
+     "Xiaomi",
+     "Xiaomi Mi 11 Lite, Xiaomi 12 Pro, Redmi Note 13 Pro, Redmi Note 12 Pro, Redmi Note 10 Pro",
+     "Android 11 to Android 14"
+    ],
+    [
+     "Vivo",
+     "Vivo Y22, Vivo Y20g, vivo V20, Vivo T1 5G",
+     "Android 11 to Android 14"
+    ],
+    [
+     "OPPO",
+     "Oppo Reno8, Oppo K10, Oppo A96, Oppo A54",
+     "Android 11 to Android 14"
+    ],
+    [
+     "Motorola",
+     "Moto G54 5G, Moto G30, Moto G22",
+     "Android 12 to Android 15"
+    ],
+    [
+     "Huawei",
+     "Huawei P50 Pro, Huawei P30",
+     "Android 10 to Android 12"
+    ],
+    [
+     "realme",
+     "realme P3 5G, realme GT2 Pro",
+     "Android 14 to Android 15"
+    ],
+    [
+     "Microsoft",
+     "Microsoft Surface Duo",
+     "Android 12"
+    ],
+    [
+     "Honor",
+     "HONOR X9a 5G",
+     "Android 13"
+    ]
+   ],
+   "src": "Summarised from the live list of real devices on 2026-11-26; open the device picker for each model's exact OS versions.",
+   "id": "data0",
+   "head": "Real devices by brand",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "List of Real Devices compared with in-house device lab",
+   "cols": [
+    "What matters",
+    "In-house device lab",
+    "TestMu AI real device list"
+   ],
+   "rows": [
+    [
+     "New flagship models",
+     "Order and wait for hardware",
+     "Check the device list for availability"
+    ],
+    [
+     "Same phone on two OS versions",
+     "Two phones",
+     "Both listed"
+    ],
+    [
+     "Older models",
+     "Kept in a drawer",
+     "Available"
+    ],
+    [
+     "Upkeep",
+     "Batteries and updates",
+     "Hosted"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Owning test phones vs the real device catalogue",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "9x",
+     "text": "Boohoo scaled test coverage 9x after retiring its in-house device farm.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/boohoo/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams using real devices",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Real Device Cloud",
+     "body": "Open 50,000+ real phones and tablets",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "List of Browsers",
+     "body": "Every browser and version you can open",
+     "href": "https://www.testmuai.com/list-of-browsers/"
+    },
+    {
+     "name": "Mobile App Testing",
+     "body": "Test apps on real iOS and Android devices",
+     "href": "https://www.testmuai.com/mobile-app-testing/"
+    },
+    {
+     "name": "XCUITest",
+     "body": "Run native iOS tests on real iPhones",
+     "href": "https://www.testmuai.com/xcuitest-app-testing/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Automate on these devices",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "Which real devices can I test on?",
+     "a": "iPhones from iPhone X to iPhone 18 Pro Max, iPads, Samsung Galaxy phones, tablets and foldables, Google Pixel phones and tablets, and OnePlus devices."
+    },
+    {
+     "q": "Which iOS versions are available?",
+     "a": "iOS 14 through iOS 27, depending on the model."
+    },
+    {
+     "q": "Which Android versions are available?",
+     "a": "Android 8 through Android 17, depending on the model."
+    },
+    {
+     "q": "Are these emulators?",
+     "a": "No. Every device in the list is physical hardware."
+    },
+    {
+     "q": "Is there a free plan?",
+     "a": "Yes. The free plan includes 5 real device sessions a month, up to 2 minutes each."
+    }
+   ],
+   "id": "faq",
+   "head": "Is my phone on the list? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 5 real device sessions a month, up to 2 minutes each.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Pick a device and start testing"
+  }
+ ],
+ "unknown": []
+}

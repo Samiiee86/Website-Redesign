@@ -1,0 +1,299 @@
+{
+ "slug": "oracle-testing",
+ "title": "Oracle Testing: Automate Fusion Cloud & EBS | TestMu AI",
+ "description": "Oracle testing for Fusion Cloud, EBS and HCM in plain English. Tests survive every quarterly update and Redwood, with evidence for each run.",
+ "crumb": [
+  "TestMu AI",
+  "Oracle Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Oracle Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Oracle testing for",
+  "h1b": "Fusion Cloud, EBS and HCM.",
+  "lede": "Oracle testing validates Oracle Fusion Cloud, E-Business Suite, HCM and SCM workflows after every quarterly update, patch and configuration change. KaneAI authors and runs those tests in plain English, survives Redwood UI changes, and returns evidence for each run on 3,000+ browsers.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "KaneAI Starter from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Oracle QA leads",
+   "ERP owners",
+   "Functional consultants",
+   "CIOs"
+  ],
+  "image": {
+   "src": "/kit/hero/oracle-testing/hero-bg.webp",
+   "alt": "Oracle Testing for Fusion Cloud, EBS and HCM, Automated"
+  },
+  "run": {
+   "title": "kaneai · procure-to-pay",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "requisition",
+     "text": "created and approved",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "po",
+     "text": "purchase order issued",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "receipt",
+     "text": "goods received",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "invoice",
+     "text": "3-way match passed",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · 26B update",
+   "evid": "steps, screenshots, document numbers"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually.",
+   "facts": [
+    [
+     "What it is",
+     "Plain-English test automation for Oracle applications"
+    ],
+    [
+     "Apps",
+     "Fusion Cloud (ERP, HCM, SCM) and E-Business Suite"
+    ],
+    [
+     "Releases",
+     "Quarterly updates and Redwood UI changes"
+    ],
+    [
+     "Authoring",
+     "Plain English with KaneAI"
+    ],
+    [
+     "Browsers",
+     "3,000+ browsers and 50,000+ real devices"
+    ],
+    [
+     "Start",
+     "Describe a procure-to-pay flow"
+    ]
+   ],
+   "id": "glance",
+   "head": "Oracle coverage: Fusion Cloud, EBS and HCM",
+   "body": [
+    "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Describe",
+     "Write the business process in plain English."
+    ],
+    [
+     "Run",
+     "KaneAI drives Fusion or EBS screens, Redwood included."
+    ],
+    [
+     "Re-run each quarter",
+     "Run the pack against each quarterly update before production."
+    ]
+   ],
+   "id": "how",
+   "head": "Fusion Cloud and EBS through every quarterly update",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Fusion Cloud and EBS",
+     "Cover cloud and on-premises Oracle apps."
+    ],
+    [
+     "Redwood UI",
+     "Tests find elements by meaning as screens change."
+    ],
+    [
+     "Quarterly update packs",
+     "Regression before each update reaches production."
+    ],
+    [
+     "End-to-end processes",
+     "Procure-to-pay, hire-to-retire and order-to-cash."
+    ],
+    [
+     "Readable by consultants",
+     "Plain-English steps reviewers can sign off."
+    ],
+    [
+     "Evidence",
+     "Screenshots and document numbers per step."
+    ]
+   ],
+   "id": "caps",
+   "head": "Oracle modules and flows covered",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Oracle Testing compared with manual quarterly regression",
+   "cols": [
+    "What matters",
+    "Manual quarterly regression",
+    "TestMu AI"
+   ],
+   "rows": [
+    [
+     "Effort per update",
+     "Weeks of manual testing",
+     "Re-run the automated pack"
+    ],
+    [
+     "Redwood changes",
+     "Scripts rewritten",
+     "Tests heal"
+    ],
+    [
+     "Coverage",
+     "Critical paths only",
+     "Full process packs"
+    ],
+    [
+     "Audit evidence",
+     "Screenshots by hand",
+     "Captured on every run"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Manual quarterly regression vs automated Oracle tests",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "SAP Testing",
+     "body": "Test Fiori and S/4HANA workflows",
+     "href": "https://www.testmuai.com/sap-testing/"
+    },
+    {
+     "name": "Workday Testing",
+     "body": "Test HCM, payroll and R1/R2 releases",
+     "href": "https://www.testmuai.com/workday-testing/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Write web, mobile and API tests in plain English",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Test Manager",
+     "body": "Test management",
+     "href": "https://www.testmuai.com/test-management/"
+    },
+    {
+     "name": "ServiceNow Testing",
+     "body": "ServiceNow ITSM testing",
+     "href": "https://www.testmuai.com/servicenow-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Other ERPs and suites on TestMu AI",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is Oracle testing?",
+     "a": "Oracle testing validates Oracle Fusion Cloud, E-Business Suite, HCM and SCM workflows after quarterly updates, patches and configuration changes."
+    },
+    {
+     "q": "How do you test Oracle quarterly updates?",
+     "a": "Run an automated regression pack against the update in a test environment before it reaches production."
+    },
+    {
+     "q": "Does TestMu AI support Redwood?",
+     "a": "Yes. KaneAI finds elements by meaning, so tests keep working as Redwood screens change."
+    },
+    {
+     "q": "Can it test Oracle EBS as well as Fusion?",
+     "a": "Yes. Both Fusion Cloud and E-Business Suite are supported."
+    },
+    {
+     "q": "Who writes the tests?",
+     "a": "QA teams and functional consultants, in plain English."
+    }
+   ],
+   "id": "faq",
+   "head": "What to ask before the next Oracle update",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI Starter from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Be ready for the next Oracle quarterly update"
+  }
+ ]
+}

@@ -1,0 +1,310 @@
+{
+ "slug": "web-automation-agent",
+ "title": "Web Automation Agent: Plain-English Web Tests | TestMu AI",
+ "description": "Kane CLI is a web automation agent that runs any web workflow from plain English and returns a verified pass or fail your AI agents and CI can trust.",
+ "crumb": [
+  "TestMu AI",
+  "Web Automation Agent"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Web Automation Agent",
+   "Updated November 2026"
+  ],
+  "h1a": "Web automation testing",
+  "h1b": "with an agent that proves the work.",
+  "lede": "Web automation testing with Kane CLI: describe any web workflow in plain English and Kane CLI runs it in a real browser, then returns a verified pass or fail for each step instead of a prose summary. Developers, CI pipelines and other AI agents can act on the result.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free to install; runs use KaneAI credits.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Developers",
+   "Automation engineers",
+   "AI agent builders",
+   "SDETs"
+  ],
+  "image": null,
+  "run": {
+   "title": "$ kane-cli run \"export last month's invoices\"",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "login",
+     "text": "session restored",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "navigate",
+     "text": "Billing → Invoices → Oct 2026",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "action",
+     "text": "Export CSV clicked",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "verify",
+     "text": "file has 42 rows",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · verified",
+   "evid": "invoices_export.evidence"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free to install; runs use KaneAI credits. Start with 10,000 free Kane CLI credits, valid for 30 days · No separate paid plan: Kane CLI runs use KaneAI plan credits (Starter from $17/month, billed annually).",
+   "facts": [
+    [
+     "What it is",
+     "Plain-English web automation with verified results"
+    ],
+    [
+     "Engine",
+     "Kane CLI"
+    ],
+    [
+     "Runs on",
+     "Local browsers and TestMu AI cloud browsers"
+    ],
+    [
+     "Output",
+     "Pass or fail per step, plus a .evidence file"
+    ],
+    [
+     "Install",
+     "npm install -g @testmuai/kane-cli"
+    ],
+    [
+     "Start",
+     "kane-cli run \"your workflow in plain English\""
+    ]
+   ],
+   "id": "glance",
+   "head": "Web automation agent: inputs and outputs",
+   "body": [
+    "Free to install; runs use KaneAI credits. Start with 10,000 free Kane CLI credits, valid for 30 days · No separate paid plan: Kane CLI runs use KaneAI plan credits (Starter from $17/month, billed annually)."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Describe",
+     "Write the workflow as you would explain it to a colleague."
+    ],
+    [
+     "Run",
+     "Kane CLI drives a real browser through the steps."
+    ],
+    [
+     "Verify",
+     "Each step is checked and reported as pass or fail, with evidence."
+    ]
+   ],
+   "id": "how",
+   "head": "Describe the task, watch it run, check the proof",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Plain-English workflows",
+     "No selectors, no scripts."
+    ],
+    [
+     "Verified results",
+     "A pass or fail per step instead of a summary you have to trust."
+    ],
+    [
+     "Evidence file",
+     "Screenshots, network and console for every run."
+    ],
+    [
+     "Cached replay",
+     "Unchanged saved steps replay from cache with no LLM cost."
+    ],
+    [
+     "Callable by agents",
+     "Coding agents and CI can run workflows and read the verdict."
+    ],
+    [
+     "Local or cloud",
+     "Run on your machine or on TestMu AI cloud browsers."
+    ]
+   ],
+   "id": "caps",
+   "head": "What the agent automates in a browser",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Web Automation Agent compared with browser-agent summaries",
+   "cols": [
+    "What matters",
+    "Browser-agent summaries",
+    "Kane CLI web automation agent"
+   ],
+   "rows": [
+    [
+     "Result",
+     "Prose: \"I exported the file\"",
+     "Pass or fail per step"
+    ],
+    [
+     "Proof",
+     "None",
+     ".evidence file"
+    ],
+    [
+     "Repeat runs",
+     "Model reasons again each time",
+     "Cached replay, no LLM cost"
+    ],
+    [
+     "Use in CI",
+     "Hard to gate on",
+     "Exit status and verdicts"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Run a workflow",
+    "lang": "bash",
+    "code": "npm install -g @testmuai/kane-cli\nkane-cli login\nkane-cli run \"Open Billing, export last month's invoices, confirm the CSV has rows\"",
+    "note": "Commands from the Kane CLI docs."
+   },
+   "id": "cmp",
+   "head": "Hand-written scripts vs an agent with a verified result",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Kane CLI",
+     "body": "A test gate inside coding agents",
+     "href": "https://www.testmuai.com/kane-cli/"
+    },
+    {
+     "name": "Browser Cloud",
+     "body": "Cloud browsers for agents",
+     "href": "https://www.testmuai.com/browser-cloud/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Run live sessions on real browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Write web, mobile and API tests in plain English",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Kane CLI for coding agents",
+     "body": "Setup guides for coding agents",
+     "href": "https://www.testmuai.com/kane-cli/agents/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "Kane CLI (GitHub)",
+       "href": "https://github.com/LambdaTest/kane-cli/"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Kane CLI introduction",
+       "href": "https://www.testmuai.com/docs/kane-cli-introduction"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Run and verify agent work",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is a web automation agent?",
+     "a": "A web automation agent is software that carries out web workflows from instructions, such as logging in, filling forms or exporting data, without hand-written scripts."
+    },
+    {
+     "q": "How is Kane CLI different from other browser agents?",
+     "a": "Kane CLI returns a verified pass or fail for each step and an evidence file, instead of a prose summary of what it believes it did."
+    },
+    {
+     "q": "Can AI coding agents use it?",
+     "a": "Yes. Claude Code, Cursor, Codex and Gemini CLI can call Kane CLI and read the verdict."
+    },
+    {
+     "q": "Does it call a model on every run?",
+     "a": "No. Unchanged steps replay from cache with no LLM cost. If the page changed, the broken step re-authors."
+    },
+    {
+     "q": "Is it free to start?",
+     "a": "Kane CLI is free to install with npm. Runs use KaneAI credits; you can claim 10,000 free Kane CLI credits, valid for 30 days."
+    }
+   ],
+   "id": "faq",
+   "head": "What changes when an agent automates the browser?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free to install; runs use KaneAI credits.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Automate a web flow without writing a script"
+  }
+ ]
+}

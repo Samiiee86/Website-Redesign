@@ -1,0 +1,311 @@
+{
+ "slug": "test-intelligence",
+ "title": "AI Agentic Test Intelligence Platform by TestMu AI",
+ "description": "Flaky test detection for CI/CD with TestMu AI Test Insights: flag flaky tests, cluster failures, run AI root cause analysis, track error trends.",
+ "crumb": [
+  "TestMu AI",
+  "Test Insights"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Test Insights",
+   "Updated November 2026"
+  ],
+  "h1a": "Flaky test detection",
+  "h1b": "and root causes, for every build.",
+  "lede": "Flaky test detection with TestMu AI Test Insights starts from your CI history. It reads results from every run, flags tests that flip between pass and fail, groups failures that share a cause, runs AI root cause analysis, and shows error trends by build, branch and team, so engineers fix causes instead of re-running jobs.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Pricing on request.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Engineering managers",
+   "SDETs",
+   "DevOps engineers",
+   "QA leads"
+  ],
+  "image": {
+   "src": "/kit/hero/test-intelligence/hero-bg.webp",
+   "alt": "AI Flaky Test Detection and Flakiness Trends"
+  },
+  "run": {
+   "title": "insights · main branch, 30 days",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "flaky",
+     "text": "7 tests flip pass/fail",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "cluster",
+     "text": "41 failures → 3 causes",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "rca",
+     "text": "timeout on /api/cart after deploy",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "trend",
+     "text": "failure rate down 18% w/w",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "3 causes to fix",
+   "evid": "linked runs, logs, suggested fixes"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Pricing on request.",
+   "facts": [
+    [
+     "What it is",
+     "Analytics and AI analysis over your test results"
+    ],
+    [
+     "Detects",
+     "Flaky tests, recurring failures, slow tests, error trends"
+    ],
+    [
+     "AI features",
+     "Root cause analysis and failure clustering"
+    ],
+    [
+     "Sources",
+     "Runs on TestMu AI, HyperExecute and supported frameworks"
+    ],
+    [
+     "Pricing",
+     "Pricing on request"
+    ],
+    [
+     "Start",
+     "Run tests on TestMu AI; insights populate automatically"
+    ]
+   ],
+   "id": "glance",
+   "head": "Flaky test detection: inputs and signals",
+   "body": [
+    "Pricing on request."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Collect",
+     "Results flow in from every run on TestMu AI."
+    ],
+    [
+     "Analyze",
+     "AI groups failures, flags flaky tests and suggests a root cause."
+    ],
+    [
+     "Act",
+     "Assign the cause, quarantine flaky tests and track the trend."
+    ]
+   ],
+   "id": "how",
+   "head": "How a failing run gets triaged",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Flaky test detection",
+     "Flags tests that pass and fail on the same code."
+    ],
+    [
+     "Failure clustering",
+     "Groups failures with the same error so one fix closes many."
+    ],
+    [
+     "AI root cause analysis",
+     "Suggests the likely cause with the logs that support it."
+    ],
+    [
+     "Error trends",
+     "Failure rate by build, branch, browser and team over time."
+    ],
+    [
+     "Slow test report",
+     "Finds the tests that make CI long."
+    ],
+    [
+     "Custom dashboards",
+     "Build views for leads, managers and release owners."
+    ]
+   ],
+   "id": "caps",
+   "head": "Signals that separate flakes from real bugs",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Test Insights compared with CI logs only",
+   "cols": [
+    "What matters",
+    "CI logs only",
+    "Test Insights"
+   ],
+   "rows": [
+    [
+     "Flaky tests",
+     "Re-run and hope",
+     "Flagged with history"
+    ],
+    [
+     "50 red tests",
+     "50 logs to read",
+     "Grouped into a few causes"
+    ],
+    [
+     "Trends",
+     "None",
+     "By build, branch and team"
+    ],
+    [
+     "Root cause",
+     "Manual",
+     "AI-suggested with evidence"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Re-running red builds vs knowing why they failed",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "HyperExecute",
+     "body": "Split suites across just-in-time VMs",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "AI Test Orchestration",
+     "body": "Split suites across just-in-time VMs",
+     "href": "https://www.testmuai.com/ai-based-test-orchestration/"
+    },
+    {
+     "name": "Test Analytics",
+     "body": "Test reporting dashboards",
+     "href": "https://www.testmuai.com/test-analytics/"
+    },
+    {
+     "name": "Test Automation Platform",
+     "body": "Run every framework at scale",
+     "href": "https://www.testmuai.com/automation-testing-platform/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Related pages",
+     "links": [
+      {
+       "label": "Test failure analysis",
+       "href": "https://www.testmuai.com/test-intelligence/failure-analysis/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Bet365 case study",
+       "href": "https://www.testmuai.com/customers/bet365/"
+      },
+      {
+       "label": "Vitality Global case study",
+       "href": "https://www.testmuai.com/customers/vitality-global/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Fix the suites the analysis points to",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is test intelligence?",
+     "a": "Test intelligence applies analytics and AI to test results to find flaky tests, group failures, explain root causes and show quality trends across builds."
+    },
+    {
+     "q": "How does TestMu AI detect flaky tests?",
+     "a": "Test Insights compares results for the same test on the same code across runs and flags tests that switch between pass and fail."
+    },
+    {
+     "q": "What is AI root cause analysis for tests?",
+     "a": "AI root cause analysis reads failure logs, groups related failures and suggests the likely cause with the evidence behind it."
+    },
+    {
+     "q": "Is test intelligence the same as test observability?",
+     "a": "They overlap. Test observability is visibility into test runs; test intelligence adds analysis such as flakiness detection, clustering and root cause."
+    },
+    {
+     "q": "Do I need to change my tests?",
+     "a": "No. Insights populate from runs on TestMu AI and HyperExecute."
+    }
+   ],
+   "id": "faq",
+   "head": "Why do tests flake, and other questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Pricing on request.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Stop chasing flaky builds"
+  }
+ ]
+}

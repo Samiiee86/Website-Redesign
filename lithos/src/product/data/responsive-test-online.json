@@ -1,0 +1,309 @@
+{
+ "slug": "responsive-test-online",
+ "title": "Responsive Testing Tool Online | TestMu AI",
+ "description": "Responsive testing on real devices: see how your layout, HTML and CSS behave at every breakpoint on real phones, tablets and desktop browsers.",
+ "crumb": [
+  "TestMu AI",
+  "Responsive Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Responsive Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Responsive testing",
+  "h1b": "on real devices, at every breakpoint.",
+  "lede": "Responsive testing on TestMu AI shows how your layout behaves at every breakpoint on real phones, tablets and desktop browsers. Load a URL once, compare screen sizes side by side, and catch overflow, stacking and font issues before users do.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Front-end developers",
+   "Designers",
+   "QA testers",
+   "Marketing teams"
+  ],
+  "image": {
+   "src": "/kit/hero/responsive-test-online/hero-bg.webp",
+   "alt": "Responsive Testing That Catches Every Break"
+  },
+  "run": {
+   "title": "responsive · /home",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "375px",
+     "text": "iPhone · nav collapses",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "768px",
+     "text": "iPad · grid 2 columns",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "1024px",
+     "text": "laptop · hero text overflows",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "1920px",
+     "text": "desktop · OK",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 BREAK · 1024px",
+   "evid": "screenshots per breakpoint"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Layout checks across screen sizes on real devices and browsers"
+    ],
+    [
+     "Screens",
+     "Phones, tablets, laptops and large desktops"
+    ],
+    [
+     "Engines",
+     "Safari, Chrome, Firefox, Edge on real hardware"
+    ],
+    [
+     "Local sites",
+     "UnderPass tunnel for localhost and staging"
+    ],
+    [
+     "Pricing",
+     "Free plan: 1 parallel test, monthly live sessions; Virtual Live from $15/month"
+    ],
+    [
+     "Related tool",
+     "Free Responsive Checker for quick previews"
+    ]
+   ],
+   "id": "glance",
+   "head": "Responsive testing: screens and setup",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Enter your URL",
+     "Load the page once."
+    ],
+    [
+     "Compare breakpoints",
+     "View phone, tablet and desktop sizes on real browsers."
+    ],
+    [
+     "Fix and recheck",
+     "Log the break with a screenshot and test again."
+    ]
+   ],
+   "id": "how",
+   "head": "Enter a URL, see every breakpoint",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real devices, not resized windows",
+     "Rendering and fonts match the device."
+    ],
+    [
+     "Side-by-side sizes",
+     "Compare breakpoints in one view."
+    ],
+    [
+     "Every major browser",
+     "Safari, Chrome, Firefox and Edge."
+    ],
+    [
+     "Localhost support",
+     "Test responsive layouts before deploy."
+    ],
+    [
+     "Bug logging",
+     "Annotated screenshots to Jira and Slack."
+    ],
+    [
+     "Visual regression",
+     "Catch layout shifts automatically with SmartUI."
+    ]
+   ],
+   "id": "caps",
+   "head": "Layout problems responsive tests catch",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Responsive Testing compared with resizing a desktop browser",
+   "cols": [
+    "What matters",
+    "Resizing a desktop browser",
+    "Responsive testing on TestMu AI"
+   ],
+   "rows": [
+    [
+     "iOS Safari layout",
+     "Not shown",
+     "Real iPhone Safari"
+    ],
+    [
+     "Fonts and scrollbars",
+     "Desktop rendering",
+     "Device rendering"
+    ],
+    [
+     "Many sizes at once",
+     "One at a time",
+     "Side by side"
+    ],
+    [
+     "Proof for the designer",
+     "Your screenshot",
+     "Shared session screenshots"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Dragging a browser window vs real screen sizes",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams catching layout breaks early",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Mobile Browser Testing",
+     "body": "Test on real mobile browsers",
+     "href": "https://www.testmuai.com/test-on-mobile-devices/"
+    },
+    {
+     "name": "SmartUI",
+     "body": "Visual regression testing",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "Automated Screenshots",
+     "body": "Screenshot testing",
+     "href": "https://www.testmuai.com/automated-screenshot/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Run live sessions on real browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Localization Testing",
+     "body": "Check translations and right-to-left layouts",
+     "href": "https://www.testmuai.com/localization-testing/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Screenshots, visual diffs and real devices",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is responsive testing?",
+     "a": "Responsive testing checks that a website's layout adapts correctly to different screen sizes and devices."
+    },
+    {
+     "q": "Is responsive testing on real devices better than resizing my browser?",
+     "a": "Yes for sign-off. Resizing shows desktop rendering at a small width; real devices show Safari, Chrome and fonts as users see them."
+    },
+    {
+     "q": "Can I test a local site?",
+     "a": "Yes. The UnderPass tunnel opens localhost and staging on the cloud devices."
+    },
+    {
+     "q": "Is there a free option?",
+     "a": "The free plan gives 1 parallel test with monthly live sessions, and the Responsive Checker gives quick previews."
+    },
+    {
+     "q": "How do I catch layout changes automatically?",
+     "a": "Use SmartUI visual regression testing to compare each build's screenshots against a baseline."
+    }
+   ],
+   "id": "faq",
+   "head": "Which breakpoints matter? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Check every breakpoint of your site"
+  }
+ ]
+}

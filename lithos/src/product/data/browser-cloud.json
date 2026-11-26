@@ -1,0 +1,355 @@
+{
+ "slug": "browser-cloud",
+ "title": "Browser Cloud for AI Agents: Cloud Browser API | TestMu AI",
+ "description": "Browser Cloud by TestMu AI gives AI agents real Chrome in the cloud, with a localhost tunnel, session persistence, best-effort stealth, and session replay.",
+ "crumb": [
+  "TestMu AI",
+  "Browser Cloud"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Browser Cloud",
+   "Updated November 2026"
+  ],
+  "h1a": "Browser Cloud: the cloud browser",
+  "h1b": "for AI agents.",
+  "lede": "Browser Cloud is TestMu AI's cloud browser for AI agents. Your agent gets a real Chrome session in the cloud through an SDK, with a localhost tunnel, session persistence, best-effort stealth and full session replay, on the same infrastructure that runs 1.5B+ tests.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Real Chrome for your agent; SDK on npm.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "AI engineers",
+   "Agent builders",
+   "Automation developers",
+   "Platform teams"
+  ],
+  "image": {
+   "src": "/kit/hero/browser-cloud/hero-bg.png",
+   "alt": "Best-Effort Stealth Mode"
+  },
+  "run": {
+   "title": "browser-cloud · session 7c1e",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "launch",
+     "text": "Chrome · us-east · persistent profile",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "tunnel",
+     "text": "localhost:3000 reachable",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "agent",
+     "text": "17 actions · form submitted",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "replay",
+     "text": "session recording saved",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "Session complete · 2m 41s",
+   "evid": "session replay, network, console"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "",
+   "facts": [
+    [
+     "What it is",
+     "Real Chrome sessions in the cloud, controlled by your AI agent"
+    ],
+    [
+     "Who it's for",
+     "Teams building browser agents and automations"
+    ],
+    [
+     "Features",
+     "Localhost tunnel, session persistence, best-effort stealth, session replay"
+    ],
+    [
+     "Install",
+     "npm install @testmuai/browser-cloud"
+    ],
+    [
+     "Integrations",
+     "Works with agent frameworks; n8n node available"
+    ],
+    [
+     "Pricing",
+     "Pricing on request (not listed on the pricing page)"
+    ]
+   ],
+   "id": "glance",
+   "head": "Cloud browsers for agents, in brief",
+   "body": []
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Install the SDK",
+     "Add @testmuai/browser-cloud to your agent project."
+    ],
+    [
+     "Start a session",
+     "Your agent opens a cloud Chrome session and drives it."
+    ],
+    [
+     "Replay",
+     "Watch the full session replay to see exactly what the agent did."
+    ]
+   ],
+   "id": "how",
+   "head": "Start a session, connect, drive, release",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real Chrome",
+     "Full Chrome sessions, not a stripped-down headless shell."
+    ],
+    [
+     "Localhost tunnel",
+     "Agents can reach apps running on localhost or staging."
+    ],
+    [
+     "Session persistence",
+     "Keep cookies and logins between runs."
+    ],
+    [
+     "Best-effort stealth",
+     "Reduces bot challenges on sites your agent is allowed to use."
+    ],
+    [
+     "Session replay",
+     "Every session is recorded with network and console logs."
+    ],
+    [
+     "Scale on demand",
+     "Open many sessions in parallel without running browser servers."
+    ]
+   ],
+   "id": "caps",
+   "head": "What your agent's browser can do",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Browser Cloud compared with self-hosted headless Chrome",
+   "cols": [
+    "What matters",
+    "Self-hosted headless Chrome",
+    "Browser Cloud"
+   ],
+   "rows": [
+    [
+     "Servers",
+     "Containers you run and scale",
+     "Managed sessions on demand"
+    ],
+    [
+     "Local apps",
+     "Custom networking",
+     "Built-in localhost tunnel"
+    ],
+    [
+     "Logins between runs",
+     "Build it yourself",
+     "Session persistence"
+    ],
+    [
+     "Seeing what happened",
+     "Screenshots you add",
+     "Full session replay"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Connect Puppeteer to a Browser Cloud session",
+    "lang": "javascript",
+    "code": "import { Browser } from '@testmuai/browser-cloud';\n\nconst client = new Browser();\n\n// 1. Create a cloud session\nconst session = await client.sessions.create({\n    adapter: 'puppeteer',\n    lambdatestOptions: {\n        build: 'My Agent',\n        name: 'Puppeteer Session',\n        'LT:Options': {\n            username: process.env.LT_USERNAME,\n            accessKey: process.env.LT_ACCESS_KEY,\n        }\n    }\n});\n\n// 2. Connect - returns a standard Puppeteer Browser object\nconst browser = await client.puppeteer.connect(session);\nconst page = (await browser.pages())[0];\n\n// 3. Use Puppeteer as normal\nawait page.goto('https://example.com');\nawait page.screenshot({ path: 'screenshot.png' });\n\n// 4. Clean up\nawait browser.close();\nawait client.sessions.release(session.id);",
+    "note": "Verbatim from the Browser Cloud docs (Connect to a session, Puppeteer), checked 2026-11-21. Install first: npm install @testmuai/browser-cloud."
+   },
+   "id": "cmp",
+   "head": "Headless Chrome on your servers vs managed cloud browsers",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Kane CLI",
+     "body": "Run plain-English checks from the terminal",
+     "href": "https://www.testmuai.com/kane-cli/"
+    },
+    {
+     "name": "Web Automation Agent",
+     "body": "Browser tasks run by an agent, with proof",
+     "href": "https://www.testmuai.com/web-automation-agent/"
+    },
+    {
+     "name": "Agent Assurance",
+     "body": "Check what autonomous agents did across tools",
+     "href": "https://www.testmuai.com/agent-assurance/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Run live sessions on real browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Kane CLI for coding agents",
+     "body": "Kane CLI inside coding agents",
+     "href": "https://www.testmuai.com/kane-cli/agents/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "npm: @testmuai/browser-cloud",
+       "href": "https://www.npmjs.com/package/@testmuai/browser-cloud"
+      },
+      {
+       "label": "Cookbook: OpenAI computer use",
+       "href": "https://github.com/SparshKesari/browser-cloud-cookbook/tree/main/browser-cloud-openai-computer-use"
+      },
+      {
+       "label": "Cookbook: Claude computer use",
+       "href": "https://github.com/SparshKesari/browser-cloud-cookbook/tree/main/browser-cloud-claude-computer-use"
+      },
+      {
+       "label": "Cookbook: Gemini computer use",
+       "href": "https://github.com/SparshKesari/browser-cloud-cookbook/tree/main/browser-cloud-gemini-computer-use"
+      },
+      {
+       "label": "Cookbook: Playwright JS",
+       "href": "https://github.com/SparshKesari/browser-cloud-cookbook/tree/main/browser-cloud-playwright-js"
+      },
+      {
+       "label": "Cookbook: Puppeteer JS",
+       "href": "https://github.com/SparshKesari/browser-cloud-cookbook/tree/main/browser-cloud-puppeteer-js"
+      },
+      {
+       "label": "Cookbook: Quick actions",
+       "href": "https://github.com/SparshKesari/browser-cloud-cookbook/tree/main/browser-cloud-quick-actions"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "What is browser cloud",
+       "href": "https://www.testmuai.com/support/docs/what-is-browser-cloud/"
+      },
+      {
+       "label": "Connect to session",
+       "href": "https://www.testmuai.com/support/docs/connect-to-session/#puppeteer"
+      },
+      {
+       "label": "Tunnel for local and private environments",
+       "href": "https://www.testmuai.com/support/docs/browser-cloud-tunnel/"
+      },
+      {
+       "label": "Session transparency",
+       "href": "https://www.testmuai.com/support/docs/browser-cloud-debugging/"
+      },
+      {
+       "label": "Best-effort",
+       "href": "https://www.testmuai.com/support/docs/browser-cloud-stealth/"
+      },
+      {
+       "label": "Agent skill",
+       "href": "https://www.testmuai.com/support/docs/browser-cloud-skills/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Verify what the agent did",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is a cloud browser?",
+     "a": "A cloud browser is a real browser that runs on remote infrastructure and is controlled by code or an AI agent, so you do not host browser servers yourself."
+    },
+    {
+     "q": "What is Browser Cloud for AI agents?",
+     "a": "Browser Cloud is TestMu AI's cloud browser service. AI agents get real Chrome sessions with a localhost tunnel, session persistence, best-effort stealth and session replay."
+    },
+    {
+     "q": "How do I start?",
+     "a": "Install the SDK with npm install @testmuai/browser-cloud, add your credentials and open a session from your agent code."
+    },
+    {
+     "q": "Can an agent reach my local app?",
+     "a": "Yes. The built-in localhost tunnel lets cloud sessions reach apps running on your machine or staging environment."
+    },
+    {
+     "q": "How much does Browser Cloud cost?",
+     "a": "Browser Cloud pricing is not listed on the pricing page; contact sales or sign up to request access."
+    }
+   ],
+   "id": "faq",
+   "head": "Questions from teams building browser agents",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Real Chrome for your agent; SDK on npm.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Give your agent a real browser"
+  }
+ ]
+}

@@ -1,3 +1,4 @@
+import { readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -9,6 +10,14 @@ export default defineConfig({
     rollupOptions: {
       // options.html is the standalone Pioneer layout review page
       input: {
+        // the testmuai.com product pages: one html each (data-page picks
+        // src/product/data/<slug>.json)
+        ...Object.fromEntries(
+          readdirSync(resolve(__dirname, 'src/product/data')).map((f) => {
+            const slug = f.replace(/\.json$/, '')
+            return [`product-${slug}`, resolve(__dirname, `${slug}.html`)]
+          }),
+        ),
         main: resolve(__dirname, 'index.html'),
         options: resolve(__dirname, 'options.html'),
         // library.html shows each building block on its own
@@ -24,7 +33,6 @@ export default defineConfig({
         automationTestingPlatform: resolve(__dirname, 'automation-testing-platform.html'),
         // the HyperExecute page, built from kit folds
         hyperexecute: resolve(__dirname, 'hyperexecute.html'),
-        accessibilityTesting: resolve(__dirname, 'accessibility-testing.html'),
         kaneCli: resolve(__dirname, 'kane-cli.html'),
         // the agent assurance page, built from kit folds
         agentAssurance: resolve(__dirname, 'agent-assurance.html'),

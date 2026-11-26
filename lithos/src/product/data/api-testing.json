@@ -1,0 +1,284 @@
+{
+ "slug": "api-testing",
+ "title": "AI API Testing Agent | TestMu AI",
+ "description": "Generate API tests from natural language or cURL with KaneAI, auto-heal schema drift, and run them in parallel in your CI/CD pipeline with HyperExecute.",
+ "crumb": [
+  "TestMu AI",
+  "API Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "API Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "AI API testing tool",
+  "h1b": "from plain English or a cURL command.",
+  "lede": "TestMu AI is an AI API testing tool. It generates API tests from plain English or a pasted cURL command with KaneAI. Tests assert status, schema and values, heal when the schema drifts in expected ways, and run in parallel in your CI/CD pipeline on HyperExecute, alongside UI tests in the same flow.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "KaneAI Starter from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Backend developers",
+   "SDETs",
+   "QA engineers",
+   "Platform teams"
+  ],
+  "image": {
+   "src": "/kit/hero/api-testing/hero-bg.webp",
+   "alt": "AI-Native API Testing Solutions"
+  },
+  "run": {
+   "title": "api · orders service",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "import",
+     "text": "curl POST /orders → test",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "assert",
+     "text": "201 · schema v3 valid",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "chain",
+     "text": "GET /orders/{id} matches",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "drift",
+     "text": "new optional field · healed",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · 4/4 assertions",
+   "evid": "requests, responses, timings"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually.",
+   "facts": [
+    [
+     "What it is",
+     "AI-generated API tests that run in CI"
+    ],
+    [
+     "Inputs",
+     "Plain English, cURL commands, API specs"
+    ],
+    [
+     "Checks",
+     "Status codes, schema, response values, chained calls"
+    ],
+    [
+     "Execution",
+     "Parallel runs on HyperExecute"
+    ],
+    [
+     "Combined flows",
+     "API and UI steps in one test"
+    ],
+    [
+     "Start",
+     "Paste a cURL command into KaneAI"
+    ]
+   ],
+   "id": "glance",
+   "head": "API testing, summarised",
+   "body": [
+    "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Generate",
+     "Describe the call in plain English or paste a cURL command."
+    ],
+    [
+     "Assert",
+     "KaneAI adds status, schema and value checks you can edit."
+    ],
+    [
+     "Run in CI",
+     "Run suites in parallel on HyperExecute from your pipeline."
+    ]
+   ],
+   "id": "how",
+   "head": "Paste a cURL, describe the check, run it",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "From cURL in seconds",
+     "Paste a command, get a test."
+    ],
+    [
+     "Plain-English assertions",
+     "\"Total equals sum of line items\" becomes a check."
+    ],
+    [
+     "Schema drift handling",
+     "Expected additive changes heal; breaking changes fail."
+    ],
+    [
+     "Chained requests",
+     "Pass IDs and tokens between calls."
+    ],
+    [
+     "API plus UI",
+     "Verify the API and the screen that shows the result in one test."
+    ],
+    [
+     "Parallel CI runs",
+     "Run on HyperExecute from any pipeline."
+    ]
+   ],
+   "id": "caps",
+   "head": "What each API test asserts",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "API Testing compared with hand-written API tests",
+   "cols": [
+    "What matters",
+    "Hand-written API tests",
+    "TestMu AI API testing"
+   ],
+   "rows": [
+    [
+     "Creating a test",
+     "Code per endpoint",
+     "Paste cURL or describe it"
+    ],
+    [
+     "Schema changes",
+     "Tests break",
+     "Additive changes heal; breaking ones fail"
+    ],
+    [
+     "UI verification",
+     "Separate suite",
+     "Same test"
+    ],
+    [
+     "CI speed",
+     "Sequential runner",
+     "Parallel on HyperExecute"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Collections maintained by hand vs AI-generated API tests",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "HyperExecute",
+     "body": "Parallel runs with AI root cause per failure",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Plain-English test authoring for every flow",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Performance Testing",
+     "body": "Load-test APIs and sites at scale",
+     "href": "https://www.testmuai.com/performance-testing/"
+    },
+    {
+     "name": "Snowflake Testing",
+     "body": "Test data pipelines and dashboards end to end",
+     "href": "https://www.testmuai.com/snowflake-testing/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Combine API, UI and load tests",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is API testing?",
+     "a": "API testing checks that an application programming interface returns the right status, data and errors for each request, without going through the UI."
+    },
+    {
+     "q": "Can AI generate API tests?",
+     "a": "Yes. KaneAI generates API tests from plain-English descriptions or pasted cURL commands, with editable assertions."
+    },
+    {
+     "q": "What is schema drift?",
+     "a": "Schema drift is a change in an API's response shape. TestMu AI heals expected additive changes and fails on breaking ones."
+    },
+    {
+     "q": "Can API and UI tests run together?",
+     "a": "Yes. One KaneAI test can call an API and verify the result in the UI."
+    },
+    {
+     "q": "How do API tests run in CI?",
+     "a": "Run them in parallel on HyperExecute from GitHub Actions, Jenkins or any CI tool."
+    }
+   ],
+   "id": "faq",
+   "head": "API testing, answered",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI Starter from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Generate your first API test"
+  }
+ ]
+}

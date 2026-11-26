@@ -1,0 +1,284 @@
+{
+ "slug": "test-planner",
+ "title": "AI Test Planner for Software Testing | TestMu AI",
+ "description": "AI test planner and test planning tool: describe a release in plain English, get scope, requirement coverage and risk-ranked tests you can run.",
+ "crumb": [
+  "TestMu AI",
+  "AI Test Planner"
+ ],
+ "hero": {
+  "eyebrow": [
+   "AI Test Planner",
+   "Updated November 2026"
+  ],
+  "h1a": "AI test planner that turns a release",
+  "h1b": "into a risk-ranked test plan.",
+  "lede": "TestMu AI's AI test planner is a test planning tool that starts from a plain-English description of the release. It scopes what to test, maps coverage to every requirement, ranks scenarios by risk and turns the plan into tests you can run manually or with KaneAI.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free Forever plan with unlimited projects and test cases.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA managers",
+   "Test leads",
+   "Release managers",
+   "Product managers"
+  ],
+  "image": {
+   "src": "/kit/hero/test-planner/hero-bg.svg",
+   "alt": "AI Test Planner"
+  },
+  "run": {
+   "title": "planner · release 9.4",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "scope",
+     "text": "4 epics · 31 stories",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "coverage",
+     "text": "31 / 31 stories mapped",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "risk",
+     "text": "payments + auth ranked high",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "output",
+     "text": "58 tests · 12 automated now",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "Plan ready for review",
+   "evid": "coverage map, risk notes, test list"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, Free Forever, with unlimited projects and test cases · Test Manager Premium from $49/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "An AI agent that writes and maintains test plans"
+    ],
+    [
+     "Inputs",
+     "Release notes, Jira epics, specs and change lists"
+    ],
+    [
+     "Output",
+     "Scope, requirement coverage map, risk ranking, runnable tests"
+    ],
+    [
+     "Part of",
+     "TestMu AI Test Manager"
+    ],
+    [
+     "Pricing",
+     "Free Forever plan; Test Manager Premium from $49 per user/month, billed annually"
+    ],
+    [
+     "Start",
+     "Describe the release or select a Jira epic"
+    ]
+   ],
+   "id": "glance",
+   "head": "What the AI planner needs and returns",
+   "body": [
+    "Free plan: $0, Free Forever, with unlimited projects and test cases · Test Manager Premium from $49/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Describe",
+     "Write what is changing, or select the Jira epics in the release."
+    ],
+    [
+     "Review",
+     "The planner proposes scope, coverage and risk ranking for you to edit."
+    ],
+    [
+     "Execute",
+     "Approved scenarios become manual cases or KaneAI tests."
+    ]
+   ],
+   "id": "how",
+   "head": "From a requirement to a reviewed test plan",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Plans in plain English",
+     "Start from release notes, not a template."
+    ],
+    [
+     "Requirement coverage",
+     "Every story is mapped to at least one scenario, or flagged."
+    ],
+    [
+     "Risk ranking",
+     "High-risk areas such as payments and auth go first."
+    ],
+    [
+     "Runnable output",
+     "Scenarios become manual cases or automated KaneAI tests."
+    ],
+    [
+     "Living plans",
+     "Plans update when stories change."
+    ],
+    [
+     "Inside Test Manager",
+     "Plans, cases and results live in one place."
+    ]
+   ],
+   "id": "caps",
+   "head": "What the planner drafts for you",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "AI Test Planner compared with spreadsheet test plans",
+   "cols": [
+    "What matters",
+    "Spreadsheet test plans",
+    "AI test planner"
+   ],
+   "rows": [
+    [
+     "Time to first plan",
+     "Days",
+     "Minutes"
+    ],
+    [
+     "Coverage gaps",
+     "Found late",
+     "Flagged per story"
+    ],
+    [
+     "Prioritisation",
+     "Gut feel",
+     "Ranked by risk"
+    ],
+    [
+     "From plan to tests",
+     "Rewritten by hand",
+     "Generated from the plan"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Planning in spreadsheets vs AI-drafted plans",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Test Manager",
+     "body": "The AI test management tool",
+     "href": "https://www.testmuai.com/test-management/"
+    },
+    {
+     "name": "AI QA Agent",
+     "body": "An agent that triages and reports QA work",
+     "href": "https://www.testmuai.com/ai-qa-agent/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Plain-English test authoring for every flow",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Test Insights",
+     "body": "Test intelligence",
+     "href": "https://www.testmuai.com/test-intelligence/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Turn the plan into automated tests",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is a test planning tool?",
+     "a": "A test planning tool helps a team decide what to test in a release, how much coverage each requirement needs and in what order to run tests."
+    },
+    {
+     "q": "How does an AI test planner work?",
+     "a": "You describe the release or pick Jira epics. The AI proposes scope, maps each requirement to scenarios, ranks them by risk and generates tests."
+    },
+    {
+     "q": "Can the plan become automated tests?",
+     "a": "Yes. Approved scenarios can be run manually or turned into automated tests with KaneAI."
+    },
+    {
+     "q": "Is the test planner a separate product?",
+     "a": "No. The AI test planner is part of TestMu AI Test Manager."
+    },
+    {
+     "q": "How much does it cost?",
+     "a": "Test Planner is part of Test Manager. The Free Forever plan covers unlimited projects and test cases; Premium starts at $49 per user per month, billed annually."
+    }
+   ],
+   "id": "faq",
+   "head": "Can AI write a test plan? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free Forever plan with unlimited projects and test cases.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Plan your next release with AI"
+  }
+ ]
+}

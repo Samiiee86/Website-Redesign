@@ -1,0 +1,298 @@
+{
+ "slug": "chatbot-testing",
+ "title": "Chatbot Testing Platform: Automate AI Chatbot QA | TestMu AI",
+ "description": "Chatbot testing checks that an AI chatbot gives correct, safe, grounded answers. Generate test conversations from your docs and score each on 9 metrics.",
+ "crumb": [
+  "TestMu AI",
+  "Chatbot Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Chatbot Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Chatbot testing that catches",
+  "h1b": "hallucinations before users do.",
+  "lede": "Chatbot testing checks that an AI chatbot gives correct, safe and grounded answers. TestMu AI generates test conversations from your own documents, runs large suites of them against your chatbot, and scores each on 9 metrics, including hallucination, bias and task completion.",
+  "ctas": [
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": true
+   },
+   {
+    "label": "See pricing",
+    "href": "https://www.testmuai.com/pricing/",
+    "primary": false
+   }
+  ],
+  "note": "No SDK. Pricing on request.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "AI engineers",
+   "Support ops",
+   "QA teams",
+   "Product managers"
+  ],
+  "image": {
+   "src": "/kit/hero/chatbot-testing/hero-bg.png",
+   "alt": "Text Chatbot Testing"
+  },
+  "run": {
+   "title": "chatbot · help-center bot",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "generate",
+     "text": "320 conversations from docs",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "hallucination",
+     "text": "2 answers not in source",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "bias",
+     "text": "no flagged responses",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "task",
+     "text": "94% resolved without handoff",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "YELLOW · fix 2 answers",
+   "evid": "conversation logs, cited sources, scores"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Pricing on request (Contact Sales on the pricing page).",
+   "facts": [
+    [
+     "What it is",
+     "Automated testing for AI chatbots and chat agents"
+    ],
+    [
+     "Test data",
+     "Conversations generated from your docs and knowledge base"
+    ],
+    [
+     "Scale",
+     "Large generated suites per run"
+    ],
+    [
+     "Metrics",
+     "9 per conversation, including hallucination and bias"
+    ],
+    [
+     "Setup",
+     "Connect a chat endpoint, no SDK"
+    ],
+    [
+     "Start",
+     "Upload docs and point at your chatbot"
+    ]
+   ],
+   "id": "glance",
+   "head": "Chatbot testing in one table",
+   "body": [
+    "Pricing on request (Contact Sales on the pricing page)."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Ground",
+     "Upload the docs your chatbot should answer from."
+    ],
+    [
+     "Converse",
+     "AI testers hold multi-turn conversations, including edge cases and misuse."
+    ],
+    [
+     "Score",
+     "Each conversation is scored on 9 metrics and linked to the source text."
+    ]
+   ],
+   "id": "how",
+   "head": "Write personas, run chats, read the score",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Tests from your docs",
+     "Scenarios come from your knowledge base, not generic prompts."
+    ],
+    [
+     "Hallucination detection",
+     "Answers are checked against the source documents."
+    ],
+    [
+     "Bias and safety checks",
+     "Flags biased, unsafe or off-policy replies."
+    ],
+    [
+     "Multi-turn conversations",
+     "Tests follow-ups, corrections and topic changes."
+    ],
+    [
+     "Large generated suites",
+     "Rerun the suite on every model or prompt change."
+    ],
+    [
+     "Go-live verdict",
+     "Green, Yellow or Red with the failing turns linked."
+    ]
+   ],
+   "id": "caps",
+   "head": "Where chatbots go wrong and how each issue is caught",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Chatbot Testing compared with spot-checking chats",
+   "cols": [
+    "What matters",
+    "Spot-checking chats",
+    "TestMu AI chatbot testing"
+   ],
+   "rows": [
+    [
+     "Where scenarios come from",
+     "Written by hand",
+     "Generated from your own documents"
+    ],
+    [
+     "Grounding check",
+     "Reviewer reads the answer",
+     "Each answer compared with your source documents"
+    ],
+    [
+     "After a prompt change",
+     "Spot-check a few chats",
+     "Rerun the full generated suite"
+    ],
+    [
+     "Result format",
+     "Reviewer notes per chat",
+     "9 metric scores and a verdict per conversation"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Spot-checking a bot vs hundreds of simulated chats",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Agent Testing",
+     "body": "Simulated users for AI agents",
+     "href": "https://www.testmuai.com/agent-testing/"
+    },
+    {
+     "name": "Voice Agent Testing",
+     "body": "Run real calls against voice agents",
+     "href": "https://www.testmuai.com/voice-agent-testing/"
+    },
+    {
+     "name": "Agent Assurance",
+     "body": "Test agent-to-agent workflows before release",
+     "href": "https://www.testmuai.com/agent-assurance/"
+    },
+    {
+     "name": "IVR Testing",
+     "body": "Check DTMF and speech menus end to end",
+     "href": "https://www.testmuai.com/ivr-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Customer Engagement Platform case study",
+       "href": "https://www.testmuai.com/customers/customer-engagement-platform/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Test the agents around your chatbot",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is chatbot testing?",
+     "a": "Chatbot testing checks that an AI chatbot gives correct, safe and grounded answers and completes the tasks users bring to it. For broader coverage see conversational AI testing."
+    },
+    {
+     "q": "How do you test an AI chatbot?",
+     "a": "Generate test conversations from your source documents, run them against the chatbot, and score each conversation on metrics such as hallucination, bias and task completion."
+    },
+    {
+     "q": "How does TestMu AI detect hallucinations?",
+     "a": "Each answer is compared with the documents the chatbot should use. Answers not supported by the source are flagged."
+    },
+    {
+     "q": "Which chatbots can be tested?",
+     "a": "Any chatbot with a reachable endpoint or web widget, built on any model or vendor."
+    },
+    {
+     "q": "How many metrics are scored?",
+     "a": "Nine metrics per conversation, including hallucination, bias and task completion."
+    }
+   ],
+   "id": "faq",
+   "head": "How do you test a chatbot? Your questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "No SDK. Pricing on request.",
+   "ctas": [
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    },
+    {
+     "label": "See pricing",
+     "href": "https://www.testmuai.com/pricing/",
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Find the wrong answer before a customer does"
+  }
+ ]
+}

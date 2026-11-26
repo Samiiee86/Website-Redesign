@@ -1,0 +1,303 @@
+{
+ "slug": "test-on-mobile-devices",
+ "title": "Test Website on Mobile Browsers Online Free | TestMu AI",
+ "description": "Test your website on mobile browsers online: open any URL in Chrome and Safari on 50,000+ real Android and iOS devices. No download needed.",
+ "crumb": [
+  "TestMu AI",
+  "Mobile Browser Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Mobile Browser Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Test your website",
+  "h1b": "on real mobile browsers.",
+  "lede": "Test your website on mobile by opening it in Chrome and Safari on real iPhones, Galaxy, Pixel and other devices in the cloud. Enter a URL, pick a device, and see touch, scroll and layout exactly as users do. The free plan includes 5 device sessions a month.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 5 real device sessions a month, up to 2 minutes each.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Web developers",
+   "Designers",
+   "QA testers",
+   "Marketers"
+  ],
+  "image": {
+   "src": "/kit/hero/test-on-mobile-devices/hero-bg.webp",
+   "alt": "Test Your Website on Real Mobile Browsers"
+  },
+  "run": {
+   "title": "mobile web · /pricing",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "iPhone 18 Pro",
+     "text": "Safari · iOS 27",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Galaxy S26",
+     "text": "Chrome · Android 16",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Pixel 9",
+     "text": "Chrome · sticky header overlaps",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "iPad Pro 13",
+     "text": "Safari · landscape",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · Pixel 9",
+   "evid": "screenshots · device logs"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Real mobile browsers on real phones and tablets, in your browser"
+    ],
+    [
+     "Browsers",
+     "Chrome on Android, Safari on iOS"
+    ],
+    [
+     "Devices",
+     "50,000+ real iOS and Android devices"
+    ],
+    [
+     "Checks",
+     "Touch, scroll, orientation, network throttling, geolocation"
+    ],
+    [
+     "Pricing",
+     "Free: 5 real device sessions a month, 2 minutes each; Real Device Plus Live from $39/month"
+    ],
+    [
+     "Start",
+     "Enter your URL, pick a device"
+    ]
+   ],
+   "id": "glance",
+   "head": "Mobile browsers you can test on",
+   "body": [
+    "Free plan: 5 real device sessions a month, up to 2 minutes each · Real Device Plus Live from $39/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Enter your URL",
+     "Type the page you want to check."
+    ],
+    [
+     "Pick a real device",
+     "Choose an iPhone, Galaxy, Pixel or tablet and its browser."
+    ],
+    [
+     "Test and share",
+     "Scroll, tap, rotate and log bugs from the session."
+    ]
+   ],
+   "id": "how",
+   "head": "See your website on a real phone",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real mobile browsers",
+     "Safari and Chrome on real hardware, not resized desktop windows."
+    ],
+    [
+     "Touch and gestures",
+     "Real scroll physics and tap targets."
+    ],
+    [
+     "Network throttling",
+     "Check pages on slow connections."
+    ],
+    [
+     "Geolocation",
+     "Test location-based content from other countries."
+    ],
+    [
+     "Localhost",
+     "UnderPass tunnel opens your dev site on a phone."
+    ],
+    [
+     "Automate later",
+     "Run Appium or Selenium mobile web tests on the same devices."
+    ]
+   ],
+   "id": "caps",
+   "head": "Mobile web testing you can do from here",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Mobile Browser Testing compared with responsive mode in DevTools",
+   "cols": [
+    "What matters",
+    "Responsive mode in DevTools",
+    "Real mobile browsers on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Browser engine",
+     "Desktop Chrome, resized",
+     "Safari and Chrome on the phone"
+    ],
+    [
+     "Touch and scroll",
+     "Mouse imitation",
+     "Real touch"
+    ],
+    [
+     "iOS Safari bugs",
+     "Not reproduced",
+     "Reproduced"
+    ],
+    [
+     "Device-specific issues",
+     "Missed",
+     "Visible"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Resizing a desktop window vs real mobile browsers",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "9x",
+     "text": "Boohoo scaled test coverage 9x after retiring its in-house device farm.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/boohoo/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams testing on mobile browsers",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Real Device Cloud",
+     "body": "Open 50,000+ real phones and tablets",
+     "href": "https://www.testmuai.com/real-device-cloud/"
+    },
+    {
+     "name": "Responsive Testing",
+     "body": "Check layouts at every breakpoint",
+     "href": "https://www.testmuai.com/responsive-test-online/"
+    },
+    {
+     "name": "List of Real Devices",
+     "body": "The full device catalogue",
+     "href": "https://www.testmuai.com/list-of-real-devices/"
+    },
+    {
+     "name": "Browser Emulator Online",
+     "body": "Desktop browser emulator",
+     "href": "https://www.testmuai.com/browser-emulator-online/"
+    },
+    {
+     "name": "Geolocation Testing",
+     "body": "See your site from 170+ countries",
+     "href": "https://www.testmuai.com/geolocation-testing/"
+    }
+   ],
+   "res": [],
+   "fw": null,
+   "id": "rel",
+   "head": "Apps, devices and responsive tools",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "How do I test my website on mobile?",
+     "a": "Enter your URL on TestMu AI, pick a real iPhone or Android device and its browser, and interact with the page as a user would."
+    },
+    {
+     "q": "Is it free?",
+     "a": "Yes. The free plan includes 5 real device sessions a month, up to 2 minutes each."
+    },
+    {
+     "q": "Do I need to download anything?",
+     "a": "No. Real devices stream to your desktop browser."
+    },
+    {
+     "q": "Which mobile browsers are available?",
+     "a": "Safari on iOS and Chrome on Android."
+    },
+    {
+     "q": "Is this better than DevTools device mode?",
+     "a": "Device mode resizes desktop Chrome. Real devices show iOS Safari and Android rendering, touch and performance exactly."
+    }
+   ],
+   "id": "faq",
+   "head": "How do you test a website on a phone?",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 5 real device sessions a month, up to 2 minutes each.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Check your site on a real phone"
+  }
+ ]
+}

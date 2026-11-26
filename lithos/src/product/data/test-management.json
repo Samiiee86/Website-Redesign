@@ -1,0 +1,370 @@
+{
+ "slug": "test-management",
+ "title": "AI Test Management Software & Platform | TestMu AI",
+ "description": "AI test management tool: agents plan, generate, run and track manual and automated test cases, with two-way Jira and Azure DevOps sync. Free Forever plan.",
+ "crumb": [
+  "TestMu AI",
+  "Test Manager"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Test Manager",
+   "Updated November 2026"
+  ],
+  "h1a": "AI test management tool",
+  "h1b": "for manual and automated tests.",
+  "lede": "TestMu AI Test Manager is an AI test management tool. Agents draft test cases from requirements, organize them into plans, run them manually or with automation, and track results in one place, with two-way sync to Jira and Azure DevOps.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free Forever plan with unlimited projects and test cases.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "QA managers",
+   "Manual testers",
+   "SDETs",
+   "Release managers"
+  ],
+  "image": {
+   "src": "/kit/hero/test-management/hero-bg.webp",
+   "alt": "AI test case generator in Test Manager"
+  },
+  "run": {
+   "title": "test-manager · release 4.2",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "import",
+     "text": "1,204 cases · 99% matched",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "generate",
+     "text": "18 new cases from EPIC-88",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "run",
+     "text": "manual 64 · automated 412",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "trace",
+     "text": "coverage linked to 37 stories",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "Release 4.2 · 97% passed",
+   "evid": "run history, defects, requirement trace"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, Free Forever, with unlimited projects and test cases · Test Manager Premium from $49/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Test case management with AI agents for planning, writing and tracking"
+    ],
+    [
+     "Who it's for",
+     "QA teams running manual and automated tests together"
+    ],
+    [
+     "Integrations",
+     "Two-way Jira and Azure DevOps sync; imports from spreadsheets and other tools"
+    ],
+    [
+     "Automation",
+     "Links to KaneAI, Kane CLI and framework runs on TestMu AI"
+    ],
+    [
+     "Pricing",
+     "Free Forever plan (unlimited projects and test cases); Premium from $49 per user/month, billed annually"
+    ],
+    [
+     "Start",
+     "Import existing test cases or generate them from a ticket"
+    ]
+   ],
+   "id": "glance",
+   "head": "Test Manager plans and limits",
+   "body": [
+    "Free plan: $0, Free Forever, with unlimited projects and test cases · Test Manager Premium from $49/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Import or generate",
+     "Bring existing cases in, or have agents draft them from Jira stories."
+    ],
+    [
+     "Plan and run",
+     "Group cases into plans and run them manually or with automation."
+    ],
+    [
+     "Track",
+     "See pass rates, defects and requirement coverage per release."
+    ]
+   ],
+   "id": "how",
+   "head": "Write cases, link them to Jira, run and report",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "AI test case generation",
+     "Agents draft cases with steps and expected results from a story or spec."
+    ],
+    [
+     "Manual and automated together",
+     "One repository for hand-run cases and automated runs."
+    ],
+    [
+     "Two-way Jira and Azure DevOps sync",
+     "Defects and status stay in step with your tracker."
+    ],
+    [
+     "Duplicate detection",
+     "Imported cases are matched against existing ones to avoid duplicates."
+    ],
+    [
+     "Requirement traceability",
+     "Every case links to the stories it covers."
+    ],
+    [
+     "Release reports",
+     "Pass rate, coverage and open defects per release."
+    ]
+   ],
+   "id": "caps",
+   "head": "What QA leads track in one place",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Test Manager compared with spreadsheets and wikis",
+   "cols": [
+    "What matters",
+    "Spreadsheets and wikis",
+    "TestMu AI Test Manager"
+   ],
+   "rows": [
+    [
+     "Writing cases",
+     "By hand",
+     "Agents draft from stories"
+    ],
+    [
+     "Automated results",
+     "Pasted in",
+     "Linked automatically"
+    ],
+    [
+     "Jira and Azure DevOps",
+     "Copy and paste",
+     "Two-way sync"
+    ],
+    [
+     "Coverage view",
+     "Built manually",
+     "Traced to requirements"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Spreadsheets and ad-hoc docs vs a test management tool",
+   "body": []
+  },
+  {
+   "type": "teams",
+   "items": [
+    {
+     "name": "Startups and SMBs",
+     "for": "Start small",
+     "items": [
+      "Free Forever plan with unlimited projects and test cases",
+      "Premium from $49 per user/month, billed annually"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Mid-market",
+     "for": "Scale across squads and CI",
+     "items": [
+      "Two-way Jira and Azure DevOps sync",
+      "Manual and automated runs in one place"
+     ],
+     "dark": false
+    },
+    {
+     "name": "Enterprise",
+     "for": "Security, control and support",
+     "items": [
+      "Custom platform access controls for teams",
+      "Custom access controls"
+     ],
+     "dark": true
+    }
+   ],
+   "id": "teams",
+   "head": "Case management for a team of five or five hundred",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "AI Test Planner",
+     "body": "Plan release scope from requirements",
+     "href": "https://www.testmuai.com/test-planner/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Turn tickets and specs into tests",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Test Insights",
+     "body": "Test intelligence for results",
+     "href": "https://www.testmuai.com/test-intelligence/"
+    },
+    {
+     "name": "SmartUI",
+     "body": "Catch visual regressions screenshot by screenshot",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "TestMu AI MCP Server",
+     "body": "Manage test cases from an MCP client",
+     "href": "https://www.testmuai.com/mcp/"
+    },
+    {
+     "name": "Test Analytics",
+     "body": "Dashboards for automated runs",
+     "href": "https://www.testmuai.com/test-analytics/"
+    },
+    {
+     "name": "Professional Services",
+     "body": "Onboarding help from TestMu AI engineers",
+     "href": "https://www.testmuai.com/professional-services/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Related pages",
+     "links": [
+      {
+       "label": "What is test management? A complete guide",
+       "href": "https://www.testmuai.com/test-management/what-is-test-management/"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Test Manager documentation",
+       "href": "https://www.testmuai.com/support/docs/test-manager/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Bet365 case study",
+       "href": "https://www.testmuai.com/customers/bet365/"
+      },
+      {
+       "label": "Lereta case study",
+       "href": "https://www.testmuai.com/customers/lereta/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Automate the cases you manage",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is a test management tool?",
+     "a": "A test management tool is software where QA teams plan, write, run and track test cases and link them to requirements and defects."
+    },
+    {
+     "q": "How does AI help with test management?",
+     "a": "TestMu AI agents draft test cases from stories, detect duplicates on import, group cases into plans and link automated results to the right cases."
+    },
+    {
+     "q": "Does Test Manager integrate with Jira?",
+     "a": "Yes. Test Manager has two-way sync with Jira and Azure DevOps for defects, status and requirements."
+    },
+    {
+     "q": "Can I import test cases from another tool?",
+     "a": "Yes. Import from spreadsheets and other test management tools. Duplicates are matched during import."
+    },
+    {
+     "q": "How much does Test Manager cost?",
+     "a": "The Free Forever plan includes unlimited projects and test cases. Test Manager Premium starts at $49 per user per month, billed annually."
+    }
+   ],
+   "id": "faq",
+   "head": "What QA leads ask about Test Manager",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free Forever plan with unlimited projects and test cases.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Bring your test cases under control"
+  }
+ ]
+}

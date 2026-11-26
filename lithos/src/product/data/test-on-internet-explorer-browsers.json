@@ -1,0 +1,370 @@
+{
+ "slug": "test-on-internet-explorer-browsers",
+ "title": "Test on Internet Explorer Online - TestMu AI",
+ "description": "Use Internet Explorer online for testing: IE 11 on Windows 10, 8.1 and 7, IE 10 on Windows 8, IE 7 and 8 on XP, on real machines with F12 developer tools.",
+ "crumb": [
+  "TestMu AI",
+  "Internet Explorer Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Internet Explorer Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Internet Explorer online,",
+  "h1b": "IE 11 back to IE 7, on real Windows.",
+  "lede": "Internet Explorer online on TestMu AI opens real IE on real Windows machines: IE 11 on Windows 10, 8.1 and 7, IE 10 on Windows 8, and IE 7 and 8 on Windows XP. You test legacy pages with F12 developer tools and no old PC to keep.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Enterprise web teams",
+   "Government and banking IT",
+   "QA testers",
+   "Support engineers"
+  ],
+  "image": {
+   "src": "/kit/hero/test-on-internet-explorer-browsers/hero-bg.webp",
+   "alt": "Test on Internet Explorer Browser Online"
+  },
+  "run": {
+   "title": "live · internet explorer",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "IE 11",
+     "text": "Windows 10 · portal login",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "IE 11",
+     "text": "Windows 7 · form submit",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "IE 10",
+     "text": "Windows 8 · flexbox layout",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "IE 8",
+     "text": "Windows XP · page loads",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · IE 10 layout",
+   "evid": "screenshots · F12 console"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Real Internet Explorer on real Windows, in your browser"
+    ],
+    [
+     "IE 11",
+     "Windows 10, 8.1 and 7"
+    ],
+    [
+     "IE 10",
+     "Windows 8"
+    ],
+    [
+     "IE 7 and 8",
+     "Windows XP (IE 8 also on Windows 7)"
+    ],
+    [
+     "Tools",
+     "F12 developer tools"
+    ],
+    [
+     "Pricing",
+     "Free plan: 1 parallel test, monthly live sessions; Virtual Live from $15/month"
+    ]
+   ],
+   "id": "glance",
+   "head": "Internet Explorer versions you can open",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Choose IE and Windows",
+     "Pick the IE version and the Windows release."
+    ],
+    [
+     "Load your page",
+     "Real IE renders it; use F12 tools to debug."
+    ],
+    [
+     "Automate if needed",
+     "Run Selenium against the same IE versions."
+    ]
+   ],
+   "id": "how",
+   "head": "Open IE 11 or older without a Windows VM",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real Trident engine",
+     "Catch IE-only CSS and JavaScript bugs."
+    ],
+    [
+     "IE 11 to IE 7",
+     "Every version still used by legacy intranets."
+    ],
+    [
+     "F12 developer tools",
+     "Inspect DOM and console in real IE."
+    ],
+    [
+     "Selenium on IE",
+     "Automate regression on IE 11 and older."
+    ],
+    [
+     "Local intranet apps",
+     "UnderPass tunnel reaches internal hosts."
+    ],
+    [
+     "No old hardware",
+     "No Windows XP machine to maintain."
+    ]
+   ],
+   "id": "caps",
+   "head": "Legacy testing you can do from here",
+   "body": []
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Operating system",
+    "Browser",
+    "Versions"
+   ],
+   "rows": [
+    [
+     "Windows 10",
+     "Internet Explorer",
+     "11"
+    ],
+    [
+     "Windows 8.1",
+     "Internet Explorer",
+     "11"
+    ],
+    [
+     "Windows 8",
+     "Internet Explorer",
+     "10"
+    ],
+    [
+     "Windows 7",
+     "Internet Explorer",
+     "11–8"
+    ],
+    [
+     "Windows XP",
+     "Internet Explorer",
+     "8–7"
+    ]
+   ],
+   "src": "From the live browser list, 2026-11-21.",
+   "id": "data0",
+   "head": "Internet Explorer versions by Windows release",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Internet Explorer Testing compared with IE mode in Edge",
+   "cols": [
+    "What matters",
+    "IE mode in Edge",
+    "Real IE on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Engine",
+     "IE 11 document modes inside Edge",
+     "Real IE 11, 10, 8, 7"
+    ],
+    [
+     "Older versions",
+     "No IE 7 to 10",
+     "IE 7 to 11"
+    ],
+    [
+     "Windows XP and 7",
+     "Not available",
+     "Available"
+    ],
+    [
+     "Selenium automation",
+     "Limited",
+     "Supported"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Keeping an old Windows VM vs IE in the cloud",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams still supporting IE",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Chrome Browser Testing",
+     "body": "Real Chrome versions",
+     "href": "https://www.testmuai.com/test-on-chrome-browsers/"
+    },
+    {
+     "name": "List of Browsers",
+     "body": "Every browser version",
+     "href": "https://www.testmuai.com/list-of-browsers/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Check every browser and OS version",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Selenium Automation",
+     "body": "Run Selenium tests online in parallel",
+     "href": "https://www.testmuai.com/selenium-automation/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "IE mode setup guide",
+       "href": "https://www.testmuai.com/support/docs/ie-mode-on-edge/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "All customer stories",
+       "href": "https://www.testmuai.com/customers/"
+      },
+      {
+       "label": "Kinectify case study",
+       "href": "https://www.testmuai.com/customers/kinectify/"
+      },
+      {
+       "label": "Locusnine case study",
+       "href": "https://www.testmuai.com/customers/locusnine/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Modern browsers to test next",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "Can I use Internet Explorer online?",
+     "a": "Yes. TestMu AI runs real Internet Explorer on real Windows machines that you open in your browser."
+    },
+    {
+     "q": "Which IE versions are available?",
+     "a": "IE 11 on Windows 10, 8.1 and 7; IE 10 on Windows 8; IE 8 on Windows 7 and XP; IE 7 on XP."
+    },
+    {
+     "q": "Is this an IE emulator?",
+     "a": "No. It is the real browser, so rendering matches what IE users see."
+    },
+    {
+     "q": "Can I run Selenium tests on Internet Explorer?",
+     "a": "Yes, on the same IE versions through the Selenium grid."
+    },
+    {
+     "q": "Is it free to try?",
+     "a": "The free plan gives 1 parallel test with limited live sessions renewed every month."
+    }
+   ],
+   "id": "faq",
+   "head": "Still need IE? Common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Open Internet Explorer online"
+  }
+ ]
+}

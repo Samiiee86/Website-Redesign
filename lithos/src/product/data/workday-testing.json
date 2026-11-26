@@ -1,0 +1,294 @@
+{
+ "slug": "workday-testing",
+ "title": "Workday Testing: Automate HCM, Payroll & R1/R2 | TestMu AI",
+ "description": "Automate Workday testing for HCM, Payroll and Financials before every R1/R2 release and weekly update. KaneAI runs the tests; Kane CLI gates CI.",
+ "crumb": [
+  "TestMu AI",
+  "Workday Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Workday Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "Workday testing",
+  "h1b": "before every R1 and R2 release.",
+  "lede": "TestMu AI automates Workday testing for HCM, Payroll and Financials. Describe a business process in plain English and KaneAI runs it before each R1 and R2 release and weekly update, healing UI changes and failing on real behaviour changes. Kane CLI runs the same tests as a CI gate.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "KaneAI Starter from $17/month, billed annually.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Workday admins",
+   "HRIS teams",
+   "Payroll QA",
+   "CIOs"
+  ],
+  "image": {
+   "src": "/kit/hero/workday-testing/hero-bg.webp",
+   "alt": "Automate Workday Testing with KaneAI Agent"
+  },
+  "run": {
+   "title": "kaneai · hire-to-pay",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "hire",
+     "text": "new hire business process",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "comp",
+     "text": "compensation assigned",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "payroll",
+     "text": "payroll calculation run",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "verify",
+     "text": "net pay matches expected",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "PASS · R2 preview tenant",
+   "evid": "steps, screenshots, values"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually.",
+   "facts": [
+    [
+     "What it is",
+     "Plain-English test automation for Workday tenants"
+    ],
+    [
+     "Areas",
+     "HCM, Payroll, Financials"
+    ],
+    [
+     "Releases",
+     "R1 and R2 releases and weekly updates"
+    ],
+    [
+     "Authoring",
+     "Plain English with KaneAI"
+    ],
+    [
+     "CI",
+     "Kane CLI as a pipeline gate"
+    ],
+    [
+     "Start",
+     "Describe a hire-to-pay process"
+    ]
+   ],
+   "id": "glance",
+   "head": "Workday coverage and plans",
+   "body": [
+    "KaneAI Starter $17/month, Pro $89/month, Max $179/month, billed annually."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Describe",
+     "Write the business process in plain English."
+    ],
+    [
+     "Run on preview",
+     "Run against the preview tenant before each release."
+    ],
+    [
+     "Gate",
+     "Kane CLI fails the pipeline when a process breaks."
+    ]
+   ],
+   "id": "how",
+   "head": "HCM, payroll and R1/R2 releases, tested",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "HCM, Payroll, Financials",
+     "Cover the processes that carry the most risk."
+    ],
+    [
+     "R1 and R2 packs",
+     "Regression before each release."
+    ],
+    [
+     "Weekly updates",
+     "Scheduled runs catch weekly changes."
+    ],
+    [
+     "Healing UI",
+     "Tests keep working as screens change."
+    ],
+    [
+     "CI gate",
+     "Kane CLI blocks deploys on failure."
+    ],
+    [
+     "Evidence",
+     "Values and screenshots per step."
+    ]
+   ],
+   "id": "caps",
+   "head": "Workday processes teams automate",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Workday Testing compared with manual release testing",
+   "cols": [
+    "What matters",
+    "Manual release testing",
+    "TestMu AI"
+   ],
+   "rows": [
+    [
+     "Effort per release",
+     "Manual regression by hand",
+     "Re-run the pack"
+    ],
+    [
+     "Weekly updates",
+     "Rarely tested",
+     "Scheduled runs"
+    ],
+    [
+     "Authoring",
+     "Test scripts in spreadsheets",
+     "Plain English"
+    ],
+    [
+     "Evidence",
+     "Manual screenshots",
+     "Captured every run"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Manual release testing vs reusable Workday packs",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Oracle Testing",
+     "body": "Test Fusion Cloud and EBS through quarterly updates",
+     "href": "https://www.testmuai.com/oracle-testing/"
+    },
+    {
+     "name": "SAP Testing",
+     "body": "Test Fiori and S/4HANA workflows",
+     "href": "https://www.testmuai.com/sap-testing/"
+    },
+    {
+     "name": "KaneAI",
+     "body": "Turn tickets and specs into tests",
+     "href": "https://www.testmuai.com/kane-ai/"
+    },
+    {
+     "name": "Kane CLI",
+     "body": "A test gate inside coding agents",
+     "href": "https://www.testmuai.com/kane-cli/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "HR, CRM and ERP neighbours of Workday",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is Workday testing?",
+     "a": "Workday testing checks that HCM, Payroll and Financials business processes work in your tenant after configuration changes, R1 and R2 releases and weekly updates."
+    },
+    {
+     "q": "How often does Workday change?",
+     "a": "Workday ships two major releases a year, R1 and R2, plus weekly updates."
+    },
+    {
+     "q": "Can Workday tests be automated without code?",
+     "a": "Yes. KaneAI tests are written in plain English."
+    },
+    {
+     "q": "Can tests run in CI?",
+     "a": "Yes. Kane CLI runs the same tests as a pipeline gate."
+    },
+    {
+     "q": "How does TestMu AI connect to Workday?",
+     "a": "TestMu AI is independent of Workday. It tests your tenant through the interfaces you already use."
+    }
+   ],
+   "id": "faq",
+   "head": "What HR and payroll teams ask about Workday tests",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "KaneAI Starter from $17/month, billed annually.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Get ahead of the next Workday release"
+  }
+ ]
+}

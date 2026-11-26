@@ -1,0 +1,381 @@
+{
+ "slug": "mcp",
+ "title": "TestMu AI (Formerly LambdaTest) MCP Server For Agentic Testing",
+ "description": "An MCP server for testing: five TestMu AI tools (HyperExecute, Automation, SmartUI, Accessibility, Test Manager) in any MCP client. Run and triage tests.",
+ "crumb": [
+  "TestMu AI",
+  "TestMu AI MCP Server"
+ ],
+ "hero": {
+  "eyebrow": [
+   "TestMu AI MCP Server",
+   "Updated November 2026"
+  ],
+  "h1a": "The MCP server for testing:",
+  "h1b": "run, debug and triage from your IDE.",
+  "lede": "The TestMu AI MCP server for testing connects any MCP client, such as Claude, Cursor or VS Code, to five TestMu AI tools: HyperExecute, Automation, SmartUI, Accessibility and Test Manager. You ask in plain English and the client runs tests, reads failures and files results.",
+  "ctas": [
+   {
+    "label": "Get started",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Included with your TestMu AI account.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Developers",
+   "SDETs",
+   "Platform teams",
+   "AI IDE users"
+  ],
+  "image": {
+   "src": "/kit/hero/mcp/hero-bg.webp",
+   "alt": "TestMu AI MCP Server For Agentic Testing"
+  },
+  "run": {
+   "title": "mcp › testmu",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "ask",
+     "text": "why did build 812 fail?",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "hyperexecute",
+     "text": "2 failed of 410 · timeout on /cart",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "smartui",
+     "text": "1 visual diff on header",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "test-manager",
+     "text": "bug QA-77 filed with logs",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "2 ISSUES · triaged",
+   "evid": "build-812 · logs, screenshots, diff"
+  }
+ },
+ "sections": [
+  {
+   "type": "mcp",
+   "id": "mcp-clients",
+   "head": "Any AI client can use TestMu AI's MCP",
+   "body": [
+    "Run, debug, and triage tests using the TestMu AI MCP Server with any AI assistant.",
+    "Pick your AI client to set it up in minutes."
+   ],
+   "setups": [
+    {
+     "label": "Server URL (Streamable HTTP, OAuth sign-in)",
+     "value": "https://mcp.lambdatest.com/mcp",
+     "button": "Add to Cursor",
+     "href": "https://cursor.com/install-mcp?name=mcp-lambdatest&config=eyJ1cmwiOiJodHRwczovL21jcC5sYW1iZGF0ZXN0LmNvbS9tY3AifQ%3D%3D"
+    },
+    {
+     "label": "VS Code",
+     "value": "code --add-mcp '{\"name\":\"mcp-lambdatest\",\"type\":\"http\",\"url\":\"https://mcp.lambdatest.com/mcp\"}'",
+     "button": "",
+     "href": null
+    },
+    {
+     "label": "Claude Code",
+     "value": "claude mcp add --transport http mcp-lambdatest https://mcp.lambdatest.com/mcp",
+     "button": "",
+     "href": null
+    }
+   ],
+   "cards": [
+    {
+     "name": "Cursor",
+     "body": "Generate configs, run suites, debug failures, and triage results in plain English, inside your editor.",
+     "cta": "Set it up",
+     "href": "https://www.testmuai.com/support/docs/testmu-mcp-server/#cursor",
+     "logo": "https://assets.testmuai.com/resources/images/agents/cursor.svg"
+    },
+    {
+     "name": "Claude Code",
+     "body": "Generate configs, run suites, debug failures, and triage results in plain English, inside your terminal.",
+     "cta": "Set it up",
+     "href": "https://www.testmuai.com/support/docs/testmu-mcp-server/#claude-code",
+     "logo": "https://assets.testmuai.com/resources/images/agents/claude-code.svg"
+    },
+    {
+     "name": "GitHub Copilot",
+     "body": "Generate configs, run suites, debug failures, and triage results in plain English, inside VS Code chat.",
+     "cta": "Set it up",
+     "href": "https://www.testmuai.com/support/docs/testmu-mcp-server/#github-copilot-vs-code",
+     "logo": "https://assets.testmuai.com/resources/images/agents/github-copilot.svg"
+    },
+    {
+     "name": "OpenAI Codex",
+     "body": "Generate configs, run suites, debug failures, and triage results in plain English, from the command line.",
+     "cta": "Set it up",
+     "href": "https://www.testmuai.com/support/docs/testmu-mcp-server/#openai-codex-cli",
+     "logo": "https://assets.testmuai.com/resources/images/agents/openai-codex.svg"
+    },
+    {
+     "name": "Antigravity",
+     "body": "Generate configs, run suites, debug failures, and triage results in plain English, from the agent panel.",
+     "cta": "Set it up",
+     "href": "https://www.testmuai.com/support/docs/testmu-mcp-server/#antigravity",
+     "logo": "https://assets.testmuai.com/resources/images/agents/google-antigravity.svg"
+    }
+   ]
+  },
+  {
+   "type": "glance",
+   "price": "Included with every TestMu AI account; uses the test execution minutes a team already pays for.",
+   "facts": [
+    [
+     "What it is",
+     "A Model Context Protocol server for TestMu AI"
+    ],
+    [
+     "Tools (as of November 2026)",
+     "HyperExecute, Automation, SmartUI, Accessibility, Test Manager"
+    ],
+    [
+     "Clients",
+     "Any MCP client: Claude, Cursor, VS Code and others"
+    ],
+    [
+     "Typical asks",
+     "Run this suite, why did build 812 fail, list visual diffs"
+    ],
+    [
+     "Docs",
+     "TestMu AI MCP Server guide in support docs"
+    ],
+    [
+     "Pricing",
+     "Usage follows the plan of each product the tools call"
+    ]
+   ],
+   "id": "glance",
+   "head": "The MCP server at a glance",
+   "body": [
+    "Included with every TestMu AI account; uses the test execution minutes a team already pays for."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Connect the server",
+     "Add the TestMu AI MCP server to your client with your access key."
+    ],
+    [
+     "Ask in plain English",
+     "Request a run, a failure summary or a visual diff list from your IDE."
+    ],
+    [
+     "Act on results",
+     "The client returns logs, screenshots and diffs, and can file the bug."
+    ]
+   ],
+   "id": "how",
+   "head": "Connect your IDE, then ask for a test",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "HyperExecute tool",
+     "Trigger and inspect HyperExecute jobs from chat."
+    ],
+    [
+     "Automation tool",
+     "Read Selenium, Playwright and Cypress session results."
+    ],
+    [
+     "SmartUI tool",
+     "List and review visual regression diffs."
+    ],
+    [
+     "Accessibility tool",
+     "Pull WCAG issues for a page or build."
+    ],
+    [
+     "Test Manager tool",
+     "Create and update test cases and runs."
+    ],
+    [
+     "Works in any MCP client",
+     "No plugin per IDE; one server for every client."
+    ]
+   ],
+   "id": "caps",
+   "head": "Tools your AI assistant can call",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "TestMu AI MCP Server compared with switching to the dashboard",
+   "cols": [
+    "What matters",
+    "Switching to the dashboard",
+    "TestMu AI MCP server"
+   ],
+   "rows": [
+    [
+     "Finding why a build failed",
+     "Open dashboard, filter, read logs",
+     "Ask the client; it reads the logs"
+    ],
+    [
+     "Filing the bug",
+     "Copy details into Jira",
+     "Test Manager tool files it with evidence"
+    ],
+    [
+     "Reviewing visual diffs",
+     "Separate SmartUI tab",
+     "Listed in the same chat"
+    ],
+    [
+     "Setup per IDE",
+     "—",
+     "One MCP server config"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Cursor: .cursor/mcp.json",
+    "lang": "json",
+    "code": "{\n  \"mcpServers\": {\n    \"mcp-lambdatest\": {\n      \"url\": \"https://mcp.lambdatest.com/mcp\"\n    }\n  }\n}",
+    "note": "Verbatim from the TestMu AI MCP Server docs (Cursor), checked 2026-11-21. Claude Code: claude mcp add --transport http mcp-lambdatest https://mcp.lambdatest.com/mcp"
+   },
+   "id": "cmp",
+   "head": "Switching between tools vs one MCP endpoint",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "HyperExecute",
+     "body": "Split suites across just-in-time VMs",
+     "href": "https://www.testmuai.com/hyperexecute/"
+    },
+    {
+     "name": "SmartUI",
+     "body": "Pixel and layout diffs on every build",
+     "href": "https://www.testmuai.com/visual-testing-tool/"
+    },
+    {
+     "name": "Kane CLI",
+     "body": "Run plain-English checks from the terminal",
+     "href": "https://www.testmuai.com/kane-cli/"
+    },
+    {
+     "name": "Integrations",
+     "body": "Connect CI, issue trackers and chat tools",
+     "href": "https://www.testmuai.com/integrations/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "MCP server",
+       "href": "https://www.testmuai.com/support/docs/testmu-mcp-server/"
+      },
+      {
+       "label": "Explore HyperExecute MCP",
+       "href": "https://www.testmuai.com/support/docs/hyperexecute-mcp-server/"
+      },
+      {
+       "label": "Explore automation MCP",
+       "href": "https://www.testmuai.com/support/docs/automation-mcp-server/"
+      },
+      {
+       "label": "Explore accessibility MCP",
+       "href": "https://www.testmuai.com/support/docs/accessibility-mcp-server/"
+      },
+      {
+       "label": "Explore SmartUI MCP",
+       "href": "https://www.testmuai.com/support/docs/smartui-mcp-server/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Products the MCP tools drive",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "What is the TestMu AI MCP server?",
+     "a": "It is a Model Context Protocol server that exposes TestMu AI tools to MCP clients, so you can run and triage tests in plain English from your IDE or assistant."
+    },
+    {
+     "q": "Which tools does the MCP server include?",
+     "a": "HyperExecute, Automation, SmartUI, Accessibility and Test Manager."
+    },
+    {
+     "q": "Which clients work with it?",
+     "a": "Any client that supports MCP, including Claude, Cursor and VS Code."
+    },
+    {
+     "q": "Is the MCP server a separate product?",
+     "a": "No. The TestMu AI MCP Server is included with every TestMu AI account and only consumes the test execution minutes a team already pays for."
+    },
+    {
+     "q": "How is this different from the HyperExecute MCP server?",
+     "a": "The HyperExecute MCP server covers that one tool. This server bundles all five TestMu AI tools."
+    }
+   ],
+   "id": "faq",
+   "head": "What developers ask about the MCP server",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Included with your TestMu AI account.",
+   "ctas": [
+    {
+     "label": "Get started",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Connect your AI assistant to TestMu AI"
+  }
+ ]
+}

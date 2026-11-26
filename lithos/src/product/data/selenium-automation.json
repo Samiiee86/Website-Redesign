@@ -1,0 +1,369 @@
+{
+ "slug": "selenium-automation",
+ "title": "Selenium Automation Cloud: Run Tests Online | TestMu AI",
+ "description": "Selenium automation on TestMu AI: run Java, Python, C#, JavaScript and Ruby Selenium tests online on 3,000+ browser and OS combinations in parallel.",
+ "crumb": [
+  "TestMu AI",
+  "Selenium Automation"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Selenium Automation",
+   "Updated November 2026"
+  ],
+  "h1a": "Selenium automation,",
+  "h1b": "online, in parallel, on real browsers.",
+  "lede": "Selenium automation on TestMu AI runs your Selenium WebDriver tests online across 3,000+ browser and OS combinations. You keep your Java, Python, C#, JavaScript or Ruby code, point it at the TestMu AI hub, and get video, logs and network data for every session.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "SDETs",
+   "QA engineers",
+   "Java and Python teams",
+   "DevOps"
+  ],
+  "image": {
+   "src": "/kit/hero/selenium-automation/hero-bg.webp",
+   "alt": "Kane CLI validating a Selenium flow in natural language from the terminal"
+  },
+  "run": {
+   "title": "selenium · checkout suite",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "hub",
+     "text": "RemoteWebDriver connected",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "chrome 159",
+     "text": "LoginTest · 14 steps",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "firefox 161",
+     "text": "LoginTest · 14 steps",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "edge 158",
+     "text": "CartTest · element not found",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · 2/3",
+   "evid": "session video · Selenium logs · network"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Selenium WebDriver tests run on TestMu AI cloud browsers"
+    ],
+    [
+     "Languages",
+     "Java, Python, C#, JavaScript, Ruby"
+    ],
+    [
+     "Selenium versions",
+     "Selenium 4 and Selenium 3 capabilities"
+    ],
+    [
+     "Coverage",
+     "3,000+ browser and OS combinations"
+    ],
+    [
+     "Pricing",
+     "Free: 100 lifetime minutes, 2 parallel; Web Automation from $79/month"
+    ],
+    [
+     "Start",
+     "Set RemoteWebDriver to the TestMu AI hub URL"
+    ]
+   ],
+   "id": "glance",
+   "head": "Selenium versions, grids and plans",
+   "body": [
+    "Free plan: 100 lifetime minutes of web and mobile automation, 2 parallel sessions · Web Automation on Desktop from $79/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Change one URL",
+     "Replace your local driver with RemoteWebDriver and the TestMu AI hub URL."
+    ],
+    [
+     "Pick capabilities",
+     "Choose browser, version and OS; run classes in parallel."
+    ],
+    [
+     "Read the session",
+     "Each test records video, Selenium logs and network requests."
+    ]
+   ],
+   "id": "how",
+   "head": "Change one URL and run your Selenium tests online",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "All Selenium languages",
+     "Java, Python, C#, JavaScript and Ruby bindings."
+    ],
+    [
+     "Selenium 4 support",
+     "W3C capabilities, relative locators and CDP on Chromium."
+    ],
+    [
+     "Legacy browsers",
+     "Older Chrome, Firefox and Internet Explorer versions for regression."
+    ],
+    [
+     "Parallel sessions",
+     "Run test classes at the same time to cut build time."
+    ],
+    [
+     "Local testing",
+     "UnderPass tunnel tests localhost and staging."
+    ],
+    [
+     "Auto healing",
+     "Optional locator healing for brittle selectors."
+    ]
+   ],
+   "id": "caps",
+   "head": "What runs on the TestMu AI Selenium grid",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Selenium Automation compared with local Selenium Grid",
+   "cols": [
+    "What matters",
+    "Local Selenium Grid",
+    "Selenium on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Browser versions",
+     "Whatever your nodes have",
+     "Chrome, Firefox, Edge, Safari, Opera, IE versions"
+    ],
+    [
+     "Parallel capacity",
+     "Limited by your VMs",
+     "Parallel sessions on your plan"
+    ],
+    [
+     "Failure evidence",
+     "Console output",
+     "Video, Selenium and network logs"
+    ],
+    [
+     "Maintenance",
+     "Node images and drivers",
+     "None"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Python · Remote WebDriver",
+    "lang": "python",
+    "code": "options = webdriver.ChromeOptions()\noptions.set_capability(\"LT:Options\", lt_options)\ndriver = webdriver.Remote(\n    command_executor=f\"https://{username}:{access_key}@hub.lambdatest.com/wd/hub\",\n    options=options)",
+    "note": "Abridged from the TestMu AI Selenium docs (/support/docs/testmu-running-your-first-selenium-test/); build lt_options in the capability generator."
+   },
+   "id": "cmp",
+   "head": "A self-managed Selenium Grid vs a Selenium cloud",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Selenium teams that cut their run time",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Selenium Grid",
+     "body": "The Selenium cloud grid",
+     "href": "https://www.testmuai.com/selenium-grid-online/"
+    },
+    {
+     "name": "Automation Cloud",
+     "body": "Run Selenium, Playwright and Cypress in one cloud",
+     "href": "https://www.testmuai.com/automation-cloud/"
+    },
+    {
+     "name": "List of Browsers",
+     "body": "Every supported browser version",
+     "href": "https://www.testmuai.com/list-of-browsers/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Check every browser and OS version",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    },
+    {
+     "name": "Cypress Testing",
+     "body": "Run Cypress specs in parallel",
+     "href": "https://www.testmuai.com/cypress-testing/"
+    },
+    {
+     "name": "Internet Explorer Testing",
+     "body": "Selenium on Internet Explorer",
+     "href": "https://www.testmuai.com/test-on-internet-explorer-browsers/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Downloads and installs",
+     "links": [
+      {
+       "label": "Agent skills (GitHub)",
+       "href": "https://github.com/LambdaTest/agent-skills"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Getting started with KaneAI",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-kane-ai/"
+      },
+      {
+       "label": "Getting started with HyperExecute",
+       "href": "https://www.testmuai.com/support/docs/getting-started-with-hyperexecute/"
+      }
+     ]
+    },
+    {
+     "group": "Customer stories",
+     "links": [
+      {
+       "label": "City Furniture case study",
+       "href": "https://www.testmuai.com/customers/city-furniture/"
+      }
+     ]
+    },
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    },
+    {
+     "group": "Pricing",
+     "links": [
+      {
+       "label": "Web automation pricing plans",
+       "href": "https://www.testmuai.com/pricing/?product=web-automation-group"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Cypress, Playwright and more frameworks",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "How do I run Selenium tests online?",
+     "a": "Point RemoteWebDriver at the TestMu AI hub URL with your username and access key, then set browser, version and OS capabilities."
+    },
+    {
+     "q": "Which languages are supported?",
+     "a": "Java, Python, C#, JavaScript and Ruby, plus test runners such as TestNG, JUnit, pytest and NUnit."
+    },
+    {
+     "q": "Does TestMu AI support Selenium 4?",
+     "a": "Yes, with W3C capabilities. Selenium 3 capabilities still work for older suites."
+    },
+    {
+     "q": "Is there a free plan for Selenium?",
+     "a": "Yes. The automation free plan gives 100 lifetime minutes with 2 parallel sessions."
+    },
+    {
+     "q": "What is the difference between this page and Selenium Grid?",
+     "a": "This page covers running Selenium tests. The Selenium Grid page covers the hosted grid itself and its scale."
+    }
+   ],
+   "id": "faq",
+   "head": "Selenium in the cloud, answered",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 100 lifetime minutes, 2 parallel sessions.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Run your Selenium suite online"
+  }
+ ]
+}

@@ -1,0 +1,323 @@
+{
+ "slug": "kane-cli-agents",
+ "title": "Testing Tool for AI Coding Agents: Kane CLI | TestMu AI",
+ "description": "How Claude Code, Codex CLI, Gemini CLI, Cursor and Copilot test what they build with Kane CLI: one command, a real browser and an exit code to act on.",
+ "crumb": [
+  "TestMu AI",
+  "Kane CLI",
+  "Kane CLI for coding agents"
+ ],
+ "hero": {
+  "eyebrow": [
+   "Kane CLI for coding agents",
+   "Updated November 2026"
+  ],
+  "h1a": "Kane CLI for AI coding agents:",
+  "h1b": "test every change in a real browser.",
+  "lede": "Kane CLI lets AI coding agents test their own changes. Claude Code, Codex CLI, Gemini CLI, Cursor and Copilot call one command, Kane CLI drives a real browser, and the agent gets an exit code and an evidence file to act on before it opens a pull request.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free to install. 10,000 free Kane CLI credits, valid for 30 days.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Developers",
+   "Coding agents",
+   "Platform teams",
+   "SDETs"
+  ],
+  "image": null,
+  "run": {
+   "title": "claude › kane-cli run \"login works\"",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "agent",
+     "text": "edits src/auth/login.tsx",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    },
+    {
+     "who": "kane-cli",
+     "text": "real Chrome · 5 steps",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "kane-cli",
+     "text": "exit 0 · criteria met",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "agent",
+     "text": "opens PR with evidence link",
+     "st": {
+      "label": "DONE",
+      "kind": "done"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "EXIT 0 · PASS",
+   "evid": "login.evidence · steps, screenshots, console"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free to install; runs use KaneAI credits. Start with 10,000 free Kane CLI credits, valid for 30 days · No separate paid plan: Kane CLI runs use KaneAI plan credits (Starter from $17/month, billed annually).",
+   "facts": [
+    [
+     "Works with",
+     "Claude Code, Codex CLI, Gemini CLI, Cursor, Copilot"
+    ],
+    [
+     "Install",
+     "npm install -g @testmuai/kane-cli"
+    ],
+    [
+     "Agent contract",
+     "Exit code plus a .evidence file per run"
+    ],
+    [
+     "Repeat runs",
+     "Saved tests can be re-run from the command line or CI"
+    ],
+    [
+     "Agent docs",
+     "llms.txt and AGENTS.md snippets for each coding agent"
+    ],
+    [
+     "Pricing",
+     "Free to install; runs use KaneAI credits (10,000 free for 30 days)"
+    ]
+   ],
+   "id": "glance",
+   "head": "Kane CLI for coding agents, in brief",
+   "body": [
+    "Free to install; runs use KaneAI credits. Start with 10,000 free Kane CLI credits, valid for 30 days · No separate paid plan: Kane CLI runs use KaneAI plan credits (Starter from $17/month, billed annually)."
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Add Kane CLI to the agent",
+     "Install the CLI and paste the AGENTS.md snippet so the agent knows when to call it."
+    ],
+    [
+     "The agent tests its change",
+     "After editing code, the agent runs a plain-English check in a real browser."
+    ],
+    [
+     "Act on the exit code",
+     "Exit 0 lets the agent continue; a failure returns evidence the agent can read and fix."
+    ]
+   ],
+   "id": "how",
+   "head": "Your coding agent asks, Kane CLI verifies",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "One command",
+     "kane-cli run with a sentence of intent; no test code to write."
+    ],
+    [
+     "Machine-readable result",
+     "Exit codes and an evidence file the agent can parse."
+    ],
+    [
+     "Real browser, not a guess",
+     "Each check drives Chrome locally or on TestMu AI cloud browsers."
+    ],
+    [
+     "Cached replay",
+     "Unchanged steps replay from cache with no LLM cost."
+    ],
+    [
+     "Guides per agent",
+     "Setup notes for Claude Code, Codex CLI, Gemini CLI and Cursor."
+    ],
+    [
+     "Evidence in the PR",
+     "Reviewers open the evidence to see every step and screenshot."
+    ]
+   ],
+   "id": "caps",
+   "head": "What the agent gets back from each check",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "Kane CLI for coding agents compared with Agent without a test step",
+   "cols": [
+    "What matters",
+    "Agent without a test step",
+    "Agent with Kane CLI"
+   ],
+   "rows": [
+    [
+     "Knows the change works",
+     "Only if unit tests cover it",
+     "A real-browser check passes or fails"
+    ],
+    [
+     "What the agent reads",
+     "Its own diff",
+     "Exit code and evidence of the run"
+    ],
+    [
+     "Reviewer's proof",
+     "The PR description",
+     "Evidence file with screenshots"
+    ],
+    [
+     "Cost of reruns",
+     "None, nothing runs",
+     "Unchanged steps replay from cache with no LLM cost"
+    ]
+   ],
+   "notes": [],
+   "code": {
+    "label": "Inside a coding agent session",
+    "lang": "bash",
+    "code": "npm install -g @testmuai/kane-cli\nkane-cli login\nkane-cli run \"Sign in with a valid user and land on the dashboard\" --agent --headless --timeout 180",
+    "note": "Commands as shown on the live Kane CLI for coding agents page."
+   },
+   "id": "cmp",
+   "head": "An agent that ships unchecked vs one with a test step",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Kane CLI",
+     "body": "Plain-English checks as a CI step",
+     "href": "https://www.testmuai.com/kane-cli/"
+    },
+    {
+     "name": "Browser Cloud",
+     "body": "Cloud browsers for AI agents",
+     "href": "https://www.testmuai.com/browser-cloud/"
+    },
+    {
+     "name": "Agentic Testing",
+     "body": "What changes when agents run the tests",
+     "href": "https://www.testmuai.com/agentic-testing/"
+    },
+    {
+     "name": "Playwright Testing",
+     "body": "Run Playwright suites on the cloud",
+     "href": "https://www.testmuai.com/playwright-testing/"
+    },
+    {
+     "name": "Web Automation Agent",
+     "body": "Web automation testing with Kane CLI",
+     "href": "https://www.testmuai.com/web-automation-agent/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Related pages",
+     "links": [
+      {
+       "label": "Verify a change",
+       "href": "https://www.testmuai.com/kane-cli/agents/verify-a-change/"
+      },
+      {
+       "label": "Reproduce a bug",
+       "href": "https://www.testmuai.com/kane-cli/agents/reproduce-a-bug/"
+      },
+      {
+       "label": "Save a test",
+       "href": "https://www.testmuai.com/kane-cli/agents/save-a-test/"
+      },
+      {
+       "label": "Gate CI",
+       "href": "https://www.testmuai.com/kane-cli/agents/gate-ci/"
+      }
+     ]
+    },
+    {
+     "group": "Docs and guides",
+     "links": [
+      {
+       "label": "Kane CLI Agent Mode docs",
+       "href": "https://www.testmuai.com/docs/kane-cli-agent-mode"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "More ways to test agent-written code",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "How does a coding agent use Kane CLI?",
+     "a": "The agent calls kane-cli run with a plain-English check after changing code. Kane CLI drives a real browser and returns an exit code and an evidence file."
+    },
+    {
+     "q": "Which coding agents are supported?",
+     "a": "Claude Code, Codex CLI, Gemini CLI, Cursor and Copilot can call Kane CLI from their terminal."
+    },
+    {
+     "q": "Does every run call an LLM?",
+     "a": "No. The first run works out the path. When you save it as a test, its unchanged steps replay from cache with no LLM cost; a step that broke because the page changed is re-authored."
+    },
+    {
+     "q": "What does Kane CLI cost for agent use?",
+     "a": "Kane CLI is free to install. Runs use KaneAI credits; you can claim 10,000 free Kane CLI credits valid for 30 days."
+    },
+    {
+     "q": "How is this different from a browser tool for agents?",
+     "a": "A browser tool lets an agent act on a page. Kane CLI verifies the change against acceptance criteria and returns a verdict with evidence."
+    }
+   ],
+   "id": "faq",
+   "head": "Questions from teams using coding agents",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free to install. 10,000 free Kane CLI credits, valid for 30 days.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Add a test step to your coding agent"
+  }
+ ]
+}

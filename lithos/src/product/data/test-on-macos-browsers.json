@@ -1,0 +1,453 @@
+{
+ "slug": "test-on-macos-browsers",
+ "title": "Test on macOS Browsers Free: Live & Automated | TestMu AI",
+ "description": "Test on real macOS browsers online: Safari, Chrome, Firefox, Edge and Opera on macOS Sequoia, Sonoma and older releases, live or automated. No Mac needed.",
+ "crumb": [
+  "TestMu AI",
+  "macOS Browser Testing"
+ ],
+ "hero": {
+  "eyebrow": [
+   "macOS Browser Testing",
+   "Updated November 2026"
+  ],
+  "h1a": "macOS browsers online:",
+  "h1b": "Safari, Chrome and Firefox, no Mac needed.",
+  "lede": "macOS browsers on TestMu AI run on real Mac machines in the cloud: Safari, Chrome, Firefox, Edge and Opera on macOS Sequoia, Sonoma and releases back to Lion. Open them from Windows or Linux, test live with DevTools, or automate with Selenium and Playwright.",
+  "ctas": [
+   {
+    "label": "Start free",
+    "href": "https://www.testmuai.com/register/",
+    "primary": true
+   },
+   {
+    "label": "Book a demo",
+    "href": null,
+    "primary": false
+   }
+  ],
+  "note": "Free plan: 1 parallel test with limited live sessions each month.",
+  "chipsLabel": "Built for",
+  "chips": [
+   "Web developers on Windows",
+   "QA testers",
+   "Designers",
+   "SDETs"
+  ],
+  "image": {
+   "src": "/kit/hero/test-on-macos-browsers/hero-bg.webp",
+   "alt": "Test on macOS Browsers: Live and Automated Testing"
+  },
+  "run": {
+   "title": "live · macOS",
+   "live": "sample run",
+   "rows": [
+    {
+     "who": "Safari 18",
+     "text": "Sequoia · hero renders",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Chrome 159",
+     "text": "Sequoia · OK",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    },
+    {
+     "who": "Safari 16",
+     "text": "Ventura · date input broken",
+     "st": {
+      "label": "FAIL",
+      "kind": "fail"
+     }
+    },
+    {
+     "who": "Firefox 161",
+     "text": "Sonoma · OK",
+     "st": {
+      "label": "PASS",
+      "kind": "pass"
+     }
+    }
+   ],
+   "diff": [],
+   "verdict": "1 FAIL · Safari 16",
+   "evid": "screenshots · Web Inspector"
+  }
+ },
+ "sections": [
+  {
+   "type": "glance",
+   "price": "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually",
+   "facts": [
+    [
+     "What it is",
+     "Real Mac browsers online"
+    ],
+    [
+     "Browsers",
+     "Safari, Chrome, Firefox, Edge, Opera"
+    ],
+    [
+     "macOS releases",
+     "Sequoia, Sonoma, Ventura, Monterey and back to Lion"
+    ],
+    [
+     "Safari versions",
+     "Safari 18 (Sequoia) back to 5.1 (Lion)"
+    ],
+    [
+     "Pricing",
+     "Free plan: 1 parallel test, monthly live sessions; Virtual Live from $15/month"
+    ],
+    [
+     "Automation",
+     "Selenium and Playwright (WebKit) on macOS"
+    ]
+   ],
+   "id": "glance",
+   "head": "macOS browsers you can open",
+   "body": [
+    "Free plan: $0, 1 parallel test, with limited live sessions renewed every month · Virtual Live from $15/month, billed annually"
+   ]
+  },
+  {
+   "type": "steps",
+   "items": [
+    [
+     "Pick macOS and a browser",
+     "Choose the release and browser version."
+    ],
+    [
+     "Test live",
+     "Use Safari Web Inspector or Chrome DevTools in the session."
+    ],
+    [
+     "Automate",
+     "Run Selenium or Playwright WebKit suites on the same Macs."
+    ]
+   ],
+   "id": "how",
+   "head": "Test Safari and Chrome on macOS from any computer",
+   "body": []
+  },
+  {
+   "type": "caps",
+   "items": [
+    [
+     "Real Safari",
+     "WebKit as Apple ships it, not a resized Chromium window."
+    ],
+    [
+     "Many macOS releases",
+     "Sequoia back to Lion for long-tail users."
+    ],
+    [
+     "All major browsers",
+     "Safari, Chrome, Firefox, Edge and Opera."
+    ],
+    [
+     "From Windows or Linux",
+     "No Mac hardware needed."
+    ],
+    [
+     "Automation",
+     "Selenium and Playwright on macOS."
+    ],
+    [
+     "Beta macOS",
+     "macOS Golden Gate testing before the stable release."
+    ]
+   ],
+   "id": "caps",
+   "head": "macOS testing you can do from here",
+   "body": []
+  },
+  {
+   "type": "data",
+   "cols": [
+    "Operating system",
+    "Browser",
+    "Versions"
+   ],
+   "rows": [
+    [
+     "macOS Sequoia",
+     "Chrome",
+     "159–86"
+    ],
+    [
+     "macOS Sequoia",
+     "Firefox",
+     "161–86"
+    ],
+    [
+     "macOS Sequoia",
+     "Edge",
+     "158–86"
+    ],
+    [
+     "macOS Sequoia",
+     "Safari",
+     "18"
+    ],
+    [
+     "macOS Sequoia",
+     "Opera",
+     "110–70"
+    ],
+    [
+     "macOS Sonoma",
+     "Chrome",
+     "159–87"
+    ],
+    [
+     "macOS Sonoma",
+     "Firefox",
+     "161–86"
+    ],
+    [
+     "macOS Sonoma",
+     "Edge",
+     "158–86"
+    ],
+    [
+     "macOS Sonoma",
+     "Safari",
+     "17"
+    ],
+    [
+     "macOS Sonoma",
+     "Opera",
+     "110–70"
+    ],
+    [
+     "macOS Ventura",
+     "Chrome",
+     "159–83, 81–61"
+    ],
+    [
+     "macOS Ventura",
+     "Firefox",
+     "161–71"
+    ],
+    [
+     "macOS Ventura",
+     "Edge",
+     "158–83, 81–79"
+    ],
+    [
+     "macOS Ventura",
+     "Safari",
+     "16"
+    ],
+    [
+     "macOS Ventura",
+     "Opera",
+     "110–62, 60, 58–26"
+    ],
+    [
+     "macOS Monterey",
+     "Chrome",
+     "159–83, 81–39"
+    ],
+    [
+     "macOS Monterey",
+     "Firefox",
+     "161–71"
+    ],
+    [
+     "macOS Monterey",
+     "Edge",
+     "158–83, 81–79"
+    ],
+    [
+     "macOS Monterey",
+     "Safari",
+     "15"
+    ],
+    [
+     "macOS Monterey",
+     "Opera",
+     "110–62, 60, 58–26"
+    ],
+    [
+     "macOS Big Sur",
+     "Chrome",
+     "138–83, 81–39"
+    ],
+    [
+     "macOS Big Sur",
+     "Firefox",
+     "161–71"
+    ],
+    [
+     "macOS Big Sur",
+     "Edge",
+     "138–83, 81–79"
+    ],
+    [
+     "macOS Big Sur",
+     "Safari",
+     "14"
+    ],
+    [
+     "macOS Big Sur",
+     "Opera",
+     "110–62, 60, 58–26"
+    ]
+   ],
+   "src": "Newest five releases shown; full list on the browser list page. Source: live browser list, 2026-11-21.",
+   "id": "data0",
+   "head": "Browsers by macOS release",
+   "body": []
+  },
+  {
+   "type": "cmp",
+   "caption": "macOS Browser Testing compared with buying Macs for testing",
+   "cols": [
+    "What matters",
+    "Buying Macs for testing",
+    "macOS browsers on TestMu AI"
+   ],
+   "rows": [
+    [
+     "Safari versions",
+     "One per Mac",
+     "Safari 5.1 to 18 across releases"
+    ],
+    [
+     "Testing from Windows",
+     "Not possible",
+     "In your browser"
+    ],
+    [
+     "Parallel sessions",
+     "One per machine",
+     "Per plan"
+    ],
+    [
+     "OS upkeep",
+     "Updates and hardware",
+     "Hosted"
+    ]
+   ],
+   "notes": [],
+   "code": null,
+   "id": "cmp",
+   "head": "Buying Macs for testing vs macOS in the cloud",
+   "body": []
+  },
+  {
+   "type": "stories",
+   "items": [
+    {
+     "num": "70%",
+     "text": "Transavia runs its tests 70% faster on TestMu AI after its old testing platform was discontinued.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/transavia/"
+    },
+    {
+     "num": "70%",
+     "text": "Edureka reached full browser coverage and cut test execution time by 70%.",
+     "cta": "Read the case study →",
+     "href": "https://www.testmuai.com/customers/edureka/"
+    }
+   ],
+   "id": "proof2",
+   "head": "Teams testing on macOS",
+   "body": []
+  },
+  {
+   "type": "rel",
+   "items": [
+    {
+     "name": "Safari",
+     "body": "Real Safari on real Macs",
+     "href": "https://www.testmuai.com/test-on-safari-browsers/"
+    },
+    {
+     "name": "macOS Golden Gate",
+     "body": "Test on the newest macOS release",
+     "href": "https://www.testmuai.com/test-on-macos-golden-gate/"
+    },
+    {
+     "name": "List of Browsers",
+     "body": "Every browser version",
+     "href": "https://www.testmuai.com/list-of-browsers/"
+    },
+    {
+     "name": "Cross Browser Testing",
+     "body": "Run live sessions on real browsers",
+     "href": "https://www.testmuai.com/cross-browser-testing/"
+    }
+   ],
+   "res": [
+    {
+     "group": "Integrations",
+     "links": [
+      {
+       "label": "Explore all integrations",
+       "href": "https://www.testmuai.com/integrations/"
+      }
+     ]
+    }
+   ],
+   "fw": null,
+   "id": "rel",
+   "head": "Other operating systems and browsers",
+   "body": []
+  },
+  {
+   "type": "faq",
+   "items": [
+    {
+     "q": "Can I test on macOS browsers without a Mac?",
+     "a": "Yes. TestMu AI runs real Macs in the cloud that you open from any browser on Windows or Linux."
+    },
+    {
+     "q": "Which macOS releases are available?",
+     "a": "macOS Sequoia, Sonoma, Ventura, Monterey, Big Sur and older releases back to Lion."
+    },
+    {
+     "q": "Which Safari versions can I test?",
+     "a": "Safari 18 on Sequoia back to Safari 5.1 on Lion."
+    },
+    {
+     "q": "Can I automate macOS browser tests?",
+     "a": "Yes, with Selenium and Playwright WebKit on the same Macs."
+    },
+    {
+     "q": "Is there a free plan?",
+     "a": "The free plan gives 1 parallel test with limited live sessions renewed every month."
+    }
+   ],
+   "id": "faq",
+   "head": "Testing Safari without a Mac: common questions",
+   "body": []
+  },
+  {
+   "type": "final",
+   "body": "Free plan: 1 parallel test with limited live sessions each month.",
+   "ctas": [
+    {
+     "label": "Start free",
+     "href": "https://www.testmuai.com/register/",
+     "primary": false
+    },
+    {
+     "label": "Book a demo",
+     "href": null,
+     "primary": false
+    }
+   ],
+   "id": "go",
+   "head": "Open Safari on macOS now"
+  }
+ ]
+}
