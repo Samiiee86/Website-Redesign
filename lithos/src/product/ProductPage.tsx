@@ -453,40 +453,8 @@ function CodePanel({ c }: { c: NonNullable<Extract<Sec, { type: "cmp" }>["code"]
   );
 }
 
-/* the live page's comparison table, in its own column order, with the
-   TestMu AI column framed in 2px black */
-const framed = (first: boolean, last: boolean) =>
-  `border-x-2 border-[var(--tm-border-emphasis)] ${first ? "border-t-2" : ""} ${last ? "border-b-2" : ""}`;
-
-function PlainTable({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
-  return (
-    <div className="overflow-x-auto bg-surface">
-      <table className="w-full min-w-[480px] border-collapse text-left">
-        <caption className="sr-only">{s.caption}</caption>
-        <thead>
-          <tr className="bg-background">
-            <th scope="col" className="px-6 py-4 text-b2 font-medium">{s.cols[0]}</th>
-            <th scope="col" className="px-6 py-4 text-b2 font-medium">{s.cols[1]}</th>
-            <th scope="col" className={`bg-surface px-6 py-4 text-b2 font-medium text-[var(--tm-fg-link)] ${framed(true, false)}`}>{s.cols[2]}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {s.rows.map(([k, them, us], i) => (
-            <tr key={k} className="border-t border-border">
-              <th scope="row" className="px-6 py-5 text-b2 font-medium">{k}</th>
-              <td className="px-6 py-5 text-b2 text-muted-foreground">{them}</td>
-              <td className={`px-6 py-5 text-b2 ${framed(false, i === s.rows.length - 1)}`}>{us}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-/* the live page's comparison. With a code snippet beside it (as on the
-   live page): the black terminal on the left, the table on the right, as
-   two joined cells. Without one: the pieces library head to head. */
+/* the live page's comparison as the pieces library head to head; with a
+   code snippet (as on the live page) the black terminal sits on its left */
 function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
   const [lead, title] = split(s.head);
   const lines = [s.caption, ...s.body, ...s.notes].filter(Boolean);
@@ -510,9 +478,14 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
            the table side by side, with space between them */
         <div className="tm-reveal grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
           <CodePanel c={s.code} />
-          <div className="border border-border">
-            <PlainTable s={s} />
-          </div>
+          {/* the same framed head to head as on every other page */}
+          <MatrixTable
+            label={`${lead} ${title}`}
+            rivals={[{ name: s.cols[1] }]}
+            groups={[{ label: "", rows: s.rows.map(([name, them, us]) => ({ name, values: [us, them] })) }]}
+            cta={s.cta}
+            head={s.cols[0]}
+          />
         </div>
       ) : (
         <Reveal delay={0.08} className="-mx-8">
