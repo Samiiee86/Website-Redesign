@@ -15,10 +15,14 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 export default function Faq({
   items = faq,
   title = "Frequently asked questions",
+  stacked = false,
 }: {
   items?: { q: string; a: ReactNode }[];
   /* a page's own FAQ heading; the home page keeps the default */
   title?: string;
+  /* the heading on top across the frame, the questions full width under
+     it (the product pages, as on the live pages) */
+  stacked?: boolean;
 }) {
   const [open, setOpen] = useState<number | null>(null);
   const [all, setAll] = useState(false);
@@ -26,13 +30,13 @@ export default function Faq({
 
   return (
     <Section className="!py-0 md:!py-0">
-      <div className="-mx-8 grid lg:grid-cols-[0.4fr_0.6fr]">
-        <div className="px-8 pb-8 pt-16 md:px-16 md:pt-20">
+      <div className={`-mx-8 grid ${stacked ? "" : "lg:grid-cols-[0.4fr_0.6fr]"}`}>
+        <div className={stacked ? "px-8 pb-12 pt-16 md:pt-24" : "px-8 pb-8 pt-16 md:px-16 md:pt-20"}>
           <h2 className="text-foreground [text-wrap:balance]">{title}</h2>
         </div>
 
-        <div className="lg:border-l lg:border-border">
-          <div className="hidden h-[70px] lg:block" />
+        <div className={stacked ? "" : "lg:border-l lg:border-border"}>
+          {!stacked && <div className="hidden h-[70px] lg:block" />}
           {shown.map((item, i) => {
             const isOpen = open === i;
             return (

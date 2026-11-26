@@ -105,7 +105,7 @@ export default function MatrixTable({
   const picker = rivals.length > 2;
   const n = rivals.length + 1;
   const roomy = n <= 3;
-  const LABEL_FR = roomy ? 1.5 : 1.7;
+  const LABEL_FR = plain ? 1 : roomy ? 1.5 : 1.7;
   /* a wider TestMu AI column: the desktop columns come from --cols */
   const weighted = oursWeight !== 1;
   const GRID = weighted ? `${BASE} lg:grid-cols-[var(--cols)]` : roomy ? ROOMY : TIGHT;

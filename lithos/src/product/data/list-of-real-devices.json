@@ -347,7 +347,9 @@
        "Galaxy A8+",
        "9"
       ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/Samsung-real-device.svg",
+     "os": "android"
     },
     {
      "name": "Android Google",
@@ -524,7 +526,9 @@
        "Pixel Tablet",
        "Android 13"
       ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/Google-real-device.svg",
+     "os": "android"
     },
     {
      "name": "Android OnePlus",
@@ -569,7 +573,9 @@
        "OnePlus Nord",
        "Android 12"
       ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/OnePlus-real-device.svg",
+     "os": "android"
     },
     {
      "name": "Android Xiaomi",
@@ -587,10 +593,6 @@
        "Android 14"
       ],
       [
-       "Redmi Note 13 Pro",
-       "Android 13"
-      ],
-      [
        "Redmi Note 12 Pro",
        "Android 14"
       ],
@@ -598,40 +600,9 @@
        "Redmi Note 10 Pro",
        "Android 11"
       ]
-     ]
-    },
-    {
-     "name": "Android Vivo",
-     "devices": [
-      [
-       "Vivo Y22",
-       "Android 14"
-      ],
-      [
-       "Vivo Y22",
-       "Android 12"
-      ],
-      [
-       "Vivo Y20g",
-       "Android 11"
-      ],
-      [
-       "vivo V20",
-       "Android 11"
-      ],
-      [
-       "Vivo T1 5G",
-       "Android 14"
-      ],
-      [
-       "Vivo T1 5G",
-       "Android 13"
-      ],
-      [
-       "Vivo T1 5G",
-       "Android 12"
-      ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/Xiaomi-real-device.svg",
+     "os": "android"
     },
     {
      "name": "Android OPPO",
@@ -664,7 +635,44 @@
        "Oppo A54",
        "Android 11"
       ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/OPPO-real-device.svg",
+     "os": "android"
+    },
+    {
+     "name": "Android Vivo",
+     "devices": [
+      [
+       "Vivo Y22",
+       "Android 14"
+      ],
+      [
+       "Vivo Y22",
+       "Android 12"
+      ],
+      [
+       "Vivo Y20g",
+       "Android 11"
+      ],
+      [
+       "vivo V20",
+       "Android 11"
+      ],
+      [
+       "Vivo T1 5G",
+       "Android 14"
+      ],
+      [
+       "Vivo T1 5G",
+       "Android 13"
+      ],
+      [
+       "Vivo T1 5G",
+       "Android 12"
+      ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/Vivo-real-device.svg",
+     "os": "android"
     },
     {
      "name": "Android Motorola",
@@ -685,7 +693,9 @@
        "Moto G22",
        "Android 12"
       ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/Motorola-real-device.svg",
+     "os": "android"
     },
     {
      "name": "Android Huawei",
@@ -699,10 +709,16 @@
        "Android 11"
       ],
       [
+       "Huawei P30 Pro",
+       "Android 10"
+      ],
+      [
        "Huawei P30",
        "Android 10"
       ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/Huawei-real-device.svg",
+     "os": "android"
     },
     {
      "name": "Android realme",
@@ -715,7 +731,9 @@
        "realme GT2 Pro",
        "Android 14"
       ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/realme-real-device.svg",
+     "os": "android"
     },
     {
      "name": "Android Microsoft",
@@ -724,16 +742,9 @@
        "Microsoft Surface Duo",
        "Android 12"
       ]
-     ]
-    },
-    {
-     "name": "Android Honor",
-     "devices": [
-      [
-       "HONOR X9a 5G",
-       "Android 13"
-      ]
-     ]
+     ],
+     "logo": "https://assets.testmuai.com/resources/images/Microsoft-real-device.svg",
+     "os": "android"
     },
     {
      "name": "iOS iPhone",
@@ -772,10 +783,6 @@
       ],
       [
        "iPhone 16 Pro Max",
-       "iOS 26"
-      ],
-      [
-       "iPhone 16 Pro Max",
        "iOS 18"
       ],
       [
@@ -804,10 +811,6 @@
       ],
       [
        "iPhone 15 Pro Max",
-       "iOS 27"
-      ],
-      [
-       "iPhone 15 Pro Max",
        "iOS 18"
       ],
       [
@@ -844,15 +847,7 @@
       ],
       [
        "iPhone 15",
-       "iOS 18"
-      ],
-      [
-       "iPhone 15",
        "iOS 17"
-      ],
-      [
-       "iPhone 14 Pro Max",
-       "iOS 27"
       ],
       [
        "iPhone 14 Pro Max",
@@ -897,10 +892,6 @@
       [
        "iPhone 14",
        "iOS 16"
-      ],
-      [
-       "iPhone 13 Pro Max",
-       "iOS 27"
       ],
       [
        "iPhone 13 Pro Max",
@@ -973,10 +964,6 @@
       [
        "iPhone 12 Pro",
        "iOS 27"
-      ],
-      [
-       "iPhone 12 Pro",
-       "iOS 26"
       ],
       [
        "iPhone 12 Pro",
@@ -1049,6 +1036,10 @@
       [
        "iPhone 11",
        "iOS 18"
+      ],
+      [
+       "iPhone 11",
+       "iOS 17"
       ],
       [
        "iPhone 11",
@@ -1126,7 +1117,9 @@
        "iPhone Air",
        "iOS 26"
       ]
-     ]
+     ],
+     "logo": null,
+     "os": "ios"
     },
     {
      "name": "iOS iPad",
@@ -1271,7 +1264,9 @@
        "iPad 10.2 (2019)",
        "iOS 15"
       ]
-     ]
+     ],
+     "logo": null,
+     "os": "ios"
     }
    ],
    "promos": [
@@ -1290,6 +1285,10 @@
      "img": "https://assets.testmuai.com/resources/images/CTBlogo.svg"
     }
    ],
+   "osIcons": {
+    "android": "https://assets.testmuai.com/resources/images/android-real-device.svg",
+    "ios": "https://assets.testmuai.com/resources/images/automation/apple.svg"
+   },
    "href": "https://www.testmuai.com/login/?redirectTo=https://applive.lambdatest.com/app"
   },
   {
@@ -1423,13 +1422,13 @@
      "Android 11 to Android 14"
     ],
     [
-     "Vivo",
-     "Vivo Y22, Vivo Y20g, vivo V20, Vivo T1 5G",
+     "OPPO",
+     "Oppo Reno8, Oppo K10, Oppo A96, Oppo A54",
      "Android 11 to Android 14"
     ],
     [
-     "OPPO",
-     "Oppo Reno8, Oppo K10, Oppo A96, Oppo A54",
+     "Vivo",
+     "Vivo Y22, Vivo Y20g, vivo V20, Vivo T1 5G",
      "Android 11 to Android 14"
     ],
     [
@@ -1439,7 +1438,7 @@
     ],
     [
      "Huawei",
-     "Huawei P50 Pro, Huawei P30",
+     "Huawei P50 Pro, Huawei P30 Pro, Huawei P30",
      "Android 10 to Android 12"
     ],
     [
@@ -1451,11 +1450,6 @@
      "Microsoft",
      "Microsoft Surface Duo",
      "Android 12"
-    ],
-    [
-     "Honor",
-     "HONOR X9a 5G",
-     "Android 13"
     ]
    ],
    "src": "Summarised from the live list of real devices on 2026-11-26; open the device picker for each model's exact OS versions.",

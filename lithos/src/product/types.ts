@@ -35,7 +35,14 @@ export type Sec =
       setups: { label: string; value: string; button: string; href: string | null }[];
       cards: { name: string; body: string; cta: string; href: string | null; logo: string | null }[];
     })
-  | (Head & { type: "devices"; tabs: string[]; groups: { name: string; devices: string[][] }[]; href: string; promos: { title: string; body: string; cta: string; href: string | null; img: string | null }[] })
+  | (Head & {
+      type: "devices";
+      tabs: string[];
+      groups: { name: string; devices: string[][]; logo?: string | null; os?: "android" | "ios" }[];
+      href: string;
+      promos: { title: string; body: string; cta: string; href: string | null; img: string | null }[];
+      osIcons?: Record<string, string>;
+    })
   | (Head & { type: "data"; cols: string[]; rows: string[][]; src: string })
   | (Head & { type: "teams"; items: { name: string; for: string; items: string[]; dark: boolean }[] })
   | (Head & { type: "stories"; items: { num: string; text: string; cta: string; href: string }[] })

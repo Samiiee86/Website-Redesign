@@ -231,7 +231,10 @@ for e in clsall(main, "ext"):
             ext.append({"type": "mcp", "id": "mcp-clients", "head": txt(h2), "body": body, "setups": setups, "cards": cards})
         elif sec.find("ul", class_=lambda c: c and "list_realdevice" in c):
             tabs = [txt(li) for li in sec.find("ul").find_all("li")]
-            brands = [img.get("alt") for img in sec.find("ul", class_=lambda c: c and "pt-24" in c).find_all("img") if img.get("alt") != "Arrow"]
+            brand_imgs = [img for img in sec.find("ul", class_=lambda c: c and "pt-24" in c).find_all("img") if img.get("alt") != "Arrow"]
+            brands = [img.get("alt") for img in brand_imgs]
+            logos = {img.get("alt"): img.get("src") for img in brand_imgs}
+            os_icons = {img.get("alt"): img.get("src") for img in sec.find("ul", class_="flex").find_all("img")} if sec.find("ul", class_="flex") else {}
             first = [[txt(li.find("a")), txt(li.find("span", class_=lambda c: c and "w-15" in c))] for li in sec.find("ul", class_=lambda c: c and "list_realdevice" in c).find_all("li")]
             gs = [{"name": brands[0] if brands else "", "devices": first}]
             for div in sec.find_all("div"):
@@ -243,7 +246,11 @@ for e in clsall(main, "ext"):
             for box in side.find_all("div", class_=lambda c: c and "overflow-hidden" in c and "rounded-lg" in c) if side else []:
                 ps = box.find_all("p"); b = box.find(["a", "button"]); im = box.find("img")
                 promos.append({"title": txt(ps[0]), "body": txt(ps[1]) if len(ps) > 1 else "", "cta": txt(b), "href": b.get("href") if b and b.name == "a" else None, "img": im.get("src") if im else None})
-            ext.append({"type": "devices", "id": "devices", "head": "", "body": [], "tabs": tabs, "groups": gs, "promos": promos, "href": sec.find("ul", class_=lambda c: c and "list_realdevice" in c).find("a").get("href")})
+            for g in gs:
+                key = g["name"].replace("Android ", "").replace("iOS ", "")
+                g["logo"] = next((v for k, v in logos.items() if k.lower() == key.lower()), None)
+                g["os"] = "ios" if g["name"].startswith("iOS") else "android"
+            ext.append({"type": "devices", "id": "devices", "head": "", "body": [], "tabs": tabs, "groups": gs, "promos": promos, "osIcons": os_icons, "href": sec.find("ul", class_=lambda c: c and "list_realdevice" in c).find("a").get("href")})
 
 data["sections"] = ext + secs
 data["unknown"] = unknown

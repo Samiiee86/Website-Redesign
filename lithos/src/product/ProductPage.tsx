@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { Check, ChevronDown, Search, Code, Ear, ListChecks, ShieldCheck, Smartphone, Wrench, ScanEye, Globe, ClipboardList, type LucideIcon } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, Search, Code, Ear, ListChecks, ShieldCheck, Smartphone, Wrench, ScanEye, Globe, ClipboardList, type LucideIcon } from "lucide-react";
 import { Section } from "../lib/ui";
 import GuideLines from "../components/GuideLines";
 import Header from "../components/Header";
@@ -88,7 +88,7 @@ const icon = (title: string, body = "") => ICONS[title] ?? iconFor(title, body);
    "and" and the like. Short headings (one or two words) stay on one line. */
 
 const LEADS_INTO = new Set(["on", "for", "or", "in", "with", "where", "to", "from", "before", "across", "at", "by", "that", "your", "without", "and"]);
-const NEVER_LAST = new Set(["a", "an", "the", "and", "or", "of", "to", "for", "on", "in", "with", "your", "by", "at", "from", "they", "what", "you", "we", "it", "is", "are", "every", "its", "how"]);
+const NEVER_LAST = new Set(["a", "an", "the", "and", "or", "of", "to", "for", "on", "in", "with", "your", "by", "at", "from", "they", "what", "you", "we", "it", "is", "are", "every", "its", "how", "each", "what"]);
 
 export function split(title: string): [string, string] {
   const w = title.split(" ");
@@ -98,7 +98,7 @@ export function split(title: string): [string, string] {
   for (let k = 1; k < w.length; k++) {
     const a = w.slice(0, k).join(" ");
     const b = w.slice(k).join(" ");
-    let s = Math.abs(a.length - b.length);
+    let s = Math.abs(a.length - b.length) + Math.abs(k - (w.length - k)) * 2.5;
     const first = w[k].toLowerCase();
     const last = w[k - 1].toLowerCase();
     if (LEADS_INTO.has(first)) s -= 8;
@@ -111,6 +111,8 @@ export function split(title: string): [string, string] {
       best = k;
     }
   }
+  /* never one word alone on a line: keep a short heading on one line */
+  if (best === 1 || best === w.length - 1) return ["", title];
   return [w.slice(0, best).join(" "), w.slice(best).join(" ")];
 }
 
@@ -281,7 +283,7 @@ function Hero({ d }: { d: PageData }) {
                 ))}
               </p>
             )}
-            <h1 className="!text-[length:var(--tm-h2-size)] !leading-[var(--tm-h2-line)] !tracking-[var(--tm-h2-tracking)] [text-wrap:balance]">
+            <h1 className="!text-[length:var(--tm-h3-size)] !leading-[var(--tm-h3-line)] !tracking-[var(--tm-h3-tracking)] [text-wrap:balance] md:!text-[length:var(--tm-h2-size)] md:!leading-[var(--tm-h2-line)] md:!tracking-[var(--tm-h2-tracking)]">
               {h.h1a}
               {h.h1b && (
                 <>
@@ -343,7 +345,7 @@ function Hero({ d }: { d: PageData }) {
 function Glance({ s }: { s: Extract<Sec, { type: "glance" }> }) {
   return (
     <Section>
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
         <div className="flex flex-col items-start gap-6">
           <Heading text={s.head} className="" />
           {s.price && <p className="border border-border bg-surface px-5 py-3 text-b1 font-medium">{s.price}</p>}
@@ -471,7 +473,7 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
         lead={lead}
         title={title}
         body={
-          <>
+          lines.length > 0 && <>
             {lines.map((l, i) => (
               <span key={l} className={i ? "mt-3 block" : "block"}>
                 {l}
@@ -493,7 +495,7 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
             cta={s.cta}
             head={s.cols[0]}
             plain
-            oursWeight={1.4}
+            oursWeight={1.6}
           />
         </div>
       ) : (
@@ -505,7 +507,7 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
             cta={s.cta}
             head={s.cols[0]}
             plain
-            oursWeight={1.4}
+            oursWeight={1.6}
           />
         </Reveal>
       )}
@@ -616,75 +618,135 @@ function Mcp({ s }: { s: Extract<Sec, { type: "mcp" }> }) {
   );
 }
 
-/* the real device list: Live or Automation, a brand, a search, and the
-   brand's devices in joined cells */
+/* the real device list, laid out as on the live page: Live and Automation
+   tabs; an Android and Apple switch over the brand list (the live page's
+   brand logos) on the left; search and the brand's devices in two columns
+   (name, OS mark, version) in the middle; the two offers on the right */
 function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
   const [tab, setTab] = useState(0);
+  const [os, setOs] = useState<"android" | "ios">("android");
   const [brand, setBrand] = useState(0);
   const [q, setQ] = useState("");
+  const brands = s.groups.map((g, i) => ({ ...g, i })).filter((g) => (g.os ?? "android") === os);
+  const current = s.groups[brand];
   const list = useMemo(() => {
     const ql = q.trim().toLowerCase();
-    const src = ql ? s.groups.flatMap((g) => g.devices) : s.groups[brand].devices;
-    return ql ? src.filter(([n]) => n.toLowerCase().includes(ql)) : src;
-  }, [s.groups, brand, q]);
+    if (ql) return s.groups.flatMap((g) => g.devices.map((d) => ({ d, os: g.os ?? "android" }))).filter(({ d }) => d[0].toLowerCase().includes(ql));
+    return current.devices.map((d) => ({ d, os: current.os ?? "android" }));
+  }, [s.groups, current, q]);
+  const icon = (o: string) => s.osIcons?.[o];
+  const version = (v: string) => (v ?? "").replace(/^(Android|iOS)\s+/, "");
   return (
     <Section>
-      <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="tm-seg" role="group" aria-label="Testing type">
-          {s.tabs.map((t, i) => (
-            <button key={t} type="button" aria-pressed={tab === i} onClick={() => setTab(i)}>
-              {t}
-            </button>
-          ))}
-        </div>
-        <label className="tm-field w-full lg:w-[400px]">
-          <span className="tm-field__box">
-            <Search aria-hidden />
-            <input type="search" aria-label="Search devices" value={q} onChange={(e) => setQ(e.target.value)} />
-          </span>
-        </label>
-      </div>
-      <div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Brand">
-        {s.groups.map((g, i) => (
+      {/* Live / Automation, as underline tabs */}
+      <div role="tablist" aria-label="Testing type" className="mb-10 inline-flex border-b border-border">
+        {s.tabs.map((t, i) => (
           <button
-            key={g.name}
+            key={t}
+            role="tab"
             type="button"
-            aria-pressed={!q && brand === i}
-            onClick={() => {
-              setBrand(i);
-              setQ("");
-            }}
-            className={`pill rounded-full border px-3 py-1 text-b3 transition-colors duration-200 ${!q && brand === i ? "border-[var(--tm-border-emphasis)] bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]" : "border-border bg-surface hover:bg-[var(--tm-bg-fill)]"}`}
+            aria-selected={tab === i}
+            onClick={() => setTab(i)}
+            className={`-mb-px w-40 border-b-2 py-3 text-b1 transition-colors duration-200 ${tab === i ? "border-[var(--tm-border-emphasis)] font-medium text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
           >
-            {g.name}
+            {t}
           </button>
         ))}
       </div>
-      <ul className={`${JOIN} sm:grid-cols-2 lg:grid-cols-4`}>
-        {list.map(([name, ver], i) => (
-          <li key={`${name}-${ver}-${i}`} className="bg-surface">
-            <a href={s.href} className="group flex items-center justify-between gap-3 px-6 py-4 transition-colors duration-200 hover:bg-[var(--tm-bg-fill)]">
-              <span className="text-b2">{name}</span>
-              <span className="flex-none font-mono text-b4 text-muted-foreground">{ver}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      {s.promos.length > 0 && (
-        /* the live list's two side offers, as dark joined boxes under it */
-        <div className={`${FIT} !border-t-0 !bg-[var(--tm-bg-inverse-muted)]`}>
-          {s.promos.map((p) => (
-            <div key={p.title} className="relative flex min-h-[200px] flex-col items-start gap-3 overflow-hidden !bg-[var(--tm-bg-inverse)] !p-8 text-[var(--tm-fg-inverse)]">
-              <h3 className={H4}>{p.title}</h3>
-              <p className="max-w-[420px] text-b1 text-[var(--tm-fg-inverse-muted)]">{p.body}</p>
-              <a className="tm-btn tm-btn--secondary relative z-[1] mt-auto" href={p.href ?? `${SITE}/contact-us/`}>
+
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="min-w-0">
+          {/* Android / Apple, then the search */}
+          <div className="flex flex-col gap-4 border-b border-border pb-4 sm:flex-row sm:items-center sm:justify-between">
+            <div role="tablist" aria-label="Platform" className="flex gap-2">
+              {(["android", "ios"] as const).map((o) => (
+                <button
+                  key={o}
+                  role="tab"
+                  type="button"
+                  aria-selected={os === o}
+                  aria-label={o === "android" ? "Android" : "Apple"}
+                  onClick={() => {
+                    setOs(o);
+                    setBrand(s.groups.findIndex((g) => (g.os ?? "android") === o));
+                    setQ("");
+                  }}
+                  className={`grid size-11 place-items-center rounded-md border transition-colors duration-200 ${os === o ? "border-[var(--tm-border-emphasis)] bg-surface" : "border-transparent hover:bg-[var(--tm-bg-fill)]"}`}
+                >
+                  {icon(o) && <img src={icon(o)} alt="" className="h-6 w-auto" />}
+                </button>
+              ))}
+            </div>
+            <label className="tm-field w-full sm:w-[360px]">
+              <span className="tm-field__box">
+                <Search aria-hidden />
+                <input type="search" placeholder="Search" aria-label="Search devices" value={q} onChange={(e) => setQ(e.target.value)} />
+              </span>
+            </label>
+          </div>
+
+          <div className="grid gap-6 pt-6 md:grid-cols-[200px_minmax(0,1fr)] md:gap-0">
+            {/* the brands, by their logos */}
+            <ul className="flex flex-wrap gap-2 md:flex-col md:gap-1 md:border-r md:border-border md:pr-6">
+              {brands.map((g) => {
+                const on = !q && brand === g.i;
+                return (
+                  <li key={g.name}>
+                    <button
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() => {
+                        setBrand(g.i);
+                        setQ("");
+                      }}
+                      className={`flex h-12 w-full items-center justify-between gap-3 rounded-md border-l-2 px-3 transition-colors duration-200 ${on ? "border-[var(--tm-hero-arrow)] bg-[var(--tm-bg-fill)]" : "border-transparent hover:bg-[var(--tm-bg-fill)]"}`}
+                    >
+                      {g.logo ? (
+                        <img src={g.logo} alt={g.name.replace(/^(Android|iOS)\s+/, "")} className={`h-6 w-auto max-w-[120px] object-contain ${on ? "" : "opacity-70"}`} />
+                      ) : (
+                        <span className="text-b1 font-medium">{g.name.replace(/^(Android|iOS)\s+/, "")}</span>
+                      )}
+                      {on && <ArrowRight size={16} strokeWidth={1.5} aria-hidden className="flex-none" />}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+
+            {/* the devices, two columns: name, OS mark, version */}
+            <ul className="grid content-start gap-x-10 sm:grid-cols-2 md:pl-8">
+              {list.map(({ d: [name, ver], os: o }, i) => (
+                <li key={`${name}-${ver}-${i}`}>
+                  <a href={s.href} className="group flex items-center justify-between gap-3 border-b border-border py-3 text-b2 transition-colors duration-200 hover:text-foreground">
+                    <span className="group-hover:underline group-hover:underline-offset-4">{name}</span>
+                    <span className="flex flex-none items-center gap-2 text-muted-foreground">
+                      {icon(o) && <img src={icon(o)} alt="" className="h-4 w-auto" />}
+                      <span className="w-6 text-right">{version(ver)}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* the live page's two offers, stacked */}
+        <div className="flex flex-col gap-6">
+          {s.promos.map((p, i) => (
+            <div
+              key={p.title}
+              className={`relative flex min-h-[280px] flex-col items-start gap-3 overflow-hidden p-8 text-[var(--tm-fg-inverse)] ${i === 0 ? "bg-[var(--tm-bg-inverse)]" : "bg-[var(--tm-bg-accent)]"}`}
+            >
+              <h3 className={`relative z-[1] ${H4}`}>{p.title}</h3>
+              <p className="relative z-[1] text-b2 text-[color-mix(in_srgb,var(--tm-fg-inverse)_80%,transparent)]">{p.body}</p>
+              <a className="tm-btn tm-btn--secondary relative z-[1] mt-2" href={p.href ?? `${SITE}/contact-us/`}>
                 {p.cta}
               </a>
-              {p.img && <img src={p.img} alt="" aria-hidden className="pointer-events-none absolute bottom-0 right-0 max-h-[160px] w-auto" loading="lazy" />}
+              {p.img && <img src={p.img} alt="" aria-hidden className="pointer-events-none absolute bottom-0 right-0 max-h-[150px] w-auto" loading="lazy" />}
             </div>
           ))}
         </div>
-      )}
+      </div>
     </Section>
   );
 }
@@ -698,7 +760,7 @@ function Data({ s }: { s: Extract<Sec, { type: "data" }> }) {
       lead={lead}
       title={title}
       body={
-        (
+        (lines.length > 0 && (
           <>
             {lines.map((l, i) => (
               <span key={l} className={i ? "mt-3 block" : "block"}>
@@ -706,10 +768,11 @@ function Data({ s }: { s: Extract<Sec, { type: "data" }> }) {
               </span>
             ))}
           </>
-        ) as unknown as string
+        )) as unknown as string
       }
       columns={s.cols}
       rows={s.rows.map(([name, ...cells]) => ({ name, cells }))}
+      plain
     />
   );
 }
@@ -980,7 +1043,7 @@ export default function ProductPage({ d }: { d: PageData }) {
 
         <TrustedBy />
         {body}
-        {faq && <Faq title={faq.head} items={faq.items} />}
+        {faq && <Faq title={faq.head} items={faq.items} stacked />}
         {/* numbers in Manrope on these pages, not the pixel face */}
         <div className="contents [&_.pixel]:![font-family:var(--tm-font-sans)] [&_.pixel]:!font-medium [&_.tm-pixel]:![font-family:var(--tm-font-sans)]">
           <Reasons integrations={false} />

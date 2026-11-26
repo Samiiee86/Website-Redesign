@@ -46,6 +46,9 @@ type Props = {
   /* the first is the name of the row column, the rest name the facts */
   columns: string[];
   rows: SpecRow[];
+  /* white table, grey head row, straight row lines, outline (the product
+     pages, like their comparison table) */
+  plain?: boolean;
 };
 
 /* No column tints: every column sits on the page ground, as in the
@@ -103,6 +106,7 @@ export default function SpecTable({
   cta,
   columns,
   rows,
+  plain = false,
 }: Props) {
   return (
     <Section>
@@ -125,6 +129,7 @@ export default function SpecTable({
           columns={columns}
           rows={rows}
           className="-mx-8"
+          plain={plain}
         />
       </Reveal>
     </Section>
@@ -139,6 +144,7 @@ export function SpecSheet({
   rows,
   className = "",
   greyHead = false,
+  plain = false,
 }: {
   label: string;
   columns: string[];
@@ -147,14 +153,22 @@ export function SpecSheet({
   /* the column names on the grey fill band (bg-fill), as the group band
      in the comparison table, so the head reads apart from the rows */
   greyHead?: boolean;
+  plain?: boolean;
 }) {
+  /* plain: white cells, grey head, straight lines under every row, an
+     outline, every word at 16px */
+  const cellBg = (col: number) => (plain ? "lg:bg-surface" : tint(col));
   const facts = columns.slice(1);
 
   return (
         <div
           role="table"
           aria-label={label}
-          className={`relative border-y border-border bg-surface lg:bg-background ${className}`}
+          className={`relative border-y border-border bg-surface lg:bg-background ${
+            plain
+              ? "lg:border-x [&_[role=cell]_*]:!text-b2 [&_[role=columnheader]]:!text-b2 [&_[role=rowheader]_span]:!text-b2 [&_[role=rowheader]_span]:!font-medium [&_[role=rowheader]_span]:!tracking-normal"
+              : ""
+          } ${className}`}
           style={{ "--n": facts.length } as CSSProperties}
         >
           {/* column names: pinned under the 56px header */}
@@ -166,7 +180,7 @@ export function SpecSheet({
               <div
                 key={c}
                 role="columnheader"
-                className={`py-5 text-foreground ${H5} ${greyHead ? "lg:bg-[var(--tm-bg-fill)]" : tint(i)} ${
+                className={`py-5 text-foreground ${H5} ${greyHead ? "lg:bg-[var(--tm-bg-fill)]" : plain ? "lg:bg-background" : tint(i)} ${
                   i === 0 ? "px-8" : "px-6 lg:border-l lg:border-border"
                 }`}
               >
@@ -183,11 +197,11 @@ export function SpecSheet({
             /* the lifted row has no dots, and nor does the row above it,
                so no dots run into its outline */
             const dots =
-              ri < rows.length - 1 && !hl && !rows[ri + 1]?.highlight
+              !plain && ri < rows.length - 1 && !hl && !rows[ri + 1]?.highlight
                 ? DOTS
                 : "";
             /* the lifted row is one white sheet: no column tints */
-            const bg = (col: number) => (hl ? "" : tint(col));
+            const bg = (col: number) => (hl ? "" : cellBg(col));
             return (
               <div
                 key={r.name}
@@ -195,7 +209,9 @@ export function SpecSheet({
                 className={`${GRID} ${
                   hl
                     ? "z-[2] border-2 border-foreground bg-surface"
-                    : "border-b border-border lg:border-b-0"
+                    : plain && ri < rows.length - 1
+                      ? "border-b border-border"
+                      : "border-b border-border lg:border-b-0"
                 }`}
               >
                 <div
