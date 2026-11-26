@@ -172,7 +172,12 @@ export default function MatrixTable({
       <div
         role="table"
         aria-label={label}
-        className="relative pt-9"
+        className={`relative pt-9 ${
+          /* plain: every word in the table at B2 (16px) */
+          plain
+            ? "[&_[role=cell]_*]:!text-b2 [&_[role=columnheader]_span:not(.font-mono)]:!text-b2 [&_[role=rowheader]_span]:!text-b2"
+            : ""
+        }`}
         style={
           {
             "--n": n,
@@ -197,7 +202,7 @@ export default function MatrixTable({
         <div role="row" className={`${GRID} sticky top-14 z-10`}>
           <div
             role="columnheader"
-            className={`hidden items-center border-y border-border ${plain ? "bg-surface" : "bg-background"} px-8 py-6 text-foreground lg:flex ${H5}`}
+            className={`hidden items-center border-y border-border bg-background px-8 py-6 text-foreground lg:flex ${H5}`}
           >
             {head}
           </div>
