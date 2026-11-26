@@ -76,7 +76,7 @@ const run: { who: string; what: string; ok: boolean }[] = [
 function Tag({ ok }: { ok: boolean }) {
   return (
     <span
-      className={`tag flex-none rounded-sm px-1.5 py-0.5 font-mono text-b5 uppercase tracking-[1px] ${
+      className={`tag flex-none rounded-sm px-2 py-0.5 font-mono text-b4 font-medium uppercase tracking-[1px] ${
         ok
           ? "bg-[var(--tm-green-000)] text-[var(--tm-green-500)]"
           : "bg-[var(--tm-red-000)] text-[var(--tm-red-500)]"
@@ -87,33 +87,43 @@ function Tag({ ok }: { ok: boolean }) {
   );
 }
 
-/* the live hero's sample run, as a white panel on the scene */
+/* the live hero's sample run card, in its own colours: off-white head and
+   foot, a green "sample run" light, upper-case mono labels, mono results,
+   dashed row lines and a blue mark before the evidence line */
 function RunCard() {
   return (
-    <div className="flex w-full max-w-[560px] flex-col bg-surface text-left [box-shadow:var(--tm-shadow-resting-md)]">
-      <div className="flex items-center justify-between gap-3 border-b border-border px-4 py-3">
+    <div className="flex w-full flex-col border border-border bg-surface text-left [box-shadow:var(--tm-shadow-floating-md)]">
+      <div className="flex items-center justify-between gap-3 border-b border-border bg-background px-5 py-4">
         <span className="flex items-center gap-3">
-          <span className="flex gap-1" aria-hidden>
+          <span className="flex gap-1.5" aria-hidden>
             {[0, 1, 2].map((i) => (
-              <i key={i} className="block size-2 rounded-full bg-[var(--tm-border-default)]" />
+              <i key={i} className="block size-2.5 rounded-full bg-[var(--tm-border-default)]" />
             ))}
           </span>
-          <span className="font-mono text-b4">a11y · signup-flow</span>
+          <span className="whitespace-nowrap font-mono text-b3">a11y · signup-flow</span>
         </span>
-        <span className="text-b4 text-muted-foreground">sample run</span>
+        <span className="flex items-center gap-2 whitespace-nowrap font-mono text-b4 uppercase tracking-[1px] text-[var(--tm-green-500)]">
+          <span aria-hidden className="grid size-4 place-items-center rounded-full bg-[var(--tm-green-000)]">
+            <i className="block size-2 rounded-full bg-[var(--tm-green-400)]" />
+          </span>
+          sample run
+        </span>
       </div>
       <ol>
         {run.map((r, i) => (
-          <li key={r.who} className={`flex items-center gap-3 px-4 py-3 ${i ? "border-t border-border" : ""}`}>
-            <span className="w-24 flex-none font-mono text-b4 text-muted-foreground">{r.who}</span>
-            <span className="min-w-0 flex-1 text-b3">{r.what}</span>
+          <li key={r.who} className={`flex items-center gap-3 px-4 py-3 sm:gap-4 sm:px-5 ${i ? "border-t border-dashed border-border" : ""}`}>
+            <span className="w-20 flex-none truncate font-mono sm:w-28 text-b4 uppercase tracking-[1px] text-muted-foreground">{r.who}</span>
+            <span className="min-w-0 flex-1 font-mono text-b3">{r.what}</span>
             <Tag ok={r.ok} />
           </li>
         ))}
       </ol>
-      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border bg-[var(--tm-bg-fill)] px-4 py-3">
-        <span className="font-mono text-b4">1 issue · rule 1.4.3</span>
-        <span className="text-b4 text-muted-foreground">issue list with element, rule and fix</span>
+      <div className="flex flex-col gap-1 border-t border-border bg-background px-5 py-4">
+        <span className="font-mono text-b2 font-medium">1 issue · rule 1.4.3</span>
+        <span className="flex items-center gap-2 font-mono text-b4 text-muted-foreground">
+          <i aria-hidden className="block size-2.5 flex-none bg-[var(--tm-blue-500)]" />
+          issue list with element, rule and fix
+        </span>
       </div>
     </div>
   );
@@ -134,8 +144,8 @@ function Hero() {
           <span aria-current="page">Accessibility Testing</span>
         </nav>
         <div className="tm-hero__grid lg:!grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
-          <div>
-            <p className="pill mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-b4">
+          <div className="min-w-0">
+            <p className="pill mb-6 inline-flex flex-wrap items-center gap-2 rounded-full border border-border bg-surface px-3 py-1 text-b4">
               <ShieldCheck size={16} strokeWidth={1.5} aria-hidden />
               <span className="font-medium">Accessibility Testing</span>
               <span aria-hidden className="text-muted-foreground">·</span>
@@ -179,11 +189,11 @@ function Hero() {
             </ul>
           </div>
           {/* the scene, with the run card hanging off its lower edge */}
-          <div className="relative">
+          <div className="relative min-w-0">
             <div className="relative aspect-[16/10] overflow-hidden border border-border">
               <img className="absolute inset-0 size-full object-cover" src={`${HERO}/hero-bg.png`} alt="Accessibility testing on TestMu AI" />
             </div>
-            <div className="relative -mt-16 ml-auto w-[92%] lg:-mt-32 lg:w-[72%]">
+            <div className="relative -mt-16 ml-auto w-full sm:w-[92%] lg:-mr-10 lg:-mt-32 lg:w-[78%]">
               <RunCard />
             </div>
           </div>
@@ -237,17 +247,22 @@ const steps = [
 /* H5 and B2: the kit's 20px step title is off the type scale */
 const H5 = "!text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]";
 
+/* as on the live page: a dark band, the heading on one line, three dark
+   step cells with mono numbers. Joined cells with hairlines (DS card
+   frames), sharp corners. */
 function How() {
   return (
-    <Section>
-      <FoldHead lead="Scan, review," title="fix, re-scan" />
+    <Section className="!bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
+      <h2 className="mb-12 [text-wrap:balance]">Scan, review, fix, re-scan</h2>
       <div className="tm-reveal -mx-8">
-        <ol className="tm-grid tm-grid--3 tm-steps2">
+        <ol className="grid gap-px border-y border-[var(--tm-bg-inverse-muted)] bg-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] md:grid-cols-3">
           {steps.map((s, i) => (
-            <li key={s.title} className="tm-cell tm-step">
-              <span className="tm-step__n">{i + 1}</span>
-              <h3 className={H5}>{s.title}</h3>
-              <p className="!text-b2">{s.body}</p>
+            <li key={s.title} className="flex flex-col gap-2 bg-[var(--tm-bg-inverse-muted)] p-8">
+              <span className="font-mono text-b4 font-medium text-[var(--tm-blue-300)]">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className={`mt-2 ${H5}`}>{s.title}</h3>
+              <p className="text-b2 text-[var(--tm-fg-inverse-muted)]">{s.body}</p>
             </li>
           ))}
         </ol>
