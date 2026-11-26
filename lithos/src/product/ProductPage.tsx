@@ -771,7 +771,7 @@ function hugCols(cols: string[], rows: string[][]): string | undefined {
   if (!len.some((l) => l > HUG * 2)) return undefined;
   /* side padding: 32px on the first column, 24px on the others */
   return len
-    .map((l, i) => (l <= HUG ? `calc(${l}ch + ${i === 0 ? 64 : 48}px)` : "minmax(0,1fr)"))
+    .map((l, i) => (l <= HUG ? `calc(${l} * 0.46em + ${i === 0 ? 64 : 48}px)` : "minmax(0,1fr)"))
     .join(" ");
 }
 
