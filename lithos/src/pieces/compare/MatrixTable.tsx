@@ -187,7 +187,7 @@ export default function MatrixTable({
         }
       >
         {/* plain: one white sheet behind the whole table, under the flag */}
-        {plain && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-9 hidden border border-border bg-surface lg:block" />}
+        {plain && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-9 hidden bg-surface lg:block" />}
         {/* desktop: the white column, one sheet from the flag to the foot */}
         <div
           aria-hidden
@@ -326,6 +326,10 @@ export default function MatrixTable({
             ))}
           </div>
         )}
+
+        {/* plain: the outline round the whole table, drawn on top so the
+            grey header cells don't hide its sides */}
+        {plain && <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 top-9 z-[11] hidden border border-border lg:block" />}
 
         {/* the foot: the button in the TestMu AI column; the other columns
             end at the last row, with nothing below them */}
