@@ -427,37 +427,65 @@ function Strat({ s }: { s: Extract<Sec, { type: "strat" }> }) {
    numbered lines, and the live page's note under it */
 function CodePanel({ c }: { c: NonNullable<Extract<Sec, { type: "cmp" }>["code"]> }) {
   const [copied, setCopied] = useState(false);
+  /* the live page's black terminal: name and Copy on top, the commands,
+     the note under them */
   return (
-    <div className="tm-code">
-      <div className="tm-code__bar">
-        <span className="px-3 py-3 font-mono text-b4 font-medium">{c.label}</span>
-        <div className="tm-code__tools">
-          <button
-            type="button"
-            className="tm-btn tm-btn--secondary"
-            onClick={() => {
-              navigator.clipboard?.writeText(c.code).then(() => setCopied(true));
-            }}
-          >
-            Copy
-            {copied && <Check aria-hidden />}
-          </button>
-        </div>
+    <div className="flex h-full flex-col bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
+      <div className="flex items-center justify-between gap-4 border-b border-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] px-6 py-3">
+        <span className="font-mono text-b4 text-[var(--tm-fg-inverse-muted)]">{c.label}</span>
+        <button
+          type="button"
+          className="tm-btn tm-btn--outline-inverse tm-btn--sm"
+          onClick={() => {
+            navigator.clipboard?.writeText(c.code).then(() => setCopied(true));
+          }}
+        >
+          Copy
+          {copied && <Check size={16} strokeWidth={1.5} aria-hidden />}
+        </button>
       </div>
-      <pre>
-        {c.code.split("\n").map((l, i) => (
-          <span key={i} className="ln">
-            {l}
-          </span>
-        ))}
+      <pre className="m-0 overflow-x-auto px-6 py-6 font-mono text-b3 leading-[var(--tm-b2-line)] text-[var(--tm-bg-muted)]">
+        <code>{c.code}</code>
       </pre>
-      {c.note && <p className="border-t border-border px-6 py-3 text-b3 text-muted-foreground">{c.note}</p>}
+      {c.note && <p className="mt-auto px-6 pb-6 text-b3 text-[var(--tm-fg-inverse-muted)]">{c.note}</p>}
     </div>
   );
 }
 
-/* the live page's comparison, as the pieces library head to head; when the
-   live page shows a code snippet beside it, the snippet comes first */
+/* the live page's comparison table, in its own column order, with the
+   TestMu AI column framed in 2px black */
+const framed = (first: boolean, last: boolean) =>
+  `border-x-2 border-[var(--tm-border-emphasis)] ${first ? "border-t-2" : ""} ${last ? "border-b-2" : ""}`;
+
+function PlainTable({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
+  return (
+    <div className="h-full overflow-x-auto bg-surface">
+      <table className="w-full min-w-[520px] border-collapse text-left">
+        <caption className="sr-only">{s.caption}</caption>
+        <thead>
+          <tr className="bg-background">
+            <th scope="col" className="px-6 py-4 text-b2 font-medium">{s.cols[0]}</th>
+            <th scope="col" className="px-6 py-4 text-b2 font-medium">{s.cols[1]}</th>
+            <th scope="col" className={`bg-surface px-6 py-4 text-b2 font-medium text-[var(--tm-fg-link)] ${framed(true, false)}`}>{s.cols[2]}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {s.rows.map(([k, them, us], i) => (
+            <tr key={k} className="border-t border-border">
+              <th scope="row" className="px-6 py-5 text-b2 font-medium">{k}</th>
+              <td className="px-6 py-5 text-b2 text-muted-foreground">{them}</td>
+              <td className={`px-6 py-5 text-b2 ${framed(false, i === s.rows.length - 1)}`}>{us}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/* the live page's comparison. With a code snippet beside it (as on the
+   live page): the black terminal on the left, the table on the right, as
+   two joined cells. Without one: the pieces library head to head. */
 function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
   const [lead, title] = split(s.head);
   const lines = [s.caption, ...s.body, ...s.notes].filter(Boolean);
@@ -476,20 +504,22 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
           </>
         }
       />
-      {s.code && (
-        <Reveal className="-mx-8 mb-12 [&_.tm-code]:border-x-0">
+      {s.code ? (
+        <div className="tm-reveal -mx-8 grid gap-px border-y border-border bg-[var(--tm-border-default)] lg:grid-cols-2">
           <CodePanel c={s.code} />
+          <PlainTable s={s} />
+        </div>
+      ) : (
+        <Reveal delay={0.08} className="-mx-8">
+          <MatrixTable
+            label={`${lead} ${title}`}
+            rivals={[{ name: s.cols[1] }]}
+            groups={[{ label: "", rows: s.rows.map(([name, them, us]) => ({ name, values: [us, them] })) }]}
+            cta={s.cta}
+            head={s.cols[0]}
+          />
         </Reveal>
       )}
-      <Reveal delay={0.08} className="-mx-8">
-        <MatrixTable
-          label={`${lead} ${title}`}
-          rivals={[{ name: s.cols[1] }]}
-          groups={[{ label: "", rows: s.rows.map(([name, them, us]) => ({ name, values: [us, them] })) }]}
-          cta={s.cta}
-          head={s.cols[0]}
-        />
-      </Reveal>
     </Section>
   );
 }
