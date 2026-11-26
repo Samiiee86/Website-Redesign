@@ -1010,10 +1010,10 @@ function Page() {
         <Frameworks />
         <Performance />
         <OwnCloud />
-        <Reasons integrations={false} />
         <Stories content={stories} />
         <OpenSource />
         <Related />
+        <Reasons integrations={false} />
         <Faq items={faq} />
         <Enterprise />
         <Footer />
