@@ -9,7 +9,7 @@ import Faq from "../sections/Faq";
 import Footer from "../sections/Footer";
 import { Reveal } from "../lib/ui";
 import { FoldHead } from "../pieces/compare/parts";
-import MatrixTable from "../pieces/compare/MatrixTable";
+import CompareTable from "./CompareTable";
 import SpecTable from "../pieces/SpecTable";
 import { iconFor } from "./icons";
 import type { PageData, Run, Sec } from "./types";
@@ -488,26 +488,22 @@ function Compare({ s }: { s: Extract<Sec, { type: "cmp" }> }) {
         <div className="tm-reveal grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
           <CodePanel c={s.code} />
           {/* the same framed head to head as on every other page */}
-          <MatrixTable
+          <CompareTable
             label={`${lead} ${title}`}
-            rivals={[{ name: s.cols[1] }]}
-            groups={[{ label: "", rows: s.rows.map(([name, them, us]) => ({ name, values: [us, them] })) }]}
-            cta={s.cta}
             head={s.cols[0]}
-            plain
-            oursWeight={1.6}
+            rival={s.cols[1]}
+            rows={s.rows.map(([name, them, ours]) => ({ name, ours, them }))}
+            cta={s.cta}
           />
         </div>
       ) : (
         <Reveal delay={0.08} className="-mx-8">
-          <MatrixTable
+          <CompareTable
             label={`${lead} ${title}`}
-            rivals={[{ name: s.cols[1] }]}
-            groups={[{ label: "", rows: s.rows.map(([name, them, us]) => ({ name, values: [us, them] })) }]}
-            cta={s.cta}
             head={s.cols[0]}
-            plain
-            oursWeight={1.6}
+            rival={s.cols[1]}
+            rows={s.rows.map(([name, them, ours]) => ({ name, ours, them }))}
+            cta={s.cta}
           />
         </Reveal>
       )}
