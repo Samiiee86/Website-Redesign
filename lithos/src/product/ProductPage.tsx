@@ -530,25 +530,29 @@ function Groups({ s }: { s: Extract<Sec, { type: "groups" }> }) {
               </span>
               <ChevronDown size={20} strokeWidth={1.5} aria-hidden className="flex-none transition-transform duration-300 group-open:rotate-180" />
             </summary>
-            <div className="overflow-x-auto border-t border-border">
-              <table className="w-full min-w-[560px] text-left">
-                <thead>
-                  <tr className="bg-background">
-                    {g.cols.map((c) => (
-                      <th key={c} scope="col" className={`px-8 py-3 ${LABEL}`}>{c}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {g.rows.map((r, i) => (
-                    <tr key={i} className="border-t border-border">
-                      {r.map((c, j) => (
-                        <td key={j} className={`px-8 py-3 text-b2 ${j === r.length - 1 ? "font-mono" : ""}`}>{c}</td>
+            {/* as on the live page: the open row holds the table in its
+                own frame, inset from the row's edges */}
+            <div className="px-4 pb-6 md:px-8 md:pb-8">
+              <div className="overflow-x-auto border border-border">
+                <table className="w-full min-w-[560px] text-left">
+                  <thead>
+                    <tr className="bg-background">
+                      {g.cols.map((c) => (
+                        <th key={c} scope="col" className="px-6 py-4 text-b2 font-medium text-foreground">{c}</th>
                       ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {g.rows.map((r, i) => (
+                      <tr key={i} className="border-t border-border">
+                        {r.map((c, j) => (
+                          <td key={j} className={`px-6 py-4 text-b2 ${j === 0 ? "font-medium text-foreground" : "text-muted-foreground"}`}>{c}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </details>
         ))}
