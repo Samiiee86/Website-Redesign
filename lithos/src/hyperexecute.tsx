@@ -20,7 +20,6 @@ import Faq from "./sections/Faq";
 import Enterprise from "./sections/Enterprise";
 import Footer from "./sections/Footer";
 import { FoldHead } from "./pieces/compare/parts";
-import MatrixTable, { type MatrixGroup } from "./pieces/compare/MatrixTable";
 import {
   CARD,
   Fit,
@@ -48,8 +47,7 @@ import {
      hyperexecute): its copy, video and scene.
    - Kit folds for the rest, in the live page's order: feature tour (how
      it works, one tab per feature, each with a product screen drawn in
-     the hero-fold look), the pieces library's comparison table (against
-     a traditional grid), joined result cards and steps (where "up to 70%
+     the hero-fold look), joined result cards and steps (where "up to 70%
      faster" comes from), feature cards (red build triage), feature
      pointers (8 orchestration controls, performance testing), reviews,
      the frameworks tabs, steps (CI/CD), image cards (private cloud),
@@ -174,9 +172,9 @@ const features = [
   {
     tab: "Why HyperExecute",
     title: "No hub-to-node hops",
-    body: "A Selenium Grid routes every command through a hub to a remote node. HyperExecute runs your test script and browser on one machine, so nothing waits on the network.",
+    body: "A Selenium Grid routes every command through a hub to a remote node. HyperExecute runs your test script and browser on one machine, so nothing waits on the network. Lereta cut network traffic this way and ran its tests 70% faster, nearly flake-free.",
     checks: ["No hub or node hops between a test and its result.", "Fewer infrastructure flakes, so fewer reruns.", "Your existing tests run as-is with one YAML file."],
-    link: { label: "Run your first job free", href: HE_SIGNUP },
+    link: { label: "Read the Lereta case study", href: `${SITE}/customers/lereta/` },
     screen: <GridScreen />,
     scene: "hx",
   },
@@ -267,40 +265,6 @@ function HowItWorks() {
             </div>
           </div>
         ))}
-      </div>
-    </Section>
-  );
-}
-
-/* ---------- against a traditional grid: the pieces library's table ---------- */
-
-const grid: MatrixGroup[] = [
-  {
-    label: "",
-    rows: [
-      { name: "Where the browser runs", values: ["On the same VM as the test runner", "On a remote node, behind a hub"] },
-      { name: "Network hops per command", values: ["None within a task", "Runner to hub to node, every command"] },
-      { name: "Dependencies and logs", values: ["On the task VM, kept per test", "On separate components"] },
-      { name: "Unit of scaling", values: ["One full task VM", "One remote browser session"] },
-      { name: "After the run", values: ["Every VM is wiped and torn down", "Nodes stay up and need patching"] },
-    ],
-  },
-];
-
-function VsGrid() {
-  return (
-    <Section>
-      <FoldHead
-        lead="HyperExecute vs Selenium Grid:"
-        title="no hub-to-node hops"
-        body="Lereta cut network traffic this way and ran its tests 70% faster, nearly flake-free."
-      >
-        <div className="mt-8">
-          <KitLink href={`${SITE}/customers/lereta/`}>Read the case study</KitLink>
-        </div>
-      </FoldHead>
-      <div className="-mx-8">
-        <MatrixTable label="Traditional test grid compared with HyperExecute" rivals={[{ name: "Traditional grid" }]} groups={grid} cta="Run your first job free" />
       </div>
     </Section>
   );
@@ -1192,7 +1156,6 @@ function Page() {
 
         <TrustedBy />
         <HowItWorks />
-        <VsGrid />
         <Measured />
         <Triage />
         <Controls />
