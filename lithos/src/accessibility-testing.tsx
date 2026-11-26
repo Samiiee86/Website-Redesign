@@ -247,8 +247,8 @@ const steps = [
   { title: "Fix", body: "Each issue names the element, the WCAG rule and how to fix it." },
 ];
 
-/* H5 and B2: the kit's 20px step title is off the type scale */
-const H5 = "!text-[length:var(--tm-h5-size)] !leading-[var(--tm-h5-line)] !tracking-[var(--tm-h5-tracking)]";
+/* card titles in H4 (24/32), card text in B1 (18/28), the DS sizes */
+const H4 = "!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !tracking-[var(--tm-h4-tracking)] !font-medium";
 
 /* as on the live page: a dark band, the heading on one line, three dark
    step cells with mono numbers. Joined cells with hairlines (DS card
@@ -264,8 +264,8 @@ function How() {
               <span className="font-mono text-b1 font-medium text-[var(--tm-blue-300)]">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h3 className={`mt-2 ${H5}`}>{s.title}</h3>
-              <p className="text-b2 text-[var(--tm-fg-inverse-muted)]">{s.body}</p>
+              <h3 className={`mt-2 ${H4}`}>{s.title}</h3>
+              <p className="text-b1 text-[var(--tm-fg-inverse-muted)]">{s.body}</p>
             </li>
           ))}
         </ol>
@@ -294,9 +294,9 @@ function Caps() {
       <ul className={`${JOIN} sm:grid-cols-2 lg:grid-cols-3`}>
           {caps.map(({ icon: Icon, title, body }) => (
             <li key={title} className="flex flex-col gap-2 bg-surface p-8">
-              <Icon size={20} strokeWidth={1.5} aria-hidden className="mb-3" />
-              <h3 className={H5}>{title}</h3>
-              <p className="text-b2 text-muted-foreground">{body}</p>
+              <Icon size={40} strokeWidth={1.25} aria-hidden className="mb-4" />
+              <h3 className={H4}>{title}</h3>
+              <p className="text-b1 text-muted-foreground">{body}</p>
             </li>
           ))}
       </ul>
@@ -338,12 +338,12 @@ function Teams() {
             className={`flex flex-col gap-5 p-8 ${t.dark ? "bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]" : "bg-surface"}`}
           >
             <div className="flex flex-col gap-1">
-              <h3 className={H5}>{t.name}</h3>
-              <p className={`text-b3 ${t.dark ? "text-[var(--tm-fg-inverse-muted)]" : "text-muted-foreground"}`}>{t.for}</p>
+              <h3 className={H4}>{t.name}</h3>
+              <p className={`text-b2 ${t.dark ? "text-[var(--tm-fg-inverse-muted)]" : "text-muted-foreground"}`}>{t.for}</p>
             </div>
             <ul className="flex flex-col gap-3">
               {t.items.map((it) => (
-                <li key={it} className="flex items-start gap-3 text-b2">
+                <li key={it} className="flex items-start gap-3 text-b1">
                   <Check size={16} strokeWidth={1.5} aria-hidden className={`mt-1 flex-none ${t.dark ? "text-[var(--tm-green-300)]" : "text-[var(--tm-fg-success)]"}`} />
                   {it}
                 </li>
@@ -379,9 +379,9 @@ function Related() {
       <div className={`${JOIN} sm:grid-cols-2 lg:grid-cols-4`}>
         {related.map(({ icon: Icon, name, body, href }) => (
           <a key={name} href={href} className="group flex flex-col gap-2 bg-surface p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
-            <Icon size={20} strokeWidth={1.5} aria-hidden className="mb-2" />
-            <h3 className="!text-b2 !font-medium !tracking-normal">{name}</h3>
-            <p className="text-b3 text-muted-foreground">{body}</p>
+            <Icon size={40} strokeWidth={1.25} aria-hidden className="mb-4" />
+            <h3 className={H4}>{name}</h3>
+            <p className="text-b1 text-muted-foreground">{body}</p>
             <span className="mt-auto pt-2"><HoverArrow /></span>
           </a>
         ))}
@@ -391,7 +391,7 @@ function Related() {
         {resources.map((r) => (
           <div key={r.group} className="flex flex-col gap-3 bg-surface p-8">
             <h3 className={`!text-b4 !tracking-[1px] ${LABEL}`}>{r.group}</h3>
-            <a href={r.href} className="group inline-flex items-center gap-2 self-start text-b2">
+            <a href={r.href} className="group inline-flex items-center gap-2 self-start text-b1 font-medium">
               {r.label}
               <HoverArrow />
             </a>
@@ -412,7 +412,7 @@ function Final() {
           <h2 className="!text-[length:var(--tm-h3-size)] !leading-[var(--tm-h3-line)] !tracking-[var(--tm-h3-tracking)] [text-wrap:balance]">
             Find accessibility issues before an audit does
           </h2>
-          <p className="text-b2 text-[var(--tm-fg-inverse-muted)]">Free plan: 25 accessibility scans, valid for lifetime.</p>
+          <p className="text-b1 text-[var(--tm-fg-inverse-muted)]">Free plan: 25 accessibility scans, valid for lifetime.</p>
         </div>
         <div className="tm-actions flex-none">
           <a className="tm-btn tm-btn--secondary tm-btn--arrow tm-btn--plain" href={SIGNUP}>
