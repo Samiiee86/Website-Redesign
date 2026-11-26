@@ -244,7 +244,7 @@ function Hero({ d }: { d: PageData }) {
   const h = d.hero;
   const Pill = icon(h.eyebrow[0] ?? "", d.slug);
   return (
-    <section className="tm-hero tm-hero--split lg:!pt-10">
+    <section className="tm-hero tm-hero--split relative z-[2] lg:!pt-10">
       <div className="tm-frame tm-hero__inner">
         {d.crumb.length > 1 && (
           <nav aria-label="Breadcrumb" className="tm-crumbs mb-6">
