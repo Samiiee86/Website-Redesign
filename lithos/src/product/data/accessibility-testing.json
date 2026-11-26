@@ -39,6 +39,7 @@
    "alt": "Accessibility testing on TestMu AI"
   },
   "run": {
+   "variant": "run",
    "title": "a11y · signup-flow",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "contrast",
@@ -56,7 +58,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "screen reader",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "keyboard",
@@ -72,7 +76,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

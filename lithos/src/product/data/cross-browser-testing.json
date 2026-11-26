@@ -39,6 +39,7 @@
    "alt": "Browser picker with Chrome versions and screen resolutions for a live session"
   },
   "run": {
+   "variant": "browsers",
    "title": "live · Safari 18 on macOS",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "devtools",
@@ -56,7 +58,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "layout",
@@ -64,7 +67,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "share",
@@ -72,7 +76,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

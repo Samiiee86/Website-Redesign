@@ -36,6 +36,7 @@
   ],
   "image": null,
   "run": {
+   "variant": "terminal",
    "title": "$ kane-cli run \"export last month's invoices\"",
    "live": "sample run",
    "rows": [
@@ -45,7 +46,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "navigate",
@@ -53,7 +55,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "action",
@@ -61,7 +64,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "verify",
@@ -69,7 +73,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],

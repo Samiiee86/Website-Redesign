@@ -39,6 +39,7 @@
    "alt": "Inbound IVR Agent"
   },
   "run": {
+   "variant": "call",
    "title": "ivr · billing line",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "dtmf",
@@ -56,7 +58,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "speech",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "transfer",
@@ -72,7 +76,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

@@ -39,6 +39,7 @@
    "alt": "Responsive Testing That Catches Every Break"
   },
   "run": {
+   "variant": "browsers",
    "title": "responsive · /home",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "768px",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "1024px",
@@ -64,7 +67,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "1920px",
@@ -72,7 +76,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

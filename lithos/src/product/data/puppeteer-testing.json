@@ -39,6 +39,7 @@
    "alt": "Author Puppeteer tests with AI agents on TestMu AI"
   },
   "run": {
+   "variant": "terminal",
    "title": "puppeteer · checkout flow",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "page",
@@ -56,7 +58,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "assert",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "close",
@@ -72,7 +76,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],

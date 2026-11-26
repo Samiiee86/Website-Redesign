@@ -39,6 +39,7 @@
    "alt": "AI-Native API Testing Solutions"
   },
   "run": {
+   "variant": "run",
    "title": "api · orders service",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "assert",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "chain",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "drift",
@@ -72,7 +76,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

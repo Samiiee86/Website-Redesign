@@ -39,6 +39,7 @@
    "alt": "SmartUI Visual AI highlighting a meaningful UI change and ignoring rendering noise"
   },
   "run": {
+   "variant": "diff",
    "title": "smartui · pricing-page",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "compare",
@@ -56,7 +58,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "diff",
@@ -64,7 +67,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "review",
@@ -72,7 +76,8 @@
      "st": {
       "label": "RUN",
       "kind": "run"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [

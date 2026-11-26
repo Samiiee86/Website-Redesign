@@ -146,21 +146,31 @@ function Tag({ st }: { st: Run["rows"][number]["st"] }) {
    foot, a green "sample run" light, upper-case mono labels, mono results,
    dashed row lines and a blue mark before the evidence line */
 function RunCard({ run }: { run: Run }) {
+  /* the live page's terminal card is black; every other card is white */
+  const dark = run.variant === "terminal";
+  const shell = dark
+    ? "border-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] bg-[var(--tm-bg-inverse)] text-[var(--tm-bg-muted)]"
+    : "border-border bg-surface";
+  const bar = dark
+    ? "border-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] bg-[var(--tm-bg-inverse-muted)]"
+    : "border-border bg-background";
+  const muted = dark ? "text-[var(--tm-fg-inverse-muted)]" : "text-muted-foreground";
+  const rule = dark ? "border-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)]" : "border-border";
   return (
-    <div className="flex w-full flex-col border border-border bg-surface text-left [box-shadow:var(--tm-shadow-floating-md)]">
-      <div className="flex items-center justify-between gap-3 border-b border-border bg-background px-5 py-4">
+    <div className={`flex w-full flex-col border text-left [box-shadow:var(--tm-shadow-floating-md)] ${shell}`}>
+      <div className={`flex items-center justify-between gap-3 border-b px-5 py-4 ${bar}`}>
         <span className="flex min-w-0 items-center gap-3">
           <span className="flex flex-none gap-1.5" aria-hidden>
             {[0, 1, 2].map((i) => (
-              <i key={i} className="block size-2.5 rounded-full bg-[var(--tm-border-default)]" />
+              <i key={i} className={`block size-2.5 rounded-full ${dark ? "bg-[var(--tm-fg-inverse-muted)]" : "bg-[var(--tm-border-default)]"}`} />
             ))}
           </span>
           <span className="truncate font-mono text-b3">{run.title}</span>
         </span>
         {run.live && (
-          <span className="flex flex-none items-center gap-2 whitespace-nowrap font-mono text-b4 uppercase tracking-[1px] text-[var(--tm-green-500)]">
-            <span aria-hidden className="grid size-4 place-items-center rounded-full bg-[var(--tm-green-000)]">
-              <i className="block size-2 rounded-full bg-[var(--tm-green-400)]" />
+          <span className={`flex flex-none items-center gap-2 whitespace-nowrap font-mono text-b4 uppercase tracking-[1px] ${dark ? "text-[var(--tm-green-200)]" : "text-[var(--tm-green-500)]"}`}>
+            <span aria-hidden className={`grid size-4 place-items-center rounded-full ${dark ? "bg-[color-mix(in_srgb,var(--tm-green-200)_25%,transparent)]" : "bg-[var(--tm-green-000)]"}`}>
+              <i className={`block size-2 rounded-full ${dark ? "bg-[var(--tm-green-200)]" : "bg-[var(--tm-green-400)]"}`} />
             </span>
             {run.live}
           </span>
@@ -179,20 +189,26 @@ function RunCard({ run }: { run: Run }) {
           ))}
         </div>
       )}
-      <ol>
+      <ol className={dark ? "py-2" : ""}>
         {run.rows.map((r, i) => (
-          <li key={`${r.who}-${i}`} className={`flex items-center gap-3 px-4 py-3 sm:gap-4 sm:px-5 ${i ? "border-t border-dashed border-border" : ""}`}>
-            <span className="w-20 flex-none truncate font-mono text-b4 uppercase tracking-[1px] text-muted-foreground sm:w-28">{r.who}</span>
+          <li
+            key={`${r.who}-${i}`}
+            className={`flex items-center gap-3 px-4 py-3 sm:gap-4 sm:px-5 ${i && !dark ? `border-t border-dashed ${rule}` : ""}`}
+          >
+            {r.pr && <span aria-hidden className="flex-none font-mono text-b3 text-[var(--tm-green-200)]">{r.pr}</span>}
+            <span className={`w-20 flex-none truncate font-mono text-b4 uppercase tracking-[1px] sm:w-28 ${muted}`}>{r.who}</span>
             <span className="min-w-0 flex-1 font-mono text-b3">{r.text}</span>
             <Tag st={r.st} />
           </li>
         ))}
       </ol>
       {(run.verdict || run.evid) && (
-        <div className="flex flex-col gap-1 border-t border-border bg-background px-5 py-4">
-          {run.verdict && <span className="font-mono text-b2 font-medium">{run.verdict}</span>}
+        <div className={`flex flex-col gap-1 border-t px-5 py-4 ${bar}`}>
+          {run.verdict && (
+            <span className={`font-mono text-b2 font-medium ${dark ? "text-[var(--tm-green-200)]" : ""}`}>{run.verdict}</span>
+          )}
           {run.evid && (
-            <span className="flex items-center gap-2 font-mono text-b4 text-muted-foreground">
+            <span className={`flex items-center gap-2 font-mono text-b4 ${muted}`}>
               <i aria-hidden className="block size-2.5 flex-none bg-[var(--tm-blue-500)]" />
               {run.evid}
             </span>
@@ -285,16 +301,18 @@ function Hero({ d }: { d: PageData }) {
               </ul>
             )}
           </div>
-          {/* the scene, with the run card hanging off its lower edge; with
+          {/* the scene, with the run card overlapping its lower edge by 40px
+              (80% wide, as on the live page); with
               no scene on the live page, the card stands on its own */}
           <div className="relative min-w-0">
             {h.image ? (
               <>
-                <div className="relative aspect-[16/10] overflow-hidden border border-border">
-                  <img className="absolute inset-0 size-full object-cover" src={h.image.src} alt={h.image.alt} fetchPriority="high" />
+                {/* the whole picture at its own shape, as on the live page: no crop */}
+                <div className="overflow-hidden border border-border">
+                  <img className="block h-auto w-full" src={h.image.src} alt={h.image.alt} fetchPriority="high" />
                 </div>
                 {h.run && (
-                  <div className="relative -mt-16 ml-auto w-full sm:w-[92%] lg:-mr-10 lg:-mt-32 lg:w-[78%]">
+                  <div className="relative -mt-10 ml-auto w-full sm:-mr-3 sm:w-4/5">
                     <RunCard run={h.run} />
                   </div>
                 )}

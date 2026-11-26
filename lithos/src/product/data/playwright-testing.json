@@ -39,6 +39,7 @@
    "alt": "Kane CLI exporting a natural language flow as Playwright code in the terminal"
   },
   "run": {
+   "variant": "terminal",
    "title": "playwright · checkout suite",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "chromium",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "webkit",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "firefox",
@@ -72,7 +76,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],

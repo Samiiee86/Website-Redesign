@@ -39,6 +39,7 @@
    "alt": "Run an existing Selenium, Playwright, or Cypress suite on the TestMu AI cloud"
   },
   "run": {
+   "variant": "terminal",
    "title": "playwright · regression suite",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "chrome",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "safari",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "report",
@@ -72,7 +76,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],

@@ -39,6 +39,7 @@
    "alt": "TestMu AI professional services for test automation"
   },
   "run": {
+   "variant": "run",
    "title": "engagement · example flow",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Migrate",
@@ -56,7 +58,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Integrate",
@@ -64,7 +67,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Extend",
@@ -72,7 +76,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

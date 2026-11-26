@@ -39,6 +39,7 @@
    "alt": "Live browser emulator session picker showing Windows and macOS with Chrome versions"
   },
   "run": {
+   "variant": "browsers",
    "title": "live · any browser",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Safari 18",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Edge 158",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Firefox 115",
@@ -72,7 +76,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

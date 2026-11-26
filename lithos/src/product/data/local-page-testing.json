@@ -44,6 +44,7 @@
    "alt": "Local Page Testing on 3,000+ Real Browsers"
   },
   "run": {
+   "variant": "terminal",
    "title": "UnderPass · tunnel connected",
    "live": "sample run",
    "rows": [
@@ -53,7 +54,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "chrome",
@@ -61,7 +63,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "safari",
@@ -69,7 +72,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "iphone",
@@ -77,7 +81,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],

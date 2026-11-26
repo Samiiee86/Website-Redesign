@@ -39,6 +39,7 @@
    "alt": "Author Cypress tests with AI agents on TestMu AI"
   },
   "run": {
+   "variant": "terminal",
    "title": "$ lambdatest-cypress run --parallels 10",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "chrome",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "firefox",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "edge",
@@ -72,7 +76,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],

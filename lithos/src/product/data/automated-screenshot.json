@@ -39,6 +39,7 @@
    "alt": "Automated screenshots across browsers on TestMu AI"
   },
   "run": {
+   "variant": "browsers",
    "title": "screenshots · /landing",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Safari 18",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "iPhone 18 Pro",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Edge 109",
@@ -72,7 +76,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

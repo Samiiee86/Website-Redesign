@@ -39,6 +39,7 @@
    "alt": "Test on macOS Browsers: Live and Automated Testing"
   },
   "run": {
+   "variant": "browsers",
    "title": "live · macOS",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Chrome 159",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Safari 16",
@@ -64,7 +67,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "Firefox 161",
@@ -72,7 +76,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

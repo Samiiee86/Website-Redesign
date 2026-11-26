@@ -35,32 +35,37 @@
    "Release managers"
   ],
   "image": {
-   "src": "https://assets.testmuai.com/resources/images/real_device_banner.png",
+   "src": "/kit/hero/list-of-real-devices/hero-bg.png",
    "alt": "Next-Gen App & Browser Testing Cloud"
   },
   "run": {
+   "variant": "devices",
    "title": "device list · filter",
    "live": "sample run",
    "rows": [
     {
      "who": "iPhone 18 Pro Max",
      "text": "iOS 27",
-     "st": null
+     "st": null,
+     "pr": ""
     },
     {
      "who": "Galaxy S26 Ultra",
      "text": "Android 16",
-     "st": null
+     "st": null,
+     "pr": ""
     },
     {
      "who": "Pixel 11 Pro XL",
      "text": "Android 17",
-     "st": null
+     "st": null,
+     "pr": ""
     },
     {
      "who": "iPad Pro 13",
      "text": "iOS 27",
-     "st": null
+     "st": null,
+     "pr": ""
     }
    ],
    "diff": [],
@@ -1584,6 +1589,5 @@
    "id": "go",
    "head": "Pick a device and start testing"
   }
- ],
- "unknown": []
+ ]
 }

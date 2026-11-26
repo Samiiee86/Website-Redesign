@@ -39,6 +39,7 @@
    "alt": "AI Flaky Test Detection and Flakiness Trends"
   },
   "run": {
+   "variant": "chart",
    "title": "insights · main branch, 30 days",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "cluster",
@@ -56,7 +58,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "rca",
@@ -64,7 +67,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     },
     {
      "who": "trend",
@@ -72,7 +76,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": ""
     }
    ],
    "diff": [],

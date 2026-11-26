@@ -39,6 +39,7 @@
    "alt": "Author tests in natural language with KaneAI and run them on the TestMu AI cloud"
   },
   "run": {
+   "variant": "terminal",
    "title": "automation · nightly-regression",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "playwright",
@@ -56,7 +58,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "appium",
@@ -64,7 +67,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "report",
@@ -72,7 +76,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],

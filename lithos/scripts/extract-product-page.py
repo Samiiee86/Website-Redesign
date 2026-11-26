@@ -54,11 +54,14 @@ def run_card(fig):
             st = cls(li, "st")
             who = cls(li, "who") or li.find("b")
             parts = [c for c in li.find_all(["span", "b"], recursive=False) if c is not st and c is not who and not has(c, "pr")]
-            rows.append({"who": txt(who), "text": " ".join(txt(p) for p in parts if txt(p)), "st": status(st)})
+            pr = cls(li, "pr")
+            rows.append({"who": txt(who), "text": " ".join(txt(p) for p in parts if txt(p)), "st": status(st), "pr": txt(pr)})
     diff = cls(fig, "diff")
     panes = [txt(p.find("span")) for p in clsall(diff, "pane")] if diff else []
     ft = cls(fig, "run-ft")
+    variant = next((x.split("__")[0].replace("MuAI_", "")[2:] for x in (fig.get("class") or []) if x.split("__")[0].replace("MuAI_", "").startswith("v-")), "run")
     return {
+        "variant": variant,
         "title": txt(cls(hd, "t")) if hd else "",
         "live": txt(cls(hd, "live")) if hd else "",
         "rows": rows,

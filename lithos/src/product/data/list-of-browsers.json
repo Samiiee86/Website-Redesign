@@ -36,28 +36,33 @@
   ],
   "image": null,
   "run": {
+   "variant": "browsers",
    "title": "browser list · filter",
    "live": "sample run",
    "rows": [
     {
      "who": "Windows 11",
      "text": "Chrome 37–159",
-     "st": null
+     "st": null,
+     "pr": ""
     },
     {
      "who": "Windows 11",
      "text": "Firefox 32–161",
-     "st": null
+     "st": null,
+     "pr": ""
     },
     {
      "who": "macOS Sequoia",
      "text": "Safari 18",
-     "st": null
+     "st": null,
+     "pr": ""
     },
     {
      "who": "Windows XP",
      "text": "IE 7–8",
-     "st": null
+     "st": null,
+     "pr": ""
     }
    ],
    "diff": [],

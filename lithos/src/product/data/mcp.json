@@ -39,6 +39,7 @@
    "alt": "TestMu AI MCP Server For Agentic Testing"
   },
   "run": {
+   "variant": "terminal",
    "title": "mcp › testmu",
    "live": "sample run",
    "rows": [
@@ -48,7 +49,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "hyperexecute",
@@ -56,7 +58,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "smartui",
@@ -64,7 +67,8 @@
      "st": {
       "label": "FAIL",
       "kind": "fail"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "test-manager",
@@ -72,7 +76,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],

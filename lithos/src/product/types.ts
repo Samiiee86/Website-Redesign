@@ -4,9 +4,10 @@
 export type Status = { label: string; kind: "pass" | "fail" | "done" | "run" } | null;
 
 export type Run = {
+  variant: string;
   title: string;
   live: string;
-  rows: { who: string; text: string; st: Status }[];
+  rows: { who: string; text: string; st: Status; pr?: string }[];
   diff: string[];
   verdict: string;
   evid: string;

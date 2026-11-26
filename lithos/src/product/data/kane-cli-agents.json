@@ -37,6 +37,7 @@
   ],
   "image": null,
   "run": {
+   "variant": "terminal",
    "title": "claude › kane-cli run \"login works\"",
    "live": "sample run",
    "rows": [
@@ -46,7 +47,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "kane-cli",
@@ -54,7 +56,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "kane-cli",
@@ -62,7 +65,8 @@
      "st": {
       "label": "PASS",
       "kind": "pass"
-     }
+     },
+     "pr": "›"
     },
     {
      "who": "agent",
@@ -70,7 +74,8 @@
      "st": {
       "label": "DONE",
       "kind": "done"
-     }
+     },
+     "pr": "›"
     }
    ],
    "diff": [],
