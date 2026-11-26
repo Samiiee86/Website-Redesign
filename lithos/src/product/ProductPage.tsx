@@ -436,7 +436,7 @@ function CodePanel({ c }: { c: NonNullable<Extract<Sec, { type: "cmp" }>["code"]
         <button
           type="button"
           /* as on the live terminal: a dark grey fill, no outline, mono */
-          className="btn inline-flex items-center gap-1.5 rounded-md bg-[var(--tm-bg-inverse-muted)] px-3 py-1.5 font-mono text-b4 text-[var(--tm-bg-muted)] transition-colors duration-200 hover:bg-[color-mix(in_srgb,var(--tm-fg-inverse)_16%,transparent)]"
+          className="btn inline-flex items-center gap-1.5 rounded-md !border-0 !shadow-none !outline-none bg-[var(--tm-bg-inverse-muted)] px-3 py-1.5 font-mono text-b4 text-[var(--tm-bg-muted)] transition-colors duration-200 hover:bg-[color-mix(in_srgb,var(--tm-fg-inverse)_16%,transparent)]"
           onClick={() => {
             navigator.clipboard?.writeText(c.code).then(() => setCopied(true));
           }}
