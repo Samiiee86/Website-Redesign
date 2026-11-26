@@ -3,6 +3,10 @@ import { createRoot } from "react-dom/client";
 import { MotionConfig } from "motion/react";
 import {
   Check,
+  Code,
+  Ear,
+  ListChecks,
+  Wrench,
   ClipboardList,
   Globe,
   ScanEye,
@@ -17,6 +21,8 @@ import TrustedBy from "./sections/TrustedBy";
 import Reasons from "./sections/Reasons";
 import Faq from "./sections/Faq";
 import Footer from "./sections/Footer";
+import CompareDuel from "./pieces/CompareDuel";
+import type { MatrixGroup } from "./pieces/compare/MatrixTable";
 
 /* Accessibility testing page (accessibility-testing.html).
 
@@ -267,16 +273,16 @@ function How() {
 }
 
 /* ---------- capabilities: as on the live page ----------
-   Heading on the left; the six checks in two columns on the right, each
-   under a hairline. */
+   Heading on the left; the six checks as feature pointers (icon, title,
+   line) in joined white cells, two columns, on the right. */
 
 const caps = [
-  { title: "WCAG 2.2, ADA, 508, EAA", body: "Checks mapped to the standards your legal team asks about." },
-  { title: "Native mobile apps", body: "Scan iOS and Android apps, not only websites." },
-  { title: "Real devices and screen readers", body: "Confirm issues the way assistive-technology users meet them." },
-  { title: "Rule-level fixes", body: "Every issue links to the rule it fails and the change that fixes it." },
-  { title: "In your test suite", body: "Add accessibility checks to Selenium, Playwright and Cypress tests." },
-  { title: "Accessibility DevTools", body: "A browser extension for developers to scan while they build." },
+  { icon: ShieldCheck, title: "WCAG 2.2, ADA, 508, EAA", body: "Checks mapped to the standards your legal team asks about." },
+  { icon: Smartphone, title: "Native mobile apps", body: "Scan iOS and Android apps, not only websites." },
+  { icon: Ear, title: "Real devices and screen readers", body: "Confirm issues the way assistive-technology users meet them." },
+  { icon: Wrench, title: "Rule-level fixes", body: "Every issue links to the rule it fails and the change that fixes it." },
+  { icon: ListChecks, title: "In your test suite", body: "Add accessibility checks to Selenium, Playwright and Cypress tests." },
+  { icon: Code, title: "Accessibility DevTools", body: "A browser extension for developers to scan while they build." },
 ];
 
 function Caps() {
@@ -284,11 +290,12 @@ function Caps() {
     <Section>
       <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
         <h2 className="[text-wrap:balance]">WCAG checks for web and native apps</h2>
-        <ul className="tm-reveal grid gap-x-10 sm:grid-cols-2">
-          {caps.map((c) => (
-            <li key={c.title} className="flex flex-col gap-1 border-t border-border py-5">
-              <h3 className={H5}>{c.title}</h3>
-              <p className="text-b2 text-muted-foreground">{c.body}</p>
+        <ul className="tm-reveal grid gap-px self-start border border-border bg-[var(--tm-border-default)] sm:grid-cols-2">
+          {caps.map(({ icon: Icon, title, body }) => (
+            <li key={title} className="flex flex-col gap-2 bg-surface p-6">
+              <Icon size={20} strokeWidth={1.5} aria-hidden className="mb-3" />
+              <h3 className={H5}>{title}</h3>
+              <p className="text-b2 text-muted-foreground">{body}</p>
             </li>
           ))}
         </ul>
@@ -297,51 +304,19 @@ function Caps() {
   );
 }
 
-/* ---------- plug-ins vs scans: the live page's table ----------
-   Its columns in its order, on white with a muted head row; the TestMu
-   AI column framed in 2px black, as in the pieces library tables. */
+/* ---------- plug-ins vs scans: the pieces library's head to head ---------- */
 
-const cmpRows: [string, string, string][] = [
-  ["Scope", "One page at a time", "Sites, flows and native apps"],
-  ["Mobile apps", "Not covered", "iOS and Android on real devices"],
-  ["Screen readers", "Manual", "Built into the workflow"],
-  ["Reporting", "A list of warnings", "Issue, rule and fix per element"],
+const cmp: MatrixGroup[] = [
+  {
+    label: "",
+    rows: [
+      { name: "Scope", values: ["Sites, flows and native apps", "One page at a time"] },
+      { name: "Mobile apps", values: ["iOS and Android on real devices", "Not covered"] },
+      { name: "Screen readers", values: ["Built into the workflow", "Manual"] },
+      { name: "Reporting", values: ["Issue, rule and fix per element", "A list of warnings"] },
+    ],
+  },
 ];
-
-/* the framed column: 2px black sides, top on the head cell, bottom on the last row */
-const ours = (first: boolean, last: boolean) =>
-  `relative border-x-2 border-[var(--tm-border-emphasis)] ${first ? "border-t-2" : ""} ${last ? "border-b-2" : ""}`;
-
-function Compare() {
-  return (
-    <Section>
-      <h2 className="mb-12 [text-wrap:balance]">Browser plug-ins vs automated accessibility scans</h2>
-      <div className="tm-reveal overflow-x-auto">
-        <table className="w-full min-w-[640px] border-collapse border border-border bg-surface text-left">
-          <caption className="sr-only">Accessibility Testing compared with free browser checkers</caption>
-          <thead>
-            <tr className="bg-background">
-              <th scope="col" className="w-1/3 px-6 py-4 text-b2 font-medium">What matters</th>
-              <th scope="col" className="w-1/3 px-6 py-4 text-b2 font-medium">Free browser checkers</th>
-              <th scope="col" className={`w-1/3 bg-surface px-6 py-4 text-b2 font-medium text-[var(--tm-fg-link)] ${ours(true, false)}`}>
-                TestMu AI Accessibility Testing
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {cmpRows.map(([k, them, us], i) => (
-              <tr key={k} className="border-t border-border">
-                <th scope="row" className="px-6 py-5 text-b1 font-medium">{k}</th>
-                <td className="px-6 py-5 text-b1 text-muted-foreground">{them}</td>
-                <td className={`px-6 py-5 text-b1 ${ours(false, i === cmpRows.length - 1)}`}>{us}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </Section>
-  );
-}
 
 /* ---------- teams: as on the live page ----------
    Three plan cards, as the live page shows them; Enterprise is the dark one. */
@@ -499,7 +474,15 @@ function Page() {
         <Glance />
         <How />
         <Caps />
-        <Compare />
+        <CompareDuel
+          lead="Browser plug-ins vs"
+          title="automated accessibility scans"
+          body="Accessibility Testing compared with free browser checkers"
+          cta="Start free"
+          rival={{ name: "Free browser checkers" }}
+          head="What matters"
+          groups={cmp}
+        />
         <Teams />
         <Related />
         <Faq title="What teams ask before an accessibility audit" items={faq} />
