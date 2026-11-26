@@ -1165,7 +1165,7 @@ function Page() {
         <CiCd />
         <OwnCloud />
         <OpenSource />
-        <Reasons />
+        <Reasons integrations={false} />
         <Related />
         <Faq items={faq} />
         <Enterprise />

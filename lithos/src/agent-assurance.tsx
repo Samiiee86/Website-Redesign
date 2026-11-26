@@ -1335,7 +1335,7 @@ function Page() {
         <Teams />
         <Stories />
         <OneVerdict />
-        <Reasons />
+        <Reasons integrations={false} />
         <Faq items={faq} />
         <Enterprise />
         <Footer />
