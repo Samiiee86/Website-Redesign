@@ -223,7 +223,10 @@ function Glance() {
   return (
     <Section>
       <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <h2 className="max-w-[640px] [text-wrap:balance]">Accessibility coverage on web and native apps</h2>
+        <h2 className="max-w-[640px] [text-wrap:balance]">
+          <span className="block text-muted-foreground">Accessibility coverage</span>
+          <span className="block">on web and native apps</span>
+        </h2>
         <p className="self-start border border-border bg-surface px-5 py-3 text-b1 font-medium lg:self-end">
           Free plan: 25 accessibility scans, valid for lifetime
         </p>
@@ -257,7 +260,10 @@ const H4 = "!text-[length:var(--tm-h4-size)] !leading-[var(--tm-h4-line)] !track
 function How() {
   return (
     <Section className="!bg-[var(--tm-bg-inverse)] text-[var(--tm-fg-inverse)]">
-      <h2 className="mb-12 [text-wrap:balance]">Scan, review, fix, re-scan</h2>
+      <h2 className="mb-12 [text-wrap:balance]">
+          <span className="block text-[var(--tm-fg-inverse-muted)]">Scan, review,</span>
+          <span className="block">fix, re-scan</span>
+        </h2>
       <div className="tm-reveal -mx-8">
         <ol className="grid gap-px border-y border-[var(--tm-bg-inverse-muted)] bg-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] md:grid-cols-3">
           {steps.map((s, i) => (
@@ -291,7 +297,10 @@ const caps = [
 function Caps() {
   return (
     <Section>
-      <h2 className="mb-12 max-w-[640px] [text-wrap:balance]">WCAG checks for web and native apps</h2>
+      <h2 className="mb-12 max-w-[640px] [text-wrap:balance]">
+          <span className="block text-muted-foreground">WCAG checks</span>
+          <span className="block">for web and native apps</span>
+        </h2>
       <ul className={`${JOIN} sm:grid-cols-2 lg:grid-cols-3`}>
           {caps.map(({ icon: Icon, title, body }) => (
             <li key={title} className="flex flex-col gap-2 bg-surface p-8">
@@ -331,7 +340,10 @@ const teams = [
 function Teams() {
   return (
     <Section>
-      <h2 className="mb-12 [text-wrap:balance]">Accessibility for one site or a design system</h2>
+      <h2 className="mb-12 [text-wrap:balance]">
+          <span className="block text-muted-foreground">Accessibility for one site</span>
+          <span className="block">or a design system</span>
+        </h2>
       <div className={`${JOIN} md:grid-cols-3`}>
         {teams.map((t) => (
           <div
@@ -376,7 +388,10 @@ const resources = [
 function Related() {
   return (
     <Section>
-      <h2 className="mb-12 [text-wrap:balance]">Test accessibility where you already test</h2>
+      <h2 className="mb-12 [text-wrap:balance]">
+          <span className="block text-muted-foreground">Test accessibility</span>
+          <span className="block">where you already test</span>
+        </h2>
       <div className={`${JOIN} sm:grid-cols-2 lg:grid-cols-4`}>
         {related.map(({ icon: Icon, name, body, href }) => (
           <a key={name} href={href} className="group flex flex-col gap-2 bg-surface p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
