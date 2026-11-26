@@ -374,10 +374,6 @@ function ReviewCard({ r }: { r: Review }) {
     <figure className="grid h-full gap-10 border border-border bg-[var(--tm-bg-fill)] p-6 md:p-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 lg:p-12">
       <div className="flex flex-col gap-10 lg:gap-16">
         <p className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-b4 uppercase tracking-[2px] text-muted-foreground">
-          <span className="flex items-center gap-2 text-foreground">
-            <span className="size-1.5 flex-none rounded-full bg-[var(--tm-hero-arrow)]" aria-hidden />
-            {r.brand}
-          </span>
           {r.stats.map(([n, k]) => (
             <span key={k} className="flex items-baseline gap-2">
               <span className="pixel text-[24px] leading-none tracking-normal text-foreground">{n}</span>
