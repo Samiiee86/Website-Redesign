@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown, Minus, Plus } from "lucide-react";
 import { faq } from "../lib/content";
 import { Section } from "../lib/ui";
+import { STATIC } from "../lib/staticExport";
 
 /* The live testmuai.com FAQ: heading in its own column, questions as
    full-width ruled rows beside it, the first eight shown and the rest
@@ -43,7 +44,19 @@ export default function Faq({
 
         <div className={stacked ? "" : "lg:border-l lg:border-border"}>
           {!stacked && <div className="hidden h-[70px] lg:block" />}
-          {shown.map((item, i) => {
+          {/* exported as plain HTML: every question, each opening on
+              its own (no script needed) */}
+          {STATIC &&
+            items.map((item) => (
+              <details key={item.q} className="group border-t border-border">
+                <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-6 px-6 py-6 text-left text-b1 tracking-[-0.01em] text-foreground transition-colors duration-200 hover:bg-secondary/40 [&::-webkit-details-marker]:hidden">
+                  {item.q}
+                  <Plus size={20} strokeWidth={1.5} className="flex-none transition-transform duration-300 group-open:rotate-45" />
+                </summary>
+                <p className="max-w-[640px] px-6 pb-7 text-b2 leading-relaxed text-muted-foreground">{item.a}</p>
+              </details>
+            ))}
+          {!STATIC && shown.map((item, i) => {
             const isOpen = open === i;
             return (
               <div key={item.q} className="border-t border-border">
@@ -78,7 +91,7 @@ export default function Faq({
             );
           })}
 
-          {items.length > FIRST && (
+          {!STATIC && items.length > FIRST && (
             <div className="border-t border-border">
               <button
                 onClick={() => {

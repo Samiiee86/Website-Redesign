@@ -12,6 +12,7 @@ import { FoldHead } from "../pieces/compare/parts";
 import CompareTable from "./CompareTable";
 import SpecTable from "../pieces/SpecTable";
 import { iconFor } from "./icons";
+import { STATIC } from "../lib/staticExport";
 import type { PageData, Run, Sec } from "./types";
 
 /* One testmuai.com product page, rebuilt from its live page's data
@@ -446,6 +447,7 @@ function CodePanel({ c }: { c: NonNullable<Extract<Sec, { type: "cmp" }>["code"]
           type="button"
           /* as on the live terminal: a dark grey fill, no outline, mono */
           className="btn inline-flex items-center gap-1.5 rounded-md !border-0 !shadow-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--tm-fg-link)] bg-[var(--tm-bg-inverse-muted)] px-3 py-1.5 font-mono text-b4 text-[var(--tm-bg-muted)] transition-colors duration-200 hover:bg-[color-mix(in_srgb,var(--tm-fg-inverse)_16%,transparent)]"
+          data-copy={c.code}
           onClick={() => {
             navigator.clipboard?.writeText(c.code).then(() => setCopied(true));
           }}
@@ -571,6 +573,7 @@ function CopyLine({ value }: { value: string }) {
       <button
         type="button"
         aria-label="Copy"
+        data-copy={value}
         className="tm-ibtn tm-ibtn--invisible tm-ibtn--sm flex-none"
         onClick={() => navigator.clipboard?.writeText(value).then(() => setCopied(true))}
       >
@@ -630,7 +633,6 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
   const [os, setOs] = useState<"android" | "ios">("android");
   const [brand, setBrand] = useState(0);
   const [q, setQ] = useState("");
-  const brands = s.groups.map((g, i) => ({ ...g, i })).filter((g) => (g.os ?? "android") === os);
   const current = s.groups[brand];
   const list = useMemo(() => {
     const ql = q.trim().toLowerCase();
@@ -649,11 +651,12 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
             role="tab"
             type="button"
             aria-selected={tab === i}
+            data-tab
             onClick={() => setTab(i)}
-            className={`relative w-32 py-2 text-b3 transition-colors duration-200 ${tab === i ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground"}`}
+            className="group relative w-32 py-2 text-b3 text-muted-foreground transition-colors duration-200 hover:text-foreground aria-selected:font-medium aria-selected:text-foreground"
           >
             {t}
-            {tab === i && <span aria-hidden className="absolute inset-x-0 -bottom-px h-0.5 bg-[var(--tm-border-emphasis)]" />}
+            <span aria-hidden className="absolute inset-x-0 -bottom-px hidden h-0.5 bg-[var(--tm-border-emphasis)] group-aria-selected:block" />
           </button>
         ))}
       </div>
@@ -670,22 +673,23 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
                   type="button"
                   aria-selected={os === o}
                   aria-label={o === "android" ? "Android" : "Apple"}
+                  data-os-tab={o}
                   onClick={() => {
                     setOs(o);
                     setBrand(s.groups.findIndex((g) => (g.os ?? "android") === o));
                     setQ("");
                   }}
-                  className={`relative grid h-10 w-12 place-items-center transition-opacity duration-200 ${os === o ? "" : "opacity-60 hover:opacity-100"}`}
+                  className="group relative grid h-10 w-12 place-items-center opacity-60 transition-opacity duration-200 hover:opacity-100 aria-selected:opacity-100"
                 >
                   {icon(o) && <img src={icon(o)} alt="" className="h-5 w-auto" />}
-                  {os === o && <span aria-hidden className="absolute inset-x-0 -bottom-px h-0.5 bg-[var(--tm-border-emphasis)]" />}
+                  <span aria-hidden className="absolute inset-x-0 -bottom-px hidden h-0.5 bg-[var(--tm-border-emphasis)] group-aria-selected:block" />
                 </button>
               ))}
             </div>
             <label className="tm-field tm-field--sm mb-3 w-full sm:w-[320px]">
               <span className="tm-field__box">
                 <Search aria-hidden />
-                <input type="search" placeholder="Search" aria-label="Search devices" value={q} onChange={(e) => setQ(e.target.value)} />
+                <input type="search" data-device-search placeholder="Search" aria-label="Search devices" value={q} onChange={(e) => setQ(e.target.value)} />
               </span>
             </label>
           </div>
@@ -693,25 +697,26 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
           <div className="grid gap-6 pt-6 md:grid-cols-[160px_minmax(0,1fr)] md:gap-0">
             {/* the brands, by their logos */}
             <ul className="flex flex-wrap gap-2 md:flex-col md:gap-1 md:border-r md:border-border md:pr-6">
-              {brands.map((g) => {
-                const on = !q && brand === g.i;
+              {s.groups.map((g, gi) => {
+                const on = !q && brand === gi;
                 return (
-                  <li key={g.name}>
+                  <li key={g.name} data-os={g.os ?? "android"} hidden={(g.os ?? "android") !== os}>
                     <button
                       type="button"
                       aria-pressed={on}
+                      data-brand={gi}
                       onClick={() => {
-                        setBrand(g.i);
+                        setBrand(gi);
                         setQ("");
                       }}
-                      className={`flex h-10 w-full items-center justify-between gap-3 border-l-2 px-3 transition-colors duration-200 ${on ? "border-[var(--tm-hero-arrow)] bg-[var(--tm-bg-fill)]" : "border-transparent hover:bg-[var(--tm-bg-fill)]"}`}
+                      className="group flex h-10 w-full items-center justify-between gap-3 border-l-2 border-transparent px-3 transition-colors duration-200 hover:bg-[var(--tm-bg-fill)] aria-pressed:border-[var(--tm-hero-arrow)] aria-pressed:bg-[var(--tm-bg-fill)]"
                     >
                       {g.logo ? (
-                        <img src={g.logo} alt={g.name.replace(/^(Android|iOS)\s+/, "")} className={`h-4 w-auto max-w-[96px] object-contain ${on ? "" : "opacity-70"}`} />
+                        <img src={g.logo} alt={g.name.replace(/^(Android|iOS)\s+/, "")} className="h-4 w-auto max-w-[96px] object-contain opacity-70 group-aria-pressed:opacity-100" />
                       ) : (
                         <span className="text-b3 font-medium">{g.name.replace(/^(Android|iOS)\s+/, "")}</span>
                       )}
-                      {on && <ArrowRight size={14} strokeWidth={1.5} aria-hidden className="flex-none" />}
+                      <ArrowRight size={14} strokeWidth={1.5} aria-hidden className="hidden flex-none group-aria-pressed:block" />
                     </button>
                   </li>
                 );
@@ -719,19 +724,26 @@ function Devices({ s }: { s: Extract<Sec, { type: "devices" }> }) {
             </ul>
 
             {/* the devices, two columns: name, OS mark, version */}
-            <ul className="grid content-start gap-x-8 sm:grid-cols-2 md:pl-6">
-              {list.map(({ d: [name, ver], os: o }, i) => (
-                <li key={`${name}-${ver}-${i}`}>
-                  <a href={s.href} className="group flex items-center justify-between gap-3 border-b border-border py-2 text-b3 transition-colors duration-200 hover:text-foreground">
-                    <span className="group-hover:underline group-hover:underline-offset-4">{name}</span>
-                    <span className="flex flex-none items-center gap-2 text-muted-foreground">
-                      {icon(o) && <img src={icon(o)} alt="" className="h-3 w-auto" />}
-                      <span className="w-6 text-right">{version(ver)}</span>
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {/* exported as plain HTML: every brand's list is drawn, the
+                others hidden, and the page script switches them */}
+            {(STATIC
+              ? s.groups.map((g, gi) => ({ key: gi, items: g.devices.map((d) => ({ d, os: g.os ?? "android" })), hide: gi !== brand }))
+              : [{ key: -1, items: list, hide: false }]
+            ).map((l) => (
+              <ul key={l.key} data-brand-list={STATIC ? l.key : undefined} hidden={l.hide} className="grid content-start gap-x-8 sm:grid-cols-2 md:pl-6">
+                {l.items.map(({ d: [name, ver], os: o }, i) => (
+                  <li key={`${name}-${ver}-${i}`} data-name={name.toLowerCase()}>
+                    <a href={s.href} className="group flex items-center justify-between gap-3 border-b border-border py-2 text-b3 transition-colors duration-200 hover:text-foreground">
+                      <span className="group-hover:underline group-hover:underline-offset-4">{name}</span>
+                      <span className="flex flex-none items-center gap-2 text-muted-foreground">
+                        {icon(o) && <img src={icon(o)} alt="" className="h-3 w-auto" />}
+                        <span className="w-6 text-right">{version(ver)}</span>
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ))}
           </div>
         </div>
 
