@@ -8,9 +8,7 @@ import {
   Bot,
   BellOff,
   CalendarClock,
-  GitCommit,
   KeyRound,
-  Timer,
   Check,
   FileArchive,
   Layers,
@@ -44,6 +42,7 @@ import {
   PrivateCloudScreen,
   RcaScreen,
   LoadScreen,
+  MeasureScreen,
   ROW,
   Scene,
   SkillScreen,
@@ -465,105 +464,28 @@ function Measured() {
   );
 }
 
-/* ---------- measure it on your own suite: picture cards, one per step ----------
+/* ---------- measure it on your own suite: the kit's setup split ----------
 
-   Each step as the kit's image card: a small picture of that step drawn
-   in the hero-fold look on a painted scene, then the number and heading. */
+   The four steps as a numbered list on the left, each with a thin line
+   down its side that fills while it is the step on show (they play in
+   turn; a click picks one). On the right, one painted scene with the
+   comparison run, the part of it each step is about brought forward. */
 
-const STEPCARD = { w: 300, h: 200 };
-const MINI = "flex h-full flex-col gap-2 bg-surface p-4 text-b5";
-const MINI_MONO = "font-mono [&_*]:font-mono";
+const STEP_MS = 6000;
 
-function PinMini() {
+function StepLine({ paused }: { paused: boolean }) {
+  const [full, setFull] = useState(false);
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setFull(true));
+    return () => cancelAnimationFrame(t);
+  }, []);
   return (
-    <div className={MINI}>
-      <span className="font-medium text-b4">checkout-suite</span>
-      <span className={`flex items-center gap-2 rounded-md border border-border px-2 py-1.5 ${MINI_MONO}`}>
-        <GitCommit size={12} strokeWidth={1.5} aria-hidden /> a1f9c2e
-        <span className="tag ml-auto rounded-sm bg-[var(--tm-bg-inverse)] px-1.5 text-[var(--tm-fg-inverse)]">pinned</span>
-      </span>
-      <span className="flex flex-col gap-1.5 pt-1">
-        {["Run A", "Run B"].map((r) => (
-          <span key={r} className="flex items-center justify-between">
-            {r}
-            <span className={`text-muted-foreground ${MINI_MONO}`}>a1f9c2e</span>
-          </span>
-        ))}
-      </span>
-    </div>
+    <span
+      className="absolute -left-0.5 top-0 w-0.5 bg-[var(--tm-fg-default)]"
+      style={{ height: full ? "100%" : "0%", transition: paused ? "none" : `height ${STEP_MS}ms linear` }}
+    />
   );
 }
-
-function TwiceMini() {
-  return (
-    <div className={MINI}>
-      {[
-        ["Current grid", "20 parallel"],
-        ["HyperExecute", "20 parallel"],
-      ].map(([k, v], i) => (
-        <span key={k} className="flex flex-col gap-1.5 rounded-md border border-border px-2 py-2">
-          <span className="flex items-center justify-between">
-            <span className="font-medium">{k}</span>
-            <span className="text-muted-foreground">{v}</span>
-          </span>
-          <span className="flex gap-0.5">
-            {Array.from({ length: 20 }).map((_, j) => (
-              <span key={j} className={`h-2 flex-1 ${i ? "bg-[var(--tm-fg-default)]" : "bg-[var(--tm-border-default)]"}`} />
-            ))}
-          </span>
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function TimeMini() {
-  return (
-    <div className={MINI}>
-      <span className="flex items-center gap-2 font-medium text-b4">
-        <Timer size={12} strokeWidth={1.5} aria-hidden /> Wall-clock, 5 runs
-      </span>
-      {["Run 1", "Run 2", "Run 3", "Run 4", "Run 5"].map((r) => (
-        <span key={r} className="flex items-center gap-2">
-          <span className="w-10 text-muted-foreground">{r}</span>
-          <span className="h-1.5 flex-1 bg-[var(--tm-bg-fill)]">
-            <span className="block h-full w-3/5 bg-[var(--tm-fg-default)]" />
-          </span>
-        </span>
-      ))}
-    </div>
-  );
-}
-
-function MedianMini() {
-  return (
-    <div className={MINI}>
-      <span className="font-medium text-b4">Median of 5 runs</span>
-      {[
-        ["Current grid", "w-full bg-[var(--tm-border-default)]"],
-        ["HyperExecute", "w-2/5 bg-[var(--tm-fg-default)]"],
-      ].map(([k, bar]) => (
-        <span key={k} className="flex flex-col gap-1">
-          <span className="text-muted-foreground">{k}</span>
-          <span className="h-3 w-full bg-[var(--tm-bg-fill)]">
-            <span className={`block h-full ${bar}`} />
-          </span>
-        </span>
-      ))}
-      <span className="mt-auto flex items-center justify-between border-t border-border pt-2">
-        Results that changed
-        <span className={MINI_MONO}>0%</span>
-      </span>
-    </div>
-  );
-}
-
-const MEASURE_PICS = [
-  { screen: <PinMini />, scene: "author" },
-  { screen: <TwiceMini />, scene: "par" },
-  { screen: <TimeMini />, scene: "rep" },
-  { screen: <MedianMini />, scene: "hx" },
-];
 
 /* a card's heading with its step number in front */
 const StepTitle = ({ n, children }: { n: string; children: ReactNode }) => (
@@ -574,6 +496,13 @@ const StepTitle = ({ n, children }: { n: string; children: ReactNode }) => (
 );
 
 function MeasureIt() {
+  const [step, setStep] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (paused) return;
+    const t = setTimeout(() => setStep((i) => (i + 1) % measure.length), STEP_MS);
+    return () => clearTimeout(t);
+  }, [step, paused]);
   return (
     <Section>
       <FoldHead
@@ -581,20 +510,34 @@ function MeasureIt() {
         title="on your own suite"
         body="The figure that counts is your own. Run one suite at the same commit and concurrency on your current setup and on HyperExecute, then compare."
       />
-      <div className="tm-reveal -mx-8">
-        <ol className="tm-grid tm-grid--4">
+      <div className="tm-reveal tm-setup lg:!items-center" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+        <ol className="flex flex-col">
           {measure.map((m, i) => (
-            <li key={m.title} className="tm-cell tm-fcard2">
-              <div className="tm-well">
-                <Scene scene={`${ATP}/scene-${MEASURE_PICS[i].scene}.jpg`} card {...STEPCARD}>
-                  {MEASURE_PICS[i].screen}
-                </Scene>
-              </div>
-              <StepTitle n={String(i + 1).padStart(2, "0")}>{m.title}</StepTitle>
-              <p>{m.body}</p>
+            <li key={m.title} className="relative border-l-2 border-[var(--tm-border-default)]">
+              {i === step && <StepLine key={step} paused={paused} />}
+              <button
+                type="button"
+                onClick={() => setStep(i)}
+                aria-current={i === step}
+                className="flex w-full flex-col gap-3 py-6 pl-8 text-left"
+              >
+                <span className={`flex items-baseline gap-3 transition-colors ${i === step ? "text-foreground" : "text-[var(--tm-fg-subtle)] hover:text-foreground"}`}>
+                  <span className="font-mono text-b2">{String(i + 1).padStart(2, "0")}</span>
+                  <span className={`font-medium ${H4}`}>{m.title}</span>
+                </span>
+                {i === step && <span className="max-w-[420px] pl-10 text-b1 text-muted-foreground">{m.body}</span>}
+              </button>
             </li>
           ))}
         </ol>
+        <div className="relative grid min-h-[480px] place-items-center overflow-hidden border border-border px-6 py-12 md:px-10">
+          <img src={`${ATP}/scene-cloud.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="relative w-full bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
+            <Fit w={580} h={340}>
+              <MeasureScreen step={step} />
+            </Fit>
+          </div>
+        </div>
       </div>
     </Section>
   );
