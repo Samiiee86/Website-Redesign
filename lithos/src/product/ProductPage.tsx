@@ -370,7 +370,7 @@ function Steps({ s }: { s: Extract<Sec, { type: "steps" }> }) {
         <ol className="grid gap-px border-y border-[var(--tm-bg-inverse-muted)] bg-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] md:grid-cols-3">
           {s.items.map(([title, body], i) => (
             <li key={title} className="flex flex-col gap-2 bg-[var(--tm-bg-inverse-muted)] p-8">
-              <span className="font-mono text-b1 font-medium text-[var(--tm-blue-300)]">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-body text-b1 font-medium text-[var(--tm-blue-300)]">{String(i + 1).padStart(2, "0")}</span>
               <h3 className={`mt-2 ${H4}`}>{title}</h3>
               <p className="text-b1 text-[var(--tm-fg-inverse-muted)]">{body}</p>
             </li>
@@ -412,7 +412,7 @@ function Strat({ s }: { s: Extract<Sec, { type: "strat" }> }) {
       <ol className={FIT}>
         {s.items.map(([title, body], i) => (
           <li key={title} className="flex flex-col gap-2 !p-8">
-            <span className="font-mono text-b1 font-medium text-[var(--tm-fg-link)]">{String(i + 1).padStart(2, "0")}</span>
+            <span className="font-body text-b1 font-medium text-[var(--tm-fg-link)]">{String(i + 1).padStart(2, "0")}</span>
             <h3 className={`mt-2 ${H4}`}>{title}</h3>
             <p className="text-b1 text-muted-foreground">{body}</p>
           </li>
@@ -757,7 +757,7 @@ function Teams({ s }: { s: Extract<Sec, { type: "teams" }> }) {
   );
 }
 
-/* customer results: a big pixel number, the line, the case study link */
+/* customer results: a big number (Manrope), the line, the case study link */
 function Stories({ s }: { s: Extract<Sec, { type: "stories" }> }) {
   return (
     <Section>
@@ -766,7 +766,7 @@ function Stories({ s }: { s: Extract<Sec, { type: "stories" }> }) {
       <div className={FIT}>
         {s.items.map((st) => (
           <a key={st.href} href={st.href} className="group flex flex-col gap-4 !p-8 transition-colors duration-300 hover:bg-[var(--tm-bg-fill)]">
-            <span className="pixel text-[length:var(--tm-h1-size)] leading-none">{st.num}</span>
+            <span className="font-body text-[length:var(--tm-h1-size)] font-medium leading-none tracking-[var(--tm-h1-tracking)]">{st.num}</span>
             <p className="max-w-[560px] text-b1">{st.text}</p>
             <span className="mt-auto inline-flex items-center gap-2 text-b1 font-medium">
               <span className="underline decoration-1 underline-offset-4">{st.cta.replace(/\s*→\s*$/, "")}</span>
@@ -958,7 +958,10 @@ export default function ProductPage({ d }: { d: PageData }) {
         <TrustedBy />
         {body}
         {faq && <Faq title={faq.head} items={faq.items} />}
-        <Reasons integrations={false} />
+        {/* numbers in Manrope on these pages, not the pixel face */}
+        <div className="contents [&_.pixel]:![font-family:var(--tm-font-sans)] [&_.pixel]:!font-medium [&_.tm-pixel]:![font-family:var(--tm-font-sans)]">
+          <Reasons integrations={false} />
+        </div>
         {final && <Final s={final} ctas={d.hero.ctas} />}
         <Footer />
       </main>
