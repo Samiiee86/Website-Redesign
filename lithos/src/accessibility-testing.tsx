@@ -392,7 +392,7 @@ function Related() {
           <div key={r.group} className="flex flex-col gap-3 bg-surface p-8">
             <h3 className={`!text-b4 !tracking-[1px] ${LABEL}`}>{r.group}</h3>
             <a href={r.href} className="group inline-flex items-center gap-2 self-start text-b1 font-medium">
-              {r.label}
+              <span className="underline decoration-1 underline-offset-4">{r.label}</span>
               <HoverArrow />
             </a>
           </div>
