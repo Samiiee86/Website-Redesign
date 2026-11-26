@@ -9,6 +9,10 @@ import {
   BellOff,
   CalendarClock,
   KeyRound,
+  Lock,
+  Repeat,
+  Scale,
+  Timer,
   Check,
   FileArchive,
   Layers,
@@ -42,7 +46,6 @@ import {
   PrivateCloudScreen,
   RcaScreen,
   LoadScreen,
-  MeasureScreen,
   ROW,
   Scene,
   SkillScreen,
@@ -464,37 +467,14 @@ function Measured() {
   );
 }
 
-/* ---------- measure it on your own suite: the kit's setup split ----------
+/* ---------- measure it on your own suite: the kit's feature pointers ----------
 
-   The four steps as a numbered list on the left, each with a thin line
-   down its side that fills while it is the step on show (they play in
-   turn; a click picks one). On the right, one painted scene with the
-   comparison run, the part of it each step is about brought forward. */
+   The four steps as pointers on joined white cells: an icon, the step's
+   number before its heading, and its line. No pictures. */
 
-const STEP_MS = 6000;
-
-function StepLine({ paused }: { paused: boolean }) {
-  const [full, setFull] = useState(false);
-  useEffect(() => {
-    const t = requestAnimationFrame(() => setFull(true));
-    return () => cancelAnimationFrame(t);
-  }, []);
-  return (
-    <span
-      className="absolute -left-0.5 top-0 w-0.5 bg-[var(--tm-fg-default)]"
-      style={{ height: full ? "100%" : "0%", transition: paused ? "none" : `height ${STEP_MS}ms linear` }}
-    />
-  );
-}
+const MEASURE_ICONS = [Lock, Repeat, Timer, Scale];
 
 function MeasureIt() {
-  const [step, setStep] = useState(0);
-  const [paused, setPaused] = useState(false);
-  useEffect(() => {
-    if (paused) return;
-    const t = setTimeout(() => setStep((i) => (i + 1) % measure.length), STEP_MS);
-    return () => clearTimeout(t);
-  }, [step, paused]);
   return (
     <Section>
       <FoldHead
@@ -502,34 +482,24 @@ function MeasureIt() {
         title="on your own suite"
         body="The figure that counts is your own. Run one suite at the same commit and concurrency on your current setup and on HyperExecute, then compare."
       />
-      <div className="tm-reveal tm-setup lg:!items-center" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
-        <ol className="flex flex-col">
-          {measure.map((m, i) => (
-            <li key={m.title} className="relative border-l-2 border-[var(--tm-border-default)]">
-              {i === step && <StepLine key={step} paused={paused} />}
-              <button
-                type="button"
-                onClick={() => setStep(i)}
-                aria-current={i === step}
-                className="flex w-full flex-col gap-3 py-6 pl-8 text-left"
-              >
-                <span className={`flex items-baseline gap-3 transition-colors ${i === step ? "text-foreground" : "text-[var(--tm-fg-subtle)] hover:text-foreground"}`}>
-                  <span className="font-mono text-b2">{String(i + 1).padStart(2, "0")}</span>
-                  <span className={`font-medium ${H4}`}>{m.title}</span>
+      <div className="tm-reveal -mx-8">
+        <ol className="tm-grid tm-grid--4">
+          {measure.map((m, i) => {
+            const Icon = MEASURE_ICONS[i];
+            return (
+              <li key={m.title} className="tm-cell tm-pt">
+                <span className="tm-pt__ico">
+                  <Icon aria-hidden />
                 </span>
-                {i === step && <span className="max-w-[420px] pl-10 text-b1 text-muted-foreground">{m.body}</span>}
-              </button>
-            </li>
-          ))}
+                <h3 className="flex items-baseline gap-3">
+                  <span className="font-mono text-b3 text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+                  {m.title}
+                </h3>
+                <p>{m.body}</p>
+              </li>
+            );
+          })}
         </ol>
-        <div className="relative grid min-h-[480px] place-items-center overflow-hidden border border-border px-6 py-12 md:px-10">
-          <img src={`${ATP}/scene-cloud.jpg`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
-          <div className="relative w-full bg-surface [box-shadow:var(--tm-shadow-floating-md)]">
-            <Fit w={580} h={340}>
-              <MeasureScreen step={step} />
-            </Fit>
-          </div>
-        </div>
       </div>
     </Section>
   );
