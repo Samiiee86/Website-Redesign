@@ -348,7 +348,7 @@ function Steps({ s }: { s: Extract<Sec, { type: "steps" }> }) {
         <ol className="grid gap-px border-y border-[var(--tm-bg-inverse-muted)] bg-[color-mix(in_srgb,var(--tm-fg-inverse)_12%,transparent)] md:grid-cols-3">
           {s.items.map(([title, body], i) => (
             <li key={title} className="flex flex-col gap-2 bg-[var(--tm-bg-inverse-muted)] p-8">
-              <span className="font-mono text-b1 font-medium text-[var(--tm-blue-300)]">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-mono text-[length:var(--tm-h3-size)] leading-[var(--tm-h3-line)] font-medium text-[var(--tm-blue-300)]">{String(i + 1).padStart(2, "0")}</span>
               <h3 className={`mt-2 ${H4}`}>{title}</h3>
               <p className="text-b1 text-[var(--tm-fg-inverse-muted)]">{body}</p>
             </li>
@@ -390,7 +390,7 @@ function Strat({ s }: { s: Extract<Sec, { type: "strat" }> }) {
       <ol className={FIT}>
         {s.items.map(([title, body], i) => (
           <li key={title} className="flex flex-col gap-2 !p-8">
-            <span className="font-mono text-b1 font-medium text-[var(--tm-fg-link)]">{String(i + 1).padStart(2, "0")}</span>
+            <span className="font-mono text-[length:var(--tm-h3-size)] leading-[var(--tm-h3-line)] font-medium text-[var(--tm-fg-link)]">{String(i + 1).padStart(2, "0")}</span>
             <h3 className={`mt-2 ${H4}`}>{title}</h3>
             <p className="text-b1 text-muted-foreground">{body}</p>
           </li>
