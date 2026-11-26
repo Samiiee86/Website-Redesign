@@ -1055,7 +1055,7 @@ export default function ProductPage({ d }: { d: PageData }) {
 
         <TrustedBy />
         {body}
-        {faq && <Faq title={faq.head} items={faq.items} stacked />}
+        {faq && <Faq title={faq.head} items={faq.items} />}
         {/* numbers in Manrope on these pages, not the pixel face */}
         <div className="contents [&_.pixel]:![font-family:var(--tm-font-sans)] [&_.pixel]:!font-medium [&_.tm-pixel]:![font-family:var(--tm-font-sans)]">
           <Reasons integrations={false} />

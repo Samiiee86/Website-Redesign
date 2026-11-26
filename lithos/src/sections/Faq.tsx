@@ -31,8 +31,14 @@ export default function Faq({
   return (
     <Section className="!py-0 md:!py-0">
       <div className={`-mx-8 grid ${stacked ? "" : "lg:grid-cols-[0.4fr_0.6fr]"}`}>
-        <div className={stacked ? "px-8 pb-12 pt-16 md:pt-24" : "px-8 pb-8 pt-16 md:px-16 md:pt-20"}>
-          <h2 className="text-foreground [text-wrap:balance]">{title}</h2>
+        <div className={stacked ? "px-8 pb-12 pt-16 md:pt-24" : `px-8 pb-8 pt-16 md:pt-20 ${title.length > 30 ? "" : "md:px-16"}`}>
+          {/* side column: a longer page heading steps down to H3 so it
+              still breaks into two balanced lines */}
+          <h2
+            className={`text-foreground [text-wrap:balance] ${!stacked && title.length > 30 ? "lg:!text-[32px] lg:!leading-[40px] lg:!tracking-[-1px]" : ""}`}
+          >
+            {title}
+          </h2>
         </div>
 
         <div className={stacked ? "" : "lg:border-l lg:border-border"}>
